@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1759044775.6968 "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/Fall 2025/548 Transition to Grad Math/Portfolio Assignment 1/main.tex" "main.pdf" "main" 1759044776.36979 0
-  "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/Fall 2025/548 Transition to Grad Math/Portfolio Assignment 1/main.tex" 1759044775.60628 9908 006df331f87b298417a6523a9ccff7fe ""
+["pdflatex"] 1759122170.98596 "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/Fall 2025/548 Transition to Grad Math/Portfolio Assignment 1/main.tex" "main.pdf" "main" 1759122171.752 0
+  "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/Fall 2025/548 Transition to Grad Math/Portfolio Assignment 1/main.tex" 1759122170.89433 18905 ea1587ee481c1a86aa19fc6889c55b26 ""
   "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex" 1754610406 13967 889a9157fa67d0572ba1fc6f0c43327a ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/newpx/px-lms.enc" 1699652218 3877 2ca811886181a05a861d20a35de75e06 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf.enc" 1698694482 2914 fdbc4a54b9bc76f4551b5303f2737d33 ""
@@ -271,10 +271,10 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1758769034 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "main.aux" 1759044776.27265 818 d74726219a3a6413dc31d7d810314863 "pdflatex"
-  "main.out" 1759044776.13388 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.tex" 1759044775.60628 9908 006df331f87b298417a6523a9ccff7fe ""
-  "main.unq" 1759044776.27032 23 e796e8694083d6fa300b375ed8cc7fff "pdflatex"
+  "main.aux" 1759122171.65593 1239 2717faae11bbf1afaf5c0f54b5db0633 "pdflatex"
+  "main.out" 1759122171.44857 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.tex" 1759122170.89433 18905 ea1587ee481c1a86aa19fc6889c55b26 ""
+  "main.unq" 1759122171.65354 23 e796e8694083d6fa300b375ed8cc7fff "pdflatex"
   (generated)
   "main.aux"
   "main.log"

@@ -1,0 +1,375 @@
+\documentclass[10pt,twoside,openany]{memoir}
+%\usepackage{mlmodern}
+%\usepackage{tgpagella} % text only
+%\usepackage{mathpazo}  % math & text
+\usepackage[T1]{fontenc}
+\usepackage[hidelinks]{hyperref}
+\usepackage{amsmath}
+\usepackage[fixamsmath]{mathtools}  % Extension to amsmath
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+\usepackage{newpxtext}
+\usepackage{eulerpx}
+\usepackage{eucal}
+\usepackage{datetime}
+    \newdateformat{specialdate}{\THEYEAR\ \monthname\ \THEDAY}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \renewcommand{\headrulewidth}{0pt}
+    \cfoot{\scriptsize \thepage}
+\usepackage{thmtools}
+    \declaretheoremstyle[
+        spaceabove=10pt,
+        spacebelow=10pt,
+        headfont=\normalfont\bfseries,
+        notefont=\mdseries, notebraces={(}{)},
+        bodyfont=\normalfont,
+        postheadspace=0.5em
+        %qed=\qedsymbol
+        ]{defs}
+
+    \declaretheoremstyle[ 
+        spaceabove=10pt, % space above the theorem
+        spacebelow=10pt,
+        headfont=\normalfont\bfseries,
+        bodyfont=\normalfont\itshape,
+        postheadspace=0.5em
+        ]{thmstyle}
+    
+    \declaretheorem[
+        style=thmstyle,
+        numberwithin=section
+    ]{theorem}
+
+    \declaretheorem[
+        style=thmstyle,
+        sibling=theorem,
+    ]{proposition}
+
+    \declaretheorem[
+        style=thmstyle,
+        sibling=theorem,
+    ]{lemma}
+
+    \declaretheorem[
+        style=thmstyle,
+        sibling=theorem,
+    ]{corollary}
+
+    \declaretheorem[
+        numberwithin=section,
+        style=defs,
+    ]{example}
+
+    \declaretheorem[
+        numberwithin=section,
+        style=defs,
+    ]{definition}
+
+    \declaretheorem[
+        style=defs,
+        sibling=theorem,
+        numberwithin=section,
+    ]{exercise}
+
+    \declaretheorem[
+        style=thmstyle
+        numbered=unless unique
+    ]{axiom}
+
+    \declaretheorem[numbered=unless unique, style=defs]{problem}
+    \declaretheorem[numberwithin=section,style=defs]{note}
+    \declaretheorem[numbered=no,style=defs]{question}
+    \declaretheorem[numbered=no,style=defs]{recall}
+    \declaretheorem[numbered=no,style=remark]{answer}
+    \declaretheorem[numbered=no,style=remark]{solution}
+    \declaretheorem[numbered=no,style=defs]{remark}
+\usepackage{enumitem}
+\usepackage[utf8x]{inputenc}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning,arrows.meta}
+\linespread{1.00}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
+
+\begin{document}
+\begin{center}
+    {\Large Math 548 \\[0.1in]Portfolio Assignment 2}\\[.175in]
+    {Name:} {\underline{Gianluca Crescenzo\hspace*{2in}}}\\[0.15in]
+    \end{center}
+    \vspace{4pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}[F22, P4]
+Let $W \subset \bfR^5$ be the space spanned by the vectors
+    \begin{equation*}
+    \begin{split}
+        \left\{ \bmat 1 \\ -2 \\ 0 \\ 2 \\-1 \emat , \bmat -2 \\ 4 \\ -1 \\1\\2 \emat, \bmat 0\\1\\2\\-2\\1\emat\right\}.
+    \end{split}
+    \end{equation*}
+\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+    \item Compute the dimension of $W$.
+    \item Determine the dimension of $W^\perp$, and explain how this follows immediately from (a) using a theorem.
+    \item Find a basis for $W^\perp$.
+\end{enumerate}
+\end{problem}
+    {\color{blue} \begin{proof}
+        We will first put the following matrix into reduced row echelon form:
+            \begin{equation*}
+            \begin{split}
+                \bmat 1 & -2 & 0 & 2 & -1 \\ -2 & 4 & -1 & 1 & 2 \\ 0 & 1 & 2 & -2 & 1 \emat
+                & \xrightarrow{R_2 \to R_2 + 2R_1}
+                \bmat 1 & -2 & 0 & 2 & -1 \\ 0 & 0 & -1 & 5 & 0 \\ 0 & 1 & 2 & -2 & 1 \emat \\[1em]
+                & \xrightarrow{R_2 \leftrightarrow R_3}
+                \bmat 1 & -2 & 0 & 2 & -1 \\ 0 & 1 & 2 & -2 & 1 \\ 0 & 0 & -1 & 5 & 0 \emat \\[1em]
+                & \xrightarrow{R_3 \to -R_3}
+                \bmat 1 & -2 & 0 & 2 & -1 \\ 0 & 1 & 2 & -2 & 1 \\ 0 & 0 & 1 & -5 & 0 \emat \\[1em]
+                & \xrightarrow{R_2 \to R_2 - 2R_3}
+                \bmat 1 & -2 & 0 & 2 & -1 \\ 0 & 1 & 0 & 8 & 1 \\ 0 & 0 & 1 & -5 & 0 \emat \\[1em]
+                & \xrightarrow{R_1 \to R_1 + 2R_2}
+                \bmat 1 & 0 & 0 & 18 & 1 \\ 0 & 1 & 0 & 8 & 1 \\ 0 & 0 & 1 & -5 & 0 \emat.
+            \end{split}
+            \end{equation*}
+
+        (a) Since there are three pivots, we have $\dim W = 3$.
+
+        (b) Since $\dim \bfR^5 = \dim W +\dim W^\perp$, we have $\dim W^\perp = 2$.
+
+        (c) Computing the nullspace of our matrix gives:
+            \begin{equation*}
+            \begin{split}
+                \bmat 1 & 0 & 0 & 18 & 1 \\ 0 & 1 & 0 & 8 & 1 \\ 0 & 0 & 1 & -5 & 0 \emat \bmat x_1 \\ x_2 \\ x_3 \\ x_4 \\ x_5 \emat = \bmat 0 \\ 0 \\ 0 \\0 \\0  \emat
+                & = \begin{cases}
+                    x_1 = 18x_3 + x_5 \\
+                    x_2 = 8x_4 + x_5 \\
+                    x_3 = -5x_5  
+                \end{cases}
+            \end{split}
+            \end{equation*}
+        Taking $x_4$ and $x_5$ to be free, we get:
+            \begin{equation*}
+            \begin{split}
+                \cB_{W^\perp} = \left\{ \bmat -18 \\ -8 \\ 5 \\ 1 \\0 \emat, \bmat -1 \\ -1 \\0 \\ 0 \\ 1 \emat \right\}.
+            \end{split}
+            \end{equation*}
+    \end{proof}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}[F19, P1]
+    Let $P_3$ be the real vector space of all real polynomials of degree three or less. Define $L:P_3 \rightarrow P_3$ by $L(p(x)) = p(x) + p(-x)$. 
+    \begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+        \item Prove that $L$ is a linear transformation.
+        \item Find a basis for the null space of $L$.
+        \item Compute the dimension of the image of $L$.
+    \end{enumerate}
+\end{problem}
+    {\color{blue} \begin{proof}
+        (a) Let $p(x),q(x) \in P_3$ and $\alpha \in \bfR$. Observe that:
+            \begin{equation*}
+            \begin{split}
+                L(p(x) + \alpha q(x))
+                & = p(x) + \alpha q(x) + \bigl(p(-x) + \alpha q(-x)\bigr) \\
+                & = p(x) + p(-x) + \alpha(q(x) + q(-x)) \\
+                & = L(p(x)) + \alpha L(q(x)).
+            \end{split}
+            \end{equation*}
+        Thus $L$ is a linear transformation.
+
+        (b) Let $\cB = \{1,x,x^2,x^3\}$. Then:
+            \begin{equation*}
+            \begin{split}
+                L(1) &= 2 \\
+                L(x) &= x + (-x) = 0 \\
+                L(x^2) &= x^2 + (-x)^2 = 2x^2 \\
+                L(x^3) &= x^3 + (-x)^3 = 0.
+            \end{split}
+            \end{equation*}
+        This means:
+            \begin{equation*}
+            \begin{split}
+                [L]_{\cB} = \bmat 2 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 2 & 0 \\ 0 & 0 & 0 & 0 \emat.
+            \end{split}
+            \end{equation*}
+        Computing the nullspace of $[L]_\cB$ gives:
+            \begin{equation*}
+            \begin{split}
+                \bmat 2 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 2 & 0 \\ 0 & 0 & 0 & 0 \emat \bmat x_1 \\ x_2 \\ x_3 \\ x_4 \emat = \bmat 0 \\ 0 \\ 0 \\ 0 \emat
+                & \implies \begin{cases}
+                2x_1 = 0 \\ 2x_3 = 0.
+                \end{cases}
+            \end{split}
+            \end{equation*}
+        Hence $\cB_{\ker[L]_{\cB}} = \left\{ \bmat 0 \\ 1 \\ 0 \\ 0 \emat , \bmat 0 \\ 0 \\ 0 \\ 1 \emat \right\}$.
+
+
+        (c) By the rank-nullity theorem, $\dim (\Image L) = \dim (P_3) - \dim (\ker L) = 2$.
+    \end{proof}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}[F18, P1]
+    Let $T:\bfR^3 \rightarrow \bfR^3$ be the linear transformation defined by $T \left(\bmat x \\ y \\ z \emat \right) = \bmat x+y \\ 2z-x \\ y+2z \emat$.
+        \begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+            \item Find a matrix that represents $T$ with respect to the standard basis for $\bfR^3$.
+            \item Find a basis for the kernel of $T$.
+            \item Determine the rank of $T$.
+        \end{enumerate}
+\end{problem}
+    {\color{blue} \begin{proof}
+        (a) Let $\cB$ denote the standard basis in $\bfR^3$. From the following:
+            \begin{equation*}
+            \begin{split}
+                T \left( \bmat 1 \\ 0 \\ 0\emat \right) & = \bmat 1 \\ -1 \\ 0 \emat \\
+                T \left( \bmat 0 \\ 1 \\ 0\emat \right) & = \bmat 1 \\ 0 \\ 1 \emat \\
+                T \left( \bmat 0 \\ 0 \\ 1\emat \right) & = \bmat 0 \\ 2 \\ 2 \emat, \\
+            \end{split}
+            \end{equation*}
+        we get:
+            \begin{equation*}
+            \begin{split}
+                [T]_\cB = \bmat 1 & 1 & 0 \\ -1 & 0 & 2 \\ 0 & 1 & 2 \emat.
+            \end{split}
+            \end{equation*}
+
+        (b) By row reducing $[T]_\cB$:
+            \begin{equation*}
+            \begin{split}
+                \bmat 1 & 1 & 0 \\ -1 & 0 & 2 \\ 0 & 1 & 2 \emat
+                & \xrightarrow{R_2 \to R_2 + R_1}
+                \bmat 1 & 1 & 0 \\ 0 & 1 & 2 \\ 0 & 1 & 2 \emat \\[1em]
+                & \xrightarrow{R_3 \to R_3 - R_2}
+                \bmat 1 & 1 & 0 \\ 0 & 1 & 2 \\ 0 & 0 & 0 \emat \\[1em]
+                & \xrightarrow{R_1 \to R_1 - R_2}
+                \bmat 1 & 0 & -2 \\ 0 & 1 & 2 \\ 0 & 0 & 0 \emat,
+            \end{split}
+            \end{equation*}
+            we can see:
+                \begin{equation*}
+                \begin{split}
+                    \bmat 1 & 0 & -2 \\ 0 & 1 & 2 \\ 0 & 0 & 0 \emat \bmat x_1 \\ x_2 \\ x_3 \emat = \bmat 0 \\ 0 \\ 0 \emat 
+                    & \implies \begin{cases}
+                        x_1 = 2x_3 \\ x_2 = -2x_3.
+                    \end{cases}
+                \end{split}
+                \end{equation*}
+            Taking $x_3$ to be free, a basis for $\ker T$ is $\left\{ \bmat 2 \\ -2 \\ 1 \emat \right\}$.
+
+        (c) The rank of a matrix is equal to the dimension of its image. By the rank-nullity theory, $\dim(\Image T) = \dim(\bfR^3) - \dim (\ker T) = 2$.
+    \end{proof}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}[S17, P1]
+    Let $V = \{a_0 + a_1 \sqrt[3]{2} + a_2 \sqrt[3]{4} \mid a_1,a_2,a_2 \in \bfQ\} \subseteq \bfR$. This is a vector space over $\bfQ$.
+        \begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+            \item Verify $V$ is closed under product (using the usual product operation in $\bfR$).
+            \item Let $T:V \rightarrow V$ be the linear transformation defined by $T(v) = (\sqrt[3]{2} + \sqrt[3]{4})v$. Find the matrix that represents $T$ with respect to the basis $\{1, \sqrt[3]{2}, \sqrt[3]{4}\}$ for $V$.
+            \item Determine the characteristic polynomial for $T$.
+        \end{enumerate}
+\end{problem}
+    {\color{blue} \begin{proof}
+    (a) Let $a_0 + a_1 \sqrt[3]{2} + a_2 \sqrt[3]{4}$ and $b_0 + b_1 \sqrt[3]{2} + b_2 \sqrt[3]{4}$ be elements of $V$. We have:
+        \begin{equation*}
+        \begin{aligned}
+            &(a_0 + a_1 \sqrt[3]{2} + a_2 \sqrt[3]{4})(b_0 + b_1 \sqrt[3]{2} + b_2 \sqrt[3]{4}) \\
+            &\hspace{2.6em}= (a_0b_0 + 2a_1b_2 + 2a_2b_1)
+            + \sqrt[3]{2}(a_0b_1 + a_1b_0 + 2a_2b_2)
+            + \sqrt[3]{4}(a_0b_2 + a_1b_1 + a_2b_0).
+        \end{aligned}
+        \end{equation*}
+    Thus $V$ is closed under product.
+
+    (b) Let $\cB = \{1,\sqrt[3]{2},\sqrt[3]{4}\}$. Then:
+        \begin{equation*}
+        \begin{split}
+            T(1) &= \sqrt[3]{2} + \sqrt[3]{4} \\
+            T(\sqrt[3]{2}) &= 2 + \sqrt[3]{4} \\
+            T(\sqrt[3]{4}) & = 2 + 2\sqrt[3]{2}.
+        \end{split}
+        \end{equation*}
+    This means:
+        \begin{equation*}
+        \begin{split}
+            [T]_{\cB} = \bmat 0 & 2 & 2 \\ 1 & 0 & 2 \\ 1 & 1 & 0 \emat.
+        \end{split}
+        \end{equation*}
+
+    (c) The characteristic polynomial of $[T]_\cB$ is:
+        \begin{equation*}
+        \begin{split}
+            \det\bigl([T]_\cB - \lambda I\bigr)
+            & = \det \bmat -\lambda & 2 & 2 \\ 1 & -\lambda & 2 \\ 1 & 1 & -\lambda \emat \\
+            & = -\lambda \det \bmat -\lambda & 2\\ 1 & -\lambda \emat - 2 \det \bmat 1 & 2 \\ 1 & -\lambda \emat + 2 \det \bmat 1 & -\lambda \\ 1 & 1 \emat \\
+            & = -\lambda (\lambda^2 - 2) - 2(-\lambda -2) + 2(1 + \lambda) \\
+            & = -\lambda^3 + 6\lambda +6. \qedhere
+        \end{split}
+        \end{equation*}
+    \end{proof}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}[F19, P2]
+    Let $T:\bfR^3 \rightarrow \bfR^3$ be the linear transformation that rotates counterclockwise around the $z$-axis by $\frac{2\pi}{3}$. 
+    \begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+        \item Write the matrix for $T$ with respect to the standard basis $\left\{ \bmat 1 \\ 0 \\ 0 \emat, \bmat 0 \\ 1 \\ 0 \emat,\bmat 0 \\ 0 \\ 1 \emat \right\}$.
+        \item Write the matrix for $T$ with respect to the basis $\left\{ \bmat \frac{\sqrt{3}}{2} \\ -\frac{1}{2} \\ 0 \emat, \bmat 0 \\ 1 \\ 0 \emat,\bmat 0 \\ 0 \\ 1 \emat \right\}$.
+        \item Determine all (complex) eigenvalues of $T$.
+        \item Is $T$ diagonalizable over $\bfC$? Justify your answer.
+    \end{enumerate}
+\end{problem}
+    {\color{blue} \begin{proof}
+        (a) Let $\cE$ denote the standard basis. We have:
+            \begin{equation*}
+            \begin{split}
+                T \left( \bmat 1 \\ 0 \\ 0 \emat \right) & = \bmat -\frac{1}{2} \\ \frac{\sqrt{3}}{2} \\ 0 \emat, \\
+                T \left( \bmat 0 \\ 1 \\ 0 \emat \right) & =\bmat -\frac{\sqrt{3}}{2} \\ -\frac{1}{2} \\ 0 \emat, \\
+                T \left( \bmat 0 \\ 0 \\ 1 \emat \right) & = \bmat 0 \\ 0 \\ 1 \emat. 
+            \end{split}
+            \end{equation*}
+        Hence:
+            \begin{equation*}
+            \begin{split}
+                [T]_\cE = \bmat 
+                -\frac{1}{2} & -\frac{\sqrt{3}}{2} & 0 \\ 
+                \frac{\sqrt{3}}{2} & -\frac{1}{2} & 0 \\ 
+                0 & 0 & 1 
+                \emat.
+            \end{split}
+            \end{equation*}
+
+        (b) Let $\cB = \left\{ \bmat \frac{\sqrt{3}}{2} \\ -\frac{1}{2} \\ 0 \emat, \bmat 0 \\ 1 \\ 0 \emat, \bmat 0 \\ 0 \\ 1 \emat \right\}$. We have:
+            \begin{equation*}
+            \begin{split}
+                T \left( \bmat \frac{\sqrt{3}}{2} \\ -\frac{1}{2} \\ 0 \emat \right)
+                & = \bmat 0 \\ 1 \\ 0 \emat, \\
+                T \left( \bmat 0 \\ 1 \\ 0 \emat \right)
+                & = \bmat -\frac{\sqrt{3}}{2} \\ -\frac{1}{2} \\ 0 \emat, \\
+                T \left( \bmat 0 \\ 0 \\ 1 \emat \right)
+                & = \bmat 0 \\ 0 \\ 1 \emat.
+            \end{split}
+            \end{equation*}
+        Hence:
+            \begin{equation*}
+            \begin{split}
+                [T]_\cB = 
+                \bmat 
+                0 & -1 & 0 \\ 
+                1 & 1 & 0 \\ 
+                0 & 0 & 1 
+                \emat.
+            \end{split}
+            \end{equation*}
+
+        (c) We must first find the characteristic polynomial of $[T]_\cB$:
+            \begin{equation*}
+            \begin{split}
+                \det \bigl([T]_\cB - \lambda I\bigr)
+                & = \det \bmat -\lambda & -1 & 0 \\ 1 & 1-\lambda & 0 \\ 0 & 0 & 1-\lambda \emat \\
+                & = (1-\lambda)\det \bmat -\lambda & -1 \\ 1 & 1-\lambda \emat \\
+                & = (1-\lambda)(\lambda^2 - \lambda + 1). \\
+            \end{split}
+            \end{equation*}
+        Hence $\lambda = 1$, $\lambda = \frac{1}{2} + \frac{\sqrt{3}}{2}i$, and $\lambda = \frac{1}{2} - \frac{\sqrt{3}}{2}i$ are the eigenvalues of $[T]_\cB$.
+
+        (d) Since $T$ has three distinct eigenvalues, and since $\dim(\bfR^3) = 3$, $T$ is diagonalizable over $\bfC$.
+
+    \end{proof}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

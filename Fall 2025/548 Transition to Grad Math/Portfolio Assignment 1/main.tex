@@ -111,7 +111,7 @@ Let $T:\bfR^4 \rightarrow \bfR^4$ be an orthogonal projection to the 2-dimension
         \item Find the matrix $T$ with respect to the standard basis. Is this matrix diagonalizable? Why or why not?
     \end{enumerate}
 \end{problem}
-    \begin{proof}
+    {\color{blue} \begin{proof}
         (a) Since $T$ is a projection onto $P$, note that for any vector $v \in \bfR^4$, we have that $T(v) \in P$. Since $T$ acts as the identity map on any vector in $P$, it must be the case that $T^2(v) = T(v)$. 
 
         Let $w$ be an eigenvector of $T$. Since $T^2(v) = T(v)$ for all $v \in \bfR^4$, we get:
@@ -147,13 +147,7 @@ Let $T:\bfR^4 \rightarrow \bfR^4$ be an orthogonal projection to the 2-dimension
                 P^\perp = \Span \left\{\bmat 0 \\ 1 \\ 0 \\ 0 \emat,\bmat 0 \\ 0 \\ 0 \\ 1 \emat \right\}.
             \end{split}
             \end{equation*}
-        Since the eigenbasis:
-            \begin{equation*}
-            \begin{split}
-                \cB_\lambda = \left\{ \bmat 2 \\ 0 \\ 1 \\ 0 \emat, \bmat -1 \\ 0 \\ 2 \\ 0 \emat ,\bmat 0 \\ 1 \\ 0 \\ 0 \emat,\bmat 0 \\ 0 \\ 0 \\ 1 \emat\right\}
-            \end{split}
-            \end{equation*}
-        has a dimension of 4, $T$ is diagonalizable. Because $T$ is diagonalizable, the algebraic multiplicities of its eigenvalues equals their geometric multiplicities.
+        Note that $P = E_1$ and $P^\perp = E_0$, where $E_1$ is the eigenspace associated to $\lambda = 1$ and $E_0$ is the eigenspace associated to $\lambda = 0$. Since $\dim(E_1) + \dim(E_0) = \dim (\bfR^4)$, $T$ is diagonalizable. Because $T$ is diagonalizable, the algebraic multiplicities of its eigenvalues equals their geometric multiplicities.
 
         (b) Let $\cB$ denote the standard basis in $\bfR^4$ and define:
             \begin{equation*}
@@ -171,9 +165,9 @@ Let $T:\bfR^4 \rightarrow \bfR^4$ be an orthogonal projection to the 2-dimension
             \end{split}
             \end{equation*}
         
-    \end{proof}
+    \end{proof}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{problem}
+\begin{problem}[S19, P1]
     Let $L$ be the line in $\bfR^2$ defined by $y = -3x$, and let $T:\bfR^2 \rightarrow \bfR^2$ be the linear transformation that orthogonally projects onto $L$ and then stretches along $L$ by a factor of two.
         \begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
             \item Find the eigenvalues and an eigenbasis $\cB$ for $T$.
@@ -181,7 +175,7 @@ Let $T:\bfR^4 \rightarrow \bfR^4$ be an orthogonal projection to the 2-dimension
             \item Determine the matrix for $T$ with respect to the standard basis.
         \end{enumerate}
 \end{problem}
-    \begin{proof}
+    {\color{blue} \begin{proof}
         (a) Note that $\bfR^2 = L \oplus L^\perp$. Hence for any $v \in \bfR^2$, we can write $v = u + w$, where $u \in L$ and $w \in L^\perp$. This means:
             \begin{equation*}
             \begin{split}
@@ -215,15 +209,180 @@ Let $T:\bfR^4 \rightarrow \bfR^4$ be an orthogonal projection to the 2-dimension
                 & = \bmat \frac{1}{5} & -\frac{3}{5} \\ -\frac{3}{5} & \frac{9}{5} \emat.
             \end{split}
             \end{equation*}
-    \end{proof}
+    \end{proof}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{problem}
+\begin{problem}[S21, P4]
 Let $A = \bmat 0 & 0 & -2 \\ 1 & 2 & 1 \\ 1 & 0 & 3 \emat$.
 \begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
     \item Determine whether $A$ is diagonalizable, and if so, give its diagonal form along with a diagonalizing matrix.
     \item Compute $A^{42}$. Remember to show all work.
 \end{enumerate}
 \end{problem}
+    {\color{blue} \begin{proof}
+        (a) Observe that:
+            \begin{equation*}
+            \begin{split}
+                0
+                & = \det(A - \lambda I) \\
+                & = \det \bmat -\lambda & 0 & -2 \\ 1 & 2-\lambda & 1 \\ 1 & 0 & 3 - \lambda \emat \\
+                & = -\lambda \cdot \det \bmat 2-\lambda & 1 \\ 0 & 3 - \lambda\emat -2 \det \bmat 1 & 2-\lambda \\ 1 & 0 \emat \\
+                & = -\lambda(2-\lambda)(3-\lambda) - 2(\lambda - 2) \\
+                & = -(\lambda-2)^2(\lambda - 1)
+            \end{split}
+            \end{equation*}
+        Thus $\lambda = 2$ has an algebraic multiplicity of 2, while $\lambda = 1$ has an algebraic multiplicity of 1. Now consider:
+            \begin{equation*}
+            \begin{split}
+                (A-2I)\vec{x} = \vec{0}
+                & \implies \bmat -2 & 0 & -2 \\ 1 & 0 & 1 \\ 1 & 0 & 1 \emat \bmat x_1 \\ x_2 \\ x_3 \emat = \bmat 0 \\ 0 \\ 0 \emat \\
+                & \implies \bmat 1 & 0 & 1 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \emat \bmat x_1 \\ x_2 \\ x_3 \emat = \bmat 0 \\ 0 \\ 0 \emat \\
+                & \implies \begin{cases}
+                x_1  + x_3 = 0 \\
+                \end{cases}
+            \end{split}
+            \end{equation*}
+        We know $x_2$ is free, so let $x_3$ also be free. This gives $\cB_{E_2} = \left\{ \bmat 0 \\ 1 \\ 0 \emat, \bmat 0 \\ 0 \\ 1 \emat \right\}$ as a basis for $E_2$. Similarly:
+            \begin{equation*}
+            \begin{split}
+                (A-I)\vec{x} = \vec{0}
+                & \implies \bmat -1 & 0 & -2 \\ 1 & 1 & 1 \\ 1 & 0 & 2 \emat \bmat x_1 \\ x_2 \\ x_3 \emat = \bmat 0 \\ 0 \\ 0 \emat \\
+                & \implies \bmat 0 & 0 & 0 \\ 1 & 1 & 1 \\ 1 & 0 & 2 \emat \bmat x_1 \\ x_2 \\ x_3 \emat = \bmat 0 \\ 0 \\ 0 \emat \\ 
+                & \implies \bmat 0 & 0 & 0 \\ 0 & 1 & -1 \\ 1 & 0 & 2 \emat \bmat x_1 \\ x_2 \\ x_3 \emat = \bmat 0 \\ 0 \\ 0 \emat \\ 
+                & \begin{cases}
+                    x_2 = x_3 \\
+                    x_1 = -2x_3
+                \end{cases}
+            \end{split}
+            \end{equation*}
+        Since $x_3$ is free, this gives $\cB_{E_1} = \left\{ \bmat -2 \\ 1 \\ 1 \emat \right\}$ as a basis for $E_1$. Since $\dim(E_1) + \dim(E_2) = \dim(\bfR^3)$, $A$ is diagonalizable. In particular, $A = PDP^{-1}$, where:
+            \begin{equation*}
+            \begin{split}
+                P = \bmat -2 & 0 & 0 \\ 1 & 1 & 0 \\ 1 & 0 & 1 \emat, \h9 D = \bmat 2 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 1 \emat.
+            \end{split}
+            \end{equation*}
 
+        (b) Since $A = PDP^{-1}$, we have:
+            \begin{equation*}
+            \begin{split}
+                A^{42}
+                & = PD^{42}P^{-1} \\
+                & = \bmat -2 & 0 & 0 \\ 1 & 1 & 0 \\ 1 & 0 & 1 \emat \bmat 2^{42} & 0 & 0 \\ 0 & 2^{42} & 0 \\ 0 & 0 & 1 \emat \bmat -2 & 0 & 0 \\ 1 & 1 & 0 \\ 1 & 0 & 1 \emat^{-1} \\
+                &= ...
+            \end{split}
+            \end{equation*}
+    \end{proof}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}[S22, P5]
+Let $A= \bmat 2 & -1 & -1 \\ 1 & 0 & -1 \\ 1 & -1 & 0 \emat$.
+\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+    \item Compute the characteristic polynomial $p_A(x)$ of $A$. It has integer roots.
+    \item For each eigenvalue $\lambda$ of $A$, find a basis for the eigenspace $E_\lambda$.
+    \item Determine if $A$ is diagonalizable. If so, give matrices $P$ and $B$ such that $P^{-1}A P = B$ and $B$ is diagonal. If not, explain carefully why $A$ is not diagonalizable.
+\end{enumerate}
+\end{problem}
+    {\color{blue} \begin{proof}
+        (a) Observe that:
+            \begin{equation*}
+            \begin{split}
+                0 
+                & = \det(A - \lambda I) \\
+                & = \det \bmat 2-\lambda & -1 & -1 \\ 1 & -\lambda & -1 \\ 1 & -1 & -\lambda \emat \\
+                & = \det \bmat -1 & -1 \\ -\lambda & - 1 \emat + \det\bmat 2-\lambda & -1 \\ 1 & -1 \emat - \lambda \det \bmat 2-\lambda & -1 \\ 1 & -\lambda \emat \\
+                & = (1-\lambda) + (\lambda -2 + 1) -\lambda(-2\lambda + \lambda^2 + 1) \\
+                & = -\lambda(\lambda-1)^2.
+            \end{split}
+            \end{equation*}
+        Hence the eigenvalues of $A$ are $\lambda = 0$ with an algebraic multiplicity of 1, and $\lambda = 1$ with an algebraic multiplicity of 2.
+
+        (b) For $\lambda = 0$:
+            \begin{equation*}
+            \begin{split}
+                A\vec{x} = \vec{0}
+                & \implies \bmat 2 & -1 & -1 \\ 1 & 0 & -1 \\ 1 & -1 & 0 \emat \bmat x_1 \\ x_2 \\ x_3 \emat = \bmat 0 \\ 0 \\ 0 \emat \\
+                & \implies \bmat 1 & -1 & 0 \\ 1 & 0 & -1 \\ 1 & -1 & 0 \emat \bmat x_1 \\ x_2 \\ x_3 \emat = \bmat 0 \\ 0 \\ 0 \emat \\ 
+                & \implies \bmat 1 & -1 & 0 \\ 1 & 0 & -1 \\ 0 & 0 & 0 \emat \bmat x_1 \\ x_2 \\ x_3 \emat = \bmat 0 \\ 0 \\ 0 \emat \\
+                & \implies \begin{cases}
+                x_1 = x_2 \\
+                x_1 = x_3
+                \end{cases}
+            \end{split}
+            \end{equation*}
+        Take $x_1$ to be a free variable. We have $\cB_{E_0} = \left\{ \bmat 1 \\ 1 \\ 1 \emat \right\}$ as a basis for $E_0$.
+
+        Similarly for $\lambda = 1$:
+            \begin{equation*}
+            \begin{split}
+                (A - I)\vec{x} = \vec{0} 
+                & \implies \bmat 1 & -1 & -1 \\ 1 & -1 & -1 \\ 1 & -1 & -1 \emat \bmat x_1 \\ x_2 \\ x_3 \emat = \bmat 0 \\ 0 \\ 0 \emat \\
+                & \implies \bmat 1 & -1 & -1 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \emat \bmat x_1 \\ x_2 \\ x_3 \emat = \bmat 0 \\ 0 \\ 0 \emat \\
+                & \implies x_1 = x_2 + x_3.
+            \end{split}
+            \end{equation*}
+        Since $x_2$ and $x_3$ are free variables, we have $\cB_{E_1} = \left\{ \bmat 1 \\ 1 \\0 \emat, \bmat 1 \\ 0 \\ 1 \emat \right\}$ as a basis for $E_1$.
+
+        (c) Since $\dim(E_1) + \dim(E_0) = \dim(\bfR^3)$, $A$ is diagonalizable. Let:
+            \begin{equation*}
+            \begin{split}
+                P = \bmat 1 & 1 & 1 \\ 1 & 1 & 0 \\ 1 & 0 & 1 \emat, \h9 B = \bmat 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0 \emat.
+            \end{split}
+            \end{equation*}
+        Then $P^{-1}AP = B$.
+    \end{proof}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}
+Let $A = \bmat 6 & -2 & -1 \\ 10 & -3 & -2 \\ 0 & 0 & 1 \emat$.
+\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+    \item Find bases for the eigenspaces of $A$.
+    \item Determine if $A$ is diagonalizable. If so, give an invertible matrix $P$ and a diagonal matrix $D$ such that $P^{-1}AP = D$. If not, explain why not.
+\end{enumerate}
+\end{problem}
+    {\color{blue} \begin{proof}
+        (a) Observe that:
+            \begin{equation*}
+            \begin{split}
+                0
+                & = \det (A -\lambda I) \\
+                & = \det \bmat 6-\lambda & -2 & -1 \\ 10 & -3-\lambda & -2 \\ 0 & 0 & 1-\lambda \emat \\
+                & = -(\lambda-1)\det \bmat 6-\lambda & -2 \\ 10 & -3-\lambda \emat  \\
+                & =  -(\lambda-1)(\lambda-6)(\lambda+3) + 20\\
+                & = -(\lambda-1) (\lambda^2 - 3\lambda +2) \\
+                & = -(\lambda-1)^2(\lambda-2).
+            \end{split}
+            \end{equation*}
+        Hence $\lambda = 1$ and $\lambda = 2$ are eigenvalues of $A$.
+
+        For $\lambda = 1$:
+            \begin{equation*}
+            \begin{split}
+                (A-I)\vec{x} = \vec{0}
+                & \implies \bmat 5 & -2 & -1 \\ 10 & -4 & -2 \\ 0 & 0 & 0 \emat \bmat x_1 \\ x_2 \\ x_3 \emat =\bmat 0 \\ 0 \\ 0 \emat \\
+                & \implies \bmat 5 & -2 & -1 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \emat \bmat x_1 \\ x_2 \\ x_3 \emat =\bmat 0 \\ 0 \\ 0 \emat \\
+                & \implies 5x_1 = 2x_2 + x_3
+            \end{split}
+            \end{equation*}
+        Since $x_2$ and $x_3$ are free variables, we have $\cB_{E_1} = \left\{ \bmat \frac{2}{5} \\ 1 \\ 0 \emat, \bmat \frac{1}{5} \\ 0 \\ 1 \emat \right\}$ as a basis for $E_1$.
+
+        For $\lambda = 2$:
+            \begin{equation*}
+            \begin{split}
+                (A-2I)\vec{x} = \vec{0}
+                & \implies \bmat 4 & -2 & -1 \\ 10 & -5 & -2 \\ 0 & 0 & -1 \emat \bmat x_1 \\ x_2 \\ x_3 \emat =\bmat 0 \\ 0 \\ 0 \emat \\
+                & \implies \bmat 2 & -1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \emat \bmat x_1 \\ x_2 \\ x_3 \emat =\bmat 0 \\ 0 \\ 0 \emat \\
+                & \implies \begin{cases}
+                2x_1 = x_2 \\
+                x_3 = 0
+                \end{cases}
+            \end{split}
+            \end{equation*}
+        Since $x_2$ is a free variable, we have $\cB_{E_2} = \left\{ \bmat 2 \\ 1 \\0 \emat \right\}$.
+
+        (b) Since $\dim(E_1) + \dim(E_2) = \dim(\bfR^3)$, $A$ is diagonalizable. In particular, we have:
+            \begin{equation*}
+            \begin{split}
+                P = \bmat \frac{2}{5} & \frac{1}{5} & 2 \\ 1 & 0 & 1 \\ 0 & 1 & 0 \emat,\h9 D = \bmat 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 2 \emat,
+            \end{split}
+            \end{equation*}
+        where $P^{-1}AP = D$.
+    \end{proof}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}

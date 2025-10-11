@@ -1,0 +1,248 @@
+\documentclass[10pt,twoside,openany]{memoir}
+%\usepackage{mlmodern}
+%\usepackage{tgpagella} % text only
+%\usepackage{mathpazo}  % math & text
+\usepackage[T1]{fontenc}
+\usepackage[hidelinks]{hyperref}
+\usepackage{amsmath}
+\usepackage[fixamsmath]{mathtools}  % Extension to amsmath
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+\usepackage{newpxtext}
+\usepackage{eulerpx}
+\usepackage{eucal}
+\usepackage{datetime}
+    \newdateformat{specialdate}{\THEYEAR\ \monthname\ \THEDAY}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \renewcommand{\headrulewidth}{0pt}
+    \cfoot{\scriptsize \thepage}
+\usepackage{thmtools}
+    \declaretheoremstyle[
+        spaceabove=10pt,
+        spacebelow=10pt,
+        headfont=\normalfont\bfseries,
+        notefont=\mdseries, notebraces={(}{)},
+        bodyfont=\normalfont,
+        postheadspace=0.5em
+        %qed=\qedsymbol
+        ]{defs}
+
+    \declaretheoremstyle[ 
+        spaceabove=10pt, % space above the theorem
+        spacebelow=10pt,
+        headfont=\normalfont\bfseries,
+        bodyfont=\normalfont\itshape,
+        postheadspace=0.5em
+        ]{thmstyle}
+    
+    \declaretheorem[
+        style=thmstyle,
+        numberwithin=section
+    ]{theorem}
+
+    \declaretheorem[
+        style=thmstyle,
+        sibling=theorem,
+    ]{proposition}
+
+    \declaretheorem[
+        style=thmstyle,
+        sibling=theorem,
+    ]{lemma}
+
+    \declaretheorem[
+        style=thmstyle,
+        sibling=theorem,
+    ]{corollary}
+
+    \declaretheorem[
+        numberwithin=section,
+        style=defs,
+    ]{example}
+
+    \declaretheorem[
+        numberwithin=section,
+        style=defs,
+    ]{definition}
+
+    \declaretheorem[
+        style=defs,
+        sibling=theorem,
+        numberwithin=section,
+    ]{exercise}
+
+    \declaretheorem[
+        style=thmstyle
+        numbered=unless unique
+    ]{axiom}
+
+    \declaretheorem[numbered=unless unique, style=defs]{problem}
+    \declaretheorem[numberwithin=section,style=defs]{note}
+    \declaretheorem[numbered=no,style=defs]{question}
+    \declaretheorem[numbered=no,style=defs]{recall}
+    \declaretheorem[numbered=no,style=remark]{answer}
+    \declaretheorem[numbered=no,style=remark]{solution}
+    \declaretheorem[numbered=no,style=defs]{remark}
+\usepackage{enumitem}
+\usepackage[utf8x]{inputenc}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning,arrows.meta}
+\linespread{1.00}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
+
+\begin{document}
+\begin{center}
+    {\Large Math 548 \\[0.1in]Portfolio Assignment 3}\\[.175in]
+    {Name:} {\underline{Gianluca Crescenzo\hspace*{2in}}}\\[0.15in]
+    \end{center}
+    \vspace{4pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}[W20, P1]
+Let $A$ be a real $n \times n$ matrix and let $A^\top$ denote its transpose.
+\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+    \item Prove that $\langle Av,w \rangle = \langle v,A^\top w \rangle$ for all vectors $v,w \in \bfR^n$. \textit{Hint:} Recall that the dot product $\langle u,v \rangle$ equals the matrix product $u^\top v$.
+    \item Suppose now that $A$ is also symmetric; i.e., that $A^\top = A$. Also suppose $v$ and $w$ are eigenvectors of $A$ with different eigenvalues. Prove that $v$ and $w$ are orthogonal.
+\end{enumerate}
+\end{problem}
+    {\color{blue} \begin{proof}
+        (a) We have:
+            \begin{equation*}
+            \begin{split}
+                \langle Av,w \rangle
+                & = (Av)^\top w \\
+                & = (v^\top A^\top) w \\
+                & = v^\top (A^\top w) \\
+                & = \langle v,A^\top w \rangle.
+            \end{split}
+            \end{equation*}
+        (b) Let $Av = \lambda_1 v$ and $A w = \lambda_2 w$. By the equation found in part (a), we have:
+            \begin{equation*}
+            \begin{split}
+                0
+                & = \langle Av,w \rangle - \langle v,A^\top w \rangle \\
+                & = \langle \lambda_1 v,w \rangle - \langle v,A w \rangle \\
+                & = \langle \lambda_1 v,w \rangle - \langle v,\lambda_2 w \rangle \\
+                & = \lambda_1 \langle v,w \rangle - \lambda_2 \langle v,w \rangle \\
+                & = (\lambda_1 - \lambda_2)\langle v,w \rangle.
+            \end{split}
+            \end{equation*}
+        Since $\lambda_1$ and $\lambda_2$ are distinct eigenvalues, it must be the case that $\langle v,w \rangle = 0$. Thus $v$ and $w$ are orthogonal.
+    \end{proof}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}[F24, P4]
+    Let $T:V \rightarrow V$ be a linear transformation on a finite-dimensional vector space. Prove that if $T^2 = T$, then:
+        \begin{equation*}
+        \begin{split}
+            V = \Image(T) \oplus \ker (T).
+        \end{split}
+        \end{equation*}
+\end{problem}
+    {\color{blue}\begin{proof}
+        Let $x+y \in \Image{(T)} + \ker{(T)}$. Since $x \in \Image{(T)} \subseteq V$ and $y \in \ker{(T)} \subseteq V$, we have $x+y \in V$, which gives $\Image(T) + \ker (T) \subseteq V$. Now let $v \in V$. Note that:
+            \begin{equation*}
+            \begin{split}
+                T(v - T(v))
+                & = T(v) - T(T(v)) \\
+                & = T(v) -  T(v) \\
+                & = 0.
+            \end{split}
+            \end{equation*}
+        Hence $v - T(v) = k$, for some $k \in \ker(T)$. We can rewrite this as $v = k + T(v)$, where $k \in \ker(T)$ and $T(v) \in \Image(T)$. Thus $v \in \Image(T) + \ker (T)$, giving $V \subseteq \Image(T) + \ker (T)$.
+
+        Let $v \in \Image(T) \cap \ker(T)$. Then $v \in \Image(T)$ and $v \in \ker(T)$. Since $v \in \Image(T)$, there exists $w \in V$ such that $T(w) = v$. Since $v \in \ker(T)$, we have $T(v) = 0$. Together:
+            \begin{equation*}
+            \begin{split}
+                v 
+                & = T(w) \\
+                & = T(T(w)) \\
+                & = T(v) \\
+                & = 0.
+            \end{split}
+            \end{equation*}
+        Since $\Image(T) \cap \ker(T) = \{0\}$ and $V = \Image(T) + \ker (T)$, we have $V = \Image(T) \oplus \ker (T)$.
+    \end{proof}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}[S17, P2]
+    Suppose $F$ is a field and $A$ is an $n \times n$ matrix over $F$. Suppose further that $A$ possesses distinct eigenvalues $\lambda_1$ and $\lambda_2$ with $\dim \operatorname{Null}(A - \lambda_1 I_n) = n-1$. Prove $A$ is diagonalizable.
+\end{problem}
+    {\color{blue} \begin{proof}
+        Let $\{v_1,v_2,...,v_{n-1}\}$ be a basis for $E_{\lambda_1}$ and let $v_n$ be an eigenvector for $E_{\lambda_2}$. Suppose: 
+            \begin{equation}
+            \begin{split}
+                a_1v_1 + ... + a_{n-1}v_{n-1} + a_n v_n = 0
+            \end{split}
+            \end{equation}
+        Applying $A$ to Equation (1) gives:
+            \begin{equation}
+            \begin{split}
+                a_1 \lambda_1 v_1 + ... + a_{n-1} \lambda_1 v_{n-1} + a_n \lambda_2 v_n = 0.
+            \end{split}
+            \end{equation}
+        Multiplying both sides of Equation (1) by $-\lambda_2$ gives:
+            \begin{equation}
+            \begin{split}
+                -a_1\lambda_2v_1 - ... - a_{n-1}\lambda_2v_{n-1} - a_n\lambda_2 v_n = 0
+            \end{split}
+            \end{equation}
+        Adding Equation (2) and Equation (3) yields:
+            \begin{equation*}
+            \begin{split}
+                (\lambda_1 - \lambda_2)a_1v_1 + ... + (\lambda_1 - \lambda_2)a_{n-1}v_{n-1} = 0.
+            \end{split}
+            \end{equation*}
+        Since $\lambda_1 \neq \lambda_2$, and since each $v_1,...,v_{n-1}$ is nonzero, it must be the case that $a_1=a_2=...=a_{n-1}$. This implies that Equation (1) equals:
+            \begin{equation*}
+            \begin{split}
+                a_n v_n = 0.
+            \end{split}
+            \end{equation*}
+        Since $v_n$ is an eigenvector, it is nonzero. Hence $a_n = 0$, establishing $\{v_1,...,v_{n-1},v_n\}$ as a linearly independent set. Since $\dim(F^n) = n$ the linearly independent set of eigenvectors $\{v_1,...,v_{n-1},v_n\}$ is in fact a basis for $F^n$. Since $F^n$ admits a basis of eigenvectors, it is diagonalizable.
+    \end{proof}}
+
+\begin{problem}
+    Suppose $T:\bfR^n \rightarrow \bfR^n$ is a linear transformation with distinct eigenvalues $\lambda_1,\lambda_2,...,\lambda_m$, and let $v_1,v_2,...,v_m$ be corresponding eigenvalues. Prove $v_1,v_2,...,v_m$ are linearly independent.
+\end{problem}
+    {\color{blue} \begin{proof}
+        Suppose towards contradiction $\{v_1,v_2,...,v_m\}$ is not linearly independent. Then there exists scalars $a_1,a_2,...,a_m$, not all of which are zero, such that $a_1v_1 + a_2v_2 + ... + a_mv_m = 0$. After relabeling, choose $k$ such that:
+            \begin{equation}
+            \begin{split}
+                a_1v_1 + a_2v_2 + ... + a_kv_k = 0,
+            \end{split}
+            \end{equation}
+        where each $a_1,...,a_k$ is nonzero and $k$ is minimal. Note that $2 \leq k \leq n$. Applying $T$ to Equation (4) gives:
+            \begin{equation}
+            \begin{split}
+                a_1 \lambda_1 v_1 + a_2 \lambda_2 v_2 + ... + a_k \lambda_k v_k = 0.
+            \end{split}
+            \end{equation}
+        Multiplying Equation (4) by $-\lambda_k$ gives:
+            \begin{equation}
+            \begin{split}
+                -a_1 \lambda_k v_1 - a_2 \lambda_k v_2 - ... - a_k\lambda_k v_k = 0.
+            \end{split}
+            \end{equation}
+        Adding Equation (5) and (6) together yields:
+            \begin{equation*}
+            \begin{split}
+                (\lambda_1 - \lambda_k)a_1v_1 + (\lambda_2 - \lambda_k)a_2 v_2 + ... + (\lambda_{k-1} - \lambda_k)a_{k-1} v_{k-1} = 0.
+            \end{split}
+            \end{equation*}
+        Since each eigenvalue is distinct, $(\lambda_i - \lambda_k) \neq 0$ for each $1 \leq i \leq {k-1}$. Moreover, by construction each $a_1,...,a_k$ is nonzero. This contradicts the minimality of $k$, so it must be that the set $\{v_1,v_2,...,v_m\}$ is linearly independent.
+    \end{proof}}
+
+\begin{problem}[S18, P5]
+    Suppose $V$ is a finite-dimensional real vector space and $T:V \rightarrow V$ is a linear transformation. Prove that $T$ has at most $\dim (\Image T)$ distinct nonzero eigenvalues.
+\end{problem}
+    {\color{blue} \begin{proof}
+        Let $\dim (\Image T) = k$. Suppose towards contradiction there exists eigenvectors $v_1,...,v_{k+1}$ corresponding to distinct non-zero eigenvalues $\lambda_1,...,\lambda_{k+1}$. By Problem 4, the set $\{v_1,...,v_{k+1}\}$ is linearly independent. In particular, since each $\lambda_i$ is nonzero, we have $T \left( \frac{v_i}{\lambda_i} \right) = v_i \in \Image(T)$. Thus $\{v_1,...,v_{k+1}\} \subseteq \dim(\Image T)$ is a linearly independent set, which implies $\dim(\Image T) \geq k+1$. This is a contradiction, hence $T$ must have at most $\dim (\Image T)$ distinct nonzero eigenvalues.
+    \end{proof}}
+
+
+\end{document}

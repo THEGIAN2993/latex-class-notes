@@ -119,6 +119,17 @@
             \item $\card(\cM) \geq \fc$.
         \end{enumerate}
 \end{exercise}
+    {\color{blue} \begin{proof}
+        a. Using the Axiom of Choice, pick a family of subsets $\{E_n\}_{n \in \bfN}$ from $\cM$. Then:
+            \begin{equation*}
+            \begin{split}
+                \left( E_n \setminus \bigcup_{k = 1}^{n-1}E_k \right)_n
+            \end{split}
+            \end{equation*}
+        is an infinite sequence of disjoint sets. Indeed, let $F_n := E_n \setminus \bigcup_{i = 1}^{n-1}E_i$ and consider $F_i \cap F_j$ for natural numbers $i < j$. If $x \in F_i$, then $x \in E_i$. But this means $x \in \bigcup_{k = 1}^{j - 1}E_k$, hence $x \not\in F_j$.
+
+        b. Let $F_n := E_n \setminus \bigcup_{k = 1}^{n-1}E_k$. Define $f:\cP(\bfN) \rightarrow \cM$ by $f(A) = \bigcup_{i \in A}F_i$. Suppose $f(A) = f(B)$. Then $\bigcup_{i \in A}F_i = \bigcup_{i \in B}F_i$. Let $x \in A$. Then $F_x \subset \bigcup_{i \in A}F_i$, hence $F_x \in \bigcup_{i \in B}F_i$. But since each $F_i$ is disjoint, it must be that $x \in B$. An identical argument shows that if $y \in B$, then $y \in A$, hence $A = B$. Since $f$ is injective, we have $\card(\cP(\bfN)) \leq \card(\cM)$; i.e., $\fc \leq \card(\cM)$.
+    \end{proof}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{exercise}
