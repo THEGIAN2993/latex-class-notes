@@ -173,7 +173,7 @@ Let $A$ be a real $n \times n$ matrix and let $A^\top$ denote its transpose.
     Suppose $F$ is a field and $A$ is an $n \times n$ matrix over $F$. Suppose further that $A$ possesses distinct eigenvalues $\lambda_1$ and $\lambda_2$ with $\dim \operatorname{Null}(A - \lambda_1 I_n) = n-1$. Prove $A$ is diagonalizable.
 \end{problem}
     {\color{blue} \begin{proof}
-        Let $\{v_1,v_2,...,v_{n-1}\}$ be a basis for $E_{\lambda_1}$ and let $v_n$ be an eigenvector for $E_{\lambda_2}$. Suppose: 
+        Let $\{v_1,v_2,...,v_{n-1}\}$ be a basis for $E_{\lambda_1}$ and let $v_n$ be an eigenvector for $E_{\lambda_2}$. Let $a_1,...,a_n \in F$ and suppose: 
             \begin{equation}
             \begin{split}
                 a_1v_1 + ... + a_{n-1}v_{n-1} + a_n v_n = 0
@@ -197,16 +197,17 @@ Let $A$ be a real $n \times n$ matrix and let $A^\top$ denote its transpose.
                 (\lambda_1 - \lambda_2)a_1v_1 + ... + (\lambda_1 - \lambda_2)a_{n-1}v_{n-1} = 0.
             \end{split}
             \end{equation*}
-        Since $\lambda_1 \neq \lambda_2$, and since each $v_1,...,v_{n-1}$ is nonzero, it must be the case that $a_1=a_2=...=a_{n-1}$. This implies that Equation (1) equals:
+        Since $\lambda_1 \neq \lambda_2$, and since each $v_1,...,v_{n-1}$ is nonzero, it must be the case that $a_1=a_2=...=a_{n-1} = 0$. This implies that Equation (1) equals:
             \begin{equation*}
             \begin{split}
                 a_n v_n = 0.
             \end{split}
             \end{equation*}
-        Since $v_n$ is an eigenvector, it is nonzero. Hence $a_n = 0$, establishing $\{v_1,...,v_{n-1},v_n\}$ as a linearly independent set. Since $\dim(F^n) = n$ the linearly independent set of eigenvectors $\{v_1,...,v_{n-1},v_n\}$ is in fact a basis for $F^n$. Since $F^n$ admits a basis of eigenvectors, it is diagonalizable.
+        Since $v_n$ is an eigenvector, it is nonzero. Hence $a_n = 0$, establishing $\{v_1,...,v_{n-1},v_n\}$ as a linearly independent set. Since $\dim(F^n) = n$, the linearly independent set of eigenvectors $\{v_1,...,v_{n-1},v_n\}$ is in fact a basis for $F^n$. Since $F^n$ admits a basis of eigenvectors, it is diagonalizable.
     \end{proof}}
 
-\begin{problem}
+\newpage
+\begin{problem}[F23, P5]
     Suppose $T:\bfR^n \rightarrow \bfR^n$ is a linear transformation with distinct eigenvalues $\lambda_1,\lambda_2,...,\lambda_m$, and let $v_1,v_2,...,v_m$ be corresponding eigenvalues. Prove $v_1,v_2,...,v_m$ are linearly independent.
 \end{problem}
     {\color{blue} \begin{proof}
@@ -241,7 +242,7 @@ Let $A$ be a real $n \times n$ matrix and let $A^\top$ denote its transpose.
     Suppose $V$ is a finite-dimensional real vector space and $T:V \rightarrow V$ is a linear transformation. Prove that $T$ has at most $\dim (\Image T)$ distinct nonzero eigenvalues.
 \end{problem}
     {\color{blue} \begin{proof}
-        Let $\dim (\Image T) = k$. Suppose towards contradiction there exists eigenvectors $v_1,...,v_{k+1}$ corresponding to distinct non-zero eigenvalues $\lambda_1,...,\lambda_{k+1}$. By Problem 4, the set $\{v_1,...,v_{k+1}\}$ is linearly independent. In particular, since each $\lambda_i$ is nonzero, we have $T \left( \frac{v_i}{\lambda_i} \right) = v_i \in \Image(T)$. Thus $\{v_1,...,v_{k+1}\} \subseteq \dim(\Image T)$ is a linearly independent set, which implies $\dim(\Image T) \geq k+1$. This is a contradiction, hence $T$ must have at most $\dim (\Image T)$ distinct nonzero eigenvalues.
+        Let $\dim (\Image T) = k$. Suppose towards contradiction there exists eigenvectors $v_1,...,v_{k+1}$ corresponding to distinct non-zero eigenvalues $\lambda_1,...,\lambda_{k+1}$. By Problem 4, the set $\{v_1,...,v_{k+1}\}$ is linearly independent. In particular, since each $\lambda_i$ is nonzero, we have $T \left( \frac{v_i}{\lambda_i} \right) = v_i \in \Image(T)$. Thus $\{v_1,...,v_{k+1}\} \subseteq \Image T$ is a linearly independent set, which implies $\dim(\Image T) \geq k+1$. This is a contradiction, hence $T$ must have at most $\dim (\Image T)$ distinct nonzero eigenvalues.
     \end{proof}}
 
 

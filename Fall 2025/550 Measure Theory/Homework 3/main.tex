@@ -1,0 +1,192 @@
+\documentclass[10pt,twoside,openany]{memoir}
+%\usepackage{mlmodern}
+%\usepackage{tgpagella} % text only
+%\usepackage{mathpazo}  % math & text
+\usepackage[T1]{fontenc}
+\usepackage[hidelinks]{hyperref}
+\usepackage{amsmath}
+\usepackage[fixamsmath]{mathtools}  % Extension to amsmath
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+\usepackage{newpxtext}
+\usepackage{eulerpx}
+\usepackage{eucal}
+\usepackage{datetime}
+    \newdateformat{specialdate}{\THEYEAR\ \monthname\ \THEDAY}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \renewcommand{\headrulewidth}{0pt}
+    \cfoot{\scriptsize \thepage}
+\usepackage{thmtools}
+    \declaretheoremstyle[
+        spaceabove=10pt,
+        spacebelow=10pt,
+        headfont=\normalfont\bfseries,
+        notefont=\mdseries, notebraces={(}{)},
+        bodyfont=\normalfont,
+        postheadspace=0.5em
+        %qed=\qedsymbol
+        ]{defs}
+
+    \declaretheoremstyle[ 
+        spaceabove=10pt, % space above the theorem
+        spacebelow=10pt,
+        headfont=\normalfont\bfseries,
+        bodyfont=\normalfont\itshape,
+        postheadspace=0.5em
+        ]{thmstyle}
+    
+    \declaretheorem[
+        style=thmstyle,
+        numberwithin=section
+    ]{theorem}
+
+    \declaretheorem[
+        style=thmstyle,
+        sibling=theorem,
+    ]{proposition}
+
+    \declaretheorem[
+        style=thmstyle,
+        sibling=theorem,
+    ]{lemma}
+
+    \declaretheorem[
+        style=thmstyle,
+        sibling=theorem,
+    ]{corollary}
+
+    \declaretheorem[
+        numberwithin=section,
+        style=defs,
+    ]{example}
+
+    \declaretheorem[
+        numberwithin=section,
+        style=defs,
+    ]{definition}
+
+    \declaretheorem[
+        style=thmstyle
+        numbered=unless unique
+    ]{axiom}
+
+    \declaretheorem[numbered=unless unique, style=defs]{exercise}
+    \declaretheorem[numberwithin=section,style=defs]{note}
+    \declaretheorem[numbered=no,style=defs]{question}
+    \declaretheorem[numbered=no,style=defs]{recall}
+    \declaretheorem[numbered=no,style=remark]{answer}
+    \declaretheorem[numbered=no,style=remark]{solution}
+    \declaretheorem[numbered=no,style=defs]{remark}
+\usepackage{enumitem}
+\usepackage[utf8x]{inputenc}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning,arrows.meta}
+\linespread{1.00}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
+
+\begin{document}
+\begin{center}
+    {\Large Math 550 \\[0.1in]Homework 3}\\[.175in]
+    {Name:} {\underline{Gianluca Crescenzo\hspace*{2in}}}\\[0.15in]
+    \end{center}
+    \vspace{4pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}
+Let $\cA \subset \cP(X)$ be an algebra, $\cA_\sigma$ the collection of countable unions of sets in $\cA$, and $\cA_{\sigma\delta}$ the collection of countable intersections of sets in $\cA_\sigma$. Let $\mu_0$ be a premeasure on $\cA$ and $\mu^\ast$ the induced outer measure.
+    \begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+        \item For any $E \subset X$ and $\epsilon > 0$ there exists $A \in \cA_\sigma$ with $E \subset A$ and $\mu^\ast(A) \leq \mu^\ast(E) + \epsilon$.
+        \item If $\mu^\ast(E) < \infty$, then $E$ is $\mu^\ast$-measurable if and only if there exists $B \in \cA_{\sigma\delta}$ with $E \subset B$ and $\mu^\ast(B \setminus E) = 0$.
+        \item If $\mu_0$ is $\sigma$-finite, the restriction $\mu^\ast(E) < \infty$ in (b) is superfluous.
+    \end{enumerate}
+\end{exercise}
+    \begin{proof}
+        (a) Let $E \subset X$ and $\epsilon > 0$. By the defintion of $\mu^\ast(E)$, we can find $\{A_j\}_{j = 1}^\infty \subset \cA$ such that $\bigcup_{j = 1}^\infty A_j \supset E$ and: 
+            \begin{equation*}
+            \begin{split}
+                \mu^\ast(E) + \epsilon 
+                & \geq \sum_{j = 1}^\infty \mu_0(A_j) \h9\h9\h8\text{\tiny Property of infimums}\\ 
+                & = \sum_{j = 1}^\infty \mu^\ast (A_j) \h9\h9\h9 \text{\tiny Because $\restr{\mu^\ast}{\cA} = \mu_0$}\\
+                & \geq \mu^\ast \left( \bigcup_{j = 1}^\infty A_j \right). \h9\h9\h1\text{\tiny Outer measures are subadditive}
+            \end{split}
+            \end{equation*}
+
+        (b) ($\Rightarrow$) Suppose $E$ is $\mu^\ast$-measurable. By (a), for every $n \in \bfN$, there exists $A_n \in \cA_\sigma$ such that $E \subset A_n$ and $\mu^\ast (A_n) \leq \mu^\ast (E) + \frac{1}{n}$. Since $\mu^\ast(E) < \infty$, we have $\mu^\ast(A_n) - \mu^\ast(E) \leq \frac{1}{n}$. Define $B = \bigcap_{n = 1}^\infty A_n \in \cA_{\sigma\delta}$. Then for all $n \in \bfN$:
+            \begin{equation*}
+            \begin{split}
+                \mu^\ast(B \setminus E)
+                & = \mu^\ast(B \cap E^c) \\
+                & \leq \mu^\ast (A_n \cap E^c) \h9\h9\h9\h9
+                \h9\h9\text{\tiny Monotonicity \& $B \subset A_n$ $\forall n$}\\
+                & = \mu^\ast(A_n) - \mu^\ast(A_n \cap E) \h9\h9\text{\tiny Since $E$ is $\mu^\ast$-measurable} \\
+                & = \mu^\ast(A_n) - \mu^\ast(E) \h9\h9\h9\h9\h8 \text{\tiny Since $E \subset A_n$}\\
+                & \leq \frac{1}{n} 
+            \end{split}
+            \end{equation*}
+        Hence $\mu^\ast(B \setminus E) = 0$. ($\Leftarrow$) Now let $B \in \cA_{\sigma\delta}$ such that $E \subset B$ and $\mu^\ast(B \setminus E) = 0$. Apply part (a) to the set $B \setminus E$. For each $n \in \bfN$, there exists $A_n \in \cA_\sigma$ such that $B\setminus E \subset A_n$ and $\mu^\ast(A_n) \leq \mu^\ast (B \setminus E) + \frac{1}{n} = \frac{1}{n}$. Since $A_\sigma \subset \fM(\cA) \subset \cM^\ast$, and since $\cM^\ast$ is a $\sigma$-algebra, the set $\bigcap_{n = 1}^\infty A_n$ is measurable. Since $B \setminus E \subset A_n$ for every $n \in \bfN$, we have $B \setminus E \subset \bigcap_{n = 1}^\infty A_n$. Since $\bigcap_{n = 1}^\infty A_n \subset A_n$, for every $n \in \bfN$ we have $\mu^\ast \left( \bigcap_{n = 1}^\infty A_n \right) \leq \mu^\ast(A_n) \leq \frac{1}{n}$. Hence $\mu^\ast \left( \bigcap_{n = 1}^\infty A_n \right) = 0$. Since $(X, \cM^\ast , \restr{\mu^\ast}{\cM^\ast})$ is a complete measure space, and since $\bigcap_{n= 1}^\infty A_n$ is a null-set, every subset of $\bigcap_{n= 1}^\infty A_n$ is measurable. In particular, $B \setminus E$ is measurable. Moreover, $B \in \cA_{\sigma\delta} \subset \cM^\ast$, hence $B$ is also measurable. We can write $E = B \setminus (B \setminus E) = B \cap (B \setminus E)^c$. Note that $B \in \cM^\ast$, and $(B \setminus E)^c \in \cM^\ast$ since $B \setminus E \in \cM^\ast$ and since $\cM^\ast$ is closed under intersections (it is a $\sigma$-algebra), hence $E \in \cM^\ast$ meaning that it is measurable.
+
+        (c) We did not use the restriction $\mu^\ast (E) < \infty$ in the ($\Leftarrow$) direction, hence we only need to prove ($\Rightarrow$) for when $\mu_0$ is $\sigma$-finite. Let $X = \bigcup_{j = 1}^\infty X_j$. Then $\mu_0(X_i) < \infty$. Define $E_n = E \cap \left( \bigcup_{j = 1}^n X_j \right)$. Then $\bigcup_{n = 1}^\infty E_n = E$. \nl
+        
+        \noindent For every $n \in \bfN$, apply part (a) to $E_n$. \nl
+        
+        \noindent There exists $C_n \in \cA_\delta$ such that $E_n \subset C_n$ and $\mu^\ast(C_n) \leq \mu^\ast(E_n) + \frac{1}{n}$. Define $C = \bigcap_{n = 1}^\infty C_n$. Then $\mu^\ast(C) \leq \mu^\ast(C_n) \leq \mu^\ast(E_n) + \frac{1}{n}$. Rearranging gives $\mu^\ast(C) - \mu^\ast(E_n) \leq \frac{1}{n}$. But since $\mu^\ast(E_n) \leq \mu^\ast(E)$, we have $\mu^\ast(C) - \mu^\ast(E) \leq \mu^\ast(C) - \mu^\ast(E_n) \leq \frac{1}{n}$. Since this holds true for all $n \in \bfN$, we have $\mu^\ast(C \setminus E) = 0$.
+    \end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}
+    Let $\mu^\ast$ be an outer measure on $X$ induced by the finite premeasure $\mu_0$. If $E \subset X$, define the \textit{inner measure} of $E$ to be $\mu_\ast(E) = \mu_0(X) - \mu^\ast(E^c)$. Show $E$ is $\mu^\ast$-measurable if and only if $\mu^\ast(E) = \mu_\ast(E)$.
+\end{exercise}
+    \begin{proof}
+        ($\Rightarrow$) Suppose $E$ is $\mu^\ast$-measurable. Then $E^c$ is also $\mu^\ast$-measurable since $\cM^\ast$ is a $\sigma$-algebra. We can write:
+            \begin{equation*}
+            \begin{split}
+                \mu^\ast (X) = \mu^\ast(E) + \mu^\ast(E^c).
+            \end{split}
+            \end{equation*}
+        Since $X\in \cA$ and $\mu_0 = \restr{\mu^\ast}{\cA}$, we have:
+            \begin{equation*}
+            \begin{split}
+                \mu_0(X) = \mu^\ast(E) + \mu^\ast(E^c).
+            \end{split}
+            \end{equation*}
+        Subtracting both sides by $\mu^\ast(E^C)$ gives $\mu_\ast(E) = \mu^\ast(E)$. 
+
+        ($\Leftarrow$) Now suppose $\mu^\ast(E) = \mu_0(X) - \mu^\ast(E^c)$. Again, since $X\in \cA$ and $\mu_0 = \restr{\mu^\ast}{\cA}$, we have:
+            \begin{equation*}
+            \begin{split}
+                \mu^\ast(E) + \mu^\ast(E^c) = \mu^\ast(X) = \mu_0(X) < \infty
+            \end{split}
+            \end{equation*}
+        For each $n \in \bfN$, Apply Exercise 1, part (a) to $E$. Then there exists $A_n \in \cA_\sigma$ such that $E \subset A_n$ and $\mu^\ast(A_n) \leq \mu^\ast(E) + \frac{1}{n}$. Define $B := \bigcap_{n = 1}^\infty A_n$. Note that $B$ is measurable since $B \in \cA_{\sigma\delta} \subset \cM^\ast$. Moreover since $E \subset A_n$ for all $n \in \bfN$, we have $E \subset B$. Together:
+            \begin{equation*}
+            \begin{split}
+                \mu^\ast(E) \leq \mu^\ast(B) \leq \mu^\ast(A_n) \leq \mu^\ast(E) + \frac{1}{n}.
+            \end{split}
+            \end{equation*}
+        Since this holds true for all $n \in \bfN$, it must be that $\mu^\ast(E) = \mu^\ast(B)$. Quickly note:
+            \begin{equation*}
+            \begin{split}
+                \mu^\ast(B) + \mu^\ast(B^c) 
+                & = \mu^\ast(X) \\
+                & = \mu^\ast(E) + \mu^\ast(E^c).
+            \end{split}
+            \end{equation*}
+        Since $\mu^\ast(B) = \mu^\ast(E) < \infty$, we have $\mu^\ast(E^c) = \mu^\ast(B^c)$. Now by the measurability of $B$:
+            \begin{equation*}
+            \begin{split}
+                \mu^\ast (E) + \mu^\ast(E^c) 
+                & = \mu^\ast(E) + \mu^\ast(E^c \cap B) + \mu^\ast(E^c \cap B^c) \\
+                & = \mu^\ast(E) + \mu^\ast(E^c \cap B) + \mu^\ast(B^c) \\
+                & = \mu^\ast(E) + \mu^\ast(E^c \cap B) + \mu^\ast(E^c) \\
+            \end{split}
+            \end{equation*}
+        Hence $\mu^\ast(E^c \cap B) = \mu^\ast(B \setminus E) = 0$. By Exercise 1, part (b), $E$ is $\mu^\ast$-measurable.
+    \end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
