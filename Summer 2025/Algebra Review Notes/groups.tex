@@ -465,7 +465,7 @@
                 \end{equation*}
             Hence $\langle a^{\gcd(n,k)} \rangle \subseteq \langle a^k \rangle$. Thus $\langle a^k \rangle = \langle a^{\gcd(k,n)} \rangle$. \nl
             
-            \noindent (6) ***First note that:
+            \noindent (6) First note that:
                 \begin{equation*}
                 \begin{split}
                     \left( a^k \right)^{\frac{n}{\gcd(k,n)}} 
@@ -474,7 +474,15 @@
                     & = e.
                 \end{split}
                 \end{equation*}
-            Now suppose $0 < m < \frac{n}{\gcd(k,n)}$. Then $0 < m \cdot \gcd(k,n) < n$. Since $|a| = n$, it must be the case that $\left( a^{\gcd(k,n)} \right)^m \neq e$. We showed in (4) that $\langle a^k \rangle = \langle a^{\gcd(k,n)} \rangle$. Since $\left( a^{\gcd(k,n)} \right)^m \in \langle a^{\gcd(k,n)} \rangle$, it must be the case that $\left( a^k \right)^m = \left( a^{\gcd(k,n)} \right)^m \neq e$. Thus $\frac{n}{\gcd(k,n)}$ is the smallest number such that $\left( a^k \right)^{\frac{n}{\gcd(k,n)}} = e$, hence $|a^k| = \frac{n}{\gcd(k,n)}$.
+            We must now show that $\frac{n}{\gcd(k,n)}$ is the smallest such power of $a^k$ such that $\left( a^k \right)^{\frac{n}{\gcd(k,n)}} = e$. Let $m \in \bfN$ such that $(a^k)^m = a^{km} = e$. Since the order of $a$ is $n$, we have $\div{n}{km}$. Therefore we also have:
+                \begin{equation*}
+                \begin{split}
+                    \frac{n}{\gcd(k,n)} \mid \frac{km}{\gcd{(k,n)}}
+                \end{split}
+                \end{equation*}
+            
+            
+            
         \end{proof}
 
     \begin{theorem}***

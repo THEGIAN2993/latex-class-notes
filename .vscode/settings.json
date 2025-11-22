@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
+        "abelian",
         "codomain",
         "diagonalizable",
         "eigenbasis",
@@ -9,9 +10,12 @@
         "Lipschitz",
         "morphism",
         "morphisms",
+        "pointwise",
         "preimage",
         "premeasure",
         "Subadditivity",
-        "subcover"
+        "subcover",
+        "supremum",
+        "surjective"
     ]
 }

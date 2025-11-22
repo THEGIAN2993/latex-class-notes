@@ -1,0 +1,134 @@
+\documentclass[preview, border=1pt]{standalone}
+%\usepackage{mlmodern}
+%\usepackage{tgpagella} % text only
+%\usepackage{mathpazo}  % math & text
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage[fixamsmath]{mathtools}  % Extension to amsmath
+\usepackage{amsthm}
+\usepackage{amssymb}
+%\renewcommand*{\mathbf}[1]{\varmathbb{#1}}
+%\usepackage{newpxtext}
+%\usepackage{eulerpx}
+\usepackage{mathrsfs}
+\usepackage{eucal}
+\usepackage{datetime}
+    \newdateformat{specialdate}{\THEYEAR\ \monthname\ \THEDAY}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{fancyhdr}
+    \fancyhf{}
+    \pagestyle{fancy}
+    \cfoot{\scriptsize \thepage}
+    \fancyhead[R]{\scalebox{0.7}{\rightmark}}
+    \fancyhead[L]{\scalebox{0.7}{\leftmark}}
+\usepackage{keytheorems}
+    \newkeytheorem{theorem}[
+    name = Theorem,
+    numberwithin = section,
+    ]
+    \newkeytheorem{proposition}[
+    name = Proposition,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{lemma}[
+    name = Lemma,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{corollary}[
+    name = Corollary,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{definition}[
+    name = Definition,
+    numberwithin = section
+    ]
+    \newkeytheorem{example}[
+    name = Example,
+    numberwithin = section
+    ]
+    \newkeytheorem{remark}[
+    name=Remark,
+    style=remark, 
+    numbered=false  
+    ]
+    \newkeytheorem{exercise}[
+    name = Exercise,
+    numberwithin = section
+    ]
+    \newkeytheorem{problem}[
+    name = Problem,
+    numberwithin = section
+    ]
+    \newkeytheorem{axiom}[name = Axiom]
+\usepackage{enumitem}
+\usepackage{titlesec}
+    \titleformat{\chapter}[display]
+    {\bfseries\Huge\raggedright}
+    {Chapter {\thechapter}}
+    {1ex minus .1ex}
+    {\HUGE}
+    \titlespacing{\chapter}
+    {3pc}{*3}{40pt}[3pc]
+
+    \titleformat{\section}[block]
+    {\normalfont\bfseries\LARGE}
+    {\S\ \thesection.}{.5em}{}[]
+    \titlespacing{\section}
+    {0pt}{3ex plus .1ex minus .2ex}{3ex plus .1ex minus .2ex}
+\usepackage[utf8x]{inputenc}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{float}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning,arrows.meta}
+\usetikzlibrary{decorations.pathreplacing}
+\usepackage{wasysym}
+\usepackage{hyperref}
+\usepackage{ulem}
+\usepackage{pgfplots}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=1.18}
+\linespread{1.00}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
+
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \def\L{0.5}
+  \def\a{1.5}
+  \def\c{4.5}
+  \def\d{7.5}
+  \def\b{10.5}
+  \draw (\L,0) -- (\b+0.5,0);
+
+  % braces with small separation
+  \draw[decorate,decoration={brace,amplitude=5pt}]
+      (\a,0.45) -- ({\d-0.05},0.45) node[midway,yshift=10pt] {$I_1$};
+  \draw[decorate,decoration={brace,amplitude=5pt}]
+      ({\d+0.05},0.45) -- (\b,0.45) node[midway,yshift=10pt] {$I_2$};
+  \draw[decorate,decoration={brace,mirror,amplitude=5pt}]
+      (\a,-0.45) -- ({\c-0.05},-0.45) node[midway,yshift=-10pt] {$J_1$};
+  \draw[decorate,decoration={brace,mirror,amplitude=5pt}]
+      ({\c+0.05},-0.45) -- (\b,-0.45) node[midway,yshift=-10pt] {$J_2$};
+
+  % interval marks
+  \node at (\a,0) {$($};
+  \node[xshift=-1pt] at (\d,0) {$]$};
+  \node[xshift= 1pt] at (\d,0) {$($};
+  \node at (\b,0) {$]$};
+
+  \node at (\a,0) {$($};
+  \node[xshift= -1pt] at (\c,0) {$]$};
+  \node[xshift= 1pt] at (\c,0) {$($};
+  \node at (\b,0) {$]$};
+
+  % equation below
+  \node at ({(\a+\b)/2},-1.4)
+      {$I_1 = (I_1 \cap J_1)\ \cup\ (I_1 \cap J_2)$};
+\end{tikzpicture}
+\end{document}

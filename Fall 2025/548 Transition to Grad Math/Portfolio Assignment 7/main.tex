@@ -1,0 +1,244 @@
+\documentclass[10pt,twoside,openany]{memoir}
+%\usepackage{mlmodern}
+%\usepackage{tgpagella} % text only
+%\usepackage{mathpazo}  % math & text
+\usepackage[T1]{fontenc}
+\usepackage[hidelinks]{hyperref}
+\usepackage{amsmath}
+\usepackage[fixamsmath]{mathtools}  % Extension to amsmath
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+\usepackage{newpxtext}
+\usepackage{eulerpx}
+\usepackage{eucal}
+\usepackage{datetime}
+    \newdateformat{specialdate}{\THEYEAR\ \monthname\ \THEDAY}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \renewcommand{\headrulewidth}{0pt}
+    \cfoot{\scriptsize \thepage}
+\usepackage{thmtools}
+    \declaretheoremstyle[
+        spaceabove=10pt,
+        spacebelow=10pt,
+        headfont=\normalfont\bfseries,
+        notefont=\mdseries, notebraces={(}{)},
+        bodyfont=\normalfont,
+        postheadspace=0.5em
+        %qed=\qedsymbol
+        ]{defs}
+
+    \declaretheoremstyle[ 
+        spaceabove=10pt, % space above the theorem
+        spacebelow=10pt,
+        headfont=\normalfont\bfseries,
+        bodyfont=\normalfont\itshape,
+        postheadspace=0.5em
+        ]{thmstyle}
+    
+    \declaretheorem[
+        style=thmstyle,
+        numberwithin=section
+    ]{theorem}
+
+    \declaretheorem[
+        style=thmstyle,
+        sibling=theorem,
+    ]{proposition}
+
+    \declaretheorem[
+        style=thmstyle,
+        sibling=theorem,
+    ]{lemma}
+
+    \declaretheorem[
+        style=thmstyle,
+        sibling=theorem,
+    ]{corollary}
+
+    \declaretheorem[
+        numberwithin=section,
+        style=defs,
+    ]{example}
+
+    \declaretheorem[
+        numberwithin=section,
+        style=defs,
+    ]{definition}
+
+    \declaretheorem[
+        style=defs,
+        sibling=theorem,
+        numberwithin=section,
+    ]{exercise}
+
+    \declaretheorem[
+        style=thmstyle
+        numbered=unless unique
+    ]{axiom}
+
+    \declaretheorem[numbered=unless unique, style=defs]{problem}
+    \declaretheorem[numberwithin=section,style=defs]{note}
+    \declaretheorem[numbered=no,style=defs]{question}
+    \declaretheorem[numbered=no,style=defs]{recall}
+    \declaretheorem[numbered=no,style=remark]{answer}
+    \declaretheorem[numbered=no,style=remark]{solution}
+    \declaretheorem[numbered=no,style=defs]{remark}
+\usepackage{enumitem}
+\usepackage[utf8x]{inputenc}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning,arrows.meta}
+\linespread{1.00}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
+
+\begin{document}
+\begin{center}
+    {\Large Math 548 \\[0.1in]Portfolio Assignment 7}\\[.175in]
+    {Name:} {\underline{Gianluca Crescenzo\hspace*{2in}}}\\[0.15in]
+    \end{center}
+    \vspace{4pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}[S19, P4]
+Let $R$ be a commutative ring. For each nonempty subset $X \subseteq R$, the \textbf{annihilator} of $X$ is the set $\operatorname{ann}(X) = \{a \in R \mid ax = 0 \text{ for all }x \in X\}$.
+\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+    \item Prove that $\operatorname{ann}(X)$ is an ideal of $R$.
+    \item Prove that $X \subseteq \operatorname{ann}(\operatorname{ann}(X))$.
+\end{enumerate}
+\end{problem}
+    {\color{blue} \begin{proof}
+        (a) Let $a,b \in \operatorname{ann}(X)$. Then $ax = 0$ and $bx = 0$ for all $x \in X$. Hence $a+b \in \operatorname{ann}(X)$ because $(a+b)x = ax + bx = 0$ for all $x \in X$. Now let $a \in \operatorname{ann}(X)$ and $r \in R$. For any $x \in X$, we have $(ar)x = (ax)r = 0r = 0$, hence $ar \in \operatorname{ann}(X)$. Thus $\operatorname{ann}(X)$ is an ideal of $R$.
+
+        (b) Note that:
+            \begin{equation*}
+            \begin{split}
+                \operatorname{ann}(\operatorname{ann}(X)) = \{a \in R \mid ax = 0 \text{ for all }x \in \operatorname{ann}(X)\}.
+            \end{split}
+            \end{equation*}
+        Let $y \in X$ and let $b \in \operatorname{ann}(X)$. Then for all $x \in X$, we have $bx = 0$. In particular, $yb = 0$. Since $b$ was arbitrary, $y \in \operatorname{ann}(\operatorname{ann}(X))$. Thus $X \subseteq \operatorname{ann}(\operatorname{ann}(X))$.
+    \end{proof}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}[S24, P3]
+    Let $R$ be a commutative ring with 1, and $N$ the ideal:
+        \begin{equation*}
+        \begin{split}
+            N = \{a \in R \mid a^n = 0 \text{ for some }n \}.
+        \end{split}
+        \end{equation*}
+    Let $[b]$ be the image of $b \in R$ in $R/N$. Prove that if $[a] \in R/N$ and $[a]^m = 0$ then $[a] = [0]$. 
+\end{problem}
+    {\color{blue} \begin{proof}
+        Let $[a] \in R/N$. Suppose $[a]^m = [0]$. Then $[a^m] = [0]$, hence $a^m \in N$. But this means $(a^m)^n = 0$ for some $n$. Hence $a^{mn} = 0$, which means $a \in N$. Since $a \in N$, it must be that $[a] = [0]$.
+    \end{proof}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}[S25, P3]
+    Let $z \in \bfC$ be a complex number and let $\epsilon_z:\bfR[x] \rightarrow \bfC$ be the evaluation homomorphism given by $\epsilon_z(p) = p(z)$ for each $p \in \bfR[x]$.
+    \begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+        \item Show that $\ker(\epsilon_z)$ is a prime ideal.
+        \item Compute $\ker(\epsilon_{1+i})$, $\Image(\epsilon_{1+i})$, and then state the conclusion of the First Isomorphism Theorem applied to the homomorphism $\epsilon_{1+i}$.
+    \end{enumerate}
+\end{problem}
+    {\color{blue} \begin{proof}
+        (a) By the First Isomorphism Theorem, $\bfR[x]/\ker(\epsilon_z) \cong \Image(\epsilon_z)$. Since $\bfC$ is an integral domain, $\Image(\epsilon_z)$ is an integral domain. Hence $\bfR[x]/\ker(\epsilon_z)$ is an integral domain. Therefore $\ker(\epsilon_z)$ is a prime ideal.
+
+        (b) Observe that:
+            \begin{equation*}
+            \begin{split}
+                \ker(\epsilon_{1+i})
+                & = \{p \in \bfR[x] \mid \epsilon_{1+i}(p) = 0\} \\
+                & = \{p \in \bfR[x] \mid p(1+i) = 0\} \\
+            \end{split}
+            \end{equation*}
+        Since $1+i$ is a root of $p$, $1-i$ is also a root. Hence:
+            \begin{equation*}
+            \begin{split}
+                p(x) 
+                & = (x-(i-1))(x-(i+1)) \\
+                & = x^2 - 2x + 2.
+            \end{split}
+            \end{equation*}
+        Since $\bfR[x]$ is a PID, and since $p(x)$ is an irreducible polynomial contained in the ideal $\ker(\epsilon_{1+i})$, it must be the case that $\ker(\epsilon_{1+i}) = \langle x^2-2x+2 \rangle$. Now consider:
+            \begin{equation*}
+            \begin{split}
+                \Image(\epsilon_{1+i})
+                & = \{\epsilon_{1+i}(p) \mid p \in \bfR[x]\} \\
+                & = \{p(1+i) \mid p \in \bfR[x]\} \\
+            \end{split}
+            \end{equation*}
+        Note that the constant polynomials give $\bfR \subseteq \Image(\epsilon_{1+i})$. Moreover, $i \in \Image(\epsilon_{1+i})$ since $(x-1) \in \bfR[x]$. It must be the case that $\Image(\epsilon_{1+i}) = \bfC$. By the First Isomorphism Theorem, $\bfR[x]/\langle x^2-2x+2 \rangle \cong \bfC$.
+    \end{proof}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}[S24, P4]
+    Let $\bfZ[i] = \{a+bi \mid a,b \in \bfZ, i^2 = -1\}$, a subring of $\bfC$. Prove there is no ring homomorphism $\bfZ[i] \rightarrow \bfZ_{19}$, but there is a ring homomorphism $\bfZ[i] \rightarrow \bfZ_{13}$. Note a ring homomorphism of commutative rings with 1 must send 1 to 1. (Hint: The group of units in $\bfZ_{19}$ is the cyclic group $U(19)$ of order 18, and the group of units in $\bfZ_{13}$ is the cyclic group $U(13)$ of order 12)
+\end{problem}
+    {\color{blue} \begin{proof}
+        Suppose towards contradiction there exists a ring homomorphism $\varphi:\bfZ[i] \rightarrow \bfZ_{19}$. Note that:
+            \begin{equation*}
+            \begin{split}
+                [1]_{19} 
+                & = \varphi(1) \\
+                & = \varphi(i^4) \\
+                & = \varphi(i)^4.
+            \end{split}
+            \end{equation*}
+        Hence $\ord(\varphi(i)) \mid 4$. Case 1: $\ord(\varphi(i)) = 2$. Then:
+            \begin{equation*}
+            \begin{split}
+                [1]_{19} 
+                & = \varphi(i)^2 \\
+                & = \varphi(i^2) \\
+                & = \varphi(-1) \\
+                & = -\varphi(1) \\
+                & = [-1]_{19}.
+            \end{split}
+            \end{equation*}
+        But this is a contradiction, as the only ring which the multiplicative identity is its own inverse is $\bfZ/2\bfZ$. Case 2: $\ord(\varphi(i)) = 1$. If $[1]_{19} = \varphi(i)$, then surely $[1]_{19} = \varphi(i)^2$, which is a contradiction by Case 1. Case 3: $\ord(\varphi(i)) = 4$. Note that $i \in \bfZ[i]$ is a unit, and since units get mapped to units under ring homomorphisms, it must be the case that $\varphi(i) \in \bfZ_{19}^\ast$. But note that $|\bfZ_{19}^\ast| = |U(19)| = 18$. This is a contradiction, as $\ord(\varphi(i)) \not\mid 18$. Thus there does not exist a ring homomorphism $\bfZ[i] \rightarrow \bfZ_{19}$.
+
+        Note that $[5]_{13} \in \bfZ_{13}$ has an order of 4. Define $\varphi:\bfZ[i] \rightarrow \bfZ_{13}$ by $a+ib \mapsto [a+5b]_{13}$. Observe that:
+            \begin{equation*}
+            \begin{split}
+                \varphi((a+ib) + (c+id))
+                & = \varphi( (a+c) + i(b+d)) \\
+                & = [(a+c) + 5(b+d)]_{13} \\
+                & = [(a+5b) + (c+5d)]_{13} \\
+                & = [a+5b]_{13} +[c+5d]_{13} \\
+                & = \varphi(a+ib) + \varphi(c+id).
+            \end{split}
+            \end{equation*}
+        Similarly:
+            \begin{equation*}
+            \begin{split}
+                \varphi((a+ib)(c+id))
+                & = \varphi((ac-bd) + i(ad+bc)) \\
+                & = [(ac-bd) + 5(ad+bc)]_{13} \\
+                & = [ac + 5ad + 5bc + (-bd)]_{13} \\
+                & = [ac + 5ad + 5bc + 25bd]_{13} \\
+                & = [(a+5b)(c+5d)]_{13} \\
+                & = [a+5b]_{13}[c+5d]_{13} \\
+                & = \varphi(a+ib)\varphi(c+id).
+            \end{split}
+            \end{equation*}
+        Thus $\varphi$ is a ring homomorphism.
+    \end{proof}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}[F24, P3]
+Suppose $\varphi:R \rightarrow S$ is a ring homomorphism of commutative rings with 1, and $S$ has no (nonzero) zero-divisors. Prove from the definitions that $\ker(\varphi)$ is a prime ideal.
+\end{problem}
+    {\color{blue} \begin{proof}
+        Note that $\ker(\varphi)$ is an ideal, so we only need to show that it is prime. Let $x,y \in S$ and $xy \in \ker(\varphi)$. Then:
+            \begin{equation*}
+            \begin{split}
+                0 
+                & = \varphi(xy) \\
+                & = \varphi(x) \varphi(y).
+            \end{split}
+            \end{equation*}
+        Since $S$ has no nontrivial zero-divisors, either $\varphi(x) = 0$ or $\varphi(y) = 0$. Hence $x \in \ker(\varphi)$ or $y \in \ker(\varphi)$. Thus $\ker(\varphi)$ is a prime ideal.
+    \end{proof}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

@@ -1927,7 +1927,7 @@
                     \sum_{k = 1}^\infty \lnorm v_{n_{k+1}} - v_{n_k} \rnorm \leq \sum_{k = 1}^\infty 2^{-k} = 1.
                 \end{split}
                 \end{equation*}
-            By our hypothesis, $\sum_{k = 1}^\infty (v_{n_{k+1}} - v_{n_k})$ converges. So the sequence of partial sums:
+            By our hypothesis, $\sum_{k = 1}^\infty (v_{n_{k+1}} - v_{n_k})$ converges. Let $(w_m)_m$ denote $\sum_{k = 1}^\infty (v_{n_{k+1}} - v_{n_k})$ sequence of partial sums. Then each $w_m$ telescopes as follows:
                 \begin{equation*}
                 \begin{split}
                     w_m 
@@ -1935,6 +1935,7 @@
                     & = v_{n_m} - v_{n_1}
                 \end{split}
                 \end{equation*}
+            In particular, since $(v_n)$
             also converges to some $w \in V$ as $m \rightarrow \infty$. However, notice:
                 \begin{equation*}
                 \begin{split}

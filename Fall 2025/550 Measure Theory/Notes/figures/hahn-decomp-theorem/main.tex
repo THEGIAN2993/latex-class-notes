@@ -1,0 +1,150 @@
+\documentclass[preview, border=1pt]{standalone}
+%\usepackage{mlmodern}
+%\usepackage{tgpagella} % text only
+%\usepackage{mathpazo}  % math & text
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage[fixamsmath]{mathtools}  % Extension to amsmath
+\usepackage{amsthm}
+\usepackage{amssymb}
+%\renewcommand*{\mathbf}[1]{\varmathbb{#1}}
+%\usepackage{newpxtext}
+%\usepackage{eulerpx}
+\usepackage{mathrsfs}
+\usepackage{eucal}
+\usepackage{datetime}
+    \newdateformat{specialdate}{\THEYEAR\ \monthname\ \THEDAY}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{fancyhdr}
+    \fancyhf{}
+    \pagestyle{fancy}
+    \cfoot{\scriptsize \thepage}
+    \fancyhead[R]{\scalebox{0.7}{\rightmark}}
+    \fancyhead[L]{\scalebox{0.7}{\leftmark}}
+\usepackage{keytheorems}
+    \newkeytheorem{theorem}[
+    name = Theorem,
+    numberwithin = section,
+    ]
+    \newkeytheorem{proposition}[
+    name = Proposition,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{lemma}[
+    name = Lemma,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{corollary}[
+    name = Corollary,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{definition}[
+    name = Definition,
+    numberwithin = section
+    ]
+    \newkeytheorem{example}[
+    name = Example,
+    numberwithin = section
+    ]
+    \newkeytheorem{remark}[
+    name=Remark,
+    style=remark, 
+    numbered=false  
+    ]
+    \newkeytheorem{exercise}[
+    name = Exercise,
+    numberwithin = section
+    ]
+    \newkeytheorem{problem}[
+    name = Problem,
+    numberwithin = section
+    ]
+    \newkeytheorem{axiom}[name = Axiom]
+\usepackage{enumitem}
+\usepackage{titlesec}
+    \titleformat{\chapter}[display]
+    {\bfseries\Huge\raggedright}
+    {Chapter {\thechapter}}
+    {1ex minus .1ex}
+    {\HUGE}
+    \titlespacing{\chapter}
+    {3pc}{*3}{40pt}[3pc]
+
+    \titleformat{\section}[block]
+    {\normalfont\bfseries\LARGE}
+    {\S\ \thesection.}{.5em}{}[]
+    \titlespacing{\section}
+    {0pt}{3ex plus .1ex minus .2ex}{3ex plus .1ex minus .2ex}
+\usepackage[utf8x]{inputenc}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{float}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning,arrows.meta}
+\usetikzlibrary{decorations.pathreplacing}
+\usepackage{wasysym}
+\usepackage{hyperref}
+\usepackage{ulem}
+\usepackage{pgfplots}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=1.18}
+\linespread{1.00}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
+
+\begin{document}
+\begin{tikzpicture}
+  \begin{axis}[
+    width=12cm,
+    height=6cm,
+    ymin=-1,
+    ymax=1,
+    domain=-6:6, 
+    samples=800,
+    axis lines=middle,
+    axis line style = thick,
+    grid=none,
+    ytick=\empty,
+    xtick=\empty,
+    legend style={cells={anchor=west}},
+  ]
+    % draw the curve
+    \addplot+[gray, no marks, thick]
+      { pow(pi,-0.25) * (256*x^8 - 3584*x^6 + 13440*x^4 - 13440*x^2 + 1680) / sqrt(10321920) * exp(-x^2/2) };
+
+    % name paths for fill-between
+    \addplot[name path=f, draw=none, domain=-6:6, samples=800]
+      { pow(pi,-0.25) * (256*x^8 - 3584*x^6 + 13440*x^4 - 13440*x^2 + 1680) / sqrt(10321920) * exp(-x^2/2) };
+    \path[name path=axis] (axis cs:-6,0) -- (axis cs:6,0);
+
+    % shade above the x-axis (gray) and y<=0 (hatched)
+    \addplot[draw=none]
+      fill between[
+        of=f and axis,
+        split,
+        soft clip={domain=-6:6},
+        % If these are swapped for your function, swap "even" and "odd" below.
+        every even segment/.style={pattern=north east lines, pattern color=gray}, % segments where curve is above axis
+        every odd segment/.style={pattern=north east lines, pattern color=gray} % segments where curve is below axis
+      ];
+
+      \addplot+[only marks, mark=*, mark size=2.2pt, line width=0.5pt,
+              draw=black, mark options={fill=white}]
+      coordinates {
+        (-2.9306374203,0)
+        (-1.9816567567,0)
+        (-1.1571937124,0)
+        (-0.3811869902,0)
+        ( 0.3811869902,0)
+        ( 1.1571937124,0)
+        ( 1.9816567567,0)
+        ( 2.9306374203,0)
+      };
+  \end{axis}
+\end{tikzpicture}
+\end{document}

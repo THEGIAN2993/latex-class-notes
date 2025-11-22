@@ -1,0 +1,84 @@
+\chapter{Differentiation}
+
+\section{Signed Measures}
+\begin{definition}
+    Let $(X,\cM)$ be a measurable space. The map $\nu:\cM \rightarrow [-\infty,\infty]$ is a \textui{signed measure} if:
+        \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+            \item $\nu(\emptyset) = 0$,
+            \item $\{\infty,\infty\} \not\subset \Image \nu$,
+            \item If $\{E_i\}_{i = 1}^\infty \subset \cM$ is pairwise disjoint, and $\sum_{n = 1}^\infty \nu(E_n)$ is absolutely convergent whenever $\nu \left( \bigcup_{i = 1}^\infty E_i \right)$ is finite, then $\nu \left( \bigcup_{i = 1}^\infty E_i \right) = \sum_{i = 1}^\infty \nu(E_i)$
+        \end{enumerate}
+\end{definition}
+
+\begin{example}
+\phantom{a}
+\begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+    \item If $\mu_1$ and $\mu_2$ are measures on $(X,\cM)$ and atleast one is finite, then $\nu:= \mu_1 - \mu_2$ is a signed measure.
+    \item Let $f:X \rightarrow [-\infty,\infty]$ be measurable, $\mu$ a measure, and either $\int f^+ d\mu$ or $\int f^{-}d\mu$ be finite. Then $\nu(E) := \int_E f d\mu$ is a signed measure.
+\end{enumerate}
+\end{example}
+
+\begin{definition}
+    Let $\nu$ be a signed measure on $(X,\cM)$ and $E \in \cM$.
+    \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+        \item $E$ is \textui{positive} if $\nu(F) \geq 0$ for all $F \in \cM$ with $F \subset E$.
+        \item$E$ is \textui{negative} if $\nu(F) \leq 0$ for all $F \in \cM$ with $F \subset E$.
+        \item $E$ is \textui{null} if $\nu(F) = 0$ for all $F \in \cM$ with $F \subset E$.
+    \end{enumerate}
+\end{definition}
+
+\begin{proposition}
+    \phantom{a}
+    \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+        \item If $\{E_n\}_{n=1}^\infty \subset \cM$ such that $E_1 \subset E_2 \subset E_3 \subset ...$, then $\nu \left( \bigcup_{n = 1}^\infty E_n \right) = \lim_{n \rightarrow \infty}\nu(E_n)$.
+        \item If $\{E_n\}_{n=1}^\infty \subset \cM$ such that $E_1 \supset E_2 \supset E_3 \supset ...$, then $\nu \left( \bigcap_{n = 1}^\infty E_n \right) = \lim_{n \rightarrow \infty}\nu(E_n)$.
+        \item Any measurable subset of a positive (resp. negative, null) set is positive (resp. negative, null).
+        \item The union of countably many positive (resp. negative, null) sets is positive (resp. negative, null).
+        \item If $E \in \cM$ is positive (resp. negative, null) and $F \subset E$, then $\nu(F) \leq \nu(E)$ (resp. $\nu(F) \geq \nu(E)$, $\nu(F) = 0$).
+    \end{enumerate}
+\end{proposition}
+
+\begin{theorem}[Hahn Decomposition Theorem]
+    Let $\nu$ be a signed measure on $(X,\cM)$. There exists a positive set $P$ and a negative set $N$ such that:
+    \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+        \item $P \cup N = X$;
+        \item $P \cap N = \emptyset$;
+        \item If $P'$ and $N'$ are another such pair satisfying (1) and (2), then $P \triangle P'$ and $N \triangle N'$ are null. 
+    \end{enumerate}
+\end{theorem}
+    \begin{proof}
+        Without loss of generality, suppose that $\nu$ does not take the value $+\infty$. Define:
+            \begin{equation*}
+            \begin{split}
+                m:= \sup \{\nu(P) \mid P \in \cM, \text{ $P$ is positive}\}.
+            \end{split}
+            \end{equation*}
+        Find a sequence of positive sets $\{P_n\}_{n = 1}^\infty$ such that $\nu(P_n) \rightarrow m$. Define $P := \bigcup_{n = 1}^\infty P_n$. Then $P$ is positive by Proposition~\ref{}. Since $\nu(P_n) \leq \nu(P) \leq m$, by the squeeze theorem $\nu(P) = m$; i.e., $m < \infty$. Claim: The set $N:=X \setminus P$ is negative. 
+        
+        First, note that $N$ cannot contain a positive set of positive measure. Indeed, if $P' \subset N$ where $P'$ is positive and $\nu(P') > 0$, then $P \cup P'$ is positive and $\nu(P \cup P') = \nu(P) + \nu(P') > m$, which is a contradiction. 
+        
+        Second, if there exists a set $A \in \cM$ such that $A \subset N$ and $\nu(A) > 0$, then there exists another subset $B \subset N$ such that $\nu(B) > \nu(A)$. Indeed, we have just shown that $A$ cannot be positive, hence there exists a subset $C \subset A$ such that $\nu(C) < 0$. Therefore, $\nu(A \setminus C) = \nu(A) - \nu(C) > \nu(A)$.
+    \end{proof}
+
+
+
+\newpage
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.8]{figures/hahn-decomp-theorem/main}
+\caption{On $(\bfR,\mathcal{L})$ let $m$ be Lebesgue measure and define the signed measure $\nu(E)=\int_E f\,dm$. The shading indicates the positive ($f\ge 0$) and negative ($f\le 0$) contributions of $f$. By part (3) of the Hahn Decomposition Theorem, the decomposition $\bfR=P\cup N$ is unique up to null sets. Indeed, taking $P=\{x \mid f(x) \geq 0\}$, $P' = \{x \mid f(x) > 0\}$, $N = \{x \mid f(x) < 0\}$, and $N' = \{x \mid f(x) \leq 0\}$, we have that the sets $P \triangle P'$ and $N \triangle N'$ are null.}
+\label{fig:hahn-decomp-theorem}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+

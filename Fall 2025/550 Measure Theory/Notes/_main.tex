@@ -1,93 +1,64 @@
-\documentclass[10pt,twoside,openany]{memoir}
+\documentclass[11pt,twoside,openany]{memoir}
 %\usepackage{mlmodern}
 %\usepackage{tgpagella} % text only
 %\usepackage{mathpazo}  % math & text
 \usepackage[T1]{fontenc}
-\usepackage[hidelinks]{hyperref}
 \usepackage{amsmath}
 \usepackage[fixamsmath]{mathtools}  % Extension to amsmath
 \usepackage{amsthm}
 \usepackage{amssymb}
 \renewcommand*{\mathbf}[1]{\varmathbb{#1}}
-
 \usepackage{newpxtext}
 \usepackage{eulerpx}
+\usepackage{mathrsfs}
 \usepackage{eucal}
 \usepackage{datetime}
     \newdateformat{specialdate}{\THEYEAR\ \monthname\ \THEDAY}
-\usepackage[margin=1.5in]{geometry}
+\usepackage[margin=1in]{geometry}
 \usepackage{fancyhdr}
     \fancyhf{}
     \pagestyle{fancy}
     \cfoot{\scriptsize \thepage}
     \fancyhead[R]{\scalebox{0.7}{\rightmark}}
     \fancyhead[L]{\scalebox{0.7}{\leftmark}}
-\usepackage{thmtools}
-    \declaretheoremstyle[
-        spaceabove=10pt,
-        spacebelow=10pt,
-        headfont=\normalfont\bfseries,
-        notefont=\mdseries, notebraces={(}{)},
-        bodyfont=\normalfont,
-        postheadspace=0.5em
-        %qed=\qedsymbol
-        ]{defs}
-
-    \declaretheoremstyle[ 
-        spaceabove=10pt, % space above the theorem
-        spacebelow=10pt,
-        headfont=\normalfont\bfseries,
-        bodyfont=\normalfont\itshape,
-        postheadspace=0.5em
-        ]{thmstyle}
-    
-    \declaretheorem[
-        style=thmstyle,
-        numberwithin=section
-    ]{theorem}
-
-    \declaretheorem[
-        style=thmstyle,
-        sibling=theorem,
-    ]{proposition}
-
-    \declaretheorem[
-        style=thmstyle,
-        sibling=theorem,
-    ]{lemma}
-
-    \declaretheorem[
-        style=thmstyle,
-        sibling=theorem,
-    ]{corollary}
-
-    \declaretheorem[
-        numberwithin=section,
-        style=defs,
-    ]{example}
-
-    \declaretheorem[
-        numberwithin=section,
-        style=defs,
-    ]{definition}
-
-    \declaretheorem[
-        style=defs,
-        sibling=theorem,
-        numberwithin=section,
-    ]{exercise}
-
-    \declaretheorem[
-        style=thmstyle
-        numbered=unless unique
-    ]{axiom}
-
-    \declaretheorem[numberwithin=section,style=defs]{note}
-    \declaretheorem[numbered=no,style=defs]{question}
-    \declaretheorem[numbered=no,style=defs]{recall}
-    \declaretheorem[numbered=no,style=remark]{answer}
-    \declaretheorem[numbered=no,style=remark]{solution}
-    \declaretheorem[numbered=no,style=defs]{remark}
+\usepackage{keytheorems}
+    \newkeytheorem{theorem}[
+    name = Theorem,
+    numberwithin = section,
+    ]
+    \newkeytheorem{proposition}[
+    name = Proposition,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{lemma}[
+    name = Lemma,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{corollary}[
+    name = Corollary,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{definition}[
+    name = Definition,
+    numberwithin = section
+    ]
+    \newkeytheorem{example}[
+    name = Example,
+    numberwithin = section
+    ]
+    \newkeytheorem{remark}[
+    name=Remark,
+    style=remark, 
+    numbered=false  
+    ]
+    \newkeytheorem{exercise}[
+    name = Exercise,
+    numberwithin = section
+    ]
+    \newkeytheorem{axiom}[name = Axiom]
 \usepackage{enumitem}
 \usepackage{titlesec}
     \titleformat{\chapter}[display]
@@ -111,6 +82,12 @@
 \usetikzlibrary{positioning,arrows.meta}
 \usetikzlibrary{decorations.pathreplacing}
 \usepackage{wasysym}
+\usepackage{hyperref}
+\usepackage{ulem}
+\usepackage{pgfplots}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=1.18}
 \linespread{1.00}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -131,18 +108,14 @@
     \pagenumbering{roman}
     \chapter*{Preface}
     At the root of measure theory is a rigorous treatment of how to extend the notions of length (on the real line), area (on the Euclidean plane), and volume (in three-space) to a larger collection of sets than those seen in, say, courses on Calculus. We have seen in a first course in analysis that there exist sets with some exceptionally strange properties (the Cantor set being a classic example). We would like to be able to discuss these types of sets in the context of measuring their sizes (be it a length, area, volume, etc). While the historical impetus was to solve this problem for sets in $\bfR^n$, one finds that it is not hard to abstract the theory to more general sets. Accordingly we take up this abstract study. This is not just for the sake of abstraction. In fact one can find applications for abstract measure theory in, for example, probability theory (where the measure of a set corresponds to the likelihood of an element in that set being chosen under some random process) and physics (where one might want the measure of a set to correspond to the mass of some object occupying that space). 
-    
-
-    
-    
-
+    \vspace{-25pt}
+    \tableofcontents
     \vfill
     \specialdate
     Last update: \today
 
-    \newpage
-    \tableofcontents
-
-    \include{preliminaries}
+    %\include{preliminaries}
     \include{measures}
+    \include{integration}
+    \include{signed-measures}
 \end{document}

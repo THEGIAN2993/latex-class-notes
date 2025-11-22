@@ -1,0 +1,140 @@
+\documentclass[preview, border=1pt]{standalone}
+%\usepackage{mlmodern}
+%\usepackage{tgpagella} % text only
+%\usepackage{mathpazo}  % math & text
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage[fixamsmath]{mathtools}  % Extension to amsmath
+\usepackage{amsthm}
+\usepackage{amssymb}
+%\renewcommand*{\mathbf}[1]{\varmathbb{#1}}
+%\usepackage{newpxtext}
+%\usepackage{eulerpx}
+\usepackage{mathrsfs}
+\usepackage{eucal}
+\usepackage{datetime}
+    \newdateformat{specialdate}{\THEYEAR\ \monthname\ \THEDAY}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{fancyhdr}
+    \fancyhf{}
+    \pagestyle{fancy}
+    \cfoot{\scriptsize \thepage}
+    \fancyhead[R]{\scalebox{0.7}{\rightmark}}
+    \fancyhead[L]{\scalebox{0.7}{\leftmark}}
+\usepackage{keytheorems}
+    \newkeytheorem{theorem}[
+    name = Theorem,
+    numberwithin = section,
+    ]
+    \newkeytheorem{proposition}[
+    name = Proposition,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{lemma}[
+    name = Lemma,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{corollary}[
+    name = Corollary,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{definition}[
+    name = Definition,
+    numberwithin = section
+    ]
+    \newkeytheorem{example}[
+    name = Example,
+    numberwithin = section
+    ]
+    \newkeytheorem{remark}[
+    name=Remark,
+    style=remark, 
+    numbered=false  
+    ]
+    \newkeytheorem{exercise}[
+    name = Exercise,
+    numberwithin = section
+    ]
+    \newkeytheorem{problem}[
+    name = Problem,
+    numberwithin = section
+    ]
+    \newkeytheorem{axiom}[name = Axiom]
+\usepackage{enumitem}
+\usepackage{titlesec}
+    \titleformat{\chapter}[display]
+    {\bfseries\Huge\raggedright}
+    {Chapter {\thechapter}}
+    {1ex minus .1ex}
+    {\HUGE}
+    \titlespacing{\chapter}
+    {3pc}{*3}{40pt}[3pc]
+
+    \titleformat{\section}[block]
+    {\normalfont\bfseries\LARGE}
+    {\S\ \thesection.}{.5em}{}[]
+    \titlespacing{\section}
+    {0pt}{3ex plus .1ex minus .2ex}{3ex plus .1ex minus .2ex}
+\usepackage[utf8x]{inputenc}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{float}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning,arrows.meta}
+\usetikzlibrary{decorations.pathreplacing}
+\usepackage{wasysym}
+\usepackage{hyperref}
+\usepackage{ulem}
+\usepackage{pgfplots}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=1.18}
+\linespread{1.00}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
+
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=2cm,>=stealth]
+% axes (with arrows)
+\draw[black!60,->] (-0.2,0) -- (9.2,0);
+\draw[black!60,->] (0,-0.1) -- (0,1.25);
+\node[black!70,left] at (0,1) {$1$};
+
+% x-ticks and labels
+\foreach \x/\lab in {2/$a$,3/$a+\delta_n$,7/$b-\delta_n$,8/$b$}{
+    \draw[black!60] (\x,0.06) -- (\x,-0.06);
+    \node[black!70,below] at (\x,-0.06) {\scriptsize \lab};
+}
+
+% blue indicator-style function
+\draw[black,ultra thick] (0,0) -- (2,0);
+\draw[black,ultra thick] (2,1) -- (8,1);
+\draw[black,ultra thick] (8,0) -- (9.1,0);
+\fill[black] (2,0) circle (2.2pt);
+\fill[black] (8,0) circle (2.2pt);
+\draw[black,thick,fill=white] (2,1) circle (2.3pt);
+\draw[black,thick,fill=white] (8,1) circle (2.3pt);
+
+% magenta straight (piecewise linear) approximation
+\draw[gray,ultra thick,dashed]
+    (0,0.02) -- (2.0,0.02) -- (3,0.98) -- (7.0,0.98) -- (8.0,0.02) -- (9.1,0.02);
+
+% hatched yellow regions near a and b
+\fill[pattern=north east lines, pattern color=lightgray!80!black]
+    (2,1) -- (3,1) -- (2.0,0.02) -- cycle;
+\fill[pattern=north east lines, pattern color=lightgray!80!black]
+    (7,1) -- (8,1) -- (8.0,0.02) -- cycle;
+
+% legend / key
+\begin{scope}[shift={(8.3,1.05)}]
+    \draw[gray,ultra thick,dashed] (0.15,0.30) -- (0.65,0.30);
+    \node[anchor=west] at (0.8,0.30) {\scriptsize $f_n$};
+    \draw[black,ultra thick] (0.15,0.12) -- (0.65,0.12);
+    \node[anchor=west] at (0.8,0.12) {\scriptsize $\chi_I$};
+\end{scope}
+\end{tikzpicture}
+\end{document}

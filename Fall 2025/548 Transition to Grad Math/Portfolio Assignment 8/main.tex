@@ -1,0 +1,194 @@
+\documentclass[10pt,twoside,openany]{memoir}
+%\usepackage{mlmodern}
+%\usepackage{tgpagella} % text only
+%\usepackage{mathpazo}  % math & text
+\usepackage[T1]{fontenc}
+\usepackage[hidelinks]{hyperref}
+\usepackage{amsmath}
+\usepackage[fixamsmath]{mathtools}  % Extension to amsmath
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+\usepackage{newpxtext}
+\usepackage{eulerpx}
+\usepackage{eucal}
+\usepackage{datetime}
+    \newdateformat{specialdate}{\THEYEAR\ \monthname\ \THEDAY}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \renewcommand{\headrulewidth}{0pt}
+    \cfoot{\scriptsize \thepage}
+\usepackage{thmtools}
+    \declaretheoremstyle[
+        spaceabove=10pt,
+        spacebelow=10pt,
+        headfont=\normalfont\bfseries,
+        notefont=\mdseries, notebraces={(}{)},
+        bodyfont=\normalfont,
+        postheadspace=0.5em
+        %qed=\qedsymbol
+        ]{defs}
+
+    \declaretheoremstyle[ 
+        spaceabove=10pt, % space above the theorem
+        spacebelow=10pt,
+        headfont=\normalfont\bfseries,
+        bodyfont=\normalfont\itshape,
+        postheadspace=0.5em
+        ]{thmstyle}
+    
+    \declaretheorem[
+        style=thmstyle,
+        numberwithin=section
+    ]{theorem}
+
+    \declaretheorem[
+        style=thmstyle,
+        sibling=theorem,
+    ]{proposition}
+
+    \declaretheorem[
+        style=thmstyle,
+        sibling=theorem,
+    ]{lemma}
+
+    \declaretheorem[
+        style=thmstyle,
+        sibling=theorem,
+    ]{corollary}
+
+    \declaretheorem[
+        numberwithin=section,
+        style=defs,
+    ]{example}
+
+    \declaretheorem[
+        numberwithin=section,
+        style=defs,
+    ]{definition}
+
+    \declaretheorem[
+        style=defs,
+        sibling=theorem,
+        numberwithin=section,
+    ]{exercise}
+
+    \declaretheorem[
+        style=thmstyle
+        numbered=unless unique
+    ]{axiom}
+
+    \declaretheorem[numbered=unless unique, style=defs]{problem}
+    \declaretheorem[numberwithin=section,style=defs]{note}
+    \declaretheorem[numbered=no,style=defs]{question}
+    \declaretheorem[numbered=no,style=defs]{recall}
+    \declaretheorem[numbered=no,style=remark]{answer}
+    \declaretheorem[numbered=no,style=remark]{solution}
+    \declaretheorem[numbered=no,style=defs]{remark}
+\usepackage{enumitem}
+\usepackage[utf8x]{inputenc}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning,arrows.meta}
+\linespread{1.00}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
+
+\begin{document}
+\begin{center}
+    {\Large Math 548 \\[0.1in]Portfolio Assignment 8}\\[.175in]
+    {Name:} {\underline{Gianluca Crescenzo\hspace*{2in}}}\\[0.15in]
+    \end{center}
+    \vspace{4pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}[S23, P4]
+    Let $C([0,1])$ be the commutative ring of continuous, real-valued functions on the unit interval, and let $M = \{f \in C([0,1]) \mid f\left(\frac{1}{2}\right) = 0\}$. Prove that $M$ is a maximal ideal.
+\end{problem}
+    {\color{blue} \begin{proof}
+        Define $\epsilon:C([0,1]) \rightarrow \bfR$ by $f \mapsto f\left(\frac{1}{2}\right)$. Then $\epsilon$ is a homomorphism since:
+            \begin{equation*}
+            \begin{split}
+                \epsilon(f+g)
+                & = (f+g)\left( \ts\frac{1}{2} \right) \\
+                & = f\left( \ts\frac{1}{2} \right) + g\left( \ts\frac{1}{2} \right) \\
+                & = \epsilon(f) + \epsilon(g), \\
+                & \phantom{a} \\
+                \epsilon(fg) & = (fg)\left( \ts\frac{1}{2} \right) \\
+                & = f\left( \ts\frac{1}{2} \right)g\left( \ts\frac{1}{2} \right) \\
+                & = \epsilon(f)\epsilon(g)
+            \end{split}
+            \end{equation*}
+        Moreover, $\epsilon$ is surjective since the constant functions can take any prescribed real value at $\frac{1}{2}$. By the First Isomorphism Theorem $C([0,1])/\ker{\epsilon} \cong \bfR$. But note that:
+            \begin{equation*}
+            \begin{split}
+                \ker \epsilon 
+                & = \{f \in C([0,1]) \mid \epsilon(f) = 0\} \\
+                & = \{f \in C([0,1]) \mid f\left(\ts\frac{1}{2}\right) = 0\} \\
+                & = M.
+            \end{split}
+            \end{equation*}
+        Thus $C([0,1])/M$ is a field, hence $M$ is maximal.
+    \end{proof}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}[W23, P3]
+    Let $R$ be a commutative ring with identity. Suppose that for every $a \in R$ there is an integer $n \geq 2$ such that $a^n = a$. Show that every prime ideal of $R$ is maximal.
+\end{problem}
+    {\color{blue} \begin{proof}
+        Let $\fp$ be an arbitrary prime ideal of $R$. Then $R/\fp$ is an integral domain. Let $x+ \fp$ be any nonzero element. Find $n \geq 2$ such that $x^n = x$. Then $(x+ \fp)^n = x^n + \fp = x + \fp$, hence $(x^n - x) + \fp = 0 +\fp$. This is equivalent to $(x + \fp)(x^{n-1} - 1 + \fp) = 0 + \fp$. But since $R/\fp$ is an integral domain, either $x + \fp = 0 + \fp$ or $x^{n-1} - 1 + \fp = 0 + \fp$. Since we assumed $x+\fp$ was an arbitrary nonzero element, it must be the case that $x^{n-1} - 1 + \fp = 0 + \fp$. We can rewrite this as $x^{n-1} + \fp = 1 + \fp$. But this is equivalent to $(x+\fp)(x^{n-2} + \fp) = 1 + \fp$. Thus $(x+\fp)$ is a unit. Since $(x+\fp)$ was arbitrary, $R/\fp$ must be a field. Thus $\fp$ is maximal.
+    \end{proof}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\begin{problem}[W21, P5]
+Let $R$ be a commutative ring with unity, let $I \subseteq R$ be an ideal, and let $\pi:R \rightarrow R/I$ be the natural projection homomorphism.
+\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+    \item Show that if $\fp$ is a prime ideal of $R/I$, then $\pi^{-1}(\fp)$ is a prime ideal of $R$.
+    \item Show that the assignment $\fp \mapsto \pi^{-1}(\fp)$ is injective on the set of prime ideals of $R/I$.
+\end{enumerate}
+\end{problem}
+    {\color{blue} \begin{proof}
+        (a) Note that the preimage of an ideal is an ideal. Let $a,b \in R$ be arbitrary and suppose $ab \in \pi^{-1}(\fp)$. Then $\pi(a)\pi(b) \in \fp$. Since $\fp$ is prime, either $\pi(a) \in \fp$ or $\pi(b) \in \fp$. Hence $a \in \pi^{-1}(\fp)$ or $b \in \pi^{-1}(\fp)$. Thus $\pi^{-1}(\fp)$ is prime.
+
+        (b) Define $\Phi:\Spec R/I \rightarrow \Spec R$ by $\fp \mapsto \pi^{-1}(\fp)$. If $\Phi(\fp_1) = \Phi(\fp_2)$, then $\pi^{-1}(\fp_1) = \pi^{-1}(\fp_2)$. Since $\pi$ is surjective, we have that $\fp_1 = \pi(\pi^{-1}(\fp_1)) = \pi(\pi^{-1}(\fp_2)) = \fp_2$. Thus $\Phi$ is injective.
+    \end{proof}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}[F19, P5]
+Let $I \subset \bfZ[x]$ denote the set of all polynomials with even constant term.
+    \begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+        \item Prove that $I$ is an ideal.
+        \item Prove that $I$ is not a principal ideal.
+    \end{enumerate}
+\end{problem}
+    {\color{blue} \begin{proof}
+        (a) Since the sum of two even numbers is even, the sum of two arbitrary polynomials with even constant term will have an even constant term. Moreover, the product of any number times an even number will be even, hence the product of an arbitrary polynomial and a polynomial with an even constant term will result in a polynomial with an even constant term. Thus $I$ is an ideal.
+
+        (b) Note that $I$ is precisely:
+            \begin{equation*}
+            \begin{split}
+                I 
+                & = (2,x) \\
+                & = \{2p(x) + xq(x) \mid p(x),q(x) \in \bfZ[x]\}.
+            \end{split}
+            \end{equation*}
+        Suppose towards contradiction $(2,x) = (a(x))$ for some $a(x) \in \bfZ[x]$. Then $2 = a(x) g(x)$ for some $g(x) \in \bfZ[x]$. But this means $\deg(a(x)g(x)) = \deg(a(x)) + \deg(g(x)) = 0$. It must be the case that $a(x),g(x) \in \{\pm 1, \pm2\}$. If $a(x)$ were equal to $\pm 1$, then the ideal generated by $a(x)$ would generate the entire ring $\bfZ[x]$, contradicting the fact that $(a(x))$ is proper. Hence $a(x) = \pm 2$. But since $x \in (a(x)) = (2) = (-2)$, this implies that $x = 2q(x)$ for some polynomial $q(x) \in \bfZ[x]$. This is clearly impossible, hence $I$ is not principal.
+    \end{proof}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}[S17, P5]
+Let $\epsilon:\bfR[x] \rightarrow \bfC$ be the ring homomorphism that is evaluation at $i$, so $\epsilon(f) = f(i)$. 
+\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+    \item Prove that $\ker \epsilon = (x^2 + 1) \subseteq \bfR[x]$.
+    \item Prove that $(x^2 +1)$ is a maximal ideal in $\bfR[x]$.
+\end{enumerate}
+\end{problem}
+    {\color{blue} \begin{proof}
+        (a) Note that $\ker \epsilon = \{p(x) \in \bfR[x] \mid \epsilon(p(x)) = 0\} = \{p(x) \in \bfR[x] \mid p(i) = 0\}$. Hence $(x-i)(x+i) = x^2 +1 \in \ker \epsilon$. Since $x^2 + 1$ is irreducible in $\bfR[x]$, and since $\bfR[x]$ is a PID, it must be the case that $\ker \epsilon = (x^2 + 1)$.
+
+        (b) Note that $\Image \epsilon = \{\epsilon(p(x)) \mid p(x) \in \bfR[x]\} = \{p(i) \mid p(x) \in \bfR[x]\}$. Note that the constant polynomials give $\bfR \subseteq \Image \epsilon$. Likewise, $i \in \Image \epsilon$ since $x \in \bfR[x]$. Thus $\Image \epsilon = \bfC$. By the First Isomorphism Theorem, $\bfR[x]/(x^2 + 1) \cong \bfC$. Since $\bfC$ is a field, $(x^2+1)$ is maximal. 
+    \end{proof}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

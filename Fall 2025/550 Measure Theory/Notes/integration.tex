@@ -1,0 +1,1082 @@
+\chapter{Integration}
+
+From a categorical perspective, now that we have studied measure spaces, we turn our attention to the maps between them.
+
+\section{Measurable Functions}
+
+\begin{definition}
+    Let $X$ be a set and $\cM$ a $\sigma$-algebra on $X$. We call the pair $(X,\cM)$ a \textui{measurable space}.
+\end{definition}
+
+Note that a \textit{measure space} has a measure associated to it.
+
+\begin{definition}
+    Let $(X,\cM)$ and $(Y,\cN)$ be measurable spaces. A function $f:X \rightarrow Y$ is said to be \textui{$(\cM,\cN)$-measurable} if for every $E \in \cN$, we have $f^{-1}(E) \in \cM$.
+\end{definition}
+
+\begin{proposition}\label{prop:measurable-functs}
+    \phantom{a}
+    \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+        \item If $f:X \rightarrow Y$ is $(\cM,\cN)$-measurable and $g:Y \rightarrow Z$ is $(\cN,\cO)$-measurable, then $g \circ f :X \rightarrow Z$ is $(\cM,\cO)$-measurable.
+        
+        \item Let $\cE$ be a set and suppose $(X,\cM)$ and $(Y,\fM(\cE))$ are measurable spaces. A function $f:X \rightarrow Y$ is $(\cM,\fM(\cE))$-measurable if and only if for every $E \in \cE$ we have $f^{-1}(E) \in \cM$
+        
+        \item Let $X,Y$ be metric spaces. If $f:X\rightarrow Y$ is continuous, then $f$ is $(\cB_X,\cB_Y)$-measurable.
+        
+        \item Let $(Y_1,\cN_1)$ and $(Y_2,\cN_2)$ be measurable spaces. The projection maps:
+            \begin{equation*}
+            \begin{split}
+                Y_1 \times Y_2 \xrightarrow{\pi_i}Y_i, \h6 i=1,2
+            \end{split}
+            \end{equation*}
+        are $(\cN_1 \otimes \cN_2,\cN_i)$-measurable.
+
+        \item The function $f:X \rightarrow Y_1 \times Y_2$ is $(\cM,\cN_1 \otimes \cN_2)$-measurable if and only if $\pi_1 \circ f$ is $(\cM,\cN_1)$-measurable and $\pi_2 \circ f$ is $(\cM,\cN_2)$-measurable.
+    \end{enumerate}
+\end{proposition}
+
+We will be focusing on measurable functions whose codomain is a metric space, hence the following definition.
+
+\begin{definition}
+    \phantom{a}
+    \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+        \item Let $(X,\cM)$ be a measurable space and $Y$ a metric space. A function $f:X \rightarrow Y$ is called \textui{$\cM$-measurable} if it is $(\cM,\cB_Y)$-measurable.
+        \item A function $f:\bfR \rightarrow \bfR$ is called \textui{Lebesgue measurable} if it is $(\cL,\cB_\bfR)$-measurable.
+    \end{enumerate}
+\end{definition}
+
+\begin{remark}
+    Note that the composition of two Lebesgue measurable functions is \textit{not} Lebesgue measurable. If $f:\bfR \rightarrow \bfR$ and $g:\bfR \rightarrow \bfR$ are both Lebesgue measurable, then their composition $g \circ f$ is $(\cB_\bfR,\cB_\bfR)$-measurable by Proposition~\ref{prop:measurable-functs}.
+\end{remark}
+
+\begin{proposition}
+    Let $(X,\cM)$ be a measurable space and $f:X \rightarrow \bfC$ a map. Then $f$ is $\cM$-measurable if and only if $\fR(f)$ and $\fI(f)$ are $\cM$-measurable.
+\end{proposition}
+    \begin{proof}
+        Recall from Proposition~\ref{} that $\cB_\bfC = \cB_{\bfR^2} = \cB_\bfR \otimes \cB_\bfR$. Define $\Phi:\bfC \rightarrow \bfR^2$ by $a+bi \mapsto (a,b)$. Then $\Phi \circ f = (\fR(f),\fC(f))$. {\color{red} I don't understand this shit at all}
+    \end{proof}
+
+\begin{proposition}\label{prop:sums-prods-of-measurable-functions}
+    If $f,g:X \rightarrow \bfR$ are both $\cM$-measurable, then $f+g$ and $fg$ are $\cM$-measurable.
+\end{proposition}
+    \begin{proof}
+        Consider the composition of maps:
+            \begin{equation*}
+            \begin{split}
+                X \xrightarrow{(f,g)} \bfR \times \bfR \xrightarrow{P} \bfR,
+            \end{split}
+            \end{equation*}
+        where:
+            \begin{equation*}
+            \begin{split}
+                (f,g)(x) = (f(x),g(x)), \h9 P(x,y) = x + y.
+            \end{split}
+            \end{equation*}
+        It is well-known that $P$ is continuous, hence $P$ is $(\cB_{\bfR}\otimes\cB_{\bfR},\cB_\bfR)$-measurable. Moreover, $(f,g)$ is $(\cM,\cB_{\bfR}\otimes\cB_{\bfR})$-measurable because \textemdash by part (5) of Proposition~\ref{prop:measurable-functs} \textemdash we have $\pi_1 \circ (f,g) = f$ and $\pi_2 \circ (f,g) = g$. Then by part (1) of Proposition~\ref{prop:measurable-functs}, both $f$ and $g$ are $\cM$-measurable. The argument for $fg$ is identical.
+    \end{proof}
+
+A similar argument follows for when $f$ and $g$ are complex valued functions, however great care needs to be taken when considering functions whose codomain is the extended reals. It is tedious to avoid $\infty-\infty$.
+
+\begin{proposition}
+    Let $(X,\cM)$ be a measurable space. The following are equivalent:
+        \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+            \item $f:X \rightarrow \bfR$ is $\cM$-measurable;
+            \item For all $x \in \bfR$, $f^{-1}((a,\infty)) \in \cM$;
+            \item For all $x \in \bfR$, $f^{-1}([a,\infty)) \in \cM$;
+            \item For all $x \in \bfR$, $f^{-1}((-\infty,a)) \in \cM$;
+            \item For all $x \in \bfR$, $f^{-1}((-\infty,a]) \in \cM$.
+        \end{enumerate}
+\end{proposition}
+    {\color{red} \begin{proof}
+        Come back, something about the homework 1 problem
+    \end{proof}}
+
+{\color{red} Talk about borel sets of extended reals. Then explain that the above proposition but for extended real valued functions follows similarly, since you can show that borel sets of extended reals is generated by the closed endpoint rays.}
+
+\begin{proposition}\label{prop:limits-of-measurable-functions-are-measurable}
+    Let $(X,\cM)$ be a measurable space and $(f_j)_{j = 1}^\infty$ be a sequence of functions in $\overline{\bfR}^X$ which are $\cM$-measurable for each $j \in \bfN$. The functions:
+        \begin{equation*}
+        \begin{split}
+            \sup_j f_j, \h9 \inf_j f_j, \h9 \limsup_j f_j, \h9\liminf_j f_j
+        \end{split}
+        \end{equation*}
+    are all $\cM$-measurable.
+\end{proposition}
+    {\color{red} \begin{proof}
+        :( 10/15
+    \end{proof}}
+
+{\color{red} talk about why if its complex valued then its also measurable.}
+
+\begin{proposition}
+    If $f,g:X \rightarrow \overline{\bfR}$ are $\cM$-measurable, then $\max\{f,g\}$ and $\min\{f,g\}$ are $\cM$-measurable.
+\end{proposition}
+    {\color{red} \begin{proof}
+        max and min can be expressed differnetly or smth like that
+    \end{proof}}
+
+\begin{definition}
+    If $f:X \rightarrow \overline{\bfR}$, we define the \textui{positive} and \textui{negative parts} to be:
+        \begin{equation*}
+        \begin{split}
+            f^+ = \max\{f,0\} \h1,\h9 f^- = \max \{-f,0\}.
+        \end{split}
+        \end{equation*}
+\end{definition}
+
+Note that $f = f^+ - f^-$, hence if  $f^+$ and $f^-$ are measurable, then $f$ is measurable.
+
+\section{Integration}
+
+Recall that the Riemann Integral involves partitioning the domain of our function into disjoint intervals, and looking at the distance of these step functions and multiplying it by their height. {\color{red} explain intuiviely what we want the lebesgue integral to do.}
+
+For the remainder of this section, fix a measure space $(X,\cM,\mu)$.
+
+\begin{definition}
+    The \textui{characteristic function} of a subset $E \subset X$ is defined as:
+        \begin{equation*}
+        \begin{split}
+            \chi_E(x) = \begin{cases}
+            1, & x\in E \\
+            0, & x \not\in E.
+            \end{cases} 
+        \end{split}
+        \end{equation*}
+\end{definition}
+
+\begin{proposition}
+    Let $E \subset X$. Then $\chi_E$ is $\cM$-measurable if and only if $E \in \cM$.
+\end{proposition}
+    {\color{red} \begin{proof}
+        :( 10/14
+    \end{proof}}
+
+{\color{red} ( motivate simple functions as a way to talk about integration???)}
+
+\begin{definition}
+    \phantom{a}
+    \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+        \item A \textui{simple-function} $\varphi$ is a finite linear combination of $\cM$-measurable characteristic functions.
+        \item The \textui{standard representation} of a simple function $\varphi$ is:
+            \begin{equation*}
+            \begin{split}
+                \varphi = \sum_{j = 1}^n z_j \chi_{E_j}, \text{ where } E_j = \varphi^{-1}(\{z_j\}) \text{ and }\Image \varphi = \{z_1,...,z_n\}.
+            \end{split}
+            \end{equation*}
+    \end{enumerate}
+\end{definition}
+
+Note that the standard representation exhibits $\varphi$ as a linear combination of \textui{distinct coefficients}, as well as the $E_j$ forming a partition of $X$. It is clear that the set of all simple functions from $X$ to $\bfC$ is a $\bfC$-algebra.
+
+\begin{theorem}\label{thm:increasing-sequence-of-simple-functions}
+    Let $f:X \rightarrow [0,\infty]$ be $\cM$-measurable. There exists a sequence of simple functions $(\varphi_n)_n$ such that $0 \leq \varphi_1 \leq \varphi_2 \leq... \leq f$ and $\varphi_n \rightarrow f$. If $f$ is bounded, then this convergence is uniform.
+\end{theorem}
+    {\color{red} \begin{proof}
+        :( 10/15
+    \end{proof}}
+
+The above proof is hard to read, but it is easily understood graphically:
+
+{\color{red} include graphics here :(}
+
+\begin{definition}
+    \phantom{a}
+    \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+        \item The space of all measurable functions from $X$ to $[0,\infty]$ is denoted:
+            \begin{equation*}
+            \begin{split}
+                L^+ := \{f:X \rightarrow [0,\infty] \mid f \text{ is }\cM\text{-measurable }\}
+            \end{split}
+            \end{equation*}
+        \item The subset of $L^+$ which contains only simple functions is denoted:
+            \begin{equation*}
+            \begin{split}
+                S^+ := \{\varphi:X \rightarrow [0,\infty] \mid \varphi \in L^+, \h1 \varphi\text{ is a simple function }\}.
+            \end{split}
+            \end{equation*}
+    \end{enumerate}
+\end{definition}
+
+Let $\varphi = \sum_{j = 1}^n a_j \chi_{E_j}$ be a simple function in standard representation. Intuitively, the area under this curve should be $\sum_{j = 1}^n a_j \mu(E_j)$ Moreover, the area under the curve of any measurable function $f$ should be the "best" approximation of area under a simple function strictly contained between $f$ and $0$. {\color{red} This sounds fucking terrible}
+
+\begin{definition}
+    \phantom{a}
+    \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+        \item For any $\varphi \in S^+$ in standard representation, the \textui{integral of $\varphi$} is:
+            \begin{equation*}
+            \begin{split}
+                \int \varphi d\mu := \sum_{j = 1}^n a_j \mu(E_j).
+            \end{split}
+            \end{equation*}
+        \item For any $f \in L^+$, the \textui{integral of $f$} is:
+            \begin{equation*}
+            \begin{split}
+                \int f d\mu := \sup \Bigl\{ {\ts \int} \varphi d\mu \mid 0 \leq \varphi \leq f, \h1 \varphi \in S^+ \Bigr\}.
+            \end{split}
+            \end{equation*}
+        \item If $A \in \cM$, the \textui{integral of $f$ over $A$} is:
+            \begin{equation*}
+            \begin{split}
+                \int_A f d\mu := \int f \chi_A d \mu.
+            \end{split}
+            \end{equation*}
+    \end{enumerate} 
+\end{definition}
+
+If $\cM$ is a $\sigma$-algebra and $E,F \in \cM$, it should be noted that $\chi_E \cdot \chi_F = \chi_{E \cap F}$. Hence if $\varphi$ is a simple function in standard representation and $A \in \cM$, we have:
+    \begin{equation*}
+    \begin{split}
+        \varphi \cdot \chi_A
+        & = \left(\sum_{i = 1}^n a_i \chi_{E_i}\right)\cdot \chi_A \\
+        & = \sum_{i = 1}^n a_i \chi_{E_i \cap A}.
+    \end{split}
+    \end{equation*}
+
+We will often abuse notation in the following way: if $(X,\cM,\mu)$ is a measure space and $f \in L^+$, then:
+    \begin{equation*}
+    \begin{split}
+        \int f :=: \int f d\mu :=: \int_X f d\mu :=: \int_X f(x) d\mu(x)
+    \end{split}
+    \end{equation*}
+are all equivalent ways of saying the "integral of $f$". We will mostly be taking the minimalistic approach of $\int f$ when the measure space we are working over is clear. {\color{red} sounds bad}
+
+\begin{lemma}
+    Let $\varphi$ be a simple function such that $\varphi = \sum_{i = 1}^m a_i \chi_{E_i} = \sum_{j = 1}^n b_j \chi_{F_j}$. If both of the families $\{E_i\}_{i = 1}^m$ and $\{F_j\}_{j = 1}^n$ are pairwise disjoint (respectively), then $\sum_{i = 1}^m a_i \mu(E_i) = \sum_{j = 1}^n b_j \mu(F_j)$.
+\end{lemma}
+    \begin{proof}
+        For simplicity, define:
+            \begin{equation*}
+            \begin{split}
+                E_0 &:= X \setminus (E_1 \cup ... \cup E_m), \\
+                F_0 &:= X \setminus (F_1 \cup ... \cup F_n), \\
+                a_0 &:= 0, \\
+                b_0 &:= 0.
+            \end{split}
+            \end{equation*}
+        Then:
+            \begin{equation*}
+            \begin{split}
+                \varphi
+                & = \sum_{i = 1}^m a_i \chi_{E_i} = \sum_{j = 1}^n b_j \chi_{F_j} \\
+                & =  \sum_{i = 0}^m a_i \chi_{E_i} = \sum_{j = 0}^n b_j \chi_{F_j}.
+            \end{split}
+            \end{equation*}
+        Moreover, the families $\{E_i\}_{i = 0}^m$ and $\{F_j\}_{j = 0}^n$ are now partitions of $X$. Let $x \in X$ be arbitrary. Then there exists $i,j$ such that $x \in E_i \cap F_j$. In particular:
+            \begin{equation*}
+            \begin{split}
+                \chi_{E_k}(x) = \begin{cases} 1 & k = i \\ 0 & k \neq i \end{cases}, \h9\h9 \chi_{F_\ell}(x) = \begin{cases} 1 & \ell = j \\ 0 & \ell \neq j \end{cases}.
+            \end{split}
+            \end{equation*}
+        Hence:
+            \begin{equation*}
+            \begin{split}
+                \varphi(x) = \sum_{i = 0}^m a_i \chi_{E_i}(x) = a_i, \h9\h9 \varphi(x) = \sum_{j = 0}^n b_j \chi_{F_j}(x) = b_j.
+            \end{split}
+            \end{equation*}
+        Since both series equal $\varphi(x)$, we must have $a_i = b_j$ on $E_i \cap F_j$. Lastly, note that for each $i$ and $j$ we can write:
+            \begin{equation*}
+            \begin{split}
+                E_i & = \bigcup_{j = 0}^n (E_i \cap F_j), \\
+                F_j & = \bigcup_{i = 0}^m (E_i \cap F_j).
+            \end{split}
+            \end{equation*}
+        Having established all of the above facts, we can now see:
+            \begin{equation*}
+            \begin{split}
+                \sum_{i = 1}^m a_i \mu(E_i) 
+                & = \sum_{i = 0}^m a_i \mu(E_i) \\
+                & = \sum_{i = 0}^m a_i \mu \left( \bigcup_{j = 0}^n E_i \cap F_j \right) \\
+                & = \sum_{i = 0}^m \sum_{j = 0}^n a_i \mu(E_i \cap F_j) \\
+                & = \sum_{j = 0}^n \sum_{i = 0}^m a_i \mu(E_i \cap F_j) \h9\h9\text{\tiny Rearranging sum.}\\
+                & = \sum_{j = 0}^n \sum_{i = 0}^m b_j \mu(E_i \cap F_j) \\
+                & = \sum_{j = 0}^n b_j \mu\left( \bigcup_{i = 0}^m E_i \cap F_j\right) \\
+                & = \sum_{j =0}^n b_j \mu(F_j) \\
+                & = \sum_{j = 1}^n b_j \mu(F_j). \qedhere
+            \end{split}
+            \end{equation*}
+    \end{proof}
+
+\begin{proposition}
+    Let $\varphi, \psi \in S^+$.
+    \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+        \item If $c \geq 0$, then $\int c \varphi = c \int \varphi$.
+        \item If $\varphi \geq \psi$, then $\int \varphi \geq \int \psi$.
+        \item $\int (\varphi + \psi) = \int \varphi + \int \psi$.
+        \item For any fixed $A \in \cM$, the map $A \mapsto \int_A \varphi$ defines a measure on $(X,\cM)$.
+    \end{enumerate}
+\end{proposition}
+    \begin{proof}
+        (a) Let $\varphi = \sum_{i = 1}^n a_i \chi_{E_i}$ be in standard representation. We have:
+            \begin{equation*}
+            \begin{split}
+                \int c \varphi 
+                & = \int c \sum_{i = 1}^n a_i \chi_{E_i} \\
+                & = \int \sum_{i = 1}^n c a_i \chi_{E_i} \\
+                & = \sum_{i = 1}^n c a_i \mu(E_i) \\
+                & = c \sum_{i = 1}^n a_i \mu(E_i) \\
+                & = c \int \varphi.
+            \end{split}
+            \end{equation*}
+
+        (b) Let $\varphi = \sum_{i = 1}^m a_i \chi_{E_i}$ and $\psi = \sum_{j = 1}^n b_j \chi_{F_j}$ be in standard representations. Note that we can again write $E_i = \bigcup_{j = 0}^n (E_i \cap F_j)$ and $F_j = \bigcup_{i = 0}^m (E_i \cap F_j)$ for all $i,j$. Hence on $E_i \cap F_j$, if $E_i \cap F_j = \emptyset$, then $\mu(E_i \cap F_j) = 0$. It must be the case that on $E_i \cap F_j$, since $\varphi \leq \psi$ we have $a_i \leq b_j$. This gives:
+            \begin{equation*}
+            \begin{split}
+                \int \varphi 
+                & = \sum_{i=1}^n a_i \mu(E_i) \\
+                & = \sum_{i = 1}^n \sum_{j = 1}^m a_i \mu(E_i \cap F_j) \\
+                & \leq \sum_{i = 1}^n \sum_{j = 1}^m b_j \mu(E_i \cap F_j) \\
+                & = \sum_{j = 1}^m b_j \mu(F_j) \\
+                & = \int \psi.
+            \end{split}
+            \end{equation*}
+
+        (c) {\color{red} need to eventually finish}
+    \end{proof}
+
+\begin{proposition}
+    Let $f \in L^+$.
+    \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+        \item If $c \geq 0$, then $\int cf = c \int f$.
+        \item If $f \leq g$, then $\int f \leq \int g$.
+    \end{enumerate}
+\end{proposition}
+    \begin{proof}
+        (a) If $c = 0$, then there is nothing to show. For $c > 0$:
+            \begin{equation*}
+            \begin{split}
+                \int f  
+                & = \sup\Bigl\{ {\ts \int} \varphi d\mu \mid 0 \leq \varphi \leq f, \h1 \varphi \in S^+ \Bigr\} \\
+                & = \sup \Bigl\{ {\frac{1}{c}\cdot c\ts \int} \varphi d\mu \mid 0 \leq \varphi \leq f, \h1 \varphi \in S^+ \Bigr\} \\
+                & = \frac{1}{c}\sup \Bigl\{ {\ts c\int} \varphi d\mu \mid 0 \leq \varphi \leq f, \h1 \varphi \in S^+ \Bigr\} \\
+                & = \frac{1}{c}\sup \Bigl\{ {\ts \int} c\varphi d\mu \mid 0 \leq c\varphi \leq cf, \h1 \varphi \in S^+ \Bigr\} \\
+                & = \frac{1}{c}\int cf.
+            \end{split}
+            \end{equation*}
+        Multiplying both sides by $c$ gives the desired result.
+
+        (b) Note that $\Bigl\{ {\ts \int} \varphi d\mu \mid 0 \leq \varphi \leq f, \h1 \varphi \in S^+ \Bigr\} \subset \Bigl\{ {\ts \int} \varphi d\mu \mid 0 \leq \varphi \leq g, \h1 \varphi \in S^+ \Bigr\}$. Therefore:
+            \begin{equation*}
+            \begin{split}
+                \sup\Bigl\{ {\ts \int} \varphi d\mu \mid 0 \leq \varphi \leq f, \h1 \varphi \in S^+ \Bigr\} \leq \sup\Bigl\{ {\ts \int} \varphi d\mu \mid 0 \leq \varphi \leq g, \h1 \varphi \in S^+ \Bigr\}
+            \end{split}
+            \end{equation*}
+        Hence $\int f \leq \int g$.
+    \end{proof}
+
+In order to prove the equivalent (c) and (d) of Proposition~\ref{}, we need extra machinery.
+
+\begin{proposition}\label{prop:int-equals-zero-iff-funct-equals-zero}
+    Let $f \in L^+$. Then $\int f = 0$ if and only if $f = 0$ a.e.
+\end{proposition}
+    \begin{proof}
+        ($\Leftarrow$) Define $E:= \{x \mid f(x) = 0\}$. Then by assumption $\mu(E^c) = 0$. Let $\varphi \in S^+$ and $\varphi \leq f$. Write $\varphi = \sum_{i = 1}^n a_i \chi_{E_i}$ in standard representation. Since $\varphi \leq f$...
+
+
+
+        Define $E := \{x \mid f(x) = 0\}$ and $N := E^c = \{x \mid f(x) \neq 0\}$. ($\Leftarrow$)  Suppose $\mu(N) = 0$. Let $\varphi \in S^+$ and $0 \leq \varphi \leq f$. Suppose $\varphi = \sum_{i = 1}^n a_i \chi_{E_i}$ is in standard representation. Since $\varphi \leq f$, if $a_i > 0$ then it must be the case that $E_i \subset N${\color{red}*} (we know that $\varphi \leq f$, where $f = 0$ a.e., so if $a_i > 0 $, it must be the case that $\mu(E_i) = 0$ ). Hence $\mu(E_i) = 0$. But since $\int \varphi = \sum_{i = 1}^n a_i \mu(E_i) = 0$, it must be the case that $\sup\{\int \varphi \mid 0 \leq \varphi \leq f, \varphi \in S^+\} = 0$.
+        
+        
+        ($\Rightarrow$) Now suppose $\int f = 0$. Let $E_n = \{x \mid f(x) \geq \frac{1}{n}\}$. Then $E_1 \subset E_2 \subset E_3 \subset ...$, and $P := \bigcup_{i = 1}^\infty E_i = \{c \mid f(x) > 0 \}$. If $\mu(P) = 0$, then we are done. If $\mu(P) > 0$, then since $\mu(P) = \lim_{n \rightarrow \infty}\mu(E_n)$, there must exist some $n \in \bfN$ such that $\mu(E_n) > 0$. It follows that:
+            \begin{equation*}
+            \begin{split}
+                \int f 
+                & \geq \int_{E_n} f \\
+                & = \int f \chi_{E_n} \\
+                & \geq \int \frac{1}{n} \chi_{E_n} \\
+                & = \frac{1}{n} \mu(E_n) \\
+                & > 0.
+            \end{split}
+            \end{equation*}
+        This is a contradiction, so it must be the case that $\mu(P) = 0$. Hence $f = 0$ a.e.
+    \end{proof}
+
+\begin{theorem}[Monotone Convergence Theorem]
+    Let $(f_n)_n$ be an increasing sequence in $L^+$, and suppose $\lim_{n \rightarrow \infty}f_n = f$. Then $\int f = \lim_{n \rightarrow \infty} \int f_n$.
+\end{theorem}
+    \begin{proof}
+        We will prove this by showing inequality in both directions. Note that for all $n \in \bfN$ we have $f_n \leq f$. It must be the case that if $\varphi \in S^+$ such that $\varphi \leq f_n$, then $\varphi \leq f$ as well. We've obtained the set inclusion:
+            \begin{equation*}
+            \begin{split}
+                \left\{ \ts \int \varphi \mid \varphi \leq f_n, \varphi \in S^+ \right\} \subset \left\{ \ts\int \varphi \mid \varphi \leq f, \varphi \in S^+ \right\}.
+            \end{split}
+            \end{equation*}
+        Hence:
+            \begin{equation*}
+            \begin{split}
+                \int f 
+                & = \sup \{ \ts \int \varphi \mid \varphi \leq f, \varphi \in S^+\} \\
+                & \geq \sup \{ \ts \int \varphi \mid \varphi \leq f_n, \varphi \in S^+\} \\
+                & = \int f_n.
+            \end{split}
+            \end{equation*}
+        Taking $n \rightarrow \infty$ gives $\int f \geq \lim_{n \rightarrow \infty} \int f_n$.
+
+        Now fix $\varphi \in S^+$ such that $0 \leq \varphi \leq f$, and fix a constant $0 < \alpha < 1$. Define $E_n := \{x \mid f_n(x)\geq \alpha \varphi(x)\}$. We can see that:
+            \begin{equation*}
+            \begin{split}
+                E_n 
+                & = \{x \mid f_n(x) \geq \alpha \varphi(x)\} \\
+                & = \{x \mid (f_n - \alpha \varphi)(x) \geq 0 \} \\
+                & = \{x \mid (f_n - \alpha \varphi)(x) \in [0,\infty]\} \\
+                & = (f_n-\alpha \varphi)^{-1} \left( [0,\infty] \right)
+            \end{split}
+            \end{equation*}
+        Since $f_n$ are $\varphi$ are $\cM$-measurable functions, there difference $f_n - \alpha \varphi$ is $\cM$-measurable, hence $E_n \in \cM$. In particular, since $(f_n)_n$ is an increasing sequence, we have $E_1 \subset E_2 \subset E_3 \subset ...$ and $\bigcup_{i = 1}^\infty E_i = X${\color{red}*($(f_n)_n$ is an increasing sequence so surely $f_{n+1} \geq f_n(x) \geq \alpha \varphi(x)$, hence $E_{n+1} \supset E_n$. also, $\varphi \leq f$, and since $\alpha \in (0,1)$, we have $ \alpha \varphi < f$. but this is true for all $x$, and $f_n \rightarrow f$, hence the unions of all the $E$'s should be our entire set.)}. Now note that for all $x \in X$ we have $\alpha \varphi \chi_{E_n} \leq f_n$, which gives:
+            \begin{equation*}
+            \begin{split}
+                \int f_n 
+                & \geq \int \alpha \varphi \chi_{E_n} \\
+                & = \alpha \int_{E_n} \varphi.
+            \end{split}
+            \end{equation*}
+        But recall that $A \mapsto \int_A \varphi$ defines a measure on $(X,\cM)$! Applying continuity from below gives:
+            \begin{equation*}
+            \begin{split}
+                \alpha \int \varphi 
+                & = \lim_{n \rightarrow \infty} \alpha \int_{E_n} \varphi \\
+                & \leq \lim_{n \rightarrow \infty} \int f_n.
+            \end{split}
+            \end{equation*}
+        Sending $\alpha \rightarrow 1$ gives $\int \varphi \leq \lim_{n \rightarrow \infty} \int f_n$. Taking the supremum over all $\varphi \in S^+$ such that $\varphi \leq f$ gives $\int f \leq \lim_{n \rightarrow \infty}\int f_n$.
+    \end{proof}
+
+\begin{example}
+    {\color{red} do the examples of how it fails to hold for nonincreasing functions}
+\end{example}
+
+\begin{corollary}
+    Let $f,g \in L^+$. We have $\int (f + g) = \int f + \int g$.
+\end{corollary}
+    \begin{proof}
+        By Proposition~\ref{thm:increasing-sequence-of-simple-functions} we can find increasing sequences of simple functions $(\varphi_n)_n$ and $(\psi_n)_n$ such that $\varphi_n \nearrow f$ and $\psi_n \nearrow g$. Since each sequence is increasing and convergent, we have $\varphi_n + \psi_n \nearrow f+g$. By the Monotone Convergence Theorem:
+            \begin{equation*}
+            \begin{split}
+                \int (f+g) 
+                & = \lim_{n \rightarrow \infty}\int (\varphi_n + \psi_n) \\
+                & = \lim_{n \rightarrow \infty}\int \varphi_n  + \lim_{n \rightarrow \infty}\int \psi_n \\ 
+                & = \int f + \int g. \qedhere
+            \end{split}
+            \end{equation*}
+    \end{proof}
+
+\begin{definition}
+    Let $(f_n)_n$ be a function in $L^+$. We say $(f_n)_n$ \textui{converges almost everywhere} if the set:
+        \begin{equation*}
+        \{x \mid f_n(x) \not\rightarrow f(x)\}
+        \end{equation*}
+    has measure zero, and denote this as $f_n \rightarrow f$ a.e.
+\end{definition}
+
+We can use the Monotone Convergence Theorem to prove a more general result on increasing sequence of functions which converge almost everywhere.
+
+\begin{theorem}
+    Let $(f_n)_n$ be a sequence in $L^+$ and suppose $f_n \nearrow f$ a.e. for some $f \in L^+$. Then $\int f = \lim_{n \rightarrow \infty} \int f_n$.
+\end{theorem}
+    \begin{proof}
+        Define $E:= \{x \mid f_n(x) \nearrow f(x)\}$. Then by assumption $E^c$ is of measure zero, so $f_n \chi_E \nearrow f \chi_E$ holds everywhere. By the Monotonce Convergence Theorem, we have: $$\int f \chi_E = \lim_{n \rightarrow \infty} \int f_n \chi_E.$$ Note that $f = f \chi_E$ a.e., hence $f - f \chi_E = 0$ a.e. By Proposition~\ref{prop:limits-of-measurable-functions-are-measurable} we have that $\int (f - f_{\chi_E}) = 0$, hence $\int f = \int f \chi_E$. Similarly, $f_n = f_n \chi_E$ a.e., hence by the same argument we have $\int f_n = \int f_n \chi_E$. Together,  $\int f = \lim_{n \rightarrow \infty} \int f_n$. 
+    \end{proof}
+
+\begin{theorem}[Fatou's Lemma]
+    Let $(f_n)_n$ be a sequence in $L^+$. Then $\int \liminf_{n \rightarrow \infty} f_n \leq \liminf_{n \rightarrow \infty} \int f_n$.
+\end{theorem}
+    \begin{proof}
+        For each $k \in \bfN$, define $g_n := \inf_{k \geq n}f_k $. Then $g_n$ is measurable by Proposition~\ref{prop:limits-of-measurable-functions-are-measurable}, and in particular $g_n \nearrow \liminf_{n \rightarrow \infty} f_n$ (since the limit infimums form an increasing sequence). Note that $g_n \leq f_k$ for all $k \geq n$, hence $\int g_n \leq \int f_k$ for all $k \geq n$. Since $\int g_n$ is a lowerbound for the set $\left\{\int f_k \mid k \geq n\right\}$, it must be the case that $\int g_n \leq \inf_{k \geq n} \int f_k$. By the Monotone Convergence Theorem:
+            \begin{equation*}
+            \begin{split}
+                \int \liminf_{n \rightarrow \infty}f_n 
+                & \leq \lim_{n \rightarrow \infty}\int g_n \\
+                & \leq \lim_{n \rightarrow \infty} \left( \inf_{k \geq n}\int f_k \right) \\
+                & = \liminf_{n \rightarrow \infty} \int f_n. \qedhere
+            \end{split}
+            \end{equation*}
+    \end{proof}
+
+\begin{corollary}
+    Let $(f_n)_n$ be a sequence in $L^+$. Suppose $f_n \rightarrow f$ a.e. Then $\int f \leq \lim_{n \rightarrow \infty}\int f_n$.
+\end{corollary}
+    \begin{proof}
+        {\color{red} sketch: let $E = \{ x \mid f_n(x) \rightarrow f(x)\}$. Replace $f$ w/ $f \chi_E$ and $f_n$ w/ $f_n \chi_e$. apply fatous lemma i think.}
+    \end{proof}
+
+\begin{definition}
+    Let $f:X \rightarrow \overline{\bfR}$ be measurable.
+        \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+            \item We say $f$ is \textui{integrable} if $\int |f| < \infty$.
+            \item If $E \in \cM$, $f$ is \textui{integrable on $E$} if $\int_E |f| < \infty$.
+        \end{enumerate} 
+\end{definition}
+
+\begin{proposition}
+    $f:X \rightarrow \bfC$ is integrable if and only if $\fR(f)$ and $\fI(f)$ are integrable.
+\end{proposition}
+    {\color{red} not sure how to do this rigorously \begin{proof}
+        
+    \end{proof}}
+
+\begin{proposition}
+    Let $f:X \rightarrow \bfC$ be integrable.
+    \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+        \item For all $\alpha \in \bfC$, $\int \alpha f = \alpha \int f$.
+        \item $\left| \int f \right| \leq \int |f|$.
+    \end{enumerate}
+\end{proposition}
+    \begin{proof}
+        (1) Write:
+            \begin{equation*}
+            \begin{split}
+                \alpha &= a+ib,\h9 a,b \in \bfR;\\
+                f &= u+iv,\h9 u,v:X \rightarrow \bfR.
+            \end{split}
+            \end{equation*}
+        Then:
+            \begin{equation*}
+            \begin{split}
+                \int \alpha f 
+                & = \int (a+ib)(u+iv) \\
+                & = \int (au + ibu + iav -bv) \\
+                & = \int (au + ibu + v(ia-b)) \\
+                & = \int ((a+ib)u + vi(a+ib)) \\
+                & = (a+ib)\int u + (a+ib)i\int v \\
+                & = (a+ib) \left( \int u + i \int v \right) \\
+                & = (a+ib) \left( \int u + i  v \right) \\
+                & = \alpha \int f.
+            \end{split}
+            \end{equation*}
+
+        (2) If $\int f = 0$, we are done. Otherwise, let $\alpha := \frac{\left| \int f \right|}{\int f} \in \bfC$ Then:
+            \begin{equation*}
+            \begin{split}
+                \left| \int f \h1\right|
+                & = \alpha \int f \\
+                & = \int \alpha f \\
+                & = \int \fR(\alpha f) + i \int \fI(\alpha f) \\
+                & \leq \int |\alpha f| \\
+                & = \int |f|.
+            \end{split}
+            \end{equation*}
+    \end{proof}
+
+\begin{proposition}\label{prop:properties-of-integrability}
+    Let $f:X \rightarrow \bfC$ be integrable.
+    \phantom{a}
+    \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+        \item $\{x \mid f(x) = \pm \infty\}$ is a null set.
+        \item There exists $g:X \rightarrow \bfC$ such that $f = g$ a.e.
+    \end{enumerate}
+\end{proposition}
+    \begin{proof}
+        {\color{red} sadge}
+    \end{proof}
+
+\begin{theorem}\label{thm:equality-almost-everywhere-equiv-relation}
+    Equality almost everywhere defines an equivalence relation on the set $\{f:X \rightarrow \bfC \mid f \text{ is integrable }\}$.
+\end{theorem}
+    \begin{proof}
+        Given $f,g \in \{f:X \rightarrow \bfC \mid f \text{ is integrable }\}$, write $f \sim g$ if $f = g$ a.e. Clearly $\sim$ is symmetric and reflexive, so we only need to show that it is transitive. Suppose $f = g$ a.e. and $g = h$ a.e. Let $E_1 = \{x \mid f(x) = g(x)\}$ and $E_2 = \{x \mid g(x) = h(x)\}$. By hypothesis $\mu(E_1^c) = \mu(E_2^c) = 0$. Now note that $f = g \chi_{E_1}$ and $g = h \chi_{E_2}$ everywhere. Multiplying both sides of the second equation by $\chi_{E_1}$ gives $g \chi_{E_1} = h \chi_{E_1} \chi_{E_2} = h \chi_{E_1 \cap E_2}$. Together, we have $f = h \chi_{E_1 \cap E_2}$ everywhere. But note that $\mu((E_1 \cap E_2)^c) = \mu(E_1^c \cup E_2^c) \leq \mu(E_1^c) + \mu(E_2^c) = 0$. Hence $f = h$ a.e., completing the proof.
+    \end{proof}
+
+\begin{definition}
+    \phantom{a}
+    \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+        \item The \textui{Lebesgue space} $L^1(X,\mu)$ is the set of equivalence classes of integrable functions $f:X \rightarrow \bfC$ modulo equality almost everywhere; i.e., using the terminology in Theorem~\ref{thm:equality-almost-everywhere-equiv-relation}:
+            \begin{equation*}
+            \begin{split}
+                L^1(X,\mu) := \{f:X \rightarrow \bfC \mid f \text{ is integrable }\}/\sim.
+            \end{split}
+            \end{equation*}
+
+        \item Given $f \in L^1(X,\mu)$, the \textui{$L^1$-norm} of $f$ is:
+            \begin{equation*}
+            \begin{split}
+                \lnorm f \rnorm_{L^1}:= \int |f|.
+            \end{split}
+            \end{equation*}
+    \end{enumerate}
+\end{definition}
+
+\begin{theorem}\label{thm:l1-normed-vector-space}
+    $\bigl(L^1(X,\mu), \lnorm \cdot \rnorm_{L^1}\bigr)$ is a normed vector space over $\bfC$.
+\end{theorem}
+    \begin{proof}
+        {\color{red} hard, might just show that addition and scalar multipliation are well-defined, and say that it follows from the fact that the pre-quotient space is a complex vector space}.
+    \end{proof}
+
+    \begin{remark}
+        If context is clear, we write $L^1$ instead of $L^1(X,\mu)$. Moreover, it is normal to abuse notation and speak of a "function" in $L^1$ rather than an equivalence class (which is technically more correct).
+    \end{remark}
+
+\begin{theorem}[Dominated Convergence Theorem]
+    Let $(f_n)_n$ be a sequence in $L^1$ and suppose $f_n \rightarrow f$ a.e. for some $f:X \rightarrow \bfC$. Moreover, suppose there exists $g \in L^1$ such that $g \geq 0$ and for all $n \in \bfN$, we have $|f_n| \leq g$ a.e. Then (after possibly changing $f$ on a null set), $f \in L^1$ and $\int f = \lim_{n \rightarrow \infty} \int f_n$.
+\end{theorem}
+    \begin{proof}
+        Define $E_0 := \{x \mid f_n(x) \rightarrow f(x)\}$ and for $n \geq 1$ define $E_n := \{x \mid |f_n(x)| \leq g(x)\}$. Note that for each $i \in \bfN$, the measure of $E_i^c$ is zero by assumption. Now let $E := \bigcap_{n = 0}^\infty E_n$. We can see:
+            \begin{equation*}
+            \begin{split}
+                \mu(E^c)
+                & = \mu \left( \left( \bigcap_{n = 0}^\infty E_n \right)^c \right) \\
+                & = \mu \left( \bigcup_{n = 0}^\infty E_n^c \right) \\
+                & \leq \sum_{n = 0}^\infty \mu(E_n^c) \\
+                & = 0.
+            \end{split}
+            \end{equation*}
+        Hence $f_n \chi_E \rightarrow f \chi_E$ everywhere, and in fact $f \chi_E$ is measurable by Proposition~\ref{prop:limits-of-measurable-functions-are-measurable}. Moreover, for each $n \in \bfN$ we have $|f_n \chi_E | \leq g \chi_E \leq g$. Together:
+            \begin{equation*}
+            \begin{split}
+                \int |f_n \chi_E| \leq \int g < \infty.
+            \end{split}
+            \end{equation*}
+        Hence:
+            \begin{equation*}
+            \begin{split}
+                \int |f \chi_E| \leq \sup_{n \in \bfN}\int |f_n \chi_E| \leq \int g < \infty.
+            \end{split}
+            \end{equation*}
+        Thus $f \chi_E \in L^1$. Now write $f_n \chi_E = u_n +i v_n$ and $f \chi_E = u + iv$, where $u_n \rightarrow u$ and $v_n \rightarrow v$. Surely $g \pm u_n \geq 0$ and $g \pm v_n \geq 0$, hence by Fatou's Lemma:
+            \begin{equation*}
+            \begin{split}
+                \int \liminf_{n \rightarrow \infty}(g + u_n) \leq \liminf_{n \rightarrow \infty}\int g + u_n.
+            \end{split}
+            \end{equation*}
+        Since $u_n \rightarrow u$ we have $\liminf_{n \rightarrow \infty} u_n = \lim_{n \rightarrow \infty}u_n = u$, giving:
+            \begin{equation*}
+            \begin{split}
+                \int g + \int u \leq \int g + \liminf_{n \rightarrow \infty}\int u_n.
+            \end{split}
+            \end{equation*}
+        Subtracting $\int g$ from both sides gives $\int u \leq \liminf_{n \rightarrow \infty \int u_n}$. Now applying Fatou's Lemma to $g - u_n$ gives:
+            \begin{equation*}
+            \begin{split}
+                \int \liminf_{n \rightarrow \infty}(g - u_n) \leq \liminf_{n \rightarrow \infty} \int (g - u_n).
+            \end{split}
+            \end{equation*}
+        Hence:
+            \begin{equation*}
+            \begin{split}
+                \int g - \int u 
+                & \leq \int g + \liminf \left( \int -u_n \right) \\
+                & = \int g - \limsup_{n \rightarrow \infty}\int u_n.
+            \end{split}
+            \end{equation*}
+        Subtracting $\int g$ from both sides and rearranging gives $\int u \geq \limsup_{n \rightarrow \infty}\int u_n$. Together:
+            \begin{equation*}
+            \begin{split}
+                \limsup_{n \rightarrow \infty} \int u_n \leq \int u \leq \liminf_{n \rightarrow \infty} \int u_n.
+            \end{split}
+            \end{equation*}
+        But since $\liminf_{n \rightarrow \infty} \int u_n \leq \int u \leq \limsup_{n \rightarrow \infty}$ trivially, we have:
+            \begin{equation*}
+            \begin{split}
+                \limsup_{n \rightarrow \infty} \int u_n = \int u = \liminf_{n \rightarrow \infty} \int u_n.
+            \end{split}
+            \end{equation*}
+        Thus $\lim_{n \rightarrow \infty} \int u_n = \int u$. An identical argument gives $\lim_{n \rightarrow \infty}\int v_n = v$. Together:
+            \begin{equation*}
+            \begin{split}
+                \int f \chi_E 
+                & = \int (u+iv) \\
+                & = \int u + i\int v \\
+                & = \lim_{n \rightarrow \infty} \int u_n + i \lim_{n \rightarrow \infty} \int v_n \\
+                & = \lim_{n \rightarrow \infty} \left( \int u_n + i \int v_n \right) \\
+                & = \lim_{n \rightarrow \infty} \int (u_n + i v_n) \\
+                & = \lim_{n \rightarrow \infty} \int f_n \chi_E.
+            \end{split}
+            \end{equation*}
+        Note that $f \chi_E$ is precisely $f$ changed on a null set.
+    \end{proof}
+
+\begin{theorem}\label{thm:interchange-inf-series-and-int}
+    Let $(f_n)_n$ be a sequence in $L^1$ with $\sum_{n = 1}^\infty \int |f_n| < \infty$. There exists $f \in L^1$ such that $\sum_{n = 1}^N f_n \rightarrow f$ a.e. as $N \rightarrow \infty$ (i.e., $\sum_{n = 1}^\infty f_n = f$ a.e.) and $\int f = \int \sum_{n = 1}^\infty f_n = \sum_{n= 1}^\infty \int f_n$.
+\end{theorem}
+    \begin{proof}
+        Define $g_n := \sum_{j = 1}^n |f_j|$ and $ g:= \sum_{j = 1}^\infty |f_j|$. Note that $g_n$ is measurable by Proposition~\ref{prop:sums-prods-of-measurable-functions}, and $g$ is measurable by hypothesis. Moreover, we have $0 \leq g_n$ and $g_n \nearrow g$. By the Monotone Convergence Theorem:
+            \begin{equation*}
+            \begin{split}
+                \int g 
+                & = \lim_{n \rightarrow \infty}\int f_n \\
+                & = \lim_{n \rightarrow \infty}\int \sum_{j = 1}^n \int |f_j| \\
+                & = \sum_{j = 1}^\infty \int |f_j| \\
+                & < \infty.
+            \end{split}
+            \end{equation*}
+        Hence $g$ is integrable. Define $E := \{c \mid g(x) < \infty\}$. By Proposition~\ref{prop:properties-of-integrability}, the set $E^c =\{x \mid g(x) = \infty\}$ is a null set. In particular, $g \chi_E \leq g$, hence $g \chi_E \in L^1$. Now define:
+            \begin{equation*}
+            \begin{split}
+                f(x) 
+                := \begin{cases}
+                    \sum_{n = 1}^\infty f_n(x), & x \in E \\
+                    0, & x \not\in E.
+                \end{cases}
+            \end{split}
+            \end{equation*}
+        We have that $\sum_{n = 1}^\infty f_n = f$ a.e. Likewise:
+            \begin{equation*}
+            \begin{split}
+                \left|\sum_{j = 1}^n f_j\right| 
+                & \leq \sum_{j = 1}^n |f_j| \\
+                & \leq \sum_{j = 1}^\infty |f_j| \\
+                & = g.
+            \end{split}
+            \end{equation*}
+        Hence $\left| \sum_{j = 1}^n f_j \right| \leq g \chi_E$ a.e., and $\sum_{j = 1}^n f_j \rightarrow f$ a.e. By the Dominated Convergence Theorem, $f \in L^1$ and $\int f = \lim_{n \rightarrow \infty} \int \sum_{j = 1}^n f_n$. Finally:
+            \begin{equation*}
+            \begin{split}
+                \int \sum_{n = 1}^\infty f_n 
+                & = \int f \\
+                & = \lim_{n \rightarrow \infty} \int \sum_{j = 1}^n f_n \\
+                & = \lim_{n \rightarrow \infty} \sum_{j = 1}^n \int f_n \\
+                & = \sum_{n = 1}^\infty \int f_n. \qedhere
+            \end{split}
+            \end{equation*}
+    \end{proof}
+
+The ability to interchange integrals and infinite series is useful in application. More importantly however, we showed in Theorem~\ref{thm:interchange-inf-series-and-int} that \textit{every absolutely convergent series is convergent}. That is, given a sequence of functions $(f_n)_n \subset L^1$, if $\sum_{n = 1}^\infty \lnorm f_n \rnorm_{L^1}$ converges, then $\sum_{n = 1}^\infty f_n$ converges. The next result is crucially dependent on this fact.
+
+\begin{theorem}
+    $(L^1,\lnorm \cdot \rnorm_{L^1})$ is a Banach space.
+\end{theorem}
+    \begin{proof}
+        We proved in Theorem~\ref{thm:l1-normed-vector-space} that $(L^1,\lnorm \cdot \rnorm_{L^1})$ is a normed space, so it only remains to show that this space is complete. Let $(f_n)_n$ be $\lnorm \cdot \rnorm$-Cauchy. Find $n_1 \in \bfN$ such that $p,q \geq n_1$ implies $\lnorm f_p - f_q \rnorm_{L^1} < \frac{1}{2}$. Find $n_2 \in \bfN$ such that $n_2 > n_1$ and $p,q \geq n_2$ implies $\lnorm f_p - f_q \rnorm_{L^1} < \frac{1}{2^2}$. Inductively, find $n_k \in \bfN$ such that $n_k > n_{k-1}$ and $p,q \geq n_k$ implies $\lnorm f_p - f_q \rnorm_{L^1} < \frac{1}{2^k}$. Consider the sequence $(f_{n_{k+1}}-f_{n_k})_k$. Then:
+            \begin{equation*}
+            \begin{split}
+                \sum_{k = 1}^\infty \lnorm f_{n_{k+1}} - f_{n_k} \rnorm \leq \sum_{k = 1}^\infty \frac{1}{2^k} = 1.
+            \end{split}
+            \end{equation*}
+        Since $\sum_{k = 1}^\infty \lnorm f_{n_{k+1}} - f_{n_k} \rnorm$ converges, by Theorem~\ref{thm:interchange-inf-series-and-int} there exists $f \in L^1$ such that $\sum_{k = 1}^\infty (f_{n_{k+1}} - f_{n_k} ) = f$. Examining the partial sums of $\sum_{k = 1}^\infty (f_{n_{k+1}} - f_{n_k} )$, we can see that:
+            \begin{equation*}
+            \begin{split}
+                \sum_{k = 1}^m (f_{n_{k+1}} - f_{n_k}) = f_{n_m} - f_{n_1}.
+            \end{split}
+            \end{equation*}
+        Hence $\lim_{m \rightarrow \infty} (f_{n_m} - f_{n_1}) = f$. Finally:
+            \begin{equation*}
+            \begin{split}
+                \lim_{m \rightarrow \infty} f_{n_m} 
+                & = \lim_{m \rightarrow \infty} (f_{n_m} - f_{n_1} + f_{n_1}) \\
+                & = \lim_{m \rightarrow \infty} (f_{n_m} - f_{n_1}) + \lim_{m \rightarrow \infty}f_{n_1} \\
+                & = f + f_{n_1} \in L^1.
+            \end{split}
+            \end{equation*}
+        Since $(f_n)_n$ is a $\lnorm \cdot \rnorm_{L^1}$-Cauchy sequence which admits a convergent subsequence, $(f_n)_n$ converges. Thus $(L^1, \lnorm \cdot \rnorm_{L^1})$ is a Banach space.
+    \end{proof}
+
+\begin{theorem}\label{thm:simple-dense-in-l1}
+    The set $\{\varphi \in L^1 \mid \varphi \text{ is simple }\}$ is dense in $L^1$.
+\end{theorem}
+    \begin{proof}
+        Let $f \in L^1$ and let $\epsilon > 0$. We proceed by cases on $f$. 
+        
+        Case 1: $f \geq 0$. By Theorem~\ref{thm:increasing-sequence-of-simple-functions}, there exists a sequence $(\varphi_n)_n$ of simple functions such that $\varphi_n \nearrow f$. By the Monotone Convergence Theorem, $\int f = \lim_{n \rightarrow \infty}\int \varphi_n$. Find $N \in \bfN$ sufficiently large so that $ \left| \int f - \int \varphi \right| < \epsilon$. Since $f - \varphi \geq 0$, we have $\left| \int f - \int \varphi \right| = \left| \int (f - \varphi) \right| = \int (f-\varphi) = \int \left| f - \varphi \right|$. Hence $\int |f - \varphi| < \epsilon$; i.e., $\lnorm f- \varphi \rnorm_{L^1} < \epsilon$.
+
+        Case 2: $f \in \bfC$. Write:
+            \begin{equation*}
+            \begin{split}
+                f 
+                & = u+iv \\
+                & = (u^+ - u^-) + i(v^+ - v^-).
+            \end{split}
+            \end{equation*} 
+        From Case 1, choose simple functions $\varphi^+, \varphi^-, \psi^+,\psi^-$ such that:
+            \begin{equation*}
+            \begin{split}
+                \lnorm \varphi^+ - u^+ \rnorm_{L^1} &< \frac{\epsilon}{4}, \\
+                \lnorm \varphi^- - u^- \rnorm_{L^1} &< \frac{\epsilon}{4}, \\
+                \lnorm \psi^+ - v^+ \rnorm_{L^1} &< \frac{\epsilon}{4}, \\
+                \lnorm \psi^- - v^- \rnorm_{L^1} &< \frac{\epsilon}{4}. \\
+            \end{split}
+            \end{equation*}
+        Define $\xi := (\varphi^+ - \varphi^-) + i(\psi^+ - \psi^-)$. Then:
+            \begin{equation*}
+            \begin{split}
+                \lnorm f - \xi \rnorm_{L^1}
+                & = \lnorm \bigl((u^+ - u^-) + i(v^+ - v^-)\bigr) - \bigl((\varphi^+ - \varphi^-) + i(\psi^+ - \psi^-)\bigr) \rnorm \\
+                & \leq \lnorm u^+ - \varphi^+ \rnorm_{L^1} + \lnorm u^- -  \varphi^-  \rnorm_{L^1} + \lnorm i(v^+ - \psi^+ )  \rnorm_{L^1} + \lnorm i (v^- - \psi^- ) \rnorm_{L^1} \\
+                & < \frac{\epsilon}{4} + \frac{\epsilon}{4} + \frac{\epsilon}{4} + \frac{\epsilon}{4} \\
+                & = \epsilon.
+            \end{split}
+            \end{equation*}
+        Thus $\{\varphi \in L^1 \mid \varphi \text{ is simple }\}$ is dense in $L^1$.
+    \end{proof}
+
+\section{Lebesgue Integration on $\bfR$}
+    Let $(X,\cM,\mu) = (\bfR,\cL,m)$. {\color{red} recall this stuff: talk about the riemann integral with pictures and stuff}
+
+    \begin{definition}
+        Let $[a,b] \subseteq \bfR$.
+        \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+            \item A \textui{partition} $P$ of the interval $[a,b]$ is a finite set of points $\{x_0,...,x_n\} \subseteq [a,b]$ such that:
+                \begin{equation*}
+                \begin{split}
+                    a = x_0 < x_1 < ... , x_{n-1} < x_n = b.
+                \end{split}
+                \end{equation*}
+            \item A refinement of a partition $P$ is a partition $Q$ such that $P \subset Q$. In this case, we say that $Q$ is \textui{finer} than $P$. Given two partitions $P_1,P_2 \subseteq [a,b]$, we call the union $P_1 \cup P_2$ their \textui{common refinement}.
+            \item The \textui{change in $x_i$} is denoted $\Delta x_i := x_{i} - x_{i-1}$.
+            \item The \textui{mesh} of a partition $P$ is denoted $\lnorm P \rnorm := \max_{i = 1}^n \Delta x_i$.
+        \end{enumerate}
+    \end{definition}
+
+    \begin{definition}
+        Let $f:[a,b] \rightarrow \bfR$ be a bounded function and $P=\{x_0,...,x_n\}$ a partition of $[a,b]$. We define:
+            \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+                \item $M_j(f) = \sup_{x \in [x_{j-1},x_j]}f(x)$; and
+                \item $m_j(f) = \inf_{x \in [x_{j-1},x_j]}f(x)$.
+            \end{enumerate}
+        We call the numbers:
+            \begin{equation*}
+            \begin{split}
+                S_P(f) = \sum_{j = 1}^n M_j(f)\Delta x_j, \h9\h9 s_P(f) = \sum_{j = 1}^n m_j(f)\Delta x_j, 
+            \end{split}
+            \end{equation*}
+        the \textui{upper Darboux sum} and, respectively, the \textui{lower Darboux sum} of $f$ over the partition $P$.
+    \end{definition}
+
+    \begin{definition}
+        Let $f:[a,b] \rightarrow \bfR$ be a bounded function.
+            \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+                \item The \textui{upper Darboux integral} of $f$ over $[a,b]$ is:
+                    \begin{equation*}
+                    \begin{split}
+                        \overline{I_{a}^{b}}(f) :=\inf_{P \in B_{[a,b]}}U(P,f).
+                    \end{split}
+                    \end{equation*}
+                \item The \textui{lower Darboux integral} of $f$ over $[a,b]$ is:
+                \begin{equation*}
+                \begin{split}
+                    \underline{I_{a}^{b}}(f) :=\sup_{P \in B_{[a,b]}}L(P,f).
+                    \end{split}
+                    \end{equation*}
+
+                \item We say that $f$ is \textui{Riemann integrable} on $[a,b]$ provided that:
+                    \begin{equation*}
+                    \begin{split}
+                        \overline{I_{a}^{b}}(f) = \underline{I_{a}^{b}}(f) .
+                    \end{split}
+                    \end{equation*}
+                In this case, the common value of the upper and lower Darboux integrals is called the \textui{Riemann integral} of $f$ over $[a,b]$ and is denoted:
+                    \begin{equation*}
+                    \begin{split}
+                        \int_a^b f(x) dx.
+                    \end{split}
+                    \end{equation*}
+            \end{enumerate}
+    \end{definition}
+
+\begin{theorem}
+    Let $f$ be a bounded real function on $[a,b]$. If $f$ is Riemann integrable, then $f$ is Lebesgue measurable and $\int_a^b f(x)dx = \int_{[a,b]}f dm$.
+\end{theorem}
+    \begin{proof}
+        For any partition $P = \{x_0,x_1,...,x_n\}$, define:
+            \begin{equation*}
+            \begin{split}
+                G_P & := \sum_{i = 1}^n M_i(f) \chi_{(x_{i-1},x_i]}, \\
+                g_P & := \sum_{i = 1}^n m_i(f) \chi_{(x_{i-1},x_i]}.
+            \end{split}
+            \end{equation*}
+        Note that $g_P \leq f \leq G_P$ holds for any partition $P$. Choose a sequence of partitions $P_1 \subset P_2 \subset P_3 \subset...$ such that:
+            \begin{equation*}
+            \begin{split}
+                \int_{[a,b]} G_{P_k}dm &= S_{P_k}(f) \searrow \int_a^b f(x)dx \\
+                \int_{[a,b]} g_{P_k}dm &= s_{P_k}(f) \nearrow \int_a^b f(x)dx.
+            \end{split}
+            \end{equation*}
+        Let $G := \lim_{k \rightarrow \infty}G_{P_k}$ and $g := \lim_{k \rightarrow \infty}g_{P_k}$. Note that $g$ and $G$ are measurable since they are limits of measurable functions. Moreover, by construction $g \leq f \leq G$, hence $G - g \in L^+$. Applying the Dominated Convergence Theorem gives:
+            \begin{equation*}
+            \begin{split}
+                \int_{[a,b]} Gdm = \lim_{k \rightarrow \infty} \int_{[a,b]} G_{P_k}dm = \int_a^b f(x)dx \\
+                \int_{[a,b]} gdm = \lim_{k \rightarrow \infty} \int_{[a,b]} g_{P_k}dm = \int_a^b f(x)dx.
+            \end{split}
+            \end{equation*}
+        Observe that:x
+            \begin{equation*}
+            \begin{split}
+                \int_{[a,b]} (G - g)dm 
+                & = \int_{[a,b]} Gdm - \int_{[a,b]} gdm \\
+                & = \int_a^b f(x)dx - \int_a^b f(x)dx \\
+                & = 0.
+            \end{split}
+            \end{equation*}
+        By Proposition~\ref{prop:int-equals-zero-iff-funct-equals-zero}, $G - g = 0$ a.e., hence $G = g$ a.e. Since $f$ is squeezed between $g$ and $G$, it must be the case that $f = G$ a.e. (or similarly, $f = g$ a.e.).
+
+        Claim: Since $G$ is measurable and since $m$ is complete, $f$ is Lebesgue measurable. Define $E:= \{x \mid G(x) = g(x)\}$. Then $E = (G-g)^{-1}(\{0\})$, hence $E \in \cL$. Define $N := E^c$, then by hypothesis $m(N) = 0$. To show $f$ is measurable, we will make use of (2) in Proposition~\ref{prop:measurable-functs}. Let $U \in \tau_\bfR$. We have:
+            \begin{equation*}
+            \begin{split}
+                f^{-1}(U) 
+                & = (f^{-1}(U) \cap E) \cup (f^{-1}(U) \cap N) \\
+                & = (G^{-1}(U) \cap E) \cup (f^{-1}(U) \cap N) \h9\h9\text{\tiny Since $f = G$ on $E$.}
+            \end{split}
+            \end{equation*}
+        Note that $G^{-1}(U) \in \cL$, hence $G^{-1}(U) \cap E \in \cL$. Moreover, $f^{-1}(U) \cap N \subset N$, and since $m$ is complete it must be the case that $f^{-1}(U) \cap N \in \cL$. Thus $f^{-1}(U) \in \cL$, which means $f$ is measurable. This implies that $G - f \in L^+$, and since $G = f$ a.e., applying Proposition~\ref{prop:int-equals-zero-iff-funct-equals-zero} again gives:
+            \begin{equation*}
+            \begin{split}
+                \int_{[a,b]}fdm 
+                & = \int {[a,b]}Gdm  \\
+                & = \int_a^b f(x)dx.
+            \end{split}
+            \end{equation*}
+        {\color{red} double check this later when you aren't geeked.}
+    \end{proof}
+
+    \begin{center}
+        \begin{tikzpicture}
+            \draw[thick] (0.3,0) -- (2.3,0);
+            \node at (2.39, 0) {$/\,$};
+            \node at (2.56, 0) {$/\,$};
+            \draw[thick] (2.6,0) -- (4.6,0);
+        \end{tikzpicture}
+    \end{center}
+\begin{definition}
+    Let $f:X \rightarrow \bfR$. The \textit{support of $f$} is $\supp(f) = \{x \mid f(x) \neq 0\}$.
+\end{definition}
+
+\begin{definition}
+    \phantom{a}
+    \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+        \item $C^0(\bfR) = \{f:\bfR \rightarrow \bfC \mid f \text{ is continuous }\}$.
+        \item $C^n(\bfR) = \{f:\bfR \rightarrow \bfC \mid f \text{ is $n$-times continuously differentiable }\}$.
+        \item $C^\infty(\bfR) = \{f:\bfR \rightarrow \bfC \mid f \text{ is smooth }\}$.
+        \item $C_c^0(\bfR) = \{f \in C^0(\bfR) \mid \supp(f) \text{ is compact }\}$.
+    \end{enumerate}
+\end{definition}
+
+\begin{lemma}\label{lemma:cont-funct-with-compact-supp-approximates-indicator-funct-on-open-int}
+    Let $I = (a,b)$ be an interval where $-\infty < a < b < \infty$. For all $\epsilon > 0$, there exists $f \in C^0(\bfR)$ such that $\supp(f) \subset I$ and $\lnorm \chi_I - f \rnorm_{L^1} < \epsilon$.
+\end{lemma}
+    \begin{proof}
+        For each $n \in \bfN$, define $\delta_n := \frac{b-a}{2n}$ and:
+            \begin{equation*}
+            \begin{split}
+                f_n(x) := 
+                \begin{cases}
+                    0, & x \leq a, x \geq b \\
+                    1, & a+\delta_n \leq x, x \geq b - \delta_n \\
+                    \ds\frac{x-a}{\delta_n}, & a \leq x \leq a+\delta_n \\
+                    \ds\frac{b-x}{\delta_n}, & b - \delta_n \leq x \leq b.
+                \end{cases}
+            \end{split}
+            \end{equation*}
+        Note that $\chi_I \geq f_n$ for all $n \in \bfN$, hence:
+            \begin{equation*}
+            \begin{split}
+                \lnorm \chi_I - f_n \rnorm_{L^1} 
+                & = \int |\chi_I - f_n| \\
+                & = \frac{1}{2}\delta_n\cdot1 + \frac{1}{2} \delta_n\cdot1 \\
+                & = \delta_n.
+            \end{split}
+            \end{equation*}
+        Take $n$ to be large enough such that $\delta_n < \epsilon$.
+    \end{proof}
+
+\begin{theorem}
+    $C_c^0(\bfR)$ is dense in $L^1(\bfR,m)$.
+\end{theorem}
+    \begin{proof}
+        Let $g \in L^1(\bfR,m)$ and $\epsilon > 0$. By Theorem~\ref{thm:simple-dense-in-l1}, find a simple function $\varphi \in L^1(\bfR,m)$ such that $\lnorm g - \varphi \rnorm_{L^1} < \frac{\epsilon}{3}$. Let $\varphi = \sum_{i = 1}^n a_i \chi_{E_i}$ be in standard form (that is, $a_i = 0$ for each $i$ and $E_i \cap E_j = \emptyset$ for each $i \neq j$). By Proposition~\ref{prop:approximate-leb-stielt-meas-sets-with-finite-union-of-open-ints}, for each $i \in \bfN$ find an open set $U_i$ which is the finite union of bounded open intervals such that:
+            \begin{equation*}
+            \begin{split}
+                m(E_i \triangle U_i) < \frac{\epsilon}{3n |a_i|}.
+            \end{split}
+            \end{equation*}
+        Let $\Psi = \sum_{i = 1}^n a_i \chi_{U_i}$. Then:
+            \begin{equation*}
+            \begin{split}
+                \lnorm \varphi - \Psi \rnorm_{L^1} 
+                & = \lnorm \sum_{i = 1}^n a_i \chi_{E_i} - \sum_{i = 1}^n a_i \chi_{U_i} \rnorm_{L^1} \\
+                & = \lnorm \sum_{i = 1}^n a_i(\chi_{E_i} - \chi_{U_i}) \rnorm_{L^1} \\
+                & \leq  \sum_{i = 1}^n \lnorm |a_i|\chi_{E_i} - \chi_{U_i} \rnorm_{L^1} \\
+                & \leq  \sum_{i = 1}^n \lnorm |a_i|\chi_{E_i \triangle U_i} \rnorm_{L^1} \\
+                & = \sum_{i = 1}^n |a_i| m(E_i \triangle U_i) \\
+                & < \sum_{i = 1}^n \frac{\epsilon}{3n} \\
+                & = \frac{\epsilon}{3}.
+            \end{split}
+            \end{equation*}
+        Now for each $i \in \bfN$, denote $U_i = \bigcup_{j = 1}^{N_i}I_{i,j}$, where each $I_{i,j}$ is a bounded open interval. By Lemma~\ref{lemma:cont-funct-with-compact-supp-approximates-indicator-funct-on-open-int}, for every $i$ and $j$ choose $f_{i,j} \in C^0(\bfR)$ such that $\supp(f_{i,j}) \subset I_{i,j}$ and:
+            \begin{equation*}
+            \begin{split}
+                \lnorm \chi_{I_{i,j}}  - f_{i,j}\rnorm_{L^1} < \frac{\epsilon}{3N_i |a_i| n}.
+            \end{split}
+            \end{equation*}
+        Define $f:= \sum_{i = 1}^n \sum_{j = 1}^{N_i}|a_i| f_{i,j}$. Note that $f$ is continuous since it is a finite linear combination of continuous functions. Moreover, $f$ is supported on the bounded set $\bigcup_{i,j}I_{i,j}$.
+    \end{proof}
+    \begin{figure}[t]
+        \centering
+        \includegraphics[scale=0.8]{figures/compact-supp-approx/main.pdf}
+        \caption{Illustration of $f_n$ and $\chi_E$. Note that the hatched area represents $\lnorm \chi_I - f_n \rnorm_{L^1}$.}
+        \label{fig:supp-int}
+    \end{figure}
+
+\section{Modes of Convergence}
+
+\begin{definition}
+    Let $(f_n)_n$ be a sequence of functions in $L^+$ and let $f \in L^+$.
+    \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+        \item $f_n \rightarrow f$ \h2\textui{uniformly}\h2 if \h1 $\sup_{x \in X}|f(x) - f_n(x)| \rightarrow 0$.
+        \item $f_n \rightarrow f$ \h2\textui{in $L^1$}\h2 if \h1 $\lnorm f - f_n(x)\rnorm_{L^1} \rightarrow 0$.
+        \item $f_n \rightarrow f$ \h2\textui{in measure}\h2 if  for all $\epsilon > 0$, $\mu(\{x \mid |f_n(x) - f(x)| \geq \epsilon\}) \rightarrow 0$.
+        \item $f_n$ is \textui{Cauchy in measure} if for all $\epsilon > 0$, $\mu(\{x \mid |f_n(x) - f_m(x)| \geq \epsilon\}) \rightarrow 0$.
+    \end{enumerate}
+\end{definition}
+
+\begin{example}
+    {\color{red} examples and pictures go here}
+\end{example}
+
+\begin{proposition}
+    If $f_n \rightarrow f$ in $L^1$, then $f_n \rightarrow f$ in measure.
+\end{proposition}
+    \begin{proof}
+        Let $\epsilon > 0$. For all $n \in \bfN$, define $E_n := \{x \mid |f_n(x) - f(x)| \geq \epsilon\}$. We have:
+            \begin{equation*}
+            \begin{split}
+                \lnorm f - f_n \rnorm_{L^1} 
+                & = \int |f - f_n| \\
+                & \geq \int_{E_n} |f - f_n| \\
+                & \geq \int_{E_n} \epsilon \\
+                & = \epsilon \cdot \mu(E_n).
+            \end{split}
+            \end{equation*}
+        Hence $\mu(E_n) \leq \frac{1}{\epsilon}\lnorm f - f_n \rnorm_{L^1}$. Since $\lnorm f - f_n \rnorm_{L^1} \rightarrow 0$ as $n \rightarrow \infty$, we have $\mu(E_n) \rightarrow 0$.
+    \end{proof}
+
+\begin{theorem}[Egorov's Theorem]
+    Let $\mu(X) < \infty$. For each $n \in \bfN_0$, suppose $f_n$ is a measurable complex-valued function such that $f_n \rightarrow f_0$ pointwise almost everywhere. Then for all $\epsilon > 0$, there exists a measurable set $E \in \cM$ such that $\mu(E) < \epsilon$ and $f_n \rightarrow f$ uniformly on $E^c$.
+\end{theorem}
+    \begin{proof}
+        Let $\epsilon > 0$. Define $A := \{x \mid f_n(x) \rightarrow f_0(x)\}$. By hypothesis $\mu(A^c) = 0$. For all $n,k \in \bfN$, define:
+            \begin{equation*}
+            \begin{split}
+                E_n(k) = \bigcup_{m \geq n}\left\{x \in A \;\middle|\; |f_m(x) - f(x)| \geq \frac{1}{k}\right\}.
+            \end{split}
+            \end{equation*}
+        For a fixed $k$, we have $E_{n}(k) \supset E_{n+1}(k)$ for all $n$, and $\bigcap_{n = 1}^\infty E_n(k) = \emptyset$. Since $\mu(X) < \infty$, we have $\mu(E_1) < \infty$, hence by continuity from above $\lim_{n \rightarrow \infty}\mu(E_n(k)) = 0$. Now for each $k$, choose $n_k$ such that:
+            \begin{equation*}
+            \begin{split}
+                \mu(E_{n_k}(k)) < \frac{\epsilon}{2^k}.
+            \end{split}
+            \end{equation*}
+        Define $E := A^c \cup \bigcup_{k = 1}^\infty E_{n_k}(k)$. We can see:
+            \begin{equation*}
+            \begin{split}
+                \mu(E) 
+                & = \mu\left(A^c \cup \bigcup_{k = 1}^\infty E_{n_k}(k)\right) \\
+                & \leq \mu(A^c) + \mu \left( \bigcup_{k = 1}^\infty E_{n_k}(k) \right) \\
+                & \leq 0 + \sum_{k = 1}^\infty \mu(E_{n_k}(k)) \\
+                & < \sum_{k = 1}^\infty \frac{\epsilon}{2^k} \\
+                & = \epsilon.
+            \end{split}
+            \end{equation*}
+        Moreover, for all $x \in E^c$
+    \end{proof}
+
+\section{Integration in $\bfR^n$}
+{\color{red} missed a lot of stuff}
+
+
+
+
+
+
+
+
+
+
+

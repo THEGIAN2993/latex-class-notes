@@ -1,0 +1,204 @@
+\documentclass[10pt,twoside,openany]{memoir}
+%\usepackage{mlmodern}
+%\usepackage{tgpagella} % text only
+%\usepackage{mathpazo}  % math & text
+\usepackage[T1]{fontenc}
+\usepackage[hidelinks]{hyperref}
+\usepackage{amsmath}
+\usepackage[fixamsmath]{mathtools}  % Extension to amsmath
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+\usepackage{newpxtext}
+\usepackage{eulerpx}
+\usepackage{eucal}
+\usepackage{datetime}
+    \newdateformat{specialdate}{\THEYEAR\ \monthname\ \THEDAY}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \renewcommand{\headrulewidth}{0pt}
+    \cfoot{\scriptsize \thepage}
+\usepackage{thmtools}
+    \declaretheoremstyle[
+        spaceabove=10pt,
+        spacebelow=10pt,
+        headfont=\normalfont\bfseries,
+        notefont=\mdseries, notebraces={(}{)},
+        bodyfont=\normalfont,
+        postheadspace=0.5em
+        %qed=\qedsymbol
+        ]{defs}
+
+    \declaretheoremstyle[ 
+        spaceabove=10pt, % space above the theorem
+        spacebelow=10pt,
+        headfont=\normalfont\bfseries,
+        bodyfont=\normalfont\itshape,
+        postheadspace=0.5em
+        ]{thmstyle}
+    
+    \declaretheorem[
+        style=thmstyle,
+        numberwithin=section
+    ]{theorem}
+
+    \declaretheorem[
+        style=thmstyle,
+        sibling=theorem,
+    ]{proposition}
+
+    \declaretheorem[
+        style=thmstyle,
+        sibling=theorem,
+    ]{lemma}
+
+    \declaretheorem[
+        style=thmstyle,
+        sibling=theorem,
+    ]{corollary}
+
+    \declaretheorem[
+        numberwithin=section,
+        style=defs,
+    ]{example}
+
+    \declaretheorem[
+        numberwithin=section,
+        style=defs,
+    ]{definition}
+
+    \declaretheorem[
+        style=defs,
+        sibling=theorem,
+        numberwithin=section,
+    ]{exercise}
+
+    \declaretheorem[
+        style=thmstyle
+        numbered=unless unique
+    ]{axiom}
+
+    \declaretheorem[numbered=unless unique, style=defs]{problem}
+    \declaretheorem[numberwithin=section,style=defs]{note}
+    \declaretheorem[numbered=no,style=defs]{question}
+    \declaretheorem[numbered=no,style=defs]{recall}
+    \declaretheorem[numbered=no,style=remark]{answer}
+    \declaretheorem[numbered=no,style=remark]{solution}
+    \declaretheorem[numbered=no,style=defs]{remark}
+\usepackage{enumitem}
+\usepackage[utf8x]{inputenc}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning,arrows.meta}
+\linespread{1.00}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
+
+\begin{document}
+\begin{center}
+    {\Large Math 548 \\[0.1in]Portfolio Assignment 6}\\[.175in]
+    {Name:} {\underline{Gianluca Crescenzo\hspace*{2in}}}\\[0.15in]
+    \end{center}
+    \vspace{4pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}[S25, P2]
+Let $S_n$ denote the symmetric group on $n$ letters.
+\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+    \item Is the element $(1234)(25346)(153247) \in S_7$ even or odd? Indicate your reasoning.
+    \item Find the order of $(134)(243)(134) \in S_4$. Show all work.
+    \item Write $(1523)(2134)(1523)^{-1} \in S_5$ in disjoint cycle form. Show all work.
+\end{enumerate}
+\end{problem}
+    {\color{blue} \begin{proof}
+        (a) Note that:
+            \begin{equation*}
+            \begin{split}
+                (1234)(25346)(153247)
+                & = (1472635) \\
+                & = (15)(13)(16)(12)(17)(14).
+            \end{split}
+            \end{equation*}
+        Since $(1234)(25346)(153247)$ can be written as six transpositions, $(1234)(25346)(153247)$ is even.
+
+        (b) The order of $(134)(243)(134)$ is the least common multiple of the disjoint cycle lengths. Hence the order of $(134)(243)(134)$ is 3.
+
+        (c) We have:
+            \begin{equation*}
+            \begin{split}
+                (1523)(2134)(1523)^{-1}
+                & = (1523)(2134)(3251) \\
+                & = (1435).
+            \end{split}
+            \end{equation*}
+    \end{proof}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}[S22, P2]
+    The dihedral group $D_4$ is the group of 8 rigid motions of a square. Prove that $D_4$ is not the internal direct product of two of its proper subgroups.
+\end{problem}
+    {\color{blue} \begin{proof}
+        Suppose towards contradiction we can write $D_8 = H \times K$, where $H \times K$ are proper subgroups of $D_8$. Without loss of generality, suppose $|H| = 2$ and $|K| = 4$. Since $H \times K$ is an internal product, for all $h \in H$ and all $k \in K$ we have $hk = kh$. Moreover, since $|H| = 2$, we know that $H$ is abelian. Likewise, there up to isomorphism two groups of order 4, the groups $\bfZ/4\bfZ$ and $\bfZ/2\bfZ \times \bfZ/2\bfZ$. Both of these groups are abelian, hence $K$ is abelian. From this, we can conclude $H \times K$ is abelian. But this is a contradiction, has $D_8$ is not abelian.
+    \end{proof}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}[W20, P3]
+    Let $G$ be a group. For each $a \in G$, let $\gamma_a$ denote the automorphism of $G$ defined by $\gamma_a(b) = aba^{-1}$ for all $b \in G$. The set $\operatorname{Inn}(G) = \{\gamma_a \mid a \in G\}$ is a subgroup of the automorphism group of $G$, called the subgroup of \textbf{inner automorphisms}. Prove that $\operatorname{Inn}(G)$ is isomorphic to $G/Z(G)$, where $Z(G)$ is the center of $G$.
+\end{problem}
+    {\color{blue} \begin{proof}
+        Define $\varphi:G \rightarrow \operatorname{Inn}(G)$ by $g \mapsto \gamma_g$. Then $\varphi$ is a homomorphism since:
+            \begin{equation*}
+            \begin{split}
+                \varphi(g_1g_2)(x)
+                & = \gamma_{g_1g_2}(x) \\
+                & = g_1g_2xg_2^{-1}g_1^{-1} \\
+                & = g_1(\gamma_{g_2}(x))g_1^{-1} \\
+                & = g_1(\varphi(g_2)(x))g_1^{-1} \\
+                & = \varphi(g_1)(\varphi(g_2)(x)) \\
+                & = (\varphi(g_1) \circ \varphi(g_2))(x).
+            \end{split}
+            \end{equation*}
+        Now let $\psi \in \operatorname{Inn}(G)$. Then $\psi(x) = gxg^{-1}$ for some $g \in G$. Hence $\varphi$ is surjective, as $\varphi(g)(x) = \gamma_g(x) = gxg^{-1} = \psi(x)$. Finally, observe that:
+            \begin{equation*}
+            \begin{split}
+                \ker\{g \in G \mid \varphi(g)(x) = \id(x), x \in G\} \\
+                & = \{g \in G \mid \gamma_g(x) = \id(x), x \in G\} \\
+                & = \{g \in G \mid gxg^{-1} = x, x \in G \} \\
+                & = \{g \in G \mid gx = xg, x \in G\} \\
+                & = Z(G).
+            \end{split}
+            \end{equation*}
+        By the First Isomorphism Theorem, $G/Z(G) \cong \operatorname{Inn}(G)$.
+    \end{proof}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}[W19, P3]
+    Let $G$ be a group and suppose $\Aut(G)$ is trivial.
+    \begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+        \item Show that $G$ is abelian.
+        \item Show that for any abelian group $H$, the \textbf{inversion map} $\phi(h) = h^{-1}$ is an automorphism.
+        \item Use parts (a) and (b) above to show that $g^2$ is the identity element for every $g \in G$.
+    \end{enumerate}
+\end{problem}
+    {\color{blue} \begin{proof}
+        (a) Define $\gamma_g:G \rightarrow G$ by $\gamma_g(x) = gxg^{-1}$. This is an automorphism. In particular, since $\Aut(G)$ is trivial, it must be the case that $\gamma_g = \id$. Hence for all $x,g \in G$, we have $\gamma_g(x) = \id(x)$; i.e., $gxg^{-1} = x$. Thus $gx = xg$, hence $G$ is abelian.
+
+        (b) For any $h_1,h_2 \in H$, we have:
+            \begin{equation*}
+            \begin{split}
+                \phi(h_1 h_2) 
+                & = (h_1 h_2)^{-1} \\
+                & = h_2^{-1} h_1^{-1} \\
+                & = h_1^{-1} h_2^{-1} \\
+                & = \phi(h_1) \phi(h_2).
+            \end{split}
+            \end{equation*}
+        Hence $\phi$ is a homomorphism. Moreover, note that $\phi$ is its own inverse since $\phi(\phi(h)) = (h^{-1})^{-1} = h$. Hence $\phi$ is a bijection. Therefore $\phi$ is an automorphism.
+
+        (c) By part (b) we have $\phi \in \Aut(G)$. Hence $\phi(g) = \id(g)$ for all $g \in G$. This means $g^{-1} = g$; i.e., $e_G = g^2$.
+    \end{proof}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}
+    
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

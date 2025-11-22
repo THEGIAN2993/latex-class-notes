@@ -1,0 +1,256 @@
+\documentclass[10pt,twoside,openany]{memoir}
+%\usepackage{mlmodern}
+%\usepackage{tgpagella} % text only
+%\usepackage{mathpazo}  % math & text
+\usepackage[T1]{fontenc}
+\usepackage[hidelinks]{hyperref}
+\usepackage{amsmath}
+\usepackage[fixamsmath]{mathtools}  % Extension to amsmath
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+\usepackage{newpxtext}
+\usepackage{eulerpx}
+\usepackage{eucal}
+\usepackage{datetime}
+    \newdateformat{specialdate}{\THEYEAR\ \monthname\ \THEDAY}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \renewcommand{\headrulewidth}{0pt}
+    \cfoot{\scriptsize \thepage}
+\usepackage{thmtools}
+    \declaretheoremstyle[
+        spaceabove=10pt,
+        spacebelow=10pt,
+        headfont=\normalfont\bfseries,
+        notefont=\mdseries, notebraces={(}{)},
+        bodyfont=\normalfont,
+        postheadspace=0.5em
+        %qed=\qedsymbol
+        ]{defs}
+
+    \declaretheoremstyle[ 
+        spaceabove=10pt, % space above the theorem
+        spacebelow=10pt,
+        headfont=\normalfont\bfseries,
+        bodyfont=\normalfont\itshape,
+        postheadspace=0.5em
+        ]{thmstyle}
+    
+    \declaretheorem[
+        style=thmstyle,
+        numberwithin=section
+    ]{theorem}
+
+    \declaretheorem[
+        style=thmstyle,
+        sibling=theorem,
+    ]{proposition}
+
+    \declaretheorem[
+        style=thmstyle,
+        sibling=theorem,
+    ]{lemma}
+
+    \declaretheorem[
+        style=thmstyle,
+        sibling=theorem,
+    ]{corollary}
+
+    \declaretheorem[
+        numberwithin=section,
+        style=defs,
+    ]{example}
+
+    \declaretheorem[
+        numberwithin=section,
+        style=defs,
+    ]{definition}
+
+    \declaretheorem[
+        style=defs,
+        sibling=theorem,
+        numberwithin=section,
+    ]{exercise}
+
+    \declaretheorem[
+        style=thmstyle
+        numbered=unless unique
+    ]{axiom}
+
+    \declaretheorem[numbered=unless unique, style=defs]{problem}
+    \declaretheorem[numberwithin=section,style=defs]{note}
+    \declaretheorem[numbered=no,style=defs]{question}
+    \declaretheorem[numbered=no,style=defs]{recall}
+    \declaretheorem[numbered=no,style=remark]{answer}
+    \declaretheorem[numbered=no,style=remark]{solution}
+    \declaretheorem[numbered=no,style=defs]{remark}
+\usepackage{enumitem}
+\usepackage[utf8x]{inputenc}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning,arrows.meta}
+\linespread{1.00}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
+
+\begin{document}
+\begin{center}
+    {\Large Math 548 \\[0.1in]Portfolio Assignment 4}\\[.175in]
+    {Name:} {\underline{Gianluca Crescenzo\hspace*{2in}}}\\[0.15in]
+    \end{center}
+    \vspace{4pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}[F24, P1]
+Let $G$ be a group, and $G \times G$ the direct product. The set $D = \{(g,g) \mid g \in G\}$ is a subgroup of $G \times G$. Prove that if $D$ is normal in $G \times G$, then $G$ is abelian.
+\end{problem}
+    \begin{proof}
+        Since $D$ is normal in $G \times G$, for any $(a,b) \in G\times G$ and $(d,d) \in D$, we have:
+            \begin{equation*}
+            \begin{split}
+                (a,b)^{-1}(d,d)(a,b) \in D
+                & \implies (a^{-1}da,b^{-1}db) \in D \\
+                & \implies a^{-1}da = b^{-1}db
+            \end{split}
+            \end{equation*}
+        Take $d = b$. Then $a^{-1}ba = b^{-1}bb$, hence $ba = ab$ for any $a,b \in G$.
+    \end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}[W21, P3]
+    Let $H$ be a subgroup of $G$. The \textit{normalizer} of $H$ in $G$ is the set $N_G(H) = \{g \in G \mid gH = Hg\}$.
+        \begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+            \item Prove that $N_G(H)$ is a subgroup of $G$ containing $H$.
+            \item Prove $N_G(H)$ is the largest subgroup of $G$ in which $H$ is normal.
+        \end{enumerate}
+\end{problem}
+    \begin{proof}
+        (a) First, note that if $c \in N_G(H)$, then $cH = Hc$ implies that $Hc^{-1} = c^{-1}H$ \textemdash hence $c^{-1} \in N_G(H)$. Clearly $N_G(H)$ is nonempty as $eH = He$. If $a,b \in N_G(H)$, then:
+            \begin{equation*}
+            \begin{split}
+                (ab^{-1})H
+                & = a(b^{-1}H) \\
+                & = a(Hb^{-1}) \\
+                & = (aH)b^{-1} \\
+                & = H(ab^{-1}).
+            \end{split}
+            \end{equation*}
+        Thus $N_G(H)$ is a subgroup of $G$. To show that $H \subseteq N_G(H)$, it suffices to prove that $hHh^{-1} = H$. Let $h \in H$. Then $h = he = hhh^{-1} \in hHh^{-1}$. So $H \subseteq hHh^{-1}$. Let $hxh^{-1} \in hHh^{-1}$. Since $H$ is a subgroup of $G$, it is closed under products and inverses, hence $hxh^{-1} \in H$. So $hHh^{-1} \subseteq H$. Together, $hHh^{-1} = H$, which means $H \subseteq N_G(H)$.
+
+        (b) Suppose $K$ is another subgroup of $G$ such that $H \trianglelefteq K$. If $x \in K$, then $xH = Hx$, hence $x \in N_G(H)$. Thus $K \subseteq N_G(H)$; i.e., $N_G(H)$ is the largest subgroup of $G$ in which  $H$ is normal.
+    \end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}[W23, P1]
+    Let $G$ be a finite group and $n > 1$ an integer such that $(ab)^n = a^n b^n$ for all $a,b \in G$. Let:
+        \begin{equation*}
+        \begin{split}
+            G_n := \{c \in G \mid c^n = e\}, \h9 G^n := \{c^n \mid c \in G\}.
+        \end{split}
+        \end{equation*}
+    You may take for granted that these are subgroups. Prove that both $G_n$ and $G^n$ are normal in $G$, and $|G^n| = [G:G_n]$.
+\end{problem}
+    \begin{proof}
+        Let $a \in G$ and $c \in G_n$. Observe that:
+            \begin{equation*}
+            \begin{split}
+                (aca^{-1})^n
+                & = \underbrace{(aca^{-1})(aca^{-1})...(aca^{-1})}_{n\text{ times}} \\
+                & = ac^n a^{-1} \\
+                & = aa^{-1} \h9\h9\text{\tiny Since $c \in G_n$}\\
+                & = e.
+            \end{split}
+            \end{equation*}
+        Thus $G_n \trianglelefteq G$. Now let $b \in G$ and $d^n \in G^n$. Then:
+            \begin{equation*}
+            \begin{split}
+                bd^nb^{-1}
+                & = b\cdot \underbrace{d...d}_{n \text{ times}}\cdot b^{-1} \\
+                & = \underbrace{(bdb^{-1})...(bdb^{-1})}_{n \text{ times}} \\
+                & = (bdb^{-1})^n.
+            \end{split}
+            \end{equation*}
+        Since $bdb^{-1} \in G$, we have $G^n \trianglelefteq G$.
+
+        Define $\varphi:G \rightarrow G^n$ by $\varphi(g) = g^n$. Then $\varphi$ is a homomorphism since for any $a,b \in G$:
+            \begin{equation*}
+            \begin{split}
+                \varphi(ab)
+                & = (ab)^n \\
+                & = a^n b^n \\
+                & = \varphi(a)\varphi(b).
+            \end{split}
+            \end{equation*}
+        Moreover, $\varphi$ is surjective since given any $g \in G^n$, we have $g = h^n$ for some $h \in G$ \textemdash whence $\varphi(h) = h^n = g$. Finally:
+            \begin{equation*}
+            \begin{split}
+                \ker \varphi 
+                & = \{g \in G \mid \varphi(g) = e\} \\
+                & = \{g \in G \mid g^n = e \} \\
+                & = G_n.
+            \end{split}
+            \end{equation*}
+        By the First Isomorphism Theorem, $G/G_n \cong G^n$. Thus $[G:G_n] = |G^n|$.
+    \end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}[F19, P4]
+    Suppose $G$ is a group, $H$ and $K$ are normal subgroups of $G$, and $H \leq K$.
+    \begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+        \item Define a group homomorphism from $K$ to $G/H$.
+        \item Compute the kernel of the homomorphism in (a), and apply the First Isomorphism Theorem.
+    \end{enumerate}
+\end{problem}
+        \begin{proof}
+            (a) Define $\varphi:K \rightarrow G/H$ by $k \mapsto kH$. For any $k_1,k_2 \in K$ we have:
+                \begin{equation*}
+                \begin{split}
+                    \varphi(k_1 k_2)
+                    & = (k_1 k_2) H \\
+                    & = k_1H k_2H \\
+                    & = \varphi(k_1)\varphi(k_2).
+                \end{split}
+                \end{equation*}
+            Thus $\varphi$ is a group homomorphism.
+
+            (b) We have: 
+                \begin{equation*}
+                \begin{split}
+                    \ker \varphi 
+                    & = \{k \in K \mid \varphi(k) = eH \} \\
+                    & = \{k \in K \mid kH = eH\} \\
+                    & = \{k \in K \mid k \in H\} \\
+                    & = H. 
+                \end{split}
+                \end{equation*}
+            By the First Isomorphism Theorem, $K/H \cong \Image \varphi = \{kH \mid k \in K\} = K/H$.
+        \end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}
+    Let $G$ be a finite group and $H,K \trianglelefteq G$ be normal subgroups of relatively prime order. Prove that $G$ is isomorphic to a subgroup of $G/H \times G/K$.
+\end{problem}
+    \begin{proof}
+        Define $\varphi:G \rightarrow G/H \times G/K$ by $g \mapsto (gH,gK)$. Then $\varphi$ is a homomorphism since for any $a,b \in G$:
+            \begin{equation*}
+            \begin{split}
+                \varphi(ab)
+                & = (abH,abK) \\
+                & = (aHbH,aKbK) \\
+                & = (aH,aK)(bH,bK) \\
+                & = \varphi(a)\varphi(b).
+            \end{split}
+            \end{equation*}
+        Observe that:
+            \begin{equation*}
+            \begin{split}
+                \ker \varphi 
+                & = \{g \in G \mid \varphi(g) = (eH,eK)\} \\
+                & = \{g \in G \mid (gH,gK) = (eH,eK)\} \\
+                & = \{g \in G \mid g \in H \cap K\}.
+            \end{split}
+            \end{equation*}
+        Since $H \cap K$ is a subgroup of $H$ and a subgroup of $K$, we must have $\ord(H \cap K) \mid \ord(H)$ and $\ord(H \cap K) \mid \ord(K)$. Thus $\ord(H \cap K) \mid \gcd(\ord(H),\ord(K))$. But since the order of $H$ and $K$ are relatively prime, this means $\ord(H \cap K) \mid 1$. It must be the case that $\ord(H \cap K) = 1$; i.e, $H \cap K$ is the trivial group. Hence $\ker \varphi = \{e\}$. By the First Isomorphism Theorem, $G$ is isomorphic to $\Image\varphi$, which is a subgroup of $G/H \times G/K$.
+    \end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
