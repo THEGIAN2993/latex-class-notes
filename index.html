@@ -1,36 +1,60 @@
 <!doctype html>
 <meta charset="utf-8">
-<title>math notes</title>
+<title>math notes &#x263E; &#x22C6;*&#xFF65;&#xFF9F;:&#x22C6;*&#xFF65;&#xFF9F; </title>
 
 <body>
-<p>math notes</p>
+<p>math notes &#x263E; &#x22C6;*&#xFF65;&#xFF9F;:&#x22C6;*&#xFF65;&#xFF9F;</p>
 
 <p>Fall 2024 Semester</p>
 <ul>
-  <li><a href="Fall 2024/Real Analysis/310 Notes/_main.pdf" target="_blank">Real Analysis I (Part I)</a></li>
-  <li><a href="Fall 2024/Real Analysis/310 Notes II/_main.pdf" target="_blank">Real Analysis I (Part II)</a></li>
-  <li><a href="Fall 2024/Advanced Linear Algebra/395 Notes/_main.pdf" target="_blank">Advanced Linear Algebra </a></li>
+    <li><a href="Fall 2024/Real Analysis/310 Notes/_main.pdf" target="_blank">Real Analysis I (Part I)</a></li>
+    <li><a href="Fall 2024/Real Analysis/310 Notes II/_main.pdf" target="_blank">Real Analysis I (Part II)</a></li>
+    <li><a href="Fall 2024/Advanced Linear Algebra/395 Notes/_main.pdf" target="_blank">Advanced Linear Algebra </a></li>
 </ul>
 
 <p>Spring 2025 Semester</p>
 <ul>
-  <li><a href="Spring 2025/Real Analysis II/397 Notes/_main.pdf" target="_blank">Real Analysis II</a></li>
-  <li><a href="Summer 2025/Sequences and Series of Functions/main.pdf" target="_blank">Sequences &amp; Series of Functions — Summer</a></li>
-  <li><a href="Summer 2025/Darboux Integral Notes/main.pdf" target="_blank">Darboux Integral — Summer</a></li>
-  <li><a href="Fall 2025/550 Measure Theory/Notes/_main.pdf" target="_blank">Measure Theory — Fall</a></li>
+    <li><a href="Spring 2025/Real Analysis II/397 Notes/_main.pdf" target="_blank">Real Analysis II</a></li>
 </ul>
 </body>
 
 <p>Summer 2025</p>
 <ul>
-  <li><a href="Summer 2025/Sequences and Series of Functions/main.pdf" target="_blank">Sequences &amp; Series of Functions</a></li>
-  <li><a href="Summer 2025/Darboux Integral Notes/main.pdf" target="_blank">Darboux Integral</a></li>
-  <li><a href="Fall 2025/550 Measure Theory/Notes/_main.pdf" target="_blank">Measure Theory — Fall</a></li>
+    <li><a href="Summer 2025/Darboux Integral Notes/main.pdf" target="_blank">Darboux Integral Notes</a></li>
 </ul>
 </body>
 
 <p>Fall 2025 Quarter</p>
 <ul>
-  <li><a href="Fall 2025/550 Measure Theory/Notes/_main.pdf" target="_blank">Measure Theory</a></li>
+    <li><a href="Fall 2025/550 Measure Theory/Notes/_main.pdf" target="_blank">Measure Theory</a></li>
+    <li><a id="tgmps-link" href="#">Transition to Graduate Math Problem Sets</a></li>
+
+    <script>
+    // Update these to your 7 real PDFs
+    const problemSets = [
+        { label: "Problem Set 1", path: "Fall 2025/548 Transition to Grad Math/Portfolio Assignment 1/main.pdf" },
+        { label: "Problem Set 2", path: "Fall 2025/548 Transition to Grad Math/Portfolio Assignment 2/main.pdf" },
+        { label: "Problem Set 3", path: "Fall 2025/548 Transition to Grad Math/Portfolio Assignment 3/main.pdf" },
+        { label: "Problem Set 4", path: "Fall 2025/548 Transition to Grad Math/Portfolio Assignment 4/main.pdf" },
+        { label: "Problem Set 6", path: "Fall 2025/548 Transition to Grad Math/Portfolio Assignment 6/main.pdf" },
+        { label: "Problem Set 7", path: "Fall 2025/548 Transition to Grad Math/Portfolio Assignment 7/main.pdf" },
+        { label: "Problem Set 8", path: "Fall 2025/548 Transition to Grad Math/Portfolio Assignment 8/main.pdf" },
+    ];
+
+    document.getElementById("tgmps-link").addEventListener("click", function (e) {
+        e.preventDefault();
+        const menu = problemSets.map((ps, i) => `${i + 1}. ${ps.label}`).join("\n");
+        const choice = prompt(`Choose a problem set (1-${problemSets.length}):\n\n${menu}`);
+        const idx = parseInt(choice, 10) - 1;
+        if (!isNaN(idx) && problemSets[idx]) {
+        window.open(problemSets[idx].path, "_blank", "noopener");
+        }
+    });
+    </script>
+
+
+
+
+
 </ul>
 </body>
