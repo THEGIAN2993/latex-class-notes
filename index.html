@@ -41,20 +41,34 @@
         { label: "Problem Set 8", path: "Fall 2025/548 Transition to Grad Math/Portfolio Assignment 8/main.pdf" },
     ];
 
-    // simple styling (optional)
+    // minimal styling
     const style = document.createElement("style");
     style.textContent = `
-        #tgmps-menu { margin:.5rem 0 0 0; padding:0; list-style:none; display:none; }
+        #tgmps-link { cursor: pointer; }
+        /* boxed container */
+        #tgmps-container { 
+        display: none; 
+        border: 1px solid #ddd; 
+        border-radius: 8px; 
+        padding: 0.75rem; 
+        margin: 0.5rem 0 0 0; 
+        background: #fff;
+        }
+        /* indent the list inside the box */
+        #tgmps-menu { 
+        margin: 0; 
+        padding-left: 1.25rem; /* indentation */
+        list-style: none;      /* keep it clean; add bullets if you want */
+        }
         #tgmps-menu li { margin: .25rem 0; }
         #tgmps-menu a { text-decoration: none; }
         #tgmps-menu a:hover, #tgmps-menu a:focus { text-decoration: underline; }
-        #tgmps-link { cursor: pointer; }
     `;
     document.head.appendChild(style);
 
     const link = document.getElementById("tgmps-link");
 
-    // build the inline menu once
+    // build menu list
     const menu = document.createElement("ul");
     menu.id = "tgmps-menu";
     problemSets.forEach(ps => {
@@ -68,28 +82,30 @@
         menu.appendChild(li);
     });
 
-    // insert menu right after the link
-    link.insertAdjacentElement("afterend", menu);
+    // wrap list in a box container
+    const container = document.createElement("div");
+    container.id = "tgmps-container";
+    container.appendChild(menu);
+
+    // insert right after the link
+    link.insertAdjacentElement("afterend", container);
 
     // toggle visibility on click/Enter/Space
-    function toggleMenu(e) {
+    function toggleBox(e) {
         e.preventDefault();
-        menu.style.display = (menu.style.display === "none" || !menu.style.display) ? "block" : "none";
+        const isHidden = container.style.display === "none" || !container.style.display;
+        container.style.display = isHidden ? "block" : "none";
+        link.setAttribute("aria-expanded", isHidden ? "true" : "false");
     }
 
     link.setAttribute("role", "button");
     link.setAttribute("aria-expanded", "false");
-    link.addEventListener("click", (e) => {
-        toggleMenu(e);
-        link.setAttribute("aria-expanded", menu.style.display === "block" ? "true" : "false");
-    });
+    link.addEventListener("click", toggleBox);
     link.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-        toggleMenu(e);
-        link.setAttribute("aria-expanded", menu.style.display === "block" ? "true" : "false");
-        }
+        if (e.key === "Enter" || e.key === " ") toggleBox(e);
     });
     </script>
+
 
 
 </ul>
