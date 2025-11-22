@@ -30,7 +30,7 @@
     <li><a id="tgmps-link" href="#">Transition to Graduate Math Problem Sets</a></li>
 
     <script>
-    // Update these to your 7 real PDFs
+    // Your 7 PDFs
     const problemSets = [
         { label: "Problem Set 1", path: "Fall 2025/548 Transition to Grad Math/Portfolio Assignment 1/main.pdf" },
         { label: "Problem Set 2", path: "Fall 2025/548 Transition to Grad Math/Portfolio Assignment 2/main.pdf" },
@@ -41,19 +41,55 @@
         { label: "Problem Set 8", path: "Fall 2025/548 Transition to Grad Math/Portfolio Assignment 8/main.pdf" },
     ];
 
-    document.getElementById("tgmps-link").addEventListener("click", function (e) {
+    // simple styling (optional)
+    const style = document.createElement("style");
+    style.textContent = `
+        #tgmps-menu { margin:.5rem 0 0 0; padding:0; list-style:none; display:none; }
+        #tgmps-menu li { margin: .25rem 0; }
+        #tgmps-menu a { text-decoration: none; }
+        #tgmps-menu a:hover, #tgmps-menu a:focus { text-decoration: underline; }
+        #tgmps-link { cursor: pointer; }
+    `;
+    document.head.appendChild(style);
+
+    const link = document.getElementById("tgmps-link");
+
+    // build the inline menu once
+    const menu = document.createElement("ul");
+    menu.id = "tgmps-menu";
+    problemSets.forEach(ps => {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.textContent = ps.label;
+        a.href = ps.path;
+        a.target = "_blank";
+        a.rel = "noopener";
+        li.appendChild(a);
+        menu.appendChild(li);
+    });
+
+    // insert menu right after the link
+    link.insertAdjacentElement("afterend", menu);
+
+    // toggle visibility on click/Enter/Space
+    function toggleMenu(e) {
         e.preventDefault();
-        const menu = problemSets.map((ps, i) => `${i + 1}. ${ps.label}`).join("\n");
-        const choice = prompt(`Choose a problem set (1-${problemSets.length}):\n\n${menu}`);
-        const idx = parseInt(choice, 10) - 1;
-        if (!isNaN(idx) && problemSets[idx]) {
-        window.open(problemSets[idx].path, "_blank", "noopener");
+        menu.style.display = (menu.style.display === "none" || !menu.style.display) ? "block" : "none";
+    }
+
+    link.setAttribute("role", "button");
+    link.setAttribute("aria-expanded", "false");
+    link.addEventListener("click", (e) => {
+        toggleMenu(e);
+        link.setAttribute("aria-expanded", menu.style.display === "block" ? "true" : "false");
+    });
+    link.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+        toggleMenu(e);
+        link.setAttribute("aria-expanded", menu.style.display === "block" ? "true" : "false");
         }
     });
     </script>
-
-
-
 
 
 </ul>
