@@ -1,4 +1,4 @@
-\documentclass[11pt,twoside,openany]{memoir}
+\documentclass[10pt,oneside,openany]{memoir}
 %\usepackage{mlmodern}
 %\usepackage{tgpagella} % text only
 %\usepackage{mathpazo}  % math & text
@@ -14,7 +14,7 @@
 \usepackage{eucal}
 \usepackage{datetime}
     \newdateformat{specialdate}{\THEYEAR\ \monthname\ \THEDAY}
-\usepackage[margin=1in]{geometry}
+\usepackage[margin=1.5in]{geometry}
 \usepackage{fancyhdr}
     \fancyhf{}
     \pagestyle{fancy}
@@ -24,39 +24,59 @@
 \usepackage{keytheorems}
     \newkeytheorem{theorem}[
     name = Theorem,
-    numberwithin = section,
+    numbered = false,
     ]
     \newkeytheorem{proposition}[
     name = Proposition,
-    numberwithin = section,
+    numbered = false,
     sibling=theorem
     ]
     \newkeytheorem{lemma}[
     name = Lemma,
-    numberwithin = section,
+    numbered = false,
     sibling=theorem
     ]
     \newkeytheorem{corollary}[
     name = Corollary,
-    numberwithin = section,
+    numbered = false,
     sibling=theorem
     ]
     \newkeytheorem{definition}[
     name = Definition,
-    numberwithin = section
+    numbered = false
+    ]
+    \newkeytheorem{question}[
+    name = Question,
+    numbered = false
     ]
     \newkeytheorem{example}[
     name = Example,
-    numberwithin = section
+    numbered = false
     ]
     \newkeytheorem{remark}[
     name=Remark,
     style=remark, 
     numbered=false  
     ]
+    \newkeytheorem{remarks}[
+    name=Remarks,
+    style=remark, 
+    numbered=false  
+    ]
+    \newkeytheorem{answer}[
+    name=Answer,
+    style=remark, 
+    numbered=false  
+    ]
+    \newkeytheorem{sproof}[
+    name=Sketch of Proof,
+    style=remark, 
+    qed=$\blacksquare$,
+    numbered=false  
+    ]
     \newkeytheorem{exercise}[
     name = Exercise,
-    numberwithin = section
+    numbered = false
     ]
     \newkeytheorem{axiom}[name = Axiom]
 \usepackage{enumitem}
@@ -89,40 +109,121 @@
 \usepgfplotslibrary{fillbetween}
 \pgfplotsset{compat=1.18}
 \linespread{1.00}
+\usepackage{marginnote}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
 \begin{document}
-%This adds a "front cover" page.
-%{\thispagestyle{empty}
-%\vspace*{\fill}
-%\begin{tabular}{l}
-%\begin{tabular}{l}
-%\includegraphics[scale=0.24]{oxy-logo.png}
-%\end{tabular} \\
-%\begin{tabular}{l}
-%\Large \color{black} Module Theory, Linear Algebra, and Homological Algebra \\ \Large \color{black} Gianluca Crescenzo
-%\end{tabular}
-%\end{tabular}
-%\newpage
 
 \begin{abstract}
     Blah blah blah
 \end{abstract}
 
-\begin{lemma}
-    
-\end{lemma}
-
 \begin{definition}
-    The \textui{completion} of a metric space $(X,d)$ consists of:
+    A \textui{completion} of a metric space $(X,d)$ consists of:
         \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
             \item A complete metric space $(Z,\rho)$;
-            \item An isometry $\iota:X \hookrightarrow Z$;
-            \item The image of $X$ is dense in $Z$; i.e., $\overline{\iota(X)}^\rho = Z$.
+            \item An isometry $\iota:X \hookrightarrow Z$ such that $\overline{\iota(X)}^\rho = Z$.
         \end{enumerate}
+    We denote the completion of $(X,d)$ by the ordered triple $(Z,\rho,\iota)$.
 \end{definition}
 
+\begin{lemma}
+    If $(X,d)$ is a metric space, $(Y,\rho)$ is a complete metric space, and $\iota:X \rightarrow Y$ is an isometry, then $(\overline{\iota(X)}^\rho, \rho, \iota)$ is a completion of $(X,d)$.
+\end{lemma}
+
+\begin{theorem}
+    Every metric space admits a unique completion up to isometric isomorphism.
+\end{theorem}
+    \begin{sproof}
+        We will first show uniqueness, then existence. \nl
+        
+        \noindent Let $(Y,\rho,\iota)$ and $(Z,\sigma,\jota)$ be completions of $(X,d)$. \nl
+        
+        \noindent Let $y \in Y$. Since $\iota(X)$ is dense in $Y$, there exists a sequence $\{\iota(x_n)\}_n \subset \iota(X)$ such that $\iota(x_n) \rightarrow y$. \nl
+        
+        \noindent Since the sequence $\left\{ \iota(x_n) \right\}_n$ is convergent, it is $\rho$-Cauchy. \nl
+        
+        \noindent Since $\rho$ and $\sigma$ are isometries, we have:
+            \begin{equation*}
+            \begin{split}
+                \sigma(\jota(x_n),\jota(x_m)) = d(x_n,x_m) = \rho(\iota(x_n),\iota(x_m)).
+            \end{split}
+            \end{equation*}
+            
+        \noindent Hence if $\left\{ \iota(x_n) \right\}_n$ is $\rho$-Cauchy, then $\left\{ \jota(x_n) \right\}_n$ is $\sigma$-Cauchy. \nl
+        
+        \noindent Since $(Z,\sigma,\jota)$ is complete, $\left\{ \jota(x_n) \right\}_n$ is convergent. \nl
+        
+        \noindent Define $\varphi:Y \rightarrow Z$ by $\varphi(y) = \lim_{n \rightarrow \infty} \jota(x_n)$. We have the following diagram:
+            \begin{center}
+            \begin{tikzcd}
+            X \arrow[r, "\iota"] \arrow[rd, "\jota"] & Y \arrow[d, "\varphi", dotted] \\
+                                         & Z                             
+            \end{tikzcd}
+            \end{center}
+        \noindent To show uniqueness, show that $\varphi$ is well-defined, an isometry, and bijective. \nl
+        
+        \noindent To show existence: Fix an $x_0 \in X$ and let $x \in X$ be arbitrary. Define $f_x:X \rightarrow \bfR$ by $f_x(t) = d(t,x) - d(t,x_0)$.\marginpar{\tiny This is called a Kuratowski embedding. Note that $\iota$ is not linear, hence if $X$ was a normed vector space then its image in $C_b(X)$ would not necessarily be a vector space.} Show that $f_x \in C_b(X)$ and that $\iota:X \rightarrow C_b(X)$ given by $x \mapsto f_x$ is an isometry.
+    \end{sproof}
+
+\begin{question}
+Is the completion of a normed vector space also a vector space?
+\end{question}
+\begin{answer}
+Yes! Though if we use a Kuratowski embedding on a normed vector space $V$, since $\iota$ is not linear the image of $V$ may not necessarily be a vector space. We need to find a natural linear isometry into a Banach space.
+\end{answer}
+
+\begin{definition}
+    Let $(V,\lnorm \cdot \rnorm)$ and $(W,\lnorm \cdot\rnorm)$ be normed vector spaces.
+    \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+        \item The \textui{operator norm} of $T \in \Hom(V,W)$ is $\lnorm T \rnorm_{\op} := \sup\{\lnorm T(v) \rnorm \mid v \in V, \h1\lnorm v \rnorm \leq 1\}$.
+        \item $T \in \Hom(V,W)$ is called \textui{bounded} if $\lnorm T \rnorm_{\op} < \infty$. The set of all bounded linear maps from $V$ to $W$ is $\bfB(V,W) := \{T \in \Hom(V,W) \mid \lnorm T \rnorm_{\op} < \infty\}$.
+        \item The \textui{continuous dual} of $V$ is $V^\ast:= \bfB(V,\bfF)$.
+    \end{enumerate}
+\end{definition}
+
+\begin{remarks}
+\phantom{a}
+\begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+    \item A linear map is continuous if and only if it is bounded. 
+    \item $(\bfB(V,W), \lnorm \cdot\rnorm_{\op})$ is a Banach space.
+    \item Is $V^\ast$ nonempty?
+\end{enumerate}
+\end{remarks}
+
+\begin{theorem}[Hahn-Banach]
+    Let $X$ be an $\bfR$-vector space, $M$ a subspace of $X$, and $p:X \rightarrow \bfR$ a seminorm on $X$. If $f:M \rightarrow \bfR$ is a linear functional on $M$ such that $|f(m)| \leq p(m)$ for all $m \in M$, then there exists a linear functional $F:X \rightarrow \bfR$ such that $\restr{F}{M} = f$ and $|F(x)| \leq p(x)$ for all $x \in X$. \marginpar{\tiny The assumption that $|f(m)| \leq p(m)$ implies $f$ is bounded. The claim that $|F(x)| \leq p(x)$ implies $F$ is bounded.}
+\end{theorem}
+
+\begin{corollary}
+    Let $(V,\lnorm \cdot \rnorm)$ be a normed vector space. For any nonzero $v \in V$, there exists $F \in V^\ast$ such that $\lnorm F \rnorm_{\op} = 1$ and $F(v) = \lnorm v \rnorm$.
+\end{corollary}
+    \begin{sproof}
+        Fix $v \in V$. Define $M := \{\alpha v \mid \alpha \in \bfR\}$. This is a subspace of $V$.\nl
+        
+        \noindent Define $f:M \rightarrow \bfR$ by $f(\alpha v) := \alpha \lnorm v \rnorm$. This map is linear. \nl
+        
+        \noindent Note that $|f(\alpha v)| = |\alpha| \lnorm v \rnorm = \lnorm \alpha v \rnorm$. Since every norm is a seminorm, the hypothesis of the Hahn-Banach theorem is satisfied.   \nl
+         
+        \noindent Observe that:
+            \begin{equation*}
+            \begin{split}
+                \lnorm f \rnorm_{\op}
+                & = \sup \Bigl\{\h2|f(\alpha v)| \h2\Big|\h3 \alpha v \in M, \h1 \lnorm \alpha v \rnorm \leq 1\Bigr\} \\
+                & = \sup \Bigl\{\h2\lnorm \alpha v \rnorm \h2\Big|\h3 \alpha v \in M, \h1 \lnorm \alpha v \rnorm \leq 1\Bigr\} \\
+                & = 1.
+            \end{split}
+            \end{equation*}
+
+        \noindent Take $\alpha = 1$, then $f(v) = \lnorm v \rnorm$. \nl
+        
+        \noindent By the Hahn-Banach Theorem, $f$ extends to a linear functional $F \in V^\ast$. \qedhere
+    \end{sproof}
+
+\begin{corollary}
+    Let $(V,\lnorm \cdot \rnorm)$ be a normed vector space. 
+\end{corollary}
 
 
 \end{document}

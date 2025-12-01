@@ -27,13 +27,13 @@
     \end{enumerate}
 \end{definition}
 
-\begin{proposition}
+\begin{proposition}\label{prop:properties-of-signed-measures}
     \phantom{a}
     \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
         \item If $\{E_n\}_{n=1}^\infty \subset \cM$ such that $E_1 \subset E_2 \subset E_3 \subset ...$, then $\nu \left( \bigcup_{n = 1}^\infty E_n \right) = \lim_{n \rightarrow \infty}\nu(E_n)$.
         \item If $\{E_n\}_{n=1}^\infty \subset \cM$ such that $E_1 \supset E_2 \supset E_3 \supset ...$, then $\nu \left( \bigcap_{n = 1}^\infty E_n \right) = \lim_{n \rightarrow \infty}\nu(E_n)$.
         \item Any measurable subset of a positive (resp. negative, null) set is positive (resp. negative, null).
-        \item The union of countably many positive (resp. negative, null) sets is positive (resp. negative, null).
+        \item The countable union of positive (resp. negative, null) sets is positive (resp. negative, null).
         \item If $E \in \cM$ is positive (resp. negative, null) and $F \subset E$, then $\nu(F) \leq \nu(E)$ (resp. $\nu(F) \geq \nu(E)$, $\nu(F) = 0$).
     \end{enumerate}
 \end{proposition}
@@ -50,14 +50,16 @@
         Without loss of generality, suppose that $\nu$ does not take the value $+\infty$. Define:
             \begin{equation*}
             \begin{split}
-                m:= \sup \{\nu(P) \mid P \in \cM, \text{ $P$ is positive}\}.
+                m:= \sup \{\nu(E) \mid E \in \cM, \text{ $E$ is positive}\}.
             \end{split}
             \end{equation*}
-        Find a sequence of positive sets $\{P_n\}_{n = 1}^\infty$ such that $\nu(P_n) \rightarrow m$. Define $P := \bigcup_{n = 1}^\infty P_n$. Then $P$ is positive by Proposition~\ref{}. Since $\nu(P_n) \leq \nu(P) \leq m$, by the squeeze theorem $\nu(P) = m$; i.e., $m < \infty$. Claim: The set $N:=X \setminus P$ is negative. 
+        Find a sequence of positive sets $\{E_n\}_{n = 1}^\infty$ such that $\nu(E_n) \rightarrow m$. Define $P := \bigcup_{n = 1}^\infty E_n$. Then $P$ is positive by (4) of Proposition~\ref{prop:properties-of-signed-measures}. Part (5) of Proposition~\ref{prop:properties-of-signed-measures} also gives $\nu(E_n) \leq \nu(P) \leq m$, hence by the squeeze theorem $\nu(P) = m$. Since $\nu$ does not take on the value $+\infty$, it must be the case that $m <+\infty$. Claim: The set $N:=X \setminus P$ is negative. 
         
         First, note that $N$ cannot contain a positive set of positive measure. Indeed, if $P' \subset N$ where $P'$ is positive and $\nu(P') > 0$, then $P \cup P'$ is positive and $\nu(P \cup P') = \nu(P) + \nu(P') > m$, which is a contradiction. 
         
         Second, if there exists a set $A \in \cM$ such that $A \subset N$ and $\nu(A) > 0$, then there exists another subset $B \subset N$ such that $\nu(B) > \nu(A)$. Indeed, we have just shown that $A$ cannot be positive, hence there exists a subset $C \subset A$ such that $\nu(C) < 0$. Therefore, $\nu(A \setminus C) = \nu(A) - \nu(C) > \nu(A)$.
+
+        Now suppose towards contradiction $N$ is not negative. Then by definition there exists a set $A_1 \in \cM$ such that $A_1 \subset N$ and $\nu(A_1) > 0$. Find the smallest such $n_1 \in \bfN$ so that $\nu(A_1) > \frac{1}{n_1}$. By 
     \end{proof}
 
 

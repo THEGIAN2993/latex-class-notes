@@ -1,9 +1,9 @@
 <!doctype html>
 <meta charset="utf-8">
-<title>math notes &#x263E; &#x22C6;*&#xFF65;&#xFF9F;:&#x22C6;*&#xFF65;&#xFF9F; </title>
+<title>math notes</title>
 
 <body>
-<p>math notes &#x263E; &#x22C6;*&#xFF65;&#xFF9F;:&#x22C6;*&#xFF65;&#xFF9F;</p>
+<p>math notes</p>
 
 <p>Fall 2024 Semester</p>
 <ul>
@@ -28,85 +28,82 @@
 <ul>
     <li><a href="Fall 2025/550 Measure Theory/Notes/_main.pdf" target="_blank">Measure Theory</a></li>
     <li><a id="tgmps-link" href="#">Transition to Graduate Math Problem Sets</a></li>
+        <script>
+        // Your 7 PDFs
+        const problemSets = [
+            { label: "Problem Set 1", path: "Fall 2025/548 Transition to Grad Math/Portfolio Assignment 1/main.pdf" },
+            { label: "Problem Set 2", path: "Fall 2025/548 Transition to Grad Math/Portfolio Assignment 2/main.pdf" },
+            { label: "Problem Set 3", path: "Fall 2025/548 Transition to Grad Math/Portfolio Assignment 3/main.pdf" },
+            { label: "Problem Set 4", path: "Fall 2025/548 Transition to Grad Math/Portfolio Assignment 4/main.pdf" },
+            { label: "Problem Set 6", path: "Fall 2025/548 Transition to Grad Math/Portfolio Assignment 6/main.pdf" },
+            { label: "Problem Set 7", path: "Fall 2025/548 Transition to Grad Math/Portfolio Assignment 7/main.pdf" },
+            { label: "Problem Set 8", path: "Fall 2025/548 Transition to Grad Math/Portfolio Assignment 8/main.pdf" },
+        ];
 
-    <script>
-    // Your 7 PDFs
-    const problemSets = [
-        { label: "Problem Set 1", path: "Fall 2025/548 Transition to Grad Math/Portfolio Assignment 1/main.pdf" },
-        { label: "Problem Set 2", path: "Fall 2025/548 Transition to Grad Math/Portfolio Assignment 2/main.pdf" },
-        { label: "Problem Set 3", path: "Fall 2025/548 Transition to Grad Math/Portfolio Assignment 3/main.pdf" },
-        { label: "Problem Set 4", path: "Fall 2025/548 Transition to Grad Math/Portfolio Assignment 4/main.pdf" },
-        { label: "Problem Set 6", path: "Fall 2025/548 Transition to Grad Math/Portfolio Assignment 6/main.pdf" },
-        { label: "Problem Set 7", path: "Fall 2025/548 Transition to Grad Math/Portfolio Assignment 7/main.pdf" },
-        { label: "Problem Set 8", path: "Fall 2025/548 Transition to Grad Math/Portfolio Assignment 8/main.pdf" },
-    ];
+        // minimal styling
+        const style = document.createElement("style");
+        style.textContent = `
+            #tgmps-link { cursor: pointer; }
+            /* boxed container */
+            #tgmps-container { 
+            display: none; 
+            border: 1px solid #ddd; 
+            border-radius: 8px; 
+            padding: 0.75rem; 
+            margin: 0.5rem 0 0 0; 
+            background: #fff;
+            }
+            /* indent the list inside the box */
+            #tgmps-menu { 
+            margin: 0; 
+            padding-left: 1.25rem; /* indentation */
+            list-style: none;      /* keep it clean; add bullets if you want */
+            }
+            #tgmps-menu li { margin: .25rem 0; }
+            #tgmps-menu a { text-decoration: none; }
+            #tgmps-menu a:hover, #tgmps-menu a:focus { text-decoration: underline; }
+        `;
+        document.head.appendChild(style);
 
-    // minimal styling
-    const style = document.createElement("style");
-    style.textContent = `
-        #tgmps-link { cursor: pointer; }
-        /* boxed container */
-        #tgmps-container { 
-        display: none; 
-        border: 1px solid #ddd; 
-        border-radius: 8px; 
-        padding: 0.75rem; 
-        margin: 0.5rem 0 0 0; 
-        background: #fff;
+        const link = document.getElementById("tgmps-link");
+
+        // build menu list
+        const menu = document.createElement("ul");
+        menu.id = "tgmps-menu";
+        problemSets.forEach(ps => {
+            const li = document.createElement("li");
+            const a = document.createElement("a");
+            a.textContent = ps.label;
+            a.href = ps.path;
+            a.target = "_blank";
+            a.rel = "noopener";
+            li.appendChild(a);
+            menu.appendChild(li);
+        });
+
+        // wrap list in a box container
+        const container = document.createElement("div");
+        container.id = "tgmps-container";
+        container.appendChild(menu);
+
+        // insert right after the link
+        link.insertAdjacentElement("afterend", container);
+
+        // toggle visibility on click/Enter/Space
+        function toggleBox(e) {
+            e.preventDefault();
+            const isHidden = container.style.display === "none" || !container.style.display;
+            container.style.display = isHidden ? "block" : "none";
+            link.setAttribute("aria-expanded", isHidden ? "true" : "false");
         }
-        /* indent the list inside the box */
-        #tgmps-menu { 
-        margin: 0; 
-        padding-left: 1.25rem; /* indentation */
-        list-style: none;      /* keep it clean; add bullets if you want */
-        }
-        #tgmps-menu li { margin: .25rem 0; }
-        #tgmps-menu a { text-decoration: none; }
-        #tgmps-menu a:hover, #tgmps-menu a:focus { text-decoration: underline; }
-    `;
-    document.head.appendChild(style);
 
-    const link = document.getElementById("tgmps-link");
-
-    // build menu list
-    const menu = document.createElement("ul");
-    menu.id = "tgmps-menu";
-    problemSets.forEach(ps => {
-        const li = document.createElement("li");
-        const a = document.createElement("a");
-        a.textContent = ps.label;
-        a.href = ps.path;
-        a.target = "_blank";
-        a.rel = "noopener";
-        li.appendChild(a);
-        menu.appendChild(li);
-    });
-
-    // wrap list in a box container
-    const container = document.createElement("div");
-    container.id = "tgmps-container";
-    container.appendChild(menu);
-
-    // insert right after the link
-    link.insertAdjacentElement("afterend", container);
-
-    // toggle visibility on click/Enter/Space
-    function toggleBox(e) {
-        e.preventDefault();
-        const isHidden = container.style.display === "none" || !container.style.display;
-        container.style.display = isHidden ? "block" : "none";
-        link.setAttribute("aria-expanded", isHidden ? "true" : "false");
-    }
-
-    link.setAttribute("role", "button");
-    link.setAttribute("aria-expanded", "false");
-    link.addEventListener("click", toggleBox);
-    link.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") toggleBox(e);
-    });
-    </script>
-
-
-
+        link.setAttribute("role", "button");
+        link.setAttribute("aria-expanded", "false");
+        link.addEventListener("click", toggleBox);
+        link.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") toggleBox(e);
+        });
+        </script>
+    <li><a href="Fall 2025/400 Special Topic/main.pdf" target="_blank">Special Topics Lecture</a></li>
 </ul>
 </body>
