@@ -222,8 +222,11 @@ Yes! Though if we use a Kuratowski embedding on a normed vector space $V$, since
     \end{sproof}
 
 \begin{corollary}
-    Let $(V,\lnorm \cdot \rnorm)$ be a normed vector space. 
+    Let $(V,\lnorm \cdot \rnorm)$ be a normed $\bfR$-vector space and $v \in V$. Then $\lnorm v \rnorm = \sup\{|\varphi(v)| \mid \varphi \in V^\ast, \h1 \lnorm \varphi \rnorm_{\op} \leq 1\}$.
 \end{corollary}
+    \begin{proof}
+        If $\varphi \in V^\ast$ and $\lnorm \varphi \rnorm \leq 1$, then $|\varphi(v)| \leq \lnorm \varphi \rnorm_{\op}\lnorm v \rnorm \leq \lnorm v \rnorm$. By the previous corollary, 
+    \end{proof}
 
 
 \end{document}

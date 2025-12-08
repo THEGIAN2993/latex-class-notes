@@ -1,0 +1,332 @@
+\documentclass[11pt,twoside,openany]{memoir}
+%\usepackage{mlmodern}
+%\usepackage{tgpagella} % text only
+%\usepackage{mathpazo}  % math & text
+\usepackage[T1]{fontenc}
+\usepackage[hidelinks]{hyperref}
+\usepackage{amsmath}
+\usepackage[fixamsmath]{mathtools}  % Extension to amsmath
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+\usepackage{newpxtext}
+\usepackage{eulerpx}
+\usepackage{eucal}
+\usepackage{datetime}
+    \newdateformat{specialdate}{\THEYEAR\ \monthname\ \THEDAY}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \renewcommand{\headrulewidth}{0pt}
+    \cfoot{\scriptsize \thepage}
+\usepackage{thmtools}
+    \declaretheoremstyle[
+        spaceabove=10pt,
+        spacebelow=10pt,
+        headfont=\normalfont\bfseries,
+        notefont=\mdseries, notebraces={(}{)},
+        bodyfont=\normalfont,
+        postheadspace=0.5em
+        %qed=\qedsymbol
+        ]{defs}
+
+    \declaretheoremstyle[ 
+        spaceabove=10pt, % space above the theorem
+        spacebelow=10pt,
+        headfont=\normalfont\bfseries,
+        bodyfont=\normalfont\itshape,
+        postheadspace=0.5em
+        ]{thmstyle}
+    
+    \declaretheorem[
+        style=thmstyle,
+        numberwithin=section
+    ]{theorem}
+
+    \declaretheorem[
+        style=thmstyle,
+        sibling=theorem,
+    ]{proposition}
+
+    \declaretheorem[
+        style=thmstyle,
+        sibling=theorem,
+    ]{lemma}
+
+    \declaretheorem[
+        style=thmstyle,
+        sibling=theorem,
+    ]{corollary}
+
+    \declaretheorem[
+        numberwithin=section,
+        style=defs,
+    ]{example}
+
+    \declaretheorem[
+        numberwithin=section,
+        style=defs,
+    ]{definition}
+
+    \declaretheorem[
+        style=defs,
+        sibling=theorem,
+        numberwithin=section,
+    ]{exercise}
+
+    \declaretheorem[
+        style=thmstyle
+        numbered=unless unique
+    ]{axiom}
+
+    \declaretheorem[numbered=unless unique, style=defs]{problem}
+    \declaretheorem[numberwithin=section,style=defs]{note}
+    \declaretheorem[numbered=no,style=defs]{question}
+    \declaretheorem[numbered=no,style=defs]{recall}
+    \declaretheorem[numbered=no,style=remark]{answer}
+    \declaretheorem[numbered=no,style=remark]{solution}
+    \declaretheorem[numbered=no,style=defs]{remark}
+\usepackage{enumitem}
+\usepackage[utf8x]{inputenc}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning,arrows.meta}
+\linespread{1.00}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
+
+\begin{document}
+\begin{center}
+    {\Large Math 548 \\[0.1in]Portfolio Assignment 10}\\[.175in]
+    {Name:} {\underline{Gianluca Crescenzo\hspace*{2in}}}\\[0.15in]
+    \end{center}
+    \vspace{4pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}[F20, P4]
+Let $R$ be a commutative ring with $1$. We say an element $n \in R$ is \textbf{nilpotent} if there exists a number $k \in \bfN$ such that $n^k = 0$.
+\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+    \item Show that if $n$ is nilpotent, then $1-n$ is a unit.
+    \item Give an example of a commutative ring with $1$ that has no nonzero nilpotent elements, but is not an integral domain.
+\end{enumerate}
+\end{problem}
+    {\color{blue} \begin{proof}
+        (a) Since $n$ is nilpotent, there exists $k \in \bfN$ such that $n^k = 0$. Note that $\frac{1-n^k}{1-n} = \sum_{i = 0}^{k-1}n^i$, hence $\left(\sum_{i = 0}^{k-1}n^i  \right)(1-n) = (1-n^k)=1$. Thus $1-n$ is a unit.
+
+        (b) Consider the ring $\bfZ/6\bfZ$. Note that this space is not an integral domain as $[3]_6[2]_6 = [0]_6$. Suppose $[a]_6^n = [0]_6$. Then $6 \mid a^n$. It follows that $2 \mid a^n$ and $3 \mid a^n$. Since $2$ and $3$ are prime, we have that $2 \mid a$ and $3 \mid a$. Since $2$ and $3$ are coprime, we have $6 \mid a$. Hence $[a]_6 = [0]_6$. Thus $\bfZ/6\bfZ$ has no nonzero nilpotent elements. 
+    \end{proof}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}[F20, P5]
+Let $R$ be a ring with $1$ and suppose $e \in R$ is idempotent; i.e. satisfies $e^2 = e$.
+\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+    \item Prove that $1-e$ is also idempotent.
+    \item Suppose $e\neq 0,1$. Show that $Re$ and $R(1-e)$ are proper left ideals of $R$.
+    \item Prove there is an isomorphism $R \cong Re \times R(1-e)$.
+\end{enumerate}
+\end{problem}
+    {\color{blue} \begin{proof}
+        (a) We have:
+            \begin{equation*}
+            \begin{split}
+                (1-e)^2 
+                & = 1-2e + e^2 \\
+                & = 1-2e + e \\
+                & = 1-e.
+            \end{split}
+            \end{equation*}
+        Thus $1-e$ is idempotent.
+
+        (b) Note that $Re$ and $R(1-e)$ are nonempty. Let $r_1,r_2 \in R$. We have:
+            \begin{equation*}
+            \begin{split}
+                r_1e - r_2e = (r_1 - r_2)e &\in Re, \\
+                r_1(1-e) - r_2 (1-e) = (r_1 - r_2)(1-e) &\in Re.
+            \end{split}
+            \end{equation*}
+        Let $re \in Re$, $r(1-e) \in R(1-e)$, and $s \in R$. We have:
+            \begin{equation*}
+            \begin{split}
+                s(re) = (sr)e &\in Re \\
+                s(r(1-e)) = (sr)(1-e) &\in R(1-e).
+            \end{split}
+            \end{equation*}
+        Thus $Re$ and $R(1-e)$ are proper ideals.
+
+        (c) Define $\varphi:R \rightarrow Re \times R(1-e)$ by $r \mapsto (re, r(1-e))$. Let $r,s \in R$. Observe that:
+            \begin{equation*}
+            \begin{split}
+                \varphi(rs) 
+                & = (rse,rs(1-e)) \\
+                & = (rse^2,rs(1-e)^2)\\
+                & = (re,r(1-e))(se,s(1-e))\\
+                & = \varphi(r)\varphi(s).
+            \end{split}
+            \end{equation*}
+            \begin{equation*}
+            \begin{split}
+                \varphi(r+s)
+                & = ((r+s)e,(r+s)(1-e)) \\
+                & = (re +se, r(1-e) + s(1-e)) \\
+                & = (re,r(1-e)) + (se,s(1-e)) \\
+                & = \varphi(r) + \varphi(s).
+            \end{split}
+            \end{equation*}
+        Now suppose $\varphi(r) = \varphi(s)$. Then $(re,r(1-e)) = (se,s(1-e))$, hence $re = se$. This is equivalent to $(r-s)e = 0$. But since $e \neq 0$, it must be the case that $r-s = 0$. Hence $r=s$. Thus $\varphi$ is injective.
+
+        Let $(x,y) \in Re \times R(1-e)$ be any elements. Then $x = re$ and $y = s(1-e)$ for some $r,s \in R$. We have:
+            \begin{equation*}
+            \begin{split}
+                \varphi(re + s(1-e))
+                & = \Bigl((re+s(1-e))e, (re+s(1-e))(1-e)\Bigr) \\
+                & = \Bigr( re^2 +se - se^2, re +s -e - re^2 -se -e^2\Bigl) \\
+                & = (re, s -se) \\
+                & = (re,s(1-e)).
+            \end{split}
+            \end{equation*}
+        Thus $\varphi$ is a ring isomorphism.
+    \end{proof}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}[S16, P3]
+Let $R$ be a commutative ring.
+\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+    \item Prove that the set $N$ of all nilpotent elements of $R$ is an ideal.
+    \item Prove that $R/N$ is a ring with no nonzero nilpotent elements.
+    \item Show that $N$ is contained in every prime ideal of $R$.
+\end{enumerate}
+\end{problem}
+    {\color{blue} \begin{proof}
+        (a) Note that $N$ is nonempty since $0 \in N$. Moreover, if $x \in N$, then clearly $-x \in N$ as $(-x)^n = (-1)^n x^n$. Let $r_1,r_2 \in N$. Then $r_1^n = 0$ and $r_2^k = 0$ for some $n,k \in \bfN$. Observe that:
+            \begin{equation*}
+            \begin{split}
+                (r_1 + r_2)^{n+k} 
+                & = \sum_{i = 0}^{n+k} {n+k\choose i}r_1^{n+k-i}r_2^i \\
+                & =\sum_{i = 0}^{n+k} {n+k\choose i}r_1^nr_1^kr_1^{-i}r_2^i \\
+                & = 0.
+            \end{split}
+            \end{equation*}
+        Thus $r_1+r_2 \in N$, hence $N$ is closed under addition. Now let $x \in N$ and $a \in R$. Then there exists $n \in \bfN$ such that $x^n = 0$. We can see $(ax)^n = a^n x^n = 0$, hence $ax \in N$. Thus $N$ is an ideal.
+
+        (b) Suppose $[x] \in R/N$ is nilpotent. Then there exists $k \in \bfN$ such that $[x]^k = [x^k] = [0]$. This means $x^k \in N$, so there exists $n \in \bfN$ such that $(x^k)^n = x^{kn} = 0$. But this means $x \in N$, hence $[x]=[0]$.
+
+        (c) Let $r \in N$. Then $r^n = 0$ for some $n \in \bfN$. Since every prime ideal contains 0, every prime ideal contains $r^n$. Hence every prime ideal contains $r$. Thus $N$ is contained in every prime ideal of $R$.
+    \end{proof}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}[S12, P4]
+Let $R$ be a commutative ring with $1$ and let:
+    \begin{equation*}
+    \begin{split}
+        N = \{r \in R \mid r^n = 0 \text{ for some $n$ }\}
+    \end{split}
+    \end{equation*}
+be the \textit{nilradical} of $R$ (i.e., the set of all nilpotent elements). You may assume $N$ is an ideal. Prove the following are equivalent:
+    \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+        \item Every element of $R$ is either nilpotent or a unit.
+        \item $R/N$ is a field.
+    \end{enumerate}
+\end{problem}
+    {\color{blue} \begin{proof}
+        ($\Rightarrow$) Let $[r] \in R/N$ be nonzero. Then $r$ is not nilpotent, hence $r$ must be a unit. So there exists $s \in R$ such that $rs = 1$. This means $[r][s] = [rs] = [1]$. Since every $[r]$ was arbitrary, every element of $R/N$ has a unit; i.e., $R/N$ is a field.
+
+        ($\Leftarrow$) Let $a \in R$ not be a nilpotent element. Then $[a] \in R/N$. Since $R/N$ is a field, there exists $[b] \in R/N$ such that $[a][b]=[1]$. Hence $ab - 1 \in N$. This means there exists some $n \in \bfN$ such that $(ab-1)^n = 0$. Hence $\sum_{k=0}^n {n \choose k}ab^{k}(-1)^{n-k} = 0$. We can rewrite this as:
+            \begin{equation*}
+            \begin{split}
+                (-1)^n + \sum_{k = 1}^n {n \choose k}(ab)^{k}(-1)^{n-k} = 0
+            \end{split}
+            \end{equation*} 
+        Without loss of generality, suppose that $n$ is odd (if it were even, then multiply both sides by the following equation by $-1$). Then we have:
+            \begin{equation*}
+            \begin{split}
+                1
+                &=\sum_{k = 1}^n {n \choose k}(ab)^{k}(-1)^{n-k} \\
+                & = a \sum_{k = 1}^n {n \choose k}a^{k-1}b^k (-1)^{n-k}.
+            \end{split}
+            \end{equation*} 
+        Hence $a$ is a unit.
+    \end{proof}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}[Midterm 2]
+Let $D$ be a principal ideal domain. Prove that every proper nonzero prime ideal is maximal.
+\end{problem}
+    {\color{blue} \begin{proof}
+        Let $I \subset D$ be a proper nonzero prime ideal. Then $I = (p)$ for some prime $p$. Suppose there is an ideal $(m) \subseteq D$ such that $(p) \subseteq (m)$. Then $p = sm$ for some $s \in \bfZ$. Since $(p)$ is prime and $sm \in (p)$, either $m \in (p)$ or $s \in (p)$. If $m \in (p)$, then $(p) = (m)$, hence $(p)$ is maximal. If $s \in (p)$, then $s = pt$ for some $t \in \bfZ$. In this case $p = ptm$, which is equivalent to $p(1-tm) = 0$. Since $D$ is an integral domain, $tm = 1$. Hence $m$ is a unit, which means $(m) = R$. Thus $(p)$ is maximal.
+    \end{proof}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\begin{problem}
+Suppose $R$ is a ring such that $r^2 = r$ for every element $r \in R$.
+\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+    \item Prove $r = -r$ for every element $r \in R$.
+    \item Show $R$ must be commutative. Hint: consider $(a+b)^2$.
+\end{enumerate}
+\end{problem}
+    {\color{blue} \begin{proof}
+        (a) Observe that:
+            \begin{equation*}
+            \begin{split}
+                r+r 
+                & = (r+r)^2 \\
+                & = r^2 + 2r^2 + r^2 \\
+                & = r + r + r + r.
+            \end{split}
+            \end{equation*}
+        Hence $r+r = 0$. Thus $r = -r$.
+
+        (b) Observe that:
+            \begin{equation*}
+            \begin{split}
+                a+b
+                & = (a+b)^2 \\
+                & = a^2 + ab + ba + b^2 \\
+                & = a + ab + ba + b.
+            \end{split}
+            \end{equation*}
+        Hence $ab + ba = 0$. This means $ab = -ba$, and by part (a) $ab = ba$. Thus $R$ is commutative.
+    \end{proof}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}
+Let $A$ be a commutative ring with unit. We call $A$ \textit{Boolean} if $a^2 = a$ for every $a \in A$. Prove that in a Boolean ring $A$ each of the following holds:
+\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+    \item $2a = 0$ for every $a \in A$.
+    \item If $I$ is a prime ideal then $A/I$ is a field with two elements (and in particular $I$ is maximal).
+    \item If $I=(a,b)$ is the ideal generated by $a$ and $b$ then $I$ can be generated by the single element $a+b+ab$. Conclude that every finitely generated ideal is principal.
+\end{enumerate} 
+\end{problem}
+    {\color{blue} \begin{proof}
+        (a) Observe that:
+            \begin{equation*}
+            \begin{split}
+                2a 
+                & = a+a \\
+                & = (a+a)^2 \\
+                & = a^2 + 2a^2 + a^2 \\
+                & = 4a.
+            \end{split}
+            \end{equation*}
+        Hence $2a = 0$. 
+
+        (b) Let $[x] \in A/I$ be nonzero. Then $[x]^2 = [x^2] = [x]$, hence $[x(x-1)] = [0]$. This means $x(x-1) \in \fp$, and since $\fp$ is a prime ideal either $x \in \fp$ or $(x-1) \in \fp$. Since $x \neq 0$, $x \not\in \fp$, so it must be the case that $(x-1) \in \fp$. Hence $[x-1] = [0]$; i.e., $[x] = [1]$. Thus $A/I$ is a field with two elements.
+
+        (c) Clearly $(a+b+ab) \subseteq (a,b)$. For the converse direction, observe that:
+            \begin{equation*}
+            \begin{split}
+                a
+                & = a + 2(ab) \\
+                & = a + ab + ab \\
+                & = a^2 + ab + a^2b \\
+                & = a(a+b+ab).
+            \end{split}
+            \end{equation*}
+            \begin{equation*}
+            \begin{split}
+                b
+                & = b + 2(ab) \\
+                & = b + ab + ab \\
+                & = ab + b^2 + ab^2 \\
+                & = b(a+b+ab).
+            \end{split}
+            \end{equation*}
+        Since $a,b \in (a+b+ab)$, we have $(a,b) \subseteq (a+b+ab)$. Thus $(a,b) = (a+b+ab)$; i.e., every finitely generated ideal of $A$ is principal.
+    \end{proof}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

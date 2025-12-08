@@ -1,4 +1,4 @@
-\documentclass[11pt,twoside,openany]{memoir}
+\documentclass[preview, border=1pt]{standalone}
 %\usepackage{mlmodern}
 %\usepackage{tgpagella} % text only
 %\usepackage{mathpazo}  % math & text
@@ -7,14 +7,14 @@
 \usepackage[fixamsmath]{mathtools}  % Extension to amsmath
 \usepackage{amsthm}
 \usepackage{amssymb}
-\renewcommand*{\mathbf}[1]{\varmathbb{#1}}
-\usepackage{newpxtext}
-\usepackage{eulerpx}
+%\renewcommand*{\mathbf}[1]{\varmathbb{#1}}
+%\usepackage{newpxtext}
+%\usepackage{eulerpx}
 \usepackage{mathrsfs}
 \usepackage{eucal}
 \usepackage{datetime}
     \newdateformat{specialdate}{\THEYEAR\ \monthname\ \THEDAY}
-\usepackage[margin=1in]{geometry}
+\usepackage[margin=1.5in]{geometry}
 \usepackage{fancyhdr}
     \fancyhf{}
     \pagestyle{fancy}
@@ -25,10 +25,6 @@
     \newkeytheorem{theorem}[
     name = Theorem,
     numberwithin = section,
-    ]
-    \newkeytheorem{theorem*}[
-    name=Theorem,
-    numbered=false
     ]
     \newkeytheorem{proposition}[
     name = Proposition,
@@ -47,13 +43,11 @@
     ]
     \newkeytheorem{definition}[
     name = Definition,
-    numberwithin = section,
-    style = definition
+    numberwithin = section
     ]
     \newkeytheorem{example}[
     name = Example,
-    numberwithin = section,
-    style = definition
+    numberwithin = section
     ]
     \newkeytheorem{remark}[
     name=Remark,
@@ -62,6 +56,10 @@
     ]
     \newkeytheorem{exercise}[
     name = Exercise,
+    numberwithin = section
+    ]
+    \newkeytheorem{problem}[
+    name = Problem,
     numberwithin = section
     ]
     \newkeytheorem{axiom}[name = Axiom]
@@ -94,34 +92,74 @@
 \usetikzlibrary{patterns}
 \usepgfplotslibrary{fillbetween}
 \pgfplotsset{compat=1.18}
-\linespread{1.15}
+\linespread{1.00}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
-\begin{document}
-%This adds a "front cover" page.
-%{\thispagestyle{empty}
-%\vspace*{\fill}
-%\begin{tabular}{l}
-%\begin{tabular}{l}
-%\includegraphics[scale=0.24]{oxy-logo.png}
-%\end{tabular} \\
-%\begin{tabular}{l}
-%\Large \color{black} Module Theory, Linear Algebra, and Homological Algebra \\ \Large \color{black} Gianluca Crescenzo
-%\end{tabular}
-%\end{tabular}
-%\newpage
-    \pagenumbering{roman}
-    \chapter*{Preface}
-    At the root of measure theory is a rigorous treatment of how to extend the notions of length (on the real line), area (on the Euclidean plane), and volume (in three-space) to a larger collection of sets than those seen in, say, courses on Calculus. We have seen in a first course in analysis that there exist sets with some exceptionally strange properties (the Cantor set being a classic example). We would like to be able to discuss these types of sets in the context of measuring their sizes (be it a length, area, volume, etc). While the historical impetus was to solve this problem for sets in $\bfR^n$, one finds that it is not hard to abstract the theory to more general sets. Accordingly we take up this abstract study. This is not just for the sake of abstraction. In fact one can find applications for abstract measure theory in, for example, probability theory (where the measure of a set corresponds to the likelihood of an element in that set being chosen under some random process) and physics (where one might want the measure of a set to correspond to the mass of some object occupying that space). 
-    \vspace{-25pt}
-    \tableofcontents
-    \vfill
-    \specialdate
-    Last update: \today
 
-    %\include{preliminaries}
-    \include{measures}
-    \include{integration}
-    \include{signed-measures}
+\begin{document}
+    % First picture
+\begin{tikzpicture}[
+    x=3cm,y=1.5cm,
+    >=Stealth,
+    axis/.style={->,very thick,color=gray!60},
+    curve/.style={thick,color=gray!40},
+    intI/.style={very thick,color=green!70!black},
+    intJ/.style={very thick,color=red!70},
+    preimage/.style={very thick,color=blue!70},
+    dashedI/.style={dashed,color=green!70!black},
+    horiz/.style={very thick,color=orange!80!black},
+    every node/.style={font=\scriptsize,text=white}
+]
+
+\def\xa{4/9}    % f^{-1}(1)
+
+% axes
+\draw[axis] (-0.5,0) -- (4,0) node[right] {$X$};
+\draw[axis] (0,-0.3) -- (0,3.3);
+
+% [0,∞)
+\node[above] at (0,3.2) {$[0,\infty)$};
+
+% y–ticks
+\foreach \y in {1,2,3} {
+  \draw[gray!60] (-0.05,\y) -- (0.05,\y);
+  \node[left] at (-0.05,\y) {\y};
+}
+
+% curve y = 1.5 sqrt(x)
+\draw[curve,domain=0:3.8,samples=100] plot (\x,{1.5*sqrt(\x)});
+
+% I_0 on the y–axis
+\draw[intI] (0,0) -- (0,1);
+\node[below left,text=green!70!black] at (0,1) {$I_0$};
+
+% J_0 above I_0
+\draw[intJ,dashed,->] (0,3) -- (0,1);
+\node[left,text=red!70] at (0,2.1) {$J_0$};
+
+% blue inverse image interval on the x–axis
+\draw[preimage] (0,0) -- (\xa,0);
+\fill[orange!80!black] (0,0) circle (1.1pt);
+\draw[orange!80!black] (\xa,0) circle (1.1pt);
+
+% dashed green rectangle up to y = 1
+\draw[dashedI] (0,1) -- (\xa,1);
+\draw[dashedI] (\xa,0) -- (\xa,1);
+
+% point on the curve over y = 1
+\fill[orange!80!black] (\xa,1) circle (1.3pt);
+
+% orange image ray φ_0
+\draw[horiz,->] (\xa,1) -- (4,1);
+\node[above,text=orange!80!black] at (1.9,1.02) {$\varphi_0$};
+
+% label "inverse image of I_0"
+\node[below,text=white] at ({0.5*\xa},-0.2) {inverse image of $I_0$};
+
+% magenta annotation
+\node[align=center,text=magenta] at (2.9,3.0) {length $1$,\\1 interval};
+\draw[->,magenta] (2.3,2.8) to[bend left=20] (0.05,2.7);
+
+\end{tikzpicture}
 \end{document}

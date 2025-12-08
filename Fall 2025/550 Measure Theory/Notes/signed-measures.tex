@@ -5,10 +5,12 @@
     Let $(X,\cM)$ be a measurable space. The map $\nu:\cM \rightarrow [-\infty,\infty]$ is a \textui{signed measure} if:
         \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
             \item $\nu(\emptyset) = 0$,
-            \item $\{\infty,\infty\} \not\subset \Image \nu$,
+            \item $\{-\infty,\infty\} \not\subset \Image \nu$,
             \item If $\{E_i\}_{i = 1}^\infty \subset \cM$ is pairwise disjoint, and $\sum_{n = 1}^\infty \nu(E_n)$ is absolutely convergent whenever $\nu \left( \bigcup_{i = 1}^\infty E_i \right)$ is finite, then $\nu \left( \bigcup_{i = 1}^\infty E_i \right) = \sum_{i = 1}^\infty \nu(E_i)$
         \end{enumerate}
 \end{definition}
+
+Unless context is clear, we will refer to standard measures as \textit{positive measures}.
 
 \begin{example}
 \phantom{a}
@@ -38,7 +40,7 @@
     \end{enumerate}
 \end{proposition}
 
-\begin{theorem}[Hahn Decomposition Theorem]
+\begin{theorem}[Hahn Decomposition Theorem]\label{thm:hdt}
     Let $\nu$ be a signed measure on $(X,\cM)$. There exists a positive set $P$ and a negative set $N$ such that:
     \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
         \item $P \cup N = X$;
@@ -59,19 +61,119 @@
         
         Second, if there exists a set $A \in \cM$ such that $A \subset N$ and $\nu(A) > 0$, then there exists another subset $B \subset N$ such that $\nu(B) > \nu(A)$. Indeed, we have just shown that $A$ cannot be positive, hence there exists a subset $C \subset A$ such that $\nu(C) < 0$. Therefore, $\nu(A \setminus C) = \nu(A) - \nu(C) > \nu(A)$.
 
-        Now suppose towards contradiction $N$ is not negative. Then by definition there exists a set $A_1 \in \cM$ such that $A_1 \subset N$ and $\nu(A_1) > 0$. Find the smallest such $n_1 \in \bfN$ so that $\nu(A_1) > \frac{1}{n_1}$. By 
+        Now suppose towards contradiction $N$ is not negative. Then by definition there exists a set $A_1 \in \cM$ such that $A_1 \subset N$ and $\nu(A_1) > 0$. Find the smallest such $n_1 \in \bfN$ so that $\nu(A_1) > \frac{1}{n_1}$. By {\color{red}...DNF}
+
+        Now suppose $P'$ and $N'$ are another such decomposition of $X$. Note that $P\setminus P' \subset P$, hence $\nu(P \setminus P') \geq 0$. But also $P \setminus P' = P \cap P^c = P \cap N \subset N$, hence $\nu(P \setminus P') \leq 0$. It must be the case that $\nu(P \setminus P') = 0$. This same argument gives $\nu(P' \setminus P) = \nu(N \setminus N') = \nu(N' \setminus N) = 0$. All together:
+            \begin{equation*}
+            \begin{split}
+                0 & = \nu(P \setminus P') + \nu(P' \setminus P) = \nu(P \setminus P' \cup P' \setminus P) = \nu(P \triangle P'),\\
+                0 & = \nu(N \setminus N') + \nu(N' \setminus N) = \nu(N \setminus N' \cup N' \setminus N) = \nu(N \triangle N').
+            \end{split}
+            \end{equation*}
+        Thus the decomposition of $X$ is unique up to symmetric difference.
     \end{proof}
 
+\begin{definition}
+    Let $(X,\cM)$ be a measurable space. Two signed measures $\mu$ and $\nu$ are \textui{mutually singular} if there exists measurable sets $E,F \in \cM$ such that $E \cup F = X$, $E \cap F = \emptyset$, $E$ is null for $\mu$, and $F$ is null for $\nu$. We express this relationship symbolically as $\mu \bot \nu$.
+\end{definition}
 
+Informally, mutual singularity means that $\mu$ and $\nu$ "live on disjoint sets."
 
-\newpage
+\begin{theorem}[Jordan Decomposition Theorem]\label{thm:jdt}
+    If $\nu$ is a signed measure on $(X,\cM)$, there exist unique positive measures $\nu^+,\nu^-$ such that $\nu = \nu^+ - \nu^-$ and $\nu^+ \bot \nu^-$.
+\end{theorem}
+    \begin{proof}
+        By the Hahn Decomposition Theorem, we can write $X = P \cup N$, where $P$ is positive, $N$ is negative, and $P \cap N = \emptyset$. Define $\nu^+(E) = \nu(E \cap P)$ and $\nu^-(E) = -\nu(E \cap N)$. Then $\nu^+$ and $\nu^-$ are positive measures and clearly $\nu^+ \bot \nu^-$.
 
+        Suppose $\nu = \mu^+ - \mu^-$ is another such decomposition such that $\mu^+$ and $\mu^-$ are positive and $\mu^+ \bot \mu^-$. Let $E,F \in \cM$ such that $E \cup F = X$, $E \cap F = \emptyset$, and $E$ is $\mu^-$-null and $F$ is $\mu^+$-null. Let $E'$ be any subset of $E$. Then $\nu(E') = \mu^+(E') - \mu^-(E') \geq \mu^+(E') \geq 0$. Hence $E$ is positive. A similar argument can be used to show that $F$ is negative. Thus $E \cup F$ is another Hahn decomposition of $X$. This means $P \triangle E$ is $\nu$-null and $N \triangle F$ is $\nu$-null. For any $A \in \cM$ we have:
+            \begin{equation*}
+            \begin{split}
+                \mu^+(A)
+                & = \mu^+(A \cap E) + \mu^+(A \cap P) \\
+                & = 
+            \end{split}
+            \end{equation*}
+        {\color{red} ... DNF}
+    \end{proof}
+
+\begin{definition}
+Let $(X,\cM)$ be a measurable space and $\nu$ a signed measure.
+\begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+    \item The \textui{total variation} of $\nu$ is $|\nu| := \nu^+ + \nu^-$.
+    \item $\nu$ is \textui{finite} (resp. $\sigma$-finite) if $|\nu|$ is finite (resp. $\sigma$-finite).
+    \item Let $\mu$ be a positive measure. We say $\nu$ is \textui{absolutely continuous with respect to $\mu$}, and write $\nu \ll \mu$, if for all $E \in \cM$, $\mu(E) = 0$ implies $\nu(E) = 0$.
+\end{enumerate}
+\end{definition}
+
+\begin{example}
+    {\color{red} some examples go here...}
+\end{example}
+
+\begin{lemma}
+    Let $(X,\cM)$ be a measurable space. Let $\nu$ be a signed measure and $\mu$ a positive measure. The following are equivalent:
+    \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+        \item $\nu \ll \mu$;
+        \item $\nu^+ \ll \mu$ and $\nu^- \ll \mu$.
+        \item $|\nu| \ll \mu$;
+    \end{enumerate}
+\end{lemma}
+    \begin{proof}
+        ({\small 1$\Rightarrow$2}) Let $E \in \cM$. Suppose $\mu(E) = 0$. Then $\nu(E) = 0$. By the \nameref{thm:hdt}, there exists $P,N \in \cM$ such that $P \cup N = X$, $P \cap N = \emptyset$, $P$ is positive, and $N$ is negative. By the monotonicity of $\mu$, we have $\mu(E \cap P) \leq \mu(E) = 0$, hence $\mu(E \cap P) = 0$. Similarly, $\mu(E \cap N) \leq \mu(E) = 0$, hence $\mu(E \cap N) = 0$. The \nameref{thm:jdt} says $\nu$ can be written as $\nu^+ - \nu^-$, where $\nu^+(E) = \nu(E \cap P)$ and $\nu^-(E) = \nu(E \cap N)$. Since $\mu(E \cap P) = 0$, we have $\nu(E \cap P) = \nu^+(E) = 0$. Since $\mu(E \cap N) = 0$, we have $\nu(E \cap N) = \nu^-(E) = 0$.
+
+        ({\small 2$\Rightarrow$3}) If $E \in \cM$ such that $\mu(E) = 0$, then $|\nu|(E) = \nu^+(E) + \nu^-(E) = 0$.
+
+        ({\small 3$\Rightarrow$1}) If $E \in \cM$ such that $\mu(E) = 0$, then $|\nu|(E) = \nu^+(E) + \nu^-(E) = 0$. Since $\nu^+$ and $\nu^-$ are positive measures by the \nameref{thm:jdt}, it must be the case that $\nu^+(E) = 0$ and $\nu^-(E) = 0$. Hence $\nu^+(E) - \nu^-(E) = \nu(E) = 0$. 
+    \end{proof}
+
+\begin{proposition}
+Let $(X,\cM)$ be a measurable space. Let $\nu$ be a finite signed measure and $\mu$ a positive measure. Then $\nu \ll \mu$ if and only if for all $\epsilon > 0$, there exists $\delta > 0$ such that for all $E \in \cM$, $\mu(E) < \delta$ implies $|\nu|(E) < \epsilon$.
+\end{proposition}
+    \begin{proof}
+        ($\Leftarrow$) Let $\mu(E) = 0$. Let $\epsilon = \frac{1}{n}$. By hypothesis, there exists $\delta > 0$ such that $\mu(E) < \delta$ implies $|\nu|(E) < \frac{1}{n}$. Since $\nu(E) = 0 < \delta$, surely $|\nu|(E) < \frac{1}{n}$. Taking $n \rightarrow \infty$ gives $|\nu|(E) = 0$. Hence $|\nu| \ll \mu$, which is equivalent to $\nu \ll \mu$.
+
+        ($\Rightarrow$) We prove the contrapositive for this direction. Suppose the $\epsilon$-$\delta$ condition is not satisfied. Then there exists $\epsilon > 0$ such that for all $n \in \bfN$, there exists $E_n \in \cM$ such that $\mu(E_n) < \frac{1}{2^n}$ and $|\nu|(E) \geq \epsilon$. Define $F_k := \bigcup_{n = k}^\infty E_n$ and $F := \bigcap_{k = 1}^\infty F_k$. Then $\mu(F_k) < \sum_{n = k}^\infty \frac{1}{2^n} = \frac{1}{2^{k-1}}$, hence $\mu(F) = 0$. Since $\nu$ is finite, by continuity from below $|\nu|(F) = \lim_{n \rightarrow \infty}|\nu|(F_k) \geq \epsilon$. Thus it is false that $\nu \ll \mu$.
+    \end{proof}
+
+\begin{theorem}[Lebesgue-Radon-Nikodym Theorem]\label{thm:lrnt}
+Let $(X,\cM)$ be a measurable space. Let $\mu$ be a $\sigma$-finite positive measure and $\nu$ a $\sigma$-finite signed measure. Then there exist unique $\sigma$-finite signed measures $\nu_s$ and $\nu_{ac}$ such that:
+    \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+        \item $\nu = \nu_\text{s} + \nu_\text{ac}$;
+        \item $\nu_\text{s} \bot \mu$;
+        \item $\nu_\text{ac} \ll \mu$.
+    \end{enumerate}
+Moreover, there exists an extended $\mu$-integrable function $f:X \rightarrow \bfR$ (i.e., either $\int f^+ d\mu < \infty$ or $\int f^- d\mu < \infty$) such that:
+\begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+    \addtocounter{enumi}{3}
+    \item $d\nu_\text{ac} = f d\mu$,
+\end{enumerate}
+and if $g$ is another such function satisfying (4), then $f = g$ a.e.
+\end{theorem}
+    \begin{proof}
+        We first assume that $\nu$ and $\mu$ are both positive, finite, and $\nu \ll \mu$. Claim: there exists $f:X \rightarrow [0,\infty)$, $f \geq 0$ such that $d \nu =f d\mu$. Define:
+            \begin{equation*}
+            \begin{split}
+                \cF := \{f:X \rightarrow [0,\infty) \text{ measurable} \mid \text{ for all }E \in \cM, {\ts \int_E} f d\mu \leq \nu(E)\}.
+            \end{split}
+            \end{equation*}
+        {\color{red} oop}
+    \end{proof}
+
+\begin{definition}
+    Using the terminology of Theorem~\ref{thm:lrnt}:
+    \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+        \item the decomposition $\nu = \nu_{\text{s}} + \nu_{\text{ac}}$ is called a \textui{Lebesgue decomposition};
+        \item In the case that $\nu = \nu_{\text{ac}}$, we say $f$ is the \textui{Radon-Nikodym derivative of $\nu$ with respect to $\mu$}, and write $f = \frac{d\nu}{d\mu}$.
+    \end{enumerate}
+\end{definition}
+
+\iffalse
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.8]{figures/hahn-decomp-theorem/main}
 \caption{On $(\bfR,\mathcal{L})$ let $m$ be Lebesgue measure and define the signed measure $\nu(E)=\int_E f\,dm$. The shading indicates the positive ($f\ge 0$) and negative ($f\le 0$) contributions of $f$. By part (3) of the Hahn Decomposition Theorem, the decomposition $\bfR=P\cup N$ is unique up to null sets. Indeed, taking $P=\{x \mid f(x) \geq 0\}$, $P' = \{x \mid f(x) > 0\}$, $N = \{x \mid f(x) < 0\}$, and $N' = \{x \mid f(x) \leq 0\}$, we have that the sets $P \triangle P'$ and $N \triangle N'$ are null.}
 \label{fig:hahn-decomp-theorem}
 \end{figure}
+\fi
 
 
 

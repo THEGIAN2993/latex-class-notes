@@ -1,0 +1,9 @@
+\begin{proof}[Sketch of Proof (cont'd).]
+        \noindent Since $(Z,\sigma,\jota)$ is complete, $\left\{ \jota(x_n) \right\}_n$ is convergent. \nl
+
+        \noindent Define $\varphi:Y \rightarrow Z$ by $\varphi(y) = \lim_{n \rightarrow \infty} \jota(x_n)$. \nl
+
+        \noindent To show uniqueness, show that $\varphi$ is well-defined, an isometry, and bijective. \nl
+
+        To show existence: Fix an $x_0 \in X$ and let $x \in X$ be arbitrary. Define $f_x:X \rightarrow \bfR$ by $f_x(t) = d(t,x) - d(t,x_0)$. Show that $f_x \in C_b(X)$ and that $\iota:X \rightarrow C_b(X)$ given by $x \mapsto f_x$ is an isometry.
+    \end{proof}

@@ -1,0 +1,227 @@
+\documentclass[10pt]{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{pgfplots}
+\usepackage{float}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning,arrows.meta}
+\usetikzlibrary{decorations.pathreplacing}
+
+\renewcommand*{\mathbf}[1]{\mathbb{#1}}
+
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
+
+\usetheme{Madrid}
+\usecolortheme{default}
+
+\theoremstyle{plain} % same style as "theorem"
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{remark} % upright text, lighter style
+\newtheorem*{remarks}{Remarks}
+
+\title[Completions of Normed Vector Spaces]{Completions of Normed Vector Spaces}
+\author[Gianluca Crescenzo]{Gianluca Crescenzo}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}
+    \begin{definition}
+        A \textui{completion} of a metric space $(X,d)$ consists of:
+            \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+                \item A complete metric space $(Z,\rho)$;
+                \item An isometry $\iota:X \rightarrow Z$ such that $\overline{\iota(X)}^\rho = Z$.
+            \end{enumerate}
+        The completion of $(X,d)$ is denoted $(Z,\rho,\iota)$.
+    \end{definition}
+    \pause
+    \begin{lemma}
+        Let $(X,d)$ be a metric space, $(Y,\rho)$ a complete metric space, and $\iota:X \rightarrow Y$ an isometry. Then $(\overline{\iota(X)}^\rho , \rho, \iota)$ is a completion of $(X,d)$.
+    \end{lemma}
+\end{frame}
+
+\begin{frame}
+    \begin{theorem}
+        Every metric space admits a unique completion up to isometric isomorphism.
+    \end{theorem}
+    \pause
+    \begin{proof}[Sketch of Proof]
+        \noindent Let $(Y,\rho,\iota)$ and $(Z,\sigma,\jota)$ be completions of $(X,d)$. \nl
+        
+        \noindent Let $y \in Y$. Since $\iota(X)$ is dense in $Y$, there exists a sequence $\{\iota(x_n)\}_n \subset \iota(X)$ such that $\iota(x_n) \rightarrow y$. \nl
+        
+        \noindent Since the sequence $\left\{ \iota(x_n) \right\}_n$ is convergent, it is $\rho$-Cauchy. \nl
+        
+        \noindent Since $\rho$ and $\sigma$ are isometries, we have:
+            \begin{equation*}
+            \begin{split}
+                \sigma(\jota(x_n),\jota(x_m)) = d(x_n,x_m) = \rho(\iota(x_n),\iota(x_m)).
+            \end{split}
+            \end{equation*}
+            
+        \noindent Hence if $\left\{ \iota(x_n) \right\}_n$ is $\rho$-Cauchy, then $\left\{ \jota(x_n) \right\}_n$ is $\sigma$-Cauchy. \nl
+        
+        \noindent Since $(Z,\sigma,\jota)$ is complete, $\left\{ \jota(x_n) \right\}_n$ is convergent.\phantom{\qedhere}
+    \end{proof}
+\end{frame}
+
+\begin{frame}{Motivation}
+    \begin{proof}[Sketch of Proof (continued)]
+        \noindent Define $\varphi:Y \rightarrow Z$ by $\varphi(y) = \lim_{n \rightarrow \infty} \jota(x_n)$. \nl
+
+        \noindent To show uniqueness, show that $\varphi$ is well-defined, an isometry, and bijective. \nl
+        
+        \noindent To show existence: Fix an $x_0 \in X$ and let $x \in X$ be arbitrary. Define $f_x:X \rightarrow \bfR$ by $f_x(t) = d(t,x) - d(t,x_0)$. Show that $f_x \in C_b(X)$ and that $\iota:X \rightarrow C_b(X)$ given by $x \mapsto f_x$ is an isometry.
+    \end{proof}
+\end{frame}
+
+\begin{frame}{Question}
+    \pause
+    Is the completion of a normed vector space also a vector space?
+    \vspace{10pt}
+    \pause
+    \begin{remarks}
+        \begin{enumerate}[label = (\arabic*),itemsep=10pt,topsep=5pt]
+            \item Any normed vector space $(V,\lnorm \cdot \rnorm)$ induces a metric by the formula $d(x,y) := \lnorm y-x \rnorm$.
+            \item In the previous proof, since $\iota$ was not linear, if $X$ was a normed vector space then $\overline{\iota(X)}^\rho$ wouldn't necessarily be a vector space.
+            \item We want to find a linear isometry into a "natural" Banach space.
+        \end{enumerate}
+    \end{remarks}
+    \end{frame}
+
+\begin{frame}
+    \begin{definition}
+        Let $(V,\lnorm \cdot \rnorm)$ and $(W,\lnorm \cdot \rnorm)$ be normed $\bfF$-vector spaces.
+        \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+            \item The \textui{operator norm} of $T \in \Hom_{\bfF}(V,W)$ is:
+                \begin{equation*}
+                    \lnorm T \rnorm_{\op} := \sup\{\lnorm T(v) \rnorm \mid v \in B_V\}
+                \end{equation*}
+            \item $T \in \Hom_{\bfF}(V,W)$ is called \textui{bounded} if $\lnorm T \rnorm_{\op} < \infty$. The set of all bounded linear maps from $V$ to $W$ is denoted: 
+                \begin{equation*}
+                    \bfB(V,W) := \{T \in \Hom_{\bfF}(V,W) \mid \lnorm T \rnorm_{\op} < \infty\}
+                \end{equation*}
+            \item The \textui{dual space} of $V$ is $V^{\lor}:=\Hom_{\bfF}(V,\bfF)$.
+
+            \item The \textui{continuous dual space} of $V$ is $V^\ast:= \bfB(V,\bfF)$.
+        \end{enumerate}
+    \end{definition}
+    \pause
+    \begin{remarks}
+    \begin{enumerate}[label = (\arabic*),itemsep=2pt,topsep=5pt]
+        \item For any $v \in V$, $\lnorm T(v) \rnorm \leq \lnorm T \rnorm_{\op} \cdot \lnorm v \rnorm$.
+        \item A linear map is continuous if and only if it is bounded.
+        \item $(\bfB(V,W), \lnorm \cdot\rnorm_{\op})$ is a Banach space.
+        \item Is $V^\ast$ nonempty?
+    \end{enumerate}
+    \end{remarks}
+\end{frame}
+
+\begin{frame}
+    \begin{theorem}[Hahn-Banach]
+        Let $X$ be an $\bfR$-vector space, $M$ a subspace of $X$, and $p:X \rightarrow \bfR$ a seminorm on $X$. If $f:M \rightarrow \bfR$ is a linear functional on $M$ such that $|f(m)| \leq p(m)$ for all $m \in M$, then there exists a linear functional $F:X \rightarrow \bfR$ such that $\restr{F}{M} = f$ and $|F(x)| \leq p(x)$ for all $x \in X$.
+    \end{theorem}
+\end{frame}
+
+\begin{frame}
+    \begin{corollary}
+        Let $(V,\lnorm \cdot \rnorm)$ be a normed $\bfR$-vector space. For any nonzero $v \in V$, there exists $F \in V^\ast$ such that $F(v) = \lnorm v \rnorm$.
+    \end{corollary}
+        \pause
+        \begin{proof}
+            Fix $v \in V$ and define $M := \{\alpha v \mid \alpha \in \bfR\}$. Define $f:M \rightarrow \bfR$ by $f(\alpha v) = \alpha \lnorm v \rnorm$.  \nl
+            
+            \noindent Let $m \in M$. Then $m = \alpha v$ for some $\alpha \in \bfR$. Note that $|f(m)| = |f(\alpha v)| = |\alpha| \lnorm v \rnorm = \lnorm \alpha v \rnorm = \lnorm m \rnorm$. \nl
+            
+            \noindent Since every norm is automatically a seminorm, by the Hahn-Banach Theorem $f$ extends to a linear functional $F:V \rightarrow \bfR$ with $\restr{F}{M} = f$ and $|F(x)| \leq \lnorm x \rnorm$ for all $x \in V$. \nl
+            
+            \noindent Hence:
+            
+            $F(v) = F \left( \lnorm v \rnorm  \cdot \frac{v}{\lnorm v \rnorm}\right) = \lnorm v \rnorm F\left(\frac{v}{\lnorm v \rnorm}\right) = \lnorm v \rnorm f\left(\frac{v}{\lnorm v \rnorm}\right) = \frac{\lnorm v \rnorm}{\lnorm v \rnorm}  \lnorm v \rnorm = \lnorm v \rnorm$. \nl
+            
+            \noindent Since norms are finite by definition, $F \in V^\ast$.
+        \end{proof}
+\end{frame}
+
+\begin{frame}
+    \begin{corollary}
+        Let $(V,\lnorm \cdot \rnorm)$ be a normed $\bfR$-vector space and $v \in V$ nonzero. Then $\lnorm v \rnorm = \sup\{|\varphi(v)| \mid \varphi \in B_{V^\ast}\}$.
+    \end{corollary}
+    \pause
+    \begin{proof}
+        If $\varphi \in B_{V^\ast}$, then $|\varphi(v)| \leq \lnorm \varphi \rnorm_{\op} \lnorm v \rnorm \leq \lnorm v \rnorm$. \nl
+        
+        \noindent Hence $\sup\{|\varphi(v)| \mid \varphi \in B_{V^\ast}\} \leq \lnorm v \rnorm$. \nl
+        
+        \noindent By the previous corollary, find $\varphi_v \in V^\ast$ such that $\varphi_v(v) = \lnorm v \rnorm$. \nl
+        
+        \noindent Hence $\sup\{|\varphi(v)| \mid v \in B_{V^\ast}\} \geq |\varphi_v(v)| = \lnorm v \rnorm$.
+    \end{proof}
+\end{frame}
+
+\begin{frame}
+    \begin{theorem}
+        There is a linear isometry $V \rightarrow V^{\ast \ast}$.
+    \end{theorem}
+    \pause
+    \begin{proof}
+        Let $v \in V$. Define $\widehat{v}:V^\ast \rightarrow \bfR$ by $\widehat{v}(\varphi) = \varphi(v)$. Easy to verify that $\widehat{v} \in (V^{\ast})^{\lor}$. \nl
+        
+        \noindent By the previous corollary:
+            \begin{equation*}
+            \begin{split}
+                \lnorm \widehat{v} \rnorm_{\op} 
+                & = \sup\{|\widehat{v}(\varphi)| \mid \varphi \in B_{V^\ast}\} \\
+                & = \sup\{|\varphi(v)| \mid \varphi \in B_{V^\ast}\} \\
+                & = \lnorm v \rnorm \\
+                & < \infty.
+            \end{split}
+            \end{equation*}
+        
+        Hence $\widehat{v} \in V^{\ast\ast}$. Define $\iota:V \rightarrow V^{\ast\ast}$ by $v \mapsto \widehat{v}$. This map is an isometry since $\lnorm \iota(v) \rnorm_{\op} = \lnorm \widehat{v} \rnorm_{\op} = \lnorm v \rnorm$.\phantom{\qedhere}
+    \end{proof}
+\end{frame}
+
+\begin{frame}
+    \begin{proof}[Proof (continued)]
+        Let $v_1,v_2 \in V$ and $\alpha \in \bfR$. We have:
+            \begin{equation*}
+            \begin{split}
+                \iota(v_1 + \alpha v_2)(\varphi) 
+                & = \widehat{v_1 + \alpha v_2}(\varphi) \\
+                & = \varphi(v_1 + \alpha v_2) \\
+                & = \varphi(v_1) + \alpha \varphi(v_2) \\
+                & = \widehat{v_1}(\varphi) + \alpha \widehat{v_2}(\varphi) \\
+                & = (\iota(v_1) + \alpha \iota(v_2))(\varphi).
+            \end{split}
+            \end{equation*}
+        Thus $\iota$ is linear.
+    \end{proof}
+\end{frame}
+
+\begin{frame}
+    \begin{remarks}
+        \begin{enumerate}[label = (\arabic*),itemsep=10pt,topsep=3pt]
+            \item Using the same terminology from the previous theorem, the completion of a normed $\bfR$-vector space $(V,\lnorm \cdot \rnorm)$ is $(\overline{\iota(V)},\lnorm \cdot \rnorm_{\op},\iota)$.
+            \item The completion of $(V,\lnorm \cdot \rnorm)$ is unique up to isometric isomorphism.
+            \item The closure of a linear subspace is also a linear subspace.
+            \item If $V$ is finite-dimensional, then $\iota(V) \cong V^{\ast\ast}$. If $V$ were infinite-dimensional, then this may or may not be the case.
+            \item $V$ is called \textui{reflexive} if $\iota(V) \cong V^{\ast\ast}$.
+        \end{enumerate}
+    \end{remarks}
+\end{frame}
+
+\begin{frame}
+    \center Thank you!
+\end{frame}
+
+\end{document}
