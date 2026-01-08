@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1767837751.2907 "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/Winter 2026/540 Topology/Notes/_main.tex" "_main.pdf" "_main" 1767837752.17184 0
-  "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/Winter 2026/540 Topology/Notes/_main.tex" 1767837750.76719 3562 57979523afb1a8682d4bd7453819800e ""
+["pdflatex"] 1767895060.28662 "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/Winter 2026/540 Topology/Notes/_main.tex" "_main.pdf" "_main" 1767895061.20824 0
+  "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/Winter 2026/540 Topology/Notes/_main.tex" 1767895060.08154 3483 be6136ae32e760d923fd6da9700cfef8 ""
   "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex" 1764622722.89504 13971 026113b2e089b0f197b6a1344ae6ebb8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/newpx/px-lms.enc" 1699652218 3877 2ca811886181a05a861d20a35de75e06 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf.enc" 1698694482 2914 fdbc4a54b9bc76f4551b5303f2737d33 ""
@@ -322,11 +322,11 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1758769034 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "_main.aux" 1767837752.06594 367 aaed7f216f288e533e4bb4a54fe7f686 "pdflatex"
-  "_main.out" 1767837752.06675 735 f855055d0a5a39f9f407e2b291b48c80 "pdflatex"
-  "_main.tex" 1767837750.76719 3562 57979523afb1a8682d4bd7453819800e ""
-  "_main.toc" 1767837752.06692 378 5c8d14e65a4290fdc86c3effbe8d5ad3 "pdflatex"
-  "intro.aux" 1767837752.06547 4502 7d2034f2f4f6c5a256b7fbaaac77c62b "pdflatex"
+  "_main.aux" 1767895061.10539 367 aaed7f216f288e533e4bb4a54fe7f686 "pdflatex"
+  "_main.out" 1767895061.10608 735 f855055d0a5a39f9f407e2b291b48c80 "pdflatex"
+  "_main.tex" 1767895060.08154 3483 be6136ae32e760d923fd6da9700cfef8 ""
+  "_main.toc" 1767895061.10622 378 5c8d14e65a4290fdc86c3effbe8d5ad3 "pdflatex"
+  "intro.aux" 1767895061.10491 4502 7d2034f2f4f6c5a256b7fbaaac77c62b "pdflatex"
   "intro.tex" 1767834830.38057 5440 7c353a5907c2ce5e4ba4dd90672673d6 ""
   (generated)
   "_main.aux"
