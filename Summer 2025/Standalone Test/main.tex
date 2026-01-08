@@ -2,83 +2,19 @@
 \input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/preamble.tex}
 
 \begin{document}
-    \begin{problem}
-    Verify $f(x) = \frac{3}{2x+1}$ and $g(x) = \frac{3+x}{2x}$ are inverses.
-    \end{problem}
-    \begin{answer}
-    Write $f(x)$ like this:
-        \begin{equation*}
-        \begin{split}
-            x = \frac{3}{2y+1}.
-        \end{split}
-        \end{equation*}
-    Now just solve for $y$:
-        \begin{equation*}
-        \begin{split}
-            x = \frac{3}{2y+1}
-            & \implies (2y+1)x = 3 \\
-            & \implies 2xy + x = 3 \\
-            & \implies 2xy = 3-x \\
-            & \implies y = \frac{3-x}{2x}.
-        \end{split}
-        \end{equation*}
-    Then rewrite the last equation like this:
-        \begin{equation*}
-        \begin{split}
-            f^{-1}(x) = \frac{3-x}{2x}.
-        \end{split}
-        \end{equation*}
-    In your question where you wrote "is this suppose to be negative??", the answer is no. In that step all you do is replace all the $y$'s with $x$'s and vice-versa, then solve for $y$.
-    \end{answer}
-\begin{center}
-        \begin{tikzpicture}
-            \draw[thick] (0.3,0) -- (2.3,0);
-            \node at (2.39, 0) {$/\,$};
-            \node at (2.56, 0) {$/\,$};
-            \draw[thick] (2.6,0) -- (4.6,0);
-        \end{tikzpicture}
-    \end{center}
-    \begin{problem}
-        Graph $f(x) = \frac{(x-1)(x+2)}{(x+1)(x-3)}$.
-    \end{problem}
-    \begin{answer}
-        You found the vertical asymptotes correctly, all you need to do to find those are set the denominator equal to zero. You also found the horizontal asymptote correctly. \nl
-        
-        \noindent If the degree of the polynomial in the numerator is larger than the degree of the polynomial in the denominator, there are \textit{no horizontal asymptotes}. If the degree of the polynomial in the numerator is \textit{smaller} than the degree of the polynomial in the denominator, then there is a horizontal asymptote at $y = 0$. If the degrees of the polynomials in the numerator and denominator are \textit{equal}, then there is a horizontal asymptote at $y = \frac{a}{b}$, where $a$ is the leading coefficient of the polynomial in the numerator, and $b$ is the leading coefficient of the polynomial in the denominator. Page 300 in the textbook has a table that better explains this.
-    \end{answer}
 
-    \begin{center}
-        \begin{tikzpicture}
-            \draw[thick] (0.3,0) -- (2.3,0);
-            \node at (2.39, 0) {$/\,$};
-            \node at (2.56, 0) {$/\,$};
-            \draw[thick] (2.6,0) -- (4.6,0);
-        \end{tikzpicture}
-    \end{center}
+Let $(X,\cM,\mu)$ be a measure space. Let $f,g \in L^1(X)$. I'm trying to show that the set:
+    \begin{equation*}
+    \begin{split}
+        \{x \mid |f(x)| \leq g(x)\}
+    \end{split}
+    \end{equation*}
+is a measurable set. The above set can be written as:
+    \begin{equation*}
+    \begin{split}
+        \{x \mid 0 \leq f(x) + g(x)\} \cap \{x \mid 0 \leq g(x) - f(x)\}
+    \end{split}
+    \end{equation*}
 
-    \begin{problem}
-        Graph $f(x) = \frac{x^2 - 2x + 1}{x^3 - 3x^2}$
-    \end{problem}
-    \begin{answer}
-        The vertical and horizontal asymptotes are correct. Basically for this style of problem you don't need to consider the degree of the entire rational function $f(x)$. You only need to worry about the degree of the numerator and degree of the denominator separately. \nl
-        
-        \noindent In general, the degree of a polynomial is the highest power of $x$ in the equation. As an example, consider the polynomials below:
-            \begin{equation*}
-            \begin{split}
-                f(x) &= x^3 +2x + 1, \\
-                g(x) &= x^2 + x^{19} + 2x + 1, \\
-                h(x) &= x + 1.
-            \end{split}
-            \end{equation*}
-        The degree of $f(x)$ is 3, the degree of $g(x)$ is 19, and the degree of $h(x)$ is 1.
-    \end{answer}
-
-
-
-    Notice that the answer is as follows;
-        \begin{equation*}
-        \begin{split}
-            f(x) = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
-        \end{split}
-        \end{equation*}
+\end{document}
 \end{document}

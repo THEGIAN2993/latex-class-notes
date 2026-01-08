@@ -534,10 +534,6 @@ We can use the \nameref{thm:mct} to prove a more general result on increasing se
 \begin{proposition}
     $f:X \rightarrow \bfC$ is integrable if and only if $\fR(f)$ and $\fI(f)$ are integrable.
 \end{proposition}
-    {\color{red} not sure how to do this rigorously \begin{proof}
-        
-    \end{proof}}
-
 \begin{proposition}
     Let $f:X \rightarrow \bfC$ be integrable.
     \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
@@ -631,7 +627,7 @@ We can use the \nameref{thm:mct} to prove a more general result on increasing se
     \end{remark}
 
 \begin{theorem}[Dominated Convergence Theorem]\label{thm:dct}
-    Let $(f_n)_n$ be a sequence in $L^1$ and suppose $f_n \rightarrow f$ a.e. for some $f:X \rightarrow \bfC$. Moreover, suppose there exists $g \in L^1$ such that $g \geq 0$ and for all $n \in \bfN$, we have $|f_n| \leq g$ a.e. Then (after possibly changing $f$ on a null set), $f \in L^1$ and $\int f = \lim_{n \rightarrow \infty} \int f_n$.
+    Let $(f_n)_n$ be a sequence in $L^1$ and suppose $f_n \rightarrow f$ a.e. for some $f:X \rightarrow \bfC$. Moreover, suppose there exists a nonnegative $g \in L^1$ such that  $|f_n| \leq g$ a.e. for all $n$. Then (after possibly changing $f$ on a null set), $f \in L^1$ and $\int f = \lim_{n \rightarrow \infty} \int f_n$.
 \end{theorem}
     \begin{proof}
         Define $E_0 := \{x \mid f_n(x) \rightarrow f(x)\}$ and for $n \geq 1$ define $E_n := \{x \mid |f_n(x)| \leq g(x)\}$. Note that for each $i \in \bfN$, the measure of $E_i^c$ is zero by assumption. Now let $E := \bigcap_{n = 0}^\infty E_n$. We can see:
@@ -659,7 +655,7 @@ We can use the \nameref{thm:mct} to prove a more general result on increasing se
         Thus $f \chi_E \in L^1$. Now write $f_n \chi_E = u_n +i v_n$ and $f \chi_E = u + iv$, where $u_n \rightarrow u$ and $v_n \rightarrow v$. Surely $g \pm u_n \geq 0$ and $g \pm v_n \geq 0$, hence by \nameref{thm:fatous}:
             \begin{equation*}
             \begin{split}
-                \int \liminf_{n \rightarrow \infty}(g + u_n) \leq \liminf_{n \rightarrow \infty}\int g + u_n.
+                \int \liminf_{n \rightarrow \infty}(g + u_n) \leq \liminf_{n \rightarrow \infty}\int g + u_n. 
             \end{split}
             \end{equation*}
         Since $u_n \rightarrow u$ we have $\liminf_{n \rightarrow \infty} u_n = \lim_{n \rightarrow \infty}u_n = u$, giving:

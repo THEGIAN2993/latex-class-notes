@@ -1,0 +1,27 @@
+\chapter{Finite Difference Approximations}
+\pagenumbering{arabic}
+
+\section{Preliminaries}
+
+\begin{definition}
+    Let $f$ and $g$ be real or complex-valued functions on a domain $D$. We say that \textui{$f$ is big $O$ of $g$} if there exists positive real numbers $M$ and $\delta$ such that for all $h \in D$, if $0 < |h| < \delta$ then $\left| \frac{f(h)}{g(h)} \right| < M$.
+\end{definition}
+
+\begin{example}
+    We have that $2h^3 = O(h^3)$ as $h \rightarrow 0$. Indeed, we can see:
+        \begin{equation*}
+        \begin{split}
+            \left| \frac{2h^3}{h^3} \right| = 2
+        \end{split}
+        \end{equation*}
+    for any arbitrarily small $\delta$.
+
+
+    for any sufficiently small $h$. Now consider $\delta = \frac{1}{2}$.
+        \begin{equation*}
+        \begin{split}
+            \left| \frac{2h^3}{h^2} \right| = 2|h| \leq 1,
+        \end{split}
+        \end{equation*}
+    hence 
+\end{example}

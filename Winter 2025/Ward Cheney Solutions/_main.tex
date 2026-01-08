@@ -1,0 +1,132 @@
+\documentclass[11pt,oneside,openany]{memoir}
+%\usepackage{mlmodern}
+%\usepackage{tgpagella} % text only
+%\usepackage{mathpazo}  % math & text
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage[fixamsmath]{mathtools}  % Extension to amsmath
+\usepackage{amsthm}
+\usepackage{amssymb}
+\renewcommand*{\mathbf}[1]{\varmathbb{#1}}
+\usepackage{newpxtext}
+\usepackage{eulerpx}
+\usepackage{mathrsfs}
+\usepackage{eucal}
+\usepackage{datetime}
+    \newdateformat{specialdate}{\THEYEAR\ \monthname\ \THEDAY}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+    \fancyhf{}
+    \pagestyle{fancy}
+    \cfoot{\scriptsize \thepage}
+    \fancyhead[R]{\scalebox{0.6}{\rightmark}}
+    \fancyhead[L]{\scalebox{0.6}{\leftmark}}
+
+    \fancypagestyle{plain}{%
+    \fancyhf{}%
+    \cfoot{\scriptsize \thepage}%
+    \fancyhead[R]{\scalebox{0.6}{\rightmark}}%
+    \fancyhead[L]{\scalebox{0.6}{\leftmark}}%
+}
+\usepackage{keytheorems}
+    \newkeytheorem{theorem}[
+    name = Theorem,
+    numberwithin = section,
+    ]
+    \newkeytheorem{theorem*}[
+    name=Theorem,
+    numbered=false
+    ]
+    \newkeytheorem{proposition}[
+    name = Proposition,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{lemma}[
+    name = Lemma,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{corollary}[
+    name = Corollary,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{definition}[
+    name = Definition,
+    numberwithin = section,
+    style = definition
+    ]
+    \newkeytheorem{example}[
+    name = Example,
+    numberwithin = section,
+    style = definition
+    ]
+    \newkeytheorem{remark}[
+    name=Remark,
+    style=remark, 
+    numbered=false  
+    ]
+    \newkeytheorem{exercise}[
+    name = Exercise,
+    numberwithin = section
+    ]
+    \newkeytheorem{problem}[
+    name = Problem,
+    numberwithin = section,
+    style = definition
+    ]
+    \newkeytheorem{axiom}[name = Axiom]
+\usepackage{enumitem}
+\usepackage{titlesec}
+    \titleformat{\chapter}[display]
+    {\bfseries\huge\raggedright}
+    {Chapter {\thechapter}}
+    {1ex minus .1ex}
+    {\huge}\titlespacing{\chapter}
+    {3pc}{*3}{40pt}[3pc]
+
+    \titleformat{\section}[block]
+    {\normalfont\bfseries\LARGE}
+    {\S\ \thesection.}{.5em}{}[]
+    \titlespacing{\section}
+    {0pt}{3ex plus .1ex minus .2ex}{3ex plus .1ex minus .2ex}
+\usepackage[utf8x]{inputenc}
+\usepackage{float}
+\usepackage{wasysym}
+\usepackage{hyperref}
+\usepackage{ulem}
+\usepackage{lipsum}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
+\begin{document}
+    \pagenumbering{roman}
+    \begin{abstract}
+        \lipsum[1]
+    \end{abstract}
+    
+    \listofkeytheorems[
+        ignoreall, 
+        show=problem,
+        title=List of Problems
+    ]
+    \vfill
+    \specialdate
+    Last update: \today
+
+    \chapter{Normed Linear Spaces}
+        \include{1-1}
+        \include{1-2}
+        \include{1-3}
+        \include{1-4}
+        \include{1-5}
+        \include{1-6}
+    \chapter{Hilbert Spaces}
+    \chapter{Calculus in Banach Spaces}
+    \chapter{Basic Approximate Methods of Analysis}
+    \chapter{Distributions}
+    \chapter{The Fourier Transform}
+    \chapter{Additional Topics}
+    \chapter{Measure and Integration}
+\end{document}

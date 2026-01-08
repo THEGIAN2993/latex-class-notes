@@ -1,0 +1,155 @@
+\documentclass[10pt,twoside,openany]{memoir}
+\usepackage[T1]{fontenc}
+\usepackage[hidelinks]{hyperref}
+\usepackage{amsmath}
+\usepackage[fixamsmath]{mathtools}  % Extension to amsmath
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{newpxtext,eulerpx,eucal} %fonts
+
+\renewcommand*{\mathbf}[1]{\varmathbb{#1}} %stylistic changes
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\usepackage{datetime}
+    \newdateformat{specialdate}{\THEYEAR\ \monthname\ \THEDAY}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{fancyhdr}
+    \fancyhf{}
+    \pagestyle{fancy}
+    \cfoot{\scriptsize \thepage}
+    \fancyhead[R]{\scalebox{0.9}{Gianluca Crescenzo}}
+    \fancyhead[L]{\thechapter}
+    \aliaspagestyle{chapter}{fancy}
+    \renewcommand{\clearforchapter}{\par}
+\usepackage{keytheorems}
+    \newkeytheorem{theorem}[
+    name = Theorem,
+    numberwithin = section,
+    ]
+    \newkeytheorem{theorem*}[
+    name=Theorem,
+    numbered=false
+    ]
+    \newkeytheorem{proposition}[
+    name = Proposition,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{lemma}[
+    name = Lemma,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{corollary}[
+    name = Corollary,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{definition}[
+    name = Definition,
+    numberwithin = section,
+    style = definition
+    ]
+    \newkeytheorem{example}[
+    name = Example,
+    numberwithin = section,
+    style = definition
+    ]
+    \newkeytheorem{remark}[
+    name=Remark,
+    style=remark, 
+    numbered=false  
+    ]
+    \newkeytheorem{exercise}[
+    name = Exercise,
+    numberwithin = section
+    ]
+    \newkeytheorem{problem}[
+    name = Problem,
+    numberwithin = chapter,
+    leftmargin = 1.5em,
+    rightmargin = 1em
+    ]
+    \newkeytheorem{axiom}[name = Axiom]
+\usepackage{enumitem}
+\usepackage{titlesec}
+    \titleformat{\chapter}[block]
+    {\normalfont\bfseries\Large\centering}
+    {\S\ \thechapter.}{.5em}{}[]
+    \titlespacing{\chapter}
+    {0pt}{3ex plus .1ex minus .2ex}{3ex plus .1ex minus .2ex}
+\usepackage[utf8x]{inputenc}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{wasysym}
+\usepackage{lipsum}
+\linespread{1.00}
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\chapter{The Product Topology and the Tychonoff Theorem}
+\fancyhead[L]{\scalebox{0.9}{The Product Topology and the Tychonoff Theorem}}
+
+\chapter{The Urysohn Lemma}
+\fancyhead[L]{\scalebox{0.9}{The Urysohn Lemma}}
+
+\chapter{The Baire Category Theorem}
+\fancyhead[L]{\scalebox{0.9}{The Baire Category Theorem}}
+
+\begin{problem}
+Let $X$ equal the countable union $\bigcup B_n$. Show that if $X$ is a nonempty Baire space, at least one of the sets $\overline{B_n}$ has a nonempty interior.
+\end{problem}
+    \begin{proof}
+        \lipsum[1]
+    \end{proof}
+
+\begin{problem}
+The Baire Category Theorem implies that $\bfR$ cannot be written as the countable union of closed subsets having empty interiors. Show this fails if the sets are not required to be closed.
+\end{problem}
+    \begin{proof}
+        \lipsum[1]
+    \end{proof}
+
+\begin{problem}
+Show that the irrationals are a Baire space.
+\end{problem}
+    \begin{proof}
+        We will first show that any subset of a complete metric space which is a $G_\delta$ set is a Baire space.
+    \end{proof}
+
+\begin{problem}
+Let $(M,d)$ be a complete metric space with no isolated points. Prove that $M$ is uncountable.
+\end{problem}
+    \begin{proof}
+        Suppose towards contradiction $M$ is countable. Then we can write $M = \bigcup_{i = 1}^\infty \{x_i\}$, where $\{x_i\}_{i = 1}^\infty$ is an enumeration of $M$. Observe that:
+            \begin{equation*}
+            \begin{split}
+                \bigcap_{i = 1}^\infty \{x_i\}^c
+                & = \left(\bigcup_{i = 1}^\infty \{x_i\} \right)^c \\
+                & = X^c \\
+                & = \emptyset.
+            \end{split}
+            \end{equation*}
+        Since $M$ has no isolated points, each $\{x_i\}$ is closed and nowhere dense. Hence each $\{x_i\}^c$ is open and dense. But surely from the above string of equalities $\bigcap_{i = 1}^\infty \{x_i\}^c$ is not dense, hence $M$ is not a Baire Space. This contradicts the Baire Category Theorem, as every complete metric space is also a Baire space. It must be the case that $M$ is uncountable.
+    \end{proof}
+
+\begin{problem}
+Let $f:\bfR \rightarrow \bfR$ be an infinitely differentiable function, and suppose that for each $x \in \bfR$, there exists a natural number $n$ such that $f^{(n)}(x) = 0$. For each fixed $n \in \bfN$, consider the set
+    \begin{equation*}
+    \begin{split}
+        F_n := \{x \in \bfR \mid f^{(n)}(x) = 0\}
+    \end{split}
+    \end{equation*}
+and let $I := [a,b]$.
+\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+    \item Show that $I = \bigcup_{n = 0}^\infty (I \cap F_n)$.
+    \item Show that there is a nonempty open interval $A \subseteq I$ where $f$ is a polynomial.
+\end{enumerate}
+\end{problem}
+    \begin{proof}
+        \lipsum[1]
+    \end{proof}
+    
+\end{document}
