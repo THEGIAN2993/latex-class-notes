@@ -1,0 +1,491 @@
+\documentclass[12pt,twoside,openany]{memoir}
+%\usepackage{mlmodern}
+%\usepackage{tgpagella} % text only
+%\usepackage{mathpazo}  % math & text
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage[fixamsmath]{mathtools}  % Extension to amsmath
+\usepackage{amsthm}
+\usepackage{amssymb}
+\renewcommand*{\mathbf}[1]{\varmathbb{#1}}
+\usepackage{newpxtext}
+\usepackage{eulerpx}
+\usepackage{mathrsfs}
+
+\usepackage{eucal}
+\usepackage{datetime}
+    \newdateformat{specialdate}{\THEYEAR\ \monthname\ \THEDAY}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \renewcommand{\headrulewidth}{0pt}
+    \cfoot{\scriptsize \thepage}
+\usepackage{keytheorems}
+    \newkeytheorem{theorem}[
+    name = Theorem,
+    numberwithin = section,
+    ]
+    \newkeytheorem{theorem*}[
+    name=Theorem,
+    numbered=false
+    ]
+    \newkeytheorem{proposition}[
+    name = Proposition,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{lemma}[
+    name = Lemma,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{corollary}[
+    name = Corollary,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{definition}[
+    name = Definition,
+    numberwithin = section,
+    style = definition
+    ]
+    \newkeytheorem{example}[
+    name = Example,
+    numberwithin = section,
+    style = definition
+    ]
+    \newkeytheorem{remark}[
+    name=Remark,
+    style=remark, 
+    numbered=false  
+    ]
+    \newkeytheorem{answer}[
+    name=Answer,
+    style=remark, 
+    numbered=false  
+    ]
+    \newkeytheorem{solution}[
+    name=Solution,
+    style=remark, 
+    numbered=false  
+    ]
+    \newkeytheorem{exercise}[
+    name = Exercise
+    ]
+    \newkeytheorem{axiom}[name = Axiom]
+\usepackage{enumitem}
+\usepackage{titlesec}
+    \titleformat{\chapter}[display]
+    {\bfseries\LARGE\raggedright}
+    {Chapter {\thechapter}}
+    {.1ex minus .1ex}
+    {\Large}
+    \titlespacing{\chapter}
+    {3pc}{*3}{40pt}[3pc]
+
+    \titleformat{\section}[block]
+    {\normalfont\bfseries\large}
+    {\S\ \thesection.}{.5em}{}[]
+    \titlespacing{\section}
+    {0pt}{3ex plus .1ex minus .2ex}{3ex plus .1ex minus .2ex}
+\usepackage[utf8x]{inputenc}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{float}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning,arrows.meta}
+\usetikzlibrary{decorations.pathreplacing}
+\usepackage{wasysym}
+\usepackage{hyperref}
+\usepackage{ulem}
+\usepackage{pgfplots}
+\usepackage{xcolor}
+\usepackage{matlab-prettifier}
+\lstdefinestyle{Matlab-console}{
+  basicstyle=\ttfamily\small,
+  numbers=none,
+  frame=single,
+  breaklines=true,
+  showstringspaces=false 
+}
+\definecolor{matlabbg}{HTML}{F2F2F2}
+\definecolor{matlabln}{HTML}{6E6E6E}
+
+\lstdefinestyle{MatlabEditorGrey}{
+  style=Matlab-editor,
+  backgroundcolor=\color{matlabbg},
+  numbers=left,
+  numberstyle=\color{matlabln}\ttfamily\scriptsize,
+  stepnumber=1,
+  numbersep=10pt,
+  xleftmargin=2.2em,     % space for line numbers
+  frame=single,
+  framerule=0pt,         % no border line (keep the box spacing)
+  framesep=6pt,
+  breaklines=true
+}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=1.18}
+\linespread{1.1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
+
+\begin{document}
+\begin{center}
+    {\Large Math 502 \\[0.1in]Homework \#1}\\[.175in]
+    {Name:} {\underline{Gianluca Crescenzo\hspace*{2in}}}\\[0.15in]
+    \end{center}
+    \vspace{4pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}[manual-num={0}]
+In a short (less than half a page) paragraph, tell me about yourself and what you are hoping to get out
+of this course. For example, is there a numerical component to your thesis research? Is there a certain
+topic you were hoping to cover this quarter?
+\end{exercise}
+
+\begin{answer}
+My name is Gianluca Crescenzo. I'm in the mathematics masters program, and I did my undergrad at Occidental College in Los Angeles. Besides math I like rock climbing, hiking, and playing videogames. I'm taking this class because I don't have much experience or proficiency in applied math. The only applied courses I've taken during my undergrad were partial differential equations, numerical analysis, and computational mathematics.
+\end{answer}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}[manual-num={A.1}]
+Let $e = (2,-5,3,4)$. Calculate the following quantities:
+    \begin{equation*}
+    \begin{split}
+        \text{(a)}\h3\lnorm e \rnorm_\infty\h9\text{(b)}\h3\lnorm e \rnorm_1\h9\text{(c)}\h3\lnorm e \rnorm_2
+    \end{split}
+    \end{equation*}
+\end{exercise}
+
+\begin{solution}
+    \begin{equation*}
+    \begin{split}
+        \lnorm e \rnorm_\infty & = \max\bigl\{|2|,|-5|,|3|,|4|\bigr\} = 5.\\
+        \lnorm e \rnorm_1 & = |2| + |-5| + |3| + |4| = 14.\\
+        \lnorm e \rnorm_2 & = \sqrt{2^2 +(-5)^2 + 3^2 + 4^2} = \sqrt{4 + 25 + 9 + 16} = \sqrt{54}.\\
+    \end{split}
+    \end{equation*}
+\end{solution}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}[manual-num={A.2}]
+    Let $A = \bmat 1 & 2 & 3 & 4 \\ 5 & 6 & 7 & 8 \\ 9 & 10 & 11 & 12 \\ 13 & 14 & 15 & 16\emat$. Calculate the following:
+        \begin{equation*}
+        \begin{split}
+            \text{(a)}\h3\lnorm A \rnorm_\infty\h9\text{(b)}\h3\lnorm A \rnorm_1\h9\text{(c)}\h3\lnorm A \rnorm_2
+        \end{split}
+        \end{equation*}
+\end{exercise}
+
+\begin{solution}
+    Below is the \textsc{MATLAB} code used to solve this exercise:
+    \begin{lstlisting}[style=MatlabEditorGrey]
+A = [1 2 3 4;5 6 7 8;9 10 11 12;13 14 15 16];
+L_infty = max(sum(abs(A),2))
+L1 = max(sum(abs(A),1))
+L2 = sqrt(max(eig(A'*A)))
+    \end{lstlisting}
+
+    \begin{lstlisting}[style=Matlab-console]
+>> untitled
+
+L_infty =
+
+    58
+
+L1 =
+
+    40
+
+L2 =
+
+38.6227
+
+>>
+    \end{lstlisting}
+\end{solution}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}[manual-num={A.3}]
+    Let $u(x) = x^2 - x$ be a function defined on $0 \leq x \leq 1$. Calculate the following quantities:
+    \begin{equation*}
+    \begin{split}
+        \text{(a)}\h3\lnorm u \rnorm_\infty\h9\text{(b)}\h3\lnorm u \rnorm_1\h9\text{(c)}\h3\lnorm u \rnorm_2
+    \end{split}
+    \end{equation*}
+\end{exercise}
+
+\begin{solution}
+    The infinity norm of $u(x) = x^2 - x$ is $\lnorm u \rnorm_\infty = \sup\{|u(x)| \mid x \in [0,1]\} = 1/2$. The one norm and two norm can be seen from the following MATLAB code:
+\end{solution}
+
+    \begin{lstlisting}[style=MatlabEditorGrey]
+syms x
+u = x^2 - x;
+L1_exact = int(abs(u), x, 0, 1)
+L2_exact = sqrt(int(abs(u)^2, x, 0, 1))
+    \end{lstlisting}
+    \begin{lstlisting}[style=Matlab-console]
+>> untitled
+ 
+L1_exact =
+ 
+1/6
+ 
+ 
+L2_exact =
+ 
+30^(1/2)/30
+
+>>
+    \end{lstlisting}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}[manual-num={A.4}]
+    Let $U$ be the grid function defined by $U_i = x_i^2 - x_i$, where $x_1 = 0.2$, $x_2 = 0.4$, $x_3 = 0.6$, $x_4 = 0.8$, $x_5 = 1.0$. Calculate the following quantities:
+    \begin{equation*}
+    \begin{split}
+        \text{(a)}\h3\lnorm U \rnorm_\infty\h9\text{(b)}\h3\lnorm U \rnorm_1\h9\text{(c)}\h3\lnorm U \rnorm_2
+    \end{split}
+    \end{equation*}
+\end{exercise}
+\begin{solution}
+    Below is the \textsc{MATLAB} code used to solve this exercise:
+    \begin{lstlisting}[style=MatlabEditorGrey]
+syms x
+u = x^2 - x;
+h = [0.2 0.4 0.6 0.8 1.0];
+U = double(subs(u, x, h)) ;
+Uinf = max(abs(U))
+U1 = (0.2) * sum(abs(U))
+U2 = sqrt((0.2) * sum(abs(U).^2))
+    \end{lstlisting}
+    \begin{lstlisting}[style=Matlab-console]
+>> untitled
+
+Uinf =
+
+    0.2400
+
+
+U1 =
+
+    0.1600
+
+
+U2 =
+
+    0.1824
+
+>>
+    \end{lstlisting}
+\end{solution}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}[manual-num={1.2}]
+    \phantom{a}
+\begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+    \item Use the method of undetermined coefficients to set up the $5 \times 5$ Vandermonde system that would determine a fourth-order accurate finite difference approximation to $u''(x)$ based on $5$ equally spaced points:
+        \begin{equation*}
+        \begin{split}
+            u''(x) = c_{-2}u(x-2h) + c_{-1}u(x-h) + c_0u(x) + c_{1}u(x+h)  c_{2}u(x+2h)
+        \end{split}
+        \end{equation*}
+    \item Compute the coefficients using the \textsc{MATLAB} code \texttt{fdstencil.m}, and check that they satisfy the system you determined in part (1).
+    \item Test this finite difference approximate $u''(1)$ for $u(x) = \sin(2x)$ with values of $h$ from the array \texttt{hvals = logspace(-1,-4,13)}. Make a table of the error vs $h$ for several values of $h$ and compare against the predicted error from the leading term of the expression printed by \texttt{fdstencil.m}. Also produce a log-log plot of the absolute value of the error vs $h$. 
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+    \phantom{a}
+\begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+
+\item Taylor expanding $u(x-2h)$, $u(x-h)$, $u(x+h)$, and $u(x+2h)$ gives:
+    \begin{equation*}
+\begin{split}
+    u''(x)
+    &= c_{-2} \Biggl( u(x) + (-2h)u'(x) + \frac{(-2h)^2}{2!}u''(x) + \frac{(-2h)^3}{3!}u'''(x) + \frac{(-2h)^4}{4!}u''''(x) + O(h^5) \Biggr) \\
+    &+ c_{-1} \Biggl( u(x) + (-h)u'(x) + \frac{(-h)^2}{2!}u''(x) + \frac{(-h)^3}{3!}u'''(x) + \frac{(-2h)^4}{4!}u''''(x) + O(h^5) \Biggr) \\
+    &+ c_{0} u(x) \\
+    &+ c_{1} \Biggl( u(x) + (h)u'(x) + \frac{(h)^2}{2!}u''(x) + \frac{(h)^3}{3!}u'''(x) + \frac{(-2h)^4}{4!}u''''(x) + O(h^5) \Biggr) \\
+    &+ c_{2} \Biggl( u(x) + (2h)u'(x) + \frac{(2h)^2}{2!}u''(x) + \frac{(2h)^3}{3!}u'''(x) + \frac{(-2h)^4}{4!}u''''(x) + O(h^5) \Biggr).
+\end{split}
+\end{equation*}
+Expanding each of the constants and factoring out the respective derivatives of $u(x)$ gives:
+    \begin{equation*}
+    \begin{split}
+        u''(x) 
+        & = (c_{-2}+c_{-1}+c_{0}+c_{1}+c_{2})u(x) \\
+        &+ \bigl(c_{-2}(-2h) + c_{-1}(-h) + c_{1}(h) + c_{2}(2h)\bigr)u'(x) \\
+        &+ \left(c_{-2}\frac{(-2h)^2}{2!} + c_{-1}\frac{(-h)^2}{2!}  + c_{1}\frac{(h)^2}{2!} + c_{2}\frac{(2h)^2}{2!}\right)u''(x) \\
+        &+ \left(c_{-2}\frac{(-2h)^3}{3!} + c_{-1}\frac{(-h)^3}{3!}  + c_{1}\frac{(h)^3}{3!} + c_{2}\frac{(2h)^3}{3!}\right)u'''(x) \\
+        &+ \left(c_{-2}\frac{(-2h)^4}{4!} + c_{-1}\frac{(-h)^4}{4!}  + c_{1}\frac{(h)^4}{4!} + c_{2}\frac{(2h)^4}{4!}\right)u'''(x) \\
+        &+ O(h^5).
+    \end{split}
+    \end{equation*}
+We can rewrite this as the following system of equations:
+    \begin{equation*}
+    \begin{split}
+        c_{-2}+c_{-1}+c_{0}+c_{1}+c_{2} &= 0 \\
+        c_{-2}(-2h) + c_{-1}(-h) + c_{1}(h) + c_{2}(2h) &= 0 \\
+        c_{-2}\frac{(-2h)^2}{2!} + c_{-1}\frac{(-h)^2}{2!}  + c_{1}\frac{(h)^2}{2!} + c_{2}\frac{(2h)^2}{2!} & = 1 \\
+        c_{-2}\frac{(-2h)^3}{3!} + c_{-1}\frac{(-h)^3}{3!}  + c_{1}\frac{(h)^3}{3!} + c_{2}\frac{(2h)^3}{3!} & = 0 \\
+        c_{-2}\frac{(-2h)^4}{4!} + c_{-1}\frac{(-h)^4}{4!}  + c_{1}\frac{(h)^4}{4!} + c_{2}\frac{(2h)^4}{4!} & = 0.
+    \end{split}
+    \end{equation*}
+Hence we've obtained the following matrix equation:
+    \begin{equation*}
+    \begin{split}
+        \bmat
+        1 & 1 & 1 & 1 & 1 \\
+        -2h & -h & 0 & h & 2h \\
+        \frac{(-2h)^2}{2!} & \frac{(-h)^2}{2!} & 0 & \frac{h^2}{2!} & \frac{(2h)^2}{2!}\\
+        \frac{(-2h)^3}{3!} & \frac{(-h)^3}{3!} & 0 & \frac{h^3}{3!} & \frac{(2h)^3}{3!}\\
+        \frac{(-2h)^4}{4!} & \frac{(-h)^4}{4!} & 0 & \frac{h^4}{4!} & \frac{(2h)^4}{4!}\\
+        \emat
+        \bmat c_{-2} \\ c_{-1} \\ c_{0} \\ c_{1} \\ c_{2} \emat  
+        = \bmat 0 \\ 0 \\ 1 \\ 0\\ 0 \emat .
+    \end{split}
+    \end{equation*}
+Factoring an $h^2$ out of the third row and simplifying yields:
+    \begin{equation*}
+    \begin{split}
+        \bmat
+        1 & 1 & 1 & 1 & 1 \\
+        -2h & -h & 0 & h & 2h \\
+        2 & \frac{1}{2} & 0 & \frac{1}{2} & 2\\
+        -\frac{4h^3}{3} & -\frac{h^3}{6} & 0 & \frac{h^3}{6} & \frac{4h^3}{3}\\
+        \frac{2h^4}{3} & \frac{h^4}{24} & 0 & \frac{h^4}{24} & \frac{2h^4}{3}\\
+        \emat
+        \bmat c_{-2} \\ c_{-1} \\ c_{0} \\ c_{1} \\ c_{2} \emat  
+        = \bmat 0 \\ 0 \\ \frac{1}{h^2} \\ 0\\ 0 \emat .
+    \end{split}
+    \end{equation*}
+
+\item The following code row reduces the the augmented matrix obtained from the above matrix equation, as well as prints the output of \texttt{fdstencil(2,-2:2)}.
+    \begin{lstlisting}[style=MatlabEditorGrey]
+syms h
+
+A = [      1,        1, 1,        1,         1,     0;
+        -2*h,       -h, 0,        h,       2*h,     0;
+           2,      1/2, 0,      1/2,         2, 1/h^2;
+  -(4*h^3)/3, -(h^3)/6, 0,  (h^3)/6, (4*h^3)/3,     0;
+   (2*h^4)/3, (h^4)/24, 0, (h^4)/24, (2*h^4)/3,     0];
+
+disp(rref(A))
+fdstencil(2,-2:2)
+    \end{lstlisting}
+    \newpage
+    \begin{lstlisting}[style=Matlab-console]
+>> untitled
+[1, 0, 0, 0, 0, -1/(12*h^2)]
+[0, 1, 0, 0, 0,   4/(3*h^2)]
+[0, 0, 1, 0, 0,  -5/(2*h^2)]
+[0, 0, 0, 1, 0,   4/(3*h^2)]
+[0, 0, 0, 0, 1, -1/(12*h^2)]
+ 
+ 
+The derivative u^(2) of u at x0 is approximated by
+ 
+ 1/h^2 * [
+ -8.333333333333333e-02 * u(x0-2*h) + 
+  1.333333333333333e+00 * u(x0-1*h) + 
+ -2.500000000000000e+00 * u(x0) + 
+  1.333333333333333e+00 * u(x0+1*h) + 
+ -8.333333333333333e-02 * u(x0+2*h) ] 
+ 
+For smooth u,
+ Error = 0 * h^3*u^(5) + -0.0111111 * h^4*u^(6) + ...
+ 
+>> 
+    \end{lstlisting}
+    Hence the coefficients obtained by \texttt{fdstencil.m} satisfy the system we determined in part (1).
+\item The following \textsc{MATLAB} code and output addresses the question:
+    \begin{lstlisting}[style=MatlabEditorGrey]
+% u(x) = sin(2x), approximate u''(1):
+uptrue = -4*sin(2);
+%hvals = [1e-1 5e-2 1e-2 5e-3 1e-3];
+hvals = logspace(-1, -4, 13);
+E5u = [];
+% table headings:
+disp(' ')
+disp(' h D3u E3u')
+for i=1:length(hvals)
+h = hvals(i);
+% approximation to u''(1) using fdcoeffF:
+xpts = 1 + h*(-2:2)';
+D5u = fdcoeffF(2,1,xpts) * sin(2*xpts) ;
+% error:
+E5u(i) = D5u - uptrue;
+% print line of table:
+disp(sprintf('%13.4e %13.4e %13.4e',...
+h,D5u,E5u(i)))
+end
+% plot errors:
+clf
+loglog(hvals,abs(E5u),'o-')
+axis([5e-7 .2 1e-12 1])
+    \end{lstlisting}
+    \begin{lstlisting}[style=Matlab-console]
+>> untitled
+ 
+   h             D3u            E3u
+   1.0000e-01   -3.6371e+00    6.4431e-05
+   5.6234e-02   -3.6372e+00    6.4588e-06
+   3.1623e-02   -3.6372e+00    6.4638e-07
+   1.7783e-02   -3.6372e+00    6.4655e-08
+   1.0000e-02   -3.6372e+00    6.4670e-09
+   5.6234e-03   -3.6372e+00    6.4623e-10
+   3.1623e-03   -3.6372e+00    6.4150e-11
+   1.7783e-03   -3.6372e+00   -6.6817e-11
+   1.0000e-03   -3.6372e+00   -1.8323e-10
+   5.6234e-04   -3.6372e+00   -1.8130e-09
+   3.1623e-04   -3.6372e+00    4.2406e-09
+   1.7783e-04   -3.6372e+00    6.1032e-09
+   1.0000e-04   -3.6372e+00   -3.8600e-08
+>> 
+    \end{lstlisting}
+
+\newpage
+\begin{center}
+\scalebox{0.7}{\definecolor{mycolor1}{rgb}{0.14900,0.54900,0.86600}
+\definecolor{mycolor2}{rgb}{0.07059,0.07059,0.07059}
+\begin{tikzpicture}
+\begin{axis}[
+width=7.887in,
+height=4.992in,
+at={(1.323in,0.674in)},
+scale only axis,
+xmode=log,
+xmin=5e-07,
+xmax=0.2,
+xminorticks=true,
+ymode=log,
+ymin=1e-12,
+ymax=1,
+yminorticks=true,
+axis background/.style={fill=white}
+]
+\addplot [color=mycolor1, mark=o, mark options={solid, mycolor1}, forget plot]
+  table[row sep=crcr]{
+0.1	6.4430648182956e-05\\
+0.0562341325190349	6.45881661665015e-06\\
+0.0316227766016838	6.46380871494046e-07\\
+0.0177827941003892	6.46546451932295e-08\\
+0.01	6.4669931632011e-09\\
+0.00562341325190349	6.46227071854355e-10\\
+0.00316227766016838	6.41504627196809e-11\\
+0.00177827941003892	6.68167743356207e-11\\
+0.001	1.83232096162556e-10\\
+0.000562341325190349	1.81304660173964e-09\\
+0.000316227766016838	4.24055013326097e-09\\
+0.000177827941003892	6.10319528249192e-09\\
+0.0001	3.8600288299051e-08\\
+};
+\end{axis}
+\end{tikzpicture}}
+\end{center}
+
+
+\end{enumerate}
+\end{solution}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

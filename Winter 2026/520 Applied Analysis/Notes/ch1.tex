@@ -1,0 +1,888 @@
+\chapter{Normed Linear Spaces}
+\pagenumbering{arabic}
+
+\section{Basic Definitions and Results}
+
+\begin{definition}
+A \textui{seminorm} on an $\bfF$-vector space $X$ is a map:
+    \begin{equation*}
+    \begin{split}
+        \lnorm \cdot \rnorm :X \rightarrow [0,\infty)
+    \end{split}
+    \end{equation*}
+satisfying:
+    \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+        \item $\lnorm \alpha x \rnorm = |\alpha| \lnorm x \rnorm$ for all $\alpha \in \bfF$ and $x \in X$ (\textit{homogeneity});
+        \item $\lnorm x + y \rnorm \leq \lnorm x \rnorm + \lnorm y \rnorm$ for all $x,y \in X$ (\textit{triangle inequality}).
+    \end{enumerate}
+If the following condition is also satisfied:
+    \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+        \addtocounter{enumi}{2}
+        \item $\lnorm x \rnorm \geq 0$ and $\lnorm x \rnorm = 0$ if and only if $x = 0$ (\textit{positive definiteness}),
+    \end{enumerate}
+then we say $\lnorm \cdot \rnorm$ is a \textui{norm}. The ordered pair $(X,\lnorm \cdot \rnorm)$ is called a \textui{normed linear space}.
+\end{definition}
+
+\begin{remark}
+    In most cases, one can take $\bfF$ to be $\bfR$ or $\bfC$ without any loss of generality.
+\end{remark}
+
+\begin{remark}
+    A normed linear space induces a metric by the equation $d(x,y) := \lnorm y-x \rnorm$.
+\end{remark}
+
+\begin{remark}
+    A normed linear space is finite dimensional if it is as a vector space; otherwise it is infinite dimensional.
+\end{remark}
+
+\begin{definition}
+    Let $(X,\lnorm \cdot \rnorm)$ be a normed linear space.
+    \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+        \item The \textui{open ball centered around $x_0 \in X$ with radius $r > 0$} is denoted \nl $B(x_0,r) := \{x \in X \mid \lnorm x - x_0 \rnorm < r\}$.
+        \item The \textui{closed ball centered around $x_0 \in X$ with radius $r > 0$} is denoted \nl $\overline{B}(x_0,r) := \{x \in X \mid \lnorm x - x_0 \rnorm < r\}$.
+        \item The \textui{sphere centered around $x_0 \in X$ with radius $r > 0$} is denoted \nl $S(x_0,r) := \{x \in X \mid \lnorm x - x_0 \rnorm = r\}$.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    Two norms $\lnorm \cdot \rnorm_\alpha$ and $\lnorm \cdot \rnorm_\beta$ on a normed linear space $X$ are said to be \textui{equivalent} if there exists a constant $C \geq 1$ such that, for all $x \in X$:
+        \begin{equation*}
+            \frac{1}{C} \lnorm x \rnorm_\beta \leq \lnorm x \rnorm_\alpha \leq C \lnorm x \rnorm_\beta.
+        \end{equation*}
+\end{definition}
+
+\begin{example}
+    Let $x \in \bfR^n$, where $x := (x_1,.,,x_n)$ Then:
+        \begin{equation*}
+        \begin{split}
+            \lnorm x \rnorm_2 & := \left( \sum_{i = 1}^n |x_i|^2 \right)^\frac{1}{2}\hspace{-5pt},\\
+            \lnorm x \rnorm_1 & := \sum_{i = 1}^n |x_i|,\\
+            \lnorm x \rnorm_\infty & :=  \max_{i = 1}^n |x_i|^p, \\
+            \lnorm x \rnorm_p & := \left( \sum_{i = 1}^n |x_i|^p \right)^\frac{1}{p}\hspace{-5pt},\h5 p > 1\\
+        \end{split}
+        \end{equation*}
+    are norms on $\bfR^n$.
+\end{example}
+
+\begin{example}\label{example:function-space-norms}
+    Let $a,b \in \bfR$ with $a < b$. The set of continuous real-valued functions on $[a,b]$ is denoted $C([a,b]) := \{f:[a,b] \rightarrow \bfR \mid f \text{ is continuous }\}$. Then:
+        \begin{equation*}
+        \begin{split}
+            \lnorm f \rnorm_\infty &:= \sup\{ |f(x)| \mid x \in [a,b]\}, \\
+            \lnorm f \rnorm_2 &:= \left( \int_a^b |f(x)|^2 dx \right)^\frac{1}{2}, \\
+            \lnorm f \rnorm_p &:= \left( \int_a^b |f(x)|^p dx \right)^\frac{1}{p}, \\
+        \end{split}
+        \end{equation*}
+    are all norms on $C([a,b])$.
+\end{example}
+
+\begin{definition}
+    Let $(X,\lnorm \cdot \rnorm)$ be a normed linear space. A subset $V \subset X$ is \textui{convex} if for all $x,y \in V$ and for all $t \in [0,1]$, $ty + (1-t)x \in V$.
+\end{definition}
+
+\begin{example}
+    Any subspace of a normed linear space is convex. Moreover, by the triangle inequality any open ball is convex.
+\end{example}
+
+\begin{remark}
+    Note that the \textit{supremum norm} $\lnorm \cdot \rnorm_\infty$ on $C([a,b])$ only exists (by the Extreme Value Theorem) because $[a,b]$ is compact. Hence the above example can be generalized to a compact metric space $Y$. In particular, for $C(Y) := \{f:Y \rightarrow \bfR \mid f \text{ is continuous }\}$, the norm $\lnorm f \rnorm_\infty := \sup\{|f(x)| \mid x \in Y\}$ always exists and is finite.
+\end{remark}
+
+\begin{proposition}
+    Let $(X,d)$ and $(Y,\rho)$ be metric spaces. Let $f:X \rightarrow Y$. Then $f$ is continuous if and only if the preimage of an open set in $Y$ is open in $X$.
+\end{proposition}
+    \begin{proof}
+        Suppose $f$ is continuous. Let $V \subseteq Y$ be open. If $f^{-1}(V) = \emptyset$, then there is nothing to show. If not, pick any $x \in f^{-1}(V)$. Then $f(x) \in V$. Since $V$ is open, there exists $\epsilon > 0$ such that $f(x) \in B(f(x), \delta) \subseteq V$. Since $f$ is continuous, there exists a $\delta > 0$ such that $f(B(x,\delta)) \subseteq B(f(x),\epsilon) \subseteq V$. Thus $B(x,\delta) \subseteq f^{-1}(V)$; i.e., $f^{-1}(V)$ is open.
+
+        Conversely, let $x \in X$ and $\epsilon > 0$. Since $B(f(x),\epsilon)$ is open in $X$, $f^{-1}(B(f(x),\epsilon))$ is open in $Y$. Clearly $x \in f^{-1}(B(f(x),\epsilon))$. Since this set is open, there exists $\delta > 0$ such that $x \in B(x,\delta) \subseteq f^{-1}(B(f(x),\epsilon))$. Hence $f(B(x,\delta)) \subseteq B(f(x),\epsilon)$. Since the set of all open balls is a basis for a topology, any open set can be written as the union of open balls. Thus $f$ is continuous.
+    \end{proof}
+
+\begin{remark}
+    It follows that $f$ is continuous if and only if the preimage of a closed set is closed.
+\end{remark}
+
+\begin{definition}
+    Let $(X,\lnorm \cdot\rnorm)$ be a normed linear space and $\{x_n\}_{n = 1}^\infty$ be a sequence in $X$. 
+    \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+        \item The sequence $\{x_n\}_{n = 1}^\infty$ \textui{converges to $x \in X$ in the $\lnorm \cdot \rnorm$-norm} if $\lnorm x - x_n \rnorm \rightarrow 0$.
+        \item A \textui{series in $X$} is a formal sum $\sum_{n = 1}^\infty x_n$. We say the series $\sum_{n = 1}^\infty x_n$ \textui{converges to} \textui{$x \in X$} if the sequence of partial sums $\left\{ \sum_{i = 1}^n x_i \right\}_{n = 1}^\infty$ converges to $x$. We say $\sum_{n = 1}^\infty$ is \nl \textui{absolutely convergent} if $\sum_{n = 1}^\infty \lnorm x_n \rnorm$ converges.
+    \end{enumerate}
+\end{definition}
+
+\begin{proposition}\label{prop:banach-iff-series}
+    Let $X$ be a normed linear space. The following are equivalent:
+        \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+            \item $X$ is a Banach space;
+            \item Every absolutely convergent series in $X$ converges.
+        \end{enumerate}
+\end{proposition}
+    {\color{red} \begin{proof}
+        
+    \end{proof}}
+
+\section{Completeness and Compactness}
+\begin{lemma}
+    In $(\bfR^n,\lnorm \cdot \rnorm_\infty)$, every closed ball $\overline{B}(0,c)$ is compact.
+\end{lemma}
+    {\color{red} \begin{proof}
+        
+    \end{proof}}
+
+\begin{theorem}
+    Let $X$ be a finite dimensional normed linear space. Every closed and bounded subset of $X$ is compact.
+\end{theorem}
+    {\color{red} \begin{proof}
+        
+    \end{proof}}
+
+\begin{corollary}\label{cor:fdnsl-is-banach}
+    Every finite dimensional normed linear space is Banach.
+\end{corollary}
+    \begin{proof}
+        Let $X$ be a finite dimensional normed linear space and $\{x_n\}_{n = 1}^\infty $ a Cauchy sequence. Then $\{x_n\}_{n= 1}^\infty$ is closed and bounded, hence it is compact. Thus $\{x_n\}_{n = 1}^\infty$ admits a convergent subsequence. But since $\{x_n\}_{n = 1}^\infty$ is a Cauchy sequence which admits a convergent subsequence, $\{x_n\}_{n = 1}^\infty$ is convergent. Thus $X$ is Banach.
+    \end{proof}
+
+\begin{corollary}\label{cor:fd-subspace-of-nls-is-closed}
+    Every finite dimensional subspace of a normed linear space is closed.
+\end{corollary}
+    \begin{proof}
+        This follows from Corollary~\ref{cor:fdnsl-is-banach} and Exercise~\ref{exercise:ch1-subspace-closed-iff-banach}.
+    \end{proof}
+
+\begin{lemma}[Riesz's Lemma]\label{lemma:rieszs-lemma}
+    Let $(X,\lnorm \cdot \rnorm)$ be a normed linear space. Let $Z$ be a closed and proper subspace of $X$. Let $0 < \lambda < 1$ be fixed. Then there exists some $x \in X \setminus Z$ such that $\lnorm x \rnorm = 1$ and $\dist(x,Z) > 1$.
+\end{lemma}
+    {\color{red} \begin{proof}
+        
+    \end{proof}}
+
+\begin{theorem}
+    Let $X$ be a normed linear space. Then $X$ is finite dimensional if and only if $\overline{B}(0,1)$ is compact.
+\end{theorem}
+    {\color{red} \begin{proof}
+    
+    \end{proof}}
+
+\section*{Exercises}
+\addcontentsline{toc}{section}{Exercises}
+
+\begin{exercise}
+Let $K$ be a compact metric space (fine to assume that $K = [0,1]$). Show that $C(K)$ paired with the the sup-norm $\lnorm \cdot \rnorm_\infty$ is Banach.
+\end{exercise}
+    {\color{red} \begin{proof}
+        
+    \end{proof}}
+
+\begin{exercise}
+In any metric space, a closed subset of a compact set is compact.
+\end{exercise}
+    {\color{red} \begin{proof}
+        
+    \end{proof}}
+
+\begin{exercise}
+In any metric space, a Cauchy sequence which has a convergent subsequence must converge.
+\end{exercise}
+    {\color{red} \begin{proof}
+        
+    \end{proof}}
+
+\begin{exercise}\label{exercise:ch1-subspace-closed-iff-banach}
+A subspace of a Banach space is closed if and only if it is Banach.
+\end{exercise}
+    \begin{proof}
+        Let $X$ be a Banach space and $Y$ a subspace. Suppose that $Y$ is closed. Let $\{y_n\}_{n = 1}^\infty \subseteq Y$ be a Cauchy sequence. Then $\{y_n\}_{n = 1}^\infty$ is Cauchy in $X$. Therefore $y_n \rightarrow x$ for some $x \in X$. But since $Y$ is closed, it contains all of its limit points. Hence $x \in Y$. Therefore $\{y_n\}_{n = 1}^\infty$ converges in $Y$, establishing that $Y$ is Banach.
+
+        Conversely, suppose that $Y$ is Banach. Let $\{y_n\}_{n = 1}^\infty \subseteq Y$ be a sequence such that $y_n \rightarrow x \in X$. Note that $\{y_n\}_{n = 1}^\infty$ is convergent, hence Cauchy. But since $Y$ is Banach, $\{y_n\}_{n = 1}^\infty$ converges to some $y \in Y$. It must be the case that $x = y \in Y$. Therefore $Y$ contains all of its limit points; i.e., it is closed in $X$.
+    \end{proof}
+
+\begin{exercise}
+In any normed linear space $X$ with closed subspace $Z$, if $x \in X \setminus Z$ then $\dist(x,Z) > 0$.
+\end{exercise}
+    \begin{proof}
+        Suppose towards contradiction $\dist(x,Z) = \inf\{\lnorm x-z \rnorm \mid z \in Z\} = 0$. We can find a sequence $\{z_n\}_{n = 1}^\infty \subseteq Z$ such that $\lnorm x - z_n \rnorm \rightarrow 0$. Hence $z_n \rightarrow x$. But since $Z$ is closed, $x \in Z$. This is a contradiction, hence $\dist(x,Z) > 0$.
+    \end{proof}
+
+\begin{exercise}
+In any normed linear space $X$ with subspace $Z$, if $x \in X$ and $z \in Z$ then $\dist(x,Z) = \dist(x+z,Z)$.
+\end{exercise}
+    \begin{proof}
+        Note that $\dist(x+z,Z) = \inf\{ \lnorm (x+z) - z_0 \rnorm \mid z_0 \in Z\} = \inf\{\lnorm x - (z_0 - z) \rnorm \mid z_0 \in Z\}$. Since $\{z_0 - z \mid z_0 \in Z\} = Z$, we have that $\inf\{ \lnorm x - z \rnorm \mid z \in Z\} = \inf\{ \lnorm (x+z) - z_0 \rnorm \mid z_0 \in Z\}$; i.e., $\dist(x,Z) = \dist(x+z,Z)$.
+    \end{proof}
+
+\begin{exercise}
+Let $X$ and $Y$ be normed linear spaces and let $\varphi:X \rightarrow Y$ be a linear operator. Show that $\varphi$ is continuous if and only if it is continuous at 0.
+\end{exercise}
+    {\color{red} \begin{proof}
+        
+    \end{proof}}
+
+
+
+\section{Linear Operators}
+
+\begin{definition}
+    Let $X$ and $Y$ be normed linear spaces. A map $T:X \rightarrow Y$ is \textui{linear} if $T(x + \alpha y) = T(x) + \alpha T(y)$ for all $x,y \in X$ and $\alpha \in \bfF$. $T$ is called a \textui{linear transformation} (or \textui{linear operator}). If $X$ is a normed linear space over $\bfF$, then a linear transformation $\varphi:X \rightarrow \bfF$ is called a \textui{linear functional}.
+\end{definition}
+
+\begin{remark}
+    The norm on $\bfF$ is the usual absolute value in $\bfR$ or modulus operator in $\bfC$.
+\end{remark}
+
+\begin{example}
+    Linear operators between $\bfR^n$ and $\bfR^m$ correspond to $n \times m$ matrices.
+\end{example}
+
+\begin{example}
+    Consider the normed linear space $\bigl(C([0,1]), \lnorm \cdot \rnorm_\infty\bigr)$. Evaluation at zero is a linear functional, as well as the map $x \mapsto \int_0^1 x(t)dt$. Moreover, $T:C([0,1]) \rightarrow C([0,1])$ defined by $x(t) \mapsto \int_0^1 K(s,t)x(s)ds$ is a linear transformation, where $K$ is a continuous function on $[0,1] \times [0,1]$.
+\end{example}
+
+\begin{definition}
+    Let $X$ and $Y$ be normed linear spaces and $T:X \rightarrow Y$ a linear transformation. $T$ is \textui{bounded} if there exists $M > 0$ such that for all $x \in X$, $\lnorm x \rnorm \leq 1$ implies $\lnorm Tx \rnorm \leq M$.
+\end{definition}
+
+\begin{theorem}
+    Let $X$ and $Y$ be normed linear spaces. A linear transformation $T:X \rightarrow Y$ is bounded if and only if it is continuous.
+\end{theorem}
+    \begin{proof}
+        Suppose $T$ is continuous. Then $T$ is continuous at zero. Choose $\delta > 0$ such that $\lnorm x  \rnorm < \delta$ implies $\lnorm Tx  \rnorm < 1$. Now let $x \in X$ with $\lnorm x \rnorm \leq 1$. Then $\lnorm Tx \rnorm = \lnorm T \left( \frac{x \delta}{\delta} \right) \rnorm = |\frac{1}{\delta}| \lnorm T(\delta x) \rnorm \leq \frac{1}{\delta}$. Therefore $T$ is bounded.
+
+        Conversely, let $M > 0$ satisfy $\lnorm Tx \rnorm \leq M$ for all $x \in \overline{B}(0,1)$. Let $\epsilon > 0$. Choose $\delta = \frac{\epsilon}{M}$. Then $\lnorm x \rnorm \leq \delta$ implies $\lnorm \frac{M}{\epsilon}x \rnorm \leq 1$. Hence by our assumption $\lnorm T \left( \frac{M}{\epsilon}x \right) \rnorm \leq M$, which is equivalent to $\lnorm Tx \rnorm \leq \epsilon$. Thus $T$ is continuous at 0, hence it is continuous everywhere.
+    \end{proof}
+
+\begin{example}\label{example:unbounded-operator}
+    Consider $D:C^1([0,1]) \rightarrow C([0,1])$ given by $Df = f'$. Consider the sequence of functions $\{f_n\}_{n = 1}^\infty \subseteq C^1([0,1])$ given by $f_n(x) = \frac{1}{\sqrt{n}}x^n$. Then for all $n \in \bfN$, $Df_n(x) =\sqrt{n}x^{n-1}$. Hence $D$ is unbounded.
+\end{example}
+
+\begin{theorem}\label{thm:lin-funct-cont-iff-kern-closed}
+    Let $X$ be a normed linear space. A linear functional $\varphi:X \rightarrow \bfF$ is continuous if and only if its kernel is closed.
+\end{theorem}
+    \begin{proof}
+        Suppose $\varphi$ is continuous. Then $\ker \varphi = \varphi^{-1}(\{0\})$ is closed, as the continuous preimage of a closed set is closed.
+
+        Conversely, suppose towards contradiction $\varphi$ is not continuous. Then $\varphi$ is unbounded; i.e., there exists a sequence $\{x_n\}_{n = 1}^\infty \subset X$ such that $\lnorm x_n \rnorm = 1$ for all $n \in \bfN$ and $|\varphi(x_n)| \rightarrow \infty$. If $\ker\varphi = X$ then there is nothing to show. Assume $\ker\varphi \neq X$ and pick some $x \in X \setminus \ker\varphi$. Define $y_n := x - \frac{\varphi(x)}{\varphi(x_n)}x_n$. Then $\varphi(y_n) = \varphi(x) - \frac{\varphi(x)}{\varphi(x_n)}\varphi(x_n) = 0$. Hence $y_n \in K$ for all $n \in \bfN$. But note that $\lnorm y_n - x \rnorm = \lnorm - \frac{\varphi(x)}{\varphi(x_n)}x_n \rnorm = \frac{|\varphi(x)}{|\varphi(x_n)}\lnorm x_n \rnorm \rightarrow 0$. Hence $y_n \rightarrow x$. Since $\ker\varphi$ is closed, $x \in \ker\varphi$. This is a contradiction, establishing the proof.
+    \end{proof}
+
+\begin{theorem}\label{thm:fdnls-lin-implies-cont}
+Let $X$ be a finite dimensional normed linear space and $Y$ a normed linear space. If $T:X \rightarrow Y$ is linear, then $T$ is continuous.
+\end{theorem}
+    \begin{proof}
+        Pick a basis for $X$ such that $X = \Span\{b_1,...,b_n\}$. Define $M:= \max_{i = 1}^n \{T(b_i)\}$. For each $j = 1,...,n$, define a linear functional $\varphi_j:X \rightarrow \bfF$ by:
+            \begin{equation*}
+            \begin{split}
+                \varphi_j(x)
+                & = \varphi_j \left( \sum_{i = 1}^n \alpha_i b_i \right) \\
+                & = \sum_{i = 1}^n \alpha_i \varphi_j(b_i) \\
+                & := \alpha_j
+            \end{split}
+            \end{equation*}
+        Since all subspaces of $X$ are closed by Corollary~\ref{cor:fd-subspace-of-nls-is-closed}, surely $\ker \varphi_j$ is closed. Hence by Theorem~\ref{thm:lin-funct-cont-iff-kern-closed} $\varphi_j$ is continuous. Since $\varphi_j$ is continuous, find $L > 0$ sufficiently large enough such that for every $x \in X$ with $\lnorm x \rnorm \leq 1$, we have $|\varphi_j(x)| \leq L$. Since $T:X \rightarrow Y$ is linear:
+            \begin{equation*}
+            \begin{split}
+                \lnorm Tx \rnorm
+                & = \lnorm T \sum_{i = 1}^n \alpha_i b_i \rnorm \\
+                & = \lnorm \sum_{i = 1}^n \alpha_i T b_i \rnorm \\
+                & = \lnorm \sum_{i = 1}^n \varphi_i(x) T b_i \rnorm \\
+                & \leq \sum_{i = 1}^n |\varphi_i(x)| \lnorm T b_i \rnorm \\
+                & \leq nLM \\
+                & < \infty.
+            \end{split}
+            \end{equation*}
+        Thus $T$ is continuous.
+    \end{proof}
+
+\begin{theorem}\label{thm:norms-on-fdvs-are-equiv}
+Let $X$ be a finite dimensional vector space. All norms on $X$ are equivalent.
+\end{theorem}
+    \begin{proof}
+        Let $\lnorm \cdot \rnorm_\alpha$ and $\lnorm \cdot \rnorm_\beta$ be two norms. Consider $\id:(X,\lnorm \cdot \rnorm_\alpha) \rightarrow (X,\lnorm \cdot \rnorm_\beta)$. This map is surely linear, hence by Theorem~\ref{thm:fdnls-lin-implies-cont} $\id$ is continuous. Hence we can find some $A>0$ sufficiently large such that, for all $x \in X$ with $\lnorm x \rnorm_\alpha \leq 1$, we have $\lnorm x \rnorm_\beta \leq A$. Thus:
+            \begin{equation*}
+            \begin{split}
+                \lnorm x \rnorm_\beta 
+                & = \lnorm \lnorm x \rnorm_\alpha \frac{x}{\lnorm x \rnorm_\alpha} \rnorm_\beta \\
+                & = \lnorm x \rnorm_\alpha \lnorm \frac{x}{\lnorm x \rnorm_\alpha} \rnorm_\beta \\
+                & \leq \lnorm x \rnorm_\alpha A.
+            \end{split}
+            \end{equation*}
+        Applying the same argument to $\id^{-1}$ gives $\lnorm x \rnorm_\alpha \leq \lnorm x \rnorm_\beta B$, establishing the theorem.
+    \end{proof}
+
+\section*{Exercises}
+\addcontentsline{toc}{section}{Exercises}
+
+\begin{exercise}
+Let $X$ be a normed linear space. Prove the \textit{limit laws:} if $x_n \rightarrow x$, $y_n \rightarrow y$, and $\lambda \in \bfF$, then $x_n + \lambda y_n \rightarrow x+\lambda y$.
+\end{exercise}
+    {\color{red} \begin{proof}
+    
+    \end{proof}}
+
+\begin{exercise}
+Let $X$ be a normed linear space with norm $\lnorm \cdot \rnorm$. Prove that the map $\lnorm \cdot \rnorm:X \rightarrow \bfR$ is continuous.
+\end{exercise}
+    \begin{proof}
+        Let $x,y \in X$. Then $\lnorm x \rnorm \leq \lnorm x - y \rnorm + \lnorm y \rnorm$, giving $\lnorm x \rnorm - \lnorm y \rnorm \leq \lnorm x-y \rnorm$. A similar tactic gives $\lnorm  y\rnorm - \lnorm x \rnorm \leq \lnorm x - y \rnorm$. Hence $\left| \lnorm x \rnorm - \lnorm y \rnorm \right| \leq \lnorm x - y \rnorm$. This means $\lnorm \cdot \rnorm$ is Lipschitz, implying that it is continuous.
+    \end{proof}
+
+\begin{exercise}
+Prove that the closure of a linear subspace in a normed linear space is also a subspace.
+\end{exercise}
+    \begin{proof}
+        Let $X$ be a normed linear space and $Y$ a subspace. Let $u,v \in \overline{Y}$ and $\alpha \in \bfF$. There exists sequences $\{u_n\}_{n = 1}^\infty$, $\{v_n\}_{n = 1}^\infty$ such that $u_n \rightarrow u$ and $v_n \rightarrow v$. Hence $u_n + \alpha v_n \rightarrow u+\alpha v \in \overline{Y}$. Thus $\overline{Y}$ is a linear subspace.
+    \end{proof}
+
+\begin{exercise}
+Prove that the operator norm has the three properties required of a norm
+\end{exercise}
+    {\color{red} \begin{proof}
+    
+    \end{proof}}
+
+\begin{exercise}
+Prove directly that if T is an unbounded linear operator, then it is discontinuous at 0.
+\end{exercise}
+    \begin{proof}
+        Let $T:X \rightarrow Y$ be an unbounded linear operator. Since $T$ is unbounded:
+            \begin{equation*}
+            \begin{split}
+                \lnorm T \rnorm_{\cL(X,Y)} = \sup\{\lnorm Tx \rnorm_Y \mid x \in \overline{B}_X(0,1)\} = \infty.
+            \end{split}
+            \end{equation*}
+        We can find a sequence $\{x_n\}_{n = 1}^\infty$ such that $\lnorm x \rnorm_X \leq 1$ and $\lnorm T x_n \rnorm_Y \rightarrow \infty$. Consider the sequence $\left\{ \frac{x_n}{\lnorm T x_n \rnorm_Y} \right\}_{n = 1}^\infty$. Clearly $\frac{x_n}{\lnorm T x_n \rnorm_Y} \rightarrow 0$. But:
+            \begin{equation*}
+            \begin{split}
+                \lnorm T \left( \frac{x_n}{\lnorm T x_n \rnorm_Y} \right) \rnorm
+                & = \frac{\lnorm T x_n \rnorm_Y}{\lnorm T x_n \rnorm_Y} = 1.
+            \end{split}
+            \end{equation*}
+        Hence the sequence $\left\{ T \left( \frac{x_n}{\lnorm T x_n \rnorm_Y} \right) \right\}_{n = 1}^\infty$ does \textit{not} converge to 0. Thus $T$ is discontinuous at 0. 
+    \end{proof}
+
+\begin{exercise}
+Prove that the norm of a linear transformation is the infimum of all numbers $M$ that satisfy the inequality $\lnorm Tx \rnorm \leq M \lnorm x \rnorm$ for all $x$.
+\end{exercise}
+    \begin{proof}
+        Let $M$ be such that $\lnorm Tx \rnorm \leq M \lnorm x \rnorm$ for all $x \in X$. Then $\frac{\lnorm Tx \rnorm}{\lnorm x \rnorm} \leq M$ for all $x \in X$, $x \neq 0$. Taking the supremum over all $x \in X$, $x \neq 0$ gives $\lnorm T \rnorm_{\cL(X,Y)} \leq M$. Hence $\lnorm T \rnorm_{\cL(X,Y)} \leq \inf\{M \mid \lnorm Tx \rnorm \leq M \lnorm x \rnorm \text{ for all }x \in X\}$.
+
+        Conversely, let $x \in X$, $x \neq 0$. Then $\lnorm Tx \rnorm \leq \lnorm T \rnorm_{\cL(X,Y)} \lnorm x \rnorm$. Thus $\lnorm T \rnorm_{\cL(X,Y)} \in \{M \mid \lnorm Tx \rnorm \leq M \lnorm x \rnorm \text{ for all }x \in X\}$. Surely $\lnorm T \rnorm_{\cL(X,Y)} \geq \inf\{M \mid \lnorm Tx \rnorm \leq M \lnorm x \rnorm \text{ for all }x \in X\}$, establishing equality.
+    \end{proof}
+
+\begin{exercise}
+On the space $C([0,1])$ we define "point-evaluation functionals" by $t^\ast(f) = f(t)$. Here $t \in [0,1]$ and $f \in C([0,1])$. Prove that $\lnorm t^\ast \rnorm = 1$. Prove that if $\varphi = \sum_{i = 1}^n \lambda_i t_i^\ast$, where $t_1,t_2,...,t_n$ are distinct points in $[0,1]$, then $\lnorm \varphi \rnorm = \sum_{i = 1}^n |\lambda_i|$.
+\end{exercise}
+    {\color{red} \begin{proof}
+    
+    \end{proof}}
+
+\begin{exercise}
+Prove that if a linear transformation maps some nonvoid open set of the domain space
+to a bounded set in the range space, then it is continuous.
+\end{exercise}
+    \begin{proof}
+        Let $T:X \rightarrow Y$ be linear. Let $U \subseteq X$ be open and nonvoid. Then there exists some $x \in U$. Find $r > 0$ such that $B(x,r) \subseteq U$. 
+
+        Let $x_0 \in B(0,1)$. Then $x+rx_0 \in B(x,r) \subseteq U$. Hence $T(x + rx_0) \in T(U)$. We can write:
+            \begin{equation*}
+            \begin{split}
+                \lnorm T x_0 \rnorm
+                & \leq \frac{\lnorm T(x+rx_0) \rnorm + \lnorm Tx  \rnorm}{r}.
+            \end{split}
+            \end{equation*}
+        Since $T(U)$ is bounded, it must be the case that $\lnorm T x_0 \rnorm \leq M$ for some $M > 0$. Thus $T(B(0,1))$ is bounded.
+
+        Now let $x \in X$. We have that:
+            \begin{equation*}
+            \begin{split}
+                \lnorm T x \rnorm
+                & = \lnorm T \left( \frac{x}{2 \lnorm x \rnorm} \cdot 2 \lnorm x \rnorm \right) \rnorm \\
+                & = 2 \lnorm T \left( \frac{x}{2 \lnorm x \rnorm} \right) \rnorm \lnorm  x \rnorm \\
+                & \leq 2 M \lnorm x \rnorm.
+            \end{split}
+            \end{equation*}
+        Thus $T$ is continuous.
+    \end{proof}
+
+\section{Bounded Linear Functionals}
+
+\begin{definition}
+    Let $X$ and $Y$ be normed linear spaces.
+    \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+        \item The space of bounded linear operators between $X$ and $Y$ is denoted $\cL(X,Y) := \{T:X \rightarrow Y \mid T \text{ is bounded }\}$.
+        \item The \textui{operator norm} of a bounded linear operator $T \in \cL(X,Y)$ is $\lnorm T \rnorm_{\cL(X,Y)}:= \sup\{\lnorm Tx \rnorm_Y \mid x \in \overline{B}_X(0,1)\}$.
+        \item The \textui{continuous dual of $X$} is defined as $X^\ast := \cL(X,\bfF)$.
+    \end{enumerate}
+\end{definition}
+
+\begin{remark}
+    We denote $\cL(X,X)$ by $\cL(X)$.
+\end{remark}
+
+\begin{proposition}\label{prop:op-norm-ineq}
+    If $T \in \cL(X,Y)$ and $x \in X$, then $\lnorm Tx \rnorm \leq \lnorm T \rnorm_{\cL(X,Y)} \cdot \lnorm x \rnorm$.
+\end{proposition}
+    \begin{proof}
+        If $x = 0$, then there is nothing to show. If $x \neq 0$, then:
+            \begin{equation*}
+            \begin{split}
+                \lnorm Tx \rnorm 
+                & = \lnorm \lnorm x \rnorm T \left(\frac{x}{\lnorm x \rnorm}\right) \rnorm \\
+                & = \lnorm  T \left(\frac{x}{\lnorm x \rnorm}\right) \rnorm \lnorm x \rnorm \\
+                & \leq \lnorm T \rnorm_{\cL(X,Y)} \lnorm x \rnorm. \qedhere
+            \end{split}
+            \end{equation*}
+    \end{proof}
+
+\begin{proposition}
+    If $S,T \in \cL(X)$, then $S \circ T \in \cL(X)$.
+\end{proposition}
+    \begin{proof}
+        Let $x \in X$ such that $\lnorm x \rnorm \leq 1$. By Proposition~\ref{prop:op-norm-ineq}:
+            \begin{equation*}
+            \begin{split}
+                \lnorm (S \circ T)(x) \rnorm 
+                & \leq \lnorm S(T(x)) \rnorm \\
+                & \leq \lnorm S \rnorm_{\cL(X)} \lnorm Tx \rnorm \\
+                & \leq \lnorm S \rnorm_{\cL(X)} \lnorm T \rnorm_{\cL(X)} \lnorm x \rnorm \\
+                & \leq \lnorm S \rnorm_{\cL(X)} \lnorm T \rnorm_{\cL(X)}.
+            \end{split}
+            \end{equation*} 
+        Taking the supremum over all $\lnorm x \rnorm \leq 1$ gives $\lnorm S \circ T \rnorm_{\cL(X)} \leq \lnorm S \rnorm_{\cL(X)} \lnorm T \rnorm_{\cL(X)}$.
+    \end{proof}
+
+\begin{theorem}
+Let $X$ be a normed linear space and $Y$ a Banach space. Then \nl $(\cL(X,Y),\lnorm \cdot \rnorm_{\cL(X,Y)})$ is Banach.
+\end{theorem}
+    \begin{proof}
+        Let $\{T_n\}_{n = 1}^\infty \subseteq \cL(X,Y)$ be Cauchy. Note that for any $x \in X$, $\{T_n(x)\}_{n = 1}^\infty$ will be Cauchy in $Y$. Since $Y$ is complete, this sequence has a limit. Define $Tx := \lim_{n \rightarrow \infty} T_n x$. We must show that $T$ is linear, bounded, and $T_n \rightarrow T$.
+
+        Let $x,y \in X$, $\alpha \in \bfF$, and $n \in \bfN$. Then $T_n(x+\alpha y) = T_n x + \alpha T_n y$. By limit laws, $T(x+\alpha y) = Tx + \alpha Ty$. Thus $T$ is linear.
+
+        Since $\{T_n\}_{n =1}^\infty$ is Cauchy in $\cL(X,Y)$, this means $\{T_n\}_{n = 1}^\infty$ is bounded. Hence we can find $M > 0$ sufficiently large such that $\lnorm T_n \rnorm \leq M$ for all $n \in \bfN$. For every $x \in X$ with $\lnorm x \rnorm \leq 1$, we have:
+            \begin{equation*}
+            \begin{split}
+                \lnorm Tx \rnorm
+                & = \lnorm \lim_{n \rightarrow \infty}T_n x \rnorm \\
+                & = \lim_{n \rightarrow \infty}\lnorm T_n x \rnorm \\
+                & \leq \lim_{n \rightarrow \infty}\lnorm T_n \rnorm_{\cL(X,Y)} \lnorm x \rnorm \\
+                &\leq \lim_{n \rightarrow \infty}\lnorm T_n \rnorm_{\cL(X,Y)} \\
+                & \leq M.
+            \end{split}
+            \end{equation*}
+        Thus $T$ is bounded.
+
+        Let $\epsilon > 0$. Choose $N \in \bfN$ large such that $n,m \geq N$ implies $\lnorm T_n - T_m \rnorm_{\cL(X,Y)} < \epsilon$. Let $x \in X$ such that $\lnorm x \rnorm \leq 1$. Then:
+            \begin{equation*}
+            \begin{split}
+                \lnorm T_n x - T_m x \rnorm 
+                & \leq \lnorm (T_n - T_m)x \rnorm \\
+                & \leq \lnorm T_n - T_m \rnorm_{\cL(X,Y)} \lnorm x \rnorm \\
+                & \leq \lnorm T_n - T_m \rnorm_{\cL(X,Y)} \\
+                & < \epsilon.
+            \end{split}
+            \end{equation*}
+        Take $m \rightarrow \infty$. Then $\lnorm T_n x - Tx \rnorm \leq \epsilon$. Hence $\lnorm (T_n - T)x \rnorm \leq \epsilon$. Taking the supremum over all $x \in \overline{B}_X(0,1)$ gives $\lnorm T_n - T\rnorm_{\cL(X,Y)} \leq \epsilon$. Thus $T_n \rightarrow T$ in the operator norm.
+    \end{proof}
+
+\begin{question}
+For any normed linear space $X$, is $X^\ast$ nonempty? How can one construct an arbitrary bounded linear functional on $X$?
+\end{question}
+
+\begin{lemma}[Zorn's Lemma]\label{lemma:zorns}
+    In a partially ordered set, if every chain has a maximal element, then the partially ordered set has a maximal element.
+\end{lemma}
+
+\begin{theorem}[Hahn-Banach]\label{thm:hahn-banach}
+Let $X$ be a $\bfR$-vector space and $p:X \rightarrow \bfR$ a map satisfying:
+    \begin{equation*}
+    \begin{split}
+        &p(x+y) \leq p(x) + p(y), \\
+        &p(\lambda x) = \lambda p(x), \text{ provided  }\lambda >0.
+    \end{split}
+    \end{equation*}
+Let $Y \subseteq X$ be a subspace and $\varphi:Y \rightarrow \bfR$ a linear functional with:
+    \begin{equation*}
+    \begin{split}
+        \varphi(y) \leq p(y) \text{ for all }y \in Y.
+    \end{split}
+    \end{equation*}
+Then there exists a linear functional $\varPhi:X \rightarrow \bfR$ such that $\restr{\varPhi}{Y} = \varphi$ and:
+    \begin{equation*}
+    \begin{split}
+        \varPhi(x) \leq p(x) \text{ for all }x \in X.
+    \end{split}
+    \end{equation*}
+\end{theorem}
+    {\color{red} \begin{proof}
+        
+    \end{proof}}
+
+\begin{corollary}\label{cor:bdd-lin-funct-extension}
+    Let $X$ be a normed linear space and $Y\subseteq X$ a subspace. If $\varphi \in Y^\ast$, then there exists an extension $\varPhi \in X^\ast$ such that $\lnorm \varphi \rnorm_{Y^\ast} = \lnorm \varPhi \rnorm_{X^\ast}$. 
+\end{corollary}
+    \begin{proof}
+        Define $p:X \rightarrow \bfR$ by $p(x) := \lnorm \varphi \rnorm_{Y^\ast} \lnorm x \rnorm$. Clearly $p(x+y) \leq p(x) + p(y)$ and $p(\lambda x) = \lambda p(x)$ provided $\lambda > 0$. Moreover:
+            \begin{equation*}
+            \begin{split}
+                p(y) 
+                & = \lnorm \varphi \rnorm_{Y^\ast}\lnorm y \rnorm \\
+                & \geq |\varphi(y)| \\
+                & \geq \varphi(y).
+            \end{split}
+            \end{equation*}
+        By the \nameref{thm:hahn-banach} Theorem, there exists an extension $\varPhi:X \rightarrow \bfR$ such that $\restr{\varPhi}{Y} = \varphi$ and $\varPhi(x) \leq p(x)$. From this, we have the following inclusion of sets:
+            \begin{equation*}
+            \begin{split}
+                \left\{ \bigl| \varphi \bigl( \ts \frac{y}{\lnorm y \rnorm} \bigr) \bigr| \mid y \in Y, y \neq 0 \right\} \subseteq \left\{ \bigl| \varPhi \bigl( \ts \frac{x}{\lnorm x \rnorm} \bigr) \bigr| \mid x \in X, x \neq 0 \right\}.
+            \end{split}
+            \end{equation*}
+        Hence $\lnorm \varphi \rnorm_{Y^\ast} \leq \lnorm \varPhi \rnorm_{X^\ast}$. Conversely, by our construction of $p$ we have:
+            \begin{equation*}
+            \begin{split}
+                |\varPhi(x)|
+                & \leq |p(x)| \\
+                & \leq \lnorm \varphi \rnorm_{Y^\ast} \lnorm x \rnorm.
+            \end{split}
+            \end{equation*}
+        Rearranging gives $\left| \varPhi \left( \frac{x}{\lnorm x \rnorm} \right) \right| \leq \lnorm \varphi \rnorm_{Y^\ast}$. Taking the supremum over all $x \in X$, $x \neq 0$ gives $\lnorm \varPhi \rnorm_{X^\ast} \leq \lnorm \varphi \rnorm_{Y^\ast}$. Having established equality, we've finally shown $\varPhi \in X^\ast$.
+    \end{proof}
+
+\begin{corollary}\label{cor:hb-existence-of-lin-funct}
+    Let $X$ be a normed linear space and $Y \subseteq X$ a subspace. If $w \in X \setminus Y$ such that $\dist(w,Y) > 0$, then there exists a bounded linear functional $\varphi \in X^\ast$ such that $\varphi(w) = 1$, $\varphi(y) = 0$ for all $y \in Y$, and $\lnorm \varphi \rnorm_{X^\ast} = \frac{1}{\dist(w,Y)}$.
+\end{corollary}
+    \begin{proof}
+        Define $\varphi:\Span\{Y,\{w\}\} \rightarrow \bfR$ by $\varphi(y + \lambda w) = \lambda$. This is a linear functional, and:
+            \begin{equation*}
+            \begin{split}
+                \lnorm \varphi \rnorm 
+                & = \sup \left\{ \bigl| \varphi \bigl( {\ts\frac{y + \lambda w}{ \lnorm y + \lambda w \rnorm}}\bigr)\bigr| : y \in Y, \lambda \in \bfR, y+\lambda w \neq 0\right\} \\
+                & = \sup \left\{  { \frac{|\lambda|}{ \lnorm y + \lambda w \rnorm}} : y \in Y, \lambda \in \bfR, y+\lambda w \neq 0\right\} \\
+                & = \sup \left\{  { \frac{1}{ \lnorm \frac{y}{\lambda} + w \rnorm}} : y \in Y, \lambda \in \bfR, y+\lambda w \neq 0\right\} \\
+                & = \sup \left\{  { \frac{1}{ \lnorm w-y \rnorm}} : y \in Y, \lambda \in \bfR, y+\lambda w \neq 0\right\}\footnotemark\\
+                & = \frac{1}{\inf \{ \lnorm w - y \rnorm \mid y \in Y\}}\footnotemark\\
+                & = \frac{1}{\dist(w,Y)}.
+            \end{split}
+            \end{equation*}
+        \footnotetext[1]{Since $\{\frac{y}{\lambda} \mid y \in Y, \lambda \in \bfR\} = Y$.}\footnotetext[2]{Let $x_n \rightarrow \inf A$. Then $\frac{1}{x_n} \rightarrow \frac{1}{\inf A}$. Since $\frac{1}{\inf A}$ is an upper-bound and an adherent point of $\frac{1}{A}$, we have $\frac{1}{\inf A} = \sup \frac{1}{A}$. }Applying Corollary~\ref{cor:bdd-lin-funct-extension} establishes the proof.
+    \end{proof}
+
+\begin{remark}
+    The previous corollary establishes that if $X = \{0\}$, then $X^\ast \neq \{0\}$.
+\end{remark}
+
+\section*{\makebox[\linewidth][c]{Exercises}}
+\addcontentsline{toc}{section}{Exercises}
+
+\begin{exercise}
+Let $Y$ be a linear subspace in a normed linear space $X$. Prove that:
+    \begin{equation*}
+    \begin{split}
+        \dist(x,Y) = \sup \{ \varphi(x) \mid \varphi \in X^\ast,\h5 \restr{\varphi}{Y} = 0,\h5 \lnorm \varphi \rnorm = 1\}. 
+    \end{split}
+    \end{equation*}
+\end{exercise}
+
+\section{Sequence Spaces}
+
+\section*{\makebox[\linewidth][c]{Exercises}}
+\addcontentsline{toc}{section}{Exercises}
+
+\begin{exercise}
+Show that $(\ell^\infty,\lnorm \cdot \rnorm_\infty)$ is complete. 
+\end{exercise}
+    {\color{red} \begin{proof}
+        
+    \end{proof}}
+
+\begin{exercise}
+Show that $c$ and $c_0$ are closed in $\ell^\infty$. Show that $c_{00}$ is \textit{not} closed by exhibiting a sequence in $c_{00}$ which converges to a point $x \in \ell^\infty$ but is not in $c_{00}$.
+\end{exercise}
+    {\color{red} \begin{proof}
+        
+    \end{proof}}
+
+\begin{exercise}
+Let $y \in \ell^\infty$ and define the linear functional:
+    \begin{equation*}
+    \begin{split}
+        \varphi_y:\ell^1 \rightarrow \bfF, \h9 \varphi_y(x) := \sum_{j = 1}^\infty x_j y_j.
+    \end{split}
+    \end{equation*}
+Show that $\lnorm \varphi_y \rnorm_{(\ell^1)^\ast} = \lnorm y \rnorm_{\ell^\infty}$.
+\end{exercise}
+    {\color{red} \begin{proof}
+        
+    \end{proof}}
+
+
+
+\section{Consequences of The Baire Category Theorem}
+
+\begin{theorem}[Baire Category Theorem]\label{thm:bct}
+    Let $X$ be a complete metric space. If $\{U_n\}_{n = 1}^\infty$ is a family of open and dense subsets of $X$, then $\bigcap_{n = 1}^\infty U_n$ is still dense.
+\end{theorem}
+    {\color{red} \begin{proof}
+        
+    \end{proof}}
+
+\begin{corollary}\label{cor:bct}
+    Let $X$ be a complete metric space and $\{Z_n\}_{n = 1}^\infty$ a family of closed sets. If $X = \bigcup_{n = 1}^\infty Z_n$, then there exists some $i \in \bfN$ such that $Z_i$ has non-empty interior.
+\end{corollary}
+    {\color{red} \begin{proof}
+        
+    \end{proof}}
+
+\begin{definition}
+    Let $X$ be a metric space.
+    \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+        \item A subset $Y$ of $X$ is called \textui{nowhere dense} if $\overline{Y}$ has empty interior.
+        \item A subset of $X$ is called \textui{Category I} if it is the countable union of nowhere dense sets. 
+        \item A subset of $X$ which is not Category I is called \textui{Category II}.
+    \end{enumerate}
+\end{definition}
+
+\begin{remark}
+    Theorem~\ref{thm:bct} and Corollary~\ref{cor:bct} can be rephrased as the assertion that every complete metric space is Category II.
+\end{remark}
+
+\begin{theorem}[Banach-Steinhouse]\label{thm:banach-steinhouse}
+    Let $X$ be a Banach space and $Y$ a normed linear space. Let $\{T_\alpha\}_{\alpha \in A} \subset \cL(X,Y)$ be an arbitrary family of bounded linear operators. Then $\sup\{ \lnorm T_\alpha \rnorm \mid \alpha \in A\} < \infty$ if and only if $\{x \mid \sup_{\alpha \in A}\lnorm T_\alpha x \rnorm <\infty \}$ is Category II
+\end{theorem}
+    \begin{proof}
+        Suppose $C := \sup\{ \lnorm T_\alpha \rnorm \mid \alpha \in A\} < \infty$. Then for all $x \in X$ and $\alpha \in A$, we have $\lnorm T_\alpha x \rnorm_Y \leq \lnorm T_\alpha \rnorm \lnorm x \rnorm_X \leq C \lnorm x \rnorm$. Hence $\{x \mid \sup_{\alpha \in A}\lnorm T_\alpha x \rnorm <\infty \} = X$, which is Category II by the \nameref{thm:bct}.
+
+        Conversely, suppose $F:= \{x \mid \sup_{\alpha \in A}\lnorm T_\alpha x \rnorm <\infty \}$ is Category II. Define $F_n := \{x \mid \sup\{ \lnorm T_\alpha x \rnorm \mid \alpha \in A\}\leq n \}$. This set is closed: {\color{red} i cant figure out why, something about limits and supremum}. Since $F = \bigcup_{n = 1}^\infty F_n$, by Corollary~\ref{cor:bct} there exists some $n \in \bfN$ such that $F_n$ has nonempty interior. Choose $x_0 \in X$ and $r > 0$ such that $\overline{B}(x_0,r) \subset F_n$. Let $x \in X$ such that $\lnorm x \rnorm \leq 1$. Fix $\alpha \in A$. Note that $x_0 + rx \in \overline{B}(x_0,r)$, hence:
+            \begin{equation*}
+            \begin{split}
+                \lnorm T_\alpha x \rnorm_Y 
+                & = \lnorm T_\alpha \left( \frac{1}{r}\left( x_0 + rx - x_0 \right) \right) \rnorm_Y \\
+                & \leq \frac{1}{r} \left( \lnorm T_\alpha(x_0 + rx) \rnorm_Y + \lnorm T_\alpha x_0 \rnorm_Y \right) \\
+                & \leq \frac{2n}{r} \\
+                & < \infty.
+            \end{split}
+            \end{equation*}
+        Taking the supremum over all $\alpha$ and $\lnorm x \rnorm \leq 1$ gives $\sup\{ \lnorm T_\alpha \rnorm \mid \alpha \in A\} < \infty$.
+    \end{proof}
+
+\begin{corollary}[Uniform Boundedness Principle]
+    Let $X$ be a Banach space and $Y$ a normed linear space. Let $\{T_\alpha\}_{\alpha \in A} \subset \cL(X,Y)$ be an arbitrary family of bounded linear operators. If $\sup_{\alpha \in A}\lnorm T_\alpha x \rnorm_Y < \infty$ for all $x \in X$, then $\sup_{\alpha \in A}\lnorm T_\alpha \rnorm < \infty$.
+\end{corollary}
+    \begin{proof}
+       The set $\{x \mid \sup_{\alpha \in A}\lnorm T_\alpha x \rnorm <\infty \} = X$ is Category II. By Theorem~\ref{thm:banach-steinhouse} we have that $\sup_{\alpha \in A}\lnorm T_\alpha \rnorm < \infty$.
+    \end{proof}
+
+\begin{definition}
+    Let $X$ and $Y$ be normed linear spaces and $T:X \rightarrow Y$ linear.
+    \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+        \item The \textui{graph of $T$} is $\Gr(T) := \{(x,Tx) \mid x \in X\}$.
+        \item The map $T$ has a \textui{closed graph} if $\Gr(T)$ is closed in $X \times Y$.
+    \end{enumerate}
+\end{definition}
+
+\begin{remark}
+    Regardless if $X \times Y$ is given the product or box topology, the induced metrics are equivalent.
+\end{remark}
+
+\begin{proposition}\label{prop:closed-graph-equivalence}
+    Let $X,Y$ be normed spaces and $T:X \rightarrow Y$ be linear. The following are equivalent:
+        \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+            \item $T$ has a closed graph;
+            \item If $\{x_n\}_{n = 1}^\infty$ is a sequence such that $x_n \rightarrow x$ and $T x_n \rightarrow y$, then $y = Tx$.
+        \end{enumerate}
+\end{proposition}
+    \begin{proof}
+        Suppose $T$ has a closed graph. Let $\{x_n\}_{n = 1}^\infty$ be a sequence such that $x_n \rightarrow x$ and $T x_n \rightarrow y$. Then $\{(x_n,T x_n)\}_{n = 1}^\infty \subseteq \Gr(T)$ is a sequence such that $(x_n, T x_n) \rightarrow (x,y)$. But since $T$ has a closed graph, $(x,y) \in \Gr(T)$. Hence $y= Tx$.
+
+        Conversely, if $\{(x_n,Tx_n)\}_{n =1}^\infty \subseteq \Gr(T)$ is a sequence such that $(x_n, T x_n) \rightarrow (x,y) \in X \times Y$, then $x_n \rightarrow x$ and $T x_n \rightarrow y$. By hypothesis $y = Tx$, hence $(x,y) \in \Gr(T)$. Thus $T$ has a closed graph.
+    \end{proof}
+
+\begin{remark}
+    A linear map $T$ having a closed graph is weaker than $T$ being continuous.
+\end{remark}
+
+\begin{example}
+    Recall the following standard result from an introductory analysis course: let $J \subseteq \bfR$ be a bounded interval and let $\{f_n\}_{n = 1}^\infty \subseteq J^\bfR$ be a sequence of functions. Suppose that there exists $x_0 \in J$ such that $\{f_n(x_0)\}_{n = 1}^\infty$ converges, and that the sequence $\{f'_n\}_{n = 1}^\infty$ of derivatives exists on $J$ and converges uniformly on $J$ to a function $g$. Then the sequence $\{f_n\}_{n = 1}^\infty$ converges uniformly on $J$ to a function $f$ that has a derivative at every point of $J$ and $f' = g$.
+
+    Indeed, define $D:C^1([0,1]) \rightarrow C([0,1])$ by $Df = f'$. Let $\{f_n\}_{n = 1}^\infty \subseteq C^1([0,1])$ be a sequence of functions such that $f_n \rightarrow f$ and $D f_n \rightarrow g$. Note that the convergence of $\{D f_n\}_{n = 1}^\infty$ will be uniform by the compactness of $[0,1]$. Hence by the above result, we have that $g = D f$. By Proposition~\ref{prop:closed-graph-equivalence}, $D$ has a closed graph. However, we showed in Example~\ref{example:unbounded-operator} that $D$ is not continuous.
+\end{example}
+
+\begin{definition}
+    Let $X,Y$ be normed linear spaces. A map $T:X \rightarrow Y$ is \textui{open} if $T(U)$ is open in $Y$ provided $U$ is open in $X$.
+\end{definition}
+
+\begin{theorem}[Open-Mapping Theorem]\label{thm:open-mapping-thm}
+    Let $T:X \rightarrow Y$ be a continuous, surjective, and linear mapping between Banach spaces. Then $T$ is open.
+\end{theorem}
+    \begin{remark}
+        Many times throughout the following proof we will be using the fact that $B(0,n) =  n B(0,1)$.
+    \end{remark}
+    \begin{proof}
+        Note that $Y = \bigcup_{n = 1}^\infty T(n B_X(0,1))$, hence $Y = \bigcup_{n = 1}^\infty \overline{T(nB_X(0,1))}$. Since $Y$ is Banach, the \nameref{thm:bct} says  there exists some $n \in \bfN$ such that $\overline{n T(B_X(0,1))}$ has nonempty interior. So there exists $y_0 \in Y$ and $r > 0$ such that:
+            \begin{equation*}
+            \begin{split}
+                B_Y(y_0,r) 
+                & \subset \overline{n T(B_X(0,1))} \\
+                & = n \overline{T(B_X(0,1))}\footnotemark.
+            \end{split}
+            \end{equation*}
+            \footnotetext{Follows from the fact that $\overline{B(x,r)} = \overline{B}(x,r)$ and the above remark.} Let $\epsilon > 0$. Since $y_0 \in B_Y(y_0,r)$, surely $y_0 \in n\overline{T(B_X(0,1))}$. Hence there exists some $x_1 \in B_X(0,1)$ such that $\lnorm y_0 - nT x_1 \rnorm_Y < \epsilon$. Now let $y \in B(0,1)$ be arbitrary. Then $y_0 + ry \in B_Y(y_0,r) \subset n\overline{T(B_X(0,1))}$. Hence there exists $x_2 \in B_X(0,1)$ such that $\lnorm y_0 + ry - n T x_2 \rnorm_Y < \epsilon$. We can write:
+                \begin{equation*}
+                \begin{split}
+                    y 
+                    & = \frac{1}{r}(ry + y_0) - \frac{1}{r}y_0 \\
+                    & = \frac{1}{r}(ry + y_0 - n T x_2) + \frac{n}{r}T x_2 - \frac{1}{r}(y_0 - n T x_1) - \frac{n}{r}T x_1 \\
+                    & = \frac{1}{r} \left( (y_0 + ry) - n T x_2 \right) - \frac{1}{r}(y_0 - n Tx_1) + \frac{n}{r}T(x_2 - x_1). \\
+                \end{split}
+                \end{equation*}
+            We can rearrange the above equation as:
+                \begin{equation*}
+                \begin{split}
+                    y - \frac{n}{r}T(x_2 - x_1) = \frac{1}{r} \left( (y_0 + ry) - n T x_2 \right) - \frac{1}{r}(y_0 - n Tx_1).
+                \end{split}
+                \end{equation*}
+            Hence:
+                \begin{equation*}
+                \begin{split}
+                    \lnorm y - \frac{n}{r}T(x_2 - x_1) \rnorm
+                    & = \lnorm \frac{1}{r} \left( (y_0 + ry) - n T x_2 \right) - \frac{1}{r}(y_0 - n Tx_1) \rnorm \\
+                    & \leq \frac{1}{r}\lnorm  \left( (y_0 + ry) - n T x_2 \right)\rnorm + \frac{1}{r}\lnorm (y_0 - n Tx_1) \rnorm \\
+                    & < \frac{2\epsilon}{r}.
+                \end{split}
+                \end{equation*}
+            Take $x' := x_2 - x_1 \in B(0,2)$. Then since $\lnorm y - \frac{n}{r}T(x') \rnorm < \frac{2\epsilon}{r}$ can be made arbitrarily small, we have that $y \in \overline{T(B_X(0,\frac{2n}{r}))}$. Take $\lambda := \frac{2n}{r}$. Thus we've established the inclusion $B_Y(0,1) \subset \overline{ TB_X(0,\lambda)}$.
+
+            Let $y \in B_Y(0,1) \subset \overline{T(B_X(0,\lambda))}$. Find $x_1 \in B_X(0,\lambda)$ such that $\lnorm y - T x_1 \rnorm_Y < \frac{1}{2}$. Then:
+                \begin{equation*}
+                \begin{split}
+                    y -  Tx_1 
+                    & \in B_Y\left(0,\frac{1}{2}\right) \\
+                    & = \frac{1}{2}B_Y(0,1) \\
+                    & \subset \frac{1}{2}\overline{T(B_X(0,\lambda))} \\
+                    & = \overline{\frac{1}{2}T(B_X(0,\lambda))} \\
+                    & = \overline{T \left( B_X \left( 0,\frac{\lambda}{2} \right) \right)}.
+                \end{split}
+                \end{equation*}
+            Now pick $x_2 \in B_X(0,\frac{\lambda}{2})$ such that $\lnorm y - Tx_1 - T x_2 \rnorm < \frac{1}{2^2}$. Then:
+                \begin{equation*}
+                \begin{split}
+                    y - Tx_1 - T x_2 
+                    & \in B_Y(0,\frac{1}{2^2}) \\
+                    & = \frac{1}{2^2} B_Y(0,1) \\
+                    & \subset \frac{1}{2^2} \overline{T(B_X(0,\lambda))} \\
+                    & = \overline{\frac{1}{2} T(B_X(0,1))} \\
+                    & = \overline{T \left( B_X \left( 0,\frac{\lambda}{2^2} \right) \right)}.
+                \end{split}
+                \end{equation*}
+            Inductively, pick $x_k \in B_X(0, \frac{\lambda}{2^{k-1}})$ such that $\lnorm y - \sum_{j = 1}^k T x_j \rnorm < \frac{1}{2^k}$. Note that for all $k \in \bfN$, we have $\lnorm x_k \rnorm_X < \frac{\lambda}{2^{k-1}}$. Therefore $\sum_{j = 1}^\infty x_j$ is absolutely convergent. Since $X$ is Banach, by Proposition~\ref{prop:banach-iff-series} the series $\sum_{j = 1}^\infty x_j$ is convergent. In particular:
+                \begin{equation*}
+                \begin{split}
+                    \lnorm \sum_{j = 1}^\infty x_j \rnorm_X
+                    & \leq \sum_{j = 1}^\infty \lnorm x_j \rnorm_X \\
+                    & < \sum_{j = 1}^\infty \frac{\lambda}{2^{j-1}} \\
+                    & = 2\lambda.
+                \end{split}
+                \end{equation*}
+            Hence $\sum_{j = 1}^\infty x_j \in B_X(0,2\lambda)$. Now note that $\sum_{j = 1}^k x_j \rightarrow \sum_{j = 1}^\infty x_j$ in $X$. Also, \nl $\lnorm y - \sum_{j = 1}^k T x_j \rnorm < \frac{1}{2^k}$ implies that $T \left(\sum_{j = 1}^k x_k\right) \rightarrow y$ in $Y$. Since $T$ is continuous, $T$ has a closed graph. Hence $y = T \sum_{j = 1}^\infty x_j \in T(B_X(0,2\lambda))$. Since $y \in B_Y(0,1)$ was arbitrary, we've established the inclusion $B_Y(0,1) \subset T(B_X(0,2\lambda))$.
+
+            Now let $U \subseteq X$ be open. Let $y_0 \in T(U)$. Since $T$ is surjective, find $x_0 \in U$ such that $T x_0 = y_0$. Since $U$ is open there exists an $\epsilon > 0$ such that $B_X(x_0, \epsilon) \subseteq U$. Therefore:
+                \begin{equation*}
+                \begin{split}
+                    T(U) 
+                    & \supset T(B_X(x_0,\epsilon)) \\
+                    & = Tx_0 + \frac{\epsilon}{2\lambda}T(B_X(0,2\lambda)) \\
+                    & \supset y_0 + \frac{\epsilon}{2\lambda}B_Y(0,1) \\
+                    & = B_Y\left(y_0,\frac{\epsilon}{2\lambda}\right)
+                \end{split}
+                \end{equation*}
+            Thus $T(U)$ is open, establishing $T$ as an open map.
+    \end{proof} 
+
+\begin{corollary}\label{cor:bij-lin-cont-implies-inverse-cont}
+    Let $T:X \rightarrow Y$ be a bijective, linear, and continuous map between Banach spaces. Then $T^{-1}$ is continuous.
+\end{corollary}
+    \begin{proof}
+        Since $T$ is continuous, $T$ has a closed graph. By the \nameref{thm:open-mapping-thm} $T$ is an open map. Hence $(T^{-1})^{-1}(U) = T(U)$ is open.
+    \end{proof}
+
+\begin{corollary}\label{cor:banach-implies-equivalent-norms}
+    Let $X$ be a vector space. Suppose $\lnorm \cdot \rnorm_\alpha$ and $\lnorm \cdot \rnorm_\beta$ are norms such that $(X,\lnorm \cdot \rnorm_\alpha)$ and $(X,\lnorm \cdot \rnorm_\beta)$ are Banach. If there exists a $C > 0$ such that $\lnorm x \rnorm_\alpha \leq C \lnorm x \rnorm_\beta$ for all $x \in X$, then there exists $C' > 0$ such that $\lnorm x \rnorm_\beta \leq C' \lnorm x \rnorm_\alpha$ for all $x \in X$.
+\end{corollary}
+    \begin{proof}
+        Certainly the map $\id:(X,\lnorm \cdot \rnorm_\beta) \rightarrow (X,\lnorm \cdot \rnorm_\alpha)$ is bijective and linear. Moreover, $\lnorm \id x \rnorm_\alpha = \lnorm x \rnorm_\alpha \leq C \lnorm x \rnorm_\beta$. Hence $\id$ is continuous. By Corollary~\ref{cor:bij-lin-cont-implies-inverse-cont} $\id^{-1}$ is continuous. Hence there exists $C'>0$ such that $\lnorm x \rnorm_\beta = \lnorm \id^{-1} x \rnorm_\beta \leq C'\lnorm x \rnorm_\alpha$.
+    \end{proof}
+
+\begin{remark}
+    The above corollary can be rephrased as: if $\lnorm \cdot \rnorm_\alpha$ and $\lnorm \cdot \rnorm_\beta$ are norms such that $(X,\lnorm \cdot \rnorm_\alpha)$ and $(X,\lnorm \cdot \rnorm_\beta)$ are Banach, then $\lnorm \cdot \rnorm_\alpha$ and $\lnorm \cdot \rnorm_\beta$ are equivalent.
+\end{remark}
+
+\begin{theorem}[Closed Graph Theorem]\label{thm:closed-graph-thm}
+Let $X$ and $Y$ be Banach spaces. If $T:X \rightarrow Y$ is linear and has a closed graph, then $T$ is continuous.
+\end{theorem}
+    \begin{proof}
+        Define $\lnorm \cdot \rnorm_\ast:X \rightarrow \bfR$ by $\lnorm x \rnorm_\ast := \lnorm x \rnorm_X + \lnorm T x \rnorm_Y$. It is routine to check that $(X,\lnorm \cdot \rnorm_\ast)$ is a normed linear space. We will check that $(X,\lnorm \cdot \rnorm_\ast)$ is Banach. Suppose $\{x_k\}_{k = 1}^\infty$ is Cauchy with respect to $\lnorm \cdot \rnorm_\ast$. Then clearly $\{x_k\}_{k = 1}^\infty$ is Cauchy with respect to $\lnorm \cdot \rnorm_X$ and $\{Tx_k\}_{k = 1}^\infty$ is Cauchy with respect to $\lnorm \cdot \rnorm_Y$. Since $X$ and $Y$ are Banach, there exists $x \in X$ and $y \in Y$ such that $x_k \rightarrow x$ with respect to $\lnorm \cdot \rnorm_X$ and $T x_k \rightarrow y$ with respect to $\lnorm \cdot \rnorm_Y$. Since $T$ has a closed graph, $y = Tx$. Hence:
+            \begin{equation*}
+            \begin{split}
+                \lnorm x - x_k \rnorm_\ast
+                & = \lnorm x - x_k \rnorm_X + \lnorm Tx - Tx_k \rnorm_Y \\ 
+                & \rightarrow 0 \text{ as }k \rightarrow \infty.
+            \end{split}
+            \end{equation*}
+        Thus $x_k \rightarrow x$ with respect to $\lnorm \cdot \rnorm_\ast$, establishing that $(X,\lnorm \cdot \rnorm_\ast)$ is Banach. But since $(X,\lnorm \cdot \rnorm_X)$ and $(X,\lnorm \cdot \rnorm_\ast)$ are Banach, and since $\lnorm x \rnorm_X \leq \lnorm x \rnorm_\ast$, Corollary~\ref{cor:banach-implies-equivalent-norms} says there exists $C' > 0$ such that $\lnorm x \rnorm_\ast \leq C' \lnorm x \rnorm_X$. Therefore $\lnorm T x \rnorm_Y \leq \lnorm x \rnorm_\ast \leq C' \lnorm x \rnorm_X$ for all $x \in X$. Thus $T$ is continuous.
+    \end{proof}
+
+\begin{example}
+    
+\end{example}
+
+\begin{example}
+    
+\end{example}
+
+\section*{\makebox[\linewidth][c]{Exercises}}
+\addcontentsline{toc}{section}{Exercises}
+
+\begin{exercise}
+Let $f$ be infinitely differentiable on $\bfR$. Suppose for any $x \in \bfR$ there is some $n$ such that $f^{(n)}(x) = 0$ (note that $n$ may depend on $x$). Show that $f$ must be a polynomial. \textit{Hint:} Consider the sets $Z_n = \{x \mid f^{(n)}(x) = 0\}$ and recall Baire's Category Theorem.
+\end{exercise}
+    {\color{red} \begin{proof}
+        
+    \end{proof}}
+
+\begin{exercise}
+Let $T:X \rightarrow Y$ be a linear map between normed spaces. Prove the assertion made in class: The graph $\{(x,Tx) \mid x \in X\}$ of $T$ is \textit{closed} in $X \times Y$ means:
+    \begin{equation*}
+    \begin{split}
+        \text{if }x_n \rightarrow x \text{ and }Tx_n \rightarrow y \text{ then }y = Tx.
+    \end{split}
+    \end{equation*}
+\end{exercise}
+    {\color{red} \begin{proof}
+        
+    \end{proof}}
+
+\begin{exercise}
+Define $T:c_0 \rightarrow c_0$ by $T(\{x_n\}_{n = 1}^\infty) = \{n x_n\}_{n = 1}^\infty$. Determine if $T$ is injective, surjective, open, closed, and/or invertible.
+\end{exercise}
+    {\color{red} \begin{proof}
+        
+    \end{proof}}
+
+\begin{exercise}
+    Let $L:X \rightarrow Y$ be a linear map between Banach spaces. Suppose that the conditions $x_n \rightarrow 0$ and $L x_n \rightarrow y$ imply that $y = 0$. Prove that $L$ is continuous.
+\end{exercise}
+    \begin{proof}
+    Let $\{(x_n, Tx_n)\}_{n = 1}^\infty \subseteq \Gr(L)$ be a sequence such that $(x_n,T x_n) \rightarrow (x,y) \in X \times Y$. Then $x_n \rightarrow x$ and $T x_n \rightarrow y$. Define $u_n:= x_n - x$. Then $u_n \rightarrow 0$ and $T u_n \rightarrow y - Tx$. By hypothesis $y-Tx = 0$, giving $y = Tx$. Thus $(x,y) \in \Gr(T)$, which means $T$ has a closed graph. By the \nameref{thm:closed-graph-thm}, $T$ is continuous.
+    \end{proof}
+
+\begin{exercise}
+Prove that if a closed map has an inverse then the inverse is also closed.
+\end{exercise}
+    \begin{proof}
+        Let $\{y_n\}_{n = 1}^\infty$ be a sequence in $Y$ such that $y_n \rightarrow y$ and $T^{-1}y_n \rightarrow x$. Since $T$ admits an inverse, it is bijective. Hence for each $y_n \in Y$, there exists $x_n \in X$ such that $y_n = T x_n$. The two sequences above can be rewritten as $T x_n \rightarrow y$ and $T^{-1}(T x_n) = x_n \rightarrow x$. Since $T$ has a closed graph, $y = Tx$. Since $T$ is bijective, $x = T^{-1} y$. Thus $T^{-1}$ has a closed graph.
+    \end{proof}
+
+\begin{exercise}
+Let $L:X \rightarrow Y$ be a continuous linear surjection, where $X$ and $Y$ are Banach spaces. Let $y_n \rightarrow y$ in $Y$. Prove that there exists points $x_n \in X$ and a constant $c \in \bfR$ such that $L x_n = y_n$, the sequence $\{x_n\}_{n = 1}^\infty$ converges, and $\lnorm x_n \rnorm \leq c \lnorm y_n \rnorm$.
+\end{exercise}
+    {\color{red} \begin{proof}
+        
+    \end{proof}}

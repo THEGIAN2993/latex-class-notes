@@ -1,7 +1,13 @@
-\documentclass[12pt,twoside,openany]{memoir}
-%\usepackage{mlmodern}
-%\usepackage{tgpagella} % text only
-%\usepackage{mathpazo}  % math & text
+\documentclass[12pt,oneside,openany]{memoir}
+
+\iffalse
+%font style 1
+\usepackage[p,osf]{scholax}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage[scaled=1.075,ncf,vvarbb]{newtxmath}
+\fi
+
+%font style 2
 \usepackage[T1]{fontenc}
 \usepackage{amsmath}
 \usepackage[fixamsmath]{mathtools}  % Extension to amsmath
@@ -15,44 +21,69 @@
 \usepackage{eucal}
 \usepackage{datetime}
     \newdateformat{specialdate}{\THEYEAR\ \monthname\ \THEDAY}
-\usepackage[margin=1.5in]{geometry}
+\usepackage[margin=1in]{geometry}
 \usepackage{fancyhdr}
-    \fancyhf{}
     \pagestyle{fancy}
-    \cfoot{\scriptsize \thepage}
-    \fancyhead[R]{\scalebox{0.7}{\rightmark}}
-    \fancyhead[L]{\scalebox{0.7}{\leftmark}}
+    \fancyhf{}
+    \cfoot{\scriptsize\thepage}
+    \fancyhead[R]{\scalebox{0.8}{\nouppercase{\rightmark}}}
+    \fancyhead[L]{\scalebox{0.8}{\nouppercase{\leftmark}}}
+
+    \fancypagestyle{plain}{%
+        \fancyhf{}
+        \cfoot{\scriptsize\thepage}
+        \fancyhead[R]{\scalebox{0.8}{\phantom{a}}}
+        \fancyhead[L]{\scalebox{0.8}{Applied Analysis}}
+    }
 \usepackage{keytheorems}
+    \newkeytheoremstyle{def}{
+    inherit-style=definition,
+    spaceabove=1.5em,
+    spacebelow=1.5em,
+    postheadspace=0.5em,
+    }
+    \newkeytheoremstyle{thm}{
+    spaceabove=1.5em,
+    spacebelow=1.5em,
+    postheadspace=0.5em,
+    }
     \newkeytheorem{theorem}[
     name = Theorem,
+    style=thm,
     numberwithin = section,
     ]
     \newkeytheorem{theorem*}[
     name=Theorem,
+    style=thm,
     numbered=false
     ]
     \newkeytheorem{proposition}[
     name = Proposition,
+    style=thm,
     numberwithin = section,
     sibling=theorem
     ]
     \newkeytheorem{lemma}[
     name = Lemma,
+    style=thm,
     numberwithin = section,
     sibling=theorem
     ]
     \newkeytheorem{corollary}[
     name = Corollary,
+    style=thm,
     numberwithin = section,
     sibling=theorem
     ]
     \newkeytheorem{definition}[
     name = Definition,
+    style=def,
     numberwithin = section,
     style = definition
     ]
     \newkeytheorem{example}[
     name = Example,
+    style=def,
     numberwithin = section,
     style = definition
     ]
@@ -61,26 +92,40 @@
     style=remark, 
     numbered=false  
     ]
+    \newkeytheorem{question}[
+    name=Question,
+    style=remark, 
+    numbered=false  
+    ]
     \newkeytheorem{exercise}[
     name = Exercise,
+    style=thm,
     numberwithin = section
     ]
     \newkeytheorem{axiom}[name = Axiom]
 \usepackage{enumitem}
-\usepackage{titlesec}
+\usepackage[explicit]{titlesec}
     \titleformat{\chapter}[display]
-    {\bfseries\Huge\raggedright}
+    {\bfseries\LARGE\raggedright}
     {Chapter {\thechapter}}
-    {1ex minus .1ex}
-    {\HUGE}
+    {.1ex minus .1ex}
+    {\Large #1}
     \titlespacing{\chapter}
     {3pc}{*3}{40pt}[3pc]
 
     \titleformat{\section}[block]
-    {\normalfont\bfseries\LARGE}
-    {\S\ \thesection.}{.5em}{}[]
+    {\normalfont\bfseries\large}
+    {}{0pt}
+    {\fbox{\strut \S\ \thesection.\ #1}}
     \titlespacing{\section}
     {0pt}{3ex plus .1ex minus .2ex}{3ex plus .1ex minus .2ex}
+    \setlength{\fboxsep}{4pt}   % padding inside the box
+    \setlength{\fboxrule}{0.6pt} % border thickness
+
+    \titleformat{name=\section,numberless}[block]
+    {\normalfont\bfseries\large\filcenter}
+    {}{0pt}
+    {#1}
 \usepackage[utf8x]{inputenc}
 \usepackage{tikz}
 \usepackage{tikz-cd}
@@ -122,4 +167,5 @@
     Last update: \today
 
     %\include{preliminaries}
+    \include{ch1.tex}
 \end{document}

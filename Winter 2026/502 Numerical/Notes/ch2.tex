@@ -1,0 +1,30 @@
+\begingroup
+\let\clearpage\relax
+\chapter{Finite Difference Approximations}
+\endgroup
+
+
+\section{Method of Undetermined Coefficients}
+
+\noindent Given a smooth function $u$ and a point $\bar{x}$, we wish to approximate $u^{(n)}(\bar{x})$ using only the neighboring points of $\bar{x}$ which differ by multiples of some (small) positive $h$. The \textui{method of undeterminded coefficients} is an algorithm which does this.
+
+\begin{example}
+    Let:
+        \begin{equation}
+        \begin{split}
+            u''(\bar{x}) = A\cdot u(\bar{x} - h) + B\cdot u(\bar{x}) + C\cdot u(\bar{x} + h) + D\cdot u(\bar{x} + 2h).
+        \end{split}
+        \end{equation}
+    Note that the taylor series of $u(x)$ about the point $\bar{x}$ is:
+        \begin{equation*}
+        \begin{split}
+            u(x) = \sum_{n = 0}^\infty \frac{u^{(n)}(\bar{x})}{n!}(x-\bar{x}).
+        \end{split}
+        \end{equation*}
+    By evaluating this taylor expansion at $\bar{x} - h$, $\bar{x} + h$, and $\bar{x} + 2h$, we can rewrite Equation (1) as:
+        \begin{equation*}
+        \begin{split}
+            u''(\bar{x}) = A \sum_{n = 0}^\infty\frac{u^{(n)}(\bar{x})}{n!}(x-\bar{x})^n + B \sum_{n = 0}^\infty\frac{u^{(n)}(\bar{x})}{n!}(x-\bar{x})^n + C \sum_{n = 0}^\infty\frac{u^{(n)}(\bar{x})}{n!}(x-\bar{x})^n + D \sum_{n = 0}^\infty\frac{u^{(n)}(\bar{x})}{n!}(x-\bar{x})^n
+        \end{split}
+        \end{equation*}
+\end{example}

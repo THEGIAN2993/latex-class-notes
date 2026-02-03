@@ -1,4 +1,4 @@
-\documentclass[12pt,twoside,openany]{memoir}
+\documentclass[12pt,oneside,openany]{memoir}
 %\usepackage{mlmodern}
 %\usepackage{tgpagella} % text only
 %\usepackage{mathpazo}  % math & text
@@ -17,12 +17,18 @@
     \newdateformat{specialdate}{\THEYEAR\ \monthname\ \THEDAY}
 \usepackage[margin=1in]{geometry}
 \usepackage{fancyhdr}
-    \fancyhf{}
     \pagestyle{fancy}
-    \cfoot{\scriptsize \thepage}
-    \fancyhead[R]{\scalebox{0.8 }{\nouppercase{\rightmark}}}
+    \fancyhf{}
+    \cfoot{\scriptsize\thepage}
+    \fancyhead[R]{\scalebox{0.8}{\nouppercase{\rightmark}}}
     \fancyhead[L]{\scalebox{0.8}{\nouppercase{\leftmark}}}
-    \aliaspagestyle{chapter}{fancy}
+
+    \fancypagestyle{plain}{%
+        \fancyhf{}
+        \cfoot{\scriptsize\thepage}
+        \fancyhead[R]{\scalebox{0.8}{\phantom{a}}}
+        \fancyhead[L]{\scalebox{0.8}{Numerical Analysis}}
+    }
 \usepackage{keytheorems}
     \newkeytheorem{theorem}[
     name = Theorem,
@@ -82,6 +88,10 @@
     {\S\ \thesection.}{.5em}{}[]
     \titlespacing{\section}
     {0pt}{3ex plus .1ex minus .2ex}{3ex plus .1ex minus .2ex}
+
+    \makeatletter
+    \let\cleardoublepage\clearpage
+    \makeatother
 \usepackage[utf8x]{inputenc}
 \usepackage{tikz}
 \usepackage{tikz-cd}
@@ -122,5 +132,6 @@
     \specialdate
     Last update: \today
 
-    \include{ch1}
+    \input{ch1}
+    \input{ch2}
 \end{document}

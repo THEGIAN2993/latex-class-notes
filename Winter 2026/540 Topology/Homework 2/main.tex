@@ -1,0 +1,202 @@
+\documentclass[12pt,twoside,openany]{memoir}
+%\usepackage{mlmodern}
+%\usepackage{tgpagella} % text only
+%\usepackage{mathpazo}  % math & text
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage[fixamsmath]{mathtools}  % Extension to amsmath
+\usepackage{amsthm}
+\usepackage{amssymb}
+\renewcommand*{\mathbf}[1]{\varmathbb{#1}}
+\usepackage{newpxtext}
+\usepackage{eulerpx}
+\usepackage{mathrsfs}
+
+\usepackage{eucal}
+\usepackage{datetime}
+    \newdateformat{specialdate}{\THEYEAR\ \monthname\ \THEDAY}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+        \pagestyle{fancy}
+    \renewcommand{\headrulewidth}{0pt}
+    \cfoot{\scriptsize \thepage}
+\usepackage{keytheorems}
+    \newkeytheorem{theorem}[
+    name = Theorem,
+    numberwithin = section,
+    ]
+    \newkeytheorem{theorem*}[
+    name=Theorem,
+    numbered=false
+    ]
+    \newkeytheorem{proposition}[
+    name = Proposition,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{lemma}[
+    name = Lemma,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{corollary}[
+    name = Corollary,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{definition}[
+    name = Definition,
+    numberwithin = section,
+    style = definition
+    ]
+    \newkeytheorem{example}[
+    name = Example,
+    numberwithin = section,
+    style = definition
+    ]
+    \newkeytheorem{remark}[
+    name=Remark,
+    style=remark, 
+    numbered=false  
+    ]
+    \newkeytheorem{exercise}[
+    name = Exercise,
+    ]
+    \newkeytheorem{axiom}[name = Axiom]
+\usepackage{enumitem}
+\usepackage{titlesec}
+    \titleformat{\chapter}[display]
+    {\bfseries\LARGE\raggedright}
+    {Chapter {\thechapter}}
+    {.1ex minus .1ex}
+    {\Large}
+    \titlespacing{\chapter}
+    {3pc}{*3}{40pt}[3pc]
+
+    \titleformat{\section}[block]
+    {\normalfont\bfseries\large}
+    {\S\ \thesection.}{.5em}{}[]
+    \titlespacing{\section}
+    {0pt}{3ex plus .1ex minus .2ex}{3ex plus .1ex minus .2ex}
+\usepackage[utf8x]{inputenc}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{float}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning,arrows.meta}
+\usetikzlibrary{decorations.pathreplacing}
+\usepackage{wasysym}
+\usepackage{hyperref}
+\usepackage{ulem}
+\usepackage{pgfplots}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=1.18}
+\linespread{1.1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
+
+\begin{document}
+\begin{center}
+    {\Large Math 540 \\[0.1in]Homework \#2}\\[.175in]
+    {Name:} {\underline{Gianluca Crescenzo\hspace*{2in}}}\\[0.15in]
+    \end{center}
+    \vspace{4pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{\S 17 Homework Problems}
+\begin{exercise}[manual-num={3}]
+    Show that if $A$ is closed in $X$ and $B$ is closed in $Y$, then $A \times B$ is closed in $X \times Y$.
+\end{exercise}
+    \begin{proof}
+        We will show that $(A \times B)^c$ is open. First note that:
+            \begin{equation*}
+            \begin{split}
+                (A \times B)^c
+                & = (X \times Y) \setminus (A \times B) \\
+                & = \left[(X\setminus A) \times Y\right] \cup \left[ X \times (Y \setminus B) \right].
+            \end{split}
+            \end{equation*}
+        Since $X \setminus A$ is open, surely $(X \setminus A) \times Y$ is open. The same reasoning follows for $X \times (Y \setminus B)$ being open. Thus $(A \times B)^c$ is open, hence $A \times B$ is closed.
+    \end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}[manual-num={6}]
+    Let $A$, $B$, and $A_\alpha$ denote subsets of a space $X$. Prove the following.
+        \begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+            \item If $A \subset B$, then $\overline{A} \subset \overline{B}$.
+            \item $\overline{A \cup B} = \overline{A} \cup \overline{B}$.
+            \item $\overline{ \bigcup A_\alpha} \supset \bigcup \overline{A_\alpha}$; give an example where equality fails.
+        \end{enumerate}
+\end{exercise}
+    \begin{proof}
+        (a) Let $a \in \overline{A}$. Then for all open $U \subseteq X$ containing $a$, we have $U \cap A \neq \emptyset$. Since $A \subset B$, surely $U \cap B \neq \emptyset$ as well. Thus $a \in \overline{B}$.
+
+        (b) Note that $A \subset A \cup B$ and $B \subset A \cup B$, hence $\overline{A} \subset \overline{A \cup B}$ and $\overline{B} \subset \overline{A \cup B}$. Thus $\overline{A} \cup \overline{B} \subseteq \overline{A \cup B}$. Conversely, note that $A \cup B \subseteq \overline{A} \cup \overline{B}$. By definition the closure of a set is the smallest closed set containing it. Since $\overline{A} \cup \overline{B}$ is closed and contains $A \cup B$, it must be the case that $A \cup B \subseteq \overline{A \cup B}$. Thus $\overline{A \cup B} = \overline{A} \cup \overline{B}$.
+
+        Let $x \in \bigcup \overline{A_\alpha}$. Then there exists some $i$ such that $x \in \overline{A_i}$. Hence for any open set $U$ containing $x$, we have $U \cap A_i \neq \emptyset$. It follows that for any open set $U$ containing $x$, we have $U \cap \bigcup A_\alpha \neq \emptyset$. Thus $x \in \overline{\bigcup A_\alpha}$. A counterexample of equality is as follows: we have $\overline{\bigcup_{n = 1}^\infty (0,\frac{1}{n})} = \overline{\emptyset} = \emptyset$, while $\bigcup_{n = 1}^\infty \overline{(0,\frac{1}{n})} = \bigcup_{n = 1}^\infty [0,\frac{1}{n}] = \{0\}$.
+    \end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}[manual-num={11}]
+Show that the product of two Hausdorff spaces is Hausdorff.
+\end{exercise}
+    \begin{proof}
+        Let $X$ and $Y$ be Hausdorff spaces. Let $(x,y),(x',y') \in X \times Y$. It is enough to assume that these two points differ in one coordinate; i.e., assume without loss of generality that $x = x'$. Since $y,y' \in Y$, we can find open sets $V,V' \subseteq Y$ such that $y \in V$, $y' \in V'$, and $V \cap V' = \emptyset$. Hence $X \times V$ and $X \times V'$ will be disjoint open neighborhoods of $(x,y)$ and $(x',y')$. Thus $X \times Y$ is Hausdorff.
+    \end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}[manual-num={13}]
+Show that X is Hausdorff if and only if the diagonal $\Delta = \{ (x,x) \mid x \in X\}$ is closed in $X \times X$.
+\end{exercise}
+    \begin{proof}
+        Suppose $X$ is Hausdorff. We will show that $\Delta^c$ is open. Let $(x,y) \in \Delta^c$. Then $x \neq y$. Find open sets $U$ containing $x$ and $V$ containing $y$ such that $U \cap V = \emptyset$. Then $(x,y) \in U \times V$, and in particular $(U \times V) \cap \Delta = \emptyset$ (indeed, if we suppose towards contradiction that $(a,b) \in (U \times V) \cap \Delta$, then $a=b$ and $(a,b) \in U \times V$ implies $a \in U \cap V$, a contradiction.) Thus $(x,y) \in U \times V \subseteq \Delta^c$, hence $\Delta$ is closed.
+
+        Now suppose $\Delta$ is closed. Let $x,y \in X$ with $x \neq y$. Then $(x,y) \in \Delta^c$. Since this set is open, we can find a basis element $U \times V$ (where $U$ and $V$ are open) such that $(x,y) \in U \times V \subseteq \Delta^c$. Hence $(U \times V) \cap \Delta = \emptyset$. Now if it were the case that $U \cap V \neq \emptyset$, then $x \in U \cap V$ means $x \in U$ and $x \in V$, which would imply that $(x,x) \in (U \times V) \cap \Delta$, contradiction the conclusion we came to. Thus $U \cap V = \emptyset$, establishing $X$ as Hausdorff.
+    \end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}[manual-num={19}]
+    If $A \subset X$, we define the \textbf{boundary} of $A$ by the equation $\partial A = \overline{A} \cap \overline{A^c}$.
+    \begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+        \item Show that $A^o$ and $\partial A$ are disjoint, and $\overline{A} = A^o \cup \partial A$.
+        \item Show that $\partial A = \emptyset$ if and only if $A$ is both closed and open.
+    \end{enumerate}
+\end{exercise}
+    \begin{proof}
+        (a) We will first prove that $A^o \cap \partial A = \emptyset$. Suppose towards contradiction $x \in A^o \cap \partial A$. Then $x \in A^o$, $x \in \overline{A}$, and $x \in \overline{A^c}$ by definition. If $x \in \overline{A^c}$, then for any open set $U$ containing $x$, $U \cap A^c \neq \emptyset$. But if $x \in A^o$, then we can find an open set $V$ containing $x$ such that $V \subseteq A$. But this means $V \cap A^c = \emptyset$, which contradicts the assumption that $x \in \overline{A^c}$. Thus $A^o \cap \partial A = \emptyset$.
+        
+        Now let $x \in \overline{A}$. We want to show that $x \in A^o \cup \partial A$. If $x \in A^o$, then we are done. Suppose that $x \not\in A^o$, we wish to now show that $x \in \overline{A}$ and $x \in \overline{A^c}$. Since we already assumed $x \in \overline{A}$, we only need to show that $x \in \overline{A^c}$. Since $x \not\in A^o$, for every open set $U$ containing $x$ we have $U \not\subseteq A$. Thus for every open set $U$ containing $x$ we have $U \cap A^c \neq \emptyset$. Thus $x \in \overline{A^c}$, finally establishing $x \in A^o \cup \partial A$. Now let $x \in A^o \cup \partial A$. If $x \in A^o$ then $x \in \overline{A}$. If $x \in \partial A$, then $x \in \overline{A}$ by definition. Thus $\overline{A} = A^o \cup \partial A$.
+
+        (b) Suppose that $\partial A = \emptyset$. Then $\overline{A} \cap \overline{A^c} = \emptyset$. So for all $x \in X$, $x \not\in \overline{A}$ and $x \not\in \overline{A^c}$. So there exists an open set $U$ containing $x$ such that $U \cap A = \emptyset$ \textit{and} there exists an open set $V$ containing $x$ such that $V \cap A^c = \emptyset$. Thus there exists an open set $U$ such that $x \in U \subseteq A^c$ and there exists an open set $V$ such that $x \in V \subseteq A$. Thus $A$ and $A^c$ are open; i.e., $A$ is both open and closed. Conversely, assume $A$ is both open and closed. Suppose towards contradiction $x \in \overline{A} \cap \overline{A^c}$. Since $A$ is both open and closed, $\overline{A} = A$ and $\overline{A^c} = A^c$. Hence $x \in A \cap A^c$. This is a contradiction, hence $\partial A = \emptyset$.
+    \end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}[manual-num={20}]
+    
+\end{exercise}
+\begin{proof}
+
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{\S 18 Homework Problems}
+\begin{exercise}[manual-num={1}]
+Prove that for functions $f:\bfR \rightarrow \bfR$ the $\epsilon$-$\delta$ definition of continuity implies the
+open set definition.
+\end{exercise}
+    \begin{proof}
+        Let $U \subseteq \bfR$ be open. Let $x_0 \in f^{-1}(U)$. Then $f(x_0) \in U$. Since $U$ is open, find $\epsilon > 0$ such that $B(f(x_0),\epsilon) \subseteq U$. By the $\epsilon$-$\delta$ definition of continuity, we can find some $\delta > 0$ such that $x \in B(x_0,\delta)$ implies $f(x) \in B(f(x_0),\epsilon)$. In particular, $f(B(x_0,\delta)) \subseteq B(f(x_0),\epsilon)$. Thus $B(x_0,\delta) \subseteq f^{-1}(B(f(x_0)),\epsilon) \subseteq f^{-1}(U)$. Since $x_0$ was arbitrary, $f^{-1}(U)$ is open.
+    \end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}[manual-num={2}]
+Suppose that $f:X \rightarrow Y$ is continuous. If $x$ is a limit point of the subset $A$ of $X$, is it necessarily true that $f(x)$ is a limit point of $f(A)$?
+\end{exercise}
+
+\begin{proof}
+    This is not true. As a counter example, consider the constant function $f:\bfR \rightarrow \bfR$ given by $f(x) = 2$. The set of limit points of the set $[0,1]$ is $[0,1]$. But the set of limit points of $f([0,1]) = \{2\}$ is $\emptyset$.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

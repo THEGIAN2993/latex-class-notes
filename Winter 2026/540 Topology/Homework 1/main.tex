@@ -1,0 +1,207 @@
+\documentclass[12pt,twoside,openany]{memoir}
+%\usepackage{mlmodern}
+%\usepackage{tgpagella} % text only
+%\usepackage{mathpazo}  % math & text
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage[fixamsmath]{mathtools}  % Extension to amsmath
+\usepackage{amsthm}
+\usepackage{amssymb}
+\renewcommand*{\mathbf}[1]{\varmathbb{#1}}
+\usepackage{newpxtext}
+\usepackage{eulerpx}
+\usepackage{mathrsfs}
+
+\usepackage{eucal}
+\usepackage{datetime}
+    \newdateformat{specialdate}{\THEYEAR\ \monthname\ \THEDAY}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+        \pagestyle{fancy}
+    \renewcommand{\headrulewidth}{0pt}
+    \cfoot{\scriptsize \thepage}
+\usepackage{keytheorems}
+    \newkeytheorem{theorem}[
+    name = Theorem,
+    numberwithin = section,
+    ]
+    \newkeytheorem{theorem*}[
+    name=Theorem,
+    numbered=false
+    ]
+    \newkeytheorem{proposition}[
+    name = Proposition,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{lemma}[
+    name = Lemma,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{corollary}[
+    name = Corollary,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{definition}[
+    name = Definition,
+    numberwithin = section,
+    style = definition
+    ]
+    \newkeytheorem{example}[
+    name = Example,
+    numberwithin = section,
+    style = definition
+    ]
+    \newkeytheorem{remark}[
+    name=Remark,
+    style=remark, 
+    numbered=false  
+    ]
+    \newkeytheorem{exercise}[
+    name = Exercise,
+    ]
+    \newkeytheorem{axiom}[name = Axiom]
+\usepackage{enumitem}
+\usepackage{titlesec}
+    \titleformat{\chapter}[display]
+    {\bfseries\LARGE\raggedright}
+    {Chapter {\thechapter}}
+    {.1ex minus .1ex}
+    {\Large}
+    \titlespacing{\chapter}
+    {3pc}{*3}{40pt}[3pc]
+
+    \titleformat{\section}[block]
+    {\normalfont\bfseries\large}
+    {\S\ \thesection.}{.5em}{}[]
+    \titlespacing{\section}
+    {0pt}{3ex plus .1ex minus .2ex}{3ex plus .1ex minus .2ex}
+\usepackage[utf8x]{inputenc}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{float}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning,arrows.meta}
+\usetikzlibrary{decorations.pathreplacing}
+\usepackage{wasysym}
+\usepackage{hyperref}
+\usepackage{ulem}
+\usepackage{pgfplots}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=1.18}
+\linespread{1.1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
+
+\begin{document}
+\begin{center}
+    {\Large Math 540 \\[0.1in]Homework \#1}\\[.175in]
+    {Name:} {\underline{Gianluca Crescenzo\hspace*{2in}}}\\[0.15in]
+    \end{center}
+    \vspace{4pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}[Section 12 \& 13, Problem 2]
+    Consider the nine topologies on the set $X = \{a,b,c\}$. Compare them, that is, for each pair of topologies, determine whether they are comparable, and if so, which is the finer.
+\end{exercise}
+\begin{proof}
+    
+\end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}[Section 12 \& 13, Problem 3]
+    Show that the collection $$T_c := \{U  \mid X - U \text{ is countable or }X - U = X\}$$ is a topology on $X$. Is the collection $T_\infty := \{U \mid X-U \text{ is infinite or empty or all of }X\}$ a topology on $X$?
+\end{exercise}
+    \begin{proof}
+        Clearly $\emptyset,X \in T_c$. Let $\{U_i\}_{i \in I} \subseteq X$ be an arbitrary family of open sets in $X$. Then $\left( \bigcup_{i \in I}U_i \right)^c = \bigcap_{i \in I}U_i^c$. Since each $U_i^c$ is countable, the set $\left( \bigcup_{i \in I}U_i \right)^c$ will be the empty set or at most a countable set. Now let $\{U_i\}_{i = 1}^n \subseteq X$ be a finite collection of open sets in $X$. Then $\left( \bigcap_{i = 1}^n U_i \right)^c = \bigcup_{i = 1}^n U_i^c$. Since finite unions of countable sets are countable, the set $\left( \bigcap_{i = 1}^n U_i \right)^c$ is countable. Thus $T_c$ is a topology on $X$.
+
+        The set $T_\infty$ does not necessarily form a topology on $X$. As a counter example, take $X = [0,1]$. Consider the family of sets $\left\{ \bigl( \frac{1}{n},1\bigr] \right\}_{n = 1}^\infty$. Note that $\bigl( \frac{1}{n},1\bigr] \in T_\infty$ for all $n$ because $\card \left( \bigl( \frac{1}{n},1\bigr] \right) = \card \left( \left[ 0,\frac{1}{n} \right] \right) = \infty$. But:
+            \begin{equation*}
+            \begin{split}
+                \left( \bigcup_{n = 1}^\infty \bigl( \frac{1}{n},1\bigr] \right)^c 
+                & = \bigcap_{n = 1}^\infty \bigl( \frac{1}{n},1\bigr]^c \\
+                & = \bigcap_{n = 1}^\infty \left[ 0,\frac{1}{n} \right]^c \\
+                & = \{0\}.
+            \end{split}
+            \end{equation*}
+        Hence $\bigcup_{n = 1}^\infty \bigl( \frac{1}{n},1\bigr] \not\in T_\infty$. Since there exists a collection of open sets whose union is not open, $T_\infty$ is not a topology on $[0,1]$.
+    \end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}
+    
+\end{exercise}
+\begin{proof}
+    
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}[Section 15 \& 16, Problem 1]
+Show that if $Y$ is a subspace of $X$ and $A$ is a subset of $Y$, then the topology $A$ inherits as a subspace of $Y$ is the same as the topology it inherits as a subspace of $X$.
+\end{exercise}
+    \begin{proof}
+        Let $(X,T)$ be a topological space. Let $T_Y:=\{Y \cap U \mid U \in T\}$. The topology $A$ inherits as a subspace of $Y$ is:
+            \begin{equation*}
+            \begin{split}
+                \{A \cap V \mid V \in T_y\} 
+                & = \{A \cap (Y \cap U) \mid U \in T\} \\
+                & = \{A \cap U \mid U \in T\},
+            \end{split}
+            \end{equation*}
+        which is precisely the topology $A$ inherits as a subspace of $X$.
+    \end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}[Section 12 \& 13, Problem 2]
+    If $T$ and $T'$ are topologies on $X$ and $T'$ is strictly finer than $T$, what can you say about the corresponding subspace topologies on the subset $Y$ of $X$?
+\end{exercise}
+    \begin{proof}
+        Since $T'$ is strictly finer than $T$, this means $T \subset T'$. Let:
+            \begin{equation*}
+            \begin{split}
+                T_Y &:= \{Y \cap U \mid U \in T\}, \\
+                T_Y' &:= \{Y \cap U \mid U \in T'\}.
+            \end{split}
+            \end{equation*}
+        Clearly $T_Y \subset T_Y'$, hence $T_Y'$ is strictly finer than $T_Y$.
+    \end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}[Section 15 \& 16, Problem 3]
+Consider the set $Y =[-1,1]$ as a subspace of $\bfR$. Which of the following sets are open in $Y$? Which are open in $\bfR$?
+    \begin{equation*}
+    \begin{split}
+        A &:= \left\{ x \mid \frac{1}{2} < |x| < 1 \right\}, \\
+        B &:= \left\{ x \mid \frac{1}{2} < |x| \leq 1 \right\}, \\
+        C &:= \left\{ x \mid \frac{1}{2} \leq |x| < 1 \right\}, \\
+        D &:= \left\{ x \mid \frac{1}{2} \leq |x| <\leq 1 \right\}, \\
+        E &:= \left\{ 0 < |x| < 1 \text{ and }\frac{1}{x} \not\in \bfZ_+\right\}. \\
+    \end{split}
+    \end{equation*}
+\end{exercise}
+    \begin{proof}
+        The set $A$ is open in $Y$ and $\bfR$. The set $B$ is open in $Y$ but not open in $\bfR$. The sets $C$ and $D$ are neither open in $Y$ nor open in $\bfR$. For $E$, note that it can be realized as the set:
+            \begin{equation*}
+            \begin{split}
+                E = \bigcup_{n = 1}^\infty \left( -\frac{1}{n}, - \frac{1}{n+1} \right) \cup \bigcup_{n = 1}^\infty \left( \frac{1}{n+1}, - \frac{1}{n} \right).
+            \end{split}
+            \end{equation*} 
+        The sets $\left( -\frac{1}{n}, - \frac{1}{n+1} \right)$ and $\left( \frac{1}{n+1}, - \frac{1}{n} \right)$ are open in $Y$ and open in $\bfR$. Since an arbitrary union of open sets is open, $E$ is surely open in $Y$ and open in $\bfR$.
+    \end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}[Section 15 \& 16, Problem 4]
+    A map $f:X \rightarrow Y$ is said to be an \textit{open map} if for every open set $U$ of $X$, the set $f(U)$ is open in $Y$. Show that $\pi_1:X \times Y \rightarrow X$ and $\pi_2 :X \times Y \rightarrow Y$ are open maps.
+\end{exercise}
+    \begin{proof}
+        Let $\cB =\{U \times V \mid U \subseteq X \text{ open }, V \subseteq X \text{ open }\}$. This basis generates the product topology on $X \times Y$. Let $\cO \subseteq X \times Y$ be open. Let $(x,y) \in \cO$. Then there exists a basis element $U_x \times V_y \in \cB$ such that $(x,y) \in U \times V \subseteq \cO$. We can write:
+            \begin{equation*}
+            \begin{split}
+                \cO = \bigcup_{(x,y) \in \cO}U_x \times V_y.
+            \end{split}
+            \end{equation*}
+        Since functions distribute over unions, $\pi_1(\cO)$ and $\pi_2(\cO)$ will be arbitrary unions of open sets, hence they are open.
+    \end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

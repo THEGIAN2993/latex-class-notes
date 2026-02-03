@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1763842802.38985 "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/Spring 2025/Real Analysis II/397 Notes/_main.tex" "_main.pdf" "_main" 1763842804.01829 0
+["pdflatex"] 1768107425.57401 "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/Spring 2025/Real Analysis II/397 Notes/_main.tex" "_main.pdf" "_main" 1768107427.21107 0
   "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/Spring 2025/Real Analysis II/397 Notes/_main.tex" 1763842753.11997 5918 4d72dcff0159826733719bcb0d5d6c03 ""
-  "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex" 1762121065.72485 13967 889a9157fa67d0572ba1fc6f0c43327a ""
+  "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex" 1764622722.89504 13971 026113b2e089b0f197b6a1344ae6ebb8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/newpx/px-lms.enc" 1699652218 3877 2ca811886181a05a861d20a35de75e06 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/newpx/zpl_TOsF.enc" 1694207779 2688 c4453cc5ea1d5eadb4ed2ca5fa23d7e7 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf.enc" 1698694482 2914 fdbc4a54b9bc76f4551b5303f2737d33 ""
@@ -309,14 +309,14 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1758769034 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "_main.aux" 1763842803.88301 432 6ceb77d3029079f2f8c5d53fb20fdc7f "pdflatex"
-  "_main.out" 1763842803.8851 2272 5b25075597c09ce016513b79f6569172 "pdflatex"
+  "_main.aux" 1768107427.0774 432 6ceb77d3029079f2f8c5d53fb20fdc7f "pdflatex"
+  "_main.out" 1768107427.07947 2272 5b25075597c09ce016513b79f6569172 "pdflatex"
   "_main.tex" 1763842753.11997 5918 4d72dcff0159826733719bcb0d5d6c03 ""
-  "_main.toc" 1763842803.88525 1235 d812579c74c9d233e062ecca4bfba528 "pdflatex"
-  "_main.unq" 1763842802.69553 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "metrics.aux" 1763842803.88262 36046 76d903532916f8a9caa685597b1123e6 "pdflatex"
+  "_main.toc" 1768107427.07961 1235 d812579c74c9d233e062ecca4bfba528 "pdflatex"
+  "_main.unq" 1768107425.88745 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "metrics.aux" 1768107427.07704 36046 76d903532916f8a9caa685597b1123e6 "pdflatex"
   "metrics.tex" 1761713223.75559 190846 41b762e82cf9852da3d19f4144d0855c ""
-  "normed-spaces-algebras.aux" 1763842803.28021 18814 636e65bcd64f4a88c7e740ed78ae9955 "pdflatex"
+  "normed-spaces-algebras.aux" 1768107426.47311 18814 636e65bcd64f4a88c7e740ed78ae9955 "pdflatex"
   "normed-spaces-algebras.tex" 1763842798.9732 67934 1c2f3d472994524d4efc42965d0e0255 ""
   (generated)
   "_main.aux"

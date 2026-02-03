@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  8 JAN 2026 09:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  21 JAN 2026 12:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1983,18 +1983,24 @@ LaTeX Font Info:    Trying to load font information for U+eus on input line 20.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/ueus.fd
 File: ueus.fd 2013/01/14 v3.01 Euler Script
 )
-Overfull \hbox (48.06529pt too wide) in paragraph at lines 28--29
-[][]\T1/zpltlf/b/n/12 Definition 1.1.2. []\T1/zpltlf/m/n/12 Let $\LMS/npxsy/m/n/12 ¹\U/zeur/m/n/12 X\OT1/minzpl/m/n/12 , \U/zeur/m/n/12 d\LMS/npxsy/m/n/12 º$ \T1/zpltlf/m/n/12 be a met-ric space, $\U/zeur/m/n/12 x \LMS/npxsy/m/n/12 2 \U/zeur/m/n/12 X$\T1/zpltlf/m/n/12 , and $\U/zeur/m/n/12 ^^O \OML/npxmi/m/it/12 > \OT1/minzpl/m/n/12 0$\T1/zpltlf/m/n/12 . The $[]$
- []
-
-
 
 [1
 
 
-{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/newpx/px-lms.enc}{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}])
+{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/newpx/px-lms.enc}{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}]
 
 [2]
+
+[3]
+LaTeX Font Info:    Font shape `T1/zpltlf/m/n' will be
+(Font)              scaled to size 8.8pt on input line 207.
+LaTeX Font Info:    Font shape `T1/zpltlf/m/n' will be
+(Font)              scaled to size 6.6pt on input line 207.
+
+
+[4])
+
+[5]
 \tf@toc=\write6
 \openout6 = `_main.toc'.
 
@@ -2004,21 +2010,21 @@ LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2020/03/25>
  ***********
 Package rerunfilecheck Info: File `_main.out' has not changed.
-(rerunfilecheck)             Checksum: F855055D0A5A39F9F407E2B291B48C80;735.
+(rerunfilecheck)             Checksum: 36F50994024B4CA1659EFE0A2FE2F1B0;1414.
  ) 
 Here is how much of TeX's memory you used:
- 45267 strings out of 473190
- 1011916 string characters out of 5715801
- 1523193 words of memory out of 5000000
- 67665 multiletter control sequences out of 15000+600000
- 609780 words of font info for 117 fonts, out of 8000000 for 9000
+ 45321 strings out of 473190
+ 1012712 string characters out of 5715801
+ 1524193 words of memory out of 5000000
+ 67679 multiletter control sequences out of 15000+600000
+ 615838 words of font info for 119 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,14n,107p,1151b,616s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,15n,107p,1151b,739s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/NewPXMI_gnu.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eurm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eurm7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eusm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/pxmiaX.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/pxsys.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsym.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/zplb.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/zplr.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/zplri.pfb>
-Output written on _main.pdf (3 pages, 153321 bytes).
+Output written on _main.pdf (6 pages, 173442 bytes).
 PDF statistics:
- 145 PDF objects out of 1000 (max. 8388607)
- 115 compressed objects within 2 object streams
- 32 named destinations out of 1000 (max. 500000)
- 53 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 224 PDF objects out of 1000 (max. 8388607)
+ 191 compressed objects within 2 object streams
+ 72 named destinations out of 1000 (max. 500000)
+ 85 words of extra memory for PDF output out of 10000 (max. 10000000)
 

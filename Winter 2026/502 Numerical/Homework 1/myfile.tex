@@ -1,0 +1,44 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\definecolor{mycolor1}{rgb}{0.14900,0.54900,0.86600}%
+\definecolor{mycolor2}{rgb}{0.07059,0.07059,0.07059}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=7.887in,
+height=4.992in,
+at={(1.323in,0.674in)},
+scale only axis,
+xmode=log,
+xmin=5e-07,
+xmax=0.2,
+xminorticks=true,
+ymode=log,
+ymin=1e-12,
+ymax=1,
+yminorticks=true,
+axis background/.style={fill=mycolor2}
+]
+\addplot [color=mycolor1, mark=o, mark options={solid, mycolor1}, forget plot]
+  table[row sep=crcr]{%
+0.1	6.4430648182956e-05\\
+0.0562341325190349	6.45881661665015e-06\\
+0.0316227766016838	6.46380871494046e-07\\
+0.0177827941003892	6.46546451932295e-08\\
+0.01	6.4669931632011e-09\\
+0.00562341325190349	6.46227071854355e-10\\
+0.00316227766016838	6.41504627196809e-11\\
+0.00177827941003892	6.68167743356207e-11\\
+0.001	1.83232096162556e-10\\
+0.000562341325190349	1.81304660173964e-09\\
+0.000316227766016838	4.24055013326097e-09\\
+0.000177827941003892	6.10319528249192e-09\\
+0.0001	3.8600288299051e-08\\
+};
+\end{axis}
+\end{tikzpicture}%

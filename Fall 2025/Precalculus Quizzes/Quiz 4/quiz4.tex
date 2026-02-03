@@ -37,20 +37,19 @@
             \draw[->, thick] (0,-5) -- (0,5.4) node[above] {$y$};
             \node[below left] at (0,0) {\small $0$};
 
-            % f (red)
+            % f (red) - polynomial-like curve with a local max and local min
             \draw[ultra thick, red]
                 plot[smooth, tension=1] coordinates {
-                (-3.3,1) (0.6,4.5) (3.45,-0.5)
+                (-4,-1) 
+                (-2,4) 
+                (0,0)
+                (1,-3)
+                (3,5)
+                (4,4)
                 };
-            \node[red] at (1.5,4.5) {$f$};
+            \node[red] at (-2.0,2.9) {$f$};
+            \end{tikzpicture}
 
-            % g (blue)
-            \draw[ultra thick, blue!70!black]
-                plot[smooth, tension=0.1] coordinates {
-                (-3,0) (3.7,-3.4)
-                };
-            \node[blue!70!black] at (1.0,-2.95) {$g$};
-        \end{tikzpicture}
         \end{center}
         \begin{enumerate}
             \item $(f \circ g)(1)$
