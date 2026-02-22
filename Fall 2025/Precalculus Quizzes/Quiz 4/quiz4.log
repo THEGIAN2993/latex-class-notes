@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  29 JAN 2026 18:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  4 FEB 2026 11:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -372,6 +372,11 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 29.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
+Overfull \hbox (97.95467pt too wide) in paragraph at lines 42--43
+ [][] 
+ []
+
+
 
 [1
 
@@ -379,27 +384,25 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 [2]
 
-[3]
-
-[4] (./quiz4.aux)
+[3] (./quiz4.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 13463 strings out of 473190
- 273994 string characters out of 5715801
- 636334 words of memory out of 5000000
- 36497 multiletter control sequences out of 15000+600000
+ 13468 strings out of 473190
+ 274113 string characters out of 5715801
+ 639334 words of memory out of 5000000
+ 36502 multiletter control sequences out of 15000+600000
  565905 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 87i,15n,93p,522b,759s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 87i,15n,93p,522b,837s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on quiz4.pdf (4 pages, 65463 bytes).
+Output written on quiz4.pdf (3 pages, 65168 bytes).
 PDF statistics:
- 50 PDF objects out of 1000 (max. 8388607)
- 31 compressed objects within 1 object stream
+ 47 PDF objects out of 1000 (max. 8388607)
+ 29 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

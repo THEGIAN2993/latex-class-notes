@@ -1,0 +1,828 @@
+\documentclass[10pt,oneside,openany]{memoir}
+
+\iffalse
+%font style 1
+\usepackage[p,osf]{scholax}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage[scaled=1.075,ncf,vvarbb]{newtxmath}
+\fi
+
+%font style 2
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage[fixamsmath]{mathtools}  % Extension to amsmath
+\usepackage{amsthm}
+\usepackage{amssymb}
+\renewcommand*{\mathbf}[1]{\varmathbb{#1}}
+\usepackage{newpxtext}
+\usepackage{eulerpx}
+\usepackage{mathrsfs}
+
+\usepackage{eucal}
+\usepackage{datetime}
+    \newdateformat{specialdate}{\THEYEAR\ \monthname\ \THEDAY}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \fancyhf{}
+    \cfoot{\scriptsize\thepage}
+    \fancyhead[R]{\scalebox{0.8}{\nouppercase{\rightmark}}}
+    \fancyhead[L]{\scalebox{0.8}{\nouppercase{\leftmark}}}
+
+    \fancypagestyle{plain}{%
+        \fancyhf{}
+        \cfoot{\scriptsize\thepage}
+        \fancyhead[R]{\scalebox{0.8}{\phantom{a}}}
+        \fancyhead[L]{\scalebox{0.8}{Applied Analysis}}
+    }
+\usepackage{keytheorems}
+    \newkeytheoremstyle{def}{
+    inherit-style=definition,
+    spaceabove=1.5em,
+    spacebelow=1.5em,
+    postheadspace=0.5em,
+    }
+    \newkeytheoremstyle{thm}{
+    spaceabove=1.5em,
+    spacebelow=1.5em,
+    postheadspace=0.5em,
+    }
+    \newkeytheorem{theorem}[
+    name = Theorem,
+    style=thm,
+    numberwithin = section,
+    ]
+    \newkeytheorem{theorem*}[
+    name=Theorem,
+    style=thm,
+    numbered=false
+    ]
+    \newkeytheorem{proposition}[
+    name = Proposition,
+    style=thm,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{lemma}[
+    name = Lemma,
+    style=thm,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{corollary}[
+    name = Corollary,
+    style=thm,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{definition}[
+    name = Definition,
+    style=def,
+    numberwithin = section,
+    style = definition
+    ]
+    \newkeytheorem{example}[
+    name = Example,
+    style=def,
+    numberwithin = section,
+    style = definition
+    ]
+    \newkeytheorem{remark}[
+    name=Remark,
+    style=remark, 
+    numbered=false  
+    ]
+    \newkeytheorem{solution}[
+    name=Solution,
+    style=remark, 
+    numbered=false  
+    ]
+    \newkeytheorem{question}[
+    name=Question,
+    style=remark, 
+    numbered=false  
+    ]
+    \newkeytheorem{exercise}[
+    name = Exercise,
+    style=thm
+    ]
+    \newkeytheorem{axiom}[name = Axiom]
+\usepackage{enumitem}
+\usepackage[explicit]{titlesec}
+    \titleformat{\chapter}[display]
+    {\bfseries\LARGE\raggedright}
+    {Chapter {\thechapter}}
+    {.1ex minus .1ex}
+    {\Large #1}
+    \titlespacing{\chapter}
+    {3pc}{*3}{40pt}[3pc]
+
+    \titleformat{\section}[block]
+    {\normalfont\bfseries\large}
+    {}{0pt}
+    {\fbox{\strut \S\ \thesection.\ #1}}
+    \titlespacing{\section}
+    {0pt}{3ex plus .1ex minus .2ex}{3ex plus .1ex minus .2ex}
+    \setlength{\fboxsep}{4pt}   % padding inside the box
+    \setlength{\fboxrule}{0.6pt} % border thickness
+    
+    \titleformat{name=\section,numberless}[block]
+    {\normalfont\bfseries\large\raggedright}
+    {}{0pt}
+    {\fbox{\strut #1}}
+\usepackage[utf8x]{inputenc}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{float}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning,arrows.meta}
+\usetikzlibrary{decorations.pathreplacing}
+\usepackage{wasysym}
+\usepackage{hyperref}
+\usepackage{ulem}
+\usepackage{pgfplots}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=1.18}
+\usepackage{xcolor}
+\usepackage{matlab-prettifier}
+\lstdefinestyle{Matlab-console}{
+  basicstyle=\ttfamily\small,
+  numbers=none,
+  frame=single,
+  breaklines=true,
+  showstringspaces=false 
+}
+\definecolor{matlabbg}{HTML}{F2F2F2}
+\definecolor{matlabln}{HTML}{6E6E6E}
+
+\lstdefinestyle{MatlabEditorGrey}{
+  style=Matlab-editor,
+  backgroundcolor=\color{matlabbg},
+  numbers=left,
+  numberstyle=\color{matlabln}\ttfamily\scriptsize,
+  stepnumber=1,
+  numbersep=10pt,
+  xleftmargin=2.2em,     % space for line numbers
+  frame=single,
+  framerule=0pt,         % no border line (keep the box spacing)
+  framesep=6pt,
+  breaklines=true
+}
+
+\renewcommand{\headrulewidth}{0pt} % removes the top/header line
+% (optional) if you also want no line above the footer:
+\renewcommand{\footrulewidth}{0pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
+
+\begin{document}
+\begin{center}
+    {\Large Math 502 \\[0.1in]Homework \#4}\\[.175in]
+    {Name:} {\underline{Gianluca Crescenzo\hspace*{2in}}}\\[0.15in]
+    \end{center}
+    \vspace{4pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}[manual-num={4.0}]
+Show the following three facts, for $\vec{\boldsymbol{f}}$ a constant vector in $\bfR^n$, $\vec{\boldsymbol{u}}$ a vector of variables in $\bfR^n$, and $A$ an $n \times n$ symmetric matrix:
+\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+    \item $\nabla(\vec{\boldsymbol{u}}^{\top}\vec{\boldsymbol{f}})=\vec{\boldsymbol{f}},$
+    \item $\nabla(\vec{\boldsymbol{f}}^{\top}\vec{\boldsymbol{u}})=\vec{\boldsymbol{f}},$
+    \item $\nabla(\vec{\boldsymbol{u}}^{\top}A\vec{\boldsymbol{u}})=2A\vec{\boldsymbol{u}}.$
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+\phantom{a}
+\begin{enumerate}[label=(\alph*),itemsep=4pt,topsep=4pt]
+    \item Define $g:\bfR^n\to\bfR$ by $g(\vec{\boldsymbol{u}})=\vec{\boldsymbol{u}}^{\top}\vec{\boldsymbol{f}}$. Then:
+        \begin{equation*}
+        \begin{split}
+            g(\vec{\boldsymbol{u}})=\sum_{i=1}^n u_i f_i.
+        \end{split}
+        \end{equation*}
+    Hence:
+        \begin{equation*}
+        \begin{split}
+            \nabla g(\vec{\boldsymbol{u}})
+            &=\biggl(\frac{\partial g}{\partial u_1},\dots,\frac{\partial g}{\partial u_n}\biggr) \\
+            &=\biggl(\frac{\partial}{\partial u_1}\sum_{i=1}^n u_i f_i,\dots,\frac{\partial}{\partial u_n}\sum_{i=1}^n u_i f_i\biggr) \\
+            &= (f_1,\dots,f_n) \\
+            &=\vec{\boldsymbol{f}}.
+        \end{split}
+        \end{equation*}
+
+    \item Note that $\varphi(\vec{\boldsymbol{u}},\vec{\boldsymbol{v}}) = \vec{\boldsymbol{u}}^{\top}\vec{\boldsymbol{v}}$ defines an inner product on $\bfR^n$. Hence $\vec{\boldsymbol{u}}^{\top}\vec{\boldsymbol{v}} = \vec{\boldsymbol{v}}^{\top}\vec{\boldsymbol{u}}$. Therefore by part (a):
+        \begin{equation*}
+        \begin{split}
+            \nabla(\vec{\boldsymbol{f}}^{\top}\vec{\boldsymbol{u}})
+            &=\nabla(\vec{\boldsymbol{u}}^{\top}\vec{\boldsymbol{f}}) \\
+            &=\vec{\boldsymbol{f}}.
+        \end{split}
+        \end{equation*}
+
+    \item Define $h:\bfR^n\to\bfR$ by $h(\vec{\boldsymbol{u}})=\vec{\boldsymbol{u}}^{\top}A\vec{\boldsymbol{u}}$. Writing $A=(a_{ij})_{i,j=1}^n$, we have:
+        \begin{equation*}
+        \begin{split}
+            h(\vec{\boldsymbol{u}})
+            =\sum_{i=1}^n\sum_{j=1}^n u_i\,a_{ij}\,u_j.
+        \end{split}
+        \end{equation*}
+    Note that for each $k=1,...,n$:
+        \begin{equation*}
+        \begin{split}
+            \frac{\partial h}{\partial u_k}
+            &= \frac{\partial}{\partial u_k}\sum_{i=1}^n\sum_{j=1}^n u_i a_{ij} u_j \\
+            &= \sum_{j=1}^n a_{kj}u_j \;+\; \sum_{i=1}^n u_i a_{ik}.
+        \end{split}
+        \end{equation*}
+    Hence:
+        \begin{equation*}
+        \begin{split}
+            \nabla h(\vec{\boldsymbol{u}})
+            = (A+A^{\top})\vec{\boldsymbol{u}}.
+        \end{split}
+        \end{equation*}
+    Since $A$ is symmetric, $A^{\top}=A$, which gives:
+        \begin{equation*}
+        \begin{split}
+            \nabla(\vec{\boldsymbol{u}}^{\top}A\vec{\boldsymbol{u}})
+            = 2A\vec{\boldsymbol{u}}.
+        \end{split}
+        \end{equation*}
+\end{enumerate}
+\end{solution}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}[manual-num={4.1}]
+    By considering the derivative and the second derivative of $g(\alpha)$, show that the parameter $\alpha$ in the Conjugate Gradient algorithm minimizes 
+        \begin{equation*}
+        \begin{split}
+            g(\alpha) = \phi \bigl( \vec{\boldsymbol{u}}_{k-1} + \alpha \vec{\boldsymbol{p}}_{k-1}\bigr),
+        \end{split}
+        \end{equation*}
+    where $\phi(\vec{\boldsymbol{u}}) = \frac{1}{2}\vec{\boldsymbol{u}}^\top A \vec{\boldsymbol{u}} - \vec{\boldsymbol{u}}^\top \vec{\boldsymbol{f}}$.
+\end{exercise}
+    \begin{solution}
+        Observe that:
+            \begin{equation*}
+            \begin{split}
+                g(\alpha)
+                &= \phi(\vec{\boldsymbol{u}}_{k-1}+\alpha\vec{\boldsymbol{p}}_{k-1}) \\
+                &= \frac12(\vec{\boldsymbol{u}}_{k-1}+\alpha\vec{\boldsymbol{p}}_{k-1})^{\top}
+                A(\vec{\boldsymbol{u}}_{k-1}+\alpha\vec{\boldsymbol{p}}_{k-1})
+                -(\vec{\boldsymbol{u}}_{k-1}+\alpha\vec{\boldsymbol{p}}_{k-1})^{\top}\vec{\boldsymbol{f}} \\
+                &= \frac12\Bigl(\vec{\boldsymbol{u}}_{k-1}^{\top}A\vec{\boldsymbol{u}}_{k-1}
+                +\alpha\,\vec{\boldsymbol{u}}_{k-1}^{\top}A\vec{\boldsymbol{p}}_{k-1}
+                +\alpha\,\vec{\boldsymbol{p}}_{k-1}^{\top}A\vec{\boldsymbol{u}}_{k-1}
+                +\alpha^2\,\vec{\boldsymbol{p}}_{k-1}^{\top}A\vec{\boldsymbol{p}}_{k-1}\Bigr)
+                -\vec{\boldsymbol{u}}_{k-1}^{\top}\vec{\boldsymbol{f}}
+                -\alpha\,\vec{\boldsymbol{p}}_{k-1}^{\top}\vec{\boldsymbol{f}} \\
+                &= \frac12\,\vec{\boldsymbol{u}}_{k-1}^{\top}A\vec{\boldsymbol{u}}_{k-1}
+                + \alpha\,\vec{\boldsymbol{p}}_{k-1}^{\top}A\vec{\boldsymbol{u}}_{k-1}
+                + \frac12\,\alpha^2\,\vec{\boldsymbol{p}}_{k-1}^{\top}A\vec{\boldsymbol{p}}_{k-1}
+                -\vec{\boldsymbol{u}}_{k-1}^{\top}\vec{\boldsymbol{f}}
+                -\alpha\,\vec{\boldsymbol{p}}_{k-1}^{\top}\vec{\boldsymbol{f}}.
+            \end{split}
+            \end{equation*}
+        The derivative is then:
+            \begin{equation*}
+            \begin{split}
+                g'(\alpha)
+                &= \vec{\boldsymbol{p}}_{k-1}^{\top}A\vec{\boldsymbol{u}}_{k-1}
+                + \alpha\,\vec{\boldsymbol{p}}_{k-1}^{\top}A\vec{\boldsymbol{p}}_{k-1}
+                -\vec{\boldsymbol{p}}_{k-1}^{\top}\vec{\boldsymbol{f}} \\
+                &= \vec{\boldsymbol{p}}_{k-1}^{\top}(A\vec{\boldsymbol{u}}_{k-1}-\vec{\boldsymbol{f}})
+                + \alpha\,\vec{\boldsymbol{p}}_{k-1}^{\top}A\vec{\boldsymbol{p}}_{k-1}.
+            \end{split}
+            \end{equation*}
+        Setting $g'(\alpha) = 0$ gives:
+            \begin{equation*}
+            \begin{split}
+                \alpha
+                &= \frac{\vec{\boldsymbol{p}}_{k-1}^{\top}(\vec{\boldsymbol{f}}-A\vec{\boldsymbol{u}}_{k-1})}
+                {\vec{\boldsymbol{p}}_{k-1}^{\top}A\vec{\boldsymbol{p}}_{k-1}} \\
+                &= \frac{\vec{\boldsymbol{p}}_{k-1}^{\top}\vec{\boldsymbol{r}}_{k-1}}{\vec{\boldsymbol{p}}_{k-1}^{\top}A\vec{\boldsymbol{p}}_{k-1}}.
+            \end{split}
+            \end{equation*}
+        The second derivate of $g(\alpha)$ is:
+            \begin{equation*}
+            \begin{split}
+                g''(\alpha) = \vec{\boldsymbol{p}}_{k-1}^{\top}A\vec{\boldsymbol{p}}_{k-1}.
+            \end{split}
+            \end{equation*}
+        If $A$ is symmetric and positive-definite, then $p_{k-1} \neq 0$ implies $g''(\alpha) = \vec{\boldsymbol{p}}_{k-1}^{\top}A\vec{\boldsymbol{p}}_{k-1} > 0$. Hence the $\alpha$ given above uniquely minimizes $g(\alpha)$.
+    \end{solution}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\begin{exercise}[manual-num={4.3}]
+The file \texttt{conjugate\_gradient\_broken.m} is a modified version of an m-file that implements the conjugate gradient algorithm (without preconditioning) to solve \(A\tilde{u}=\vec{f}\). The modification is that two lines of code were removed. Download the file from our Canvas site, and repair the file so that it successfully implements the conjugate gradient algorithm (as stated in the algorithm at the end of this assignment).
+Rename the file \texttt{conjugate\_gradient.m}, and test it by running the command
+\begin{verbatim}
+>> u = conjugate_gradient(A,F,1.0e-5);
+\end{verbatim}
+where \(A\) is some large, symmetric, positive-definite matrix (defined as a sparse matrix in MATLAB), and \(F\) a column vector of the correct length.
+\end{exercise}
+    \begin{solution}
+        The two lines of code removed were an initialization of $r$ and updating $u$ during the for-loop. Below is the corrected code.
+        \begin{lstlisting}[style=MatlabEditorGrey]
+function u = conjugate_gradient(A,f,tol)
+%
+% Example:
+% x = conjugate_gradient(A,f,tol)
+%
+MAXITS = length(f);
+u = 0*f;
+r = f- A*u   %r was never initialized
+p = r;
+for k = 1:MAXITS
+    w = A*p;
+    alpha = (r'*r)/(p'*w);
+    u = u + alpha*p;  %u was never updated
+    rnew = r - alpha*w;
+    if( norm(rnew) < tol )
+        fprintf('Converged! its= %7.0f, tol=%10.3e\n', [k tol]);
+        return;
+    end
+    beta = (rnew'*rnew)/(r'*r);
+    p = rnew + beta*p;
+    r = rnew;
+end
+fprintf('Caution: CG went to max iterations without converging!\n');
+fprintf('MAXITS = %7.0f, tol =%10.3e\n', [MAXITS tol]);
+
+end
+        \end{lstlisting}
+Running the code with the large sparse matrix given from \texttt{poisson.m} gives:
+\newpage
+    \begin{lstlisting}[style=Matlab-console]
+>> load("/Users/gcrescenzo/Documents/MATLAB/vechw4.mat")
+>> load("/Users/gcrescenzo/Documents/MATLAB/sparsemat.mat")
+>> conjugate_gradient_broken
+
+r =
+
+   1.0e+03 *
+
+   -0.9128
+   -0.4837
+   -0.5072
+   -0.5320
+   -0.5579
+   -0.5851
+   -0.6137
+   -0.6436
+   -0.6750
+   -0.7079
+   -0.7424
+   -0.7787
+   -0.8166
+   -0.8565
+   -0.8982
+   -0.9420
+   -0.9880
+   -1.0362
+   -1.0867
+   -2.3673
+   -0.4611
+    0.0014
+    0.0015
+    0.0016
+    0.0017
+    0.0017
+    0.0018
+    0.0019
+    0.0020
+    0.0021
+    0.0022
+    0.0023
+    0.0024
+    0.0026
+    0.0027
+    0.0028
+    0.0029
+    0.0031
+    0.0032
+   -1.2538
+   -0.4722
+    0.0015
+    0.0015
+    0.0016
+    0.0017
+    0.0018
+    0.0019
+    0.0020
+    0.0021
+    0.0022
+    0.0023
+    0.0024
+    0.0025
+    0.0026
+    0.0027
+    0.0029
+    0.0030
+    0.0032
+    0.0033
+   -1.2840
+   -0.4836
+    0.0015
+    0.0016
+    0.0017
+    0.0017
+    0.0018
+    0.0019
+    0.0020
+    0.0021
+    0.0022
+    0.0023
+    0.0024
+    0.0026
+    0.0027
+    0.0028
+    0.0029
+    0.0031
+    0.0032
+    0.0034
+   -1.3150
+   -0.4953
+    0.0015
+    0.0016
+    0.0017
+    0.0018
+    0.0019
+    0.0020
+    0.0021
+    0.0022
+    0.0023
+    0.0024
+    0.0025
+    0.0026
+    0.0027
+    0.0029
+    0.0030
+    0.0032
+    0.0033
+    0.0035
+   -1.3467
+   -0.5072
+    0.0016
+    0.0017
+    0.0017
+    0.0018
+    0.0019
+    0.0020
+    0.0021
+    0.0022
+    0.0023
+    0.0024
+    0.0026
+    0.0027
+    0.0028
+    0.0029
+    0.0031
+    0.0032
+    0.0034
+    0.0036
+   -1.3791
+   -0.5194
+    0.0016
+    0.0017
+    0.0018
+    0.0019
+    0.0020
+    0.0021
+    0.0022
+    0.0023
+    0.0024
+    0.0025
+    0.0026
+    0.0027
+    0.0029
+    0.0030
+    0.0032
+    0.0033
+    0.0035
+    0.0036
+   -1.4123
+   -0.5319
+    0.0017
+    0.0017
+    0.0018
+    0.0019
+    0.0020
+    0.0021
+    0.0022
+    0.0023
+    0.0024
+    0.0026
+    0.0027
+    0.0028
+    0.0029
+    0.0031
+    0.0032
+    0.0034
+    0.0036
+    0.0037
+   -1.4464
+   -0.5448
+    0.0017
+    0.0018
+    0.0019
+    0.0020
+    0.0021
+    0.0022
+    0.0023
+    0.0024
+    0.0025
+    0.0026
+    0.0027
+    0.0029
+    0.0030
+    0.0032
+    0.0033
+    0.0035
+    0.0036
+    0.0038
+   -1.4812
+   -0.5579
+    0.0017
+    0.0018
+    0.0019
+    0.0020
+    0.0021
+    0.0022
+    0.0023
+    0.0024
+    0.0026
+    0.0027
+    0.0028
+    0.0029
+    0.0031
+    0.0032
+    0.0034
+    0.0036
+    0.0037
+    0.0039
+   -1.5169
+   -0.5713
+    0.0018
+    0.0019
+    0.0020
+    0.0021
+    0.0022
+    0.0023
+    0.0024
+    0.0025
+    0.0026
+    0.0027
+    0.0029
+    0.0030
+    0.0032
+    0.0033
+    0.0035
+    0.0036
+    0.0038
+    0.0040
+   -1.5535
+   -0.5851
+    0.0018
+    0.0019
+    0.0020
+    0.0021
+    0.0022
+    0.0023
+    0.0024
+    0.0026
+    0.0027
+    0.0028
+    0.0029
+    0.0031
+    0.0032
+    0.0034
+    0.0036
+    0.0037
+    0.0039
+    0.0041
+   -1.5909
+   -0.5992
+    0.0019
+    0.0020
+    0.0021
+    0.0022
+    0.0023
+    0.0024
+    0.0025
+    0.0026
+    0.0027
+    0.0029
+    0.0030
+    0.0032
+    0.0033
+    0.0035
+    0.0036
+    0.0038
+    0.0040
+    0.0042
+   -1.6292
+   -0.6136
+    0.0019
+    0.0020
+    0.0021
+    0.0022
+    0.0023
+    0.0024
+    0.0026
+    0.0027
+    0.0028
+    0.0029
+    0.0031
+    0.0032
+    0.0034
+    0.0036
+    0.0037
+    0.0039
+    0.0041
+    0.0043
+   -1.6685
+   -0.6284
+    0.0020
+    0.0021
+    0.0022
+    0.0023
+    0.0024
+    0.0025
+    0.0026
+    0.0027
+    0.0029
+    0.0030
+    0.0032
+    0.0033
+    0.0035
+    0.0036
+    0.0038
+    0.0040
+    0.0042
+    0.0044
+   -1.7087
+   -0.6436
+    0.0020
+    0.0021
+    0.0022
+    0.0023
+    0.0024
+    0.0026
+    0.0027
+    0.0028
+    0.0029
+    0.0031
+    0.0032
+    0.0034
+    0.0036
+    0.0037
+    0.0039
+    0.0041
+    0.0043
+    0.0045
+   -1.7499
+   -0.6591
+    0.0021
+    0.0022
+    0.0023
+    0.0024
+    0.0025
+    0.0026
+    0.0027
+    0.0029
+    0.0030
+    0.0032
+    0.0033
+    0.0035
+    0.0036
+    0.0038
+    0.0040
+    0.0042
+    0.0044
+    0.0046
+   -1.7920
+   -0.6750
+    0.0021
+    0.0022
+    0.0023
+    0.0024
+    0.0026
+    0.0027
+    0.0028
+    0.0029
+    0.0031
+    0.0032
+    0.0034
+    0.0036
+    0.0037
+    0.0039
+    0.0041
+    0.0043
+    0.0045
+    0.0047
+   -1.8352
+   -0.6912
+    0.0022
+    0.0023
+    0.0024
+    0.0025
+    0.0026
+    0.0027
+    0.0029
+    0.0030
+    0.0032
+    0.0033
+    0.0035
+    0.0036
+    0.0038
+    0.0040
+    0.0042
+    0.0044
+    0.0046
+    0.0049
+   -1.8794
+   -1.4704
+   -0.7975
+   -0.8364
+   -0.8772
+   -0.9200
+   -0.9649
+   -1.0119
+   -1.0613
+   -1.1130
+   -1.1673
+   -1.2242
+   -1.2840
+   -1.3466
+   -1.4123
+   -1.4811
+   -1.5534
+   -1.6291
+   -1.7086
+   -1.7919
+   -3.8092
+
+Converged! its=      68, tol= 1.000e-05
+>> 
+\end{lstlisting}
+    \end{solution}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}[manual-num={5.1}]
+Prove that the ODE:
+    \begin{equation*}
+    \begin{split}
+        u'(t) = \frac{1}{t^2 = u(t)^2}, \h9 \text{for }t \geq 1
+    \end{split}
+    \end{equation*}
+has a unique solution for all time from any initial value $u(1) = \eta$.
+\end{exercise}
+    \begin{solution}
+        Define $f(u,t) = \frac{1}{t^2 = u^2}$. Then:
+            \begin{equation*}
+            \begin{split}
+                \frac{\partial f}{\partial u} =-\frac{2u}{(t^2 + u^2)^2}.
+            \end{split}
+            \end{equation*}
+        On the given interval $t \geq 1$, note that:
+            \begin{equation*}
+            \begin{split}
+                \left| \frac{\partial f}{\partial u} \right|
+                & = \frac{2|u|}{(t^2 + u^2)^2} \\
+                & \leq \frac{2|u|}{(1 + u^2)^2} \\
+            \end{split}
+            \end{equation*}
+        The function $\frac{2|u|}{(1+u^2)^2}$ has a horizontal asymptote at 0 (because the degree of the denominator is larger than the degree of the numerator) and has no vertical asymptotes (because the denominator is never equal to zero). It must be the case that $\frac{2|u|}{(1+u^2)^2}$ is bounded. Hence $\frac{\partial f}{\partial u}$ is bounded, establishing that $f(u,t)$ is Lipschitz continuous on $t \geq 1$. Since $f(u,t)$ is Lipschitz continuous on $t \geq 1$, the initial value problem described above admits a unique solution.
+    \end{solution}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}[manual-num={5.2}]
+Let $f(u) = \log(u)$.
+\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+    \item Determine the best possible Lipschitz constant for this function over $2 \leq u < \infty$.
+    \item Is $f(u)$ Lipschitz continuous over $0 < u < \infty$?
+    \item Consider the initial value problem
+        \begin{equation*}
+        \begin{split}
+            &u'(t) = \log(u(t)), \\
+            &u(0) = 2.
+        \end{split}
+        \end{equation*}
+    Explain why we know that this problem has a unique solution for all $t \geq 0$ based on the existence and uniqueness theory described in Section 5.2.1.
+\end{enumerate}
+\end{exercise}
+    \begin{solution}
+        (a) An immediate application of the Mean Value Theorem will show that $f(u) = \log(u)$ is Lipschitz. Let $x,y \in [2,\infty)$. Suppose we can find $L > 0$ such that $|f(x) - f(y)| \leq L|x-y|$. Then $\frac{|f(x) - f(y)|}{|x-y|} \leq L$. Taking the limit as $x \rightarrow y$ on both sides gives the inequality $|f'(y)| \leq L$; i.e., $|\frac{1}{y}| \leq L$. Taking the supremum over all $y \in [2,\infty)$ gives $\frac{1}{2} \leq L$. Thus $L = \frac{1}{2}$ is the best Lipschitz constant over the domain $[2,\infty)$.
+
+        (b) A function is Lipschitz if and only if its derivative is bounded. Since $f'(u) = \frac{1}{x}$ is unbounded on $(0,\infty)$, $f(u) = \log(u)$ is not Lipschitz on $(0,\infty)$.
+
+        (c) Note that $u(t) \geq 2$ for all $t \geq 0$ based off of the initial value given. Since $\log(x)$ is Lipschitz on the domain $[2,\infty)$, this initial value problem admits a unique solution for all $t \geq 0$.
+    \end{solution}
+
+
+
+
+
+
+
+\end{document}

@@ -42,20 +42,24 @@
         const style = document.createElement("style");
         style.textContent = `
             #tgmps-link { cursor: pointer; }
+
             /* boxed container */
             #tgmps-container { 
-            display: none; 
-            border: 1px solid #ddd; 
-            border-radius: 8px; 
-            padding: 0.75rem; 
-            margin: 0.5rem 0 0 0; 
-            background: #fff;
+                display: none; 
+                border: 1px solid #ddd; 
+                border-radius: 0px; 
+                padding: 0.25rem; 
+                margin: 0.5rem 0 0 0; 
+                background: #fff;
+                width: fit-content;
+                max-width: 100%;
             }
-            /* indent the list inside the box */
+
+            /* list inside box */
             #tgmps-menu { 
-            margin: 0; 
-            padding-left: 1.25rem; /* indentation */
-            list-style: none;      /* keep it clean; add bullets if you want */
+                margin: 0; 
+                padding-left: 0.25rem; 
+                list-style: none;     
             }
             #tgmps-menu li { margin: .25rem 0; }
             #tgmps-menu a { text-decoration: none; }
@@ -109,6 +113,6 @@
 <ul>
     <li><a href="Winter 2026/540 Topology/Notes/_main.pdf" target="_blank">Topology</a></li>
     <li><a href="Winter 2026/520 Applied Analysis/Notes/_main.pdf" target="_blank">Applied Analysis</a></li>
-    <li><a href="Winter 2026/502 Numerical/Notes/_main.pdf" target="_blank">Numerical Analysis</a></li>
+    <!-- <li><a href="Winter 2026/502 Numerical/Notes/_main.pdf" target="_blank">Numerical Analysis</a></li>-->
 </ul>
 </body>

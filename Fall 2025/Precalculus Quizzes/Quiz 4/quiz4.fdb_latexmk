@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1769740785.12973 "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/Fall 2025/Precalculus Quizzes/Quiz 4/quiz4.tex" "quiz4.pdf" "quiz4" 1769740785.536 0
-  "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/Fall 2025/Precalculus Quizzes/Quiz 4/quiz4.tex" 1769740784.92298 2638 97aeeb3d5b031e568061ca9fb0968e5a ""
+["pdflatex"] 1770233417.68975 "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/Fall 2025/Precalculus Quizzes/Quiz 4/quiz4.tex" "quiz4.pdf" "quiz4" 1770233418.03353 0
+  "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/Fall 2025/Precalculus Quizzes/Quiz 4/quiz4.tex" 1770233417.60581 3968 d4938239275831b6c3f72bf9dcadb1ca ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -121,8 +121,8 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1758769034 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "quiz4.aux" 1769740785.50276 32 c81c40425fbb5e93b90fba65da0b5e61 "pdflatex"
-  "quiz4.tex" 1769740784.92298 2638 97aeeb3d5b031e568061ca9fb0968e5a ""
+  "quiz4.aux" 1770233418.00492 32 ab05033ccbb38b00a31b200ccedf8001 "pdflatex"
+  "quiz4.tex" 1770233417.60581 3968 d4938239275831b6c3f72bf9dcadb1ca ""
   (generated)
   "quiz4.aux"
   "quiz4.log"

@@ -1,0 +1,456 @@
+\documentclass[10pt,oneside,openany]{memoir}
+
+\iffalse
+%font style 1
+\usepackage[p,osf]{scholax}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage[scaled=1.075,ncf,vvarbb]{newtxmath}
+\fi
+
+%font style 2
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage[fixamsmath]{mathtools}  % Extension to amsmath
+\usepackage{amsthm}
+\usepackage{amssymb}
+\renewcommand*{\mathbf}[1]{\varmathbb{#1}}
+\usepackage{newpxtext}
+\usepackage{eulerpx}
+\usepackage{mathrsfs}
+
+\usepackage{eucal}
+\usepackage{datetime}
+    \newdateformat{specialdate}{\THEYEAR\ \monthname\ \THEDAY}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \fancyhf{}
+    \cfoot{\scriptsize\thepage}
+    \fancyhead[R]{\scalebox{0.8}{\nouppercase{\rightmark}}}
+    \fancyhead[L]{\scalebox{0.8}{\nouppercase{\leftmark}}}
+\usepackage{keytheorems}
+    \newkeytheoremstyle{def}{
+    inherit-style=definition,
+    spaceabove=1.5em,
+    spacebelow=1.5em,
+    postheadspace=0.5em,
+    }
+    \newkeytheoremstyle{thm}{
+    spaceabove=1.5em,
+    spacebelow=1.5em,
+    postheadspace=0.5em,
+    }
+    \newkeytheorem{theorem}[
+    name = Theorem,
+    style=thm,
+    numberwithin = section,
+    ]
+    \newkeytheorem{theorem*}[
+    name=Theorem,
+    style=thm,
+    numbered=false
+    ]
+    \newkeytheorem{proposition}[
+    name = Proposition,
+    style=thm,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{lemma}[
+    name = Lemma,
+    style=thm,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{corollary}[
+    name = Corollary,
+    style=thm,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{definition}[
+    name = Definition,
+    style=def,
+    numberwithin = section,
+    style = definition
+    ]
+    \newkeytheorem{example}[
+    name = Example,
+    style=def,
+    numberwithin = section,
+    style = definition
+    ]
+    \newkeytheorem{remark}[
+    name=Remark,
+    style=remark, 
+    numbered=false  
+    ]
+    \newkeytheorem{question}[
+    name=Question,
+    style=remark, 
+    numbered=false  
+    ]
+    \newkeytheorem{exercise}[
+    name = Exercise,
+    style=thm
+    ]
+    \newkeytheorem{axiom}[name = Axiom]
+\usepackage{enumitem}
+\usepackage[utf8x]{inputenc}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{float}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning,arrows.meta}
+\usetikzlibrary{decorations.pathreplacing}
+\usepackage{wasysym}
+\usepackage{hyperref}
+\usepackage{ulem}
+\usepackage{pgfplots}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=1.18}
+
+\renewcommand{\headrulewidth}{0pt} % removes the top/header line
+% (optional) if you also want no line above the footer:
+\renewcommand{\footrulewidth}{0pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
+
+\begin{document}
+\begin{center}
+    {\large Math 520 \\[0.1in]Week 6 Homework}\\[.175in]
+    {Name:} {\underline{Gianluca Crescenzo\hspace*{2in}}}\\[0.15in]
+    \end{center}
+    \vspace{4pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}
+Let $H = L^2([0,1])$. Use the Gram-Schmidt orthogonalization process from linear algebra to produce an orthonormal set $\{u_1,u_2,u_3\}$ which spans the same space as $\Span\{1,x,x^2\}$.
+\end{exercise}
+\begin{proof}
+    Let $v_1 := 1$, $v_2 := x$, and $v_3 := x^2$. The Gram-Schmidt process gives:
+        \begin{equation*}
+        \begin{split}
+            r_1 &= v_1 = 1, \\
+            \lnorm r_1 \rnorm &= \sqrt{(r_1,r_1)} = 1.
+        \end{split}
+        \end{equation*}
+
+        \begin{equation*}
+        \begin{split}
+            r_2 &= v_2 - \frac{(v_2,r_1)}{(r_1,r_1)} r_1  = x - \frac{1}{2}. \\
+            \lnorm r_2 \rnorm &= \sqrt{(r_2,r_2)} = \sqrt{\int_0^1 \left(x-\frac12\right)^2 dx} = \frac{1}{\sqrt{12}}
+        \end{split}
+        \end{equation*}
+
+        \begin{equation*}
+        \begin{split}
+            r_3 &= v_3 - \frac{(v_3,r_1)}{(r_1,r_1)} r_1 - \frac{(v_3,r_2)}{(r_2,r_2)} r_2 = x^2 - x + \frac{1}{6}, \\
+            \lnorm r_3 \rnorm & = \sqrt{(r_3,r_3)} = \sqrt{\int_0^1 \left(x^2-x+\frac16\right)^2 dx} = \frac{1}{\sqrt{180}}.
+        \end{split}
+        \end{equation*}
+
+        Thus an orthonormal basis for $\Span\{1,x,x^2\}$ is:
+            \begin{equation*}
+            \begin{split}
+                u_1 &:= \frac{r_1}{\lnorm r_1 \rnorm} = 1 \\
+                u_2 &:= \frac{r_2}{\lnorm r_2 \rnorm} = \sqrt{12}\left(x-\frac{1}{2}\right) \\
+                u_3 &:= \frac{r_3}{\lnorm r_3 \rnorm} = \sqrt{180} \left( x^2 - x + \frac{1}{6} \right). \qedhere
+            \end{split}
+            \end{equation*}
+    \end{proof}
+
+\newpage
+\begin{exercise}
+Show directly that the functions:
+    \begin{equation*}
+    \begin{split}
+        u_n(x) = e^{i2\pi n x}\text{, }n \in \bfZ
+    \end{split}
+    \end{equation*}
+form an orthonormal sequence in $L^1([0,1])$. Then write the function $f(x) = x$ in terms of this basis, that is find $a_n$ such that:
+    \begin{equation*}
+    \begin{split}
+        x \sim \sum_{n = -\infty}^\infty a_n u_n(x).
+    \end{split}
+    \end{equation*}
+What does Parseval's identity say in this case? (After some algebra you should be able to use your summation to find a formula for $\sum_{n = 1}^\infty \frac{1}{n^2}$.)
+\end{exercise}
+    \begin{proof}
+        Observe that:
+            \begin{equation*}
+            \begin{split}
+                \int_{0}^{1} e^{i 2 \pi n x}e^{-i 2 \pi n x}dx 
+                & = \int_{0}^{1} 1 dx = 1. \\
+                &\phantom{a} \\
+                \int_{0}^{1} e^{i 2 \pi n x}e^{-i 2 \pi m x}dx
+                & = \int_{0}^{1} e^{i 2 \pi (n-m)x}dx \\
+                & = \frac{e^{i 2 \pi (n-m)x}}{i 2 \pi (n-m)}\Bigg|_0^1 \\
+                & = \frac{e^{i 2 \pi (n-m)} - 1}{i 2 \pi (n-m)} \\
+                & = \frac{\cos\bigl(2\pi(n-m)\bigr) - i\sin\bigl(2 \pi (n-m)\bigr) - 1}{i 2 \pi (n-m)} \\
+                & = \frac{1 - 0 - 1}{i 2 \pi (n-m)} \\
+                & = 0.
+            \end{split}
+            \end{equation*}
+        Thus $\{u_n\}_{n = 1}^\infty$ is an orthonormal sequence in $L^1([0,1])$. We proceed by cases on computing the Fourier coefficients of $x$. For $n = 0$:
+            \begin{equation*}
+            \begin{split}
+                a_0 = \int_0^1 x dx = \frac{1}{2}.
+            \end{split}
+            \end{equation*}
+        For $n \neq 0$:
+            \begin{equation*}
+            \begin{split}
+                a_n 
+                & = (x,u_n) \\
+                & = \int_0^1 x e^{-i 2 \pi n x}dx \\
+                & = -\frac{e^{i 2 \pi n}(e^{i 2 \pi n} - i 2 \pi n - 1)}{4 n^2 \pi ^2} \h9\h9\text{\tiny From Mathematica} \\
+                & = \frac{i}{2n \pi}. \h9\h9\text{\tiny Also from Mathematica}
+            \end{split}
+            \end{equation*}
+        Using Parseval's Identity:
+            \begin{equation*}
+            \begin{split}
+                \frac{1}{3}
+                & = \int_0^1 x^2 dx \\
+                & = \lnorm x \rnorm^2 \\
+                & = \sum_{n = -\infty}^\infty |a_n|^2 \\
+                & =|a_0|^2 + 2 \sum_{n = 1}^\infty |a_n|^2 \\
+                & = \frac{1}{4} + 2 \sum_{n = 1}^\infty \left| \frac{i}{2 \pi n} \right|^2 \\
+                & = \frac{1}{4} + \frac{1}{2\pi^2}\sum_{n = 1}^\infty \frac{1}{n^2}.
+            \end{split}
+            \end{equation*}
+        Solving for $\sum_{n = 1}^\infty \frac{1}{n^2}$ gives:
+            \begin{equation*}
+            \begin{split}
+                \sum_{n = 1}^\infty \frac{1}{n^2}
+                & = 2\pi^2 \left( \frac{1}{3} - \frac{1}{4} \right) \\
+                & = \frac{2\pi^2}{12} \\
+                & = \frac{\pi^2}{6}. \qedhere
+            \end{split}
+            \end{equation*}
+    \end{proof}
+
+\begin{exercise}
+Show directly that the functions:
+    \begin{equation*}
+    \begin{split}
+        1, \cos x, \sin x, \cos 2x, \sin 2x, \cos 3x, ...
+    \end{split}
+    \end{equation*}
+are mutually orthogonal in $L^2([-\pi,\pi])$.
+\end{exercise}
+\begin{proof}
+    For $n,m \neq 0$:
+        \begin{equation*}
+        \begin{split}
+            &\int_{-\pi}^{\pi}\cos (nx) dx = \frac{1}{n}\sin(nx)\h2\Bigg|_{-\pi}^{\pi} = \frac{1}{n}\sin(n \pi) - \frac{1}{n}\sin(-n\pi) = \frac{2}{n}\sin(n \pi) = 0,\\
+            &\int_{-\pi}^{\pi}\sin (nx) dx = -\frac{1}{n}\cos(nx) \h2\Bigg|_{-\pi}^{\pi} = -\frac{1}{n}\cos(nx) + \frac{1}{n}\cos(-n\pi) = 0,\\
+            &\int_{-\pi}^{\pi}\cos (nx) \cos (mx) dx = \int_{-\pi}^\pi \frac{\cos((n+m)x) + \cos((n-m)x)}{2}dx = 0,\\
+            &\int_{-\pi}^{\pi}\sin (nx) \sin (mx) dx = \int_{-\pi}^\pi \frac{\cos((n-m)x) - \cos((n+m)x)}{2}dx = 0,\\
+            &\int_{-\pi}^{\pi}\cos (nx) \sin (mx) dx= \int_{-\pi}^\pi \frac{\sin((n+m)x) + \sin((n - m)x)}{2}dx = 0. \qedhere
+        \end{split}
+        \end{equation*}
+\end{proof}
+
+\begin{exercise}
+Let $\{u_n\}_{n = 1}^\infty$ be an orthonormal basis for a Hilbert space $H$. Let $\{v_n\}_{n = 1}^\infty$ be an orthonormal seq which satisfies $\sum_{n = 1}^\infty \lnorm u_n - v_n \rnorm^2 < 1$. Show that $\{v_n\}_{n = 1}^\infty$ is also a Hilbert basis for $H$.
+\end{exercise}
+    \begin{proof}
+    Let $x \in \cH$. Suppose $x \perp \{v_j\}_{j = 1}^\infty$. By Parseval's Identity:
+        \begin{equation*}
+        \begin{split}
+            \lnorm x \rnorm^2 
+            & = \sum_{j = 1}^\infty |(x,u_n)|^2 \\
+            & = \sum_{j = 1}^\infty |(x,u_n) - (x,v_n)|^2 \\
+            & = \sum_{j = 1}^\infty |(x,u_n - v_n)|^2 \\
+            & \leq \sum_{j = 1}^\infty \lnorm x \rnorm^2 \lnorm u_n - v_n \rnorm^2.
+        \end{split}
+        \end{equation*}
+    Suppose towards contradiction $x \neq 0$. We can divide both sides of the above equation by $\lnorm x \rnorm^2$, giving:
+        \begin{equation*}
+        \begin{split}
+            1 \leq \sum_{j = 1}^\infty \lnorm u_n - v_n \rnorm^2 < 1.
+        \end{split}
+        \end{equation*}
+    This is a contradiction, hence $x = 0$. Since we've shown $x \perp \{v_j\}_{j = 1}^\infty$ implies $x = 0$, we've established $\{v_j\}_{j = 1}^\infty$ as an orthonormal basis for $\cH$.
+    \end{proof}
+
+\begin{exercise}\label{exercise:projection-norm-eq-1}
+Let $H$ be a Hilbert space and $Y \neq \{0\}$ be a closed subspace, and let $P$ denote orthogonal projection onto $Y$. Show that:
+    \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+        \item $P$ is linear;
+        \item $P$ is bounded and $\lnorm P \rnorm = 1$;
+        \item For all $x \in H$ we have $(Px,x) = \lnorm Px \rnorm^2$;
+        \item $I - P$ is orthogonal projection onto $Y^\perp$.
+    \end{enumerate}
+\end{exercise}
+\begin{proof}
+    (a) For any $x_1,x_2 \in H$ and $\alpha \in \bfC$ we have:
+        \begin{equation*}
+        \begin{split}
+            P(x_1 + \alpha x_2) 
+            & = P(y_1 + y_1^\perp + \alpha y_2 + \alpha y_2^\perp) \\
+            & = P(y_1 + \alpha y_2 + (y_1 + \alpha y_2)^\perp) \\
+            & = y_1 + \alpha y_2 \\
+            & = P(x_1) + \alpha P(x_2).
+        \end{split}
+        \end{equation*}
+    Thus $T$ is linear.
+    
+    (b) Let $x \in H$. Observe that:
+            \begin{equation*}
+            \begin{split}
+                \lnorm Px \rnorm^2 
+                & = \lnorm y \rnorm^2 \\
+                & \leq \lnorm y \rnorm^2 + \lnorm y^\perp \rnorm^2 \\
+                & = \lnorm y + y^\perp \rnorm^2 \\
+                & = \lnorm x \rnorm^2.
+            \end{split}
+            \end{equation*}
+        Squaring both sides gives $\lnorm Px \rnorm \leq \lnorm x \rnorm$. Diving by $\lnorm x \rnorm$ on both sides of this inequality and taking the supremum over all $x \in H$, $x \neq 0$ gives $\lnorm P \rnorm_{\cL(H,Y)} \leq 1$. Now let $y \in B_Y(0,1)$. Then:
+            \begin{equation*}
+            \begin{split}
+                \lnorm Py \rnorm = \lnorm y \rnorm = 1.
+            \end{split}
+            \end{equation*}
+        Hence $1 \in \{\lnorm Px \rnorm \mid x \in B_H(0,1)\}$. It must be the case that $1 \leq \lnorm P \rnorm_{\cL(H,Y)}$. Therefore $\lnorm P \rnorm_{\cL(H,Y)} = 1$.
+
+        (c) We will first show that $P$ is self-adjoint and idempotent. Let $x_1,x_2 \in H$. We have:
+            \begin{equation*}
+            \begin{split}
+                (Px_1,x_2)
+                & = (y,y_2 + y_2^\perp) \\
+                & = (y_1,y_2) + (y_1,y_2^\perp) \\
+                & = (y_1,y_2). 
+            \end{split}
+            \end{equation*}
+            \begin{equation*}
+            \begin{split}
+                (x_1,Px_2)
+                & = (y_1 + y_1^\perp , y_2) \\
+                & = (y_1,y_2) + (y_1^\perp, y_2) \\
+                & = (y_1,y_2).
+            \end{split}
+            \end{equation*}
+        Therefore $P^\ast = P$; i.e., $P$ is self-adjoint. Now for any $x \in H$, notice that:
+            \begin{equation*}
+            \begin{split}
+                P(P(x))
+                & = P(y) \\
+                & = y \\
+                & = P(x).
+            \end{split}
+            \end{equation*}
+        Thus $P^2 = P$. Using these two facts:
+            \begin{equation*}
+            \begin{split}
+                \lnorm Px \rnorm^2 
+                & = (Px,Px) \\
+                & = (P^\ast P x, x) \\
+                & = (P^2x,x) \\
+                & = (Px,x). \qedhere
+            \end{split}
+            \end{equation*}
+
+        (d) Let $y^\perp \in Y^\perp$. Then $(I - P)(y^\perp) = y^\perp$. Hence $(I-P)^2 = (I-P)$. Now for any $x \in H$: 
+            \begin{equation*}
+            \begin{split}
+                (I - P)(x) 
+                & = Ix - Px \\
+                & = y+y^\perp - P(y + y^\perp) \\
+                & = y+y^\perp - y \\
+                & = y^\perp
+            \end{split}
+            \end{equation*}
+        Hence $(I-P)$ is an orthogonal projection onto $Y^\perp$.
+\end{proof}
+
+\begin{exercise}
+Let $H$ be a Hilbert Space with orthonormal basis $\{u_n\}_{n = 1}^\infty$. We try to define a map:
+    \begin{equation*}
+    \begin{split}
+        T:H \rightarrow H \text{ by }Tx = \sum_{n = 1}^\infty \lambda_n (x,u_n)u_n
+    \end{split}
+    \end{equation*}
+for a sequence $(\lambda_n) \subset \bfC$. First show that this map is a bounded linear operator if and only if $(\lambda_n)$ is a bounded sequence. Then, under what condition is $T$ self-adjoint?
+\end{exercise}
+\begin{proof}
+    Suppose $T \in \cL(H)$. Then:
+        \begin{equation*}
+        \begin{split}
+            |\lambda_n| 
+            & = |\lambda_n| \lnorm u_n \rnorm \\
+            & = \lnorm \lambda_n u_n \rnorm \\
+            & = \lnorm T u_n \rnorm \\
+            & \leq \lnorm T \rnorm \lnorm u_n \rnorm \\
+            & = \lnorm T \rnorm.
+        \end{split}
+        \end{equation*}
+    Taking the supremum over all $n \in \bfN$ gives $\sup_{n \in \bfN}|\lambda_n| \leq \lnorm T \rnorm_{\cL(H)} < \infty$. Therefore $(\lambda_n)$ is bounded. Conversely, suppose $\sup_{n \in \bfN}|\lambda_n| := M \leq \infty$. We must first show that $T$ is linear. Let $x,y \in H$ and $\alpha \in \bfC$. Define $a_n := (x,u_n)$ and $b_n := (y,u_n)$. We can write:
+        \begin{equation*}
+        \begin{split}
+            x + \alpha y 
+            & = \sum_{n = 1}^\infty a_n u_n + \alpha \sum_{n = 1}^\infty b_n u_n \\
+            & = \sum_{n = 1}^\infty (a_n + \alpha b_n)u_n.
+        \end{split}
+        \end{equation*}
+    Applying $T$ to $x+\alpha y$ gives:
+        \begin{equation*}
+        \begin{split}
+            T(x+\alpha y) 
+            & = \sum_{n = 1}^\infty \lambda_n (a_n + \alpha b_n)u_n \\
+            & = \sum_{n = 1}^\infty \lambda_n a_n u_n + \alpha \sum_{n = 1}^\infty \lambda_n b_n u _n \\
+            & = Tx + \alpha Ty.
+        \end{split}
+        \end{equation*}
+    Thus $T$ is linear. Now let $x \in X$ and again define $a_n := (x,u_n)$. By Parseval's identity:
+        \begin{equation*}
+        \begin{split}
+            \lnorm Tx \rnorm^2 
+            & = \sum_{n = 1}^\infty \left|  \left( Tx, u_n \right) \right|^2 \\
+            & = \sum_{n = 1}^\infty \left|  \left( \sum_{j = 1}^\infty \lambda_j a_n u_j, u_n \right) \right|^2 \\
+            & = \sum_{n = 1}^\infty \left| \sum_{j = 1}^\infty \left( \lambda_j a_j u_j , u_n \right) \right|^2 \\
+            & = \sum_{n = 1}^\infty \left| \lambda_n a_n \right|^2 \\
+            & \leq \sum_{n = 1}^\infty |M|^2 |a_n|^2 \\
+            & = |M|^2 \sum_{n = 1}^\infty |a_n|^2 \\
+            & = |M|^2 \lnorm x \rnorm^2.
+        \end{split}
+        \end{equation*}
+    Rearranging and taking the square-root of both sides yields:
+        \begin{equation*}
+        \begin{split}
+            \frac{\lnorm Tx \rnorm}{\lnorm x \rnorm} \leq |M|.
+        \end{split}
+        \end{equation*}
+    Taking the supremum over all $x \in X$, $x \neq 0$ gives $\lnorm T \rnorm_{\cL(H)} \leq |M| < \infty$. Thus $T \in \cL(H)$.
+
+    Let $x,y \in H$. Observe that:
+        \begin{equation*}
+        \begin{split}
+            \left( Tx, y \right)
+            & = \left( \sum_{n = 1}^\infty \lambda_n (x,u_n)u_n, y \right) \\
+            & = \sum_{n = 1}^\infty \bigl(\lambda_n (x,u_n)u_n,y\bigr) \\
+            & = \sum_{n = 1}^\infty \lambda_n (x,u_n)(u_n,y).
+        \end{split}
+        \end{equation*}
+        \begin{equation*}
+        \begin{split}
+            (x,Ty)
+            & = \left( x,\sum_{n = 1}^\infty \lambda_n (y,u_n)u_n \right) \\
+            & = \sum_{n = 1}^\infty \bigl(x, \lambda_n (y,u_n)u_n\bigr) \\
+            & = \sum_{n = 1}^\infty \overline{\lambda_n (y,u_n)}(x,u_n) \\
+            & = \sum_{n = 1}^\infty \overline{\lambda_n}(x,u_n)(y,u_n).
+        \end{split}
+        \end{equation*}
+    From this, $T$ is self-adjoint if and only if $\lambda_n = \overline{\lambda_n}$; i.e., whenever $(\lambda_n) \subset \bfR$.
+\end{proof}
+
+
+
+
+\end{document}

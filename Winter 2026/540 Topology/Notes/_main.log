@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  21 JAN 2026 12:45
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  21 FEB 2026 20:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -850,7 +850,7 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 Class memoir Warning: The fancyhdr package is not recommended with memoir.
 (memoir)              We have our own well integrated interface to handle
 (memoir)              headers and footers. See the manual section 7.3
-(memoir)              onwards for details. on input line 20.
+(memoir)              onwards for details. on input line 26.
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
@@ -899,6 +899,10 @@ Package pdftexcmds Info: \pdfdraftmode found.
 File: keythms-memoir-support 2025-01-22 v0.2.5 keytheorems support for the memoir class
 \c@thlistdepth=\count379
 ))
+\g__keythms_thmstyle_def_tcbspaceabove_skip=\skip271
+\g__keythms_thmstyle_def_tcbspacebelow_skip=\skip272
+\g__keythms_thmstyle_thm_tcbspaceabove_skip=\skip273
+\g__keythms_thmstyle_thm_tcbspacebelow_skip=\skip274
 \c@theorem=\count380
 \c@proposition=\count381
 \c@lemma=\count382
@@ -909,7 +913,7 @@ File: keythms-memoir-support 2025-01-22 v0.2.5 keytheorems support for the memoi
 \c@axiom=\count387
  (/usr/local/texlive/2025/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2025/02/06 v3.11 Customized lists
-\labelindent=\skip271
+\labelindent=\skip275
 \enit@outerparindent=\dimen291
 \enit@toks=\toks45
 \enit@inbox=\box61
@@ -921,13 +925,13 @@ Class memoir Warning: The titlesec package is not recommended with memoir.
 (memoir)              With it we loose some of the features provides by the
 (memoir)              class. We provide our own interface to adjust how 
 (memoir)              sections and chapters should look like.
-(memoir)              See the manual sections 6.4 through 6.6 for details.  on input line 78.
+(memoir)              See the manual sections 6.4 through 6.6 for details.  on input line 108.
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/titlesec/titlesec.sty
 Package: titlesec 2025/01/04 v2.17 Sectioning titles
 \ttl@box=\box62
-\beforetitleunit=\skip272
-\aftertitleunit=\skip273
+\beforetitleunit=\skip276
+\aftertitleunit=\skip277
 \ttl@plus=\dimen292
 \ttl@minus=\dimen293
 \ttl@toksa=\toks46
@@ -1696,7 +1700,7 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
 )
-\Hy@SectionHShift=\skip274
+\Hy@SectionHShift=\skip278
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/memoir/memhfixc.sty
 Package: memhfixc 2025/03/06 v1.23 hyperref package fixes for memoir class
 \c@memhycontfloat=\count423
@@ -1704,7 +1708,7 @@ Package: memhfixc 2025/03/06 v1.23 hyperref package fixes for memoir class
 ) (/usr/local/texlive/2025/texmf-dist/tex/generic/ulem/ulem.sty
 \UL@box=\box77
 \UL@hyphenbox=\box78
-\UL@skip=\skip275
+\UL@skip=\skip279
 \UL@hook=\toks63
 \UL@height=\dimen364
 \UL@pe=\count425
@@ -1749,51 +1753,51 @@ File: pgflibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@intersect@solutions=\count432
 )) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfcontrib/tikzlibrarydecorations.softclip.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfcontrib/pgflibraryfillbetween.code.tex))) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/libs/tikzlibrarypgfplots.decorations.softclip.code.tex)) (/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex)
 LaTeX Font Info:    Font shape `T1/zpltlf/m/n' will be
-(Font)              scaled to size 12.0pt on input line 109.
-Package translations Info: No language package found. I am going to use `english' as default language. on input line 109.
- (./_main.aux (./intro.aux))
+(Font)              scaled to size 12.0pt on input line 147.
+Package translations Info: No language package found. I am going to use `english' as default language. on input line 147.
+ (./_main.aux (./intro.aux) (./ch2.aux))
 \openout1 = `_main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/npxmi/m/it on input line 109.
-LaTeX Font Info:    Trying to load font information for OML+npxmi on input line 109.
+LaTeX Font Info:    Checking defaults for OML/npxmi/m/it on input line 147.
+LaTeX Font Info:    Trying to load font information for OML+npxmi on input line 147.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/newpx/omlnpxmi.fd
 File: omlnpxmi.fd 2013/03/21 Fontinst v1.933 font definitions for OML/npxmi.
 )
-LaTeX Font Info:    ... okay on input line 109.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 109.
-LaTeX Font Info:    ... okay on input line 109.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 109.
-LaTeX Font Info:    ... okay on input line 109.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 109.
-LaTeX Font Info:    ... okay on input line 109.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 109.
-LaTeX Font Info:    ... okay on input line 109.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 109.
-LaTeX Font Info:    ... okay on input line 109.
-LaTeX Font Info:    Checking defaults for U/npxexa/m/n on input line 109.
-LaTeX Font Info:    Trying to load font information for U+npxexa on input line 109.
+LaTeX Font Info:    ... okay on input line 147.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 147.
+LaTeX Font Info:    ... okay on input line 147.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 147.
+LaTeX Font Info:    ... okay on input line 147.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 147.
+LaTeX Font Info:    ... okay on input line 147.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 147.
+LaTeX Font Info:    ... okay on input line 147.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 147.
+LaTeX Font Info:    ... okay on input line 147.
+LaTeX Font Info:    Checking defaults for U/npxexa/m/n on input line 147.
+LaTeX Font Info:    Trying to load font information for U+npxexa on input line 147.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/newpx/unpxexa.fd
 File: unpxexa.fd 2013/03/24 Fontinst v1.933 font definitions for U/npxexa.
 )
-LaTeX Font Info:    ... okay on input line 109.
-LaTeX Font Info:    Checking defaults for LMS/npxsy/m/n on input line 109.
-LaTeX Font Info:    Trying to load font information for LMS+npxsy on input line 109.
+LaTeX Font Info:    ... okay on input line 147.
+LaTeX Font Info:    Checking defaults for LMS/npxsy/m/n on input line 147.
+LaTeX Font Info:    Trying to load font information for LMS+npxsy on input line 147.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/newpx/lmsnpxsy.fd
 File: lmsnpxsy.fd 2016/07/04 Fontinst v1.933 font definitions for LMS/npxsy.
 )
-LaTeX Font Info:    ... okay on input line 109.
-LaTeX Font Info:    Checking defaults for LMX/npxexx/m/n on input line 109.
-LaTeX Font Info:    Trying to load font information for LMX+npxexx on input line 109.
+LaTeX Font Info:    ... okay on input line 147.
+LaTeX Font Info:    Checking defaults for LMX/npxexx/m/n on input line 147.
+LaTeX Font Info:    Trying to load font information for LMX+npxexx on input line 147.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/newpx/lmxnpxexx.fd
 File: lmxnpxexx.fd 2016/07/04 Fontinst v1.933 font definitions for LMX/npxexx.
 )
-LaTeX Font Info:    ... okay on input line 109.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 109.
-LaTeX Font Info:    ... okay on input line 109.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 109.
-LaTeX Font Info:    ... okay on input line 109.
-LaTeX Info: Command `\dddot' is already robust on input line 109.
-LaTeX Info: Command `\ddddot' is already robust on input line 109.
+LaTeX Font Info:    ... okay on input line 147.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 147.
+LaTeX Font Info:    ... okay on input line 147.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 147.
+LaTeX Font Info:    ... okay on input line 147.
+LaTeX Info: Command `\dddot' is already robust on input line 147.
+LaTeX Info: Command `\ddddot' is already robust on input line 147.
  (/usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count433
@@ -1825,7 +1829,7 @@ File: fc-english.def 2016/01/12
 * paper: <default>
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
-* modes: twoside 
+* modes: 
 * h-part:(L,W,R)=(72.26999pt, 469.75502pt, 72.26999pt)
 * v-part:(T,H,B)=(72.26999pt, 650.43001pt, 72.26999pt)
 * \paperwidth=614.295pt
@@ -1839,7 +1843,7 @@ File: fc-english.def 2016/01/12
 * \headsep=19.8738pt
 * \topskip=12.0pt
 * \footskip=30.0pt
-* \marginparwidth=102.0pt
+* \marginparwidth=50.0pt
 * \marginparsep=7.0pt
 * \columnsep=10.0pt
 * \skip\footins=12.0pt plus 4.0pt minus 4.0pt
@@ -1847,16 +1851,16 @@ File: fc-english.def 2016/01/12
 * \voffset=0.0pt
 * \mag=1000
 * \@twocolumnfalse
-* \@twosidetrue
-* \@mparswitchtrue
+* \@twosidefalse
+* \@mparswitchfalse
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/translations/translations-basic-dictionary-english.trsl
 File: translations-basic-dictionary-english.trsl (english translation file `translations-basic-dictionary')
 )
-Package translations Info: loading dictionary `translations-basic-dictionary' for `english'. on input line 109.
-Package hyperref Info: Link coloring OFF on input line 109.
+Package translations Info: loading dictionary `translations-basic-dictionary' for `english'. on input line 147.
+Package hyperref Info: Link coloring OFF on input line 147.
  (./_main.out) (./_main.out)
 \@outlinefile=\write5
 \openout5 = `_main.out'.
@@ -1865,15 +1869,15 @@ Package hyperref Info: Link coloring OFF on input line 109.
 Package pgfplots notification 'compat/show suggested version=true': document has been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 
 LaTeX Font Info:    Font shape `T1/zpltlf/b/n' will be
-(Font)              scaled to size 12.0pt on input line 123.
+(Font)              scaled to size 12.0pt on input line 161.
 LaTeX Font Info:    Font shape `T1/zpltlf/b/n' will be
-(Font)              scaled to size 20.74pt on input line 123.
+(Font)              scaled to size 20.74pt on input line 161.
 LaTeX Font Info:    Font shape `T1/zpltlf/b/n' will be
-(Font)              scaled to size 17.28pt on input line 123.
+(Font)              scaled to size 17.28pt on input line 161.
 LaTeX Font Info:    Font shape `T1/zpltlf/m/n' will be
-(Font)              scaled to size 24.88pt on input line 127.
+(Font)              scaled to size 24.88pt on input line 165.
 LaTeX Font Info:    Font shape `T1/zpltlf/b/n' will be
-(Font)              scaled to size 24.88pt on input line 127.
+(Font)              scaled to size 24.88pt on input line 165.
 (./_main.toc
 LaTeX Font Info:    Trying to load font information for OT1+minzpl on input line 1.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/newpx/ot1minzpl.fd
@@ -1967,7 +1971,7 @@ File: uwasy.fd 2020/01/19 v2.4 Wasy-2 symbol font definitions
 ))
 
 LaTeX Font Info:    Font shape `T1/zpltlf/m/n' will be
-(Font)              scaled to size 9.0pt on input line 132.
+(Font)              scaled to size 9.0pt on input line 170.
 [1{/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf.enc}
 
 
@@ -1992,39 +1996,69 @@ File: ueus.fd 2013/01/14 v3.01 Euler Script
 [2]
 
 [3]
+
+[4]
 LaTeX Font Info:    Font shape `T1/zpltlf/m/n' will be
 (Font)              scaled to size 8.8pt on input line 207.
 LaTeX Font Info:    Font shape `T1/zpltlf/m/n' will be
 (Font)              scaled to size 6.6pt on input line 207.
 
 
-[4])
-
 [5]
+LaTeX Font Info:    Font shape `T1/zpltlf/m/it' will be
+(Font)              scaled to size 8.8pt on input line 290.
+LaTeX Font Info:    Font shape `T1/zpltlf/m/it' will be
+(Font)              scaled to size 6.6pt on input line 290.
+
+
+[6]
+
+[7]
+
+[8]
+
+[9])
+
+[10]
+\openout2 = `ch2.aux'.
+
+ (./ch2.tex)
+
+[11
+
+
+
+
+]
 \tf@toc=\write6
 \openout6 = `_main.toc'.
 
- (./_main.aux (./intro.aux))
+ (./_main.aux (./intro.aux) (./ch2.aux))
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2020/03/25>
  ***********
+
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 1.36998pt have occurred.
+
 Package rerunfilecheck Info: File `_main.out' has not changed.
-(rerunfilecheck)             Checksum: 36F50994024B4CA1659EFE0A2FE2F1B0;1414.
+(rerunfilecheck)             Checksum: B20B609C1197FAE84240E6C5120905E6;2416.
  ) 
 Here is how much of TeX's memory you used:
- 45321 strings out of 473190
- 1012712 string characters out of 5715801
- 1524193 words of memory out of 5000000
- 67679 multiletter control sequences out of 15000+600000
- 615838 words of font info for 119 fonts, out of 8000000 for 9000
+ 45589 strings out of 473190
+ 1018955 string characters out of 5715801
+ 1528735 words of memory out of 5000000
+ 67876 multiletter control sequences out of 15000+600000
+ 641441 words of font info for 173 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,15n,107p,1151b,739s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,20n,107p,1151b,673s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/NewPXMI_gnu.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eurm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eurm7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eusm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/pxmiaX.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/pxsys.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsym.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/zplb.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/zplr.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/zplri.pfb>
-Output written on _main.pdf (6 pages, 173442 bytes).
+Output written on _main.pdf (12 pages, 198914 bytes).
 PDF statistics:
- 224 PDF objects out of 1000 (max. 8388607)
- 191 compressed objects within 2 object streams
- 72 named destinations out of 1000 (max. 500000)
- 85 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 344 PDF objects out of 1000 (max. 8388607)
+ 303 compressed objects within 4 object streams
+ 127 named destinations out of 1000 (max. 500000)
+ 141 words of extra memory for PDF output out of 10000 (max. 10000000)
 

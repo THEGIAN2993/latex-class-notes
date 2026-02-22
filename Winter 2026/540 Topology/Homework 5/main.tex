@@ -1,0 +1,219 @@
+\documentclass[10pt,oneside,openany]{memoir}
+
+\iffalse
+%font style 1
+\usepackage[p,osf]{scholax}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage[scaled=1.075,ncf,vvarbb]{newtxmath}
+\fi
+
+%font style 2
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage[fixamsmath]{mathtools}  % Extension to amsmath
+\usepackage{amsthm}
+\usepackage{amssymb}
+\renewcommand*{\mathbf}[1]{\varmathbb{#1}}
+\usepackage{newpxtext}
+\usepackage{eulerpx}
+\usepackage{mathrsfs}
+
+\usepackage{eucal}
+\usepackage{datetime}
+    \newdateformat{specialdate}{\THEYEAR\ \monthname\ \THEDAY}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \fancyhf{}
+    \cfoot{\scriptsize\thepage}
+    \fancyhead[R]{\scalebox{0.8}{\nouppercase{\rightmark}}}
+    \fancyhead[L]{\scalebox{0.8}{\nouppercase{\leftmark}}}
+
+    \fancypagestyle{plain}{%
+        \fancyhf{}
+        \cfoot{\scriptsize\thepage}
+        \fancyhead[R]{\scalebox{0.8}{\phantom{a}}}
+        \fancyhead[L]{\scalebox{0.8}{Applied Analysis}}
+    }
+\usepackage{keytheorems}
+    \newkeytheoremstyle{def}{
+    inherit-style=definition,
+    spaceabove=1.5em,
+    spacebelow=1.5em,
+    postheadspace=0.5em,
+    }
+    \newkeytheoremstyle{thm}{
+    spaceabove=1.5em,
+    spacebelow=1.5em,
+    postheadspace=0.5em,
+    }
+    \newkeytheorem{theorem}[
+    name = Theorem,
+    style=thm,
+    numberwithin = section,
+    ]
+    \newkeytheorem{theorem*}[
+    name=Theorem,
+    style=thm,
+    numbered=false
+    ]
+    \newkeytheorem{proposition}[
+    name = Proposition,
+    style=thm,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{lemma}[
+    name = Lemma,
+    style=thm,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{corollary}[
+    name = Corollary,
+    style=thm,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{definition}[
+    name = Definition,
+    style=def,
+    numberwithin = section,
+    style = definition
+    ]
+    \newkeytheorem{example}[
+    name = Example,
+    style=def,
+    numberwithin = section,
+    style = definition
+    ]
+    \newkeytheorem{remark}[
+    name=Remark,
+    style=remark, 
+    numbered=false  
+    ]
+    \newkeytheorem{question}[
+    name=Question,
+    style=remark, 
+    numbered=false  
+    ]
+    \newkeytheorem{exercise}[
+    name = Exercise,
+    style=thm
+    ]
+    \newkeytheorem{axiom}[name = Axiom]
+\usepackage{enumitem}
+\usepackage[explicit]{titlesec}
+    \titleformat{\chapter}[display]
+    {\bfseries\LARGE\raggedright}
+    {Chapter {\thechapter}}
+    {.1ex minus .1ex}
+    {\Large #1}
+    \titlespacing{\chapter}
+    {3pc}{*3}{40pt}[3pc]
+
+    \titleformat{\section}[block]
+    {\normalfont\bfseries\large}
+    {}{0pt}
+    {\fbox{\strut \S\ \thesection.\ #1}}
+    \titlespacing{\section}
+    {0pt}{3ex plus .1ex minus .2ex}{3ex plus .1ex minus .2ex}
+    \setlength{\fboxsep}{4pt}   % padding inside the box
+    \setlength{\fboxrule}{0.6pt} % border thickness
+    
+    \titleformat{name=\section,numberless}[block]
+    {\normalfont\bfseries\large\raggedright}
+    {}{0pt}
+    {\fbox{\strut #1}}
+\usepackage[utf8x]{inputenc}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{float}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning,arrows.meta}
+\usetikzlibrary{decorations.pathreplacing}
+\usepackage{wasysym}
+\usepackage{hyperref}
+\usepackage{ulem}
+\usepackage{pgfplots}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=1.18}
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
+
+\begin{document}
+\begin{center}
+    {\large Math 520 \\[0.1in]Homework 5}\\[.175in]
+    {Name:} {\underline{Gianluca Crescenzo\hspace*{2in}}}\\[0.15in]
+    \end{center}
+    \vspace{4pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Section 26 (Pages 170 - 172): 1, 2a, 5, 6, 7
+
+Section 27 (Pages 177 - 178): 2ab, 3, 4
+\section*{Section 26}
+\begin{exercise}[manual-num={1}]
+\phantom{a}
+\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+    \item Let $T$ and $T'$ be two topologies on the set $X$; suppose that $T' \supset T$. What does compactness of $X$ under one of these topologies imply about compactness under the other?
+    \item Show that if $X$ is compact Hausdorff under both $T$ and $T'$, then either $T$ and $T'$ are equal or they are not comparable.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[manual-num={2(a)}]
+Show that in the finite complement topology on $\bfR$, every subspace is compact.
+\end{exercise}
+    \begin{proof}
+        Let $A \subseteq \bfR$. Suppose $\{U_i\}_{i \in I}$ is an open cover of $A$. Note that the complement of each open cover will be a finite set. Consider the set $A \setminus U_j$. If $A \setminus U_j = \emptyset$, then $U_j$ completely contains $A$, hence it is a finite subcover of $\{U_i\}_{i \in I}$. If $A \setminus U_j \neq \emptyset$, then $A \setminus U_j$ must be finite, as $A \setminus U_j = A \cap U_j^c$. Let $\{x_1,...,x_n\} := A \setminus U_j$. Since each $x_1,...,x_n \in A \subseteq \bigcup_{i \in I}U_i$, we can find $U_1,...,U_n \in \{U_i\}_{i \in I}$ such that $x_j \in U_j$ for each $j=1,...,n$. Then by construction $A \cap \bigcap_{j = 1}^n U_j^c = \emptyset$, hence $A \subseteq \bigcup_{j = 1}^n U_j$. Thus $A$ is compact.
+    \end{proof}
+
+\begin{exercise}[manual-num={5}]
+Let $A$ and $B$ be disjoint compact subspaces of the Hausdorff space $X$. Show that there exist disjoint open sets $U$ and $V$ containing $A$ and $B$, respectively.
+\end{exercise}
+    \begin{proof}
+        For each $b \in B$, there exists opens sets $U_b, V_b$ such that $b \in U_b$, $A \subseteq V_b$, and $U_b \cap V_b = \emptyset$. Consider the cover $B \subseteq \bigcup_{b \in B}U_b$. Since $B$ is compact, there exists a finite subcover such that $B \subseteq \bigcup_{i = 1}^n U_{b_i}$. Since $A \subseteq V_{b_i}$ for each $b_i$, then $A \subseteq \bigcap_{i = 1}^n V_{b_i}$. All together, we've found open sets $\bigcup_{i = 1}^n U_{b_i}$, $\bigcap_{i = 1}^n V_{b_i}$ such that $A \subseteq \bigcap_{i = 1}^n V_{b_i}$, $B \subseteq \bigcup_{i = 1}^n U_{b_i}$, and $\left(\bigcap_{i = 1}^n V_{b_i}\right) \cap \left(\bigcup_{i = 1}^n U_{b_i}\right) = \emptyset$.
+    \end{proof}
+
+\begin{exercise}[manual-num={6}]
+Show that if $f:X \rightarrow Y$ is continuous, where $X$ is compact and $Y$ is Hausdorff, then $f$ is a closed map.
+\end{exercise}
+
+\begin{exercise}[manual-num={7}]
+Show that if $Y$ is compact, then the projection $\pi_1:X \times Y \rightarrow X$ is a closed map.
+\end{exercise}
+
+
+
+
+\section*{Section 26}
+\begin{exercise}[manual-num={2}]
+    \phantom{a}
+    \begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+        \item 
+        \item
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}[manual-num={3}]
+
+\end{exercise}
+
+\begin{exercise}[manual-num={4}]
+
+\end{exercise}
+
+
+
+
+
+
+
+\end{document}

@@ -1,4 +1,4 @@
-\documentclass[12pt,oneside,openany]{memoir}
+\documentclass[10pt,oneside,openany]{memoir}
 
 \iffalse
 %font style 1
@@ -21,7 +21,7 @@
 \usepackage{eucal}
 \usepackage{datetime}
     \newdateformat{specialdate}{\THEYEAR\ \monthname\ \THEDAY}
-\usepackage[margin=1in]{geometry}
+\usepackage[margin=1.5in]{geometry}
 \usepackage{fancyhdr}
     \pagestyle{fancy}
     \fancyhf{}
@@ -140,7 +140,7 @@
 \usetikzlibrary{patterns}
 \usepgfplotslibrary{fillbetween}
 \pgfplotsset{compat=1.18}
-\linespread{1.1}
+%\linespread{1.1}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
@@ -168,4 +168,5 @@
 
     %\include{preliminaries}
     \include{ch1.tex}
+    \include{ch2.tex}
 \end{document}

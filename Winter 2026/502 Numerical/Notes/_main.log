@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  9 JAN 2026 15:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  17 FEB 2026 14:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1964,41 +1964,27 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 LaTeX Font Info:    Trying to load font information for U+wasy on input line 1.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/wasysym/uwasy.fd
 File: uwasy.fd 2020/01/19 v2.4 Wasy-2 symbol font definitions
-)) (./ch1.tex
+))
 
 LaTeX Font Info:    Font shape `T1/zpltlf/m/n' will be
-(Font)              scaled to size 9.0pt on input line 1.
+(Font)              scaled to size 9.0pt on input line 135.
 [1{/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf.enc}
 
 
 ]
-LaTeX Font Info:    Font shape `T1/zpltlf/b/n' will be
-(Font)              scaled to size 14.4pt on input line 4.
-) (./ch2.tex
-LaTeX Font Info:    Font shape `T1/zpltlf/m/it' will be
-(Font)              scaled to size 12.0pt on input line 9.
-LaTeX Font Info:    Trying to load font information for U+zeuex on input line 22.
- (/usr/local/texlive/2025/texmf-dist/tex/latex/eulervm/uzeuex.fd
-File: uzeuex.fd 2005/01/11 v4.0 (WaS)
+LaTeX Font Info:    Trying to load font information for U+eus on input line 139.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/ueus.fd
+File: ueus.fd 2013/01/14 v3.01 Euler Script
 )
-LaTeX Font Info:    Font shape `U/zeuex/m/n' will be
-(Font)              scaled to size 12.0pt on input line 22.
-LaTeX Font Info:    Font shape `U/zeuex/m/n' will be
-(Font)              scaled to size 9.0pt on input line 22.
-LaTeX Font Info:    Font shape `T1/zpltlf/m/n' will be
-(Font)              scaled to size 8.0pt on input line 22.
-LaTeX Font Info:    Font shape `U/zeuex/m/n' will be
-(Font)              scaled to size 8.0pt on input line 22.
-
-Overfull \hbox (56.36584pt too wide) detected at line 29
-[]
- []
-
+LaTeX Font Info:    Trying to load font information for TS1+zpltlf on input line 142.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/newpx/ts1zpltlf.fd
+File: ts1zpltlf.fd 2021/11/24 v1.0 fd file for TS1/zpltlf
 )
+LaTeX Font Info:    Font shape `TS1/zpltlf/m/n' will be
+(Font)              scaled to size 12.0pt on input line 142.
 
-[1
 
-{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/newpx/px-lms.enc}{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}]
+[2{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/newpx/zpl_TOsF.enc}{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/newpx/px-lms.enc}{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}]
 \tf@toc=\write6
 \openout6 = `_main.toc'.
 
@@ -2008,21 +1994,21 @@ LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2020/03/25>
  ***********
 Package rerunfilecheck Info: File `_main.out' has not changed.
-(rerunfilecheck)             Checksum: 262EA8393F6688F20DF7C0F420EEE31A;952.
+(rerunfilecheck)             Checksum: CAC3B75E9E044E9832B4A2277196A406;84.
  ) 
 Here is how much of TeX's memory you used:
- 45198 strings out of 473190
- 1010275 string characters out of 5715801
- 1520129 words of memory out of 5000000
- 67628 multiletter control sequences out of 15000+600000
- 609627 words of font info for 108 fonts, out of 8000000 for 9000
+ 45184 strings out of 473190
+ 1009981 string characters out of 5715801
+ 1513129 words of memory out of 5000000
+ 67622 multiletter control sequences out of 15000+600000
+ 599968 words of font info for 102 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,20n,107p,1152b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/euex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eurm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eurm7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/pxmiaX.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/pxsys.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/zplb.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/zplr.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/zplri.pfb>
-Output written on _main.pdf (2 pages, 131728 bytes).
+ 102i,13n,107p,1152b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eurm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eurm7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eusm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/pxmiaX.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/pxsys.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/zplb.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/zplr.pfb>
+Output written on _main.pdf (2 pages, 89637 bytes).
 PDF statistics:
- 102 PDF objects out of 1000 (max. 8388607)
- 80 compressed objects within 1 object stream
- 12 named destinations out of 1000 (max. 500000)
- 61 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 78 PDF objects out of 1000 (max. 8388607)
+ 57 compressed objects within 1 object stream
+ 9 named destinations out of 1000 (max. 500000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

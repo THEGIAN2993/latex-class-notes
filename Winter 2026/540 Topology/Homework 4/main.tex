@@ -1,0 +1,350 @@
+\documentclass[10pt,oneside,openany]{memoir}
+
+\iffalse
+%font style 1
+\usepackage[p,osf]{scholax}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage[scaled=1.075,ncf,vvarbb]{newtxmath}
+\fi
+
+%font style 2
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage[fixamsmath]{mathtools}  % Extension to amsmath
+\usepackage{amsthm}
+\usepackage{amssymb}
+\renewcommand*{\mathbf}[1]{\varmathbb{#1}}
+\usepackage{newpxtext}
+\usepackage{eulerpx}
+\usepackage{mathrsfs}
+
+\usepackage{eucal}
+\usepackage{datetime}
+    \newdateformat{specialdate}{\THEYEAR\ \monthname\ \THEDAY}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \fancyhf{}
+    \cfoot{\scriptsize\thepage}
+    \fancyhead[R]{\scalebox{0.8}{\nouppercase{\rightmark}}}
+    \fancyhead[L]{\scalebox{0.8}{\nouppercase{\leftmark}}}
+
+    \fancypagestyle{plain}{%
+        \fancyhf{}
+        \cfoot{\scriptsize\thepage}
+        \fancyhead[R]{\scalebox{0.8}{\phantom{a}}}
+        \fancyhead[L]{\scalebox{0.8}{Applied Analysis}}
+    }
+\usepackage{keytheorems}
+    \newkeytheoremstyle{def}{
+    inherit-style=definition,
+    spaceabove=1.5em,
+    spacebelow=1.5em,
+    postheadspace=0.5em,
+    }
+    \newkeytheoremstyle{thm}{
+    spaceabove=1.5em,
+    spacebelow=1.5em,
+    postheadspace=0.5em,
+    }
+    \newkeytheorem{theorem}[
+    name = Theorem,
+    style=thm,
+    numberwithin = section,
+    ]
+    \newkeytheorem{theorem*}[
+    name=Theorem,
+    style=thm,
+    numbered=false
+    ]
+    \newkeytheorem{proposition}[
+    name = Proposition,
+    style=thm,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{lemma}[
+    name = Lemma,
+    style=thm,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{corollary}[
+    name = Corollary,
+    style=thm,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{definition}[
+    name = Definition,
+    style=def,
+    numberwithin = section,
+    style = definition
+    ]
+    \newkeytheorem{example}[
+    name = Example,
+    style=def,
+    numberwithin = section,
+    style = definition
+    ]
+    \newkeytheorem{remark}[
+    name=Remark,
+    style=remark, 
+    numbered=false  
+    ]
+    \newkeytheorem{question}[
+    name=Question,
+    style=remark, 
+    numbered=false  
+    ]
+    \newkeytheorem{exercise}[
+    name = Exercise,
+    style=thm
+    ]
+    \newkeytheorem{axiom}[name = Axiom]
+\usepackage{enumitem}
+\usepackage[explicit]{titlesec}
+    \titleformat{\chapter}[display]
+    {\bfseries\LARGE\raggedright}
+    {Chapter {\thechapter}}
+    {.1ex minus .1ex}
+    {\Large #1}
+    \titlespacing{\chapter}
+    {3pc}{*3}{40pt}[3pc]
+
+    \titleformat{\section}[block]
+    {\normalfont\bfseries\large}
+    {}{0pt}
+    {\fbox{\strut \S\ \thesection.\ #1}}
+    \titlespacing{\section}
+    {0pt}{3ex plus .1ex minus .2ex}{3ex plus .1ex minus .2ex}
+    \setlength{\fboxsep}{4pt}   % padding inside the box
+    \setlength{\fboxrule}{0.6pt} % border thickness
+    
+    \titleformat{name=\section,numberless}[block]
+    {\normalfont\bfseries\large\raggedright}
+    {}{0pt}
+    {\fbox{\strut #1}}
+\usepackage[utf8x]{inputenc}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{float}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning,arrows.meta}
+\usetikzlibrary{decorations.pathreplacing}
+\usepackage{wasysym}
+\usepackage{hyperref}
+\usepackage{ulem}
+\usepackage{pgfplots}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=1.18}
+
+\renewcommand{\headrulewidth}{0pt} % removes the top/header line
+% (optional) if you also want no line above the footer:
+\renewcommand{\footrulewidth}{0pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
+
+\begin{document}
+\begin{center}
+    {\Large Math 540 \\[0.1in]Homework \#4}\\[.175in]
+    {Name:} {\underline{Gianluca Crescenzo\hspace*{2in}}}\\[0.15in]
+    \end{center}
+    \vspace{4pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{\S 23 Homework Problems}
+\begin{exercise}[manual-num={4}]
+Show that if $X$ is an infinite set, it is connected in the finite complement topology.
+\end{exercise}
+    \begin{proof}
+        Suppose towards contradiction there exists a separation of $X$; i.e., we can find $U,V \subseteq X$ open such that $U,V \neq \emptyset$, $U \cap V = \emptyset$, and $U \cup V = X$. Since $U,V$ are open in $X$ and non-empty, it must be the case that their complements are countable. However, note that we can write $X = (U \cap V)^c = U^c \cup V^c$. This is a contradiction, as an infinite set cannot be written as the union of two countable sets.
+    \end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}[manual-num={5}]
+Show that if $X$ has the discrete topology, then $X$ is totally disconnected. Does the converse hold?
+\end{exercise}
+    \begin{proof}
+        Note that for any $a,b \in X$, the set $\{a,b\}$ is not connected as $\{a\},\{b\}$ form a separation. Let $x \in X$ be arbitrary. Suppose there exists a separation $U,V \in \cP(X)$ such that $U,V \neq \emptyset$, $U \cup V = \{x\}$, $\overline{U} \cap V = \emptyset$, and $U \cap \overline{V} = \emptyset$. It must be the case that $U = V = \{x\}$. But $\overline{\{x\}} \cap \{x\} = \{x\} \cap \{x\} = \{x\}$, which is a contradiction. Thus the singletons are the only connected subsets of $X$.
+
+        The converse does not hold. Consider $\bfQ$ as a subspace of $\bfR$. The above argument holds identically for elements in $\bfQ$, however the subspace topology on $\bfQ$ inherited from $\bfR$ is not the discrete topology.
+    \end{proof}
+
+\begin{exercise}[manual-num={9}]
+Let $A$ be a proper subset of $X$, and let $B$ be a proper subset of $Y$. If $X$ and $Y$ are connected, show that $(X \times Y) \setminus (A \times B)$ is connected.
+\end{exercise}
+    \begin{proof}
+        Note that for every $x \in X \setminus A$, the set $S_{x} := \{x\} \times Y$ is connected, and for every $y \in Y \setminus B$, the set $T_{y} := X \times \{y\}$ is connected. For a fixed $x \in X \setminus A$, note that $S_x$ intersects $T_y$. Hence $U_x:= S_x \cup \left( \bigcup_{y \in Y \setminus B} T_y\right)$ is also connected. Now for two different $x_1,x_2 \in X$, the sets $U_{x_1}$ and $U_{x_2}$ intersect. This means $\bigcup_{x \in X \setminus A}U_x$ is connected. Thus $(X \times Y) \setminus (A \times B)$ is connected, as $\bigcup_{x \in X \setminus A}U_x = (X \times Y) \setminus (A \times B)$.
+    \end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section*{\S 24 Homework Problems}
+\begin{exercise}[manual-num={1(c)}]
+Show that $\bfR^n$ and $\bfR$ are not homeomorphic if $n > 1$.
+\end{exercise}
+    \begin{proof}
+        Suppose there exists a homeomorphism $f:\bfR \rightarrow \bfR^n$. Let $x \in \bfR$. Then $f':\bfR\setminus\{x\} \rightarrow \bfR^n \setminus \{f(x)\}$ is also a homeomorphism. But $\bfR^n \setminus\{f(x)\}$ is path-connected, whilst $\bfR \setminus\{x\}$ is not, which is a contradiction.
+    \end{proof}
+
+\begin{exercise}[manual-num={3}]
+Let $f:X \rightarrow X$ be continuous. Show that if $X = [0,1]$, there is a point $x$ such that $f(x) = x$. The point $x$ is called a \textbf{fixed point} of $f$. What happens if $X$ equals $[0,1)$ or $(0,1)$?
+\end{exercise}
+    \begin{proof}
+        Suppose $0$ and $1$ are not fixed points. Define $g:[0,1] \rightarrow [-1,1]$ by $g(x) = f(x) - x$. Then $g(0) = f(0)$ and $g(1) = f(1) - 1$. Since $0$ and $1$ are not fixed points, it must be the case that $g(0) = f(0) > 0$ and $g(1) = f(1) - 1 < 0$. By the Intermediate Value Theorem, there exists an $r \in [0,1]$ such that $g(r) = 0$. Hence $f(r) - r = 0$; i.e., $f(r) = r$.
+
+        Define $f_1:[0,1) \rightarrow [0,1)$ by $f_1(x) = \frac{x+1}{2}$. This map is continuous, but does not have a fixed point. Define $f_2:(0,1) \rightarrow (0,1)$ by $f_2(x) = x^2$. This map is continuous, but does not have a fixed point.
+    \end{proof}
+
+\begin{exercise}[manual-num={8}]
+    \phantom{a}
+    \begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+        \item Is a product of path-connected spaces necessarily path-connected?
+        \item If $A \subset X$ and $A$ is path-connected, is $\overline{A}$ necessarily path-connected?
+    \end{enumerate}
+\end{exercise}
+    \begin{proof}
+        (a) Let $X,Y$ be path-connected topological spaces. Let $(a,b),(c,d) \in X \times Y$. Since $X$ is path-connected, there exists a continuous function $f:[0,1] \rightarrow X$ such that $f(0) = a$ and $f(1) = c$. Since $Y$ is path-connected, there exists a continuous function $g:[0,1] \rightarrow Y$ such that $g(0) = b$ and $g(1) = d$. Define $h:[0,1] \rightarrow X \times Y$ by $h(x) = (f(x),g(x))$. This map is continuous (Theorem 18.4), and $h(0) = (a,b)$ and $h(1) = (c,d)$. Thus $X \times Y$ is path-connected.
+
+        (b) No. Consider the topologist's sine curve $S := \{(x, \sin(\frac{1}{x})) \mid x \in (0,1]\}$. This set is clearly path connected, but $\overline{S} = S \cup \{(0,y) \mid y \in [-1,1]\}$ is not path-connected.
+    \end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{\S 25 Homework Problems}
+
+\begin{exercise}[manual-num={4}]
+Let $X$ be locally path connected. Show that every connected open set in $X$ is path connected.
+\end{exercise}
+    \begin{proof}
+        Let $U \subseteq X$ be an open and connected set. Fix $x_0 \in U$ and define:
+            \begin{equation*}
+            \begin{split}
+                A := \{y \in U \mid \text{ there is a path from $y$ to $x_0$ }\}.
+            \end{split}
+            \end{equation*}
+        Give $A$ the subspace topology inherited from $U$. Note that $A \neq \emptyset$ since $x_0 \in A$.
+
+        Let $y \in A$. Then $y \in U$ by inclusion. Since $X$ is locally path connected and since $U$ is open, there exists an open and path connected set $V$ such that $y \in V \subseteq U$. Let $z \in V$. Then there exists a path from $z$ to $y$. But since there exists a path from $y$ to $x_0$, there must exist a path from $z$ to $x_0$; i.e., $z \in A$. Hence $y \in V \subseteq A$, implying that $A$ is open.
+
+        Now let $y \in U \setminus A$. Then $y \in U$ by inclusion. Since $X$ is locally path connected and since $U$ is open, there exists an open and path connected set $V$ such that $y \in V \subseteq U$. Suppose towards contradiction we can find some $z \in V \cap A$. Since $z \in V$, there is a path between $z$ and $y$. Since $z \in A$, there is a path from $z$ to $x_0$. But this means there is a path from $x_0$ to $y$, contradicting the fact that $y \in U \setminus A$. It must be the case that $V \cap A = \emptyset$; i.e., $V \subseteq U \setminus A$. Hence $y \in V \subseteq U \setminus A$, establishing $U\setminus A$ as an open set.
+
+        Since $A$ and $U\setminus A$ are open in $U$, and since $U$ is connected, it must be the case that $A = U$. Thus $U$ is path connected.
+    \end{proof}
+
+\begin{exercise}[manual-num={5}]
+Let $X$ denote the rational points of the interval $[0,1] \times \{0\}$ of $\bfR^2$. Let $T$ denote the union of all line segments joining the point $P = \{0\} \times \{1\}$ to points of $X$.
+\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+    \item Show that $T$ is path connected, but is locally connected only at the point $p$.
+    \item Find a subset of $\bfR^2$ that is path connected but is locally connected at none of its points.
+\end{enumerate}
+\end{exercise}
+    \begin{proof}
+        (a) Let $x,y \in T$. If $x$ and $y$ lie on the same "ray" towards a rational point on $(\bfQ \cap [0,1]) \times \{0\}$, then surely $x$ and $y$ are path connected. If $x$ and $y$ lie on two different rays, then since $x$ is path connected to $p$ and $p$ is path connected to $y$, it must be that $x$ is path connected to $y$. Hence $T$ is path connected. Clearly $T$ is locally connected at $p$ (this can be seen visually). Let $x \in T$ be arbitrary. Let $\epsilon = \frac{d(x,p)}{2}$. Then not only does $B(x,\epsilon)$ contain the ray which $x$ lies on, but by the density of $\bfQ$ it contains another ray which $x$ does not lie on. As subsets of $B(x,\epsilon)$, these rays are clearly not connected, hence $T$ is locally connected only at the point $p$.
+            \begin{center}
+            \scalebox{0.8}{
+            \begin{tikzpicture}[x=7cm,y=7cm]
+            % Apex point P=(0,1)
+            \coordinate (P) at (0,1);
+            \fill (P) circle (0.8pt) node[above left] {$P$};
+
+            \fill (0,0) circle (0.6pt) node[below left] {$(0,0)$};
+            \fill (1,0) circle (0.6pt) node[below] {$(1,0)$};
+
+            \draw[black!60] (P) -- (0,0);
+            \draw[black!60] (P) -- (1/10,0);
+            \draw[black!60] (P) -- (3/18,0);
+            \draw[black!60] (P) -- (1,0);
+            \draw[black!60] (P) -- (1/2,0);
+            \draw[black!60] (P) -- (1/3,0);
+            \draw[black!60] (P) -- (2/3,0);
+            \draw[black!60] (P) -- (1/4,0);
+            \draw[black!60] (P) -- (3/4,0);
+            \draw[black!60] (P) -- (2/5,0);
+            \draw[black!60] (P) -- (3/5,0);
+            \draw[black!60] (P) -- (10/11,0);
+            \draw[black!60] (P) -- (4.2/5,0);
+
+            \node[black!60!black] at (.6,.6) {$T$};
+            \end{tikzpicture}}
+            \end{center}
+
+        (b) Consider the set $\bfZ \times (\bfQ \cap [0,1])$ as a subset of $\bfR^2$. Let $T_z$ denote the union of all line segments joining the point $\{z\} \times \{0\}$ to the points in $\{z+1\} \times (\bfQ \cap [0,1])$. Consider the set $T := \bigcup_{z \in \bfZ}T_z$.
+
+        
+        \begin{center}
+        \vspace{10pt}
+        \scalebox{0.9}{
+        \begin{tikzpicture}[x=4.2cm,y=4.2cm]
+        % Base points {z}x{0}
+        \coordinate (Zneg) at (-1,0);
+        \coordinate (Z0)   at (0,0);
+        \coordinate (Z1)   at (1,0);
+
+        \fill (Zneg) circle (0.8pt) node[below] {$(-1,0)$};
+        \fill (Z0)   circle (0.8pt) node[below] {$(0,0)$};
+        \fill (Z1)   circle (0.8pt);
+
+        % x=0
+        \fill (0,1)      circle (0.7pt) node[above] {$(0,1)$};
+        % x=1
+        \fill (1,0)      circle (0.7pt) node[below] {$(1,0)$};
+        \fill (1,1)      circle (0.7pt) node[above] {$(1,1)$};
+        % x=2
+        \fill (2,0)      circle (0.7pt) node[below] {$(2,0)$};
+        \fill (2,1)      circle (0.7pt) node[above] {$(2,1)$};
+
+        % T_{-1}: from (-1,0) to {0}x(Q cap [0,1]) (sampled)
+        \draw[black!60] (Zneg) -- (0,0); 
+        \draw[black!60] (Zneg) -- (0,1/10);
+        \draw[black!60] (Zneg) -- (0,1/4);
+        \draw[black!60] (Zneg) -- (0,1/3);
+        \draw[black!60] (Zneg) -- (0,1/2);
+        \draw[black!60] (Zneg) -- (0,2/3);
+        \draw[black!60] (Zneg) -- (0,3/4);
+        \draw[black!60] (Zneg) -- (0,4/5);
+        \draw[black!60] (Zneg) -- (0,10/11);
+        \draw[black!60] (Zneg) -- (0,1);
+
+        % T_{0}: from (0,0) to {1}x(Q cap [0,1]) (sampled)
+        \draw[black!60] (Z0) -- (1,0);
+        \draw[black!60] (Z0) -- (1,1/10);
+        \draw[black!60] (Z0) -- (1,1/4);
+        \draw[black!60] (Z0) -- (1,1/3);
+        \draw[black!60] (Z0) -- (1,1/2);
+        \draw[black!60] (Z0) -- (1,2/3);
+        \draw[black!60] (Z0) -- (1,3/4);
+        \draw[black!60] (Z0) -- (1,4/5);
+        \draw[black!60] (Z0) -- (1,10/11);
+        \draw[black!60] (Z0) -- (1,1);
+
+        % T_{1}: from (1,0) to {2}x(Q cap [0,1]) (sampled)
+        \draw[black!60] (Z1) -- (2,0);
+        \draw[black!60] (Z1) -- (2,1/10);
+        \draw[black!60] (Z1) -- (2,1/4);
+        \draw[black!60] (Z1) -- (2,1/3);
+        \draw[black!60] (Z1) -- (2,1/2);
+        \draw[black!60] (Z1) -- (2,2/3);
+        \draw[black!60] (Z1) -- (2,3/4);
+        \draw[black!60] (Z1) -- (2,4/5);
+        \draw[black!60] (Z1) -- (2,10/11);
+        \draw[black!60] (Z1) -- (2,1);
+
+        \node[black!60!black] at (-0.55,0.55) {$T_{-1}$};
+        \node[black!60!black] at (0.45,0.55)  {$T_{0}$};
+        \node[black!60!black] at (1.45,0.55)  {$T_{1}$};
+        \end{tikzpicture}}
+        \end{center}
+
+    Note that $T$ is path connected by a similar argument made in (a). However, it is not locally path connected. Indeed, any open ball around $(z,0)$ not only intersects the rays associated to $T_z$, but also intersects the rays associated to $T_{z-1}$. Hence there does not exist a path within any open ball from the point $(z,0)$ to $(z,q)$, where $q\in \bfQ \cap [0,1]$ is nonzero.
+    \end{proof}
+
+
+\end{document}

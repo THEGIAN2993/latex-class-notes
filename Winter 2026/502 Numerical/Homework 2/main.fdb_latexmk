@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1769201841.48766 "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/Winter 2026/502 Numerical/Homework 2/main.tex" "main.pdf" "main" 1769201843.65312 0
-  "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/Winter 2026/502 Numerical/Homework 2/main.tex" 1769201841.39478 141671 44f55336678c926e99870a1b73e1bf3c ""
+["pdflatex"] 1770273155.906 "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/Winter 2026/502 Numerical/Homework 2/main.tex" "main.pdf" "main" 1770273158.14356 0
+  "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/Winter 2026/502 Numerical/Homework 2/main.tex" 1770273142.19907 141671 44f55336678c926e99870a1b73e1bf3c ""
   "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex" 1764622722.89504 13971 026113b2e089b0f197b6a1344ae6ebb8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/newpx/px-lms.enc" 1699652218 3877 2ca811886181a05a861d20a35de75e06 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf.enc" 1698694482 2914 fdbc4a54b9bc76f4551b5303f2737d33 ""
@@ -328,9 +328,9 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1758769034 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "main.aux" 1769201843.54335 1395 18157bab72827524096dfdd2e3b9707b "pdflatex"
-  "main.out" 1769201842.16498 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.tex" 1769201841.39478 141671 44f55336678c926e99870a1b73e1bf3c ""
+  "main.aux" 1770273158.03208 1395 18157bab72827524096dfdd2e3b9707b "pdflatex"
+  "main.out" 1770273156.57704 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.tex" 1770273142.19907 141671 44f55336678c926e99870a1b73e1bf3c ""
   (generated)
   "main.aux"
   "main.log"

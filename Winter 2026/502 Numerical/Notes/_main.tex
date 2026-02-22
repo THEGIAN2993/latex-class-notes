@@ -132,6 +132,21 @@
     \specialdate
     Last update: \today
 
-    \input{ch1}
-    \input{ch2}
+    \newpage
+
+    Midterm 2 review
+    \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+        \item Ch5 Sampling schemes and accuracy (by accuracy, i mean local truncation error $\tau^n$ and one-step error $\cL^n$).
+        \item Ch6 zero stability 
+            \begin{itemize}
+                \item especially useful for lienar multistep methods.
+                \item given $u' = f(u,t)$, test the scheme with $f(u,t) = 0$.
+                \item
+            \end{itemize}
+            Zero stability 
+            \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+                \item is all roots of the characteristic polynomial are less than 1, scheme is zero-stable
+                \item 
+            \end{enumerate}
+    \end{enumerate}
 \end{document}

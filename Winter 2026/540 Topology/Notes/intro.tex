@@ -247,6 +247,213 @@
 \section{Limit Points of a Set}
 
 \begin{definition}
-    Let $(X,T)$ be a topological space. Let $A \subseteq X$. A point $p \in A$ is a \textui{limit point of $A$} if, for all open $U \subseteq X$ containing $p$, then $U \cap (A\setminus\{p\}) \neq \emptyset$.
+    Let $(X,T)$ be a topological space. Let $A \subseteq X$. A point $p \in X$ is a \textui{limit point of $A$} if $p \in \overline{A \setminus \{p\}}$.
 \end{definition}
 
+\begin{example}
+    Consider $\bfR$ with the standard topology.
+    \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+        \item If $F$ is a finite set, then the set containing the limit points of $F$ is empty.
+        \item The set containing the limit points of $(2,3]$ is $[2,3]$.
+        \item The set containing the limit points of $\bfQ$ is $\bfR$.
+        \item The set containing the limit points of $\{\frac{1}{n} \mid n \in \bfN\}$ is $\{0\}$.
+    \end{enumerate}
+\end{example}
+
+\begin{example}
+    Let $X$ be a set with the discrete topology. For any $A \subseteq X$, the set containing the limit points of $A$ is empty.
+\end{example}
+
+\begin{proposition}\label{prop:closed-iff-contains-lim-pts}
+    Let $(X,T)$ be a topological space. Let $A \subseteq X$. Then $A$ is closed in $X$ if and only if $A$ contains all of its limit points.
+\end{proposition}
+    \begin{proof}
+        \begin{equation*}
+        \begin{split}
+            \text{A is closed in $X$}
+            &\iff \text{$A^c$ is open in $X$} \\
+            &\iff \text{$(\forall p \in A^c)(\exists U \in T):p \in U \subseteq A^c$} \\
+            &\iff \text{$(\forall p \in A^c)(\exists U \in T):p \in U $ and $ U \cap A= \emptyset$} \\
+            &\iff \text{$(\forall p \in A^c):p \not\in \overline{A}$} \\
+            &\iff \text{$(\forall p \in A^c):p \not\in \overline{A \setminus \{p\}}$} \\
+            &\iff \text{$(\forall p \in A^c):p \not\in \overline{A \setminus \{p\}}$} \\
+            &\iff \text{$A$ contains its limit points.} \\
+        \end{split}
+        \end{equation*}
+    \end{proof}
+
+\begin{proposition}
+    Let $(X,T)$ be a topological space and $A \subseteq X$. Then:
+        \begin{equation*}
+        \begin{split}
+            \overline{A} = A \cup \{p \mid p \text{ is a limit point of $A$}\}.
+        \end{split}
+        \end{equation*}
+\end{proposition}
+    \begin{proof}
+        Let $p \in \overline{A}$. If $p \in A$, then by Proposition~\ref{prop:closed-iff-contains-lim-pts} we are done. Suppose $p \in \overline{A} \setminus A$. Since $p \in \overline{A}$, for all open sets $U \subseteq X$ containing $p$, we have $U \cap A \neq \emptyset$. But since $p \not\in A$, this is equivalent to the statement that for all open sets $U \subseteq X$ containing $p$, we have $U \cap A\setminus\{p\} \neq \emptyset$. Therefore $p \in \overline{A \setminus \{p\}}$. This establishes $\overline{A} \subseteq A \cup \{p \mid p \text{ is a limit point of }A\}$.
+
+        Now let $p \in A \cup \{p \mid p \text{ is a limit point of $A$}\}$. If $p \in A$, then $p \in \overline{A}$. If $p \in \{p \mid p \text{ is a limit point of $A$}\}$, then $p \in \overline{A}$ by Proposition~\ref{prop:closed-iff-contains-lim-pts}. Hence $\overline{A} = A \cup \{p \mid p \text{ is a limit point of $A$}\}$.
+    \end{proof}
+
+\section{Hausdorff Spaces}
+
+\begin{definition}
+    Let $(X,T)$ be a topological space. We say $X$ is \textui{Hausdorff} (or \textui{$T_2$}) if for all $x,y \in X$, there exist an open set $U \subseteq X$ containing $x$ and an open set $V \subseteq X$ containing $Y$ such that $U \cap V = \emptyset$.
+\end{definition}
+
+\begin{example}
+    $\bfR^n$ is Hausdorff. Let $x,y \in \bfR^n$. Let $\epsilon = \frac{\lnorm x-y \rnorm}{3}$. Then $B(x,\epsilon) \cap B(y,\epsilon) = \emptyset$.
+\end{example}
+
+\begin{example}
+    Consider a set $X$ with the discrete topology. Then $X$ is Hausdorff since for any $x,y \in X$, $\{x\} \cap \{y\} = \emptyset$.
+\end{example}
+
+\begin{proposition}
+    In any Hausdorff space, every finite set is closed.
+\end{proposition}
+    \begin{proof}
+        Let $p,q \in X$. Then there exists an open set $U$ containing $p$ and an open set $V$ containing $q$ such that $U \cap V = \emptyset$. Now $p \in X \setminus \{q\}$. Hence $p \in U \subseteq X \setminus \{q\}$. Therefore $X \setminus\{q\}$ is open, establishing that $\{q\}$ is closed. Since any finite set can be written as the finite union of singletons, every finite set in a Hausdorff space is closed.
+    \end{proof}
+
+\begin{proposition}
+    Let $(X,T)$ be Hausdorff and $A \subseteq X$. Then a point $p \in X$ is a limit point of $A$ if and only if every open set $U \subseteq X$ containing $p$ contains infinitely many points of $A$.
+\end{proposition}
+    {\color{red} \begin{proof}
+
+    \end{proof}}
+
+\section{Continuity}
+
+\begin{definition}
+    Let $(X,T_X)$ and $(Y,T_Y)$ be topological spaces. A function $f:X \rightarrow Y$ is \textui{continuous} if for all $U \in T_Y$, we have $f^{-1}(U) \in T_X$.
+\end{definition}
+
+\begin{example}
+    Let $X$ be a set with the discrete topology and $(Y,T)$ any topological space. Then any map $f:X \rightarrow Y$ is continuous.
+\end{example}
+
+\begin{proposition}
+    Let $X,Y$ be topological spaces. Let $f:X \rightarrow Y$ be a map. The following are equivalent:
+        \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+            \item $f$ is continuous;
+            \item For all $A \subseteq X$, $f(A) \subseteq \overline{f(A)}$;
+            \item $f^{-1}(C)$ is closed in $X$ for any $C$ closed in $Y$.
+            \item For all $x_0 \in X$ and for all $V \in T_Y$ such that $f(x_0) \in V$, there exists a $U \in T_X$ such that $x_0 \in U$ and $f(U) \subseteq V$.
+        \end{enumerate}
+\end{proposition}
+    {\color{red} \begin{proof}
+        
+    \end{proof}}
+
+\section{Metric Topologies}
+
+\begin{definition}
+    Let $X$ be a set. A \textui{metric} is a map $d:X \times X \rightarrow \bfR$ satisfying for all $x,y,z \in X$:
+        \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+            \item $d(x,x) = 0$;
+            \item if $d(x,y) = 0$, then $x=y$;
+            \item $d(x,y) = d(y,z)$;
+            \item $d(x,y) \leq d(x,z) + d(z,y)$;
+        \end{enumerate}
+    We call the pair $(X,d)$ a \textui{metric space}.
+\end{definition}
+
+\begin{definition}
+    Let $(X,d)$ be a metric space.
+    \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+        \item The \textui{open ball centered around $x_0 \in X$ with radius $r > 0$} is denoted: \nl $$B(x_0,r) := \{x \in X \mid d(x,x_0) < r\}.$$
+        \item The \textui{closed ball centered around $x_0 \in X$ with radius $r > 0$} is denoted: \nl $$\overline{B}(x_0,r) := \{x \in X \mid d(x,x_0) \leq r\}.$$
+        \item The \textui{sphere centered around $x_0 \in X$ with radius $r > 0$} is denoted: \nl $$S(x_0,r) := \{x \in X \mid d(x,x_0) = r\}.$$
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    A \textui{metric topology} is the topology generated by the basis of open balls defined by the given metric.
+\end{definition}
+
+\begin{definition}
+    Let $(X,T)$ be a topological space. We say $X$ is \textui{metrizable} if there exists a metric $d$ that induces the topology on $X$.
+\end{definition}
+
+\begin{example}
+    Consider the discrete topology $(X,\cP(X))$. Then $X$ is metrizable. Indeed, define $d:X \times X \rightarrow \bfR$ by:
+        \begin{equation*}
+        \begin{split}
+            d(x,y) = \begin{cases} 1, & x\neq y \\ 0, & x = y\end{cases}.
+        \end{split}
+        \end{equation*}
+    This is a metric, and is called the \textit{discrete metric}. Let $T_d$ denote the topology generated by the open balls with respect to the metric $d$. Let $Y \subseteq X$ be open. Then $Y = \bigcup_{y \in Y} \{y\}$. But note that we can write $\{y\} = B_d(y, \frac{1}{2})$. Hence $Y = \bigcup_{y \in Y}B_d(y,\frac{1}{2})$. This gives the inclusion $\cP(X) \subseteq T_d$. Conversely, since every open ball is a subset of $X$, surely it is open in the discrete topology. Hence $T_d \subseteq \cP(X)$.
+\end{example}
+
+{\color{red} missing a lot of stuff on metric topologies}
+
+\section{Quotient Topologies}
+
+\begin{definition}
+    Let $X,Y$ be topological spaces and $p:X \rightarrow Y$ a continuous surjection. We say $p$ is a \textui{quotient map} if $U$ is open in $Y$ if and only if $p^{-1}(U)$ is open in $X$.
+\end{definition}
+
+\begin{example}
+    Let $T$ denote the standard topology on $\bfR^n$. Consider the map $p:(\bfR,\cP(\bfR)) \rightarrow (\bfR,T)$ given by $p(x) = x$. This is not a quotient map since $p^{-1}(\{3\})$ is open in $(\bfR,\cP(\bfR))$ but is not open in $(\bfR,T)$.
+\end{example}
+
+\begin{proposition}\label{prop:unique-quotient-top}
+    Let $(X,T)$ be a topological space and $Y$ a set. Let $p:X \rightarrow Y$ be a surjection. The set $\{U \subseteq Y \mid p^{-1}(U) \text{ open in }X\}$ is the unique topology on $Y$ such that $p$ is a quotient map.
+\end{proposition}
+
+\begin{definition}
+    The topology in Proposition~\ref{prop:unique-quotient-top} is called the \textui{quotient topology on $Y$} \textui{induced by $p$}.
+\end{definition}
+
+\begin{proposition}
+    Let $(X,T)$ be a topological space and $Y$ a set. Let $p:X \rightarrow Y$ be a surjection. The quotient topology on $Y$ induced by $p$ is the finest topology on $Y$ such that $p$ is continuous.
+\end{proposition}
+
+\begin{definition}
+    Let $\sim$ be an equivalence relation on a topological space $X$. Let $X /\sim$ denote the set of distinct equivalence classes. Let $p:X \rightarrow X/\sim$ be the natural surjection given by $p(x) = [x]$. Let $T_\sim$ be the quotient topology on $Y$ induced by $p$. We call the space $(X/\sim,T_\sim)$ the \textui{quotient space of $X$ modulo $\sim$}.
+\end{definition}
+
+\begin{example}
+    Consider the set $S := \{(x,y) \mid x \in [0,1], y \in [0,1]\}$. Define $\sim$ on $S$ by:
+        \begin{equation*}
+        \begin{split}
+            &(0,y) \sim (1,y) \text{ for all } y \in [0,1] \\
+            &(x,y) \sim (x,y) \text{ for all }(x,y) \in (0,1) \times [0,1].
+        \end{split}
+        \end{equation*}
+        This is an equivalence relation. The space $(S/\sim, T_\sim)$ is homeomorphic to a cylinder in $\bfR^3$.
+\end{example}
+
+\begin{example}
+    Let $D = \{(x,y) \mid x^2 + y^2 \leq 1\}$. Define $\sim$ on $D$ by:
+        \begin{equation*}
+        \begin{split}
+            &(x,y) \sim (x,y) \text{ whenever }x^2 + y^2 < 1,\\
+            &(x,y) \sim (a,b) \text{ whenever }x^2 + y^2 = 1.\\
+        \end{split}
+        \end{equation*}
+    This is an equivalence relation. The space $(D/\sim, T_\sim)$ is homeomorphic to a sphere in $\bfR^3$.
+\end{example}
+
+{\color{red} stuff on group actions}
+
+\begin{corollary}
+    Let $g:X \rightarrow Z$ be a surjective continuous map. Let $X^\ast = \{g^{-1}(\{z\}) \mid z \in Z\}$. Give $X^\ast$ the quotient topology. Then $g$ induces a bijective continuous map $f:X^\ast \rightarrow Z$ which is a homeomorphism if and only if $g$ is a quotient map.
+\end{corollary}
+    {\color{red} \begin{proof}
+        
+    \end{proof}}
+
+\begin{example}
+    Define $\sim$ on $[0,1] \times [0,1]$ by:
+        \begin{equation*}
+        \begin{split}
+            (0,y) &\sim (1,y) \text{ for all }y \in [0,1]\\
+            (x,0) &\sim (x,1) \text{ for all }x \in [0,1]\\
+            (x,y) &\sim (x,y) \text{ for all }(x,y) \in (0,1) \times (0,1).\\
+        \end{split}
+        \end{equation*}
+    We will prove that $([0,1] \times [0,1])/\sim$ is homeomorphic to $S^1 \times S^1$. Define $g:[0,1] \times [0,1] \rightarrow S^1 \times S^1$ by $g(s,t) = (\cos 2\pi s, \sin 2\pi s, \cos 2 \pi t, \sin 2 \pi t)$. This map is continuous and surjective.
+\end{example}

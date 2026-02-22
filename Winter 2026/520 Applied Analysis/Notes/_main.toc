@@ -4,10 +4,18 @@
 \contentsline {section}{\numberline {1.2}Completeness and Compactness}{3}{section.1.2}%
 \contentsline {section}{Exercises}{4}{theorem.1.2.2}%
 \contentsline {section}{\numberline {1.3}Linear Operators}{5}{section.1.3}%
-\contentsline {section}{Exercises}{8}{theorem.1.3.4}%
-\contentsline {section}{\numberline {1.4}Bounded Linear Functionals}{10}{section.1.4}%
-\contentsline {section}{Exercises}{13}{keythms_unnumbered_dummyctr.unnumbered.9}%
-\contentsline {section}{\numberline {1.5}Sequence Spaces}{13}{section.1.5}%
-\contentsline {section}{Exercises}{13}{section.1.5}%
-\contentsline {section}{\numberline {1.6}Consequences of The Baire Category Theorem}{14}{section.1.6}%
-\contentsline {section}{Exercises}{19}{example.1.6.3}%
+\contentsline {section}{\numberline {1.4}Bounded Linear Functionals}{7}{section.1.4}%
+\contentsline {section}{Exercises}{10}{keythms_unnumbered_dummyctr.unnumbered.9}%
+\contentsline {section}{\numberline {1.5}\hspace {1pt}$\ell ^p$ Spaces}{13}{section.1.5}%
+\contentsline {section}{Exercises}{14}{proposition.1.5.1}%
+\contentsline {section}{\numberline {1.6}Consequences of The Baire Category Theorem}{15}{section.1.6}%
+\contentsline {section}{Exercises}{21}{example.1.6.3}%
+\contentsline {section}{\numberline {1.7}Continuous Dual, Adjoint Maps, and Weak Convergence}{22}{section.1.7}%
+\contentsline {section}{Exercises}{22}{proposition.1.7.1}%
+\contentsline {section}{\numberline {1.8}\hspace {1pt}$L^p$ Spaces}{23}{section.1.8}%
+\contentsline {section}{Exercises}{23}{section.1.8}%
+\contentsline {chapter}{\chapternumberline {2}Hilbert Spaces}{24}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Inner Product Spaces}{24}{section.2.1}%
+\contentsline {section}{Exercises}{26}{proposition.2.1.3}%
+\contentsline {section}{\numberline {2.2}Hilbert Spaces}{27}{section.2.2}%
+\contentsline {section}{Exercises}{32}{Item.40}%

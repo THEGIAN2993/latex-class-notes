@@ -1,0 +1,747 @@
+\chapter{Hilbert Spaces}
+\vspace{-25pt}
+\section{Inner Product Spaces}
+
+\begin{definition}
+Let $V$ be a vector space over $\bfF$. An \textit{inner product} is a map:
+    \begin{equation*}
+    \begin{split}
+        (\cdot,\cdot):V \rightarrow \bfF
+    \end{split}
+    \end{equation*}
+satisfying for all $x,y \in V$:
+    \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+        \item $(x,x) \geq 0$ and $(x,x) = 0$ if and only if $x = 0$;
+        \item $(\cdot,\cdot)$ is linear in the first slot.
+        \item $(x,y) = \overline{(y,x)}$.
+    \end{enumerate}
+\end{definition}
+\begin{remark}
+    Note that an inner product over $\bfR$ (resp. $\bfC$) can be defined as a positive-definite and symmetric (resp. Hermitian) bilinear form (resp. sesquilinear form). From (2) and (3) we have:
+            \begin{equation*}
+            \begin{split}
+                (x,\lambda y)
+                & = \overline{(\lambda y, x)} \\
+                & = \overline{\lambda (y,x)} \\
+                & = \overline{\lambda} \h2\overline{(y,x)} \\
+                & = \overline{\lambda} (x,y).
+            \end{split}
+            \end{equation*}
+\end{remark}
+
+\begin{definition}
+    Let $V$ be an inner product space. We say $x,y \in V$ are \textui{orthogonal} and write $x \bot y$ if $(x,y) = 0$. 
+\end{definition}
+
+\begin{example}
+\phantom{a}
+\begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+    \item The space $\bfC^n$ with $(x,y):= \sum_{j = 1}^n x_j \overline{y_j}$ is an inner product space. 
+    \item The space $\ell^2$ with $(x,y) := \sum_{j = 1}^\infty x_j \overline{y_j}$ is an inner product space. Note that the normed induced by the inner product is precisely the familiar $\ell^2$-norm.
+    \item The space $L^2(\Omega)$ with $(f,g):= \int_{\Omega}f(x)\overline{g(x)}dx$ is an inner product space. The norm induced by the inner product is also the familiar $L^2$-norm.
+\end{enumerate}
+\end{example}
+
+\begin{proposition}\label{prop:ips-scaling-factor}
+    Let $X$ be an inner product space and $x,y \in X$, $y \neq 0$. There exists $c \in \bfF$ such that $(x-cy) \bot y$.
+\end{proposition}
+    \begin{proof}
+        By definition $(x-cy) \bot y$ means $(x-cy, y) = 0$. Hence $(x,y) - c(y,y) = 0$. Solving for $c$ gives $c = \frac{(x,y)}{\lnorm y \rnorm^2}$.
+    \end{proof}
+
+\begin{theorem}
+    Let $X$ be an inner product space. Let $x,y \in X$.
+    \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+        \item If $x \bot y$, then $\lnorm x+y \rnorm^2 = \lnorm x \rnorm^2 + \lnorm y \rnorm^2$ (Pythagorean Theorem).
+        \item $|(x,y)| \leq \lnorm x \rnorm \lnorm y \rnorm$ (Cauchy-Schwartz Inequality).
+        \item $\lnorm x+y \rnorm^2 + \lnorm x-y \rnorm^2 = 2 \lnorm x \rnorm^2 + 2 \lnorm y \rnorm^2$ (Parallelogram law).
+    \end{enumerate}
+\end{theorem}
+    \begin{proof}
+        (1) Observe that:
+            \begin{equation*}
+            \begin{split}
+                \lnorm x+y \rnorm^2 
+                & = (x+y,x+y) \\
+                & = (x,x) + (x,y) + (y,x) + (y,y) \\
+                & = (x,x) + (x,y) + \overline{(x,y)} + (y,y) \\
+                & = (x,x) + 2 \Re((x,y)) + (y,y) \\
+                & = (x,x) + (y,y) \\
+                & = \lnorm x \rnorm^2 + \lnorm y \rnorm^2.
+            \end{split}
+            \end{equation*}
+
+        (2) Assume $y \neq 0$. Find $c$ such that $(x-cy) \bot y$. Then:
+            \begin{equation*}
+            \begin{split}
+                \lnorm x \rnorm^2 
+                & = \lnorm (x-cy) + cy \rnorm^2 \\
+                & = \lnorm (x-cy) \rnorm^2 + \lnorm cy \rnorm^2 \\
+                & \geq |c|^2 \lnorm y \rnorm^2.
+            \end{split}
+            \end{equation*}
+        Note that $c = \frac{(x,y)}{\lnorm y \rnorm^2}$ by Proposition~\ref{prop:ips-scaling-factor}. Hence $\lnorm x \rnorm^2 \geq \frac{|(x,y)|^2}{\lnorm y \rnorm^4}\lnorm y \rnorm^2$. Solving for $|(x,y)|$ establishes the inequality.
+
+        (3) Exercise~\ref{exercise:parallelogram-law}.
+    \end{proof}
+
+\begin{proposition}
+    Let $V$ be an inner product space. Define $\lnorm \cdot \rnorm:V \rightarrow \bfF$ by $\lnorm x \rnorm = \sqrt{(x,x)}$. Then $(V,\lnorm \cdot \rnorm)$ is a normed linear space.
+\end{proposition}
+    \begin{proof}
+            Let $v,w \in V$ and $\alpha \in \bfF$. We have that:
+                \begin{equation*}
+                \begin{split}
+                    \lnorm \alpha v \rnorm 
+                    & = \sqrt{(\alpha v , \alpha v )} \\
+                    & = \sqrt{ \alpha \overline{\alpha}( v,v )} \\
+                    & = \sqrt{ |\alpha|^2 ( v,v )}\\
+                    & = |\alpha|\lnorm v \rnorm.
+                \end{split}
+                \end{equation*}
+            Thus $\lnorm \cdot \rnorm$ is homogeneous. By Cauchy-Schwartz:
+                \begin{equation*}
+                \begin{split}
+                    \lnorm v+w \rnorm_2^2
+                    & = \langle v+w,v+w \rangle \\
+                    & = \langle v,v \rangle + \langle v,w \rangle + \langle w,v \rangle + \langle w,w \rangle \\
+                    & = \lnorm v \rnorm_2^2 + \langle v,w \rangle + \overline{\langle v,w \rangle} + \lnorm w \rnorm_2^2 \\
+                    & = \lnorm v \rnorm_2^2 + 2\Re \left( \langle v,w \rangle \right) + \lnorm w \rnorm_2^2 \\
+                    & \leq \lnorm v \rnorm_2^2 + 2|\langle v,w \rangle| + \lnorm w \rnorm_2^2 \\
+                    & \leq \lnorm v \rnorm_2^2 + 2 \lnorm v \rnorm_2 \lnorm w \rnorm_2 + \lnorm w \rnorm_2^2 \\
+                    & = \left( \lnorm v \rnorm_2 + \lnorm w \rnorm_2 \right)^2,
+                \end{split}
+                \end{equation*}
+            Squaring both sides establishes the triangle inequality. For positive-definiteness, suppose $\lnorm v \rnorm = 0$. Then $\sqrt{( v,v )} = 0$, so it must be the case that $v = 0 $.
+        \end{proof}
+
+\begin{definition}
+    Let $X$ be an inner product space and $A \subset X$ a subspace. The \textui{orthogonal} \textui{complement of $A$} is the set $A^\perp := \{x \in X \mid (x,a) = 0 \text{ for all }a \in A\}$.
+\end{definition}
+
+\begin{proposition}
+    If $X$ is an inner product space and $A \subset X$ is a subspace, then $A^\perp$ is closed in $X$.
+\end{proposition}
+    \begin{proof}
+        Define $\varphi_a :X \rightarrow \bfF$ by $x \mapsto (x,a)$. This map is continuous. Then $A^\perp = \bigcap_{a \in A}\varphi_a^{-1}(\{0\})$. Since $\varphi_a$ is continuous, $A^\perp$ is closed.
+    \end{proof}
+
+\section*{\makebox[\linewidth][c]{Exercises}}
+\addcontentsline{toc}{section}{Exercises}
+
+\begin{exercise}\label{exercise:parallelogram-law}
+    Prove the Parallelogram Law in any inner-product space.
+\end{exercise}
+    \begin{proof}
+        Observe that:
+            \begin{equation*}
+            \begin{split}
+                \lnorm x+y \rnorm^2 +\lnorm x-y \rnorm^2
+                & = (x+y,x+y) + (x-y,x-y) \\
+                & = (x,x) + 2\Re((x,y)) + (y,y) + (x,x) - 2\Re((x,y)) + (y,y) \\
+                & = 2(x,x) + 2(y,y) \\
+                & = 2 \lnorm x \rnorm^2 + 2 \lnorm y \rnorm^2. \qedhere
+            \end{split}
+            \end{equation*}
+    \end{proof}
+
+\begin{exercise}
+Let $X$ be an inner-product space over $\bfC$ and fix $y \in X$. Prove that the map $\varphi_y:X \rightarrow \bfC$ defined by $\varphi_y(x) = (x,y)$ is continuous.
+\end{exercise}
+    \begin{proof}
+        Let $x_1,x_2 \in X$. Observe that:
+            \begin{equation*}
+            \begin{split}
+                |\varphi_y(x_1) - \varphi_y(x_2)| 
+                & = |(x_1,y) - (x_2,y)| \\
+                & = |(x_1-x_2,y)| \\
+                & \leq \lnorm x_1 - x_2 \rnorm \lnorm y \rnorm.
+            \end{split}
+            \end{equation*}
+        Since $\varphi_y$ is Lipschitz, $\varphi_y$ is continuous.
+    \end{proof}
+
+\begin{exercise}
+Prove that in an inner-product space $X$, if $\{x_n\}_{n = 1}^\infty \subset X$ is a sequence and $y \in X$ satisfy:
+    \begin{equation*}
+    \begin{split}
+        \lnorm x_n \rnorm \rightarrow \lnorm y \rnorm \text{ and }(x_n,y) \rightarrow \lnorm y \rnorm^2,
+    \end{split}
+    \end{equation*}
+then $x_n \rightarrow y$.
+\end{exercise}
+    \begin{proof}
+        Observe that:
+            \begin{equation*}
+            \begin{split}
+                \lim_{n \rightarrow \infty} \lnorm x_n - y \rnorm^2
+                & = \lim_{n \rightarrow \infty} (x_n - y, x_n - y)\\
+                & = \lim_{n \rightarrow \infty} \Bigl( (x_n,x_n) - (y,x_n) - (x_n,y) + (y,y) \Bigr) \\
+                & = \lim_{n \rightarrow \infty} \Bigl(\lnorm x_n \rnorm^2 - 2\Re((x_n,y)) + \lnorm y \rnorm^2\Bigr) \\
+                & = \lim_{n \rightarrow \infty} \lnorm x_n \rnorm^2 - \lim_{n \rightarrow \infty} 2\Re((x_n,y)) + \lim_{n \rightarrow \infty}\lnorm y \rnorm^2 \\
+                & = \lim_{n \rightarrow \infty} \lnorm x_n \rnorm^2 -  2\Re(\lim_{n \rightarrow \infty}(x_n,y)) + \lim_{n \rightarrow \infty}\lnorm y \rnorm^2 \\
+                & = \lnorm y \rnorm^2 - 2 \lnorm y \rnorm^2 + \lnorm y \rnorm^2 \\
+                & = 0.
+            \end{split}
+            \end{equation*}
+        Since $\lnorm x_n - y \rnorm^2 \rightarrow 0$, it must be the case that $\lnorm x_n - y \rnorm \rightarrow 0$. Thus $x_n \rightarrow y$.
+    \end{proof}
+
+\section{Hilbert Spaces}
+
+\begin{definition}
+    An inner product space which is complete is called a \textui{Hilbert space}.
+\end{definition}
+\begin{remark}
+    It is standard to assume that the base field of a Hilbert space is $\bfC$.
+\end{remark}
+
+\begin{theorem}\label{thm:hs-closest-element}
+    Let $\cH$ be a Hilbert space and $K \subset \cH$ a nonempty subset which is convex and closed. For any $x \in \cH$, there exists a unique $y \in K$ which is closed to $x$.
+\end{theorem}
+    \begin{proof}
+        Let $x \in X$. Let $\alpha := \dist(x,K)$. Find a sequence $\{y_n\}_{n = 1}^\infty \subset K$ such that $\lnorm x - y_n \rnorm \rightarrow \alpha$ as $n \rightarrow \infty$. For any $n,m \in \bfN$:
+            \begin{equation*}
+            \begin{split}
+                \lnorm y_n  - y_m\rnorm^2 
+                & = \lnorm (y_n - x) + (x-y_m) \rnorm^2 \\
+                & = 2 \lnorm y_n - x \rnorm^2 + 2 \lnorm x - y_m \rnorm^2 - \lnorm y_n + y_m - 2x \rnorm^2 \h9\text{\tiny Parallelogram Law} \\
+                & = 2 \lnorm y_n - x \rnorm^2 + 2 \lnorm x - y_m \rnorm^2 - 4\lnorm \frac{y_n + y_m}{2} - x \rnorm^2 \h9\text{\tiny See footnote\footnotemark}\\
+                & \leq 2 \lnorm y_n - x \rnorm^2 + 2 \lnorm y_m - x \rnorm^2 - 4 \alpha^2.
+            \end{split}
+            \end{equation*}
+        \footnotetext[1]{Note $\frac{y_n + y_m}{2} \in K$ because $K$ is convex.} Since $\lnorm x - y_n\rnorm \rightarrow \alpha^2$ and $\lnorm x - y_m \rnorm \rightarrow \alpha^2$, note that $\lnorm y_n - y_m \rnorm^2$ can be made arbitrary small. Hence $\{y_n\}_{n = 1}^\infty$ is Cauchy.  Since $K$ is a closed subset of a Hilbert space, it is complete. Hence there exists some $y \in K$ such that $y_n \rightarrow y$. Finally:
+            \begin{equation*}
+            \begin{split}
+                \lnorm x-y \rnorm
+                & = \lnorm x - \lim_{n \rightarrow \infty}y_n \rnorm \\
+                & = \lim_{n \rightarrow \infty}\lnorm x - y_n \rnorm \\
+                & = \alpha.
+            \end{split}
+            \end{equation*}
+        Now if $y'$ is any other element in $K$ with $\lnorm y' - x \rnorm = \alpha$, by our previous calculation:
+            \begin{equation*}
+            \begin{split}
+                \lnorm y - y' \rnorm^2 
+                & = 2 \lnorm y - x \rnorm^2 + 2 \lnorm y' - x \rnorm^2 - \lnorm y + y' - 2x \rnorm^2 \\
+                & \leq 2\alpha^2 + 2\alpha^2 - 4\alpha^2 \\
+                & = 0.
+            \end{split}
+            \end{equation*}
+            Thus $y = y'$.
+    \end{proof}
+
+\begin{theorem}
+    Let $\cH$ be a Hilbert space. Let $Z \subset H$ be a closed subspace. Then $\cH = Z \oplus Z^\perp$.
+\end{theorem}
+    \begin{proof}
+        If $z \in Z \cap Z^\perp$, then $z \bot z$; i.e., $(z,z) = 0$. Therefore $z = 0$.
+
+        Now let $x \in \cH$. By Theorem~\ref{thm:hs-closest-element}, let $z \in Z$ be the unique element closet to $x$. We show that $x - z \in Z^\perp$. Let $z' \in Z$ be nonzero. By Proposition~\ref{prop:ips-scaling-factor}, choose $\lambda \in \bfC$ such that $\lambda z' \bot (x-z) - \lambda z'$. Write:
+            \begin{equation*}
+            \begin{split}
+                x - z = \lambda z' + (x-z) - \lambda z'.
+            \end{split}
+            \end{equation*}
+        Then the Pythagorean Theorem gives:
+            \begin{equation*}
+            \begin{split}
+                \lnorm x-z \rnorm^2 
+                & = \lnorm \lambda z' \rnorm^2 + \lnorm x-(z+ \lambda z') \rnorm^2 \\
+                & \geq \lnorm \lambda z' \rnorm^2 + \lnorm x-z \rnorm^2.
+            \end{split}
+            \end{equation*}
+        Note that the inequality is a result from the fact that $z$ is the closest element in $Z$ to $x$. Subtracting $\lnorm x-z \rnorm^2$ from both sides yields:
+            \begin{equation*}
+            \begin{split}
+                0 \geq \lnorm \lambda z' \rnorm^2
+            \end{split}
+            \end{equation*}
+        Because $z' \neq 0$, this forces $\lambda = 0$. Since $\lambda = \frac{(x-z,z')}{\lnorm z' \rnorm^2}$, we obtain $(x-z,z') = 0$. As $z' \in Z$ was arbitrary, $x-z \in Z^\perp$. Consequently, $x = z + (x-z) \in Z + Z^\perp$, establishing $x \in Z \oplus Z^\perp$.
+    \end{proof}
+
+\begin{definition}
+    Let $X$ be an inner product space. Let $\cU := \{u_\alpha \mid \alpha \in I\} \subset X$. We say $\cU$ is \textui{orthogonal} if for all $\alpha \neq \beta$, we have $(u_\alpha, u_\beta) = 0$. We say $\cU$ is \textui{orthonormal} if for all $\alpha,\beta \in I$, we have:
+        \begin{equation*}
+        \begin{split}
+            (u_\alpha,u_\beta)=
+            \begin{cases}
+            1, & \alpha = \beta \\
+            0, & \alpha \neq \beta.
+            \end{cases}
+        \end{split}
+        \end{equation*}
+\end{definition}
+
+\begin{theorem}
+    Let $X$ be a nonzero inner product space. There exists a maximal orthonormal set by inclusion
+\end{theorem}
+    \begin{proof}
+        Order all possible orthonormal sets by inclusion. Show that every chain admits an upper bound. Then apply \nameref{lemma:zorns}.
+    \end{proof}
+
+\begin{theorem}
+    Let $X$ be a separable inner product space. Then any orthonormal subset is at most countable.
+\end{theorem}
+    \begin{proof}
+        Let $\{a_j\}_{j = 1}^\infty$ be a countable dense subset of $X$. Suppose towards contradiction $\cU:= \{u_\alpha \mid \alpha \in I\}$ is an uncountable orthonormal set in $X$. Pick $\alpha,\beta \in I$ such that $\alpha \neq \beta$. Then:
+            \begin{equation*}
+            \begin{split}
+                \lnorm u_\alpha - u_\beta \rnorm^2 
+                & = \lnorm u_\alpha \rnorm^2 + \lnorm u_\beta \rnorm^2 \\
+                & = 2.
+            \end{split}
+            \end{equation*}
+        Therefore, any two elements of $\cU$ are $\sqrt{2}$ apart. Now for all $\alpha \in I$, consider the open balls $B(u_\alpha, \frac{\sqrt{2}}{2})$. Since each open ball has diameter less than $\sqrt{2}$, each ball can contain at most one element of $\{a_j\}_{j = 1}^\infty$. Moreover, the collection $\{B(u_\alpha, \frac{\sqrt{2}}{2}) \mid \alpha \in I\}$ is disjoint. Indeed, if $y \in B(u_\alpha, \frac{\sqrt{2}}{2}) \cap B(u_\beta, \frac{\sqrt{2}}{2})$, then $\lnorm u_\alpha - u_\beta \rnorm \leq \lnorm u_\alpha - y \rnorm + \lnorm y - u_\beta \rnorm< \sqrt{2}$, which is a contradiction. Since $\{a_j\}_{j = 1}^\infty$ is a dense subset, each $a_j$ must be contained in a ball. We can define a surjection from $\{a_j\}_{j = 1}^\infty$ to $\{B(u_\alpha, \frac{\sqrt{2}}{2}) \mid \alpha \in I\}$. But since $\{B(u_\alpha, \frac{\sqrt{2}}{2}) \mid \alpha \in I\}$ is indexed by an uncountable set, it must be the case that $\{a_j\}_{j = 1}^\infty$ is uncountable. This is a contradiction, whence any orthonormal subset must be at most countable.
+    \end{proof}
+
+\begin{theorem}
+    Let $X$ be an inner product space. Let $Y \subset X$ be a subspace with $\dim Y = n$.
+    \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+        \item $Y$ has an orthonormal basis $\{u_1,...,u_n\}$;
+        \item For each $y \in Y$, we can write $y = \sum_{j = 1}^n (y,u_j)u_j$. Moreover, $\lnorm y \rnorm^2 = \sum_{j = 1}^n |(y,u_j)|^2$.
+        \item There is an isometric isomorphism $Y \rightarrow \bfC^n$.
+        \item For any $x \in X$, we have $x- \sum_{j = 1}^n (x,u_j)u_j \perp Y$. Moreover, $\sum_{j = 1}^n (x,u_j)u_j$ is the unique element in $Y$ closest to $x$,
+    \end{enumerate}
+\end{theorem}
+    \begin{proof}
+        (1) Apply the Gram-Schmidt process to a basis of $Y$.
+
+        (2) Let $y \in Y$. We can uniquely write $y = \sum_{j = 1}^n a_j u_j$ for some $a_1,...,a_n \in \bfC$. Then $(y,u_j) = \left( \sum_{k = 1}^n a_k u_k,u_j \right) = \sum_{j = 1}^n a_k(u_k,u_j) = a_j$. Hence $y = \sum_{j = 1}^n (y,u_j)u_j$.
+        
+        (3) For any $y \in Y$, we can write $y = \sum_{j = 1}^n a_j u_j$. Then $Y \rightarrow \bfC^n$ given by $y \mapsto (a_1,...,a_n)$ is linear, bijective, and norm preserving.
+
+        (4) Let $x \in X$. Define $a_j := (x,u_j)$ for each $j=1,...,n$. For each $k = 1,...,n$:
+            \begin{equation*}
+            \begin{split}
+                \left( x - \sum_{j = 1}^n a_j u_j , u_k\right)
+                & = (x,u_k) - \left( \sum_{j = 1}^n a_j u_j, u_k \right) \\
+                & = (x,u_k) - \sum_{j = 1}^n a_j(u_j,u_k) \\
+                & = (x,u_k) - a_k \\
+                & = (x,u_k) - (x,u_k) \\
+                & = 0.
+            \end{split}
+            \end{equation*}
+        Since any $y \in Y$ can be uniquely written as a linear combination of $u_1,...,u_n$, the above string of equalities implies $x- \sum_{j = 1}^n (x,u_j)u_j \perp Y$. Now let $\sum_{j = 1}^n b_j u_j$ be any element in $Y$. Then:
+            \begin{equation*}
+            \begin{split}
+                \lnorm x - \sum_{j = 1}^n b_j u_j \rnorm^2
+                & = \lnorm x - \sum_{j = 1}^n a_j u_j + \sum_{j = 1}^n (a_j - b_j)u_j \rnorm^2 \\
+                & = \lnorm x - \sum_{j = 1}^n a_j u_j \rnorm^2 + \lnorm \sum_{j = 1}^n (a_j - b_j)u_j \rnorm^2 \\
+                & = \lnorm x - \sum_{j = 1}^n a_j u_j \rnorm^2 + \sum_{j = 1}^n |a_j - b_j|^2 \\
+                & \geq \lnorm x - \sum_{j = 1}^n a_j u_j \rnorm^2,
+            \end{split}
+            \end{equation*}
+        where we used the fact that $x- \sum_{j = 1}^n a_j u_j \perp \sum_{j = 1}^n (a_j-b_j)u_j$. This establishes that $\sum_{j = 1}^n a_j u_j$ is the unique element in $Y$ closest to $x$, where we have equality only when $a_j = b_j$ for all $j = 1,...,n$.
+    \end{proof}
+
+\begin{theorem}
+    Let $\cH$ be a Hilbert space. Let $\{x_j\}_{j = 1}^\infty$ be an orthogonal sequence in $\cH$. Then $\sum_{j = 1}^\infty x_j$ converges in $\cH$ if and only if $\sum_{j = 1}^\infty \lnorm x_j \rnorm^2 < \infty$. 
+\end{theorem}
+    \begin{proof}
+        Define:
+            \begin{equation*}
+            \begin{split}
+                z_n &:= \sum_{j = 1}^n x_j, \\
+                s_n &:= \sum_{j = 1}^n \lnorm x_j \rnorm^2.
+            \end{split}
+            \end{equation*}
+        Now $\sum_{j = 1}^\infty x_j$ converges if and only if $\{z_n\}_{n = 1}^\infty$ is Cauchy. For $n > m$:
+            \begin{equation*}
+            \begin{split}
+                \lnorm z_n - z_m \rnorm^2 
+                & = \lnorm \sum_{j = m+1}^n x_j \rnorm^2 \\
+                & = \sum_{j = m+1}^n \lnorm x_j \rnorm^2 \\
+                & = |s_n - s_m|.
+            \end{split}
+            \end{equation*}
+        From this, $\{z_n\}_{n = 1}^\infty$ is Cauchy in $\cH$ if and only if $\{s_n\}_{n = 1}^\infty$ is Cauchy in $\bfC$.
+    \end{proof}
+
+\begin{theorem}[Bessel's Inequality]\label{thm:bessels-ineq}
+    Let $X$ be an inner-product space. Let $\{u_j\}_{j =1}^\infty$ be an orthonormal sequence in $X$. For all $x \in X$, we have $\sum_{j = 1}^\infty |(x,u_j)|^2 \leq \lnorm x \rnorm^2$.
+\end{theorem}
+    \begin{proof}
+        For each $n \in \bfN$, define $Y_n := \Span \{u_1,...,u_n\}$. Let $P_{Y_n}$ denote the projection onto $Y_n$. Then:
+            \begin{equation*}
+            \begin{split}
+                \sum_{j = 1}^n |(x,u_j)|^2
+                & = \sum_{j = 1}^n \lnorm (x,u_j) u_j \rnorm^2 \\
+                & = \lnorm \sum_{j = 1}^n (x,u_j)u_j \rnorm^2 \\
+                & = \lnorm P_{Y_n}(x) \rnorm^2 \\
+                & \leq \lnorm P_{Y_n} \rnorm^2 \lnorm x \rnorm^2 \\
+                & = \lnorm x \rnorm^2.
+            \end{split}
+            \end{equation*}
+        Note that $\lnorm P_{Y_n} \rnorm = 1$ is established in Exercise~\ref{exercise:projection-norm-eq-1}. Since $n$ was arbitrary, by the Monotone Convergence Theorem $\sum_{j = 1}^\infty |(x,u_j)|^2 \leq \lnorm x \rnorm^2$.
+    \end{proof}
+
+\begin{theorem}\label{thm:hilbert-basis}
+    Let $\cH$ be a Hilbert space. Let $\{u_j\}_{j = 1}^\infty$ be an orthonormal sequence in $H$. The following are equivalent:
+        \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+            \item $\{u_j\}_{j = 1}^\infty$ is a maximal orthonormal set;
+            \item For all $x \in \cH$, if $x \perp \{u_j\}_{j = 1}^\infty$, then $x = 0$;
+            \item For all $x \in \cH$, there exists a unique sequence $\{a_j\}_{j = 1}^\infty$ such that $x = \sum_{j = 1}^\infty a_j u_j$.
+        \end{enumerate}
+\end{theorem}
+    \begin{proof}
+        We will only show (2) if and only if (3), as (1) if and only if (2) follows immediately by applying definitions.
+
+        Suppose for all $x \in \cH$ we have $x \perp \{u_j\}_{j = 1}^\infty$ implies $x = 0$. Let $x \in \cH$. Claim: $x - \sum_{j = 1}^\infty (x,u_j)u_j \perp \{u_j\}_{j = 1}^\infty$. Indeed, for any $u_k \in \{u_j\}_{j = 1}^\infty$:
+            \begin{equation*}
+            \begin{split}
+                \left( x - \sum_{j = 1}^\infty (x,u_j)u_j , u_k \right)
+                & = \lim_{n \rightarrow \infty} \left( x - \sum_{j = 1}^n (x,u_j)u_j, u_k \right) \\
+                & = \lim_{n \rightarrow \infty}\biggl( (x,u_k) - \sum_{j = 1}^n\bigl( (x,u_j)u_j,u_k \bigr) \biggr) \\
+                & = \lim_{n \rightarrow \infty}\bigl( (x,u_k) - (x,u_k)\bigr) \\
+                & = 0.
+            \end{split}
+            \end{equation*}
+        Hence $x - \sum_{j = 1}^\infty (x,u_j)u_j = 0$, and rearranging gives $x = \sum_{j = 1}^\infty (x,u_j)u_j$. Now suppose there exists a sequence $\{b_n\}_{n = 1}^\infty$ such that $x = \sum_{j = 1}^\infty b_j u_j$. Then $0 = \sum_{j = 1}^\infty \bigl((x,u_j) - b_j\bigr)u_j$, which by \nameref{thm:bessels-ineq} results in $\sum_{j = 1}^\infty |(x,u_j) - b_j|^2 \leq 0$. It must be the case that $(x,u_j) = b_j$ for all $j \in \bfN$, establishing uniqueness.
+
+        Let $x \in X$ and suppose $x \perp \{u_j\}_{j = 1}^\infty$. Write $x = \sum_{j = 1}^\infty (x,u_j)u_j$. Then for all $k \in \bfN$:
+            \begin{equation*}
+            \begin{split}
+                (x,u_k)
+                & = \left( \sum_{j = 1}^\infty (x,u_j)u_j , u_k \right) \\
+                & = 0.
+            \end{split}
+            \end{equation*}
+        Thus $x = 0$.
+    \end{proof}
+
+\begin{definition}
+    Let $\cH$ be a Hilbert space and $\{u_j\}_{j = 1}^\infty$ an orthonormal sequence in $\cH$. If any of the three equivalent statements in Theorem~\ref{thm:hilbert-basis} hold true, we say $\{u_j\}_{j = 1}^\infty$ is a \textui{orthonormal basis} (or \textui{Hilbert basis}).
+\end{definition}
+
+\begin{definition}
+    Let $\cH$ be a Hilbert space and $\{u_j\}_{j = 1}^\infty$ an orthonormal basis. Let $x \in \cH$.
+    \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+        \item The sequence $\{(x,u_j)\}_{j = 1}^\infty$ is referred to as the \textui{generalized Fourier coefficients of $x$}.
+        \item The series $\sum_{j = 1}^\infty (x,u_j)u_j$ is called the \textui{generalized Fourier series of $x$}.
+    \end{enumerate}
+\end{definition}
+
+\section*{\makebox[\linewidth][c]{Exercises}}
+\addcontentsline{toc}{section}{Exercises}
+
+\begin{exercise}
+Let $H = L^2([0,1])$. Use the Gram-Schmidt orthogonalization process from linear algebra to produce an orthonormal set $\{u_1,u_2,u_3\}$ which spans the same space as $\Span\{1,x,x^2\}$.
+\end{exercise}
+\begin{proof}
+    Let $v_1 := 1$, $v_2 := x$, and $v_3 := x^2$. The Gram-Schmidt process gives:
+        \begin{equation*}
+        \begin{split}
+            r_1 &= v_1 = 1, \\
+            \lnorm r_1 \rnorm &= \sqrt{(r_1,r_1)} = 1.
+        \end{split}
+        \end{equation*}
+
+        \begin{equation*}
+        \begin{split}
+            r_2 &= v_2 - \frac{(v_2,r_1)}{(r_1,r_1)} r_1  = x - \frac{1}{2}. \\
+            \lnorm r_2 \rnorm &= \sqrt{(r_2,r_2)} = \sqrt{\int_0^1 \left(x-\frac12\right)^2 dx} = \frac{1}{\sqrt{12}}
+        \end{split}
+        \end{equation*}
+
+        \begin{equation*}
+        \begin{split}
+            r_3 &= v_3 - \frac{(v_3,r_1)}{(r_1,r_1)} r_1 - \frac{(v_3,r_2)}{(r_2,r_2)} r_2 = x^2 - x + \frac{1}{6}, \\
+            \lnorm r_3 \rnorm & = \sqrt{(r_3,r_3)} = \sqrt{\int_0^1 \left(x^2-x+\frac16\right)^2 dx} = \frac{1}{\sqrt{180}}.
+        \end{split}
+        \end{equation*}
+
+        Thus an orthonormal basis for $\Span\{1,x,x^2\}$ is:
+            \begin{equation*}
+            \begin{split}
+                u_1 &:= \frac{r_1}{\lnorm r_1 \rnorm} = 1 \\
+                u_2 &:= \frac{r_2}{\lnorm r_2 \rnorm} = \sqrt{12}\left(x-\frac{1}{2}\right) \\
+                u_3 &:= \frac{r_3}{\lnorm r_3 \rnorm} = \sqrt{180} \left( x^2 - x + \frac{1}{6} \right). \qedhere
+            \end{split}
+            \end{equation*}
+    \end{proof}
+
+\newpage
+\begin{exercise}
+Show directly that the functions:
+    \begin{equation*}
+    \begin{split}
+        u_n(x) = e^{i2\pi n x}\text{, }n \in \bfZ
+    \end{split}
+    \end{equation*}
+form an orthonormal sequence in $L^1([0,1])$. Then write the function $f(x) = x$ in terms of this basis, that is find $a_n$ such that:
+    \begin{equation*}
+    \begin{split}
+        x \sim \sum_{n = -\infty}^\infty a_n u_n(x).
+    \end{split}
+    \end{equation*}
+What does Parseval's identity say in this case? (After some algebra you should be able to use your summation to find a formula for $\sum_{n = 1}^\infty \frac{1}{n^2}$.)
+\end{exercise}
+    \begin{proof}
+        Observe that:
+            \begin{equation*}
+            \begin{split}
+                \int_{0}^{1} e^{i 2 \pi n x}e^{-i 2 \pi n x}dx 
+                & = \int_{0}^{1} 1 dx = 1. \\
+                &\phantom{a} \\
+                \int_{0}^{1} e^{i 2 \pi n x}e^{-i 2 \pi m x}dx
+                & = \int_{0}^{1} e^{i 2 \pi (n-m)x}dx \\
+                & = \frac{e^{i 2 \pi (n-m)x}}{i 2 \pi (n-m)}\Bigg|_0^1 \\
+                & = \frac{e^{i 2 \pi (n-m)} - 1}{i 2 \pi (n-m)} \\
+                & = \frac{\cos\bigl(2\pi(n-m)\bigr) - i\sin\bigl(2 \pi (n-m)\bigr) - 1}{i 2 \pi (n-m)} \\
+                & = \frac{1 - 0 - 1}{i 2 \pi (n-m)} \\
+                & = 0.
+            \end{split}
+            \end{equation*}
+        Thus $\{u_n\}_{n = 1}^\infty$ is an orthonormal sequence in $L^1([0,1])$. We proceed by cases on computing the Fourier coefficients of $x$. For $n = 0$:
+            \begin{equation*}
+            \begin{split}
+                a_0 = \int_0^1 x dx = \frac{1}{2}.
+            \end{split}
+            \end{equation*}
+        For $n \neq 0$:
+            \begin{equation*}
+            \begin{split}
+                a_n 
+                & = (x,u_n) \\
+                & = \int_0^1 x e^{-i 2 \pi n x}dx \\
+                & = -\frac{e^{i 2 \pi n}(e^{i 2 \pi n} - i 2 \pi n - 1)}{4 n^2 \pi ^2} \h9\h9\text{\tiny From Mathematica} \\
+                & = \frac{i}{2n \pi}. \h9\h9\text{\tiny Also from Mathematica}
+            \end{split}
+            \end{equation*}
+        Using Parseval's Identity:
+            \begin{equation*}
+            \begin{split}
+                \frac{1}{3}
+                & = \int_0^1 x^2 dx \\
+                & = \lnorm x \rnorm^2 \\
+                & = \sum_{n = -\infty}^\infty |a_n|^2 \\
+                & =|a_0|^2 + 2 \sum_{n = 1}^\infty |a_n|^2 \\
+                & = \frac{1}{4} + 2 \sum_{n = 1}^\infty \left| \frac{i}{2 \pi n} \right|^2 \\
+                & = \frac{1}{4} + \frac{1}{2\pi^2}\sum_{n = 1}^\infty \frac{1}{n^2}.
+            \end{split}
+            \end{equation*}
+        Solving for $\sum_{n = 1}^\infty \frac{1}{n^2}$ gives:
+            \begin{equation*}
+            \begin{split}
+                \sum_{n = 1}^\infty \frac{1}{n^2}
+                & = 2\pi^2 \left( \frac{1}{3} - \frac{1}{4} \right) \\
+                & = \frac{2\pi^2}{12} \\
+                & = \frac{\pi^2}{6}. \qedhere
+            \end{split}
+            \end{equation*}
+    \end{proof}
+
+\begin{exercise}
+Show directly that the functions:
+    \begin{equation*}
+    \begin{split}
+        1, \cos x, \sin x, \cos 2x, \sin 2x, \cos 3x, ...
+    \end{split}
+    \end{equation*}
+are mutually orthogonal in $L^2([-\pi,\pi])$.
+\end{exercise}
+\begin{proof}
+    For $n,m \neq 0$:
+        \begin{equation*}
+        \begin{split}
+            &\int_{-\pi}^{\pi}\cos (nx) dx = \frac{1}{n}\sin(nx)\h2\Bigg|_{-\pi}^{\pi} = \frac{1}{n}\sin(n \pi) - \frac{1}{n}\sin(-n\pi) = \frac{2}{n}\sin(n \pi) = 0,\\
+            &\int_{-\pi}^{\pi}\sin (nx) dx = -\frac{1}{n}\cos(nx) \h2\Bigg|_{-\pi}^{\pi} = -\frac{1}{n}\cos(nx) + \frac{1}{n}\cos(-n\pi) = 0,\\
+            &\int_{-\pi}^{\pi}\cos (nx) \cos (mx) dx = \int_{-\pi}^\pi \frac{\cos((n+m)x) + \cos((n-m)x)}{2}dx = 0,\\
+            &\int_{-\pi}^{\pi}\sin (nx) \sin (mx) dx = \int_{-\pi}^\pi \frac{\cos((n-m)x) - \cos((n+m)x)}{2}dx = 0,\\
+            &\int_{-\pi}^{\pi}\cos (nx) \sin (mx) dx= \int_{-\pi}^\pi \frac{\sin((n+m)x) + \sin((n - m)x)}{2}dx = 0. \qedhere
+        \end{split}
+        \end{equation*}
+\end{proof}
+
+\begin{exercise}
+Let $\{u_n\}_{n = 1}^\infty$ be an orthonormal basis for a Hilbert space $H$. Let $\{v_n\}_{n = 1}^\infty$ be an orthonormal seq which satisfies $\sum_{n = 1}^\infty \lnorm u_n - v_n \rnorm^2 < 1$. Show that $\{v_n\}_{n = 1}^\infty$ is also a Hilbert basis for $H$.
+\end{exercise}
+    \begin{proof}
+    Let $x \in \cH$. Suppose $x \perp \{v_j\}_{j = 1}^\infty$. By Parseval's Identity:
+        \begin{equation*}
+        \begin{split}
+            \lnorm x \rnorm^2 
+            & = \sum_{j = 1}^\infty |(x,u_n)|^2 \\
+            & = \sum_{j = 1}^\infty |(x,u_n) - (x,v_n)|^2 \\
+            & = \sum_{j = 1}^\infty |(x,u_n - v_n)|^2 \\
+            & \leq \sum_{j = 1}^\infty \lnorm x \rnorm^2 \lnorm u_n - v_n \rnorm^2.
+        \end{split}
+        \end{equation*}
+    Suppose towards contradiction $x \neq 0$. We can divide both sides of the above equation by $\lnorm x \rnorm^2$, giving:
+        \begin{equation*}
+        \begin{split}
+            1 \leq \sum_{j = 1}^\infty \lnorm u_n - v_n \rnorm^2 < 1.
+        \end{split}
+        \end{equation*}
+    This is a contradiction, hence $x = 0$. Since we've shown $x \perp \{v_j\}_{j = 1}^\infty$ implies $x = 0$, we've established $\{v_j\}_{j = 1}^\infty$ as an orthonormal basis for $\cH$.
+    \end{proof}
+
+\begin{exercise}\label{exercise:projection-norm-eq-1}
+Let $H$ be a Hilbert space and $Y \neq \{0\}$ be a closed subspace, and let $P$ denote orthogonal projection onto $Y$. Show that:
+    \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+        \item $P$ is linear;
+        \item $P$ is bounded and $\lnorm P \rnorm = 1$;
+        \item For all $x \in H$ we have $(Px,x) = \lnorm Px \rnorm^2$;
+        \item $I - P$ is orthogonal projection onto $Y^\perp$.
+    \end{enumerate}
+\end{exercise}
+\begin{proof}
+    (a) For any $x_1,x_2 \in H$ and $\alpha \in \bfC$ we have:
+        \begin{equation*}
+        \begin{split}
+            P(x_1 + \alpha x_2) 
+            & = P(y_1 + y_1^\perp + \alpha y_2 + \alpha y_2^\perp) \\
+            & = P(y_1 + \alpha y_2 + (y_1 + \alpha y_2)^\perp) \\
+            & = y_1 + \alpha y_2 \\
+            & = P(x_1) + \alpha P(x_2).
+        \end{split}
+        \end{equation*}
+    Thus $T$ is linear.
+    
+    (b) Let $x \in H$. Observe that:
+            \begin{equation*}
+            \begin{split}
+                \lnorm Px \rnorm^2 
+                & = \lnorm y \rnorm^2 \\
+                & \leq \lnorm y \rnorm^2 + \lnorm y^\perp \rnorm^2 \\
+                & = \lnorm y + y^\perp \rnorm^2 \\
+                & = \lnorm x \rnorm^2.
+            \end{split}
+            \end{equation*}
+        Squaring both sides gives $\lnorm Px \rnorm \leq \lnorm x \rnorm$. Diving by $\lnorm x \rnorm$ on both sides of this inequality and taking the supremum over all $x \in H$, $x \neq 0$ gives $\lnorm P \rnorm_{\cL(H,Y)} \leq 1$. Now let $y \in B_Y(0,1)$. Then:
+            \begin{equation*}
+            \begin{split}
+                \lnorm Py \rnorm = \lnorm y \rnorm = 1.
+            \end{split}
+            \end{equation*}
+        Hence $1 \in \{\lnorm Px \rnorm \mid x \in B_H(0,1)\}$. It must be the case that $1 \leq \lnorm P \rnorm_{\cL(H,Y)}$. Therefore $\lnorm P \rnorm_{\cL(H,Y)} = 1$.
+
+        (c) We will first show that $P$ is self-adjoint and idempotent. Let $x_1,x_2 \in H$. We have:
+            \begin{equation*}
+            \begin{split}
+                (Px_1,x_2)
+                & = (y,y_2 + y_2^\perp) \\
+                & = (y_1,y_2) + (y_1,y_2^\perp) \\
+                & = (y_1,y_2). 
+            \end{split}
+            \end{equation*}
+            \begin{equation*}
+            \begin{split}
+                (x_1,Px_2)
+                & = (y_1 + y_1^\perp , y_2) \\
+                & = (y_1,y_2) + (y_1^\perp, y_2) \\
+                & = (y_1,y_2).
+            \end{split}
+            \end{equation*}
+        Therefore $P^\ast = P$; i.e., $P$ is self-adjoint. Now for any $x \in H$, notice that:
+            \begin{equation*}
+            \begin{split}
+                P(P(x))
+                & = P(y) \\
+                & = y \\
+                & = P(x).
+            \end{split}
+            \end{equation*}
+        Thus $P^2 = P$. Using these two facts:
+            \begin{equation*}
+            \begin{split}
+                \lnorm Px \rnorm^2 
+                & = (Px,Px) \\
+                & = (P^\ast P x, x) \\
+                & = (P^2x,x) \\
+                & = (Px,x). \qedhere
+            \end{split}
+            \end{equation*}
+
+        (d) For any $x \in H$:
+            \begin{equation*}
+            \begin{split}
+                (I - P)(x) 
+                & = Ix - Px \\
+                & = y+y^\perp - P(y + y^\perp) \\
+                & = y+y^\perp - y \\
+                & = y^\perp
+            \end{split}
+            \end{equation*}
+\end{proof}
+
+\begin{exercise}
+Let $H$ be a Hilbert Space with orthonormal basis $\{u_n\}_{n = 1}^\infty$. We try to define a map:
+    \begin{equation*}
+    \begin{split}
+        T:H \rightarrow H \text{ by }Tx = \sum_{n = 1}^\infty \lambda_n (x,u_n)u_n
+    \end{split}
+    \end{equation*}
+for a sequence $(\lambda_n) \subset \bfC$. First show that this map is a bounded linear operator if and only if $(\lambda_n)$ is a bounded sequence. Then, under what condition is $T$ self-adjoint?
+\end{exercise}
+\begin{proof}
+    Suppose $T \in \cL(H)$. Then:
+        \begin{equation*}
+        \begin{split}
+            |\lambda_n| 
+            & = |\lambda_n| \lnorm u_n \rnorm \\
+            & = \lnorm \lambda_n u_n \rnorm \\
+            & = \lnorm T u_n \rnorm \\
+            & \leq \lnorm T \rnorm \lnorm u_n \rnorm \\
+            & = \lnorm T \rnorm.
+        \end{split}
+        \end{equation*}
+    Taking the supremum over all $n \in \bfN$ gives $\sup_{n \in \bfN}|\lambda_n| \leq \lnorm T \rnorm_{\cL(H)} < \infty$. Therefore $(\lambda_n)$ is bounded. Conversely, suppose $\sup_{n \in \bfN}|\lambda_n| := M \leq \infty$. We must first show that $T$ is linear. Let $x,y \in H$ and $\alpha \in \bfC$. Define $a_n := (x,u_n)$ and $b_n := (y,u_n)$. We can write:
+        \begin{equation*}
+        \begin{split}
+            x + \alpha y 
+            & = \sum_{n = 1}^\infty a_n u_n + \alpha \sum_{n = 1}^\infty b_n u_n \\
+            & = \sum_{n = 1}^\infty (a_n + \alpha b_n)u_n.
+        \end{split}
+        \end{equation*}
+    Applying $T$ to $x+\alpha y$ gives:
+        \begin{equation*}
+        \begin{split}
+            T(x+\alpha y) 
+            & = \sum_{n = 1}^\infty \lambda_n (a_n + \alpha b_n)u_n \\
+            & = \sum_{n = 1}^\infty \lambda_n a_n u_n + \alpha \sum_{n = 1}^\infty \lambda_n b_n u _n \\
+            & = Tx + \alpha Ty.
+        \end{split}
+        \end{equation*}
+    Thus $T$ is linear. Now let $x \in X$ and again define $a_n := (x,u_n)$. By Parseval's identity:
+        \begin{equation*}
+        \begin{split}
+            \lnorm Tx \rnorm^2 
+            & = \sum_{n = 1}^\infty \left|  \left( Tx, u_n \right) \right|^2 \\
+            & = \sum_{n = 1}^\infty \left|  \left( \sum_{j = 1}^\infty \lambda_j a_n u_j, u_n \right) \right|^2 \\
+            & = \sum_{n = 1}^\infty \left| \sum_{j = 1}^\infty \left( \lambda_j a_j u_j , u_n \right) \right|^2 \\
+            & = \sum_{n = 1}^\infty \left| \lambda_n a_n \right|^2 \\
+            & \leq \sum_{n = 1}^\infty |M|^2 |a_n|^2 \\
+            & = |M|^2 \sum_{n = 1}^\infty |a_n|^2 \\
+            & = |M|^2 \lnorm x \rnorm^2.
+        \end{split}
+        \end{equation*}
+    Rearranging and taking the square-root of both sides yields:
+        \begin{equation*}
+        \begin{split}
+            \frac{\lnorm Tx \rnorm}{\lnorm x \rnorm} \leq |M|.
+        \end{split}
+        \end{equation*}
+    Taking the supremum over all $x \in X$, $x \neq 0$ gives $\lnorm T \rnorm_{\cL(H)} \leq |M| < \infty$. Thus $T \in \cL(H)$.
+
+    Let $x,y \in H$. Observe that:
+        \begin{equation*}
+        \begin{split}
+            \left( Tx, y \right)
+            & = \left( \sum_{n = 1}^\infty \lambda_n (x,u_n)u_n, y \right) \\
+            & = \sum_{n = 1}^\infty \bigl(\lambda_n (x,u_n)u_n,y\bigr) \\
+            & = \sum_{n = 1}^\infty \lambda_n (x,u_n)(u_n,y).
+        \end{split}
+        \end{equation*}
+        \begin{equation*}
+        \begin{split}
+            (x,Ty)
+            & = \left( x,\sum_{n = 1}^\infty \lambda_n (y,u_n)u_n \right) \\
+            & = \sum_{n = 1}^\infty \bigl(x, \lambda_n (y,u_n)u_n\bigr) \\
+            & = \sum_{n = 1}^\infty \overline{\lambda_n (y,u_n)}(x,u_n) \\
+            & = \sum_{n = 1}^\infty \overline{\lambda_n}(x,u_n)(y,u_n).
+        \end{split}
+        \end{equation*}
+    From this, $T$ is self-adjoint if and only if $\lambda_n = \overline{\lambda_n}$; i.e., whenever $(\lambda_n) \subset \bfR$.
+\end{proof}
