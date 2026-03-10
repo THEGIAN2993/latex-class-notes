@@ -111,7 +111,7 @@ If each space $X_\alpha$ is a Hausdorff space, then $\prod X_\alpha$ is a Hausdo
 One of the implications stated in Theorem 19.6 holds for the box topology. Which one?
 \end{problem}
 \begin{proof}
-    Example 2 which immediately follows Theorem 19.6 gives a counter example for the backwards implication. It must be that the forward implication holds for the box topology.
+    Example 2 which immediately follows Theorem 19.6 gives a counter example for the backwards implication. If $f:X \rightarrow \prod_{\alpha}X_\alpha$ is continuous, then $f_\beta  = \pi_\beta \circ f$ is also continuous. Indeed, regardless of the topology on $\prod_\alpha X_\alpha$, the function $\pi_\beta$ is continuous.
 \end{proof}
 
 \begin{problem}[manual-num={19.7}]
@@ -120,6 +120,30 @@ Let $\bfR^\infty$ be the subset of $\bfR^\omega$ consisting of all sequences tha
 {\color{red} \begin{proof}
     
 \end{proof}}
+
+\begin{problem}[manual-num={23.10}]
+    Let $\{X_\alpha\}_\alpha \in J$ be an indexed family of connected spaces; let $X$ be the product space:
+        \begin{equation*}
+        \begin{split}
+            X = \prod_{\alpha \in J}X_\alpha.
+        \end{split}
+        \end{equation*}
+    Let $(a_\alpha)$ be a fixed point of $X$.
+    \begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+        \item Given any finite subset $K$ of $J$, let $X_K$ denote the subspace of $X$ consisting of all points $(x_\alpha)$ such that $x_\alpha = a_\alpha$ for $\alpha \not\in K$. Show that $X_K$ is connected.
+        \item Show that the union $Y$ of the spaces $X_K$ is connected.
+        \item Show that $X$ equals the closure of $Y$, conclude that $X$ is connected.
+    \end{enumerate}
+\end{problem}
+    \begin{proof}
+        (a) Let $K = \{\alpha_1,...,\alpha_n\}$. Define $f:X_K \rightarrow X_{\alpha_1} \times ... \times X_{\alpha_n}$ by:
+            \begin{equation*}
+            \begin{split}
+                f((x_\alpha)) = (x_{\alpha_1},...,x_{\alpha_n}).
+            \end{split}
+            \end{equation*}
+        This map is 
+    \end{proof}
 
 \chapter{The Urysohn Lemma}
 \fancyhead[L]{\scalebox{0.9}{The Urysohn Lemma}}
@@ -178,21 +202,30 @@ Show that if $\bigcup B_n$ is a nonempty Baire space, at least one of the sets $
         Thus $\bigcup B_n = \emptyset$, which is a contradiction. Therefore at least one of the sets $\overline{B_n}$ has a nonempty interior.
     \end{proof}
 
-\begin{problem}
+\begin{problem}{\color{red} ***}
 The Baire Category Theorem implies that $\bfR$ cannot be written as the countable union of closed subsets having empty interiors. Show this fails if the sets are not required to be closed.
 \end{problem}
-{\color{red} \begin{proof}
-    
-\end{proof}}
+\begin{proof}
+    Let $\{q_i\}_{i = 1}^\infty$ be an enumeration of the rationals. If we do not require the sets to be open, then $\bfR = (\bfR \setminus \bfQ) \cup \bfQ = (\bfR \setminus \bfQ) \cup \bigcup_{i = 1}^\infty \{q_i\}$.
+\end{proof}
 
-\begin{problem}
+\begin{problem}{\color{red}***}
 Show that the irrationals are a Baire space.
 \end{problem}
-{\color{red} \begin{proof}
-    We will first show that any subset of a complete metric space which is a $G_\delta$ set is a Baire space.
-\end{proof}}
+\begin{proof}
+     Let $\{q_i\}_{i = 1}^\infty$ be an enumeration of the rationals. Then
+        \begin{equation*}
+        \begin{split}
+            \bfR \setminus\bfQ 
+            & = \bfQ^c \\
+            &  = \left(\bigcup_{i = 1}^\infty \{q_i\}\right)^c \\
+            & = \bigcap_{i = 1}^\infty \{q_i\}^c.
+        \end{split}
+        \end{equation*}
+    Since the irrationals can be written as the countable intersection of closed sets, the irrationals are a $G_\delta$ set. By Problem 3.5, in the text, the irrationals are a Baire space.
+\end{proof}
 
-\begin{problem}
+\begin{problem}[manual-num={1}]
 Let $(M,d)$ be a complete metric space with no isolated points. Prove that $M$ is uncountable. (A point $x$ in a topological space $X$ is called a \textit{isolated point} if the one point set $\{x\}$ is open in $X$).
 \end{problem}
     \begin{proof}
@@ -208,21 +241,25 @@ Let $(M,d)$ be a complete metric space with no isolated points. Prove that $M$ i
         Since we've found a countable collection of open and dense sets whose countable intersection is \textit{not} dense, $M$ is not a Baire Space. This contradicts the Baire Category Theorem, as $M$ being a complete metric spaces implies that it is a Baire space. It must be the case that $M$ is uncountable.
     \end{proof}
 
-\begin{problem}
-Let $f:\bfR \rightarrow \bfR$ be an infinitely differentiable function, and suppose that for each $x \in \bfR$, there exists a natural number $n$ such that $f^{(n)}(x) = 0$. For each fixed $n \in \bfN$, consider the set
-    \begin{equation*}
-    \begin{split}
-        F_n := \{x \in \bfR \mid f^{(n)}(x) = 0\}
-    \end{split}
-    \end{equation*}
-and let $I := [a,b]$.
+\begin{problem}[manual-num={2}]
+Let $f:\bfR \rightarrow \bfR$ be an infinitely differentiable function, and suppose that for each $x \in \bfR$, there exists a natural number $n$ such that $f^{(n)}(x) = 0$. For each fixed $n \in \bfN$, consider the set $F_n := \{x \in \bfR \mid f^{(n)}(x) = 0\}$. Let $[a,b]$ be any closed interval.
 \begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
-    \item Show that $I = \bigcup_{n = 0}^\infty (I \cap F_n)$.
-    \item Show that there is a nonempty open interval $A \subseteq I$ where $f$ is a polynomial.
+    \item Show that $[a,b] = \bigcup_{n = 0}^\infty \bigl([a,b] \cap F_n\bigr)$.
+    \item Show that there is a nonempty open interval $A \subseteq [a,b]$ where $f$ is a polynomial.
 \end{enumerate}
 \end{problem}
-    {\color{red} \begin{proof}
+    \begin{proof}
+        (a) Consider the set $\bigcup_{n = 0}^\infty F_n$. Clearly $\bigcup_{n = 0}^\infty F_n \subseteq \bfR$. If $x \in \bfR$, then there exists $i \in \bfN$ such that $f^{(i)} = 0$, hence $x \in F_i$. Thus $x \in \bigcup_{n = 0}^\infty F_n$, which shows $\bfR = \bigcup_{n = 0}^\infty F_n$. With this:
+            \begin{equation*}
+            \begin{split}
+                \bigcup_{n = 0}^\infty \bigl( [a,b] \cap F_n \bigr)
+                & =[a,b] \cap \bigcup_{n = 0}^\infty F_n \\
+                & = [a,b] \cap \bfR \\
+                & = [a,b].
+            \end{split}
+            \end{equation*}
 
-    \end{proof}}
+        (b) Since $[a,b]$ is a compact Hausdorff space, $[a,b]$ is a Baire space. By part (a), this implies $\bigcup_{n = 0}^\infty \bigl([a,b] \cap F_n\bigr)$ is a Baire space. Note that $F_n = \{x \in \bfR \mid f^{(n)}(x) = 0\} = \bigl(f^{(n)}\bigr)^{-1}\bigl(\{0\}\bigr)$. Thus $F_n$ is closed, which means $[a,b] \cap F_n$ is closed. By Problem 3.1, there exists some $i \in \bfN$ such that $[a,b] \cap F_n$ has nonempty interior. Therefore there exists some open interval $A \subseteq [a,b] \cap F_n$. Since $A \subseteq F_n$, for all $a \in A$ we have $f^{(i)}(a) = 0$. Therefore $f$ is a polynomial on $A \subseteq [a,b]$.
+    \end{proof}
     
 \end{document}
