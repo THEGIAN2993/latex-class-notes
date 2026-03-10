@@ -2,5 +2,121 @@
 
 \section{Connected Spaces}
 
+\begin{definition}
+    Let $X$ be a topological space.
+    \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+        \item A \textui{separation of $X$} is a pair $U,V$ of disjoint and nonempty open subsets of $X$ whose union is $X$. If a separation of $X$ exists, we say $X$ is \textui{disconnected}.
+        \item The space $X$ is \textui{connected} if there does not exist a separation of $X$. 
+    \end{enumerate}
+\end{definition}
 
-\section{Compact Spaces}
+\begin{proposition}
+    A nonempty topological space $X$ is connected if and only if the only subsets of $X$ that are both open and closed are $\emptyset$ and $X$.
+\end{proposition}
+    \begin{proof}
+        Suppose $X$ is connected. Note that $\emptyset,X$ are by definition open and closed. If there were another subset $A$ such that $A^c = A$, then $X = A \cup A^c$ would be a separation. This is a contradiction, hence $\emptyset,X$ are the only open and closed subsets of $X$.
+
+        For the converse, we consider the contrapositive of the above statement. If $X$ is a disconnected topological space, then there exists nonempty open subsets $U,V$ of $X$ such that $U \cap V = \emptyset$ and $U \cup V = X$. Then $U$ and $V$ are closed and open, as $U^c = V$ and $V^c = U$.
+    \end{proof}
+
+\begin{example}
+    Consider $[0,1] \cup [2,3] \subseteq \bfR$ with the subspace topology. Then $[0,1] \cup [2,3]$ is not connected since $U = [0,1]$ and $V = [2,3]$ form a separation.
+\end{example}
+
+\begin{example}
+    Consider the topological space $(X,\cP(X))$, If $X$ has at least two points, then $X$ is not connected, as $\{p\}$, $X \setminus \{p\}$ form a separation.
+\end{example}
+
+\begin{lemma}\label{lemma:subspace-connected}
+    Let $Y$ be a subspace of a topological space $X$.
+        \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+            \item $A,B$ is a separation of $Y$;
+            \item $Y = A \cup B$, where $A,B \subseteq Y$ are disjoint, nonempty, and $\overline{A} \cap B = A \cap \overline{B} = \emptyset$.
+        \end{enumerate}.
+\end{lemma}
+    \begin{proof}
+        Let $A,B$ be a separation of $Y$. Then $Y = A \cup B$, where $A,B \subseteq Y$ are disjoint, nonempty, and open in $Y$. We only need to show that $\overline{A} \cap B = A \cap \overline{B} = \emptyset$. Suppose towards contradiction we can find some $p \in \overline{A} \cap B$. Since $B$ is open in $Y$, we can write $B = Y \cap U$, where $U \subseteq X$ is open. Hence $p \in \overline{A} \cap Y \cap U$. Now since $p \in \overline{A}$ and $p \in U$, the set $A \cap U$ is nonempty. Hence we can find some $a \in A \cap U$. But since $A \subseteq Y$, we have $a \in Y \cap U = B$. Thus $a \in A \cap B$, which is a contradiction. By a similar argument, $A \cap \overline{B} = \emptyset$.
+
+        Conversely, we must show that $A$ and $B$ are open in $Y$. Since $\overline{A} \cap B = \emptyset$, note that:
+            \begin{equation*}
+            \begin{split}
+                \overline{A} \cap Y 
+                & = \overline{A} \cap (A \cup B) \\
+                & = (\overline{A} \cap A ) \cup (\overline{A} \cap B) \\
+                & = A \cup \emptyset \\
+                & = A.
+            \end{split}
+            \end{equation*}
+        A similar argument will show that $\overline{B} \cap Y = B$. Now since $\overline{A}$ and $\overline{B}$ are closed, by definition this means $A$ and $B$ are closed in $Y$. Since $A = Y \setminus B$ and $B = Y \setminus A$, they are open in $Y$ as well.
+    \end{proof}
+
+\begin{example}
+    Consider the following subset of $\bfR^2$:
+        \begin{equation*}
+        \begin{split}
+            \{(x,0) \mid x \in \bfR\} \cup \{(x, {\ts \frac{1}{x}}) \mid x > 0\}
+        \end{split}
+        \end{equation*}
+    This set is not connected, as neither set contains a limit point of the other
+\end{example}
+
+\begin{lemma}\label{lemma:connected-subspace-inclusion}
+    If $C$ and $D$ form a separation of $X$, and if $Y$ is a connected subspace of $X$, then either $Y \subseteq C$ or $Y \subseteq D$. 
+\end{lemma}
+    \begin{proof}
+        Suppose towards contradiction $Y \cap C \neq \emptyset$ and $Y \cap D \neq \emptyset$. Since $C$ and $D$ are open in $X$, then $Y \cap C$ and $Y \cap D$ are open in $Y$. Moreover, their union is $Y$ and their intersection is empty. Therefore, $Y \cap C$ and $Y \cap D$ form a separation of $Y$, which is a contradiction.
+    \end{proof}
+
+\begin{theorem}\label{thm:connected-if-shared-points}
+    The union of a collection of connected subspaces of $X$ that have a point in common is connected.
+\end{theorem}
+    \begin{proof}
+        Let $\{A_i\}_{i \in I}$ be a collection of connected subspaces of $X$ and let $p \in \cap_{i \in I}A_i$. Suppose towards contradiction that $U,V$ is a separation of $\bigcup_{i \in I}A_i$. Then either $p \in U$ or $p \in V$. Without loss of generality, assume $p \in U$. Since each $A_i$ is connected, it must lie entirely in either $U$ or $V$, and it cannot lie in $V$ because it contains the point $p \in U$. Hence $A_i \subset U$ for all $i$, which means $\bigcup_{i \in I}A_i \subset U$. But this means that $V = \emptyset$, which is a contradiction.
+    \end{proof}
+
+\begin{theorem}
+    Let $A$ be a connected subspace of $X$. If $A \subseteq B \subseteq \overline{A}$, then $B$ is connected.
+\end{theorem}
+    \begin{proof}
+        Suppose towards contradiction $B = C \cup D$ is a separation of $B$. Then $A \subseteq C$ or $A \subseteq D$; suppose without loss of generality that $A \subseteq C$. Then $\overline{A} \subseteq \overline{C}$. By Lemma~\ref{lemma:subspace-connected}, $\overline{C} \cap D = \emptyset$. Since $B \subseteq \overline{A} \subseteq \overline{C}$, $B$ cannot intersect $D$. This contradicts $D$ being a nonempty subset of $B$.
+    \end{proof}
+
+\begin{example}
+    The \textit{Topologist's sine curve} is the set:
+        \begin{equation*}
+        \begin{split}
+            S := \{(x,\sin {\ts \frac{1}{x}}) \mid 0 < x \leq 1\} \cup \{(0,y) \mid y \in [-1,1]\}.
+        \end{split}
+        \end{equation*}
+    Note that the closure of $\{(x,\sin {\ts \frac{1}{x}}) \mid 0 < x \leq 1\}$ is $S$. Since $\{(x,\sin {\ts \frac{1}{x}}) \mid 0 < x \leq 1\}$ is connected, $S$ is connected.
+\end{example}
+
+\begin{theorem}
+The image of a connected space under a continuous function is connected.
+\end{theorem}
+    \begin{proof}
+        Let $X$ be connected and $f:X \rightarrow Y$ continuous. If $U$ and $V$ form a separation of $f(X)$, then $f^{-1}(U)$ and $f^{-1}(V)$ form a separation of $X$, which is a contradiction.
+    \end{proof}
+
+\begin{theorem}
+    A finite Cartesian product of connected spaces is connected
+\end{theorem}
+    \begin{proof}
+        We will only prove the theorem for the product of two connected spaces $X$ and $Y$, as the finite case follows by induction. Choose a point $(a,b) \in X \times Y$. The set $X \times \{b\}$ is connected since it is homeomorphic to $X$. For each $x_0 \in X$, the set $\{x_0\} \times Y$ is connected since it is homeomorphic to $Y$. Let $T_{x_0} := (X \times \{b\}) \cup (\{x_0\} \times Y)$. Since $(x_0,b) \in (X \times \{b\}) \cap (\{x_0\} \times Y)$, by Theorem~\ref{thm:connected-if-shared-points} $T_{x_0}$ is connected. Now $\bigcup_{x_0 \in X}T_{x_0}$ is connected, as $(a,b) \in \bigcap_{x_0 \in X}T_{x_0}$. But $\bigcup_{x_0 \in X}T_{x_0} = X \times Y$, hence $X \times Y$ is connected.
+    \end{proof}
+
+\section{Connected Subspaces of $\bfR$}
+
+\begin{theorem}
+    A set $E \subseteq \bfR$ is connected if and only if whenever $a < c < b$ with $a,b$, then $c \in E$.
+\end{theorem}
+    \begin{proof}
+        Suppose towards contradiction $c \not\in E$. Then 
+    \end{proof}
+
+
+\iffalse
+\begin{example}{\color{red}***}
+    Consider $\bfQ$ with the subspace topology. Then $\bfQ$ is not connected. Indeed, for any $x \in \bfR \setminus \bfQ$ note that $\bigl((-\infty,x] \cap \bfQ\bigr) \cup \bigl( [x,\infty) \cap \bfQ\bigr)$ is disjoint and $(-\infty,x] \cap \bfQ$, $[x,\infty) \cap \bfQ$ are open in $\bfQ$.
+\end{example}
+\fi

@@ -1,0 +1,19 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+
+\begin{document}
+\begin{tikzpicture}[>=stealth]
+    \begin{axis}[
+        xmin=-4,xmax=4,
+        ymin=-2,ymax=2,
+        axis x line=middle,
+        axis y line=middle,
+        axis line style=<->,
+        xlabel={$x$},
+        ylabel={$y$},
+        ]
+        \addplot[no marks,blue,<->] expression[domain=-pi:pi,samples=100]{sin(deg(2*x))+1/2} 
+                    node[pos=0.65,anchor=south west]{$y=\sin(2x)+\frac{1}{2}$}; 
+    \end{axis}
+\end{tikzpicture}
+\end{document}

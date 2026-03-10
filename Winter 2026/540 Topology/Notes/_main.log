@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  21 FEB 2026 20:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  26 FEB 2026 00:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -2022,7 +2022,7 @@ LaTeX Font Info:    Font shape `T1/zpltlf/m/it' will be
 [10]
 \openout2 = `ch2.aux'.
 
- (./ch2.tex)
+ (./ch2.tex
 
 [11
 
@@ -2030,6 +2030,86 @@ LaTeX Font Info:    Font shape `T1/zpltlf/m/it' will be
 
 
 ]
+
+[12]
+LaTeX Font Info:    Font shape `OT1/minzpl/m/n' will be
+(Font)              scaled to size 14.4pt on input line 108.
+LaTeX Font Info:    Font shape `OT1/minzpl/m/n' will be
+(Font)              scaled to size 10.5pt on input line 108.
+LaTeX Font Info:    Font shape `OT1/minzpl/m/n' will be
+(Font)              scaled to size 7.9pt on input line 108.
+LaTeX Font Info:    Font shape `OML/npxmi/m/it' will be
+(Font)              scaled to size 14.4pt on input line 108.
+LaTeX Font Info:    Font shape `OML/npxmi/m/it' will be
+(Font)              scaled to size 10.5pt on input line 108.
+LaTeX Font Info:    Font shape `OML/npxmi/m/it' will be
+(Font)              scaled to size 7.9pt on input line 108.
+LaTeX Font Info:    Font shape `LMS/npxsy/m/n' will be
+(Font)              scaled to size 14.4pt on input line 108.
+LaTeX Font Info:    Font shape `LMS/npxsy/m/n' will be
+(Font)              scaled to size 10.5pt on input line 108.
+LaTeX Font Info:    Font shape `LMS/npxsy/m/n' will be
+(Font)              scaled to size 7.9pt on input line 108.
+LaTeX Font Info:    Font shape `LMX/npxexx/m/n' will be
+(Font)              scaled to size 14.4pt on input line 108.
+LaTeX Font Info:    Font shape `LMX/npxexx/m/n' will be
+(Font)              scaled to size 10.5pt on input line 108.
+LaTeX Font Info:    Font shape `LMX/npxexx/m/n' will be
+(Font)              scaled to size 7.9pt on input line 108.
+LaTeX Font Info:    Font shape `U/npxmia/m/it' will be
+(Font)              scaled to size 14.4pt on input line 108.
+LaTeX Font Info:    Font shape `U/npxmia/m/it' will be
+(Font)              scaled to size 10.5pt on input line 108.
+LaTeX Font Info:    Font shape `U/npxmia/m/it' will be
+(Font)              scaled to size 7.9pt on input line 108.
+LaTeX Font Info:    Font shape `U/npxsym/m/n' will be
+(Font)              scaled to size 14.4pt on input line 108.
+LaTeX Font Info:    Font shape `U/npxsym/m/n' will be
+(Font)              scaled to size 10.5pt on input line 108.
+LaTeX Font Info:    Font shape `U/npxsym/m/n' will be
+(Font)              scaled to size 7.9pt on input line 108.
+LaTeX Font Info:    Font shape `U/npxsyc/m/n' will be
+(Font)              scaled to size 14.4pt on input line 108.
+LaTeX Font Info:    Font shape `U/npxsyc/m/n' will be
+(Font)              scaled to size 10.5pt on input line 108.
+LaTeX Font Info:    Font shape `U/npxsyc/m/n' will be
+(Font)              scaled to size 7.9pt on input line 108.
+LaTeX Font Info:    Font shape `U/npxexa/m/n' will be
+(Font)              scaled to size 14.4pt on input line 108.
+LaTeX Font Info:    Font shape `U/npxexa/m/n' will be
+(Font)              scaled to size 10.5pt on input line 108.
+LaTeX Font Info:    Font shape `U/npxexa/m/n' will be
+(Font)              scaled to size 7.9pt on input line 108.
+LaTeX Font Info:    Font shape `U/zeur/m/n' will be
+(Font)              scaled to size 14.4pt on input line 108.
+LaTeX Font Info:    Font shape `U/zeur/m/n' will be
+(Font)              scaled to size 10.5pt on input line 108.
+LaTeX Font Info:    Font shape `U/zeur/m/n' will be
+(Font)              scaled to size 7.9pt on input line 108.
+
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <10.5> not available
+(Font)              size <10.95> substituted on input line 108.
+
+
+LaTeX Font Warning: Font shape `U/wasy/m/n' in size <10.5> not available
+(Font)              size <10.95> substituted on input line 108.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 108.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\m@thbbch@rR' on input line 108.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 108.
+
+)
+
+[13]
 \tf@toc=\write6
 \openout6 = `_main.toc'.
 
@@ -2044,21 +2124,21 @@ LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.36998pt have occurred.
 
 Package rerunfilecheck Info: File `_main.out' has not changed.
-(rerunfilecheck)             Checksum: B20B609C1197FAE84240E6C5120905E6;2416.
+(rerunfilecheck)             Checksum: 542C2774668DB0EE2FDD65A5256A9939;2475.
  ) 
 Here is how much of TeX's memory you used:
- 45589 strings out of 473190
- 1018955 string characters out of 5715801
- 1528735 words of memory out of 5000000
- 67876 multiletter control sequences out of 15000+600000
- 641441 words of font info for 173 fonts, out of 8000000 for 9000
+ 45674 strings out of 473190
+ 1020506 string characters out of 5715801
+ 1527734 words of memory out of 5000000
+ 67939 multiletter control sequences out of 15000+600000
+ 657385 words of font info for 217 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,20n,107p,1151b,673s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/NewPXMI_gnu.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eurm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eurm7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eusm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/pxmiaX.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/pxsys.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsym.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/zplb.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/zplr.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/zplri.pfb>
-Output written on _main.pdf (12 pages, 198914 bytes).
+Output written on _main.pdf (14 pages, 207805 bytes).
 PDF statistics:
- 344 PDF objects out of 1000 (max. 8388607)
- 303 compressed objects within 4 object streams
- 127 named destinations out of 1000 (max. 500000)
+ 376 PDF objects out of 1000 (max. 8388607)
+ 333 compressed objects within 4 object streams
+ 146 named destinations out of 1000 (max. 500000)
  141 words of extra memory for PDF output out of 10000 (max. 10000000)
 

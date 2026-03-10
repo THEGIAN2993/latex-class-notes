@@ -1,0 +1,126 @@
+\documentclass{standalone}
+%\usepackage{mlmodern}
+%\usepackage{tgpagella} % text only
+%\usepackage{mathpazo}  % math & text
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage[fixamsmath]{mathtools}  % Extension to amsmath
+\usepackage{amsthm}
+\usepackage{amssymb}
+%\renewcommand*{\mathbf}[1]{\varmathbb{#1}}
+%\usepackage{newpxtext}
+%\usepackage{eulerpx}
+\usepackage{mathrsfs}
+\usepackage{eucal}
+\usepackage{datetime}
+    \newdateformat{specialdate}{\THEYEAR\ \monthname\ \THEDAY}
+\usepackage{keytheorems}
+    \newkeytheorem{theorem}[
+    name = Theorem,
+    numberwithin = section,
+    ]
+    \newkeytheorem{proposition}[
+    name = Proposition,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{lemma}[
+    name = Lemma,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{corollary}[
+    name = Corollary,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{definition}[
+    name = Definition,
+    numberwithin = section
+    ]
+    \newkeytheorem{example}[
+    name = Example,
+    numberwithin = section
+    ]
+    \newkeytheorem{remark}[
+    name=Remark,
+    style=remark, 
+    numbered=false  
+    ]
+    \newkeytheorem{exercise}[
+    name = Exercise,
+    numberwithin = section
+    ]
+    \newkeytheorem{problem}[
+    name = Problem,
+    numberwithin = section
+    ]
+    \newkeytheorem{axiom}[name = Axiom]
+\usepackage{enumitem}
+\usepackage[utf8x]{inputenc}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{float}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning,arrows.meta}
+\usetikzlibrary{decorations.pathreplacing}
+\usepackage{wasysym}
+\usepackage{hyperref}
+\usepackage{ulem}
+\usepackage{pgfplots}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=1.18}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
+
+\begin{document}
+
+\definecolor{mycolor1}{rgb}{0.14900,0.54900,0.86600}%
+\definecolor{mycolor2}{rgb}{0.07059,0.07059,0.07059}%
+\definecolor{mycolor3}{rgb}{0.85098,0.85098,0.85098}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=9.389in,
+height=5.943in,
+at={(1.575in,0.802in)},
+scale only axis,
+xmode=log,
+xmin=0.0031055900621118,
+xmax=0.136363636363636,
+xminorticks=true,
+ymode=log,
+ymin=4.90376920447844e-06,
+ymax=0.00378755487021062,
+yminorticks=true,
+axis background/.style={fill=white},
+title style={font=\bfseries\color{black}},
+title={log-log plot of errors vs. h},
+legend style={at={(0.97,0.03)}, anchor=south east, legend cell align=left, align=left}
+]
+\addplot [color=mycolor1, mark=o, mark options={solid, mycolor1}]
+  table[row sep=crcr]{%
+0.0909090909090909	0.00252503658014042\\
+0.0476190476190476	0.000907877206579755\\
+0.024390243902439	0.000153947996896081\\
+0.0123456790123457	3.89510326155099e-05\\
+0.0062111801242236	9.80753840895687e-06\\
+};
+\addlegendentry{errors}
+
+\addplot [color=red]
+  table[row sep=crcr]{%
+0.0909090909090909	0.00282001712567802\\
+0.0476190476190476	0.000715038367928039\\
+0.024390243902439	0.000172879191298712\\
+0.0123456790123457	4.07620559337817e-05\\
+0.0062111801242236	9.48785257198871e-06\\
+};
+\addlegendentry{least squares fit}
+
+\end{axis}
+\end{tikzpicture}%
+\end{document}

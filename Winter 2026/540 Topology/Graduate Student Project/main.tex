@@ -91,48 +91,121 @@
 
 \chapter{The Product Topology and the Tychonoff Theorem}
 \fancyhead[L]{\scalebox{0.9}{The Product Topology and the Tychonoff Theorem}}
+\begin{problem}[manual-num={19.3}]
+If each space $X_\alpha$ is a Hausdorff space, then $\prod X_\alpha$ is a Hausdorff space in both the box and product topologies.
+\end{problem}
+\begin{proof}
+    Given $\prod X_\alpha$ with the product topology, let $f,g \in \prod X_\alpha$ be distinct elements. Then there exists some $\alpha$ such that $f(\alpha),g(\alpha) \in X_\alpha$ with $f(\alpha) \neq g(\alpha)$. We can find open sets $U_\alpha$ containing $f(\alpha)$ and $V_\alpha$ containing $g(\alpha)$ such that $U_\alpha \cap V_\alpha = \emptyset$. Quickly note that:
+        \begin{equation*}
+        \begin{split}
+            \pi_\alpha^{-1}(U_\alpha) \cap \pi_\alpha^{-1}(V_\alpha)
+            & = \pi_\alpha^{-1} (U_\alpha \cap V_\alpha) \\
+            & = \pi_\alpha^{-1}(\emptyset) \\
+            & = \emptyset.
+        \end{split}
+        \end{equation*}
+    Both $\pi_\alpha^{-1}(U_\alpha)$ and $\pi_\alpha^{-1}(V_\alpha)$ are open in the product space $\prod X_\alpha$, and likewise $f \in \pi_\alpha^{-1}(U_\alpha)$ and $g \in \pi_\alpha^{-1}(V_\alpha)$. Thus the product space $\prod X_\alpha$ is Hausdorff. Since the box topology is finer than the product topology, $\prod X_\alpha$ is also Hausdorff with the box topology.
+\end{proof}
+
+\begin{problem}[manual-num={19.5}]
+One of the implications stated in Theorem 19.6 holds for the box topology. Which one?
+\end{problem}
+\begin{proof}
+    Example 2 which immediately follows Theorem 19.6 gives a counter example for the backwards implication. It must be that the forward implication holds for the box topology.
+\end{proof}
+
+\begin{problem}[manual-num={19.7}]
+Let $\bfR^\infty$ be the subset of $\bfR^\omega$ consisting of all sequences that are "eventually zero," that is, all sequences $(x_1,x_2,...)$ such that $x_i \neq 0$ for only finitely many values of $i$. What is the closure of $\bfR^\infty$ in $\bfR^\omega$ in the box and product topologies? Justify your answer.
+\end{problem}
+{\color{red} \begin{proof}
+    
+\end{proof}}
 
 \chapter{The Urysohn Lemma}
 \fancyhead[L]{\scalebox{0.9}{The Urysohn Lemma}}
+\begin{problem}[manual-num={33.2(a)}]
+Show that a connected normal space having more than one point is uncountable.
+\end{problem}
+\begin{proof}
+Let $X$ be connected and normal. Let $x_0$ and $x_1$ be distinct points in $X$. Since $X$ is normal, $\{x_0\}$ and $\{x_1\}$ are closed in $X$. Moreover, $\{x_0\} \cap \{x_1\} = \emptyset$. By Urysohn's Lemma, there exists a continuous function $f:X \rightarrow [a,b]$ such that $f(x_0) = a$ and $f(x_1) = b$. Since $f$ is continuous and $X$ is connected, $f(X)$ is also connected. It must be the case that $f(X)$ is an interval \textemdash otherwise $f(X)$ contains only a single element, which is immediately a contradiction as $x_0$ and $x_1$ are distinct points which map to two distinct elements in $[a,b]$. Since $f(X)$ an interval, it is uncountable, which implies $X$ is uncountable.
+\end{proof}
+
+\begin{problem}[manual-num={33.3}]
+Give a direct proof of the Urysohn lemma for a metric space $(X,d)$ by setting:
+    \begin{equation*}
+    \begin{split}
+        f(x) = \frac{d(x,A)}{d(x,A) + d(x,B)}.
+    \end{split}
+    \end{equation*}
+\end{problem}
+\begin{proof}
+Let $X$ be a metric space. Let $A$ and $B$ be disjoint closed subsets of $X$. Since $A$ and $B$ are closed, $d(x,A) > 0$ for any $x \not\in A$ and $d(x,B) > 0$ for any $x \not\in B$. Moreover, $d(\cdot,A)$ and $d(\cdot,B)$ are continuous functions. Thus $f:X \rightarrow [0,1]$ as given above is continuous, and $f(x) = 0$ for all $x \in A$ and $f(x) = 1$ for all $x \in B$.
+\end{proof}
+
+\begin{problem}[manual-num={33.8}]
+Let $X$ be completely regular, let $K$ and $C$ be disjoint closed subsets of $X$. Show that if $K$ is compact, there is a continuous function $f:X \rightarrow [0,1]$ such that $f(K) = \{0\}$ and $f(C) = \{1\}$.
+\end{problem}
+   \begin{proof}
+    Let $k \in K$. Then $k \not\in C$. By the complete regularity of $X$, there exists $f'_k:X \rightarrow [0,1]$ such that $f'_k(k) = 1$ and $f_k(C) = \{0\}$. Define $f_k:= 1- f'_k$. Then $f_k(k) = 0$ and $f_k(C) = \{1\}$. Note that $[0,\frac{1}{2})$ is open in $[0,1]$, hence $f_k^{-1}([0,\frac{1}{2}))$ is open in $X$. Moreover, it is clear that $k \in f_k^{-1}([0,\frac{1}{2}))$. We've obtained a cover $K \subseteq \bigcup_{k \in K}f_k^{-1}([0,\frac{1}{2}))$. Since $K$ is compact, there exists points $\{k_1,...,k_n\}$ such that $K \subseteq \bigcup_{i = 1}^n f_{k_i}^{-1}([0,\frac{1}{2}))$. Define $f := \min \{f_{k_1},...,f_{k_n}\}$. Then $f(K) = [0,\frac{1}{2})$ and $f(C) = \{1\}$. Define $\varphi:[0,1] \rightarrow [0,1]$ by:
+        \begin{equation*}
+        \begin{split}
+            \varphi(t):=
+            \begin{cases}
+            0,& 0 \leq t < \frac{1}{2} \\
+            1, & t = 1
+            \end{cases}.
+        \end{split}
+        \end{equation*}
+    Since $\varphi$ is continuous, the composition $\varphi \circ f$ is continuous. In particular, we have $(\varphi \circ f)(K) = \varphi([0,\frac{1}{2})) = \{0\}$ and $(\varphi \circ f)(C) = \varphi(\{1\}) = \{1\}$. This establishes the claim.
+   \end{proof}
 
 \chapter{The Baire Category Theorem}
 \fancyhead[L]{\scalebox{0.9}{The Baire Category Theorem}}
 
 \begin{problem}
-Let $X$ equal the countable union $\bigcup B_n$. Show that if $X$ is a nonempty Baire space, at least one of the sets $\overline{B_n}$ has a nonempty interior.
+Show that if $\bigcup B_n$ is a nonempty Baire space, at least one of the sets $\overline{B_n}$ has a nonempty interior.
 \end{problem}
     \begin{proof}
-        \lipsum[1]
+        Suppose towards contradiction $\overline{B_n}^o = \emptyset$ for each $n$. Consider the collection of closed sets $\{\overline{B_n}\}_n$. Since $\bigcup B_n$ is a Baire space, it must be that $\left(\bigcup \overline{B_n}\right)^o = \emptyset$. But this means:
+            \begin{equation*}
+            \begin{split}
+                \bigcup B_n 
+                & \subseteq \bigcup \overline{B_n}^o \\
+                & \subseteq \left( \bigcup \overline{B_n} \right)^o \\
+                & = \emptyset.
+            \end{split}
+            \end{equation*}
+        Thus $\bigcup B_n = \emptyset$, which is a contradiction. Therefore at least one of the sets $\overline{B_n}$ has a nonempty interior.
     \end{proof}
 
 \begin{problem}
 The Baire Category Theorem implies that $\bfR$ cannot be written as the countable union of closed subsets having empty interiors. Show this fails if the sets are not required to be closed.
 \end{problem}
-    \begin{proof}
-        \lipsum[1]
-    \end{proof}
+{\color{red} \begin{proof}
+    
+\end{proof}}
 
 \begin{problem}
 Show that the irrationals are a Baire space.
 \end{problem}
-    \begin{proof}
-        We will first show that any subset of a complete metric space which is a $G_\delta$ set is a Baire space.
-    \end{proof}
+{\color{red} \begin{proof}
+    We will first show that any subset of a complete metric space which is a $G_\delta$ set is a Baire space.
+\end{proof}}
 
 \begin{problem}
-Let $(M,d)$ be a complete metric space with no isolated points. Prove that $M$ is uncountable.
+Let $(M,d)$ be a complete metric space with no isolated points. Prove that $M$ is uncountable. (A point $x$ in a topological space $X$ is called a \textit{isolated point} if the one point set $\{x\}$ is open in $X$).
 \end{problem}
     \begin{proof}
-        Suppose towards contradiction $M$ is countable. Then we can write $M = \bigcup_{i = 1}^\infty \{x_i\}$, where $\{x_i\}_{i = 1}^\infty$ is an enumeration of $M$. Observe that:
+        Suppose towards contradiction $M$ is countable. Since $M$ has no isolated points, for each $x \in M$ the set $\{x\}^c$ is open. Moreover, $\overline{\{x\}^c} = ( \{x\}^o)^c = \emptyset^c = M$. Hence $\{x\}$ is open and dense in $M$. But:
             \begin{equation*}
             \begin{split}
-                \bigcap_{i = 1}^\infty \{x_i\}^c
-                & = \left(\bigcup_{i = 1}^\infty \{x_i\} \right)^c \\
-                & = X^c \\
+                \bigcap_{i = 1}^\infty \{x_i\}^c 
+                & = \left( \bigcup_{i = 1}^\infty \{x_i\} \right)^c \\
+                & = M^c \\
                 & = \emptyset.
             \end{split}
             \end{equation*}
-        Since $M$ has no isolated points, each $\{x_i\}$ is closed and nowhere dense. Hence each $\{x_i\}^c$ is open and dense. But surely from the above string of equalities $\bigcap_{i = 1}^\infty \{x_i\}^c$ is not dense, hence $M$ is not a Baire Space. This contradicts the Baire Category Theorem, as every complete metric space is also a Baire space. It must be the case that $M$ is uncountable.
+        Since we've found a countable collection of open and dense sets whose countable intersection is \textit{not} dense, $M$ is not a Baire Space. This contradicts the Baire Category Theorem, as $M$ being a complete metric spaces implies that it is a Baire space. It must be the case that $M$ is uncountable.
     \end{proof}
 
 \begin{problem}
@@ -148,8 +221,8 @@ and let $I := [a,b]$.
     \item Show that there is a nonempty open interval $A \subseteq I$ where $f$ is a polynomial.
 \end{enumerate}
 \end{problem}
-    \begin{proof}
-        \lipsum[1]
-    \end{proof}
+    {\color{red} \begin{proof}
+
+    \end{proof}}
     
 \end{document}

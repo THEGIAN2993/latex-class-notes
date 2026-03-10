@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1771732870.3159 "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/Winter 2026/540 Topology/Notes/_main.tex" "_main.pdf" "_main" 1771732871.27267 0
+["pdflatex"] 1772096335.78092 "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/Winter 2026/540 Topology/Notes/_main.tex" "_main.pdf" "_main" 1772096336.7289 0
   "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/Winter 2026/540 Topology/Notes/_main.tex" 1771732868.21307 4269 adbeb00307ec04671fb7bffdf621838d ""
   "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex" 1764622722.89504 13971 026113b2e089b0f197b6a1344ae6ebb8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/newpx/px-lms.enc" 1699652218 3877 2ca811886181a05a861d20a35de75e06 ""
@@ -58,6 +58,7 @@
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/wasy/wasy5.tfm" 1579560596 908 9b2ed8097703005e83b790aecb955a2f ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/wasy/wasy6.tfm" 1579560596 912 8da0595e5e615d33e0b2860959a58bf8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/wasy/wasy7.tfm" 1579560596 912 e43f3049348c6f2670d3b324e657c6e7 ""
+  "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/wasy/wasy8.tfm" 1579560596 904 a3deb54664adaaa632c6cdee911ffe34 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/wasy/wasy9.tfm" 1579560596 908 743c39e2976b0d6a1c86f6e64b6dd693 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eurm10.pfb" 1336858727 22644 de44b1031364c5f57164f2249f1302c5 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eurm7.pfb" 1336858727 22927 31e776418d6f3753a749eafbf9a8a2bf ""
@@ -329,13 +330,13 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1758769034 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "_main.aux" 1771732871.16589 387 b9c162bfbfa55f4cbdf56446a6e04601 "pdflatex"
-  "_main.out" 1771732871.16694 2416 b20b609c1197fae84240e6c5120905e6 "pdflatex"
+  "_main.aux" 1772096336.62123 387 224efcb923b5b53a1986b3bbe4d8bdc7 "pdflatex"
+  "_main.out" 1772096336.62234 2475 542c2774668db0ee2fdd65a5256a9939 "pdflatex"
   "_main.tex" 1771732868.21307 4269 adbeb00307ec04671fb7bffdf621838d ""
-  "_main.toc" 1771732871.16707 1255 bc1a9e63abea2f4b8b93059e2aa3db7c "pdflatex"
-  "ch2.aux" 1771732871.16554 2528 7272f6c25fd912aba8045f958d0bcd72 "pdflatex"
-  "ch2.tex" 1771732852.28819 94 824d1fbd8da30d1aefc0510a3031c34d ""
-  "intro.aux" 1771732871.16203 10389 8fa0c9787abb28eb23b23b83b3a98e85 "pdflatex"
+  "_main.toc" 1772096336.6225 1280 c41d4b7583c3b4fbf9cbd71384b9eaf3 "pdflatex"
+  "ch2.aux" 1772096336.62087 3931 793b42baf8f2e0c9f31cd5cb8636df84 "pdflatex"
+  "ch2.tex" 1772096334.72002 7967 b77b5c4603f785a7f4e658dec8102530 ""
+  "intro.aux" 1772096336.60038 10389 61833e89312aef8cd049f3bbd603c9ab "pdflatex"
   "intro.tex" 1770103791.85376 24363 d5b516aa2da47d7f595c3bebd12d6c6b ""
   (generated)
   "_main.aux"

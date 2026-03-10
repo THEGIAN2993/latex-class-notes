@@ -422,6 +422,48 @@ then $x_n \rightarrow y$.
     \end{enumerate}
 \end{definition}
 
+\begin{example}
+    The set $\{e^n\}_{n =1}^\infty$ is an orthonormal basis in $\ell^2$. For any separable infinite dimensional hilbert space, let $\{u_j\}_{n = 1}^\infty$ be an orthonormal basis. Define $H \rightarrow \ell^2$ by $\sum_{j = 1}^\infty a_j,u_j \mapsto (a_1,a_2,...)$. This is an isometric isomorphism.
+\end{example}
+
+{\color{red} Feb 12, stuff on $L^2$}
+
+\begin{theorem}[Riez Representation Theorem]
+    Let $\cH$ be a Hilbert space. Let $\varphi \in \cH^\ast$. There exists a unique $y \in H$ such that for all $x \in \cH$, $\varphi(x) = (x,y)$.
+\end{theorem}
+    \begin{proof}
+        If $y,y' \in \cH$ satisfy $\varphi(x) = (x,y) = (x,y')$ for all $x \in \cH$, then $(x,y-y') = 0$ for all $x \in \cH$. Note that $y-y' \in \cH$, hence we must have that $(y-y',y-y') = 0$. Thus $\lnorm y - y' \rnorm = 0$, hence $y = y'$.
+
+        We now prove existence. Let $\varphi \in \cH^\ast$. Let $z \in N(\varphi)^\perp$ such that $\lnorm z \rnorm = 1$. For any $x \in H$, we have $x - \frac{\varphi(x)}{\varphi(z)}z \in N(\varphi)$ and the equation:
+            \begin{equation*}
+            \begin{split}
+                x = \left( x - \frac{\varphi(x)}{\varphi(z)}z \right) + \left( \frac{\varphi(x)}{\varphi(z)}z \right).
+            \end{split}
+            \end{equation*}
+        Now:
+            \begin{equation*}
+            \begin{split}
+                (x,\lambda z)
+                & = \left( x - \frac{\varphi(x)}{\varphi(z)}z + \frac{\varphi(x)}{\varphi(z)}z, \lambda z \right) \\
+                & = \left( x - \frac{\varphi(x)}{\varphi(z)}z, \lambda z \right) + \left( \frac{\varphi(x)}{\varphi(z)}z, \lambda z \right).
+            \end{split}
+            \end{equation*}
+        Because $z \in N(\varphi)^\perp$ and $x - \frac{\varphi(x)}{\varphi(z)}z \in N(\varphi)$, then $\left( x - \frac{\varphi(x)}{\varphi(z)}z, \lambda z \right) = 0$. We now have:
+            \begin{equation*}
+            \begin{split}
+                (x,\lambda z)
+                & = \left( x - \frac{\varphi(x)}{\varphi(z)}z, \lambda z \right) + \left( \frac{\varphi(x)}{\varphi(z)}z, \lambda z \right) \\
+                & = \left( \frac{\varphi(x)}{\varphi(z)}z, \lambda z \right) \\
+                & = \frac{\varphi(x)}{\varphi(z)}\overline{\lambda} (z,z) \\
+                & = \frac{\varphi(x)}{\varphi(z)}\overline{\lambda} \lnorm z \rnorm^2 \\
+                & = \frac{\varphi(x)}{\varphi(z)}\overline{\lambda}.
+            \end{split}
+            \end{equation*}
+        Let $\lambda := \overline{\varphi(z)}$. Then $(x,\varphi(z)) = \varphi(x)$, establishing the theorem.
+    \end{proof}
+
+{\color{red} self-adjoint operators}
+
 \section*{\makebox[\linewidth][c]{Exercises}}
 \addcontentsline{toc}{section}{Exercises}
 
@@ -461,7 +503,6 @@ Let $H = L^2([0,1])$. Use the Gram-Schmidt orthogonalization process from linear
             \end{equation*}
     \end{proof}
 
-\newpage
 \begin{exercise}
 Show directly that the functions:
     \begin{equation*}
@@ -745,3 +786,38 @@ for a sequence $(\lambda_n) \subset \bfC$. First show that this map is a bounded
         \end{equation*}
     From this, $T$ is self-adjoint if and only if $\lambda_n = \overline{\lambda_n}$; i.e., whenever $(\lambda_n) \subset \bfR$.
 \end{proof}
+
+\section{Compact Operators}
+
+\begin{definition}
+    Let $X$ and $Y$ be normed linear spaces and $T:X \rightarrow Y$ linear. We say $T$ is \textui{compact} if for every bounded sequence $\{x_n\}_{n = 1}^\infty \subset X$, the sequence $\{T x_n\}_{n = 1}^\infty$ has a convergent subsequence. Equivalently, the operator $T$ is said to be \textui{compact} if $\overline{T(B_X(0,1))}$ is compact in $Y$.
+\end{definition}
+
+\begin{proposition}
+    Let $X$ and $Y$ be normed linear spaces and $T:X \rightarrow Y$ linear.
+    \begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+        \item If $T$ is compact, then $T$ is bounded.
+        \item If $T \in \cL(X,Y)$ and $R(T)$ is finite-dimensional, then $T$ is compact.
+    \end{enumerate}
+\end{proposition}
+    \begin{proof}
+        (1) Let $x \in X$, $\lnorm x \rnorm = 1$. Then $Tx \in T(B_X(0,1)) \subseteq \overline{T(B_X(0,1))}$. Since $T$ is compact, $\overline{T(B_X(0,1))}$ is compact in $Y$. Since $\overline{T(B_X(0,1))}$ is compact, it is bounded. Hence $\lnorm Tx \rnorm < \infty$.
+
+        (2) Since $T \in \cL(X,Y)$, the subspace $T(B_X(0,1))$ is bounded. Since $R(T)$ is finite-dimensional, by Corollary~\ref{cor:fd-subspace-of-nls-is-closed} $T(B_X(0,1))$ is closed. Hence $T(B_X(0,1)) = \overline{T(B_X(0,1))}$ is closed and bounded. By Theorem~\ref{thm:fd-closed-bdd-implies-cpt}, $\overline{T(B_X(0,1))}$ is compact. Thus $T$ is compact.
+    \end{proof}
+
+\begin{example}
+    Let $X$ be a normed linear space. Then $\id:X \rightarrow X$ is bounded, but not compact. 
+
+    Define $T:\ell^2 \rightarrow \ell^2$ by $e^n \mapsto \frac{1}{\sqrt{n}}e^n$ and extend linearly. This map is compact, but $R(T)$ is not finite dimensional.
+\end{example}
+
+\begin{theorem}
+    Let $X$ be a normed linear space and $Y$ a Banach space. The set:
+        \begin{equation*}
+        \begin{split}
+            \{T \in \cL(X,Y) \mid T \text{ is compact }\}
+        \end{split}
+        \end{equation*}
+    is closed in $\cL(X,Y)$.
+\end{theorem}

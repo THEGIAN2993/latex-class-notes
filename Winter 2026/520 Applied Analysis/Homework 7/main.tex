@@ -1,0 +1,389 @@
+\documentclass[10pt,oneside,openany]{memoir}
+
+\iffalse
+%font style 1
+\usepackage[p,osf]{scholax}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage[scaled=1.075,ncf,vvarbb]{newtxmath}
+\fi
+
+%font style 2
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage[fixamsmath]{mathtools}  % Extension to amsmath
+\usepackage{amsthm}
+\usepackage{amssymb}
+\renewcommand*{\mathbf}[1]{\varmathbb{#1}}
+\usepackage{newpxtext}
+\usepackage{eulerpx}
+\usepackage{mathrsfs}
+
+\usepackage{eucal}
+\usepackage{datetime}
+    \newdateformat{specialdate}{\THEYEAR\ \monthname\ \THEDAY}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \fancyhf{}
+    \cfoot{\scriptsize\thepage}
+    \fancyhead[R]{\scalebox{0.8}{\nouppercase{\rightmark}}}
+    \fancyhead[L]{\scalebox{0.8}{\nouppercase{\leftmark}}}
+
+    \fancypagestyle{plain}{%
+        \fancyhf{}
+        \cfoot{\scriptsize\thepage}
+        \fancyhead[R]{\scalebox{0.8}{\phantom{a}}}
+        \fancyhead[L]{\scalebox{0.8}{Applied Analysis}}
+    }
+\usepackage{keytheorems}
+    \newkeytheoremstyle{def}{
+    inherit-style=definition,
+    spaceabove=1.5em,
+    spacebelow=1.5em,
+    postheadspace=0.5em,
+    }
+    \newkeytheoremstyle{thm}{
+    spaceabove=1.5em,
+    spacebelow=1.5em,
+    postheadspace=0.5em,
+    }
+    \newkeytheorem{theorem}[
+    name = Theorem,
+    style=thm,
+    numberwithin = section,
+    ]
+    \newkeytheorem{theorem*}[
+    name=Theorem,
+    style=thm,
+    numbered=false
+    ]
+    \newkeytheorem{proposition}[
+    name = Proposition,
+    style=thm,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{lemma}[
+    name = Lemma,
+    style=thm,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{corollary}[
+    name = Corollary,
+    style=thm,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{definition}[
+    name = Definition,
+    style=def,
+    numberwithin = section,
+    style = definition
+    ]
+    \newkeytheorem{example}[
+    name = Example,
+    style=def,
+    numberwithin = section,
+    style = definition
+    ]
+    \newkeytheorem{remark}[
+    name=Remark,
+    style=remark, 
+    numbered=false  
+    ]
+    \newkeytheorem{question}[
+    name=Question,
+    style=remark, 
+    numbered=false  
+    ]
+    \newkeytheorem{exercise}[
+    name = Exercise,
+    style=thm
+    ]
+    \newkeytheorem{axiom}[name = Axiom]
+\usepackage{enumitem}
+\usepackage[explicit]{titlesec}
+    \titleformat{\chapter}[display]
+    {\bfseries\LARGE\raggedright}
+    {Chapter {\thechapter}}
+    {.1ex minus .1ex}
+    {\Large #1}
+    \titlespacing{\chapter}
+    {3pc}{*3}{40pt}[3pc]
+
+    \titleformat{\section}[block]
+    {\normalfont\bfseries\large}
+    {}{0pt}
+    {\fbox{\strut \S\ \thesection.\ #1}}
+    \titlespacing{\section}
+    {0pt}{3ex plus .1ex minus .2ex}{3ex plus .1ex minus .2ex}
+    \setlength{\fboxsep}{4pt}   % padding inside the box
+    \setlength{\fboxrule}{0.6pt} % border thickness
+    
+    \titleformat{name=\section,numberless}[block]
+    {\normalfont\bfseries\large\raggedright}
+    {}{0pt}
+    {\fbox{\strut #1}}
+\usepackage[utf8x]{inputenc}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{float}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning,arrows.meta}
+\usetikzlibrary{decorations.pathreplacing}
+\usepackage{wasysym}
+\usepackage{hyperref}
+\usepackage{ulem}
+\usepackage{pgfplots}
+\usepackage[svgnames]{xcolor}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=1.18}
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
+
+\begin{document}
+\begin{center}
+    {\large Math 540 }\\[.175in]
+    {Name:} {\underline{Gianluca Crescenzo\hspace*{2in}}}\\[0.15in]
+    \end{center}
+    \vspace{4pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Week 7 Problems}
+\begin{exercise}[manual-num={1}]
+Suppose that $S,T$ are bounded linear operators on a Hilbert space $H$. Suppose $ST$ is compact. Must either $S$ or $T$ be compact? Either prove or give an explicit counter-example using $H = \ell^2$.
+\end{exercise}
+    \begin{proof}
+        Define $S:\ell^2 \rightarrow \ell^2$ by:
+            \begin{equation*}
+            \begin{split}
+                (x_1,x_2,x_3,x_4,...) \mapsto (x_1,0,x_2,0,...).
+            \end{split}
+            \end{equation*}
+        Define $T:\ell^2 \rightarrow \ell^2$ by:
+            \begin{equation*}
+            \begin{split}
+                (x_1,x_2,x_3,x_4,...) \mapsto (0,x_2,0,x_3,...).
+            \end{split}
+            \end{equation*}
+        Neither $S$ nor $T$ are compact, but $S \circ T$ is compact as it is the zero operator.
+    \end{proof}
+
+\begin{exercise}[manual-num={4}]
+Let $(\lambda_n)$ be a bounded sequence of complex numbers. Show that the bounded linear operator $T:\ell^2 \rightarrow \ell^2$ defined by:
+    \begin{equation*}
+    \begin{split}
+        T e^n = \lambda_n e^n
+    \end{split}
+    \end{equation*}
+(and extended linearly) is compact if $\lambda_n \rightarrow 0$.
+\end{exercise}
+    \begin{proof}
+        Define $T_k:\ell^2 \rightarrow \ell^2$ by $T_kx := \sum_{n = 1}^k \lambda_n (x,e_n)e_n$. Then each $T_k$ is compact, and:
+            \begin{equation*}
+            \begin{split}
+                \lnorm (T-T_k)(x) \rnorm_{\ell^2}^2 
+                & = \lnorm \sum_{n > k}\lambda_n (x,e^n)e^n \rnorm_{\ell^2}^2 \\
+                & \leq \sum_{n > k}|\lambda_n|^2 |(x,e^n)|^2 \lnorm e^n \rnorm^2 \\
+                & = \sum_{n > k}|\lambda_n|^2 |(x,e^n)|^2 \\
+                & \leq \sum_{n > k}\lnorm \lambda_n \rnorm_{\ell^\infty}^2 |(x,e^n)|^2 \\
+                & = \lnorm \lambda_n \rnorm_{\ell^\infty}^2 \sum_{n > k}|(x,e^n)|^2 \\
+                & \leq \lnorm \lambda_n \rnorm_{\ell^\infty}^2 \lnorm x \rnorm_{\ell^2}^2.
+            \end{split}
+            \end{equation*}
+        Square rooting both sides, then taking the supremum over all $x \in \ell^2$, $\lnorm x \rnorm_{\ell^2} = 1$ gives $\lnorm T - T_k \rnorm \leq \lnorm \lambda_n \rnorm_{\ell^\infty}$. Since $\lambda_n \rightarrow 0$, it must be the case that $\lnorm T - T_k \rnorm \rightarrow 0$. Hence $T_k \rightarrow T$. Since the set of all compact operators is closed in $\cL(\ell^2)$, it must be the case that $T$ is compact.
+    \end{proof}
+
+\begin{exercise}[manual-num={7}]
+Let $X$ denote an inner-product space over $\bfC$, and let $T:X \rightarrow X$ be a linear operator which is self-adjoint. Prove the following facts concerning the eigenvalues, eigenspaces, and invariant subspaces of $T$:
+    \begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+        \item Show that all eigenvalues of $T$ are real.
+        \item Show that any two eigenvectors of $T$ which correspond to distinct eigenvalues must be orthogonal.
+        \item Suppose $Y \subset X$ is a $T$-invariant subspace of $X$. Show that $Y^\perp$ is also $T$-invariant.
+    \end{enumerate}
+\end{exercise}
+    \begin{proof}
+        (a) Suppose $Tx = \lambda x$ for some nonzero $x \in X$. Since $T$ is self-adjoint, we have $(Tx,x) = (x,Tx)$; i.e., $(\lambda x , x) = (x , \lambda x)$. This is equivalent to $\lambda (x,x) = \overline{\lambda}(x,x)$. Rearranging gives $(\lambda - \overline{\lambda})(x,x) = 0$. Since we assumed $x\neq 0$, it must be the case that $\lambda - \overline{\lambda} = 0$; i.e., $\lambda = \overline{\lambda}$. This can only be true if $\lambda \in \bfR$, hence any eigenvalue of $T$ must be real.
+
+        (b) Let $\lambda_1,\lambda_2$ be distinct eigenvalues with corresponding eigenvectors $u_1,u_2$. Since $T$ is self-adjoint, we have $(Tu_1,u_2) = (u_1,Tu_2)$. This is equivalent to $(\lambda_1 u_1,u_2) = (u_1,\lambda_2 u_2)$. Thus $\lambda_1(u_1,u_2) = \lambda_2(u_1,u_2)$. Rearranging gives $(\lambda_1 - \lambda_2)(u_1,u_2) = 0$. Since $\lambda_1 \neq \lambda_2$, it must be the case that $(u_1,u_2) = 0$. Thus $u_1 \perp u_2$.
+
+        (c) Let $z \in Y^\perp$. Then for any $y \in Y$ we have $(Tz,y) = (z,Ty)$. Since $Y$ is $T$-invariant, $z$ and $Ty$ must be orthogonal, hence $(z,Ty) = 0$. This means $(Tz,y) = 0$ for all $y \in Y$, hence $Tz \in Y^\perp$. Thus $Y^\perp$ is also $T$-invariant.
+    \end{proof}
+
+\section*{Week 8 Problems}
+\begin{exercise}[manual-num={1}]
+With the notation we had in class: $X:= \{f \in C^2([a,b]) \mid f \text{ satisfies BCs from RSL }\}$, and $Lu = -((pu')' + qu)$. Establish Lagrange's identity:
+    \begin{equation*}
+    \begin{split}
+        uLv - vLu = -(p(uv' - vu'))'
+    \end{split}
+    \end{equation*}
+\end{exercise}
+    \begin{proof}
+        Observe that:
+            \begin{equation*}
+            \begin{split}
+                uLv - vLu 
+                & = -u((pv')' + qv) + v((pu')' + qu)\\
+                & = -u(p'v' + pv'' + qv) + v(p'u' + pu'' + qu) \\
+                & = -up'v' - upv'' - uqv + vp'u' + vpu'' + vqu \\
+                & = -up'v' - upv'' + vp'u' + vpu'' \\
+                & = -up'v' - upv'' - pu'v' + pu'v' + vp'u' + vpu'' \\
+                & = -(puv')' + (pvu')' \\
+                & = -(puv' - pvu')' \\
+                & = -(p(uv' - vu'))'. \qedhere
+            \end{split}
+            \end{equation*}
+        
+    \end{proof}
+
+\newpage
+\begin{exercise}[manual-num={4}]
+Consider the RSL:
+    \begin{equation*}
+    \begin{split}
+        X'' = -\lambda X, \h6 0<x<1, \h6X(0) = 0,\h6 X'(1) = aX(1),
+    \end{split}
+    \end{equation*}
+where $a > 0$. Show, graphically, that is $a$ is large enough then there will be exactly one negative eigenvalue. What value must $a$ exceed to guarantee this?
+\end{exercise}
+    \begin{proof}
+        If $\lambda < 0$, take $\lambda := -\mu^2$. Our RSL becomes:
+            \begin{equation*}
+            \begin{split}
+                X'' - \mu X = 0.
+            \end{split}
+            \end{equation*}
+        The solution to this differential equation is:
+            \begin{equation*}
+            \begin{split}
+                X(x) = A \sinh(\mu x) + B \cosh(\mu x).
+            \end{split}
+            \end{equation*}
+        Plugging in our first boundary condition yields:
+            \begin{equation*}
+            \begin{split}
+                0 = X(0) = B.
+            \end{split}
+            \end{equation*}
+        Now plugging in the second boundary condition gives:
+            \begin{equation*}
+            \begin{split}
+                \mu A \cosh (\mu) = a A \sinh(\mu). 
+            \end{split}
+            \end{equation*}
+        Simplifying and rearranging gives:
+            \begin{equation*}
+            \begin{split}
+                \mu = a \tanh(\mu).
+            \end{split}
+            \end{equation*}
+        From the following graph, if $a > 1$ then there will be exactly one negative eigenvalue.
+        \begin{center}
+        \begin{tikzpicture}[>=stealth]
+            \begin{axis}[
+                xmin=-7,xmax=7,
+                ymin=-3,ymax=3,
+                axis x line=middle,
+                axis y line=middle,
+                axis line style=<->,
+                xlabel={$x$},
+                ylabel={$y$},
+                xtick=\empty,
+                ytick=\empty,
+                ]
+                \addplot[no marks,black,-] expression[domain=-4:4,samples=100]{(1/2)*tanh(x)} 
+                            node[pos=1,anchor=west]{\tiny$\frac{1}{2}\tanh(\mu)$}; 
+                \addplot[no marks,black,-] expression[domain=-4:4,samples=100]{tanh(x)} 
+                            node[pos=1,anchor=west]{\tiny$\tanh(\mu)$}; 
+                \addplot[no marks,black,-] expression[domain=-4:4,samples=100]{(3/2)*tanh(x)} 
+                            node[pos=1,anchor=west]{\tiny$\frac{3}{2}\tanh(\mu)$}; 
+                \addplot[no marks,black,-] expression[domain=-4:4,samples=100]{2*tanh(x)} 
+                            node[pos=1,anchor=west]{\tiny$2\tanh(\mu)$};             
+                \addplot[no marks,black,-] expression[domain=-2.75:2.75,samples=100]{x} 
+                            node[pos=1,anchor=west]{\tiny$\mu$};             
+            \end{axis}
+        \end{tikzpicture}
+        \end{center}
+    \end{proof}
+
+\newpage
+\begin{exercise}[manual-num={5}]
+Consider the RSL:
+    \begin{equation*}
+    \begin{split}
+        X'' = -\lambda X, \h6 0<x<1, \h6X'(0) = aX(0),\h6 X'(1) = -bX(1),
+    \end{split}
+    \end{equation*}
+where $a,b \geq 0$. Without solving for the eigenvalues show that all eigenvalues must be greater than or equal to 0. (\textit{Hint: Let $L := -\frac{d^2}{dx^2}$; assuming $Lu = \lambda u$ for a nonzero function $u$ which satisfies the BCs, calculate $(Lu,u)$ in two different ways.})
+\end{exercise}
+    \begin{proof}
+        Defining $L := -\frac{d^2}{dx^2}$, we have:
+            \begin{equation*}
+            \begin{split}
+                (Lu,u)
+                & = \int_0^1 -u''(x)\overline{u(x)}dx \\
+                & = -u'(x)\overline{u(x)} \h3\bigg|_0^1 + \int_0^1 u'(x)\overline{u'(x)}dx \\
+                & = -u'(1)\overline{u(1)}+u'(0)\overline{u(0)} + \int_0^1 u'(x)\overline{u'(x)}dx \\
+                & = bu(1)\overline{u(1)} +au(0)\overline{u(0)} + \int_0^1 u'(x)\overline{u'(x)}dx \\ 
+                & = b|u(1)|^2 + a|u(0)|^2 + \int_0^1 |u'(x)|^2 dx.
+            \end{split}
+            \end{equation*}
+        Similarly:
+            \begin{equation*}
+            \begin{split}
+                (\lambda u, u )
+                & = \int_0^1 \lambda u(x) \overline{u(x)}dx \\
+                & = \lambda \int_0^1 |u(x)|^2dx.
+            \end{split}
+            \end{equation*}
+        Since $Lu = \lambda u$, we have $(Lu,u) = (\lambda u,u)$. Solving for $\lambda$ gives:
+            \begin{equation*}
+            \begin{split}
+                \lambda = \frac{b|u(1)|^2 + a|u(0)|^2 + \int_0^1 |u'(x)|^2 dx}{\int_0^1 |u(x)|^2dx}.
+            \end{split}
+            \end{equation*}
+        Since $u(x)$ is a nonzero function, the right hand side of the above equation is not undefined. Moreover, each term in the numerator is greater than or equal to zero, hence $\lambda \geq 0$.
+    \end{proof}
+
+\newpage
+\begin{exercise}[manual-num={6}]
+Let $k$ be a continuous function on $[a,b] \times [a,b]$. Define the operator $K:L^2([a,b]) \rightarrow L^2([a,b])$ by:
+    \begin{equation*}
+    \begin{split}
+        (Kg)(x) = \int_a^b k(x,t)g(t)dt.
+    \end{split}
+    \end{equation*}
+Use Cauchy-Schwartz and the continuity of $k$ to show that $Kg$ is continuous for any $g \in L^2([a,b])$.
+\end{exercise}
+    \begin{proof}
+        Let $g \in L^2([a,b])$. Let $x \in [a,b]$ and $\epsilon > 0$. Since $k$ is continuous, there exists a $\delta > 0$ such that, for all $y \in [a,b]$, we have $|x-y| < \delta$ implies:
+            \begin{equation*}
+            \begin{split}
+                |k(x,t) - k(y,t)| < \frac{\epsilon}{\lnorm g \rnorm_{L^2}}.
+            \end{split}
+            \end{equation*}
+        For any $y \in [a,b]$, if $|x-y| < \delta$ then:
+            \begin{equation*}
+            \begin{split}
+                |(Kg)(x) - (Kg)(y)| 
+                & \leq \int_a^b |k(x,t) - k(y,t)|\cdot|g(t)|dt \\
+                & \leq \left( \int_a^b |k(x,t) - k(y,t)|^2dt \right)^\frac{1}{2}\cdot \lnorm g \rnorm_{L^2} \\
+                & < \left( \int_a^b \frac{\epsilon^2}{\lnorm g \rnorm_{L^2}^2} dt \right)^\frac{1}{2}\lnorm g \rnorm_{L^2} \\
+                & = \frac{\epsilon}{\lnorm g \rnorm_{L^2}} \lnorm g \rnorm_{L^2} \\
+                & = \epsilon.
+            \end{split}
+            \end{equation*}
+        Thus $Kg$ is continuous.
+    \end{proof}
+
+
+\end{document}

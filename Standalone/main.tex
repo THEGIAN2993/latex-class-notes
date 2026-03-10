@@ -3,12 +3,9 @@
 
 \begin{document}
 
-\begin{theorem}
-Let $X$ be a normed linear space. If $\{x_n\}_{n = 1}^\infty$ is a sequence which converges \textit{weakly} to $x$, then $\lnorm x \rnorm \leq \liminf_{n \rightarrow \infty}\lnorm x_n \rnorm$.
-\end{theorem}
-
-\begin{theorem}
-Let $\{f_n\}_{n = 1}^\infty$ be a sequence in $L^+$. Suppose $f_n \rightarrow f$ a.e. Then $\int f \leq \liminf_{n \rightarrow \infty} \int f_n$.
-\end{theorem}
-
+Consider:
+    \begin{equation*}
+    X'' = -\lambda X, \hspace{3pt} 0 < x < 1, \hspace{3pt} X'(0) = aX(0), \hspace{3pt} X'(1) = -b X(1),
+    \end{equation*}
+where $a,b \geq 0$. Without solving for the eigenvalues, show that all eigenvalues must be greater than or equal to zero. (Hint: Let $L := - \frac{d^2}{dx^2}$; assuming $Lu = \lambda u$ for a nonzero function $u$ which satisfies the BC's, calculate $(Lu,u)$ in two different ways).
 \end{document}

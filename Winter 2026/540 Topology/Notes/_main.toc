@@ -13,4 +13,4 @@
 \contentsline {section}{\numberline {1.11}Quotient Topologies}{9}{section.1.11}%
 \contentsline {chapter}{\chapternumberline {2}Connectedness and Compactness}{11}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Connected Spaces}{11}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Compact Spaces}{11}{section.2.2}%
+\contentsline {section}{\numberline {2.2}Connected Subspaces of $\varmathbb {R}$}{13}{section.2.2}%

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  20 FEB 2026 00:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  2 MAR 2026 14:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1749,67 +1749,74 @@ Package pgfplots: loading complementary utilities for your pgf version...
 File: tikzlibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
  (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmarks.code.tex
 File: pgflibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
-))) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/libs/tikzlibrarypgfplots.fillbetween.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfcontrib/tikzlibraryfillbetween.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryintersections.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryintersections.code.tex
-\pgf@intersect@solutions=\count432
+))) (/usr/local/texlive/2025/texmf-dist/tex/latex/lipsum/lipsum.sty (/usr/local/texlive/2025/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
+Package: l3keys2e 2024-08-16 LaTeX2e option processing using LaTeX3 keys
+)
+Package: lipsum 2021-09-20 v2.7 150 paragraphs of Lorem Ipsum dummy text
+\g__lipsum_par_int=\count432
+\l__lipsum_a_int=\count433
+\l__lipsum_b_int=\count434
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/lipsum/lipsum.ltd.tex)) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/libs/tikzlibrarypgfplots.fillbetween.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfcontrib/tikzlibraryfillbetween.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryintersections.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryintersections.code.tex
+\pgf@intersect@solutions=\count435
 )) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfcontrib/tikzlibrarydecorations.softclip.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfcontrib/pgflibraryfillbetween.code.tex))) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/libs/tikzlibrarypgfplots.decorations.softclip.code.tex)) (/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex)
 LaTeX Font Info:    Font shape `T1/zpltlf/m/n' will be
-(Font)              scaled to size 10.0pt on input line 147.
-Package translations Info: No language package found. I am going to use `english' as default language. on input line 147.
+(Font)              scaled to size 10.0pt on input line 148.
+Package translations Info: No language package found. I am going to use `english' as default language. on input line 148.
  (./_main.aux (./ch1.aux) (./ch2.aux))
 \openout1 = `_main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/npxmi/m/it on input line 147.
-LaTeX Font Info:    Trying to load font information for OML+npxmi on input line 147.
+LaTeX Font Info:    Checking defaults for OML/npxmi/m/it on input line 148.
+LaTeX Font Info:    Trying to load font information for OML+npxmi on input line 148.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/newpx/omlnpxmi.fd
 File: omlnpxmi.fd 2013/03/21 Fontinst v1.933 font definitions for OML/npxmi.
 )
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for U/npxexa/m/n on input line 147.
-LaTeX Font Info:    Trying to load font information for U+npxexa on input line 147.
+LaTeX Font Info:    ... okay on input line 148.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 148.
+LaTeX Font Info:    ... okay on input line 148.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 148.
+LaTeX Font Info:    ... okay on input line 148.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 148.
+LaTeX Font Info:    ... okay on input line 148.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 148.
+LaTeX Font Info:    ... okay on input line 148.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 148.
+LaTeX Font Info:    ... okay on input line 148.
+LaTeX Font Info:    Checking defaults for U/npxexa/m/n on input line 148.
+LaTeX Font Info:    Trying to load font information for U+npxexa on input line 148.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/newpx/unpxexa.fd
 File: unpxexa.fd 2013/03/24 Fontinst v1.933 font definitions for U/npxexa.
 )
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for LMS/npxsy/m/n on input line 147.
-LaTeX Font Info:    Trying to load font information for LMS+npxsy on input line 147.
+LaTeX Font Info:    ... okay on input line 148.
+LaTeX Font Info:    Checking defaults for LMS/npxsy/m/n on input line 148.
+LaTeX Font Info:    Trying to load font information for LMS+npxsy on input line 148.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/newpx/lmsnpxsy.fd
 File: lmsnpxsy.fd 2016/07/04 Fontinst v1.933 font definitions for LMS/npxsy.
 )
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for LMX/npxexx/m/n on input line 147.
-LaTeX Font Info:    Trying to load font information for LMX+npxexx on input line 147.
+LaTeX Font Info:    ... okay on input line 148.
+LaTeX Font Info:    Checking defaults for LMX/npxexx/m/n on input line 148.
+LaTeX Font Info:    Trying to load font information for LMX+npxexx on input line 148.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/newpx/lmxnpxexx.fd
 File: lmxnpxexx.fd 2016/07/04 Fontinst v1.933 font definitions for LMX/npxexx.
 )
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Info: Command `\dddot' is already robust on input line 147.
-LaTeX Info: Command `\ddddot' is already robust on input line 147.
+LaTeX Font Info:    ... okay on input line 148.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 148.
+LaTeX Font Info:    ... okay on input line 148.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 148.
+LaTeX Font Info:    ... okay on input line 148.
+LaTeX Info: Command `\dddot' is already robust on input line 148.
+LaTeX Info: Command `\ddddot' is already robust on input line 148.
  (/usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count433
+\scratchcounter=\count436
 \scratchdimen=\dimen374
 \scratchbox=\box80
-\nofMPsegments=\count434
-\nofMParguments=\count435
+\nofMPsegments=\count437
+\nofMParguments=\count438
 \everyMPshowfont=\toks71
-\MPscratchCnt=\count436
+\MPscratchCnt=\count439
 \MPscratchDim=\dimen375
-\MPnumerator=\count437
-\makeMPintoPDFobject=\count438
+\MPnumerator=\count440
+\makeMPintoPDFobject=\count441
 \everyMPtoPDFconversion=\toks72
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -1817,8 +1824,8 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (/usr/local/texlive/2025/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-\c@mv@tabular=\count439
-\c@mv@boldtabular=\count440
+\c@mv@tabular=\count442
+\c@mv@boldtabular=\count443
  (/usr/local/texlive/2025/texmf-dist/tex/latex/fmtcount/fc-english.def
 File: fc-english.def 2016/01/12
 )
@@ -1859,8 +1866,8 @@ File: fc-english.def 2016/01/12
 (/usr/local/texlive/2025/texmf-dist/tex/latex/translations/translations-basic-dictionary-english.trsl
 File: translations-basic-dictionary-english.trsl (english translation file `translations-basic-dictionary')
 )
-Package translations Info: loading dictionary `translations-basic-dictionary' for `english'. on input line 147.
-Package hyperref Info: Link coloring OFF on input line 147.
+Package translations Info: loading dictionary `translations-basic-dictionary' for `english'. on input line 148.
+Package hyperref Info: Link coloring OFF on input line 148.
  (./_main.out) (./_main.out)
 \@outlinefile=\write5
 \openout5 = `_main.out'.
@@ -1869,15 +1876,15 @@ Package hyperref Info: Link coloring OFF on input line 147.
 Package pgfplots notification 'compat/show suggested version=true': document has been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 
 LaTeX Font Info:    Font shape `T1/zpltlf/b/n' will be
-(Font)              scaled to size 10.0pt on input line 161.
+(Font)              scaled to size 10.0pt on input line 162.
 LaTeX Font Info:    Font shape `T1/zpltlf/b/n' will be
-(Font)              scaled to size 14.4pt on input line 161.
+(Font)              scaled to size 14.4pt on input line 162.
 LaTeX Font Info:    Font shape `T1/zpltlf/b/n' will be
-(Font)              scaled to size 12.0pt on input line 161.
+(Font)              scaled to size 12.0pt on input line 162.
 LaTeX Font Info:    Font shape `T1/zpltlf/m/n' will be
-(Font)              scaled to size 20.74pt on input line 165.
+(Font)              scaled to size 20.74pt on input line 167.
 LaTeX Font Info:    Font shape `T1/zpltlf/b/n' will be
-(Font)              scaled to size 20.74pt on input line 165.
+(Font)              scaled to size 20.74pt on input line 167.
 (./_main.toc
 LaTeX Font Info:    Trying to load font information for OT1+minzpl on input line 1.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/newpx/ot1minzpl.fd
@@ -1980,7 +1987,7 @@ LaTeX Font Warning: Font shape `U/wasy/m/n' in size <5.5> not available
 )
 
 LaTeX Font Info:    Font shape `T1/zpltlf/m/n' will be
-(Font)              scaled to size 7.0pt on input line 170.
+(Font)              scaled to size 7.0pt on input line 172.
 [1{/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf.enc}
 
 
@@ -2268,9 +2275,16 @@ LaTeX Font Warning: Font shape `U/wasy/m/n' in size <6.5> not available
 
 [37]
 
-[38])
+[38]
 
 [39]
+Overfull \hbox (5.71603pt too wide) in paragraph at lines 806--807
+[]\T1/zpltlf/m/n/10 (2) Since $\U/zeur/m/n/10 T \LMS/npxsy/m/n/10 2 \U/eus/m/n/10 L\LMS/npxsy/m/n/10 น\U/zeur/m/n/10 X\OT1/minzpl/m/n/10 , \U/zeur/m/n/10 Y\LMS/npxsy/m/n/10 บ$\T1/zpltlf/m/n/10 , the sub-space $\U/zeur/m/n/10 T\LMS/npxsy/m/n/10 น\U/zeur/m/n/10 B[]\LMS/npxsy/m/n/10 น\OT1/minzpl/m/n/10 0, 1\LMS/npxsy/m/n/10 บบ$ \T1/zpltlf/m/n/10 is bounded. Since $\U/zeur/m/n/10 R\LMS/npxsy/m/n/10 น\U/zeur/m/n/10 T\LMS/npxsy/m/n/10 บ$ \T1/zpltlf/m/n/10 is finite-dimensional,
+ []
+
+)
+
+[40]
 \tf@toc=\write6
 \openout6 = `_main.toc'.
 
@@ -2285,13 +2299,13 @@ LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.5pt have occurred.
 
 Package rerunfilecheck Info: File `_main.out' has not changed.
-(rerunfilecheck)             Checksum: 12557C559F4AF7E7E399E059CA4069AC;3043.
+(rerunfilecheck)             Checksum: D78859639172FEC4DEF4104502E8333B;3192.
  ) 
 Here is how much of TeX's memory you used:
- 45854 strings out of 473190
- 1023673 string characters out of 5715801
- 1534751 words of memory out of 5000000
- 68002 multiletter control sequences out of 15000+600000
+ 46270 strings out of 473190
+ 1033631 string characters out of 5715801
+ 1610388 words of memory out of 5000000
+ 68396 multiletter control sequences out of 15000+600000
  668264 words of font info for 215 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,26n,107p,1203b,809s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -2305,10 +2319,10 @@ pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist,
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist, replaced by a fixed one
 
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/NewPXMI_gnu.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/euex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eurm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eurm5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eurm7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eusm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eusm7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/pxmiaX.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/pxsys.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsym.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/zplb.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/zplr.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/zplri.pfb>
-Output written on _main.pdf (40 pages, 317734 bytes).
+Output written on _main.pdf (41 pages, 324120 bytes).
 PDF statistics:
- 649 PDF objects out of 1000 (max. 8388607)
- 554 compressed objects within 6 object streams
- 235 named destinations out of 1000 (max. 500000)
- 181 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 669 PDF objects out of 1000 (max. 8388607)
+ 573 compressed objects within 6 object streams
+ 245 named destinations out of 1000 (max. 500000)
+ 189 words of extra memory for PDF output out of 10000 (max. 10000000)
 

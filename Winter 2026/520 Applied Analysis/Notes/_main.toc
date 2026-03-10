@@ -18,4 +18,5 @@
 \contentsline {section}{\numberline {2.1}Inner Product Spaces}{24}{section.2.1}%
 \contentsline {section}{Exercises}{26}{proposition.2.1.3}%
 \contentsline {section}{\numberline {2.2}Hilbert Spaces}{27}{section.2.2}%
-\contentsline {section}{Exercises}{32}{Item.40}%
+\contentsline {section}{Exercises}{33}{theorem.2.2.9}%
+\contentsline {section}{\numberline {2.3}Compact Operators}{40}{section.2.3}%

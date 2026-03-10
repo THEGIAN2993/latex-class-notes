@@ -1,0 +1,623 @@
+\documentclass[9pt,oneside,openany]{memoir}
+
+\iffalse
+%font style 1
+\usepackage[p,osf]{scholax}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage[scaled=1.075,ncf,vvarbb]{newtxmath}
+\fi
+
+%font style 2
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage[fixamsmath]{mathtools}  % Extension to amsmath
+\usepackage{amsthm}
+\usepackage{amssymb}
+\renewcommand*{\mathbf}[1]{\varmathbb{#1}}
+\usepackage{newpxtext}
+\usepackage{eulerpx}
+\usepackage{mathrsfs}
+\usepackage{pdfpages}
+
+\usepackage{eucal}
+\usepackage{datetime}
+    \newdateformat{specialdate}{\THEYEAR\ \monthname\ \THEDAY}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \fancyhf{}
+    \cfoot{\scriptsize\thepage}
+    \fancyhead[R]{\scalebox{0.8}{\nouppercase{\rightmark}}}
+    \fancyhead[L]{\scalebox{0.8}{\nouppercase{\leftmark}}}
+
+    \fancypagestyle{plain}{%
+        \fancyhf{}
+        \cfoot{\scriptsize\thepage}
+        \fancyhead[R]{\scalebox{0.8}{\phantom{a}}}
+        \fancyhead[L]{\scalebox{0.8}{Applied Analysis}}
+    }
+\usepackage{keytheorems}
+    \newkeytheoremstyle{def}{
+    inherit-style=definition,
+    spaceabove=1.5em,
+    spacebelow=1.5em,
+    postheadspace=0.5em,
+    }
+    \newkeytheoremstyle{thm}{
+    spaceabove=1.5em,
+    spacebelow=1.5em,
+    postheadspace=0.5em,
+    }
+    \newkeytheorem{theorem}[
+    name = Theorem,
+    style=thm,
+    numberwithin = section,
+    ]
+    \newkeytheorem{theorem*}[
+    name=Theorem,
+    style=thm,
+    numbered=false
+    ]
+    \newkeytheorem{proposition}[
+    name = Proposition,
+    style=thm,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{lemma}[
+    name = Lemma,
+    style=thm,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{corollary}[
+    name = Corollary,
+    style=thm,
+    numberwithin = section,
+    sibling=theorem
+    ]
+    \newkeytheorem{definition}[
+    name = Definition,
+    style=def,
+    numberwithin = section,
+    style = definition
+    ]
+    \newkeytheorem{example}[
+    name = Example,
+    style=def,
+    numberwithin = section,
+    style = definition
+    ]
+    \newkeytheorem{remark}[
+    name=Remark,
+    style=remark, 
+    numbered=false  
+    ]
+    \newkeytheorem{solution}[
+    name=Solution,
+    style=remark, 
+    numbered=false  
+    ]
+    \newkeytheorem{question}[
+    name=Question,
+    style=remark, 
+    numbered=false  
+    ]
+    \newkeytheorem{exercise}[
+    name = Exercise,
+    style=thm
+    ]
+    \newkeytheorem{axiom}[name = Axiom]
+\usepackage{enumitem}
+\usepackage[explicit]{titlesec}
+    \titleformat{\chapter}[display]
+    {\bfseries\LARGE\raggedright}
+    {Chapter {\thechapter}}
+    {.1ex minus .1ex}
+    {\Large #1}
+    \titlespacing{\chapter}
+    {3pc}{*3}{40pt}[3pc]
+
+    \titleformat{\section}[block]
+    {\normalfont\bfseries\large}
+    {}{0pt}
+    {\fbox{\strut \S\ \thesection.\ #1}}
+    \titlespacing{\section}
+    {0pt}{3ex plus .1ex minus .2ex}{3ex plus .1ex minus .2ex}
+    \setlength{\fboxsep}{4pt}   % padding inside the box
+    \setlength{\fboxrule}{0.6pt} % border thickness
+    
+    \titleformat{name=\section,numberless}[block]
+    {\normalfont\bfseries\large\raggedright}
+    {}{0pt}
+    {\fbox{\strut #1}}
+\usepackage[utf8x]{inputenc}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{float}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning,arrows.meta}
+\usetikzlibrary{decorations.pathreplacing}
+\usepackage{wasysym}
+\usepackage{hyperref}
+\usepackage{ulem}
+\usepackage{pgfplots}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=1.18}
+\usepackage{xcolor}
+\usepackage{matlab-prettifier}
+\lstdefinestyle{console}{
+  basicstyle=\ttfamily\small,
+  numbers=none,
+  frame=single,
+  breaklines=true,
+  showstringspaces=false 
+}
+\definecolor{matlabbg}{HTML}{F2F2F2}
+\definecolor{matlabln}{HTML}{6E6E6E}
+
+\lstdefinestyle{editor}{
+  style=Matlab-editor,
+  backgroundcolor=\color{matlabbg},
+  numbers=left,
+  numberstyle=\color{matlabln}\ttfamily\scriptsize,
+  stepnumber=1,
+  numbersep=10pt,
+  xleftmargin=2.2em,     % space for line numbers
+  frame=single,
+  framerule=0pt,         % no border line (keep the box spacing)
+  framesep=6pt,
+  breaklines=true
+}
+
+\renewcommand{\headrulewidth}{0pt} % removes the top/header line
+% (optional) if you also want no line above the footer:
+\renewcommand{\footrulewidth}{0pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
+
+\begin{document}
+\begin{center}
+    {\Large Math 502 \\[0.1in]Homework \#5}\\[.175in]
+    {Name:} {\underline{Gianluca Crescenzo\hspace*{2in}}}\\[0.15in]
+    \end{center}
+    \vspace{4pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}[manual-num={8.1}]
+
+\end{exercise}
+\begin{solution}
+    Below is the stability region for the TR-BDF2 method.
+    
+    \phantom{a}
+    \begin{center}
+    \includegraphics[scale=0.3]{Screenshot 2026-03-06 at 5.48.07 PM.png}
+    \end{center}
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}[manual-num={8.4}]
+\end{exercise}
+\begin{solution}
+Using the test problem $u' = \lambda u$, we have:
+    \begin{equation*}
+    \begin{split}
+        U^\ast = U^n + \frac{z}{2}U^\ast.
+    \end{split}
+    \end{equation*}
+Solving for $U^\ast$ gives:
+    \begin{equation*}
+    \begin{split}
+        U^\ast = \frac{U^n}{1 - \frac{z}{2}}.
+    \end{split}
+    \end{equation*}
+Hence:
+    \begin{equation*}
+    \begin{split}
+        U^{n+1} 
+        & = U^n + zU^\ast \\
+        & = U^n + \frac{zU^n}{1- \frac{z}{2}} \\
+        & = \left( 1 + \frac{z}{1 - \frac{z}{2}} \right)U^n.
+    \end{split}
+    \end{equation*}
+The stability function is then given by $R(z) = (1 + \frac{z}{1 - \frac{z}{2}})$. Expressing $\frac{z}{1 - \frac{z}{2}}$ as its taylor series, we have:
+    \begin{equation*}
+    \begin{split}
+        R(z) = 1 + z + \frac{z^2}{2} + \frac{z^3}{4} + \frac{z^4}{8}+...
+    \end{split}
+    \end{equation*}
+Compared to the taylor expansion of $e^z$, note that $R(z)$ differs after the $z^2$ term. Hence the method is second order accurate.
+\end{solution}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}[manual-num={9.1}]
+    
+\end{exercise}
+\begin{solution}
+    (a) Manipulating our original scheme and re-indexing, we get:
+        \begin{equation*}
+        \begin{split}
+            \frac{U_i^{n+1} - U_i^{n-1}}{2k} = \frac{U_{i-1}^n - 2 U_n^n + U_{i+1}^n}{h^2}.
+        \end{split}
+        \end{equation*}
+    Thus:
+        \begin{equation*}
+        \begin{split}
+            \tau = \frac{u(x_1,t_{n+1}) - u(x_1,t_{n-1})}{2k} - \frac{u(x_{i-1},t_n) - 2u(x_1,t_n) + u(x_{i+1},t_n)}{h^2}.
+        \end{split}
+        \end{equation*}
+    Taylor expanding yields:
+        \begin{equation*}
+        \begin{split}
+            \frac{u(x_1,t_{n+1}) - u(x_1,t_{n-1})}{2k} = u_t + \frac{k^2}{6}u_{ttt} + O(k^4).
+        \end{split}
+        \end{equation*}
+    Since $u_t = u_xx$, the right hand side becomes:
+        \begin{equation*}
+        \begin{split}
+            \frac{u(x_1,t_{n+1}) - u(x_1,t_{n-1})}{2k} = u_xx + \frac{k^2}{6}u_{xxxx} + O(k^4).
+        \end{split}
+        \end{equation*}
+    Hence:
+        \begin{equation*}
+        \begin{split}
+            \tau = (u_t - u_{xx}) + \frac{k^2}{6}u_{ttt} - \frac{h^2}{12}u_{xxxx} + O(k^4) + O(h^2).
+        \end{split}
+        \end{equation*}
+    Thus the order of accuracy is $O(k^2)$ and $O(h^2)$.
+
+    (b) The eigenvalues satisfy $\frac{-4}{h^2} < \lambda_p < 0$. From the leapfrog scheme, we have: $$U^{n+2} = U^n + 2k\lambda U^{n+1}.$$ Taking $r = \lambda k$, the scheme can be rewritten as $z^2 -2rz - 1 = 0$. The roots of this polynomial are $z = r \pm \sqrt{r^2 + 1}$. Note that the modulus of $z$ is strictly greater than one, hence it is not stable.  
+\end{solution}
+    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}[manual-num={9.2}]
+\end{exercise}
+\begin{solution}
+(a) After adjusting \texttt{heat\_CN.m} the following code outputs an error table and $\log$-$\log$ plot using \texttt{error\_table.m} and \texttt{error\_loglog.m}.
+
+\begin{lstlisting}[style=editor]
+mvals = [10 20 40 80 160];      
+ntest = length(mvals);
+
+hvals = zeros(ntest,1);
+E     = zeros(ntest,1);
+
+for j = 1:ntest
+    [hvals(j),~,E(j)] = heat_CN(mvals(j)); 
+end
+
+error_table(hvals, E);
+error_loglog(hvals, E);
+\end{lstlisting}
+\begin{lstlisting}[style=console]
+>> hw6
+ 
+WARNING *** k does not divide tfinal, k = 3.63636e-01
+ 
+at time t = 1.09091e+00  max error =  2.52504e-03
+ 
+WARNING *** k does not divide tfinal, k = 1.90476e-01
+ 
+at time t = 9.52381e-01  max error =  9.07877e-04
+ 
+WARNING *** k does not divide tfinal, k = 9.75610e-02
+ 
+at time t = 9.75610e-01  max error =  1.53948e-04
+ 
+WARNING *** k does not divide tfinal, k = 4.93827e-02
+ 
+at time t = 9.87654e-01  max error =  3.89510e-05
+ 
+WARNING *** k does not divide tfinal, k = 2.48447e-02
+ 
+at time t = 9.93789e-01  max error =  9.80754e-06
+ 
+      h        error       ratio       observed order
+   0.09091   2.52504e-03       NaN             NaN
+   0.04762   9.07877e-04   2.78125         1.58190
+   0.02439   1.53948e-04   5.89730         2.65226
+   0.01235   3.89510e-05   3.95235         2.01844
+   0.00621   9.80754e-06   3.97154         2.00763
+ 
+ 
+Least squares fit gives E(h) = 0.457212 * h^2.12203
+ 
+>> 
+\end{lstlisting}
+\begin{center}
+\includegraphics[scale=0.45]{p-9loglogplot.pdf}
+\end{center}
+
+(b) Below is the updated code using the Backward Euler method:
+\begin{lstlisting}[style=editor]
+function [h,k,error] = heat_CN1(m)
+
+clf              % clear graphics
+hold on          % Put all plots on the same graph (comment out if desired)
+
+ax = 0;
+bx = 1;
+kappa = .02;               % heat conduction coefficient:
+tfinal = 1;                % final time
+
+h = (bx-ax)/(m+1);         % h = delta x
+x = linspace(ax,bx,m+2)';  % note x(1)=0 and x(m+2)=1
+                           % u(1)=g0 and u(m+2)=g1 are known from BC's
+k = 24*h^2;                  % time step
+
+nsteps = round(tfinal / k);    % number of time steps
+%nplot = 1;      % plot solution every nplot time steps
+                 % (set nplot=2 to plot every 2 time steps, etc.)
+nplot = nsteps;  % only plot at final time
+
+if abs(k*nsteps - tfinal) > 1e-5
+   % The last step won't go exactly to tfinal.
+   disp(' ')
+   disp(sprintf('WARNING *** k does not divide tfinal, k = %9.5e',k))
+   disp(' ')
+   end
+
+
+% true solution for comparison:
+% For Gaussian initial conditions u(x,0) = exp(-beta * (x-0.4)^2)
+beta = 150;
+utrue = @(x,t) exp(-(x-0.4).^2 / (4*kappa*t + 1/beta)) / sqrt(4*beta*kappa*t+1);
+
+% initial conditions:
+u0 = utrue(x,0);
+
+
+% Each time step we solve MOL system U' = AU + g using the Trapezoidal method
+
+% set up matrices:
+r = kappa* k/(h^2);
+e = ones(m,1);
+A = spdiags([e -2*e e], [-1 0 1], m, m);
+%A1 = eye(m) - r * A;
+A2 = eye(m) + r * A;
+
+
+% initial data on fine grid for plotting:
+xfine = linspace(ax,bx,1001);
+ufine = utrue(xfine,0);
+
+% initialize u and plot:
+tn = 0;
+u = u0;
+
+plot(x,u,'b.-', xfine,ufine,'r')
+legend('computed','true')
+title('Initial data at time = 0')
+
+input('Hit <return> to continue  ');
+
+
+% main time-stepping loop:
+
+for n = 1:nsteps
+     tnp = tn + k;   % = t_{n+1}
+
+     % boundary values u(0,t) and u(1,t) at times tn and tnp:
+
+     g0n = u(1);
+     g1n = u(m+2);
+     g0np = utrue(ax,tnp);
+     g1np = utrue(bx,tnp);
+
+     % compute right hand side for linear system:
+     uint = u(2:(m+1));   % interior points (unknowns)
+     rhs = A2*uint;
+     % fix-up right hand side using BC's (i.e. add vector g to A2*uint)
+     rhs(1) = rhs(1) + r*(g0n);
+     rhs(m) = rhs(m) + r*(g1n);
+
+     % solve linear system:
+     uint = rhs;
+
+     % augment with boundary values:
+     u = [g0np; uint; g1np];
+
+     % plot results at desired times:
+     if mod(n,nplot)==0 | n==nsteps
+        ufine = utrue(xfine,tnp);
+        plot(x,u,'b.-', xfine,ufine,'r')
+        title(sprintf('t = %9.5e  after %4i time steps with %5i grid points',...
+                       tnp,n,m+2))
+        error = max(abs(u-utrue(x,tnp)));
+        disp(sprintf('at time t = %9.5e  max error =  %9.5e',tnp,error))
+        if n<nsteps, input('Hit <return> to continue  '); end;
+        end
+
+     tn = tnp;   % for next time step
+     end   
+\end{lstlisting}
+Using the same error-analysis in part (a), we get the following output:
+\begin{lstlisting}[style=console]
+>> hw6partb
+ 
+WARNING *** k does not divide tfinal, k = 1.98347e-01
+ 
+Hit <return> to continue  
+at time t = 9.91736e-01  max error =  3.04307e-02
+ 
+WARNING *** k does not divide tfinal, k = 5.44218e-02
+ 
+Hit <return> to continue  
+at time t = 9.79592e-01  max error =  3.09354e-03
+ 
+WARNING *** k does not divide tfinal, k = 1.42772e-02
+ 
+Hit <return> to continue  
+at time t = 9.99405e-01  max error =  8.14505e-04
+ 
+WARNING *** k does not divide tfinal, k = 3.65798e-03
+ 
+Hit <return> to continue  
+
+at time t = 9.98628e-01  max error =  2.09904e-04
+ 
+WARNING *** k does not divide tfinal, k = 9.25890e-04
+ 
+Hit <return> to continue  
+at time t = 9.99961e-01  max error =  5.31161e-05
+ 
+WARNING *** k does not divide tfinal, k = 2.32917e-04
+ 
+Hit <return> to continue  
+at time t = 9.99913e-01  max error =  1.33685e-05
+ 
+      h        error       ratio       observed order
+   0.09091   3.04307e-02       NaN             NaN
+   0.04762   3.09354e-03   9.83683         3.53547
+   0.02439   8.14505e-04   3.79807         1.99461
+   0.01235   2.09904e-04   3.88037         1.99145
+   0.00621   5.31161e-05   3.95179         2.00038
+   0.00312   1.33685e-05   3.97324         1.99929
+ 
+ 
+Least squares fit gives E(h) = 3.70715 * h^2.20379
+ 
+>>    
+\end{lstlisting}
+Hence the method is $O(h^2)$ accurate.
+
+(c) I was not getting an unstable output. Unsure of what I did wrong.
+
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}[manual-num={9.3}]
+\end{exercise}
+\begin{solution}
+Below is the updated code.
+
+
+\begin{lstlisting}[style=editor]
+function [h,k,error] = heat_CN(m)
+
+clf              % clear graphics
+hold on          % Put all plots on the same graph (comment out if desired)
+
+ax = -1;
+bx = 1;
+kappa = .02;               % heat conduction coefficient:
+tfinal = 1;                % final time
+
+h = (bx-ax)/(m+1);         % h = delta x
+x = linspace(ax,bx,m+2)';  % note x(1)=0 and x(m+2)=1
+                           % u(1)=g0 and u(m+2)=g1 are known from BC's
+k = 4*h;                   % time step
+
+nsteps = round(tfinal / k);    % number of time steps
+%nplot = 1;      % plot solution every nplot time steps
+                 % (set nplot=2 to plot every 2 time steps, etc.)
+nplot = nsteps;  % only plot at final time
+
+if abs(k*nsteps - tfinal) > 1e-5
+   % The last step won't go exactly to tfinal.
+   disp(' ')
+   disp(sprintf('WARNING *** k does not divide tfinal, k = %9.5e',k))
+   disp(' ')
+   end
+
+
+% true solution for comparison:
+utrue = @(x,t) 0.5 * erfc( x ./ sqrt(4*kappa*t) );
+
+% initial conditions (consistent with utrue as t -> 0+):
+u0 = double(x < 0);   % 1 if x<0, 0 if x>=0
+
+
+% Each time step we solve MOL system U' = AU + g using the Trapezoidal method
+
+% set up matrices:
+r = (1/2) * kappa* k/(h^2);
+e = ones(m,1);
+A = spdiags([e -2*e e], [-1 0 1], m, m);
+A1 = eye(m) - r * A;
+A2 = eye(m) + r * A;
+
+
+% initial data on fine grid for plotting:
+xfine = linspace(ax,bx,1001);
+ufine = utrue(xfine,0);
+
+% initialize u and plot:
+tn = 0;
+u = u0;
+
+plot(x,u,'b.-', xfine,ufine,'r')
+legend('computed','true')
+title('Initial data at time = 0')
+
+input('Hit <return> to continue  ');
+
+
+% main time-stepping loop:
+
+for n = 1:nsteps
+     tnp = tn + k;   % = t_{n+1}
+
+     % boundary values u(0,t) and u(1,t) at times tn and tnp:
+
+     g0n = u(1);
+     g1n = u(m+2);
+     g0np = utrue(ax,tnp);
+     g1np = utrue(bx,tnp);
+
+     % compute right hand side for linear system:
+     uint = u(2:(m+1));   % interior points (unknowns)
+     rhs = A2*uint;
+     % fix-up right hand side using BC's (i.e. add vector g to A2*uint)
+     rhs(1) = rhs(1) + r*(g0n + g0np);
+     rhs(m) = rhs(m) + r*(g1n + g1np);
+
+     % solve linear system:
+     uint = A1\rhs;
+
+     % augment with boundary values:
+     u = [g0np; uint; g1np];
+
+     % plot results at desired times:
+     if mod(n,nplot)==0 | n==nsteps
+        ufine = utrue(xfine,tnp);
+        plot(x,u,'b.-', xfine,ufine,'r')
+        title(sprintf('t = %9.5e  after %4i time steps with %5i grid points',...
+                       tnp,n,m+2))
+        error = max(abs(u-utrue(x,tnp)));
+        disp(sprintf('at time t = %9.5e  max error =  %9.5e',tnp,error))
+        if n<nsteps, input('Hit <return> to continue  '); end;
+        end
+
+     tn = tnp;   % for next time step
+     end
+\end{lstlisting}
+
+(a) Attached is the output when $m = 39$ and $k = 4h$.
+    \begin{center}
+    \includegraphics[scale=.45]{heatoutput39.pdf}
+    \end{center}
+
+(b) Attached is the output when $m = 38$ and $k = 4h$.
+    \begin{center}
+    \includegraphics[scale=.45]{heatoutput38.pdf}
+    \end{center}
+    The better results for $m =38$ are due to $x=0$ lying between two grid points. The order of accuracy is first-order as the solution is not smooth at $t=0$, reducing the usual second-order behavior of Crank-Nicolson method.
+\end{solution}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}
