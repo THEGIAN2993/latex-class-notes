@@ -1,4 +1,4 @@
-\documentclass[12pt,oneside,openany]{memoir}
+\documentclass[10pt,oneside,openany]{memoir}
 
 \iffalse
 %font style 1
@@ -21,7 +21,7 @@
 \usepackage{eucal}
 \usepackage{datetime}
     \newdateformat{specialdate}{\THEYEAR\ \monthname\ \THEDAY}
-\usepackage[margin=1in]{geometry}
+\usepackage[margin=1.5in]{geometry}
 \usepackage{fancyhdr}
     \pagestyle{fancy}
     \fancyhf{}
@@ -33,7 +33,7 @@
         \fancyhf{}
         \cfoot{\scriptsize\thepage}
         \fancyhead[R]{\scalebox{0.8}{\phantom{a}}}
-        \fancyhead[L]{\scalebox{0.8}{Applied Analysis}}
+        \fancyhead[L]{\scalebox{0.8}{Topology}}
     }
 \usepackage{keytheorems}
     \newkeytheoremstyle{def}{
@@ -169,4 +169,5 @@
     %\include{preliminaries}
     \include{intro}
     \include{ch2}
+    \include{ch3}
 \end{document}

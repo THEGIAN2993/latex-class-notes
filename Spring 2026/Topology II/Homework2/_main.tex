@@ -1,0 +1,213 @@
+\documentclass[10pt,oneside,openany]{memoir}
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/preamble-hw.tex}
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
+\begin{document}
+\homeworktitle{Math 521}{Week 1 Assignment}{Gianluca Crescenzo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+\section*{\S 53}
+\begin{exercise}[manual-num={1}]
+Let $Y$ have the discrete topology. Show that if $p:X \times Y \rightarrow X$ is projection onto the first coordinate, then $p$ is a covering map.
+\end{exercise}
+	\begin{proof}
+		Let $x \in X$.  Then:
+		\begin{align*}
+			p^{-1}(X)
+			&= X \times Y \\
+			&= X \times \bigsqcup_{y \in Y} \{y\}  \\
+			&=\bigsqcup_{y \in Y} X \times \{y\}.
+		\end{align*}
+		Clearly the restriction $\restr{p}{X \times \{y\} }:X \times \{y\} \rightarrow X$ is continuous. Now define $g:X \rightarrow X \times \{y\} $ by $x \mapsto (x,y)$. Clearly $g$ is continuous, and similarly:
+		\[
+		\left(\restr{p}{X \times \{y\}}\circ g \right) = \restr{p}{X \times \{y\} }(x,y) = x.
+		\] 
+		Similarly
+		\[
+		 \left( g \circ \restr{p}{X \times \{y\}} \right)(x,y) = g(x) = (x,y).	
+		\]
+
+		Thus $\restr{p}{X \times \{y\} }$ is a homeomorphism. Since $X$ is an elementary neighborhood for all $x \in X$, this means  $p$ is a covering map.	 
+
+	\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}[manual-num={3}]{{\color{red}}}
+	Let $p:E \rightarrow B$ be a covering map; let $B$ be connected. Show that is $p^{-1}(\{b_0\})$ has $k$ elements for some $b_0 \in B$, then $p^{-1}(\{b\})$ has $k$ elements for every $b \in B$.
+\end{exercise}
+	\begin{proof}
+		We will first prove that for all $b,b' \in V$, where $V$ is an elementary neighborhood, then there exists a bijection between $p^{-1}(\{b\})$ and $p^{-1}(\{b'\})$. Since $V$ is an elementary neighborhood, there exists a family $\{W_\alpha\} \subset E$ such that $p^{-1}(V) = \bigsqcup_\alpha W_\alpha$ and $\restr{p}{W_\alpha}:W_\alpha \rightarrow B$ is a homeomorphism for all $\alpha$. For fixed $\alpha$, since $\restr{p}{W_\alpha}$ is a homeomorphism, it is bijective. Hence:
+			\[
+				\card\left(\restr{p}{W_\alpha}^{-1}\left(\{b\}\right)\right) = 1 = \card\left(\restr{p}{W_\alpha}^{-1}\left(\{b'\}\right)\right).
+			\]
+		In particular:
+			\[
+				\card\left( p^{-1}(\{b\} )\cap W_\alpha \right)  = \card\left( p^{-1}(\{b'\} )\cap W_\alpha \right).
+			\] 
+		Hence:
+			\[
+				\card\left( \bigsqcup_{\alpha} p^{-1}(\{b\} \cap W_\alpha\right) =\card\left( \bigsqcup_{\alpha} p^{-1}(\{b'\} \cap W_\alpha\right).
+			\]
+		Finally, we have:
+			\[
+				\card(p^{-1}(\{b\} )) = \card(p^{-1}(\{b'\}) ) 
+			\]
+		Since $p^{-1}(\{b\} )$ and $p^{-1}(\{b'\} )$ have equal cardinalities, their exists a bijection between them.
+
+		We can now begin the proof of our exercise. Define:
+			\[
+			U_k := \left\{b \in B \mid \card(p^{-1}\{b\}) = k\right\}.
+			\]
+		We will show that the set $U_k$ is both open and closed in $B$. Let $b \in U_k$. Then $b \in B$, so there exists an elementary neighborhood $V$ of $b$. Let $b' \in V$. By our above lemma, there exists a bijection between $p^{-1}(\{b\} )$ and $p^{-1}(\{b'\} $. Hence $\card(p^{-1}(\{b\} )) = \card(p^{-1}(\{b'\} ))$, which means $b' \in U_k$. This means $b \in V \subseteq U_k$ for some open set $V$, hence $U_k$ is open. Likewise, for any $b \in B \setminus U_k$, there is an elementary neighborhood $V$ containing $b$, which must then be contained in $B \setminus U_k$ since the cardinality of $p^{-1}(b')$ must be different for each $b' \in V$. Thus $B \setminus U_k$ is open. Since $U_k$ is both open and closed in $B$, we conlude that $U_k = B$. Hence $p^{-1}(b)$ has $k$ elements for every $b \in B$.
+	\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}[manual-num={6}]
+	Let $p:E \rightarrow B$ be a covering map. If $B$ is compact and $p^{-1}(b)$ is finite for each $b \in B$, then $E$ is compact.
+\end{exercise}
+	\begin{proof}
+		Let $\{U_i\}_{i \in I}$ be an open cover of $E$. For each $b \in B$, choose an elementary neighborhood $U_b$ such that $p^{-1}(U_b)$ is entirely contained in an element of our open cover. Then $\{U_b\}_{b \in B}$ is an open cover of $B$. Since $B$ is compact, there exists points $b_1,\ldots,b_n \in B$ such that $\{U_{b_1},\ldots,U_{b_n}\}$ covers $B$. For each $i$, since $U_{b_i}$ is an elementary neighborhood, $p^{-1}(U_{b_i})$ is a disjoint union of its slices. Moreover, the number of slices is finite by hypothesis. By construction, each slice of $p^{-1}(U_{b_i})$ lies in some element of our cover $\{U_i\}_{i \in I}$. Hence there is a finite subcollection of $\{U_i\}_{i \in I}$ which covers $p^{-1}(U_{b_i})$. Since $E = \bigsqcup_{i = 1}^n p^{-1}(U_{b_i})$, we can conclude $E$ admits a finite subcover. Thus $E$ is compact.
+	\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{\S 54}
+
+\begin{exercise}[manual-num={4}]
+	Consider the covering map $p: \bfR \times \bfR_+ \rightarrow \bfR^2 \setminus \{0\}$ of Example 6 of \S 53. Find liftings of the paths:
+	\begin{align*}
+		f(t) &= (2-t,0) \\
+		g(t) &= ((1+t)\cos 2\pi t, (1+t) \sin 2\pi t) \\
+		h(t) &= f \ast g. 
+	\end{align*}
+	Sketch these paths and their liftings.
+\end{exercise}
+	\begin{proof}
+		For the function $f$, consider the following two equations:
+		\begin{align*}
+			y \cos 2\pi t &= 2-t \\
+			y \sin 2 \pi t &= 0.
+		\end{align*}
+		Solving for $x$ and $y$ gives:
+		\begin{align*}
+			x &= 0 \\
+			y &= 2 - t.
+		\end{align*}
+		Then $\tilde{f}(t) := (0,2-t)$ is a lifting of $f$. Similarly for the function $g$, we consider the following two equations:
+		\begin{align*}
+			y \cos 2\pi t &= (1+t)\cos 2\pi t \\
+			y \sin 2 \pi t &= (1+t) \sin 2 \pi t.
+		\end{align*}
+		Solving for $x$ and $y$ gives:
+		\begin{align*}
+			x &= t \\
+			y &= 1+t.
+		\end{align*}
+		Hence $\tilde{g(t)}:= (t,1+t)$ is a lifting of $g$. For our final lifting, set $\tilde{h}:= \tilde{f} \ast \tilde{g}$. Since $\tilde{f}(1) = (0,1)$ and $\tilde{g}(0) = (0,1)$, this definition is well-defined. Moreover:
+\begin{align*}
+p \circ \tilde{h} &= p \circ \bigl(\tilde{f} * \tilde{g}\bigr) \\
+&= p \circ
+\begin{cases}
+\tilde{f}(2t) & 0 \leq t \leq \frac{1}{2} \\
+\tilde{g}(2t-1) & \frac{1}{2} \leq t \leq 1
+\end{cases} \\
+&=
+\begin{cases}
+p \circ \tilde{f}(2t) & 0 \leq t \leq \frac{1}{2} \\
+p \circ \tilde{g}(2t-1) & \frac{1}{2} \leq t \leq 1
+\end{cases} \\
+&=
+\begin{cases}
+f(2t) & 0 \leq t \leq \frac{1}{2} \\
+g(2t-1) & \frac{1}{2} \leq t \leq 1
+\end{cases} \\
+&= f * g \\
+&= h \qedhere
+\end{align*}
+	\end{proof}
+
+	\begin{exercise}[manual-num={6}]
+	Consider the maps $g,h:S^1 \rightarrow S^1$ given by $g(z) = z^n$ and $h(z) = \frac{1}{z^n}$. Compute the induced homomorphisms $g_\ast$, $h_\ast$ of the infinite cyclic group $\pi_1(S^1,b_0)$ into itself.
+\end{exercise}
+	\begin{proof}
+		Let $b_0=1$. Then $g(1) = 1$ and $h(1) = 1$. Hence both maps induce homomorphisms:
+		\begin{align*}
+			g_\ast &:\pi_1(S^1,1) \rightarrow \pi_1(S^1,1) \\
+			h_\ast &:\pi_1(S^1,1) \rightarrow \pi_1(S^1,1).
+		\end{align*}
+		Let $\alpha$ be the loop in $S^1$ given by $\alpha(t) := e^{2 \pi i t}$. This is the generator of $\pi_1(S^1,1)$, hence $g_\ast$ and $h_\ast$ are determined entirely by their values on $[\alpha]$. Define $p:\bfR \rightarrow S^1$ by $p(s) := e^{2\pi i s}$. Then:
+		\begin{align*}
+			(g \circ \alpha)(t) &= g(e^{2 \pi i t}) = e^{2 \pi i n t} = p(nt), \\
+			(h \circ \alpha)(t) &= h(e^{-2 \pi i t}) = e^{-2 \pi i n t} = p(-nt).
+		\end{align*}
+		From this, $g \circ \alpha$ lifts to the path $\tilde{\alpha}_g(t) = nt$, with $\tilde{\alpha}_g(0) = 0$ and $\tilde{\alpha}_g(1) = n$. Similarly, $h \circ \alpha$ lifts to the path $\tilde{\alpha}_h(t) = -nt$, with $\tilde{\alpha}_h(0) = 0$ and $\tilde{\alpha}_h(1) = -n$. Thus:
+		\begin{align*}
+			g_\ast([\alpha]) &= [g \circ \alpha] = n [\alpha] \\
+			h_\ast([\alpha]) &= [h \circ \alpha] = -n[\alpha]. \qedhere
+		\end{align*}
+	\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}[manual-num={7}]
+	Generalize the proof of Theorem 54.5 to show that the fundamental group of the torus is isomorphic to the group $\bfZ \times \bfZ$.
+\end{exercise}
+	\begin{proof}
+		Consider $p \times p:\bfR^2 \rightarrow T^2$ (where $T^2$ is assumed to be a subset of $\bfC \times \bfC$) given by $(p \times p)(x,y) = (e^{2 \pi i x}, e^{2 \pi i y})$. Since $p$ is a covering map, $p \times p$ is also a covering map. Let $(0,0)$ be the basepoint of $\bfR^2$ and $(p \times p)(0,0) = (1,1)$ the basepoint of $T^2$. Then:
+		\begin{align*}
+			(p \times p)^{-1}(1,1)
+			&=  \{(x,y) \in \bfR^2 \mid (p \times p)(x,y) = (1,1)\} \\
+			&= \{(x,y) \in \bfR^2 \mid (e^{2 \pi i x},e^{2 \pi i y}) = (1,1)\} \\
+			& = \bfZ \times \bfZ.
+		\end{align*}	
+	Since $\bfR^2$ is simply connected, the lifting correspondence $\Phi:\pi_1(T^2, (1,1)) \rightarrow \bfZ \times \bfZ$ is a bijection. It remains to show that $\Phi$ is a group homomorphism. Let $[\alpha],[\beta] \in \pi_1(T^2,(1,1))$ and $\tilde{\alpha},\tilde{\beta}$ their respective lifts. Let $(n_1,n_2):= \tilde{\alpha}(1)$ and $(m_1,m_2) := \tilde{\beta}(1)$. Then by definition $\Phi([\alpha]) = (n_1,n_2)$ and $\Phi([\beta]) = (m_1,m_2)$. Now define $h:I \rightarrow \bfR^2$ by:
+	\[
+		h(s) := 
+		\begin{cases}
+			\tilde{\alpha}(2s), & 0 \leq s \leq \frac{1}{2} \\
+			\tilde{\beta}(2s-1) + (n_1,n_2), & \frac{1}{2} \leq s \leq 1
+		\end{cases}.
+	\]
+	Note that $h$ is continuous, and:
+	\[
+		((p \times p) \circ h)(s) =
+		\begin{cases}
+			((p \times p) \circ \tilde{\alpha})(2s), & 0\leq s \leq \frac{1}{2} \\
+			(p \times p)( \tilde{\beta}(2s-1) + (n_1,n_2)), & \frac{1}{2} \leq s \leq 1
+		\end{cases}.
+	\] 
+	But note that $(p \times p)((x,y)+(n_1,n_2)) = (p \times p)(x,y)$ for all $(x,y) \in \bfR^2$. Hence:
+		\begin{align*}
+			((p \times p) \circ h)(s) 
+			&=\begin{cases}
+				((p \times p) \circ \tilde{\alpha})(2s), & 0\leq s \leq \frac{1}{2},\\
+				((p \times p) \circ \tilde{\beta})(2s-1), & \frac{1}{2} \leq s \leq 1
+				\end{cases} \\
+			&=\begin{cases}
+				\alpha(2s), & 0\leq s \leq \frac{1}{2},\\
+				\beta(2s-1), & \frac{1}{2} \leq s \leq 1
+				\end{cases} \\
+			&= (\alpha * \beta)(s).
+		\end{align*}
+	Since $\alpha \ast \beta$ is a path beginning at $(1,1)$, this means $h$ is its unique lift beginning at $(0,0)$. From this, we conclude that:
+		\begin{align*}
+			\Phi([\alpha] \ast [\beta])
+			&= \Phi([\alpha \ast \beta]) \\
+			&= h(1) \\
+			&= (n_1,n_2) + (m_1,m_2) \\
+			&= \Phi([\alpha]) + \Phi([\beta]).
+		\end{align*}
+	Thus $\pi_1(T^2,(1,1)) \cong \bfZ \times \bfZ$.
+	\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+	\begin{exercise}[manual-num={8}]
+	Let $p:E \rightarrow B$ be a covering map, with $E$ path connected. Show that if $B$ is simply connected, then $p$ is a homeomorphism.
+\end{exercise}
+	\begin{proof}
+		Let $b_0 \in B$. Since $B$ is simply connected, $\pi_1(B,b_0)$ is trivial. Since $E$ is path connected, the lifting correspondence $\Phi:\pi_1(B,b_0) \rightarrow p^{-1}(b_0)$ is surjective. Therefore $p^{-1}(b_0)$ is a singleton. But since $b_0$ was arbitrary, this means every point of $B$ has exactly one preimage. Thus $p$ is injective. Since it is also continuous, surjective, and an open map, we conclude that $p$ is a homeomorphism.
+	\end{proof}
+
+
+
+
+
+\end{document}

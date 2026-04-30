@@ -1,0 +1,534 @@
+\chapter{Homotopy Theory}
+
+\section{Homotopy of Functions and Paths}
+
+Unless otherwise stated, assume $I:=[0,1]$.
+
+\begin{definition}
+    If $f$ and $g$ are continuous maps from topological spaces $X$ to $Y$, we say $f$ is \textui{homotopic} to $g$ if there exists a continuous map $F:X \times I \rightarrow Y$ such that $F(x,0) = f$ and $F(x,1) = g$. We say $F$ is a \textui{homotopy} between $f$ and $g$, and write $f \simeq g$. If $f$ is homotopic to a constant map, we say $f$ is \textui{nullhomotopic}.
+\end{definition}
+
+\begin{example}{\color{red}***}
+    Let $X$ be a topological space and $Y$ a convex subset of a topological vector space. Then for any two functions $f,g:X \rightarrow Y$, we have $f \simeq g$. Indeed, define $F:X \times I \rightarrow Y$ by:
+        \begin{equation*}
+        \begin{split}
+            F(x,t) := (1-t)f(x) + tg(x).
+        \end{split}
+        \end{equation*}
+    Since addition and scalar multiplication are continuous, $F$ is continuous. Moreover, since $Y$ is convex, $F(x,t) \in Y$ for all $t \in [0,1]$. We call $F$ the \textit{straight line homotopy} between $f$ and $g$.
+\end{example}
+
+\begin{example}
+    Let $i:S^1 \rightarrow \bfR^2 \setminus \{(0,0)\}$ be the identity map. Define $f:S^1 \rightarrow \bfR^2 \setminus \{(0,0)\}$ by $f(x) = (1,0)$. Then $i \not\simeq f$.
+\end{example}
+
+\begin{definition}
+    A \textui{path} is a continuous map $f:I \rightarrow X$. We call $f(0)$ the \textui{initial point} and $f(1)$ the \textui{terminal point}.
+\end{definition}
+
+\begin{definition}
+    Two paths $f,g:I \rightarrow X$ are \textui{path homotopic} if they have the same initial point $x_0$ and same terminal point $x_1$, and there exists a continuous map $F:I \times I \rightarrow X$ such that:
+        \begin{equation*}
+        \begin{split}
+            F(0,t) &= x_0\h9\h7F(1,t) = x_1\\
+            F(s,0) &= f(s)\h9\h1F(s,1) = g(s)\\
+        \end{split}
+        \end{equation*}
+    for all $s,t \in [0,1]$. We call $F$ a \textui{path homotopy} and write $f \simeq_p g$.
+\end{definition}
+
+\begin{lemma}
+    Let $X$ and $Y$ be topological spaces. Then $\simeq$ is an equivalence relation on $C(X,Y)$.
+\end{lemma}
+    {\color{red} \begin{proof}
+        
+    \end{proof}}
+
+\begin{corollary}
+    For any set $X$, then $\simeq_p$ is an equivalence relation on $C(I,X)$.
+\end{corollary}
+    {\color{red} \begin{proof}
+
+    \end{proof}}
+
+\begin{definition}
+    If $f$ is a path in $X$ from $x_0$ to $x_1$ and $g$ is a path in $X$ from $x_1$ to $x_2$, we define the \textui{product} of $f$ and $g$ to be the path $f \ast g :I \rightarrow X$ given by:
+        \begin{equation*}
+        \begin{split}
+            (f \ast g)(s) 
+            & = \begin{cases}
+            f(2s), & 0 \leq s \leq \frac12 \\
+            g(2s - 1), & \frac12 \leq s \leq 1
+            \end{cases}.
+        \end{split}
+        \end{equation*}
+\end{definition}
+
+\begin{theorem}\label{thm:groupoid}
+    The operation $\ast$ is well-define on $C(I,X)/\simeq_p$, defined by the equation $[f] \ast [g] = [f \ast g]$. Moreover, the operation $\ast$ satisfies the following properties:
+    \begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+        \item If $[f] \ast([g] \ast [h])$ is defined, so if $([f] \ast [g]) \ast [h]$, and they are equal (Associativity).
+        \item Given $x_0 \in X$, let $e_{x_0}$ denote the constant path $e_{x_0}:I \rightarrow X$ given by $e_{x_0}(s) = x_0$. If $f$ is a path in $X$ for $x_0$ to $x_1$, then $[f] \ast [e_{x_1}] = [f]$ (Identities).
+        \item Given a path $f:I \rightarrow X$ from $x_0$ to $x_1$, define $\overline{f}:I \rightarrow X$ by $\overline{f}(s) = f(1-s)$. Then $[f] \ast [\overline{f}] = [e_{x_0}]$ and $[\overline{f}] \ast [f] = [e_{x_1}]$ (Inverses).
+    \end{enumerate}
+\end{theorem}
+    {\color{red} \begin{proof}
+        
+    \end{proof}}
+
+\begin{remark}
+    Theorem~\ref{thm:groupoid} establishes that $C(I,X)/\simeq_p$ is a \textit{groupoid}. Here $\ast$ is not a binary operation as it is not necessarily defined for all pairs of elements in $C(I,X)/\simeq_p$. Furthermore, the identity element is not unique for all path-homotopy equivalences.
+\end{remark}
+
+\section{The Fundamental Group}
+
+\begin{definition}
+    Let $X$ be a topological space. Fix a point $x_0 \in X$. A path in $X$ that begins and ends at $x_0$ is called a \textui{loop in $X$ based at $x_0$}. The set of all path homotopies of loops based at $x_0$ is denoted $\Omega(x_0) := \{\alpha \mid \text{$\alpha$ is a loop in $X$ based at $x_0$ }\}$.
+\end{definition}
+
+\begin{theorem}
+    The operation $\ast$ is a binary operation on $\Omega(x_0)/\simeq_p$, and and the pair $(\Omega(x_0)/\simeq_p,\ast)$ is a group.
+\end{theorem}
+    \begin{proof}
+        This follows from Theorem~\ref{thm:groupoid}. Clearly $\ast$ is well-defined for any two elements in $\Omega(x_0)/\simeq_p$, and $[e_{x_0}]$ is the unique identity element.
+    \end{proof}
+
+\begin{definition}
+    The quotient $\Omega(x_0)/\simeq_p$ is called the \textui{fundamental group based at $x_0$}. We denote it by $\pi_1(X,x_0)$.
+\end{definition}
+
+\begin{example}
+    If $Y$ is a convex subset of a topological vector space and $x_0 \in Y$, then $\pi_1(Y,x_0) = \{[e_{x_0}]\}$. Given a loop $\alpha$ based at $x_0$, then we can employ the straight-line homotopy to show that $\alpha \cong e_{x_0}$.
+\end{example}
+
+\begin{theorem}
+    Suppose $X$ is a path-connected topological space. Let $p,q \in X$ and let $\gamma:I \rightarrow X$ be a path from $p$ to $q$. Then the map $\widehat{\gamma}:\pi_1(X,p) \rightarrow \pi_1(X,q)$ defined by $\widehat{\gamma}([\alpha]) = [\overline{\gamma}\ast \alpha \ast \gamma]$ is an isomorphism whose inverse is $\widehat{\overline{\gamma}}$.
+\end{theorem}
+    \begin{proof}
+        For any $[\alpha], [\beta] \in \pi_1(X,p)$, we have:
+            \begin{equation*}
+            \begin{split}
+                \widehat{\gamma}([\alpha] \ast [\beta])
+                & = \widehat{\gamma}([\alpha \ast \beta]) \\
+                & = [\overline{\gamma} \ast (a \ast b) \ast \gamma] \\
+                & = [\overline{\gamma} \ast a \ast e_p \ast b \ast \gamma] \\
+                & = [(\overline{\gamma} \ast a \ast \gamma )\ast (\overline{\gamma} \ast b \ast \gamma)] \\
+                & = [\overline{\gamma} \ast a \ast \gamma] \ast [\overline{\gamma} \ast b \ast \gamma] \\
+                & = \widehat{\gamma}([a]) \ast \widehat{\gamma}([b]).
+            \end{split}
+            \end{equation*}
+        Hence $\widehat{\gamma}$ is a group homomorphism. Similarly, $\widehat{\overline{\gamma}}:\pi_1(X,q) \rightarrow \pi_1(X,p)$ defined by $\widehat{\overline{\gamma}}([\alpha]) = [\gamma \ast \alpha \ast \overline{\gamma}]$ is a homomorphism, and is the inverse of $\widehat{\gamma}$. Thus $\widehat{\gamma}$ is an isomorphism.
+    \end{proof}
+
+\begin{remark}
+    If $X$ is path connected, by the previous theorem $\pi_1(X,x_0)$ is uniquely determined up to isomorphism. In this case, we drop the $x_0$ in the notation and write $\pi_1(X)$.
+\end{remark}
+
+\begin{remark}
+    The isomorphism $\widehat{\gamma}$ depends on $\gamma$. The isomorphism is independent of the path $\gamma$ if and only if $\pi_1(X)$ is abelian (Exercise).
+\end{remark}
+
+\begin{definition}
+    A topological space is \textui{simply connected} if it is path connected and its fundamental group is trivial.
+\end{definition}
+
+\begin{example}
+    Any convex subset of a topological vector space is simply connected.
+\end{example}
+
+\begin{lemma}
+    Let $f:X \rightarrow Y$ be continuous. If $\alpha:I \rightarrow X$ is a loop in $X$ based at $x_0$, then $f \circ \alpha:I \rightarrow Y$ is a loop in $Y$ based at $f(x_0)$.
+\end{lemma}
+    {\color{red} \begin{proof}
+        
+    \end{proof}}
+
+\begin{lemma}
+    Let $f:X \rightarrow Y$ be continuous. If $\alpha \simeq_p \beta$, then $f \circ \alpha \simeq_p f \circ \beta$.
+\end{lemma}
+    \begin{proof}
+        If $F$ is a path homotopy between $\alpha$ and $\beta$, then $f \circ F$ is a path homotopy between $f \circ \alpha$ and $f \circ \beta$.
+    \end{proof}
+
+\begin{theorem}
+    A continuous function $f:X \rightarrow Y$ induces a group homomorphism $f_\ast:\pi_1(X,x_0) \rightarrow \pi_1(Y,f(x_0))$ defined by $f_\ast([\alpha]) = [f \circ \alpha]$.
+\end{theorem}
+    {\color{red} \begin{proof}
+        
+    \end{proof}}
+
+\begin{remark}
+    Note that if $f$ is one-to-one, then $f_\ast$ is not necessarily one-to-one. Similarly, if $f$ is onto, $f_\ast$ is not necessarily onto.
+\end{remark}
+
+\begin{example}
+    Let $\iota:S^1 \rightarrow \bfR^2$ be the inclusion map. This map is clearly one-to-one. However, since $\pi_1(S^1) \cong \bfZ$ and $\pi_1(\bfR^2)$ is trivial, the induced group homomorphism $\iota_\ast:\pi_1(S^1) \rightarrow \pi_1(\bfR^2)$ cannot be one-to-one.
+\end{example}
+
+\begin{example}
+    Define $f:\bfR \rightarrow S^1$ by $t \mapsto e^{it2\pi}$. This map is clearly onto. However, $f_\ast : \pi_1(\bfR) \rightarrow \pi_1(S^1)$ cannot be onto.
+\end{example}
+
+\begin{proposition}
+
+\end{proposition}
+    {\color{red} \begin{proof}
+        
+    \end{proof}}
+
+\section{Retractions and Fixed Points}
+
+\begin{definition}
+    If $A \subset X$, a \textui{retraction} of $X$ onto $A$ is a continuous map $r:X \rightarrow A$ such that $\restr{r}{A}$ is the identity map of $A$. If such a map $r$ exists, we say that $A$ is a \textui{retract} of $X$.
+\end{definition}
+
+\begin{lemma}\label{lemma:retract-injective}
+    If $A$ is a retract of $X$, then the homomorphism of fundamental groups induced by the inclusion $j:A \rightarrow X$ is injective.
+\end{lemma}
+    {\color{red} \begin{proof}
+        
+    \end{proof}}
+
+\section{Deformation Retracts and Homotopy Type}
+
+\begin{definition}
+Two continuous functions $f,g:X \rightarrow Y$ are homotopic \textui{relative to a subset} $A$ of $X$ if there exists a continuous map $F:X \times I \rightarrow Y$ such that:
+    \begin{itemize}[itemsep=1pt,topsep=3pt]
+        \item $F(x,0) = f(x)$ for all $x \in X$;
+        \item $F(x,1) = g(x)$ for all $x \in X$;
+        \item $F(a,t) = f(a)=g(a)$ for all $a \in A$ and $t \in I$.
+    \end{itemize}
+In this case, we say $f$ and $g$ are \textui{homotopic $\rel A$}.
+\end{definition}
+
+\begin{example}
+    Let $f,g:\bfC \rightarrow \bfC$ be given by $f(z) = 0$ and $g(z) = z$ for all $z \in \bfC$. Then $f$ and $g$ are homotopic $\rel \{0\}$. The homotopy $F:\bfC \times I \rightarrow \bfC$ is given by $F(z,t) := tz$.
+\end{example}
+
+\begin{example}
+    By definition, two paths $f,g:I \rightarrow X$ are path homotopic if and only if there are homotopic $\rel\{0,1\}$.
+\end{example}
+
+\begin{proposition}\label{prop:retract-isom}
+    Let $(X,x_0)$ be a pointed topological space. If $f,g:X \rightarrow Y$ are continuous and homotopic $\rel\{x_0\}$, then $f_\ast = g_\ast$.
+\end{proposition}
+    \begin{proof}
+        Let $[\alpha] \in \pi_1(X,x_0)$. It suffices to show that $f \circ \alpha \simeq_p g \circ \alpha$. By assumption, there exists a homotopy $\rel\{x_0\}$ $F:X \times I \rightarrow Y$ between $f$ and $g$. Define $H:I \times I \rightarrow Y$ by $H(s,t) := F(\alpha(s),t)$. Then:
+        \begin{itemize}[itemsep=1pt,topsep=3pt]
+            \item $H(s,0) = F(\alpha(s),0) = (f \circ \alpha)(s)$;
+            \item $H(s,1) = F(\alpha(s),1) = (g \circ \alpha)(s)$;
+            \item $H(0,t) = F(\alpha(0),t) = f(x_0) = g(x_0)$;
+            \item $H(1,t) = F(\alpha(1),t) = f(x_0) = g(x_0)$;
+        \end{itemize}
+        Thus $f \circ \alpha \simeq_p g \circ \alpha$, hence $f_\ast = g_\ast$.
+    \end{proof}
+
+\begin{definition}
+    Let $A \subset X$, $r:X \rightarrow A$ a retraction, and $j:A \rightarrow X$ the inclusion map. The subset $A$ is called a \textui{deformation retract} of $X$ if $j \circ r$ is homotopic to $\id_X \rel A$; i.e., there exists a continuous function $F:X \times I \rightarrow X$ such that:
+    \begin{itemize}[itemsep=1pt,topsep=3pt]
+        \item $F(x,0) = x$ for all $x \in X$;
+        \item $F(x,1) = r(x)$ for all $x \in X$;
+        \item $F(a,t) = a$ for all $t \in I$.
+    \end{itemize}
+\end{definition}
+
+\begin{remark}
+    Retracts are "instant", whereas deformation retracts happen over time.
+\end{remark}
+
+\begin{theorem}\label{thm:retract-implies-isom}
+    Let $A$ be a deformation retract of $X$ and $j:A \rightarrow X$ the inclusion map. Then $j_\ast:\pi_1(A,a) \rightarrow \pi_1(X,a)$ is an isomorphism for all $a \in A$.
+\end{theorem}   
+    \begin{proof}
+        Since $A$ is a retract of $X$, $j_\ast$ is injective by Lemma~\ref{lemma:retract-injective}. It only remains to show that $j_\ast$ is surjective. Since $A$ is a deformation retract, $j \circ r \simeq \id_X$. Hence $(j \circ r)_\ast = (\id_X)_\ast$ by Proposition~\ref{prop:retract-isom}. Since $(\id_X)_\ast$ is a bijection, it must be that $(j \circ r)_\ast = i_\ast \circ r_\ast$ is a bijection. Thus $j_\ast$ is surjective.
+    \end{proof}
+
+\begin{example}
+    The space $S^1 \times B^2$ is the \textit{filled taurus}. Define $r:S^1 \times B^2 \rightarrow S^1 \times \{(0,0)\}$ by $r(x,y) := (x, (0,0))$. This is a retraction. Now let $F:(S^1 \times B^2) \times I \rightarrow S^1 \times B^2$ be given by $F((x,y),t) := (x,(1-t)y)$. Then:
+        \begin{itemize}[itemsep=1pt,topsep=3pt]
+            \item $F((x,y),0) = (x,y)$ for all $(x,y) \in S^1 \times B^2$,
+            \item $F((x,y),1) = (x,(0,0))$ for all $(x,y) \in S^1 \times B^2$,
+            \item $F\Bigl(\bigl(x,(0,0)\bigr),t\Bigr) = (x,(0,0))$ for all $t \in I$.
+        \end{itemize}
+    Thus $S^1 \times \{(0,0)\}$ is a deformation retract of $S^1 \times B^2$. By Theorem~\ref{thm:retract-implies-isom}, $\pi_1(S^1 \times \{(0,0)\},a) \cong \pi_1(S^1 \times B^2,a)$ for all $a \in S^1 \times \{(0,0)\}$. Since $\pi_1(S^1 \times \{(0,0)\},a) \cong \bfZ$, this means $\pi_1(S^1 \times B^2) \cong \bfZ$.
+\end{example}
+
+\begin{example}
+    Define $r:\bfR^2 \setminus \{(0,0)\} \rightarrow S^1$ by $r(x) := \frac{x}{\lnorm x \rnorm}$. Define $F:(\bfR^2 \setminus \{(0,0)\}) \times I \rightarrow S^1$ by $F(x,t):=(1-t)x + t \frac{x}{\lnorm x \rnorm}$. Then $S^1$ is fixed for all $t \in I$; i.e., $r$ is a deformation retract. By Theorem~\ref{thm:retract-implies-isom}, $\pi_1(\bfR^2 \setminus\{(0,0)\},a) \cong \bfZ$ for all $a \in S^1$.
+\end{example}
+
+\begin{definition}
+    Two topological spaces $X$ and $Y$ are \textui{homotopy equivalent} if there exists continuous maps $f:X \rightarrow Y$ and $g:Y \rightarrow X$ such that $g \circ f \simeq \id_X$ and $f \circ g \simeq \id_Y$. \ding{83}
+\end{definition}
+
+\begin{example}
+    Homeomorphic spaces are homotopy equivalent.
+\end{example}
+
+\begin{example}
+    Let $X$ be the follow subspace of $\bfR^2$:
+    \begin{center}
+        \begin{tikzpicture}[scale=10, baseline=-0.5ex]
+            \draw[line cap=round, line width=0.2pt]
+                (0,-0.7ex)--(0,0.7ex)
+                (-0.7ex,0)--(0.7ex,0)
+                (-0.5ex,-0.5ex)--(0.5ex,0.5ex)
+                (-0.5ex,0.5ex)--(0.5ex,-0.5ex);
+        \end{tikzpicture}
+    \end{center}
+    Let $x_0$ be the point lying in the center of $X$. Let $Y = \{y_0\}$. Define $f:X \rightarrow Y$ by $f(x) = y_0$. Define $g:Y \rightarrow X$ by  $g(y_0) = x_0$. Then $f \circ g:Y \rightarrow Y$ is  $(f \circ g)(y_0) = y_0$. Hence $f \circ g = \id_X$. Moreover,  $(g \circ f):X \rightarrow X$ is  $(g \circ f)(x) = x_0$. Therefore $g \circ f$ is the constant map. Since  $X$ is a star-convex subset of $\bfR^2$ about the point  $x_0$, it is contractible; i.e., there is a homotopy between the constant map sending all the points in $X$ to  $x_0$ and ththe identity map on $X$. Thus  $X$ is homotopy equivalent to  $\bfR^2$.
+\end{example}
+
+\begin{example}
+	If $A$ is a deformation retract of $X$, then $A$ and  $X$ are homotopy equivalent. Indeed, let  $j:A \rightarrow X$ be the inclusion and  $r:X \rightarrow A$ a retraction. Then  $r \circ i = \id_A$ and  $i \circ r \simeq \id_X$ (by definition).
+\end{example}
+
+\begin{example}
+	A contractible space is homotopy equivalent to a point.
+\end{example}
+
+\begin{example}
+	The spaces:
+	\begin{itemize}[itemsep=1pt,topsep=3pt]
+		\item $\bfR^n$,
+		\item Convex subsets of  $\bfR^n$,
+		\item The comb space,
+		\item A singleton of $\bfR^n$,
+	\end{itemize}
+	are all contractible, hence homotopy equivalent to a point.
+\end{example}
+
+{\color{red}\begin{example}
+	
+\end{example}}
+
+\begin{lemma}
+	Given a continuous map $F:I \times I \rightarrow X$, let  $\alpha(t):= F(0,t)$,  $\beta(t):=(1,t)$,  $\gamma(s) = F(s,0)$, and $\delta(s) = F(s,1)$. Then  $\delta \simeq_p \overline{\alpha}\ast\gamma \ast \beta$.
+\end{lemma}
+{\color{red}\begin{proof}
+	
+\end{proof}}
+
+\begin{lemma}\label{lemma:homotopy-commutative-diagram}
+	Let $f,g:X \rightarrow Y$ and let  $F:X \times I \rightarrow Y$ be a homotopy between  $f$ and  $g$. Fix a basepoint  $x_0 \in X$. Let $\gamma$ be a path in  $Y$ from  $f(x_0)$ to $g(x_0)$ which is given by $\gamma(t) := F(x_0,t)$. Then the following diagram commutes:
+	\begin{center}
+		\begin{tikzcd}
+		{\pi_1(X,x_0)} \arrow[rr, "f_\ast"] \arrow[rd, "g_\ast"'] &                   & {\pi_1(Y,f(x_0))} \arrow[ld, "\hat{\gamma}"] \\
+                                                          & {\pi_1(Y,g(x_0))} &                                             
+		\end{tikzcd}
+	\end{center}
+\end{lemma}
+
+{\color{red} \begin{proof}
+	
+\end{proof}}
+
+\begin{corollary}
+	Assume the same setup as in Lemma~\ref{lemma:homotopy-commutative-diagram}. If $f,g:X \rightarrow Y$ are continuous and homotopic, then  $f_\ast$ is injective (resp. surjective, bijective) if and only if  $g_\ast$ is injective (resp. surjective, bijective).
+\end{corollary}
+
+{\color{red}\begin{proof}
+	
+\end{proof}}
+
+\begin{theorem}
+	If $f:X \rightarrow Y$ is a homotopy equivalence, then $f_\ast:\pi_1(X,x_0) \rightarrow \pi_1(Y,f(x_0))$ is an isomorphism for all $x_0 \in X$.
+\end{theorem}
+{\color{red}\begin{proof}
+	
+\end{proof}}
+
+\section{Covering Spaces}
+
+\begin{definition}
+	Let $p:E \rightarrow B$ be a  continuous surjection.
+	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+		\item Let $U$ be an open set of $B$. If there exists a family of open sets $\{V_\alpha\}$ of $E$ such that:
+			\begin{itemize}[itemsep=1pt,topsep=3pt]
+				\item $p^{-1}(U) = \bigsqcup_\alpha V_\alpha$,
+				\item $\restr{p}{V_\alpha}:V_\alpha \rightarrow B$ is a homeomorphism for all $\alpha$,
+			\end{itemize}
+		then $U$ is called an \textui{elementary neighborhood} of $B$. The family $\{V_\alpha\}$ are called the \textui{slices} of $p^{-1}(U)$.
+
+		\item If every point $b \in B$ lies in an elementary neighborhood, then $p$ is called a \textui{covering map}, and $E$ is called a \textui{covering space}.
+	\end{enumerate}	
+\end{definition}
+
+\begin{example}
+	If $X$ is a topological space, then $\id_X:X \rightarrow X$ is a covering map.
+\end{example}
+
+{\color{red}\begin{example}
+\end{example}}
+
+\begin{proposition}
+	Let $p_1:E_1 \rightarrow B_1$ and $p_2:E_2\rightarrow B_2$ be covering maps. Then $p_1\times p_2:E_1\times E_2 \rightarrow B_1\times B_2$ is a covering map.
+\end{proposition}
+	{\color{red}\begin{proof}
+		
+	\end{proof}}
+
+{\color{red}
+\begin{example}
+	
+\end{example}}
+
+{\color{red}
+\begin{example}
+	
+\end{example}}
+
+{\color{red}
+\begin{example}
+	
+\end{example}}
+
+{\color{red}
+\begin{example}
+	
+\end{example}}
+
+{\color{red}
+\begin{example}
+	
+\end{example}}
+
+{\color{red}
+\begin{example}
+	
+\end{example}}
+
+{\color{red}
+\begin{example}
+	
+\end{example}}
+
+\section{Lifts}
+
+\begin{definition}
+	Let $p:E \rightarrow B$ be a function. If $f:X \rightarrow B$ is continuous, then a \textui{lifting} of $f$ is a map  $\tilde{f}:X \rightarrow E$ such that $p \circ f = \tilde{f}$; i.e., the following diagram commutes:
+	\begin{center}
+		\begin{tikzcd}
+                                          & E \arrow[d, "p"] \\
+			X \arrow[ru, "\tilde{f}"] \arrow[r, "f"'] & B               
+		\end{tikzcd}
+	\end{center}
+\end{definition}
+
+\begin{example}
+	Consider $p:\bfR \rightarrow S^1$ given by $p(x) = e^{2\pi i x}$. The path $f:I \rightarrow S^1$ given by $f(s) = e^{\pi i s}$ lifts to the path $\tilde{f}:I \rightarrow R$ given by $\tilde{f}(s) = \frac{s}{2}$. Indeed, $(p \circ \tilde{f})(x) = p \left( \frac{x}{2} \right) = e^{\pi i x} = f(x)$.
+\end{example}
+
+\begin{lemma}
+	Let $p:E \rightarrow B$ be a covering map. Let $e_0 \in E$ and $b_0 = p(e_0)$. Any path $f:I \rightarrow B$ beginning at $b_0$ has a unique lifting to a path $\tilde{f}:I \rightarrow E$ beginning at $e_0$.
+\end{lemma}
+	\begin{proof}
+		For the proof of existence, we proceed by cases. Suppose $f(I)$ is contained in an elementary neighborhood $U$ of $B$. Let $V$ be the slice of $p^{-1}(U)$ containing $e_0$. Since $\restr{p}{V}$ is a homeomorphism, it is a bijection. Define $\tilde{f}:I \rightarrow E$ by $\tilde{f} = (\restr{p}{V})^{-1} \circ f$. This map is continuous as it is a composition of continuous functions. Moreover:
+		\begin{align*}
+			\tilde{f}(0) &= \restr{p}{V}^{-1}(f(0)) = \restr{p}{V}^{-1}(b_0) = e_0 \\
+			p \circ \tilde{f} &= p \circ (\restr{p}{V}^{-1} \circ f) = f.	
+		\end{align*}
+		Thus $\tilde{f}$ is indeed a lift of $f$ which is path beginning at $e_0$.
+
+		Now suppose $f(I)$ is not entirely contained in an elementary neighborhood. By the compactness of $I$ and the continuity of $f$, the set $f(I)$ is compact in $B$. Since $p$ is a covering map, the space $B$ admits a cover of elementary neighborhoods \textemdash implying that $f(I)$ admits a cover of elementary neighborhoods. By Lebesgue's Number Lemma, we can find a number $\delta$ such that any subset of $f(I)$ whose diameter is less than $\delta$ is entirely contained in an elementary neighborhood. Choose numbers $t_0,\ldots,t_n$ such that:
+		\[
+			0 = t_0 < t_1 < \ldots < t_{n-1} < t_n = 1
+		\] 
+		and $\diam([t_{i-1},t_{i}]) < \delta$. Then each $f([t_{i-1},t_{i}])$ lies in some elementary neighborhood of $B$. We can apply the previous case to each of these sets, and by the Pasting Lemma we can construct a lift $\tilde{f}$ satisfying $p \circ \tilde{f} = f$.
+
+		{\color{red}Uniquenes\ldots}
+	\end{proof}
+
+\begin{lemma}[Covering Homotopy Lemma]
+	Let $p:E \rightarrow B$ be a covering space, $e_0 \in E$, and $b_0 = p(e_0)$. Let $f,g$ be paths in $B$ such that $f(0) = g(0) = b_0$, and let $\tilde{f}, \tilde{g}$ be the unique lifts of $f,g$ with $\tilde{f}(0) = \tilde{g}(0) = e_0$. Suppose $F: I \times I \rightarrow B$ is a path homotopy between $f$ and $g$. Then there exists a unique path homotopy $\tilde{F}:I \times I \rightarrow E$ between $\tilde{f}$ and $\tilde{g}$ such that $p \circ \tilde{F} = F$.
+\end{lemma}
+	{\color{red}
+	\begin{proof}
+		
+	\end{proof}}
+
+\begin{corollary}
+	Let $p:E \rightarrow B$ be a covering map, $e_0 \in E$, and $b_0 = p(e_0)$. Let $f,g$ be paths in $B$ such that $f(0) = g(0) = b_0$, and let $\tilde{f}, \tilde{g}$ be the unique lifts of $f,g$ with $\tilde{f}(0) = \tilde{g}(0) = e_0$. If $f \simeq_p g$, then $\tilde{f}(1) = \tilde{g}(1)$.
+\end{corollary}
+	{\color{red}
+	\begin{proof}
+		
+	\end{proof}}
+
+
+\begin{definition}
+	Let $p:E \rightarrow B$ be a covering space, $e_0 \in E$, and $b_0 = p(e_0)$. Given $[\alpha] \in \pi_1(B,b_0)$, let $\tilde{\alpha}$ be the unique lifting of $\alpha$ with $\tilde{\alpha}(0) = e_0$. The map $\Phi:\pi_1(B,b_0) \rightarrow p^{-1}(b_0)$ given by $\Phi([\alpha]) = \tilde{\alpha}(1)$ is well-defined and is called the \textui{lifting correspondence} derived from the covering map $p$.
+\end{definition}
+
+\begin{proposition}
+	Let $p:E \rightarrow B$ be a covering space, $e_0 \in E$, and $b_0 = p(e_0)$. If $E$ is path-connected, then the lifting correspondence is surjective. If $E$ is simply connected, then the lifting correspondence is bijective.
+\end{proposition}
+	\begin{proof}
+		Assume $E$ is path-connected. Let $e \in p^{-1}(b_0)$. Since $E$ is path-connected, choose a path $\beta:I \rightarrow E$ such that $\beta(0) = e_0$ and $\beta(1) = e$. Then $p \circ \beta$ is a loop in $B$ based at $b_0$; i.e., $[p \circ \beta] \in \pi_1(B,b_0)$. It's lift starting at $e_0$ is exactly $\beta$, and by Lemma~\ref{} this lift is unique. Hence $\Phi([p \circ \beta]) = \beta_(1) = e$, which means $\Phi$ is surjective.
+
+		Now assume $E$ is simply connected. Then by definition $E$ is path connected, so we only need to show that $\Phi$ is injective. Let $[\alpha],[\beta] \in \pi_1(B,b_0)$ with $\Phi([\alpha]) = \Phi([\beta])$. Hence $\tilde{\alpha}(1) = \tilde{\beta}(1)$. Because $\tilde{\alpha}$ and $\tilde{\beta}$ are lifts whose initial points are $e_0$, this means $\tilde{\alpha} \ast \overline{\tilde{\beta}}$ is a loop in $E$ based at $e_0$. Since $E$ is simply connected, its fundamental group is trivial; i.e., $\tilde{\alpha} \ast \overline{\tilde{\beta}} \simeq_p e_{e_0}$. {\color{red}finish later\ldots}
+	\end{proof}
+
+\begin{theorem}
+	$\pi_1(S^1,b_0) \cong \bfZ$.
+\end{theorem}
+	\begin{proof}
+		Consider $p:\bfR \rightarrow S^1$ (where $S^1$ is assumed to be a subset of $\bfC$) given by $p(x) = e^{2 \pi i x}$. Let $0$ be the basepoint of $\bfR$ and $p(0) = (1,0)$ the basepoint of $S^1$. Then:
+		\begin{align*}
+			p^{-1}(1)
+			&=  \{x \in \bfR \mid p(x) = 1\} \\
+			&= \{x \in \bfR \mid e^{2 \pi i x} = 1\} \\
+			&=  \{x \in \bfR \mid \cos(2 \pi x) + i \sin (2 \pi x) = 1\}\\
+			& = \bfZ.
+		\end{align*}	
+	Since $\bfR$ is simply connected, the lifting correspondence $\Phi:\pi_1(S^1, 1) \rightarrow \bfZ$ is a bijection. It remains to show that $\Phi$ is a group homomorphism. Let $[\alpha],[\beta] \in \pi_1(S^1,1)$ and $\tilde{\alpha},\tilde{\beta}$ their respective lifts. Let $n:= \tilde{\alpha}(1)$ and $m := \tilde{\beta}(1)$. Then by definition $\Phi([\alpha]) = n$ and $\Phi([\beta]) = m$. Now define $h:I \rightarrow \bfR$ by:
+	\[
+		h(s) := 
+		\begin{cases}
+			\tilde{\alpha}(2s), & 0 \leq s \leq \frac{1}{2} \\
+			\tilde{\beta}(2s-1) + n, & \frac{1}{2} \leq s \leq 1
+		\end{cases}.
+	\]
+	Note that $h$ is continuous, and:
+	\[
+		(p \circ h)(s) =
+		\begin{cases}
+			(p \circ \tilde{\alpha})(2s), & 0\leq s \leq \frac{1}{2} \\
+			p( \tilde{\beta}(2s-1) + n), & \frac{1}{2} \leq s \leq 1
+		\end{cases}.
+	\] 
+	But note that $p(x+n) = p(x)$ for all $x \in \bfR$. Hence:
+		\begin{align*}
+			(p \circ h)(s) 
+			&=\begin{cases}
+				(p \circ \tilde{\alpha})(2s), & 0\leq s \leq \frac{1}{2},\\
+				(p \circ \tilde{\beta})(2s-1), & \frac{1}{2} \leq s \leq 1
+				\end{cases} \\
+			&=\begin{cases}
+				\alpha(2s), & 0\leq s \leq \frac{1}{2},\\
+				\beta(2s-1), & \frac{1}{2} \leq s \leq 1
+				\end{cases} \\
+			&= (\alpha * \beta)(s).
+		\end{align*}
+	Since $\alpha \ast \beta$ is a path beginning at $0$, this means $h$ is its unique lift beginning at $1$. From this, we conclude that:
+		\begin{align*}
+			\Phi([\alpha] \ast [\beta])
+			&= \Phi([\alpha \ast \beta]) \\
+			&= h(1) \\
+			&= n + m \\
+			&= \Phi([\alpha]) + \Phi([\beta]).
+		\end{align*}
+	Thus $\pi_1(S^1,1) \cong \bfZ$.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+

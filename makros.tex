@@ -35,6 +35,7 @@
 \DeclareMathOperator{\Dom}{Dom}
 \DeclareMathOperator{\disc}{disc}
 \DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\Div}{div}
 \DeclareMathOperator{\dR}{dR}
 \DeclareMathOperator{\Eis}{Eis}
 \DeclareMathOperator{\End}{End}
@@ -83,7 +84,7 @@
 \DeclareMathOperator{\PGSp}{PGSp}
 \DeclareMathOperator{\rank}{rank}
 \DeclareMathOperator{\Ran}{Ran}
-\DeclareMathOperator{\Rel}{Rel}
+\DeclareMathOperator{\rel}{Rel}
 \DeclareMathOperator{\Real}{Re}
 \DeclareMathOperator{\RES}{res}
 \DeclareMathOperator{\Res}{Res}
@@ -112,6 +113,8 @@
 \DeclareMathOperator{\Un}{U}
 \DeclareMathOperator{\val}{val}
 \DeclareMathOperator{\vol}{vol}
+
+\newcommand{\Loc}{L_{\text{loc}}}
 
 \DeclareMathOperator{\Sets}{S \mkern1.04mu e \mkern1.04mu t \mkern1.04mu s}
     \newcommand{\cSets}{\scalebox{1.02}{\contour{black}{$\Sets$}}}
@@ -327,6 +330,143 @@
 \newcommand{\ov}[1]{\overline{#1}}
 \newcommand{\res}[1]{\underset{#1}{\RES}\,}
 \newcommand{\up}{\upsilon}
+\newcommand{\e}{\epsilon}
+
+
+\makeatletter
+\newcommand*{\mint}[1]{%
+  % #1: overlay symbol
+  \mint@l{#1}{}%
+}
+\newcommand*{\mint@l}[2]{%
+  % #1: overlay symbol
+  % #2: limits
+  \@ifnextchar\limits{%
+    \mint@l{#1}%
+  }{%
+    \@ifnextchar\nolimits{%
+      \mint@l{#1}%
+    }{%
+      \@ifnextchar\displaylimits{%
+        \mint@l{#1}%
+      }{%
+        \mint@s{#2}{#1}%
+      }%
+    }%
+  }%
+}
+\newcommand*{\mint@s}[2]{%
+  % #1: limits
+  % #2: overlay symbol
+  \@ifnextchar_{%
+    \mint@sub{#1}{#2}%
+  }{%
+    \@ifnextchar^{%
+      \mint@sup{#1}{#2}%
+    }{%
+      \mint@{#1}{#2}{}{}%
+    }%
+  }%
+}
+\def\mint@sub#1#2_#3{%
+  \@ifnextchar^{%
+    \mint@sub@sup{#1}{#2}{#3}%
+  }{%
+    \mint@{#1}{#2}{#3}{}%
+  }%
+}
+\def\mint@sup#1#2^#3{%
+  \@ifnextchar_{%
+    \mint@sup@sub{#1}{#2}{#3}%
+  }{%
+    \mint@{#1}{#2}{}{#3}%
+  }%
+}
+\def\mint@sub@sup#1#2#3^#4{%
+  \mint@{#1}{#2}{#3}{#4}%
+}
+\def\mint@sup@sub#1#2#3_#4{%
+  \mint@{#1}{#2}{#4}{#3}%
+}
+\newcommand*{\mint@}[4]{%
+  % #1: \limits, \nolimits, \displaylimits
+  % #2: overlay symbol: -, =, ...
+  % #3: subscript
+  % #4: superscript
+  \mathop{}%
+  \mkern-\thinmuskip
+  \mathchoice{%
+    \mint@@{#1}{#2}{#3}{#4}%
+        \displaystyle\textstyle\scriptstyle
+  }{%
+    \mint@@{#1}{#2}{#3}{#4}%
+        \textstyle\scriptstyle\scriptstyle
+  }{%
+    \mint@@{#1}{#2}{#3}{#4}%
+        \scriptstyle\scriptscriptstyle\scriptscriptstyle
+  }{%
+    \mint@@{#1}{#2}{#3}{#4}%
+        \scriptscriptstyle\scriptscriptstyle\scriptscriptstyle
+  }%
+  \mkern-\thinmuskip
+  \int#1%
+  \ifx\\#3\\\else_{#3}\fi
+  \ifx\\#4\\\else^{#4}\fi  
+}
+\newcommand*{\mint@@}[7]{%
+  % #1: limits
+  % #2: overlay symbol
+  % #3: subscript
+  % #4: superscript
+  % #5: math style
+  % #6: math style for overlay symbol
+  % #7: math style for subscript/superscript
+  \begingroup
+    \sbox0{$#5\int\m@th$}%
+    \sbox2{$#5\int_{}\m@th$}%
+    \dimen2=\wd0 %
+    % => \dimen2 = width of \int
+    \let\mint@limits=#1\relax
+    \ifx\mint@limits\relax
+      \sbox4{$#5\int_{\kern1sp}^{\kern1sp}\m@th$}%
+      \ifdim\wd4>\wd2 %
+        \let\mint@limits=\nolimits
+      \else
+        \let\mint@limits=\limits
+      \fi
+    \fi
+    \ifx\mint@limits\displaylimits
+      \ifx#5\displaystyle
+        \let\mint@limits=\limits
+      \fi
+    \fi
+    \ifx\mint@limits\limits
+      \sbox0{$#7#3\m@th$}%
+      \sbox2{$#7#4\m@th$}%
+      \ifdim\wd0>\dimen2 %
+        \dimen2=\wd0 %
+      \fi
+      \ifdim\wd2>\dimen2 %
+        \dimen2=\wd2 %
+      \fi
+    \fi
+    \rlap{%
+      $#5%
+        \vcenter{%
+          \hbox to\dimen2{%
+            \hss
+            $#6{#2}\m@th$%
+            \hss
+          }%
+        }%
+      $%
+    }%
+  \endgroup
+}
+\newcommand{\avg}{\mint{-}}
+
+
+
 
 \newcommand{\tac}{\textasteriskcentered}
 
@@ -467,11 +607,4 @@
 }
 \makeatother
 
-\renewcommand{\div}[2]{%
-  \scalebox{0.92}{$#1$}%
-  \hspace{1.2pt}%
-  \scalebox{1.2}{$\mid$}%
-  \hspace{0.75pt}%
-  \scalebox{0.92}{$#2$}%
-}
-
+\renewcommand{\bs}[1]{\boldsymbol{#1}}

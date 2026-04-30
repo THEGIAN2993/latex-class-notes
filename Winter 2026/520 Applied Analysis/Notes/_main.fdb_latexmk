@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1772491845.39049 "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/Winter 2026/520 Applied Analysis/Notes/_main.tex" "_main.pdf" "_main" 1772491846.59861 0
+["pdflatex"] 1773690145.69889 "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/Winter 2026/520 Applied Analysis/Notes/_main.tex" "_main.pdf" "_main" 1773690146.84354 0
   "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/Winter 2026/520 Applied Analysis/Notes/_main.tex" 1772490282.62474 4319 70a01158b96c9082ae69921a55a0ccc8 ""
   "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex" 1764622722.89504 13971 026113b2e089b0f197b6a1344ae6ebb8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/newpx/px-lms.enc" 1699652218 3877 2ca811886181a05a861d20a35de75e06 ""
@@ -354,14 +354,14 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1758769034 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "_main.aux" 1772491846.47777 385 45ff9428e51f768a45bb4f34757f7a27 "pdflatex"
-  "_main.out" 1772491846.47906 3192 d78859639172fec4def4104502e8333b "pdflatex"
+  "_main.aux" 1773690146.72612 385 45ff9428e51f768a45bb4f34757f7a27 "pdflatex"
+  "_main.out" 1773690146.72756 3192 d78859639172fec4def4104502e8333b "pdflatex"
   "_main.tex" 1772490282.62474 4319 70a01158b96c9082ae69921a55a0ccc8 ""
-  "_main.toc" 1772491846.47935 1651 e7745ff1af9ee5d1ade45ec6e99f7315 "pdflatex"
-  "ch1.aux" 1772491846.37296 15073 5cd1c41942768821f96ee64d9cdfbffc "pdflatex"
-  "ch1.tex" 1772491588.56215 69470 7a1bc7536f8fa62f7504068ad0b500c0 ""
-  "ch2.aux" 1772491846.47726 6604 470b07dae31d09c2c2a86639f9f68911 "pdflatex"
-  "ch2.tex" 1772491845.30937 43111 70a957487b5ca13783046e314c830e7a ""
+  "_main.toc" 1773690146.72774 1651 e7745ff1af9ee5d1ade45ec6e99f7315 "pdflatex"
+  "ch1.aux" 1773690146.62463 15073 5cd1c41942768821f96ee64d9cdfbffc "pdflatex"
+  "ch1.tex" 1773550953.22042 69475 4fbb6e02dafb047ded9f09807f3aca3f ""
+  "ch2.aux" 1773690146.72562 6604 470b07dae31d09c2c2a86639f9f68911 "pdflatex"
+  "ch2.tex" 1773690143.28507 44067 0e0c5e3c406cdc37d6de614b86543618 ""
   (generated)
   "_main.aux"
   "_main.log"

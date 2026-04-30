@@ -1,0 +1,392 @@
+\chapter{Solutions to Linear Partial Differential Equations}
+
+\section{The Transport Equation}
+
+\section{Laplace's Equation}	
+
+\begin{definition}
+	\textui{Laplace's equation} is:
+	\[
+		\Delta u = 0.
+	\] 
+	A $C^2$ function satisfying Laplace's equation is called a \textui{harmonic function}. 
+\end{definition}
+
+\begin{proposition}
+	Laplace's equation is rotation invariant. Specifically, let $A = (a_{ij})$ denote an $n \times n$ orthogonal matrix. For $x \in \bfR^n$, let $y = Ax$; that is:
+        \begin{equation*}
+        \begin{split}
+            Ax = y = (y_1,...,y_n), \h3 y_i = \sum_{j = 1}^n a_{ij}x_i
+        \end{split}
+        \end{equation*}
+    Assume $u \in C^2(\bfR^n)$ satisfies $\Delta u = 0$. Then define
+        \begin{equation*}
+        \begin{split}
+            v(x) = u(Ax) = u(y).
+        \end{split}
+        \end{equation*}
+    We have that $\Delta v = 0$.
+\end{proposition}
+    \begin{proof}
+        Note that $\frac{\partial y_k}{\partial x_i} = a_{ki}$. Hence:
+            \begin{equation*}
+            \begin{split}
+                v_{x_i}(x)
+                & = \frac{\partial}{\partial x_i} u(y) \\
+                & = \sum_{k = 1}^n u_{x_k}(y)\frac{\partial y_k}{\partial x_i} \\
+                & = \sum_{k = 1}^n u_{x_k}(y) a_{ki}.
+            \end{split}
+            \end{equation*}
+        Taking a second partial derivative with respect to $x_i$ gives:
+            \begin{equation*}
+            \begin{split}
+                v_{x_i x_i}(x)
+                & = \frac{\partial}{\partial x_i}\sum_{k = 1}^n u_{x_k}(y) a_{ki}\\
+                &= \sum_{k=1}^n \sum_{j=1}^n u_{x_k x_j}(y)\,\frac{\partial y_j}{\partial x_i}\,a_{ki} \\
+                &= \sum_{j=1}^n \sum_{k=1}^n a_{ji}a_{ki}\,u_{x_j x_k}.
+            \end{split}
+            \end{equation*}
+        Summing from $i=1,...,n$ finally yields:
+            \begin{equation*}
+            \begin{split}
+                \Delta v(x)
+                &= \sum_{i=1}^n v_{x_i x_i}(x) \\
+                &= \sum_{i=1}^n \sum_{j=1}^n \sum_{k=1}^n a_{ji}a_{ki}\,u_{x_j x_k}(y) \\
+                &= \sum_{j=1}^n \sum_{k=1}^n \left( \sum_{i=1}^n a_{ji}a_{ki} \right) u_{x_j x_k}(y) \\
+                &= \sum_{j=1}^n \sum_{k=1}^n \delta_{jk}\,U_{x_j x_k}(y) \\
+                &= \sum_{k=1}^n u_{x_k x_k} \\
+                &= \Delta u(y) \\
+                &= 0 \qedhere
+            \end{split}
+            \end{equation*}
+    \end{proof}
+
+\begin{example}
+	Since solutions to Laplace's equation are rotation invariant, we are interested in finding \textit{radial solutions} to the equation; i.e., functions of $r = |x|$. Let $u$ be a solution of Laplace's equation and suppose further we have $u(x) = v(r)$ Then $u_{x_i} = v'(r) r_{x_i}$ and $u_{x_i x_i} = v''(r) r_{x_i}^2 + v'(r)r_{x_i x_i}$. Using the fact that:
+	\begin{align*}
+		\frac{\partial}{\partial x_i} r^2 
+		&= \frac{\partial}{\partial x_i} \sum_{i=1}^{n} x_i^2  \\
+		&= 2r r_{x_i},
+	\end{align*}
+	we get that $r_{x_i} = \frac{x_i}{r}$. A similar calculation yields $r_{x_i x_i} = \frac{1}{r} - \frac{x_i^2}{r^3}$. Now since $u$ is a solution to Laplace's equation, we have that $\Delta u = 0$. We can write this as:
+	\[
+		\sum_{i=1}^{n} u_{x_i x_i} = 0.
+	\] 
+	Substituting for our earlier calculation gives:
+	\[
+		\sum_{i=1}^{n}v''(r) \frac{x_i^2}{r^2} + v'(r)\left(\frac{1}{r} - \frac{x_i^2}{r^3}\right) = 0. 
+	\] 
+	Hence:
+	\[
+		v''(r)+v'(r) \frac{(n-1)}{r} = 0.
+	\]
+	For $n=2$, the solution to the above ODE is $v(r) = c_1 \log r + c_2$. For $n > 2$, the solution to the above ODE is $v(r) = c_1 \frac{1}{r^{n-1}} + c_2$.
+\end{example}
+
+\begin{definition}
+	The \textui{fundamental solution} to Laplace's equation is:
+	\[
+		\Phi(x)=
+		\begin{cases}
+			c_2 \log \frac{1}{|x|}, & n = 2 \\
+			c_n |x|^{2-n}, & n > 2,
+		\end{cases}
+	\] 
+	where $c_2 = \frac{1}{2\pi}$ and $c_n = \frac{1}{n(n-2)\alpha(n)}$, where $\alpha(n)$ denotes the volume of $B(0,1)$ in $\bfR^n$.
+\end{definition}
+
+\begin{remark}
+	The fundamental solution to Laplace's equation admits a singularity at $x = 0$.
+\end{remark}
+
+\begin{remark}
+	If $u$ and $v$ are both harmonic, then $au + bv$ is harmonic for any $a,b \in \bfR$ since the Laplacian is a linear differential operator. Moreover, if $u$ is harmonic then $u(x-x_0)$ is also harmonic when treated as a variable with respect to $x$. These reasons combined lead to the following conclusion: if $y^1,\ldots,y^k \in \bfR^n$ and $f_1,\ldots,f_k \in \bfR$, the function:
+	\[
+		\sum_{i=1}^{k} f_i \Phi(x-y^i)
+	\] 
+	is also harmonic! A natural question to as now is whether:
+	\[
+		\int_{\bfR^n}^{} f(y) \Phi(x-y)dy
+	\]
+	is harmonic. 
+\end{remark}
+
+\begin{theorem}\label{thm:laplace-poisson}
+	Let $f \in C^2_c(\bfR)$. Define $u(x) = \int_{\bfR^n}^{} f(y)\Phi(x-y)dy$. Then $u \in C^2(\bfR^n)$ and $-\Delta u = f$.
+\end{theorem}
+	\begin{proof}
+		Taking the difference quotient of $u(x)$ gives the following equality:
+		\[
+			\frac{u(x+h e^i) - u(x)}{h} = \int_{\bfR^n}^{} \frac{f(x+h e^i - y) - f(x-y)}{h}\Phi(y)dy.
+		\]
+		Applying the Dominated Convergence Theorem gives:
+		\[
+			u_{x_i} = \int_{\bfR^n}^{} f_{x_i}(x-y) \Phi(y)dy.
+		\] 
+		Taking the difference quotient of both sides and applying the Dominated Convergence Theorem again yields:
+		\[
+			u_{x_i x_i} = \int_{\bfR^n}^{} f_{x_i x_i}(x-y) \Phi (y) dy.
+		\] 
+		
+		Thus:
+		\begin{align*}
+			\Delta u 
+			& = \int_{\bfR^n}^{} \Delta_x f(x-y) \Phi(y)dy \\
+			& = \int_{\bfR^n}^{} (-1)^2 \Delta_y f(x-y) \Phi(y)dy.
+		\end{align*}
+		Since $f$ is a function with compact support, let $U := B^o(0,R)$ be large enough such that $x \in U$ and $\supp f(x-y) \subset U$. Our integral becomes:
+		\begin{align*}
+			\Delta u
+			&= \int_{\bfR^n}^{} \Delta_y f(x-y) \Phi(y) dy \\
+			&= \int_{U}^{} \Delta_y f(x-y) \Phi(y) dy.
+		\end{align*}
+		Recall that our fundamental solution $\Phi$ admits a discontinuity at the origin. For an arbitrary $\epsilon > 0$, we have:
+		\begin{align*}
+			\Delta u
+			&= \int_{U \setminus B(0,\epsilon)}^{} \Delta_y f(x-y) \Phi(y) dy + \int_{B(0,\epsilon)}^{} \Delta_y f(x-y) \Phi(y) dy.
+		\end{align*}
+		Since $\Delta_y f(x-y) \Phi(y)$ does not admit a discontinuity on $U \setminus B(0,\epsilon)$, we can apply Green's identities. Taking advantage of the fact that $\Delta_y \Phi(y) = 0$, we have:
+		\begin{align*}
+			\int_{U \setminus B(0,\epsilon)}^{} \Delta_y f(x-y) \Phi(y) dy
+			&= \int_{U \setminus B(0,\epsilon)}^{} \Delta_y f(x-y) \Phi(y) + f(x-y) \Delta_y \Phi(y)dy\\
+			&= \int_{\partial (U \setminus B(0,\epsilon)}^{} \frac{\partial f}{\partial \nu}(x-y) \Phi(y) - f(x-y) \frac{\partial \Phi}{\partial \nu}(y) dS(y).
+		\end{align*}
+		Integrating on $\partial (U \setminus B(0,\epsilon)$ is equivalent to:
+		\begin{align*}
+			\int_{\partial U}^{} \frac{\partial f}{\partial \nu}(x-y) \Phi(y) - f(x-y) \frac{\partial \Phi}{\partial \nu}(y) dS(y) - \int_{\partial B(0,\epsilon)}^{} \frac{\partial f}{\partial \nu}(x-y) \Phi(y) - f(x-y) \frac{\partial \Phi}{\partial \nu}(y)dS(y). 
+		\end{align*}
+		The outward normal derivative of $f$ is zero, and since $f$ is of compact support it is zero along the boundary of $U$. The left-most integral is equal to zero, resulting in:
+		\[
+			\Delta u = \underbrace{\int_{B(0,\epsilon)}^{}\Delta_y f(x-y)\Phi(y)dy}_{:= I} -   \underbrace{\int_{B(0,\epsilon)}^{} \frac{\partial f}{\partial \nu}(x-y) \Phi(y)dy}_{:=K} - \underbrace{\int_{\partial B(0,\epsilon)}^{}  f(x-y) \frac{\partial \Phi}{\partial \nu}(y) dy}_{:= L}
+		\] 
+
+
+	\end{proof}
+
+\begin{definition}
+	The equation: $$-\Delta u = f$$ arising from Theorem~\ref{thm:laplace-poisson} is called \textui{Poisson's equation}. 
+\end{definition}
+
+\begin{definition}
+	Let $U \subset \bfR^n$ and $f \in  L^1(\bfR,\mu)$. The \textui{average of $f$} over $U$ is:
+	\[
+		\avg_{}^{} f d\mu := \frac{1}{\mu(U)}\int_{U}^{} fd \mu.
+	\] 
+\end{definition}
+
+\begin{theorem}[Mean-Value Property]\label{thm:mvp}
+	Let $U \subset \bfR^n$ and $x \in U$. Suppose $u \in C^2(U)$ and $\Delta u = 0 $ in $U$. For each $0 < r < \dist(x, \partial U)$, we have:
+	\[
+		u(x) = \avg_{B(x,r)} u(y)\,dy = \avg_{\partial B(x,r)} u\,dS.
+	\] 
+\end{theorem}
+	\begin{proof}
+		Let $x \in U$. For each $0 < r < \dist(x,\partial U)$, define:
+		\begin{align*}
+			\rho(r)
+			&:= \avg_{\partial B(x,r)} u \,dS \\
+			&= \frac{1}{n \alpha(n)r^{n-1}}\int_{\partial B(x,r)}^{} u \,dS \\
+			&= \frac{1}{n \alpha(n)r^{n-1}}\int_{S^{n-1}}^{} u(x+r \omega)r^{n-1}\,d\omega \\
+			&= \frac{1}{n\alpha(n)}\int_{S^{n-1}}^{} u(x+r\omega)\,d\omega \\
+		\end{align*}
+		Taking the derivative of $\rho$ with respect to $r$ gives:
+		\begin{align*}
+			\rho'(r)
+			&=  \frac{1}{n \alpha(n)} \int_{S^{n-1}}^{} \frac{d}{dr}u(x+r \omega)\,d\omega\\
+			&= \frac{1}{n \alpha(n)} \int_{S^{n-1}}^{} Du(x+r\omega) \cdot \omega\,d\omega.
+		\end{align*}
+		Note that $\omega$ is precisely the outward normal on $S^{n-1}$. Making the substituion, $y = x + r\omega $ we have that $dy = r^{n-1} d \omega$ and $\omega = \frac{y-x}{r}$. Hence:
+		\begin{align*}
+			\rho'(r)
+			&= \frac{1}{n \alpha(n)} \int_{S^{n-1}}^{} Du(x+r\omega) \cdot \omega\,d\omega
+ \\
+			&= \frac{1}{n\alpha(n)r^{1-n}} \int_{\partial B(0,1)}^{}Du(y)\cdot \frac{y-x}{r} dy.
+		\end{align*}
+		The final integrand is by definition the outward normal derivative of $u(y)$. Green's identity yields:
+		\begin{align*}
+			\rho'(r) 
+			&= \frac{1}{n\alpha(n)r^{1-n}}\int_{B(0,1)}^{} \Delta u(y) dy \\
+			&= 0 \\
+		\end{align*}
+		Thus $\rho(r)$ is constant. With this fact, notice that.
+		\begin{align*}
+			\rho(r)
+			& = \lim_{r \rightarrow 0^+} \rho(r) \\
+			& = u(x).
+		\end{align*}
+		This establishes $u(x) = \avg_{\partial B(x,r)} u\,dS$. Finally:
+		\begin{align*}
+			\avg_{B(x,r)} u(y)dy
+			&= \frac{1}{\alpha(n)r^n} \int_{B(x,r)}^{} u(y)dy \\
+			&= \frac{1}{\alpha(n)r^n}\int_{0}^{r} \int_{S^{n-1}}^{}u(x+\omega t)t^{n-1}\,d\omega dt  \\
+			&=  \frac{1}{\alpha(n)r^n}\int_{0}^{r} t^{n-1} \int_{S^{n-1}}^{}u(x+\omega t)\,d\omega dt  \\
+			&= \frac{1}{\alpha(n)r^n}\int_{0}^{r} n \alpha(n) t^{n-1}u(x)dt \\
+			&= u(x). \qedhere
+		\end{align*}
+	\end{proof}
+
+\begin{theorem}
+	If $u \in C^2(U)$ satisfies $u(x) = \avg_{\partial B(x,r)} u dS$ for every $B(x,r) \subset U$, then $\Delta u = 0$.
+\end{theorem}
+	{\color{red}
+	\begin{proof}
+		
+	\end{proof}
+	}
+
+\begin{theorem}
+	Let $U \subset \bfR^n$. Let $u \in C(U)$. If $u$ satisfies:
+	\[
+		u(x) = \avg_{\partial B(x,r)}u dS = \avg_{B(x,r)}u(y)dy,
+	\] 
+	then $u \in C^\infty(U)$.
+\end{theorem}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}
+	}
+
+\begin{corollary}
+	Let $U \subset \bfR^n$. If $u$ satsifies $\Delta u  =0$ in $U$, then $u \in C^\infty(U)$.
+\end{corollary}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+\begin{theorem}[Maximum Principle]\label{thm:maximum-prince}
+	Let $U \subset \bfR^n$ and $u \in C^2(U) \cap C(\overline{U})$. Assume $\Delta u = 0$ in U. Then:
+	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+		\item (Weak Maximum Principle) $\max_{\overline{U}} u = \max_{\partial U} u $;
+		\item (Strong Maximum Principle) If $U$ is connected, and there exists $x_0 \in U$ such that $u(x_0) = \max_{\overline{U}}u$, then $u$ is constant on $U$.
+	\end{enumerate}
+\end{theorem}
+	\begin{proof}
+		(a) As $\partial U \subseteq \overline{U}$, we immediately have $\max_{\partial U} u \leq \max_{\overline{U}} u $. For the other direction of inequality, let $\epsilon > 0$. Consider the function $u + \epsilon|x|^2$. Then:
+		\begin{align*}
+			\Delta (u + \epsilon|x|^2)
+			&= \Delta u + \epsilon \Delta |x|^2 \\
+			&=  \epsilon \sum_{j = 1}^{n} \frac{\partial}{\partial x_j} \left( \frac{\partial}{\partial x_j} |x|^2\right)  \\
+			&= \epsilon\sum_{j=1}^{n} \frac{\partial}{\partial x_j} 2 x_j \cdot \\
+			&= \epsilon\sum_{j=1}^{n} 2 \\
+			&= 2n\epsilon\\
+			& > 0.
+		\end{align*}
+		If $u + \epsilon|x|^2$ were to attain a local maximum at an interior point, then $\frac{\partial^2}{\partial x_j^2}(u+\epsilon|x|^2) \leq 0$ for all $j=1,\ldots,n$. This immediately implies that $\Delta (u+\epsilon|x|^2) \leq 0$, contradicting the above result. Since the local maximum of $u + \epsilon|x|^2$ must lie on its boundary, we have:
+		\begin{align*}
+			\max_{\overline{U}} u
+			&\leq \max_{\overline{ U}} (u+\epsilon|x|^2) \\
+			&=  \max_{\partial {U}}(u + \epsilon|x|^2)
+		\end{align*}
+		Taking $\epsilon\rightarrow 0$ gives $\max_{\overline{U}}u \leq \max_{\partial U} u$, establishing the claim.
+
+		(b) Assume $u(x_0) = \max_{\overline{U}}u := M$. Let $B(x_0,r) \subset U$. By the Mean Value Property:
+		\begin{align*}
+			M
+			&= u(x_0) \\
+			&= \avg_{B(x_0,r)}^{} u(x)dx\\
+			&= \frac{1}{\alpha(n)r^n} \int_{B(x_0,r)}^{} u(x)dx\\
+			&\leq \frac{M}{\alpha(n)r^n}\int_{B(x_0,r)}^{}dx \\
+			& = M.
+		\end{align*}
+	If the maximum of $B(x_0,r)$ is $u(x_0)$, and if $\avg_{B(x_0,r)}^{} u(x)dx = M$, it must be the case that $u(x) = M$ on all of $B(x_0,r)$. Since $u$ is locally constant on a connected space, it is globally constant; i.e., $u(x) = M$ for all $x \in U$.
+	\end{proof}
+
+ \begin{remark}
+ 	Note that the strong maximum principle implies the weak maximum principle. 
+ \end{remark}
+
+ \begin{remark}
+ 	A similar theorem can be stated in terms of local minima of functions, and the proof follows by consider $-u(x)$ and applying the maximum principle.
+ \end{remark}
+
+ \begin{corollary}
+ 	Let $y \in C(\partial U)$ and $f \in C(U)$. Solutions to the boundary value problem:
+	\[
+		\begin{cases}
+			\Delta u = f,& \text{in }U\\
+			u=g,& \text{on }\partial U
+		\end{cases}
+	\] 
+	are unique.
+\end{corollary}
+	\begin{proof}
+		Let $u$ and $v$ be solutions to the above boundary value problem. Since the Laplacian is linear, this induces the following boundary value problem:
+		\[
+			\begin{cases}
+				\Delta(u-v) = 0,& \text{in }U\\
+				u-v = 0,& \text{on }\partial U.
+			\end{cases}
+		\] 
+		Since $u-v$ is harmonic in $U$, Theorem~\ref{thm:maximum-prince} and Theorem~\ref{thm:minimum-prince} assert that $\max_U (u-v) = \min_U (u-v)$. It must be the case that $u-v = 0$ everywhere on $U$, hence $u=v$. 
+	\end{proof}
+
+\begin{theorem}[Interior Derivate Estimate]\label{thm:ide}
+	Assume $\Delta u = 0$ in $U$. Then:
+	\[
+		|Du| \leq \frac{C}{r^{n+1}} \lnorm u \rnorm_{L^1(B(x_0,r))}
+	\] 
+	for each $B(x_0,r) \subset U$.
+\end{theorem}
+	\begin{proof}
+		First, note that if $u$ is a harmonic function then $u_{x_i}$ is also harmonic (Clairaut's Theorem). As such, the function $u_{x_i}$ admits the \nameref{thm:mvp}:
+		\begin{align*}
+			|u_{x_i}(x_0)|
+			&= \left| \avg_{B(x_0,\frac{r}{2})}^{} u_{x_i}dx  \right|  \\
+			&= \frac{2^n}{\alpha(n)r^n}\left| \int_{B(x_0,\frac{r}{2})}^{} u_{x_i}dx \right|  \\
+			&= \frac{2^n}{\alpha(n)r^n} \left| \int_{\partial B(x_0,\frac{r}{2})}^{}u \nu^i dS  \right|  \\
+			&\leq \frac{2^n}{\alpha(n)r^n} \sup \left\{|u(x)| : x \in \partial B\left(x_0,\frac{r}{2}\right)\right\} \int_{\partial B\left(x_0,\frac{r}{2}\right)}^{} dS \\
+			&= \frac{2^n}{\alpha(n)r^n} \lnorm u \rnorm_{L^{\infty}(\partial B(x_0,\frac{r}{2}))}n\alpha(n) \frac{r^{n-1}}{2^{n-1}}  \\
+			&= \frac{2n}{r} \lnorm u \rnorm_{L^{\infty}(\partial B\left(x_0,\frac{r}{2}\right))} \\
+		\end{align*}
+		Note that for any $x \in \partial B(x_0,\frac{r}{2})$, we have $B(x,\frac{r}{2}) \subset B(x_0,r)$. Using this fact we can estimate $|u(x)|$ as follows:
+		\begin{align*}
+			|u(x)|
+			&= \left| \avg_{B(x,\frac{r}{2})}^{} u(y)dy \right|  \\
+			&= \frac{2^n}{\alpha(n)r^n} \int_{B(x,\frac{r}{2})}^{} |u(y)|dy \\
+			&= \frac{2^n}{\alpha(n)r^n}\lnorm u \rnorm_{L^1(B(x,\frac{r}{2}))} \\
+			&\leq \frac{2^n}{\alpha(n)r^n}\lnorm u \rnorm_{L^1(B(x_0,r))}.
+		\end{align*}
+		Taking the supremum over all $x \in \partial B(x_0,\frac{r}{2})$ gives:
+		\[
+			\lnorm u \rnorm_{L^\infty(\partial B(x_0,\frac{r}{2}))} \leq \frac{2^n}{\alpha(n)r^n}\lnorm u \rnorm_{L^1(B(x_0,r))}.
+		\]
+		Combining this with our first string of inequalities results in:
+		\begin{align*}
+			|u_{x_i}(x_0)|
+			& \leq \frac{2n}{r}\cdot \frac{2^n}{\alpha(n)r^n}\lnorm u \rnorm_{L^1(B(x_0,r))} \\
+			&= \frac{ n2^{n+1}}{\alpha(n)r^{n+1}}\lnorm u \rnorm_{L^1(B(x_0,r))}.
+		\end{align*}
+		Defining $C:= \frac{n 2^{n+1}}{\alpha(n)}$ and taking the gradient of $u_{x_i}(x_0)$ gives the desired result.
+	\end{proof}
+
+\begin{corollary}[Liouville]
+	Suppose $u:\bfR^n \rightarrow \bfR$ is harmonic. If $u$ is bounded, then $u$ is constant.
+\end{corollary}
+	\begin{proof}
+		Let $x_0 \in \bfR^n$ and $r > 0$. Assume $|u(x)| < M$. For each $i=1,\ldots,n$ we have:
+		\begin{align*}
+			|u_{x_i}(x_0)|
+			&\leq \frac{C}{r^{n+1}}\lnorm u \rnorm_{L^1(B(x_0,r))} \\
+			& \leq \frac{C}{r^{n+1}}\int_{B(x_0,r)}^{} Mdx \\
+			&\leq \frac{CM}{r^{n+1}}\alpha(n)r^{n} \\
+			&= \frac{CM\alpha(n)}{r}.
+		\end{align*}
+		As we are assuming $u$ is harmonic on all of $\bfR^n$, taking $r \rightarrow \infty$ does not fail any of the necessary assumptions made in Theorem~\ref{thm:ide}. Since $u_{x_i}(x_0) = 0$, we conclude that $u$ is constant.
+	\end{proof}
+
+\begin{theorem}
+	Assume $\Delta u = 0$ in $U$. Then:
+	\[
+		|D^\alpha u(x_0)| \leq \frac{C_k}{r^{n+k}} \lnorm u \rnorm_{L^1(B(x_0,r))}
+	\] 
+	for each $B(x_0,r) \subset U$ and each multiindex $\alpha$ of order $|\alpha| = k$.
+\end{theorem}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+
+

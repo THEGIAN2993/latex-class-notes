@@ -1,7 +1,8 @@
 # Fdb version 4
-["pdflatex"] 1773038196.80328 "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/Winter 2026/540 Topology/Homeowork 6/main.tex" "main.pdf" "main" 1773038197.6581 0
-  "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/Winter 2026/540 Topology/Homeowork 6/main.tex" 1773038195.83654 14358 698bae6a31686087cbbed28c1d0e1f35 ""
-  "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex" 1764622722.89504 13971 026113b2e089b0f197b6a1344ae6ebb8 ""
+["pdflatex"] 1775162626.7727 "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/Winter 2026/540 Topology/Homeowork 6/main.tex" "main.pdf" "main" 1775162627.69527 0
+  "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/Winter 2026/540 Topology/Homeowork 6/main.tex" 1775162626.69492 10765 6a19a9fb18e0f09461c68ffccd34e1df ""
+  "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex" 1775024951.09758 13971 5906d342a5c47d2c058dd0b77b7de4b9 ""
+  "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/preamble-hw.tex" 1775162594.15603 4881 03581e911db6e6543d16a375df482007 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/newpx/px-lms.enc" 1699652218 3877 2ca811886181a05a861d20a35de75e06 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf.enc" 1698694482 2914 fdbc4a54b9bc76f4551b5303f2737d33 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc" 1422827479 2083 60e36f8eac802fcaf19eabe2633b406e ""
@@ -320,9 +321,9 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1758769034 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "main.aux" 1773038197.55551 961 ef7bec5d1dda39aac43b8c3000e2cf4d "pdflatex"
-  "main.out" 1773038197.43658 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.tex" 1773038195.83654 14358 698bae6a31686087cbbed28c1d0e1f35 ""
+  "main.aux" 1775162627.58325 961 ef7bec5d1dda39aac43b8c3000e2cf4d "pdflatex"
+  "main.out" 1775162627.455 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.tex" 1775162626.69492 10765 6a19a9fb18e0f09461c68ffccd34e1df ""
   (generated)
   "main.aux"
   "main.log"

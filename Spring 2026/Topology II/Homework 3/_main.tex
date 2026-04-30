@@ -1,0 +1,199 @@
+\documentclass[10pt,oneside,openany]{memoir}
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/preamble-hw.tex}
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
+\begin{document}
+\homeworktitle
+{Math 541} %class
+{Homework 3} %assignment
+{Gianluca Crescenzo} %name
+
+\section*{\S 59 The Fundamental Group of $S^n$}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}
+	Let $X$ be the union of two copies of $S^2$ having a single point in common. What is the fundamental group of $X$? Prove that your answer is correct.
+\end{exercise}
+	\begin{proof}
+		Let $x_0$ be the point shared between both copies of $S^2$. Let $p$ be an element of the first copy of $S^2$, and $q$ an element of the second copy of $S^2$. Define $U := X \setminus \{p\}$ and $V := X \setminus \{q\}$. Then $U \cup V = X$ and $U \cap V = X \setminus \{p,q\}$. Note that both $U,V$ are open. and $ U \cap V$ is path connected. Furthermore, $X \setminus \{p\}$ is a deformation retract of $S^2$, hence $\pi_1(X \setminus \{p\},x_0) \cong \pi_1(S^2,x_0)$. This means $X \setminus \{p\}$ is simply connected. An identical argument will show that $X \setminus \{q\}$ is simply connected. By a corollary of the Seifert-van Kampen Theorem, $U \cup V = X$ is simply connected; i.e., $X$ has a trivial fundamental group.
+	\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}
+	Critisize the following "proof" that $S^2$ is simply connected: Let $f$ be a loop in $S^2$ based at $x_0$. Choose a point $p$ of $S^2$ not lying in the image of $f$. Since $S^2 \setminus \{p\}$ is homeomorphic with $\bfR^2$, and $\bfR^2$ is simply connected, the loop $f$ is path homotopic to the constant loop.
+\end{exercise}
+	\begin{proof}
+		For an arbitrary path $f$, such a point $p$ may not exist. One can construct a space filling curve on $S^2$ which is a path. Since such a path would be surjective, we cannot pick a point $p \not\in \Image f$.
+	\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}
+	Show that $\bfR^2$ and $\bfR^n$ are not homeomorphic if $n > 2$. 
+\end{exercise}
+	\begin{proof}
+		Suppose towards contradiction $f:\bfR^2 \rightarrow \bfR^n$ is a homeomorphism. Then \newline$\tilde{f}:\bfR^2 \setminus \{x_0\} \rightarrow \bfR^n \setminus \{f(x_0)\}$ is a homeomorphism, which gives the isomorphism: $$\pi_1(\bfR^2 \setminus \{x_0\},x) \cong \pi_1(\bfR^n \setminus \{f(x_0)\},f(x)).$$ But this is a contradiction. There exists a deformation retract $\bfR^2 \setminus \{x_0\} \rightarrow S^1$, which implies that $\pi_1(\bfR^2 \setminus \{x_0\},x)$ is infinite cyclic. On the other hand, there exists a deformation retract $\bfR^n \setminus \{f(x_0)\} \rightarrow S^{n-1}$, which implies that $\pi_1(\bfR^n \setminus \{f(x_0)\},x)$ is trivial.
+	\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section*{\S 60 Fundamental Groups of Some Surfaces}
+\begin{exercise}[manual-num={1}]
+	Compute the fundamental grups of the "solid torus" $S^1 \times B^2$ and the product space $S^1 \times S^2$.
+\end{exercise}
+	\begin{proof}
+		The fundamental group of $S^1 \times B^2$ is:
+		\begin{align*}
+			\pi_1(S^1 \times B^2, (x,y))
+			&= \pi_1(S^1,x) \times \pi_1(B^2,y) \\
+			&= \bfZ \times \{e\}.	
+		\end{align*}
+		The fundamental group of $S^1 \times S^2$ is:
+		\begin{align*}
+			\pi_1(S^1 \times S^2, (x,y))
+			&= \pi_1(S^1,x) \times \pi_1(S^2,y) \\
+			&= \bfZ \times \{e\}.	
+		\end{align*}
+	\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}[manual-num={5}]
+	Consider the covering map indicated in Figure 60.3 Use this covering space to show that the fundamental group of the figure eight is not abelian.
+\end{exercise}
+	\begin{proof}
+		Let $f$ loop once around $A$ counterclockwise and let $g$ loop around $B$ counterclockwise. Then $f \ast g \simeq_p g \ast f$ if and only if $\tilde{f \ast g}$ and $\tilde{g \ast f}$ have the same endpoint. The lifting of $f$ is $\tilde{f}$ running counterclockwise from $e_0$ to $e_2$, so the lifting of $f \ast g$ looks like $\tilde{f}$ followed by a counterclockwise loop around $B_0$ ending at $e_2$. Similarly, the lifting of $g$ is $\tilde{g}$ running counterclockwise from $e_0$ to $e_1$, so the lifting of $g \ast f$ looks like $\tilde{g}$ followed by a counter clockwise loop around $A_0$ ending at $e_1$. Since these liftings have different endpoints, it must be the case that $f \ast g$ and $g \ast f$ are not path homotopic. Hence $f \ast g \simeq_p g \ast f$, and so the fundamental group is not abelian.
+	\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Additional Exercises}
+
+\begin{exercise}[manual-num={1}]
+	Prove that the Euler characteristic of a compact, orientable surface of genus $g$ is equal to $2 - 2g$.
+\end{exercise}
+	\iffalse
+	\begin{proof}
+		Given two compact orientable surfaces $S_1$ and $S_2$, we will first prove that:
+		\[
+			\chi(S_1 \# S_2) = \chi(S_1) + \chi(S_2) - 2.
+		\]
+		Let $X:=\left\{X_i\right\}_{i = 1}^n$ be a triangulation of $S_1$ and $Y:=\left\{Y_j\right\}_{j = 1}^m$ a triangulation of $S_2$. Let $v_1$, $e_1$, and $t_1$ denote the vertices, edges, and triangles of $X$. Similarly, let $v_2$, $e_2$, and $t_2$ denote the vertices, edges, and triangles of $Y$. Remove a triangle $X_i$ from $X$ and $Y_j$ from $Y$, and glue along the boundaries of $X_i$ and $Y_i$. This is a triangulation of $S_1 \# S_2$ induced by $X$ and $Y$. The number of vertices of this triangulation is $s_1 + s_2 - 3$ since we've pairwise identified the three vertices of $X_i$ with the three vertices of $Y_i$. Similarly, the number of edges of this triangulation is $e_1 + e_2 - 3$ since we've pairwise identified the three edges of $X_i$ with the three edges of $Y_i$. Moreover, the total number of triangles is $t_1 + t_2 - 2$, since we removed $X_i$ and $Y_j$. Thus:
+		\begin{align*}
+			\chi(S_1 \# S_2)
+			&= (v_1 + v_2 - 3) - (e_1 + e_2 - 3) + (t_1 + t_2 - 2) \\
+			&= (v_1 - e_1 + t_1) + (v_2 - e_2 + t_2) - 2 \\
+			&= \chi(S_1) + \chi(S_2) - 2.\\
+		\end{align*}
+		A simple induction argument will show that:
+		\begin{align*}
+			\chi \left(S_1 \# \ldots \# S_n\right) = \chi(S_1) + \ldots + \chi(S_n) - 2(n-1). 
+		\end{align*}
+		By definition, a compact orientable surface is $\underbrace{T^2 \# \ldots \# T^2}_{g \text{-times}}$ Thus:
+		\begin{align*}
+			\chi(\underbrace{T^2 \# \ldots \# T^2}_{g \text{-times}})
+			&= g\cdot \chi(T^2) - 2(g-1) \\
+			&= 2-2g. \\
+		\end{align*}
+	\end{proof}
+	\fi
+	\begin{proof}
+		We prove this by induction. For our base case $n=1$, we have $\chi(T^2) = 0 = 2 - 2(1)$. Now suppose this holds true for $n = g-1$. For $n = g$:
+		\begin{align*}
+			\chi( \#_{g}T^2)
+			&=\chi(\#_{g-1}T^2) + \chi(T^2) - 2 \\
+			&=2 - 2(g-1) + 0 - 2 \\
+			&= 2 - 2g + 2 - 2 \\
+			&= 2-2g. \qedhere
+		\end{align*}
+	\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}[manual-num={2}]
+	Prove that it is not possible to subdivide the surface of sphere into regions, each of which has 6 sides (i.e., it is a hexagon) and such that distint regions have no more than one side in common. [\textit{Hint}: Subdivide each hexagon into triangles and compute the Euler characteristic.]
+\end{exercise}
+	\begin{proof}
+		Let $X$ be the following triangulation of a hexagon:
+		\begin{center}
+			\begin{tikzpicture}[scale=2]
+  % hexagon vertices
+  \coordinate (A) at (0,1);
+  \coordinate (B) at ({sqrt(3)/2},0.5);
+  \coordinate (C) at ({sqrt(3)/2},-0.5);
+  \coordinate (D) at (0,-1);
+  \coordinate (E) at ({-sqrt(3)/2},-0.5);
+  \coordinate (F) at ({-sqrt(3)/2},0.5);
+  \coordinate (O) at (0,0);
+
+  % outer hexagon
+  \draw (A)--(B)--(C)--(D)--(E)--(F)--cycle;
+
+  % subdivision into 6 triangles
+  \draw (O)--(A) (O)--(B) (O)--(C)
+        (O)--(D) (O)--(E) (O)--(F);
+\end{tikzpicture}
+		\end{center}
+		Then $\chi(X) = 1$. Since we require that distinct regions of our hexagons have no more than one side in common, our hexagons must only be joined along their boundaries. An example of this would be:
+		\begin{center}
+\begin{tikzpicture}[scale=2]
+  % left hexagon
+  \coordinate (O1) at (0,0);
+  \coordinate (A1) at (0,1);
+  \coordinate (B1) at ({sqrt(3)/2},0.5);
+  \coordinate (C1) at ({sqrt(3)/2},-0.5);
+  \coordinate (D1) at (0,-1);
+  \coordinate (E1) at ({-sqrt(3)/2},-0.5);
+  \coordinate (F1) at ({-sqrt(3)/2},0.5);
+
+  % right hexagon, sharing edge B1--C1
+  \coordinate (O2) at ({sqrt(3)},0);
+  \coordinate (A2) at ({sqrt(3)},1);
+  \coordinate (B2) at ({3*sqrt(3)/2},0.5);
+  \coordinate (C2) at ({3*sqrt(3)/2},-0.5);
+  \coordinate (D2) at ({sqrt(3)},-1);
+
+  % outlines
+  \draw (A1)--(B1)--(C1)--(D1)--(E1)--(F1)--cycle;
+  \draw (A2)--(B2)--(C2)--(D2)--(C1)--(B1)--cycle;
+
+  % subdivision into triangles
+  \draw (O1)--(A1) (O1)--(B1) (O1)--(C1)
+        (O1)--(D1) (O1)--(E1) (O1)--(F1);
+
+  \draw (O2)--(A2) (O2)--(B1) (O2)--(B2)
+        (O2)--(C2) (O2)--(C1) (O2)--(D2);
+\end{tikzpicture}
+		\end{center}
+		The Euler characteristic of this triangulation can be computed as follows: we sum the Euler characteristics of each hexagon, and since we identify one edge together and two vertices together, the Euler characteristic of this triangulation is:
+		\begin{align*}
+			\chi(X) + \chi(X) - 2 - (-1)
+			&= 1 \\
+			&= 2 \cdot \chi(X) - 1 \\
+		\end{align*}
+		A simple induction argument will show that $n$ hexagons connected similarly as above has an Euler characteristic of $n \chi(X) - (n-1) = 1$. This is the largest possible Euler characteristic of a tiling of hexagons which do not overlap. If we were to tile hexagons which share more than one boundary in common, then we will always lose more vertices than edges. Hence any tiling of non-overlappping hexagons has an Euler characteristic of at most 1. But the Euler charactertic of a sphere is 2, hence it is not possible to subdivide the surface of a sphere with such a tiling.
+	\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}[manual-num={3}]
+	What surface is represented by a 10-gon with edges identified in pairs, as indicated by the symbol:
+	\[
+		abcdec^{-1}da^{-1}b^{-1}e^{-1}.
+	\] 
+\end{exercise}
+	\begin{proof}
+		Label each edge of the 10-gon by the ordering of the symbol. Label each vertex inbetween as $V_1,\ldots,V_{10}$. The Euler characteristic can be described as the number of even cells minus the number of odd cells. The 10-gon is itself a 2-cell, and after associating each edge we are left with five 1-cells. Note that our associations of vertices are:
+		\begin{align*}
+a &: \; V_1 \mapsto V_2,\quad V_9 \mapsto V_8 \\
+b &: \; V_2 \mapsto V_3,\quad V_{10} \mapsto V_9 \\
+c &: \; V_3 \mapsto V_4,\quad V_7 \mapsto V_6 \\
+d &: \; V_4 \mapsto V_5,\quad V_7 \mapsto V_8 \\
+e &: \; V_5 \mapsto V_6,\quad V_1 \mapsto V_{10}
+\end{align*}
+		Hence $V_1 \sim V_9$, $V_9 \sim V_3$, etc. Chasing the associations will show that each vertex is associated with each other, hence our 10-gon only has a single vertex. Thus the Euler characteristic of our 10-gon is $1 - 5 + 1 = -3$.
+	\end{proof}
+
+\end{document}

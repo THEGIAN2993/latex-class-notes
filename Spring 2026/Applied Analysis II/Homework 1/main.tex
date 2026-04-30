@@ -1,0 +1,137 @@
+\documentclass[10pt,oneside,openany]{memoir}
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/preamble-hw.tex}
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
+\begin{document}
+\homeworktitle{Math 521}{Week 1 Assignment}{Gianluca Crescenzo}
+
+\begin{problem}[manual-num={2}]
+Let $u,v^1,v^2,...,v^n \in C^1(\bfR^n)$. Let $\bs{v} = (v^1,...,v^n)$. Show: that $$\Div( u \bs{v}) = Du \cdot \bs{v} + u \Div \bs{v}.$$
+\end{problem}
+    \begin{proof}
+        We have:
+            \begin{equation*}
+            \begin{split}
+                \Div(u \bs{v}) 
+                & = \sum_{i = 1}^n \frac{\partial}{\partial x_i}(uv^i) \\
+                & = \sum_{i = 1}^n \left(u_{x_i}v^i + u v_{x_i}^i\right) \\
+                & = \sum_{i = 1}^n u_{x_i}v^i + \sum_{i = 1}^n u v_{x_i}^i \\
+                & = Du \cdot \bs{v} + u \Div \bs{v}.  \qedhere
+            \end{split}
+            \end{equation*}
+    \end{proof}
+
+\begin{problem}[note={Evans \S 2.5 Problem 1},manual-num=3]
+    Write down an explicit formula for a function $u$ solving the initial-value problem:
+        \begin{equation*}
+        \begin{split}
+            \begin{cases}
+            u_t + b \cdot Du + cu = 0 & \text{in }\bfR^n \times (0,\infty) \\
+            \hspace{66pt}u = g& \text{on }\bfR^n \times \{t = 0\}
+            \end{cases}
+        \end{split}
+        \end{equation*}
+    Here $c \in \bfR$ and $b \in \bfR^n$ are constant.
+\end{problem}
+    \begin{proof}
+        Define $z(s) = u(x+sb,t+s)$. Then:
+            \begin{equation*}
+            \begin{split}
+                \dot{z}(s) 
+                &= u_t + b \cdot Du = -c u(u+sb,t+s)\\
+                & = -c z(s)
+            \end{split}
+            \end{equation*}
+        Solving the ordinary differential equation $\dot{z}(s) = -c z(s)$ gives $z(s) = K e^{-cs}$, where $K$ is some constant. Note that $z(0) = u(x,t) = K$. Likewise, $z(-t) = u(x-tb,0) = g(x-tb) = Ke^{ct}$. Hence $K = g(x-tb)e^{-ct}$, which establishes $u(x,t) = g(x-tb)e^{-ct}$.
+    \end{proof}
+
+\newpage
+\begin{problem}[manual-num={4}]
+    Use the integration by parts formula and/or the Gauss-Green theorem to establish \textit{Green's identities}. Let $U$ be a bounded open subset of $\bfR^n$ with a $C^1$ boundary $\partial U$. Then:
+    \begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+        \item $\ds \int_U \Delta u dx = \int_{\partial U}\frac{\partial u}{\partial \nu}dS$,
+        \item $\ds \int_U Dv \cdot Du dx = -\int_U u\Delta v dx + \int_{\partial U}\frac{\partial u}{\partial \nu}dS$, 
+        \item $\ds \int_U u \Delta v - v \Delta u dx = \int_{\partial U} u\frac{\partial v}{\partial \nu} - v \frac{\partial u}{\partial \nu}dS$.
+    \end{enumerate}
+\end{problem}
+    \begin{proof}
+        (a) We have:
+            \begin{equation*}
+            \begin{split}
+                \int_U \Delta u \, dx
+                &= \int_U \sum_{i=1}^n u_{x_i x_i} \, dx \\
+                &= \sum_{i=1}^n \int_U u_{x_i x_i} \, dx \\
+                &= \sum_{i=1}^n \left( \int_U u_{x_i} \cdot 0 \, dx + \int_{\partial U} u_{x_i}\nu^i \, dS \right) \\
+                &= \sum_{i=1}^n \int_{\partial U} u_{x_i}\nu^i \, dS \\
+                &= \int_{\partial U} \sum_{i=1}^n u_{x_i}\nu^i \, dS \\
+                &= \int_{\partial U} Du \cdot \nu \, dS \\
+                &= \int_{\partial U} \frac{\partial u}{\partial \nu} \, dS \qedhere
+            \end{split}
+            \end{equation*}
+
+        (b) Similarly:
+            \begin{equation*}
+            \begin{split}
+                \int_U (Dv \cdot Du)\, dx
+                &= \int_U \left( \sum_{i=1}^n v_{x_i} u_{x_i} \right) dx \\
+                &= \sum_{i=1}^n \int_U u_{x_i} v_{x_i}\, dx \\
+                &= \sum_{i=1}^n \left( - \int_U u\, v_{x_i x_i}\, dx + \int_{\partial U} u\, v_{x_i}\nu^i\, dS \right) \\
+                &= - \int_U u \sum_{i=1}^n v_{x_i x_i}\, dx + \int_{\partial U} u \sum_{i=1}^n v_{x_i}\nu^i\, dS \\
+                &= - \int_U u\, \Delta v\, dx + \int_{\partial U} u\, Dv \cdot \nu\, dS \\
+                &= - \int_U u\, \Delta v\, dx + \int_{\partial U} u\, \frac{\partial v}{\partial \nu}\, dS.
+            \end{split}
+            \end{equation*}
+
+        (c) \vspace{300pt}
+    \end{proof}
+
+\begin{problem}[manual-num={5}, note={Evans \S 2.5 Problem 2}]
+    Prove that Laplace's equation $\Delta u = 0$ is rotation invariant. Specifically, let $A = (a_{ij})$ denote an $n \times n$ orthogonal matrix. For $x \in \bfR^n$, let $y = Ax$; that is:
+        \begin{equation*}
+        \begin{split}
+            Ax = y = (y_1,...,y_n), \h3 y_i = \sum_{j = 1}^n a_{ij}x_i
+        \end{split}
+        \end{equation*}
+    Assume $u \in C^2(\bfR^n)$ satisfies $\Delta u = 0$. Then define
+        \begin{equation*}
+        \begin{split}
+            v(x) = u(Ax) = u(y).
+        \end{split}
+        \end{equation*}
+    Show that $\Delta v = 0$.
+\end{problem}
+    \begin{proof}
+        Note that $\frac{\partial y_k}{\partial x_i} = a_{ki}$. Hence:
+            \begin{equation*}
+            \begin{split}
+                v_{x_i}(x)
+                & = \frac{\partial}{\partial x_i} u(y) \\
+                & = \sum_{k = 1}^n u_{x_k}(y)\frac{\partial y_k}{\partial x_i} \\
+                & = \sum_{k = 1}^n u_{x_k}(y) a_{ki}.
+            \end{split}
+            \end{equation*}
+        Taking a second partial derivative with respect to $x_i$ gives:
+            \begin{equation*}
+            \begin{split}
+                v_{x_i x_i}(x)
+                & = \frac{\partial}{\partial x_i}\sum_{k = 1}^n u_{x_k}(y) a_{ki}\\
+                &= \sum_{k=1}^n \sum_{j=1}^n u_{x_k x_j}(y)\,\frac{\partial y_j}{\partial x_i}\,a_{ki} \\
+                &= \sum_{j=1}^n \sum_{k=1}^n a_{ji}a_{ki}\,u_{x_j x_k}.
+            \end{split}
+            \end{equation*}
+        Summing from $i=1,...,n$ finally yields:
+            \begin{equation*}
+            \begin{split}
+                \Delta v(x)
+                &= \sum_{i=1}^n v_{x_i x_i}(x) \\
+                &= \sum_{i=1}^n \sum_{j=1}^n \sum_{k=1}^n a_{ji}a_{ki}\,u_{x_j x_k}(y) \\
+                &= \sum_{j=1}^n \sum_{k=1}^n \left( \sum_{i=1}^n a_{ji}a_{ki} \right) u_{x_j x_k}(y) \\
+                &= \sum_{j=1}^n \sum_{k=1}^n \delta_{jk}\,U_{x_j x_k}(y) \\
+                &= \sum_{k=1}^n u_{x_k x_k} \\
+                &= \Delta u(y) \\
+                &= 0 \qedhere
+            \end{split}
+            \end{equation*}
+    \end{proof}
+
+
+\end{document}

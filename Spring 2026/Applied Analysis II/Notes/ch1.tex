@@ -1,0 +1,231 @@
+\chapter{Introduction}
+\pagenumbering{arabic}
+\vspace{-25pt}
+
+For the remainder of this chapter: let $U \subset \bfR^n$ be an open set. An element $x \in \bfR^n$ will always be of the form $(x_1,\ldots,x_{n})$. The function $u:U \rightarrow \bfR$ will always denote the unknown function being solved for in a differential equation. We denote $u := u(x) = u(x_1,\ldots,x_{n})$.
+
+
+\section{Basic Definitions}
+
+\begin{definition}
+	The \textui{unit vector in $\bfR^n$} is denoted by $e^i$, where it is $1$ is the $i^\text{th}$ slot and $0$ otherwise.
+\end{definition}
+
+\begin{definition}
+	The \textui{partial derivative} of $u$ with respect to $x_i$ is:
+	\[
+		u_{x_i} := \frac{\partial u}{\partial x_i} := \lim_{h \rightarrow 0} \frac{u(x+he^i) - u(x)}{h}.
+	\] 
+\end{definition}
+
+\begin{definition}
+	The \textui{gradient} of $u$ is the vector:
+	\[
+		Du := \nabla u := (u_{x_1},\ldots,u_{x_n}).
+	\] 
+\end{definition}
+
+\begin{definition}
+	The \textui{Hessian matrix}  of $u$ is the 2 dimensional array:
+	\[
+		D^{2}u = \bmat u_{x_1 x_1} & ... & u_{x_1 x_{n}} \\ \vdots & \ddots & \vdots \\ u_{x_{n} x_1} & ... & u_{x_{n} x_{n}} \emat
+	\] 
+\end{definition}
+
+\begin{definition}
+	The \textui{Laplacian} of $u$ is:
+	\[
+		\Delta u := \nabla^2 u := \Tr(D^2 u) = \sum_{i=1}^{n} u_{x_i x_i}.
+	\] 
+\end{definition}
+
+\begin{definition}
+	\phantom{a}
+	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+		\item A vector of the form $\alpha := (\alpha_1,\ldots,\alpha_{n})$, where $\alpha_i \in \bfZ_{\geq 0}$, is called a \textui{multiindex of order $|\alpha|$}, where:
+			\[
+				|\alpha| = \alpha_1 + \ldots +\alpha_n.
+			\]
+
+		\item Give a multiindex $\alpha$, we define:
+			\[
+				D^\alpha u(x) := \frac{\partial^{|\alpha|}u(x)}{\partial^{\alpha_1}x_1\ldots\partial^{\alpha_n}x_n}.
+			\] 
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}
+	A \textui{partial differential equation} (PDE for short) is an equation involving an unknown function $u$ along with one or more of its partial derivatives. A partial differential equation is  \textui{linear} if we can write it as:
+	\[
+		\sum_{|a| \leq K}^{} a_{\alpha}(x)D^{\alpha}u(x) = f(x).
+	\]
+	If $f(x)=0$, then this PDE is called \textui{homogenous}. 
+\end{definition}
+
+\section{Multivariable Calculus}
+
+\begin{theorem}[Fubini]
+	If $u \in L^1(U)$, then:
+	\[
+		\int_{U}^{} u dx = \underbrace{\int \ldots \int}_{n\text{-times}}u(x_1,\ldots,x_{n})dx_1\ldots dx_n.
+	\] 
+\end{theorem}
+
+\begin{definition}
+	The \textui{boundary} of $U$ is denoted $\partial U$. 
+\end{definition}
+
+\begin{definition}
+	We say the boundary $\partial U$ is \textui{$C^k$} if in a neighborhood of any point on the boundary, the boundary is the graph of a $C^k$ function (possibly after the coordinate system has been rotated).
+\end{definition}
+
+\begin{definition}
+	If $\partial U$ is $C^1$, then along $\partial U$ is defined the \textui{outward pointing unit normal vector field}, which we denote by:
+	\[
+		\vec{\nu} = (\nu^1,\ldots,\nu^n).
+	\] 
+\end{definition}
+
+\begin{definition}
+	Let $u \in C^1(\overline{U})$. The \textui{outward normal derivative} of $u$ is:
+	\[
+		\frac{\partial u}{\partial \nu} := Du \cdot \vec{\nu}.
+	\] 
+\end{definition}
+
+\begin{definition}
+	Let $\vec{u} = (u^1,\ldots,u^n)$ be a vector field. The \textui{flux of $u$ across $\partial U$} is:	
+	\[
+		\int_{\partial U}\vec{u}\cdot \vec{\nu}dS. 
+	\] 
+\end{definition}
+
+\begin{theorem}[Gauss-Green]
+	\phantom{a}
+	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+		\item Suppose $u \in C^1(\overline{U})$. For any $i=1,\ldots,n$, we have:
+		\[
+			\int_{U}^{} u_{x_i}dx = \int_{\partial U}^{} u \nu^i dS
+		\]
+		\item (Divergence Theorem) Let $\vec{v} = (v^1,\ldots,v^n)$, where $v^i \in C^1(\overline{U})$ for each $i=1,\ldots,n$. Then:
+			\[
+				\int_{U}^{} \Div \vec{v}dx = \int_{\partial U}^{} \vec{v}\cdot \vec{\nu}dS.
+			\] 	
+	\end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Integration by Parts]
+	Let $u,v \in C^1(\overline{U})$ and let $\partial U$ be $C^1$. Then:
+	\[
+		\int_{U}^{} u_{x_i}v dx = - \int_{U}^{} u v_{x_i} dx + \int_{\partial U}^{} uv \nu^i dS.
+	\] 
+\end{theorem}
+
+\begin{theorem}[Green's Formulas]
+	Let $u,v \in C^1(\overline{U})$ and let $\partial U$ be $C^1$. Then:
+	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+        \item $\ds \int_U \Delta u dx = \int_{\partial U}\frac{\partial u}{\partial \nu}dS$,
+        \item $\ds \int_U Dv \cdot Du dx = -\int_U u\Delta v dx + \int_{\partial U}\frac{\partial u}{\partial \nu} u dS$, 
+        \item $\ds \int_U u \Delta v - v \Delta u dx = \int_{\partial U} u\frac{\partial v}{\partial \nu} - v \frac{\partial u}{\partial \nu}dS$.
+    \end{enumerate}
+\end{theorem}
+	
+\section{Polar Coordinated in $\bfR^n$ }
+
+\begin{remark}
+	In $\bfR^n$, for any $x \neq 0$, we can write:
+	\[
+	x = |x| \cdot \frac{x}{|x|} := r \omega,
+	\] 
+	where $r\in (0,\infty)$ and $\omega \in S^{n-1} = \partial B(0,1)$.
+\end{remark}
+
+\begin{theorem}
+	There exists a measure $d \omega$ on $S^{n-1}$ such that:
+	\[
+		\int_{\bfR^n}^{}u dx = \int_{0}^{\infty} \left( \int_{S^{n-1}}^{} u(r \omega) r^{n-1}d \omega \right) dr.
+	\] 
+	In other words, $dx = r^{n-1}d\omega dr$.
+\end{theorem}
+
+\begin{corollary}
+	For any $x_0 \in \bfR^n$ and $a > 0$, we have:
+	\[
+		\int_{B(x_0,a)}^{} u dx = \int_{B(0,a)}^{} u(x_0 + y)dy = \int_{0}^{a} \left( \int_{S^{n-1}}^{} u(x_0+r \omega)r^{n-1} d\omega \right) dr.
+	\] 
+\end{corollary}
+
+\begin{corollary}
+	For any  $x_0 \in \bfR^n$ and $r > 0$, we have:
+	\[
+	\frac{d}{dr}\int_{B(x_0,r)}^{} u dx = \int_{\partial B(x_0,r)}^{} udS.
+	\] 
+\end{corollary}
+
+\section{Smoothing}
+
+\begin{definition}
+	\phantom{a}
+	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+		\item Let $U,V \subset \bfR^n$. We say $U$ is \textui{compactly contained} in $V$, and write $U \subset\subset V$, if $V \subset \overline{V} \subset U$ and $\overline{V}$ is compact. 
+		\item If $\restr{f}{V} \in L^p(V)$ for all $V \subset\subset U$, then we say $f$ is \textui{locally integrable on $U$}. The set of all such functions is denoted $L_{\text{loc}}^p(U)$.
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}
+	For $\epsilon > 0$, we define:
+	\[
+		U_\epsilon := \{x \in U \mid \dist(x, \partial U) > \epsilon\}.
+	\] 
+\end{definition}
+
+\begin{definition}
+	\phantom{a}
+	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+		\item Let $x \in \bfR^n$. The \textui{standard mollifier} is the function:
+		\[
+			\eta(x) := 
+				\begin{cases}
+			 		\frac{-C}{1-|x|^2}, & |x| < 1 \\
+					0, & |x| \geq 1
+				\end{cases},
+		\] 
+		where $C$ is chosen so that $\int_{\bfR^n}^{} \eta(x)dx = 1$.
+
+		\item For all $\epsilon > 0$, define:
+			\[
+				\eta_\epsilon(x) := \frac{1}{\epsilon^n}\eta\left( \frac{x}{\epsilon}\right).
+			\] 
+	\end{enumerate}
+\end{definition}
+
+\begin{proposition}
+	We have $\eta \in C^\infty_c(\bfR^n)$. Moreover, for all $\epsilon > 0$, we have:
+	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+		\item $\eta_\epsilon \in C^\infty_c(\bfR^n)$;
+		\item $\supp \eta_\epsilon = B(0,\epsilon)$;
+		\item $\int_{\bfR^n}^{} \eta_\epsilon(x)dx = 1$.
+	\end{enumerate}
+\end{proposition}
+
+\begin{definition}
+	\phantom{a}
+	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+		\item For $\epsilon > 0$, we define:
+			\[
+				U_\epsilon := \{x \in U \mid \dist(x, \partial U) > \epsilon\}.
+			\] 
+		\item If $f \in \Loc^p(U)$, we define it \textui{mollifier} as:
+			\begin{align*}
+				f^{\epsilon}(x)
+				&:=   \restr{(\eta_\epsilon \ast f)}{U_\epsilon}\\
+				&= \int_{U}^{} \eta_\epsilon(x-y)f(y)dy \\
+				&= \int_{B(0,\epsilon}^{} \eta_\epsilon(y)f(x-y)dy. \\
+			\end{align*}
+		
+	\end{enumerate}
+\end{definition}
+
+
+
+

@@ -821,3 +821,6 @@ for a sequence $(\lambda_n) \subset \bfC$. First show that this map is a bounded
         \end{equation*}
     is closed in $\cL(X,Y)$.
 \end{theorem}
+    \begin{proof}
+        Let $\{T_n\}_{n = 1}^\infty$ be a sequence of compact operators converging to $T \in \cL(X,Y)$. Let $\{x_n\}_{n = 1}^\infty$ be a bounded sequence. Choose a subsequence $\{x_{1,j}\}_{j = 1}^\infty \subset \{x_n\}_{n = 1}^\infty$ such that $\{T_1(x_{1,j})\}_{j = 1}^\infty$ is convergent in $Y$. Note that $\{x_{1,j}\}_{j = 1}^\infty$ is still bounded. Choose a subsequence $\{x_{2,j}\}_{j = 1}^\infty \subset \{x_{1,j}\}_{j = 1}^\infty \subset \{x_n\}_{n = 1}^\infty$ such that $\{T_2(x_{2,j})\}_{j = 1}^\infty$ is convergent in $Y$. In general, choose $\{x_{k,j}\}_{j = 1}^\infty \subset \{x_{k-1,j}\}_{j = 1}^\infty \subset ... \subset \{x_n\}_{n = 1}^\infty$ such that $\{T_k(x_{k,j})\}_{j = 1}^\infty$ is convergent. Define $\{y_n\}_{n = 1}^\infty$ by $y_n = x_{n,n}$. Then $\{y_n\}_{n = 1}^\infty \subset \{x_n\}_{n = 1}^\infty$. Then for any $k < n$, we have that $\{T_k y_n\}_{n = 1}^\infty$ is convergent.
+    \end{proof}

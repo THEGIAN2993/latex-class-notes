@@ -1,0 +1,311 @@
+\documentclass[10pt,oneside,openany]{memoir}
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/preamble-hw.tex}
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
+\begin{document}
+\homeworktitle
+{Math 541} %class
+{Week 2 Homework} %assignment
+{Gianluca Crescenzo} %name
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}
+	Let $a \in \bfR$. For $x \in \bfR^n$, define:
+	\begin{align*}
+		f(x) &= \begin{cases}
+			|x|^{-a}, & 0 < |x| < 1 \\
+			0, & \text{otherwise}
+		\end{cases} \\
+		g(x) &= \begin{cases}
+			|x|^{-a}, & |x| > 1 \\
+			0, & \text{otherwise}
+		\end{cases}.
+	\end{align*}
+	For which $a$ is $f \in L^1(\bfR^n)$? For which $a$ is $f \in L^p(\bfR^n)$ for a given $1 \leq p < \infty$? Same questions for $g$.
+\end{exercise}
+	\begin{proof}
+		We have:
+		\begin{align*}
+			\int_{\bfR^n}^{} |f(x)|^p dx
+			& = \int_{B(0,1)}^{} |x|^{-ap}dx \\
+			& = \int_{0}^{1} \int_{S^{n-1}}^{} r^{-ap}r^{n-1}d \omega dr \\
+			& \leq C \int_{0}^{1} r^{n-1-ap}dr \\
+			& = C \lim_{\delta \rightarrow 0} \left( \frac{1}{n-ap} - \frac{\delta^{n-ap}}{n-ap} \right).  
+		\end{align*}
+		This limit converges only when $n-ap > 0$. Thus $f \in L^p(\bfR^n)$ for $1 \leq p < \infty$ for all $a < \frac{n}{p}$. Now consider:
+		\begin{align*}
+			\int_{\bfR^n}^{} |g(x)|^p 
+			& = \int_{\bfR^n \setminus B(0,1)}^{}|x|^{-ap} dx\\
+			& = \int_{1}^{\infty} \int_{S^{n-1}}^{} r^{-ap}r^{n-1}d \omega dr \\
+			& \leq C \int_{1}^{\infty} r^{n-1-ap}dr \\
+			& = C \lim_{\delta \rightarrow \infty} \left( \frac{\delta^{n-ap}}{n-ap} - \frac{1}{n-ap}\right). 
+		\end{align*}
+		This limit converges only when $n-ap < 0$. Thus $g \in L^p(\bfR^n)$ for $1 \leq p < \infty$ for all $a > \frac{n}{p}$.
+	\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\begin{exercise}
+	Let $U$	be open in $\bfR^n$. Find a function $u \in L^1(U)$ which is unbounded on any open subset $V \subset U$. Hint: start with an enumeration of the points in $U$ with rational coordinates. Then make us of translates of the function $f$ (with an appropriate value for $a$) from the previous exercise.
+\end{exercise}
+	\begin{proof}
+		Let $f$ be given in the previous exercise for any $0 < a < n$. Let $\bfQ^n \cap U = \{q_k \mid k \in \bfN\}$ be an enumeration of the rationals. Define:
+		\[
+			u(x) := 
+			\begin{cases}
+				\sum_{k=1}^{\infty} 2^{-k}f(x-q_k), & x \not\in \bfQ^n \cap U \\
+				0, & x \in \bfQ^n \cap U.
+			\end{cases}
+		\] 
+		Since $u(x) =\sum_{k=1}^{\infty} 2^{-k}f(x-q_k)$ a.e., it is enough to show that the series of functions alone is in $L^1(U)$. Note that:
+		\begin{align*}
+			\int_{U}^{} \sum_{k=1}^{\infty} 2^{-k}f(x-q_k) dx = \sum_{k=1}^{\infty} \int_{U}^{}f(x-q_k)dx. 
+		\end{align*}
+		By the translating the function $f$, we have:
+		\begin{align*}
+			\int_{U}^{}f(x-q_k)dx 
+			& = \int_{U - q_k}^{}f(y)dy \\
+			& \leq \int_{\bfR^n}^{} f(y)dy \\
+			& = \lnorm f \rnorm_{L^1(\bfR^n)}.
+		\end{align*}
+		Hence:
+		\begin{align*}
+			\int_{U}^{} \sum_{k=1}^{\infty} 2^{-k}f(x-q_k) dx
+			& \leq \sum_{k=1}^{\infty} 2^{-k}\lnorm f \rnorm_{L^1(\bfR^n)} \\
+			& = \lnorm f \rnorm_{L^1(\bfR^n)} \sum_{k=1}^{\infty} 2^{-k} \\
+			& < \infty.
+		\end{align*}
+		Thus $u \in L^1(U)$. Now let $V \subset U$ be any nonempty open set. Since $\bfQ^n$ is dense in $\bfR^n$, there exists some $q_m \in V$. Since $V$ is open, we can find points $x \in V \setminus\bfQ^n$ which are arbitrarily close to $q_m$. Hence:
+		\begin{align*}
+			\sum_{k = 1}^{\infty} 2^{-k}f(x-q_k) \geq 2^{-m}f(x-q_m).
+		\end{align*}
+		If $0 < |x-q_m| < 1$, then $f(x-q_m) = |x-q_m|^{-a}$. This finally gives:
+		\[
+			\sum_{k = 1}^{\infty} 2^{-k}f(x-q_k) \geq 2^{-m}|x-q_m|^{-a}.
+		\] 
+		As $x \rightarrow q_m$, the right hand side of the above inequality tends to infinity. Thus $u$ is unbounded on $V$.
+	\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\begin{exercise}
+	Show that the fundamental solution $\Phi$ to Laplace's equation has a finite integral over any bounded neighborhood of the origin.
+\end{exercise}
+	\begin{proof}
+		Let $U \subset \bfR^n$ be a bounded neighborhood of the origin. Then there exists $r > 0$ such that $U \subseteq B(0,r)$. Hence:
+		\[
+			\int_{U}^{} \left| \Phi(x) \right| dx \leq \int_{B(0,r)}^{} \left| \Phi(x) \right| dx
+		\]
+		For $n=2$:
+		\begin{align*}
+			\int_{B(0,r)}^{} \left| \Phi(x) \right| dx
+			&= c_1 \int_{B(0,r)}^{} |\log|x||dx \\
+			&= c_1 \int_{0}^{r} \int_{0}^{2\pi} |r \log r|d \theta dr \\
+			& \leq C \int_{0}^{r} |r \log r|dr \\
+			&< \infty. \\
+		\end{align*}
+		For $n \geq 3$ :
+		\begin{align*}
+			\int_{B(0,r)}^{} \left| \Phi(x) \right| dx
+			&= c_n \int_{B(0,r)}^{} |x|^{2-n}dx \\
+			&= c_n \int_{0}^{r} \int_{S^{n-1}}^{} r^{2-n}r^{n-1}d \omega dr\\
+			&\leq C \int_{0}^{r} r^{2-n}r^{n-1}dr \\
+			&= C \int_{0}^{r} r dr\\
+			&< \infty.  \\
+		\end{align*}
+		Hence by our first inequality, the fundamental solution to Laplace's equation has a finite integral over $U$.
+	\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}
+	For $i,j = 1,\ldots,n$, calculate $\Phi_{x_i}(x)$ and $\Phi_{x_i x_j}(x)$ for any $n\geq 2$. Use your answer to show:
+	\[
+		|D \Phi(x)| \leq \frac{C}{|x|^{n-1}} \text{ and } |D^2 \Phi(x)|\leq \frac{C}{|x|^n}.
+	\] 
+\end{exercise}
+	\begin{proof}
+		We will first show that $|D \Phi(x)| \leq \frac{C}{|x|^{n-1}}$. We proceed by cases on $n$. Case 1: $n = 2$. We have $\frac{\partial}{\partial x_i}\Phi(x) = -c_2 \frac{x_i}{|x|^2}$, hence $D \Phi(x) = -c_2 \frac{x}{|x|^2}$. Thus:
+		\[
+			|D \Phi(x)| \leq c_2 \frac{|x|}{|x|^2} \leq \frac{C}{|x|}.
+		\] 
+		Case 2: $n \geq 3$. We have $\frac{\partial}{\partial x_i}\Phi(x) = c_n(2-n) \frac{x_i}{|x|^n}$, hence $D \Phi(x) = c_n (2-n) \frac{x}{|x|^n}$. Hence:
+		\[
+			|D \Phi(x)| \leq c_n(2-n) \frac{|x|}{|x|^n} \leq \frac{C}{|x|^{n-1}}.
+		\]
+
+		Using the above work, we can now show that $|D^2 \Phi(x)| \leq \frac{C}{|x|^n}$. For $n=2$:
+		\begin{align*}
+			\frac{\partial}{\partial x_j}\Phi_{x_i}(x)
+			& = -c_2 \frac{\partial}{\partial x_j} \frac{x_i}{|x|^2} \\
+			& = -c_2 \frac{\partial}{\partial x_j} \frac{x_i}{|x|^2} \\
+			&= \delta_{ij} |x|^{-2} - 2 x_i x_j |x|^{-4}  \\
+		\end{align*}
+		For $n \geq 3$:
+		\begin{align*}
+			\frac{\partial}{\partial x_j}\Phi_{x_i}(x)
+			& = -c_n(2-n) \frac{\partial}{\partial x_j} \frac{x_i}{|x|^n} \\
+			& = \delta_{ij}|x|^{-n} - nx_i x_j |x|^{-n-2}.
+		\end{align*}
+		In either case of dimension, we have:
+		\begin{align*}
+			\bigl|\delta_{ij} |x|^{-n}\bigr| &\leq \frac{1}{|x|^n}, \\
+			\left| \frac{x_i x_j}{|x|^{n+2}} \right| &\leq \frac{|x|^2}{|x|^{n+2}} = \frac{1}{|x|^n}.
+		\end{align*}
+		Thus:
+		\[
+			|\Phi_{x_i x_j}(x)| \leq \frac{C}{|x|^n}.
+		\]
+		Since every entry of the Hessian matrix is bounded by $\frac{C}{|x|^n}$, we have for $n \geq 2$:
+		\[
+			|D^2 \Phi(x)| \leq \frac{C}{|x|^n}. \qedhere
+		\] 
+	\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}
+	Let $f \in C^2_c(\bfR^n)$ and $1 > \epsilon > 0$. Recall the following integrals that came up in our calculations in class:
+	\begin{align*}
+		I_\epsilon &= \int_{B(0,\epsilon)}^{} \Delta_y f(x-y)\Phi(y)dy\\
+		J_\epsilon &= \int_{\partial B(0,\epsilon}^{} \frac{\partial f}{\partial \nu}(x-y) \Phi(y)dy.
+	\end{align*}
+	Show that for $n = 2$ we get:
+	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+		\item $ |I_\epsilon| \leq C \epsilon^2 |\log \epsilon|$.
+		\item $|J_\epsilon| \leq C \epsilon |\log \epsilon|$.
+	\end{enumerate}
+\end{exercise}
+	\begin{proof}
+		(a) We have:
+		\begin{align*}
+			|I_\epsilon|
+			&= \left| \int_{B(0,\epsilon}^{} \Delta_yf(x-y) \Phi(y)dy \right|  \\
+			&\leq \int_{B(0,\epsilon}^{} \left| \Delta_y f(x-y) \right| \Phi(y)dy   \\
+		\end{align*}
+		Since $f \in C^2_c(\bfR^2)$, we have that $\Delta_y f(x-y)$ is bounded. Hence:
+		\begin{align*}
+			|I_\epsilon|
+			& \leq C \int_{B(0,\epsilon)}^{} \Phi(y)dy \\
+			& = C \int_{B(0,\epsilon)}^{} -c_2 \log |y| dy \\
+			& \leq C \int_{B(0,\epsilon)}^{} \log\left( \frac{1}{|y|} \right) dy \\ 
+			&= C \int_{0}^{\epsilon} \int_{S^1}^{} r \log \left( \frac{1}{r} \right) d\omega dr \\
+			&\leq C \int_{0}^{\epsilon} r \log \left( \frac{1}{r} \right) dr.
+		\end{align*}
+		This is an improper integral at $r = 0$. After making the necessary adjustments, integration by parts yields:
+		\begin{align*}
+			C \lim_{\delta \rightarrow 0} \int_{\delta}^{\epsilon}r \log \left( \frac{1}{r} \right) dr 
+			& = C \lim_{\delta \rightarrow 0} \left( \frac{r^2}{2}\log \left( \frac{1}{r} \right) \Bigg|_\delta^\epsilon + \frac{1}{2}\int_{\delta}^{\epsilon} r^{}dr\right)  \\
+			&= C\lim_{\delta \rightarrow 0} \left( \frac{r^2}{2}\log \left( \frac{1}{r} \right) + \frac{r^2}{4} \right)\Bigg|_\delta^\epsilon  \\
+			&=C \lim_{\delta \rightarrow 0} \left( \frac{\epsilon^2}{2}\log\left( \frac{1}{\epsilon} \right) + \frac{\epsilon^2}{4} - \frac{\delta^2}{2}\log\left( \frac{1}{\delta} \right) - \frac{\delta^2}{4}\right) \\ 
+			&= C \left(  \frac{\epsilon^2}{2}\log\left( \frac{1}{\epsilon} \right) + \frac{\epsilon^2}{4}\right) \\
+			&= C \epsilon^2 \left( \frac{1}{2}|\log\epsilon| + \frac{1}{4} \right) \\
+			&\leq C \epsilon^2 \left( \frac{1}{2}|\log\epsilon| + \frac{1}{4}|\log\epsilon| \right)\\
+			& \leq C \epsilon^2 \left( \frac{1}{2} + \frac{1}{4} \right)|\log\epsilon| \\
+			& \leq C \epsilon^2 |\log\epsilon|.
+		\end{align*}
+
+		(b) Observe that:
+		\begin{align*}
+			|J_\epsilon|
+			&= \left| \int_{\partial B(0,\e)}^{} \frac{\partial f}{\partial \nu}(x-y) \Phi(y)dy  \right|  \\
+			&= \int_{_\partial B(0,\epsilon) }^{} \left|\frac{\partial f}{\partial \nu}(x-y)\right| \Phi(y)dy \\
+		\end{align*}
+		Since $f \in C^2_c(\bfR)$, we have that $\frac{\partial f}{\partial \nu}(x-y)$ is bounded. Hence:
+		\begin{align*}
+			|J_\epsilon| \leq C \int_{\partial B(0,\epsilon)}^{} \Phi(y)dy 
+			&= C \int_{\partial B(0,\epsilon)}^{} -c_2 \log |y|dy \\
+			&\leq C \int_{\partial B(0,\epsilon)}^{} \log \left( \frac{1}{|y|} \right) dy \\
+			&\leq C \int_{\partial B(0,\epsilon)}^{} |\log |y|| dy\\
+			&\leq C |\log \epsilon| \int_{B(0,\epsilon)}^{} dy \\
+			& = C |\log \epsilon| 2 \pi \epsilon \\
+			& \leq C \epsilon |\log \epsilon|. \qedhere
+		\end{align*}	
+	\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}
+	Recall the integral:
+	\[
+		L_\epsilon = \int_{\partial B(0,\epsilon)}^{} \left( D \Phi(y) \cdot \vec{\nu} \right) f(x-y)dS(y).
+	\] 
+	We showed that for $n \geq 3$ we get $L_\epsilon = \mint{-} f(x-y)dS(y)$. Show that we get the same thing for $n = 2$.
+\end{exercise}
+	\begin{proof}
+		First consider:
+		\begin{align*}
+			\frac{\partial}{\partial y_i}\Phi(y)
+			&= -c_2 \frac{\partial}{\partial y_i} \log |y| \\
+			&= -c_2 \frac{y_i}{|y|^2}.
+		\end{align*}
+		Hence:
+		\[
+			D \Phi(y)=-c_2\frac{y}{|y|^2}.
+		\] 
+		But since we're integrating on $\partial B(0,\epsilon)$, this means $D \Phi(y) = -c_2 \frac{y}{\epsilon^2}$. It remains to compute $D\Phi(y)\cdot \vec{\nu}$. Since we are on the ball of radius epsilon, the vector $\vec{\nu}$ is a function of the points $y \in \partial B(0,\epsilon)$. In particular, $\vec{\nu} = \frac{y}{\epsilon}$. This gives: 
+		\begin{align*}
+			D \Phi(y) \cdot \vec{\nu}
+			&= -c_2 \frac{y}{\epsilon^2} \cdot \frac{y}{\epsilon} \\
+			&= -c_2 \frac{1}{\epsilon^3}(y \cdot y) \\
+			&= -c_2 \frac{1}{\epsilon^3}|y|^2 \\
+			&= -c_2 \epsilon^{-1}. \\
+		\end{align*}
+		Finally:
+		\begin{align*}
+			L_\epsilon
+			& = \int_{\partial B(0,\epsilon)}^{} -c_2 \epsilon^{-1}f(x-y)dS(y) \\
+			& = -c_2 \epsilon^{-1} \frac{2 \pi \epsilon}{2 \pi \epsilon} \int_{\partial B(0,\epsilon)}^{} f(x-y)dS(y) \\
+			& = -c_2 \epsilon^{-1} 2 \pi \epsilon \mint{-}_{\partial B(0,\epsilon)}^{}f(x-y)dS(y) \\
+			& = -\mint{-}_{\partial B(0,\epsilon)}^{}f(x-y)dS(y). \qedhere
+		\end{align*}
+	\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}
+	Let $\epsilon > 0$.
+	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+		\item For $x \in \bfR$, let:
+			\[
+				H(x) :=
+				\begin{cases}
+					0, & x < 0 \\
+					1, & x \geq 0.
+				\end{cases}
+			\]
+			Compute the function $\zeta := \eta_\epsilon \ast H$. We call $\zeta$ the cutoff function.
+
+		\item Let $a < b$ be real numbers. Find a smooth function which is indentically 1 on $[a,b]$, and is identically 0 for $x \leq a - \epsilon$ and $x \geq b + \epsilon$.
+
+		\item Now let $U,V \subset \bfR^n$ be open sets with $V \subset\subset U$. Show that there is a smooth function on $\bfR^n$ which is identically 1 on $V$, and identically 0 outisde $U$.
+	\end{enumerate}
+\end{exercise}
+	\begin{proof}
+		(a) We have:
+\begin{align*}
+\zeta(x) &= (\eta_\epsilon * H)(x) \\
+&= \int_{\mathbb{R}} \eta_\epsilon(x-y)\,H(y)\,dy \\
+&= \int_0^\infty \eta_\epsilon(x-y)\,dy \\
+&= \int_{-\infty}^x \eta_\epsilon(t)\,dt \\[6pt]
+&=
+\begin{cases}
+0, & x \le -\epsilon, \\[6pt]
+\displaystyle \int_{-\epsilon}^{x} \frac{c}{\epsilon}\exp\!\left(\frac{1}{\left(\frac{t}{\epsilon}\right)^2 - 1}\right)\,dt,
+& -\epsilon < x < \epsilon, \\[10pt]
+1, & x \ge \epsilon.
+\end{cases}
+\end{align*}
+	\end{proof}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

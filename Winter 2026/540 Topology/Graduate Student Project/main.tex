@@ -117,9 +117,27 @@ One of the implications stated in Theorem 19.6 holds for the box topology. Which
 \begin{problem}[manual-num={19.7}]
 Let $\bfR^\infty$ be the subset of $\bfR^\omega$ consisting of all sequences that are "eventually zero," that is, all sequences $(x_1,x_2,...)$ such that $x_i \neq 0$ for only finitely many values of $i$. What is the closure of $\bfR^\infty$ in $\bfR^\omega$ in the box and product topologies? Justify your answer.
 \end{problem}
-{\color{red} \begin{proof}
-    
-\end{proof}}
+    \begin{proof}
+        We will show that $\overline{\bfR^\infty} = \bfR^\omega$ in the product topology. Clearly $\overline{\bfR^\infty} \subseteq \bfR^\omega$. Let $(x_n) \in \bfR^\omega$. Let $U \subseteq$ be an open neighborhood (in the product topology) of $(x_n)$. Then $U = \prod_{n = 1}^\infty U_n$, where $U_n \subseteq \bfR$ is open and $U_n = \bfR$ for all but finitely many $n$. Let $F =\{n \in \bfN \mid U_n \neq \bfR\}$. Let:
+            \begin{equation*}
+            \begin{split}
+                (y_n) = \begin{cases}
+                x_n,& n \in F \\
+                0,& n\not\in F
+                \end{cases}.
+            \end{split}
+            \end{equation*}
+        Then $(y_n) \in U$ and $(y_n) \in \bfR^\infty$. Hence $U \cap \bfR^\infty \neq \emptyset$, which means $(x_n) \in \overline{\bfR^\infty}$. Thus $\overline{\bfR^\infty} = \bfR^\omega$.
+        
+        We will show that $\overline{\bfR^\infty} = \bfR^\infty$ in the box topology. For any $(x_n) \not\in \bfR^\infty$, then $x_n \neq 0$ for infinitely many $n$. Let $I = \{n \in \bfN \mid x_n \neq 0\}$. Consider the open set:
+            \begin{equation*}
+            \begin{split}
+                \prod_{n \in \bfN}U_n,
+            \end{split}
+            \end{equation*}
+        where $U_n = \bfR \setminus \{0\}$ for all $n \in I$ and $U_n = \bfR$ otherwise. Then $(x_n) \in U$ and $U \cap \bfR^\infty = \emptyset$. Hence $(x_n) \not\in \overline{\bfR^\infty}$. Clearly $\bfR^\infty \subseteq \overline{\bfR^\infty}$. Conversely, we have just shown that if $(x_n) \not\in \bfR^\infty$, then $(x_n) \not\in \overline{\bfR^\infty}$, and hence $\overline{\bfR^\infty} \subseteq \bfR^\infty$. Thus $\overline{\bfR^\infty} = \bfR^\infty$.
+    \end{proof}
+
 
 \begin{problem}[manual-num={23.10}]
     Let $\{X_\alpha\}_\alpha \in J$ be an indexed family of connected spaces; let $X$ be the product space:
@@ -136,15 +154,44 @@ Let $\bfR^\infty$ be the subset of $\bfR^\omega$ consisting of all sequences tha
     \end{enumerate}
 \end{problem}
     \begin{proof}
-        (a) Let $K = \{\alpha_1,...,\alpha_n\}$. Define $f:X_K \rightarrow X_{\alpha_1} \times ... \times X_{\alpha_n}$ by:
+        (a) Let $K = \{\alpha_1,...,\alpha_n\}$. Define $\pi_K:X_K \rightarrow X_{\alpha_1} \times ... \times X_{\alpha_n}$ by:
             \begin{equation*}
             \begin{split}
-                f((x_\alpha)) = (x_{\alpha_1},...,x_{\alpha_n}).
+                \pi_K((x_\alpha)) = (x_{\alpha_1},...,x_{\alpha_n}).
             \end{split}
             \end{equation*}
-        This map is 
+        This map is continuous, and its inverse given by:
+            \begin{equation*}
+            \begin{split}
+                (y_{\alpha_1},...,y_{\alpha_n}) \mapsto \begin{cases}
+                y_\alpha,& \alpha \in K\\
+                a_\alpha, &\alpha \not\in K
+                \end{cases}.
+            \end{split}
+            \end{equation*}
+        Hence $\pi_K$ is a homeomorphism. Since $K$ is finite and each $X_\alpha$ is connected, the finite product $X_{\alpha_1} \times ... \times X_{\alpha_n}$ is connected. Therefore $X_K$ is connected.
+
+        (b) Each $X_K$ is connected and the fixed point $(a_\alpha)$ belongs to every $X_K$. The union of connected subspaces with a point in common is connected, establishing that $Y$ is connected.
+
+        (c) Clearly $\overline{Y} \subseteq X$, so we only need to show the other direction containment. Let $(x_\alpha) \in X$. Let $U$ be a neighborhood of $(x_\alpha)$. Then $U = \prod_{\alpha \in J}U_j$, where each $U_\alpha \subseteq X_\alpha$ is open, $x_\alpha \in U_\alpha$, and $U_\alpha = X_\alpha$ for all but finitely many $\alpha$. Let:
+            \begin{equation*}
+            \begin{split}
+                F = \{\alpha \in J \mid U_\alpha \neq X_\alpha\}.
+            \end{split}
+            \end{equation*}
+        Define $(y_\alpha) \in X$ by:
+            \begin{equation*}
+            \begin{split}
+                y_\alpha =\begin{cases}
+                x_\alpha, & \alpha \in F \\
+                a_\alpha, & \alpha \not\in F.
+                \end{cases}
+            \end{split}
+            \end{equation*}
+        Since $y_\alpha = a_\alpha$ for all $\alpha \not\in F$, we have $(y_\alpha) \in Y$. Moreover, for all $\alpha \in F$, we have $y_\alpha = x_\alpha \in U_\alpha$. Likewise, for all $\alpha \not\in F$, then $U_\alpha = X_\alpha$, hence $y_\alpha \in U_\alpha$. Thus $(y_\alpha) \in U$. This means $U \cap Y \neq \emptyset$, and since $U$ was arbitrary we have $(y_\alpha) \in \overline{Y}$. Since the closure of a connected space is connected, we conclude that $X$ is connected.
     \end{proof}
 
+\newpage
 \chapter{The Urysohn Lemma}
 \fancyhead[L]{\scalebox{0.9}{The Urysohn Lemma}}
 \begin{problem}[manual-num={33.2(a)}]
@@ -183,6 +230,7 @@ Let $X$ be completely regular, let $K$ and $C$ be disjoint closed subsets of $X$
     Since $\varphi$ is continuous, the composition $\varphi \circ f$ is continuous. In particular, we have $(\varphi \circ f)(K) = \varphi([0,\frac{1}{2})) = \{0\}$ and $(\varphi \circ f)(C) = \varphi(\{1\}) = \{1\}$. This establishes the claim.
    \end{proof}
 
+\newpage
 \chapter{The Baire Category Theorem}
 \fancyhead[L]{\scalebox{0.9}{The Baire Category Theorem}}
 
@@ -202,29 +250,29 @@ Show that if $\bigcup B_n$ is a nonempty Baire space, at least one of the sets $
         Thus $\bigcup B_n = \emptyset$, which is a contradiction. Therefore at least one of the sets $\overline{B_n}$ has a nonempty interior.
     \end{proof}
 
-\begin{problem}{\color{red} ***}
+\begin{problem}
 The Baire Category Theorem implies that $\bfR$ cannot be written as the countable union of closed subsets having empty interiors. Show this fails if the sets are not required to be closed.
 \end{problem}
 \begin{proof}
-    Let $\{q_i\}_{i = 1}^\infty$ be an enumeration of the rationals. If we do not require the sets to be open, then $\bfR = (\bfR \setminus \bfQ) \cup \bfQ = (\bfR \setminus \bfQ) \cup \bigcup_{i = 1}^\infty \{q_i\}$.
+    Let $\{q_i\}_{i = 1}^\infty$ be an enumeration of the rationals. Then $\bfR = (\bfR \setminus \bfQ) \cup \bfQ = (\bfR \setminus \bfQ) \cup \bigcup_{i = 1}^\infty \{q_i\}$. Each singleton $\{q_i\}$ has empty interior, and $\bfR\setminus \bfQ$ also has an empty interior. Hence $\bfR$ is a countable union of subsets with empty interior, so the conclusion fails without the assumption that the sets are closed.
 \end{proof}
 
-\begin{problem}{\color{red}***}
+\begin{problem}
 Show that the irrationals are a Baire space.
 \end{problem}
-\begin{proof}
-     Let $\{q_i\}_{i = 1}^\infty$ be an enumeration of the rationals. Then
-        \begin{equation*}
-        \begin{split}
-            \bfR \setminus\bfQ 
-            & = \bfQ^c \\
-            &  = \left(\bigcup_{i = 1}^\infty \{q_i\}\right)^c \\
-            & = \bigcap_{i = 1}^\infty \{q_i\}^c.
-        \end{split}
-        \end{equation*}
-    Since the irrationals can be written as the countable intersection of closed sets, the irrationals are a $G_\delta$ set. By Problem 3.5, in the text, the irrationals are a Baire space.
-\end{proof}
+    \begin{proof}
+        Let $\{U_n\}_{n = 1}^\infty$ be a sequence of dense open subsets of $\bfR \setminus \bfQ$. For each $n$, we can write $U_n = V_n \cap \bfR \setminus \bfQ$, where $V_n$ is open in $\bfR$. Since $V_n \cap \bfR \setminus \bfQ$ is dense, and because $V_n \cap \bfR \setminus \bfQ \subseteq V_n$, we can conclude that $V_n$ is dense. Now if $\{q_i\}_{i = 1}^\infty$ is an enumeration of the rationals, we have:
+            \begin{equation*}
+            \begin{split}
+                \bigcap_{n = 1}^\infty (V_n \cap \bfR\setminus\bfQ)
+                & = \left( \bigcap_{n = 1}^\infty V_n \right) \cap \bfR \setminus \bfQ \\
+                & = \left( \bigcap_{n = 1}^\infty V_n \right) \cap \left( \bigcap_{n = 1}^\infty \{q_n\}^c \right).
+            \end{split}
+            \end{equation*}
+        Since $\bfR$ is complete, by the Baire Category Theorem it is a Baire space. Since $\left( \bigcap_{n = 1}^\infty V_n \right) \cap \left( \bigcap_{n = 1}^\infty \{q_n\}^c \right)$ is a countable intersection of open and dense subsets of $\bfR$, we conclude that $\left( \bigcap_{n = 1}^\infty V_n \right) \cap \left( \bigcap_{n = 1}^\infty \{q_n\}^c \right)$ is dense. Thus $\bigcap_{n = 1}^\infty U_n$ is dense, establishing that $\bfR\setminus \bfQ$ is Baire.
+    \end{proof}
 
+\newpage
 \begin{problem}[manual-num={1}]
 Let $(M,d)$ be a complete metric space with no isolated points. Prove that $M$ is uncountable. (A point $x$ in a topological space $X$ is called a \textit{isolated point} if the one point set $\{x\}$ is open in $X$).
 \end{problem}

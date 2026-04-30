@@ -1,0 +1,133 @@
+\documentclass[10pt,oneside,openany]{memoir}
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/preamble-hw.tex}
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
+\begin{document}
+\homeworktitle{Math 542}{Homework 1}{Gianluca Crescenzo}
+
+\begin{exercise}[manual-num = {1}]
+	Show that is $A$ is a deformation retract of $X$, and $B$ is a deformation retract of $A$, then $B$ is a deformation retract of $X$.
+\end{exercise}
+\begin{proof}
+Since $A$ is a deformation retract of $X$, there exists a continuous function $F:X\times I \rightarrow X$ such that:
+	\begin{equation*}
+	\begin{split}
+		F(x,0) &= x\\
+		F(x,1) &= r_A(x)\\
+		F(a,t) &= a \text{ for all $t\in I$},
+	\end{split}
+	\end{equation*}
+where $r_A:X \rightarrow A$ is a retraction. Since $B$ is a deformation retract of $A$, there exists a continuous function $G:A \times I \rightarrow A$ such that:
+	\begin{equation*}
+	\begin{split}
+		G(a,0) &= a \\
+		G(a,1) &= r_B(a) \\
+		G(b,t) &= b \text{ for all $t \in I$},
+	\end{split}
+	\end{equation*}
+where $r_B:A \rightarrow B$ is a retraction. Now define $H:X \times I \rightarrow X$ by:
+	\begin{equation*}
+	\begin{split}
+		H(x,t):=
+		\begin{cases}
+			F(x,2t), & 0 \leq t \leq \frac{1}{2} \\
+			G(F(x,1),2t-1), & \frac{1}{2} \leq t \leq 1
+		\end{cases}.
+	\end{split}
+	\end{equation*}
+Then: Woohoo! It's not broken! 
+	\begin{equation*}
+	\begin{split}
+		H(x,0) &= F(x,0) = x,\\
+		H(x,1) &= G(F(x,1),1) = G(r_A(x),1) = (r_B \circ r_A)(x), \\
+		H(b,t) &= F(b,2t) = b \text{ for $0 \leq t \leq \frac12$}, \\
+		H(b,t) &= G(F(b,t),2t-1) = G(b,2t-1) = b \text{ for $\frac12 \leq t \leq 1$}.
+	\end{split}
+	\end{equation*}
+Clearly $(r_B \circ r_A):X \rightarrow B$ is a retraction, which establishes the proof.
+\end{proof}
+
+
+
+\begin{exercise}[manual-num = {2}]
+	\phantom{a}
+   \begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+    	\item Infinite cyclic.
+	\item Figure eight.
+	\item Infinite cyclic.
+	\item Infinite cyclic.
+	\item Trivial.
+	\item Infinite cyclic.
+	\item Infinite cyclic.
+	\item Trivial.
+	\item Infinite cyclic.
+	\item Infinite cyclic.
+	\item Figure eight.
+	\item Trivial.
+    \end{enumerate} 
+\end{exercise}
+
+\begin{exercise}[manual-num={4}]
+Let $X$ be the figure eight and let $Y$ be the theta space. Describe maps $f:X \rightarrow Y$ and $g:Y \rightarrow X$ that are homotopy inverses of each other.
+\end{exercise}
+\begin{proof}
+	The following maps are described in the drawing below.
+	\begin{center}
+	\includegraphics[scale=0.4]{homotopy}
+	\end{center}
+\end{proof}
+
+
+\begin{exercise}[manual-num={5}]
+Show that $X$ is contractible if and only if $X$ has the homotopy type of a one-point space.
+\end{exercise}
+\begin{proof}
+Suppose $X$ is contractible. Then $\id_X$ is homotopic to a constant map. Let $c:X \rightarrow X$ be such a constant map given by $c(x) = x_0$ for all $x \in X$. Define $f:X \rightarrow \{x_0\}$ by $f(x) = c(x)$. Define $g:\{x_0\} \rightarrow X$ by $g(x) = \id_X(x)$. Then $g \circ f = c \simeq \id_X$ by hypothesis, and $f \circ g = \id_{\{x_0\}}$ (which is clearly stronger than being homotopic to $\id_{\{x_0\}}$). Thus $X$ and $\{x_0\}$ are homotopy equivalent.
+
+Conversely, let $X$ be homotopy equivalent to $\{x_0\}$. There exists continuous functions $f:X \rightarrow \{x_0\}$ and $g:\{x_0\} \rightarrow X$ such that $g \circ f \simeq \id_X$ and $f \circ g \simeq \id_{\{x_0\}}$. But note that $f \circ g$ is a constant map. Hence $X$ is contractible.
+\end{proof}
+
+\newpage
+\begin{exercise}[manual-num={6}]
+Show that a retract of a contractible space is contractible.
+\end{exercise}
+\begin{proof}
+Let $X$ be contractible. Let $A \subset X$ be a retraction. Then there exists $r:X \rightarrow A$ such that $\restr{r}{A} = \id_A$. Since $X$ is contractible, there exists $F:X \times I \rightarrow X$ such that $F(x,0) = \id_X(x)$ and $F(x,1) = c(x)$, where $c:X \rightarrow X$ is a constant map. Define $G:A \times I \rightarrow A$ by $G(a,t) := r(F(a,t))$. Then $G(a,0) = r(F(a,0)) = r(\id_A(a)) = r(a) = a$, and $G(a,1) = r(F(a,1)) = r(c(a))$. Note that $r \circ c:A \rightarrow A$ is constant, hence $A$ is contractible. 
+\end{proof}
+
+\begin{exercise}[manual-num={7}]
+Let $A$ be a subspace of $X$; let $j:A \rightarrow X$ be the inclusion map, and let $f:X \rightarrow A$ be a continuous map. Suppose there is a homotopy $H:X \times I \rightarrow X$ between the map $j \circ f$ and the identity map $X$.
+\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+	\item Show that if $H$ maps $A \times I$ into $A$, then $j_\ast$ is an isomorphism.
+	\item Give an example in which $j_\ast$ is not an isomorphism.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+	(a) Since $H(A \times I) \subseteq A$, the map $\restr{H}{A \times I}:A \times I \rightarrow A$ satisfies the following:
+		\begin{equation*}
+		\begin{split}
+			\restr{H}{A \times I}(a,0)&=(j \circ f)(a) = f(a) = (f \circ j)(a), \\
+			\restr{H}{A \times I}(a,1)&=\id_X(a) = a = \id_A(a).
+		\end{split}
+		\end{equation*}
+	Hence $f \circ j \simeq \id_A$. Since $j \circ f = \id_X$ by assumption, this means $A$ and $X$ are homotopy equivalent. Thus $j_\ast:\pi_1(A,a) \rightarrow \pi_1(X,a)$ is an isometry for all $a \in A$.
+
+	(b) Let $f:B^2 \rightarrow S^1$ be a constant map. Then $j \circ f$ is constant, and since $B^2$ is contractible, this constant map is homotopic to $\id_{B^2}$. But $j_\ast:\pi_1(S^1,a) \rightarrow \pi_1(B^2,a)$ is not an isomorphism, as $\pi_1(S^1,a) \cong \bfZ$ and $\pi_1(B^2,a)$ is trivial.
+\end{proof}
+
+\begin{exercise}[manual-num={8}]
+	Find a space $X$ and a point $x_0$ of $X$ such that the inclusion $\{x_0\} \rightarrow X$ is a homotopy equivalence, but $\{x_0\}$ is not a deformation retract of $X$.
+\end{exercise}
+\begin{proof}
+	Let $X$ be the comb space, and let $x_0 = (0,1)$, the top of the limiting vertical segment. Note that the inclusion $\{x_0\} \rightarrow X$ is a homotopy equivalence, as each point of the comb space can be deformed to $(0,1)$. Suppose towards contradiction $\{x_0\}$ is a deformation retract of $X$, that is, suppose there exists a continuous function $H:X \times I \rightarrow X$ that is a deformation retract onto $\{x_0\}$. Choose a small neighborhood $U$ of $x_0$ that does not intersect the bottom horizontal segment of the space. Since $H(x_0,t) = x_0$ for all $t \in I$, we have $\{x_0\} \times I \subset H^{-1}(U)$. The set $H^{-1}(U)$ is open in $X \times I$, and $I$ is compact. By the tube lemma, there is a neighborhood $V$ of $x_0$ such that $V \times I \subset H^{-1}(U)$. This means that for each $y \in V$, the homotopy $t \mapsto H(y,t)$ stays inside $U$ and joints $y$ to $x_0$. Hence the path component of $U$ containing $x_0$ must contain the whole neighborhood $V$. But this is a contradiction, as the comb space is not locally path connected about the point $(0,1)$. Thus $\{x_0\}$ is not a deformation retract of $X$.
+\end{proof}
+
+We're about to test some of the snippers.
+\begin{theorem}
+	A space $X$ is a \textit{contractible} if and only if. I've noticed that using the inline math snippet, it sometimes adds a space. For example,  $\epsilon > 0$ adds a space, and it's kinda weird!. Consider the function $\restr{f}{A}$. 
+\end{theorem}
+
+
+
+
+
+\end{document}

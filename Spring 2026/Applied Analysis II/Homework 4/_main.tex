@@ -1,0 +1,128 @@
+\documentclass[10pt,oneside,openany]{memoir}
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/preamble-hw.tex}
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
+\begin{document}
+\homeworktitle
+{Math 521} %class
+{Homework 4} %assignment
+{Gianluca Crescenzo} %name
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}
+	Prove Cauchy's inequality with $\epsilon > 0$: If $a,b \in \bfR$ then:
+	\[
+		ab \leq \frac{\epsilon a^2}{2} + \frac{b^2}{2\epsilon}.
+	\] 
+\end{problem}
+	\begin{proof}
+		Since $a,b \in \bfR$, we have:
+		\[
+			0 \leq (a-b)^2.
+		\] 
+		Expanding the right-hand side and isolating the $ab$ term yields:
+		\[
+			ab \leq \frac{a^2}{2} + \frac{b^2}{2}.
+		\]
+		Now let $\epsilon > 0$. Since this holds true for all $a',b' \in \bfR$, take $a' = \sqrt{\epsilon}a$ and $b' = \frac{b}{\sqrt{\epsilon}}$. Then:
+		\begin{align*}
+			ab
+			&= \sqrt{\epsilon}a \cdot \frac{b}{\sqrt{\epsilon}} \\
+			& \leq \frac{(\sqrt{\epsilon}a)^2}{2} + \frac{\left( \frac{b}{\sqrt{\epsilon}} \right)^2}{2} \\
+			& = \frac{\epsilon a ^2}{2} + \frac{b^2}{2 \epsilon}. \qedhere
+		\end{align*}
+	\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}
+	Let $U \subset \bfR^n$ be open, bounded, and $\partial U$ is $C^1$. Let $u \in C^2(\overline{U})$ with $u = 0$ on $\partial U$. Prove the following interpolation inequality:
+	\[
+		\int_{U}^{} |Du|^2\,dx \leq \frac{\epsilon}{2} \int_{U}^{} (\Delta u )^2\,dx + \frac{1}{2\epsilon}\int_{U}^{} u^2\,dx
+	\] 
+\end{problem}
+	\begin{proof}
+		From the previous problem, take $a = u(x)$ and $b = \Delta u(x)$. Then:
+		\[
+			-u(x) \Delta u(x) \leq \frac{\epsilon (\Delta u(x))^2}{2} + \frac{(-u(x))^2}{2\epsilon}.
+		\]
+		Integrating both sides over $U$ gives:
+		\[
+			- \int_{U}^{} u \Delta u\,dx \leq \frac{\epsilon}{2}\int_{U}^{} (\Delta u)^2\,dx + \frac{1}{2\epsilon} \int_{U}^{} u^2\,dx
+		\]
+		Since $u = 0$ on $\partial U$, we can rewrite the left-hand side of the inequality as:
+		\[
+			- \int_{U}^{} u \Delta u\,dx + \int_{\partial U}^{} \frac{\partial u}{\partial \nu}u\,dS \leq \frac{\epsilon}{2}\int_{U}^{} (\Delta u)^2\,dx + \frac{1}{2\epsilon} \int_{U}^{} u^2\,dx.
+		\]
+		Green's identity yields:
+		\[
+			\int_{U}^{} Du \cdot Du\,dx \leq \frac{\epsilon}{2}\int_{U}^{} (\Delta u)^2\,dx + \frac{1}{2\epsilon} \int_{U}^{} u^2\,dx.
+		\]
+		Rewriting $Du \cdot Du = |Du|^2$ gives the desired inequality.
+	\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}
+	Assuming $f$ aproaches zero rapidly enough as $x \rightarrow \pm \infty$, find a function $u$ which satisfies the ODE problem:
+	\[
+		u''(x) - u(x) = f(x).
+	\] 
+	Your solution should be of the form:
+	\[
+		 u(x) = \int_{-\infty}^{\infty} K(x,t)f(x-t)dt.
+	\] 
+\end{problem}
+	\begin{proof}
+		After taking the Fourier transform of both sides, our ODE becomes:
+		\[
+			(iy)^2 \hat{u} - \hat{u} = \hat{f}.
+		\]
+		Solving for $\hat{u}$ gives:
+		\[
+			\hat{u}(y) = \frac{-1}{1+y^2}\hat{f}.
+		\] 
+		Define $h(y) = \frac{-1}{1+y^2}$. Taking the inverse Fourier transform of both sides yields:
+		\begin{align*}
+			u(x)
+			&= \cF^{-1}(h(y)\hat{f}(y))\\
+			&= \left( \check{h} \ast f \right)(x) \\
+			&= \int_{-\infty}^{\infty} \check{h}(t) f(x-t) dt.
+		\end{align*}
+		We previously showed that $\cF(e^{-a|x|}) = \frac{1}{\sqrt{2\pi}}\frac{2a}{a^2 + y^2}$. Hence:
+		\begin{align*}
+			\check{h}(y) = \cF^{-1}\left(\frac{-1}{1 + y^2}\right) = -\frac{\sqrt{2\pi}}{2} e^{-|x|}.
+		\end{align*}
+		Thus the solution to our ODE is:
+		\[
+			u(x) = -\frac{\sqrt{2\pi}}{2}\int_{-\infty}^{\infty} e^{-|t|}f(x-t)dt. \qedhere
+		\] 
+	\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}
+	For $x \in \bfR$, define $v(x) := e^{-\frac{1}{2}x^2}$. Show that $\hat{v}(y) = e^{-\frac{1}{2}y^2}$.
+\end{problem}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}
+	Let $a > 0$ and $f \in L^1(\bfR)$. Define $g(x) := f(ax)$. Show that:
+	\[
+		\hat{g}(y) = \frac{1}{a}\hat{f}\left( \frac{y}{a} \right).
+	\] 
+\end{problem}
+	\begin{proof}
+		
+	\end{proof}
+
+
+
+
+
+\end{document}

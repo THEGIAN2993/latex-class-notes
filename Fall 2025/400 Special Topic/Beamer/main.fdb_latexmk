@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1764784903.4324 "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/Fall 2025/400 Special Topic/Beamer/main.tex" "main.pdf" "main" 1764784904.83166 0
+["pdflatex"] 1775024951.18918 "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/Fall 2025/400 Special Topic/Beamer/main.tex" "main.pdf" "main" 1775024952.62288 0
   "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/Fall 2025/400 Special Topic/Beamer/main.tex" 1764784903.35454 10436 1b74873c29d0e75c6a1abe3d8c929e2d ""
-  "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex" 1764622722.89504 13971 026113b2e089b0f197b6a1344ae6ebb8 ""
+  "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex" 1775024951.09758 13971 5906d342a5c47d2c058dd0b77b7de4b9 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -266,9 +266,9 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1758769034 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "main.aux" 1764784904.76635 2125 26be98519079145582bf292d94ce9ba7 "pdflatex"
-  "main.nav" 1764784904.76708 1404 f0f651ea62eb233e1c45d71182dc8ed1 "pdflatex"
-  "main.out" 1764784904.05484 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.aux" 1775024952.55277 2125 26be98519079145582bf292d94ce9ba7 "pdflatex"
+  "main.nav" 1775024952.55352 1404 f0f651ea62eb233e1c45d71182dc8ed1 "pdflatex"
+  "main.out" 1775024951.81772 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   "main.tex" 1764784903.35454 10436 1b74873c29d0e75c6a1abe3d8c929e2d ""
   (generated)
   "main.aux"
