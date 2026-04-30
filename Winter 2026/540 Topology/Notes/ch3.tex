@@ -1,0 +1,174 @@
+\chapter{Homotopy Theory}
+
+\section{Homotopy of Functions and Paths}
+
+Unless otherwise stated, assume $I:=[0,1]$.
+
+\begin{definition}
+    If $f$ and $g$ are continuous maps from topological spaces $X$ to $Y$, we say $f$ is \textui{homotopic} to $g$ if there exists a continuous map $F:X \times I \rightarrow Y$ such that $F(x,0) = f$ and $F(x,1) = g$. We say $F$ is a \textui{homotopy} between $f$ and $g$, and write $f \simeq g$. If $f$ is homotopic to a constant map, we say $f$ is \textui{nullhomotopic}.
+\end{definition}
+
+\begin{example}{\color{red}***}
+    Let $X$ be a topological space and $Y$ a convex subset of a topological vector space. Then for any two functions $f,g:X \rightarrow Y$, we have $f \simeq g$. Indeed, define $F:X \times I \rightarrow Y$ by:
+        \begin{equation*}
+        \begin{split}
+            F(x,t) := (1-t)f(x) + tg(x).
+        \end{split}
+        \end{equation*}
+    Since addition and scalar multiplication are continuous, $F$ is continuous. Moreover, since $Y$ is convex, $F(x,t) \in Y$ for all $t \in [0,1]$. We call $F$ the \textit{straight line homotopy} between $f$ and $g$.
+\end{example}
+
+\begin{example}
+    Let $i:S^1 \rightarrow \bfR^2 \setminus \{(0,0)\}$ be the identity map. Define $f:S^1 \rightarrow \bfR^2 \setminus \{(0,0)\}$ by $f(x) = (1,0)$. Then $i \not\simeq f$.
+\end{example}
+
+\begin{definition}
+    A \textui{path} is a continuous map $f:I \rightarrow X$. We call $f(0)$ the \textui{initial point} and $f(1)$ the \textui{terminal point}.
+\end{definition}
+
+\begin{definition}
+    Two paths $f,g:I \rightarrow X$ are \textui{path homotopic} if they have the same initial point $x_0$ and same terminal point $x_1$, and there exists a continuous map $F:I \times I \rightarrow X$ such that:
+        \begin{equation*}
+        \begin{split}
+            F(0,t) &= x_0\h9\h7F(1,t) = x_1\\
+            F(s,0) &= f(s)\h9\h1F(s,1) = g(s)\\
+        \end{split}
+        \end{equation*}
+    for all $s,t \in [0,1]$. We call $F$ a \textui{path homotopy} and write $f \simeq_p g$.
+\end{definition}
+
+\begin{lemma}
+    Let $X$ and $Y$ be topological spaces. Then $\simeq$ is an equivalence relation on $C(X,Y)$.
+\end{lemma}
+    {\color{red} \begin{proof}
+        
+    \end{proof}}
+
+\begin{corollary}
+    For any set $X$, then $\simeq_p$ is an equivalence relation on $C(I,X)$.
+\end{corollary}
+    {\color{red} \begin{proof}
+
+    \end{proof}}
+
+\begin{definition}
+    If $f$ is a path in $X$ from $x_0$ to $x_1$ and $g$ is a path in $X$ from $x_1$ to $x_2$, we define the \textui{product} of $f$ and $g$ to be the path $f \ast g :I \rightarrow X$ given by:
+        \begin{equation*}
+        \begin{split}
+            (f \ast g)(s) 
+            & = \begin{cases}
+            f(2s), & 0 \leq s \leq \frac12 \\
+            g(2s - 1), & \frac12 \leq s \leq 1
+            \end{cases}.
+        \end{split}
+        \end{equation*}
+\end{definition}
+
+\begin{theorem}\label{thm:groupoid}
+    The operation $\ast$ is well-define on $C(I,X)/\simeq_p$, defined by the equation $[f] \ast [g] = [f \ast g]$. Moreover, the operation $\ast$ satisfies the following properties:
+    \begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+        \item If $[f] \ast([g] \ast [h])$ is defined, so if $([f] \ast [g]) \ast [h]$, and they are equal (Associativity).
+        \item Given $x_0 \in X$, let $e_{x_0}$ denote the constant path $e_{x_0}:I \rightarrow X$ given by $e_{x_0}(s) = x_0$. If $f$ is a path in $X$ for $x_0$ to $x_1$, then $[f] \ast [e_{x_1}] = [f]$ (Identities).
+        \item Given a path $f:I \rightarrow X$ from $x_0$ to $x_1$, define $\overline{f}:I \rightarrow X$ by $\overline{f}(s) = f(1-s)$. Then $[f] \ast [\overline{f}] = [e_{x_0}]$ and $[\overline{f}] \ast [f] = [e_{x_1}]$ (Inverses).
+    \end{enumerate}
+\end{theorem}
+    {\color{red} \begin{proof}
+        
+    \end{proof}}
+
+\begin{remark}
+    Theorem~\ref{thm:groupoid} establishes that $C(I,X)/\simeq_p$ is a \textit{groupoid}. Here $\ast$ is not a binary operation as it is not necessarily defined for all pairs of elements in $C(I,X)/\simeq_p$. Furthermore, the identity element is not unique for all path-homotopy equivalences.
+\end{remark}
+
+\section{The Fundamental Group}
+
+\begin{definition}
+    Let $X$ be a topological space. Fix a point $x_0 \in X$. A path in $X$ that begins and ends at $x_0$ is called a \textui{loop in $X$ based at $x_0$}. The set of all path homotopies of loops based at $x_0$ is denoted $\Omega(x_0) := \{\alpha \mid \text{$\alpha$ is a loop in $X$ based at $x_0$ }\}$.
+\end{definition}
+
+\begin{theorem}
+    The operation $\ast$ is a binary operation on $\Omega(x_0)/\simeq_p$, and and the pair $(\Omega(x_0)/\simeq_p,\ast)$ is a group.
+\end{theorem}
+    \begin{proof}
+        This follows from Theorem~\ref{thm:groupoid}. Clearly $\ast$ is well-defined for any two elements in $\Omega(x_0)/\simeq_p$, and $[e_{x_0}]$ is the unique identity element.
+    \end{proof}
+
+\begin{definition}
+    The quotient $\Omega(x_0)/\simeq_p$ is called the \textui{fundamental group based at $x_0$}. We denote it by $\pi_1(X,x_0)$.
+\end{definition}
+
+\begin{example}
+    If $Y$ is a convex subset of a topological vector space and $x_0 \in Y$, then $\pi_1(Y,x_0) = \{[e_{x_0}]\}$. Given a loop $\alpha$ based at $x_0$, then we can employ the straight-line homotopy to show that $\alpha \cong e_{x_0}$.
+\end{example}
+
+\begin{theorem}
+    Suppose $X$ is a path-connected topological space. Let $p,q \in X$ and let $\gamma:I \rightarrow X$ be a path from $p$ to $q$. Then the map $\widehat{\gamma}:\pi_1(X,p) \rightarrow \pi_1(X,q)$ defined by $\widehat{\gamma}([\alpha]) = [\overline{\gamma}\ast \alpha \ast \gamma]$ is an isomorphism whose inverse is $\widehat{\overline{\gamma}}$.
+\end{theorem}
+    \begin{proof}
+        For any $[\alpha], [\beta] \in \pi_1(X,p)$, we have:
+            \begin{equation*}
+            \begin{split}
+                \widehat{\gamma}([\alpha] \ast [\beta])
+                & = \widehat{\gamma}([\alpha \ast \beta]) \\
+                & = [\overline{\gamma} \ast (a \ast b) \ast \gamma] \\
+                & = [\overline{\gamma} \ast a \ast e_p \ast b \ast \gamma] \\
+                & = [(\overline{\gamma} \ast a \ast \gamma )\ast (\overline{\gamma} \ast b \ast \gamma)] \\
+                & = [\overline{\gamma} \ast a \ast \gamma] \ast [\overline{\gamma} \ast b \ast \gamma] \\
+                & = \widehat{\gamma}([a]) \ast \widehat{\gamma}([b]).
+            \end{split}
+            \end{equation*}
+        Hence $\widehat{\gamma}$ is a group homomorphism. Similarly, $\widehat{\overline{\gamma}}:\pi_1(X,q) \rightarrow \pi_1(X,p)$ defined by $\widehat{\overline{\gamma}}([\alpha]) = [\gamma \ast \alpha \ast \overline{\gamma}]$ is a homomorphism, and is the inverse of $\widehat{\gamma}$. Thus $\widehat{\gamma}$ is an isomorphism.
+    \end{proof}
+
+\begin{remark}
+    If $X$ is path connected, by the previous theorem $\pi_1(X,x_0)$ is uniquely determined up to isomorphism. In this case, we drop the $x_0$ in the notation and write $\pi_1(X)$.
+\end{remark}
+
+\begin{remark}
+    The isomorphism $\widehat{\gamma}$ depends on $\gamma$. The isomorphism is independent of the path $\gamma$ if and only if $\pi_1(X)$ is abelian (Exercise).
+\end{remark}
+
+\begin{definition}
+    A topological space is \textui{simply connected} if it is path connected and its fundamental group is trivial.
+\end{definition}
+
+\begin{example}
+    Any convex subset of a topological vector space is simply connected.
+\end{example}
+
+\begin{lemma}
+    Let $f:X \rightarrow Y$ be continuous. If $\alpha:I \rightarrow X$ is a loop in $X$ based at $x_0$, then $f \circ \alpha:I \rightarrow Y$ is a loop in $Y$ based at $f(x_0)$.
+\end{lemma}
+    {\color{red} \begin{proof}
+        
+    \end{proof}}
+
+\begin{lemma}
+    Let $f:X \rightarrow Y$ be continuous. If $\alpha \simeq_p \beta$, then $f \circ \alpha \simeq_p f \circ \beta$.
+\end{lemma}
+    \begin{proof}
+        If $F$ is a path homotopy between $\alpha$ and $\beta$, then $f \circ F$ is a path homotopy between $f \circ \alpha$ and $f \circ \beta$.
+    \end{proof}
+
+\begin{theorem}
+    A continuous function $f:X \rightarrow Y$ induces a group homomorphism $f_\ast:\pi_1(X,x_0) \rightarrow \pi_1(Y,f(x_0))$ defined by $f_\ast([\alpha]) = [f \circ \alpha]$.
+\end{theorem}
+    {\color{red} \begin{proof}
+        
+    \end{proof}}
+
+\begin{remark}
+    Note that if $f$ is one-to-one, then $f_\ast$ is not necessarily one-to-one. Similarly, if $f$ is onto, $f_\ast$ is not necessarily onto.
+\end{remark}
+
+\begin{example}
+    Let $\iota:S^1 \rightarrow \bfR^2$ be the inclusion map. This map is clearly one-to-one. However, since $\pi_1(S^1) \cong \bfZ$ and $\pi_1(\bfR^2)$ is trivial, the induced group homomorphism $\iota_\ast:\pi_1(S^1) \rightarrow \pi_1(\bfR^2)$ cannot be one-to-one.
+\end{example}
+
+\begin{example}
+    Define $f:\bfR \rightarrow S^1$ by $t \mapsto e^{it2\pi}$. This map is clearly onto. However, $f_\ast : \pi_1(\bfR) \rightarrow \pi_1(S^1)$ cannot be onto.
+\end{example}
+
+\begin{proposition}
+    
+\end{proposition}
