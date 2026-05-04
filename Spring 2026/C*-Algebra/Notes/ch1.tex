@@ -1,0 +1,46 @@
+\chapter{Locally Convex Topological Vector Spaces}
+\pagenumbering{arabic}
+
+A topological vector space is a vector space whose addition and scalar multiplication is continuous. Like arbitrary topological spaces, at times they can be too general to produce any interesting results or theorems. As our interest lies in functional analysis and the study of function spaces, it turns out that local convexity is the minimal topological condition needed for the Hahn-Banach theorem to hold. Throughout, assume $\bfF$ to be either $\bfR$ or $\bfC$, and let \textit{TVS} abbreviate "topological vector space" over $\bfF$.
+\section{Basic Definitions and Examples}
+
+\begin{definition}
+	Let $X$ be an $\bfF$-vector space. A map $p:X \rightarrow \bfR$ is a \textui{seminorm} if it satisfies the following conditions:
+	\mbox{}
+	\begin{itemize}[itemsep=1pt,topsep=3pt]
+		\item $p(x+y) \leq p(x) + p(y)$ for all $x,y \in X$;
+		\item $p(sx) = |s|p(x)$ for all $s \in \bfF$, $x \in X$.
+	\end{itemize}
+\end{definition}
+
+\begin{remark}
+	The two conditions above imply $p(0) = 0$ and $p(x) \geq 0$ for all $x \in X$.
+\end{remark}
+
+\begin{definition}
+	A \textui{locally convex TVS} (abbrev. \textui{LCS}) is a TVS whose topology is defined by a family of seminorms $\left\{ p_\alpha \right\}_\alpha$ such that the following condition is satisfied:
+	\[
+		\bigcap_{\alpha} \left\{ x : p_\alpha(x) = 0 \right\} = \{0\}.
+	\] 
+\end{definition}
+
+\begin{proposition}
+	Let $X$ be a LCS. Then $X$ is Hausdorff.
+\end{proposition}
+	\begin{proof}
+		Let $\epsilon > 0$. Let $x,y \in X$ such that $x\neq y$. Then $x - y \neq 0$, so we can find a seminorm $p$ such that $p(x-y) > \epsilon > 0$. Define $U := \{z : p(x-z) < \frac{\epsilon}{2}\}$ and $V:= \{z : p(y-z) < \frac{\epsilon}{2}\}$. If $z \in U \cap V$, then $p(x-y) \leq p(x-z) + p(z - y) < \epsilon$, a contradiction. As $p(0) = 0$, it is clear that $U$ and $V$ are neighborhoods of $x$ and $y$ respectively. Thus $X$ is Hausdorff.
+	\end{proof}
+
+\begin{proposition}
+	Let $X$ be a TVS and let $p$ be a seminorm on $X$. The following are equivalent:
+	\mbox{}
+	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+		\item $p$ is continuous;
+		\item $\{x \in X : p(x) < 1\}$ is open;
+		\item $0 \in \{x \in X : p(x) < 1\}^o$;
+		\item $0 \in \{x \in X : p(x) \leq 1\}^o$;
+		\item $p$ is continuous at $0$;
+		\item There exists a continuous seminorm $q$ on $X$ such that $p \geq q$.
+	\end{enumerate}
+\end{proposition}
+

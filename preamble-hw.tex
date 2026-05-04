@@ -9,28 +9,29 @@
 \usepackage[scaled=1.075,ncf,vvarbb]{newtxmath}
 \fi
 
-%font style 2
+%font style2
 \usepackage[T1]{fontenc}
-\usepackage[utf8x]{inputenc}
-
 \usepackage{amsmath}
 \usepackage[fixamsmath]{mathtools}  % Extension to amsmath
 \usepackage{amsthm}
 \usepackage{amssymb}
+\renewcommand*{\mathbf}[1]{\mathbb{#1}}
+\renewcommand{\qedsymbol}{$\blacksquare$}
 
-\renewcommand*{\mathbf}[1]{\varmathbb{#1}}
+%font style 3
+%\usepackage{newpxtext}
+%\usepackage{eulerpx}
+%\usepackage{mathrsfs}
+%\usepackage{eucal}
 
-\usepackage{newpxtext}
-\usepackage{eulerpx}
-\usepackage{mathrsfs}
-\usepackage{eucal}
-
+\usepackage[uprightgreeks,light]{kpfonts}
+\usepackage{datetime}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Page layout and headers
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\usepackage[margin=1.5in]{geometry}
+\usepackage[margin=1in]{geometry}
 \usepackage{graphicx} % needed for \scalebox
 \usepackage{fancyhdr}
 \usepackage{datetime}

@@ -13,10 +13,9 @@
 \begin{exercise}
 	The Klein bottle $K$ is the space obtained from a square by means of the labelling scheme $aba^{-1}b$. Describe a two sheeting covering map $p:T^2 \rightarrow K$, where $T^2$ is the torus.
 \end{exercise}
-	{\color{red}
 	\begin{proof}
-			
-	\end{proof}}
+		Take the torus as a rectangle with opposite sides identified, and cut it into two horizontal strips. Map each strip homeomorphically onto the square for the Klein bottle; map one strip directly, and map the other after a horizontal flip. On the boundary, the side identifications match exactly the Klein bottle description $aba^{-1}b$. Hence this gives a 2-sheeted covering $T^2 \rightarrow K$.	
+	\end{proof}
 
 \begin{exercise}
 	What compact surfaces cover the Klein bottle? Justify your answer.
@@ -28,28 +27,30 @@
 \begin{exercise}
 	Let $N_g$ be a compact non-orientable surface of genus $g > 1$. We are given that there exists a two sheeted covering map $p:S \rightarrow N_g$, where $S$ is a compact orientable surface. What is the genus of $S$? Justify your answer.
 \end{exercise}
-	{\color{red}
 	\begin{proof}
-			
-	\end{proof}}
+		Let the genus of $S$ be $h$. Since $p:S \rightarrow N_g$ is a 2-sheeted covering map, we have that $\chi(S) = 2 \chi(N_g)$. Since $N_g$ is the compact non-orientable surface of genus g, we have $\chi(N_g) = 2-g$. Hence $\chi(S) = 2(2-g) = 4-2g$. Since $S$ is compact and orientable of genus $h$, we have $\chi(S) = 2-2h$. Equating the two formulas for $\chi(S)$ gives $2-2h = 4-2g$. Solving for $h$ gives that the genus of $S$ is $g-1$.
+	\end{proof}
 
 \begin{exercise}
 	Let $S_3$ denote the compact orientable surface of genus 3. Assume that, for every positive integer $n$ there exists an $n$-sheeted connected covering space of $S^3$. State which compact surfaces cover $S_3$. Justify your answer.
 \end{exercise}
-	{\color{red}
 	\begin{proof}
-			
-	\end{proof}}
+		Let $p:E \rightarrow S_3$ be an n-sheeted connected covering, where $S_3$ is the compact orientable surface of genus 3. Since covering spaces of orientable surfaces are orientable, $E$ is also a compact orientable surface. Now $\chi(S_3) = 2 - 2(3) = -4$. For an n-sheeted covering, $\chi(E) = n \chi(S_3) = -4n$. Since $E$ is compact and orientable, $E$ has some genus $h$, and $\chi(E) = 2 - 2h$. Equating the two gives $2-2h = -4n$. Solving for $h$ tells us that every connected compact surface covering $S_3$ is the orientable surface of genus $2n+1$.	
+	\end{proof}
 
 \begin{exercise}
 	Prove that a non-trivial finite group is not a free group.
 \end{exercise}
 	\begin{proof}
-		We will prove the converse: let $F$ be a free group on a set $X$. We will show that every nonidentity element in $F$ has infinite order, establishing that $F$ must be an infinite group. Suppose $x_1^{\delta_1}\ldots x_m^{\delta_n}$ is a nonidentity element with order $k > 1$. Then:
+		Let $F$ be a free group. We will show that every nonidentity element in $F$ has infinite order, establishing that $F$ must be an infinite group. Suppose $x_1^{\delta_1}\ldots x_m^{\delta_n}$ is a nonidentity element with order $k > 1$. Then:
 		\[
 			\underbrace{(x_1^{\delta_1}\ldots x_n^{\delta_n})\ldots(x_1^{\delta_1}\ldots x_n^{\delta_n})}_{k\text{-times}} = 1.
 		\] 
-		For this to be true, it must be the case that $x_n^{\delta_n}x_1^{\delta_1} = 1$. This implies that the word $x_2^{\delta_2}\ldots x_{n-1}^{\delta_{n-1}}$ also has order $k > 1$. We continue this process inductively, and ultimately show that $x_i^{\delta_i}x_{n-i+1}^{\delta_{n-i+1}} = 1$. Since inverses commute, we can reduce our original word down to the identity $1$ from the inside out. This contradict our claim that $x_1^{\delta_{1}}\ldots x_n^{\delta_n}$ is a nonidentity element.
+		For this to be true, it must be the case that $x_n^{\delta_n}x_1^{\delta_1} = 1$. In particular, we have:
+		\[
+			x_1^{\delta_1}(x_2^{\delta_2}\ldots x_{n-1}^{\delta_{n-1}})(x_1^{\delta_1})^{-1} = x_1^{\delta_1}\ldots x_n^{\delta_n}.
+		\] 
+		Since $x_2^{\delta_2}\ldots x_{n-1}^{\delta_{n-1}}$ is conjugate with $x_1^{\delta_1}\ldots x_n^{\delta_n}$, they have the same order. We continue this process inductively, and ultimately show that $x_i^{\delta_i}x_{n-i+1}^{\delta_{n-i+1}} = 1$. Since inverses commute, we can reduce our original word down to the identity $1$ from the inside out. This contradict our claim that $x_1^{\delta_{1}}\ldots x_n^{\delta_n}$ is a nonidentity element.
 
 		
 	\end{proof}
@@ -57,10 +58,9 @@
 \begin{exercise}
 	Use the universal property of free products to prove that $\bfZ \ast (\bfZ/n\bfZ)$ is non-abelian, for every integer $n$ greater than 1.
 \end{exercise}
-	{\color{red}
 	\begin{proof}
-			
-	\end{proof}}
+		Let $\varphi_{\bfZ}:\bfZ \rightarrow \bfZ \ast \bfZ/n\bfZ$ and $\varphi_{\bfZ/n\bfZ}:\bfZ/n\bfZ \rightarrow \bfZ \ast \bfZ/n\bfZ$ be the canonical maps. Let $\sigma :=(0,1) \in S_{n+1}$ and $\tau := (123\ldots n) \in S_{n+1}$. Note that we can find group homomorphisms $\Phi_\bfZ:\bfZ \rightarrow S_{n+1}$ and $\Phi_{\bfZ/n\bfZ}:\bfZ/n\bfZ \rightarrow S_{n+1}$ such that $\Phi_{\bfZ}(1) = \sigma$ and $\Phi_{\bfZ/n\bfZ}(1) = \tau$. By the universal property of free products, there exists a map $f:\bfZ \ast \bfZ/n\bfZ \rightarrow S_{n+1}$ such that $f \circ \varphi_{\bfZ} = \Phi_{\bfZ}$ and $f \circ \varphi_{\bfZ/n\bfZ} = \Phi_{\bfZ/n\bfZ}$. In particular, $f(\varphi_{\bfZ}(1)) = \sigma$ and $f(\varphi_{\bfZ/n\bfZ}(1)) = \tau$. Since $\sigma$ and $\tau$ do not commute, it must be the case that $\varphi_{\bfZ}(1)$ and $\varphi_{\bfZ/n\bfZ}(1)$ do not commute; i.e., $\bfZ \ast \bfZ/n\bfZ$ is not abelian.
+	\end{proof}
 
 \begin{exercise}
 	\mbox{}
@@ -69,10 +69,12 @@
 		\item Let $G = A \ast B$, where $A$ and $B$ are nontrivial groups. Prove that $A$ and $B$ are not conjugate. [\textit{Hint:} Use part (a) and the universal property of free products.]
 	\end{enumerate}
 \end{exercise}
-	{\color{red}
 	\begin{proof}
+		(a) Since $H$ and $K$ are conjugate subgroups, there exists some $g \in G$ such that $K = gHg^{-1}$. Now let $k \in K$. Then $k = ghg^{-1}$ for some $h \in H$. Applying $f$ gives $f(k) = f(g)f(h)f(g)^{-1}$. But because $f(H) = 1$, we have $f(h) = 1$. So $f(k) = f(g)\,1\,f(g)^{-1} = 1$. This holds for every $k \in K$, so $f(K) = 1$.
+
+		(b) Suppose towards contradiction that $A$ and $B$ are conjugate subgroups of $A \ast B$. Define homomorphisms $\alpha:A \rightarrow B$ and $\beta:B \rightarrow B$ such that $\alpha(a) = 1$ and $\beta(b) = b$. By the universal property of free products, there is a homomorphism $f:A \ast B \rightarrow B$ such that $\restr{f}{A} = \alpha$ and $\restr{f}{B}=\beta$. In particular, $f(A) = 1$. Since $A$ and $B$ are assumed conjugate, by part (a) this implies that $f(B) = 1$. But $\restr{f}{B} = \id_B$, so $f(B) = B$. Hence $B = 1$. This is a contradiction, as we assumed $B$ is nontrivial. Thus $A$ and $B$ are not conjugate.
 			
-	\end{proof}}
+	\end{proof}
 
 
 

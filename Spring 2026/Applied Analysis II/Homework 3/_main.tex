@@ -1,0 +1,63 @@
+\documentclass[9pt,oneside,openany]{memoir}
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/preamble-hw.tex}
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
+\begin{document}
+\homeworktitle
+{Math 521} %class
+{Homework 3} %assignment
+{Gianluca Crescenzo} %name
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}
+	Modify the proof of the mean-value formulas to show for $n \geq 3$ that:
+	\[
+		u(0) = \frac{1}{n\alpha(n)r^{n-1}}\int_{\partial B(0,r)}^{} g\,dS + \frac{1}{n(n-2)\alpha(n)} \int_{B(0,r)}^{} \left( \frac{1}{|x|^{n-2}}-\frac{1}{r^n - 2} \right) f\,dx
+	\] 
+	provided that:
+	\[
+		\begin{cases}
+			-\Delta u = f,&\text{in }B^o(0,r),\\
+			u=g,&\text{on }\partial B(0,r)
+		\end{cases}.
+	\] 
+\end{problem}
+	\begin{proof}
+		Define:
+		\begin{align*}
+			\rho(r) 
+			&:= \avg_{\partial B(0,r)}^{} u\,dS \\
+			&=  \frac{1}{n\alpha(n)r^{n-1}}\int_{\partial B(0,r)}^{} u\,dS\\
+			&= \frac{1}{n\alpha(n)} \int_{S^{n-1}}^{}u(r \omega)\,d\omega.
+		\end{align*}
+		Using the same technique from the proof of the mean-value formula gives:
+		\begin{align*}
+			\rho'(r)
+			&= \frac{1}{n\alpha(n)} \int_{S^{n-1}}^{}\frac{d}{dr}u(r \omega)\,d\omega\\
+			&= \frac{1}{n\alpha(n)} \int_{S^{n-1}}^{} Du(r \omega)\cdot \omega \,d\omega.
+		\end{align*}
+		Making the substitution $y = r\omega$ yields $dy = r^{n-1}d\omega$ and $\omega = \frac{y}{r}$. Hence:
+		\begin{align*}
+			\rho'(r)
+			&= \frac{1}{n\alpha(n)r^{n-1}} \int_{\partial B(0,r)}^{} Du(y) \cdot \frac{y}{r}\,dy.
+		\end{align*}
+		Note that $\frac{y}{r}$ is the outward normal on $S^{n-1}$. Using Green's Formula I gives:
+		\begin{align*}
+			\rho'(r) 
+			&= \frac{1}{n\alpha(n)r^{n-1}} \int_{B(0,r)}^{}\Delta u(y)\,dy \\
+			&= -\frac{1}{n\alpha(n)r^{n-1}}\int_{B(0,r)}^{} f(y)\,dy.
+		\end{align*}
+		Since $\rho(r)$ is continuous and differentiable, the Fundamental Theorem of Calculus gives:
+		\begin{align*}
+			u(0)
+			&= \rho(r) - \int_{0}^{r} \rho'(t)dt  \\
+			&= \avg_{\partial B(0,r)}^{} u\,dS + \frac{1}{n\alpha(n)t^{n-1}}\int_{0}^{r}\int_{B(0,t)}^{} f(y)\,dy  \\
+			&= \avg_{\partial B(0,r)}^{} u\,dS + \frac{1}{n\alpha(n)t^{n-1}}\int_{0}^{r} \int_{0}^{t} \int_{S^{n-1}}^{} f(\omega s)s^{n-1}\,d\omega ds \\
+		\end{align*}
+	\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}

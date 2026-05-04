@@ -1,6 +1,64 @@
 \chapter{Solutions to Linear Partial Differential Equations}
+\vspace{-25pt}
 
 \section{The Transport Equation}
+\begin{definition}
+	The \textui{Transport Equation} is:
+	\[
+		\begin{cases}
+			u_t + b \cdot Du = 0, & \text{in }\bfR^n \times (0,\infty)
+		\end{cases},
+	\] 
+	where $b$ is a fixed vector in $\bfR^n$ and $u:\bfR^n \times (0,\infty) \rightarrow \bfR$ is the unknown function.
+\end{definition}
+
+\begin{theorem}
+	Let $g \in C^1(\bfR^n)$. Then $u(x,t) := g(x-tb)$ is a solution to the following initial value problem:
+	\[
+		\begin{cases}
+			u_t + Du \cdot b = 0, & \text{in }\bfR^n \times (0,\infty) \\
+			u(x,0) = g(x),& \text{on }\bfR^n \times \{0\}
+		\end{cases}.
+	\] 
+\end{theorem}
+	\begin{proof}
+		As $b$ is an arbitrary vector in $\bfR^n$, the trick is to paramtrize the line through $(x,t)$ with direction $(b,1)$. Define $z(s) := u(x+sb,t+s)$. Then:
+		\begin{align*}
+			\dot{z}(s)
+			&= \frac{d}{ds} u(x+sb,t+s) \\
+			&= \left(\sum_{j=1}^{n}u_{x_j}(x+sb,t+s)b_j \right) + u_t \\
+			&= Du\cdot b + u_t \\
+			&= 0.
+		\end{align*}
+		Since $z$ is constant, we have for all $(x,t) \in \bfR^n \times (0,\infty)$:
+		\begin{align*}
+			u(x,t)
+			&= z(0) \\
+			&= z(-t) \\
+			&= u(x-tb,0) \\
+			&= g(x-tb). \qedhere
+		\end{align*}
+	\end{proof}
+
+\begin{theorem}
+	Let $g \in C^1(\bfR^n)$. Then $u(x,t) := g(x-tb) + \int_{0}^{t} f(x+(s+t)b,s)\,ds$ is a solution to the following non-homogenous initial value problem:
+	\[
+		\begin{cases}
+			u_t + Du \cdot b = f, & \text{in }\bfR^n \times (0,\infty) \\
+			u(x,0) = g(x),& \text{on }\bfR^n \times \{0\}
+		\end{cases}.
+	\] 
+\end{theorem}
+	\begin{proof}
+		Similarly define $z(s) := u(x+sb,s+t)$. Then $\dot{z}(s) = Du \cdot b = f(x+sb,s+t)$. By the Fundamental Theorem of Calculus:
+		\begin{align*}
+			u(x,t)
+			&= z(0) \\
+			&= z(-t) + \int_{-t}^{0} f(x+sb,s+t)\,ds \\
+			&= g(x-tb) + \int_{-t}^{0} f(x+sb,s+t)\,ds.
+		\end{align*}
+		Making the substitution $s \mapsto t+s$, gives the desired result.
+	\end{proof}
 
 \section{Laplace's Equation}	
 
@@ -11,6 +69,8 @@
 	\] 
 	A $C^2$ function satisfying Laplace's equation is called a \textui{harmonic function}. 
 \end{definition}
+
+\subsection{The Fundamental Solution}
 
 \begin{proposition}
 	Laplace's equation is rotation invariant. Specifically, let $A = (a_{ij})$ denote an $n \times n$ orthogonal matrix. For $x \in \bfR^n$, let $y = Ax$; that is:
@@ -143,13 +203,13 @@
 		Recall that our fundamental solution $\Phi$ admits a discontinuity at the origin. For an arbitrary $\epsilon > 0$, we have:
 		\begin{align*}
 			\Delta u
-			&= \int_{U \setminus B(0,\epsilon)}^{} \Delta_y f(x-y) \Phi(y) dy + \int_{B(0,\epsilon)}^{} \Delta_y f(x-y) \Phi(y) dy.
+			&= \int_{B(0,\epsilon)}^{} \Delta_y f(x-y) \Phi(y) dy + \int_{U \setminus B(0,\epsilon)}^{} \Delta_y f(x-y) \Phi(y) dy 
 		\end{align*}
 		Since $\Delta_y f(x-y) \Phi(y)$ does not admit a discontinuity on $U \setminus B(0,\epsilon)$, we can apply Green's identities. Taking advantage of the fact that $\Delta_y \Phi(y) = 0$, we have:
 		\begin{align*}
 			\int_{U \setminus B(0,\epsilon)}^{} \Delta_y f(x-y) \Phi(y) dy
-			&= \int_{U \setminus B(0,\epsilon)}^{} \Delta_y f(x-y) \Phi(y) + f(x-y) \Delta_y \Phi(y)dy\\
-			&= \int_{\partial (U \setminus B(0,\epsilon)}^{} \frac{\partial f}{\partial \nu}(x-y) \Phi(y) - f(x-y) \frac{\partial \Phi}{\partial \nu}(y) dS(y).
+			&= \int_{U \setminus B(0,\epsilon)}^{} \Delta_y f(x-y) \Phi(y) - f(x-y) \Delta_y \Phi(y)dy\\
+			&= \int_{\partial (U \setminus B(0,\epsilon))}^{} \frac{\partial f}{\partial \nu}(x-y) \Phi(y) - f(x-y) \frac{\partial \Phi}{\partial \nu}(y) dS(y).
 		\end{align*}
 		Integrating on $\partial (U \setminus B(0,\epsilon)$ is equivalent to:
 		\begin{align*}
@@ -157,22 +217,63 @@
 		\end{align*}
 		The outward normal derivative of $f$ is zero, and since $f$ is of compact support it is zero along the boundary of $U$. The left-most integral is equal to zero, resulting in:
 		\[
-			\Delta u = \underbrace{\int_{B(0,\epsilon)}^{}\Delta_y f(x-y)\Phi(y)dy}_{:= I} -   \underbrace{\int_{B(0,\epsilon)}^{} \frac{\partial f}{\partial \nu}(x-y) \Phi(y)dy}_{:=K} - \underbrace{\int_{\partial B(0,\epsilon)}^{}  f(x-y) \frac{\partial \Phi}{\partial \nu}(y) dy}_{:= L}
+			\Delta u = \underbrace{\int_{B(0,\epsilon)}^{}\Delta_y f(x-y)\Phi(y)dy}_{:= I_\epsilon} -   \underbrace{\int_{\partial B(0,\epsilon)}^{} \frac{\partial f}{\partial \nu}(x-y) \Phi(y)\,dS(y)}_{:=K_\epsilon} + \underbrace{\int_{\partial B(0,\epsilon)}^{}  f(x-y) \frac{\partial \Phi}{\partial \nu}(y) \,dS(y)}_{:= L_\epsilon}
 		\] 
-
-
+		We will individually examine $I_\epsilon$, $K_\epsilon$, and $L_\epsilon$ as $\epsilon \rightarrow \infty$. We first start with $I_\epsilon$. Observe that:
+		\begin{align*}
+			|I_\epsilon|
+			& \leq \int_{B(0,\epsilon)}^{} |\Delta_y f(x-y)|\Phi(y)\,dy \\
+			& \leq C \int_{B(0,\epsilon)}^{} \Phi(y)\,dy \\
+			& \leq C \int_{B(0,\epsilon)}^{} |x|^{2-n}\,dy \\
+			& = C \int_{0}^{\epsilon} \int_{S^{n-1}}^{} r^{2-n}r^{n-1}\,drd\omega \\
+			&= C \int_{0}^{\epsilon} r \left(\int_{S^{n-1}}^{}\,d\omega \right)\,dr \\
+			& \leq C \int_{0}^{\epsilon} r\,dr \\
+			& \leq C \epsilon^2.
+		\end{align*}
+		Thus $I_\epsilon \rightarrow 0$. We next examine $K_\epsilon$. Observe that:
+		\begin{align*}
+			|K_\epsilon|
+			& \leq \int_{\partial B(0,\epsilon)}^{} \left| \frac{\partial f}{\partial \nu}(x-y)\right| \Phi(y)\,dy  \\
+			& \leq C \int_{\partial B(0,\epsilon)}^{} \Phi(y)\,dS(y) \\
+			& \leq C \int_{\partial B(0,\epsilon)}^{} |y|^{2-n}\,dS(y) \\
+			& = C \epsilon^{2-n}\int_{\partial B(0,\epsilon)}^{}\,dS(y) \\
+			& \leq C\epsilon^{2-n}\epsilon^{n-1} \\
+			& = C \epsilon.
+		\end{align*}
+		Thus $K_\epsilon \rightarrow 0$. The last and most difficult integral to examine is $L_\epsilon$. We must first compute $\frac{\partial \Phi}{\partial \nu}$. Computing a partial of $\Phi$ yields:
+		\begin{align*}
+			\frac{\partial}{\partial y_i}\Phi(y)
+			&= c_n \frac{\partial}{\partial y_i} |y|^{2-n} \\
+			&= c_n(2-n)|y|^{1-n} \frac{\partial}{\partial y_i}|y| \\
+			&= -c_n (n-2)|y|^{1-n} \frac{1}{2} \left( \sum_{j=1}^{n}y_j^2\right)^{-\frac{1}{2}}2y_i  \\
+			&= -c_n (n-2) |y|^{1-n} \frac{y_i}{|y|}  \\
+			&= -c_n(n-2)|y|^{-n}y_i.
+		\end{align*}
+		Hence $D \Phi(y) = -c_n(n-2) \frac{1}{2} |y|^{2-n}y$. Since $y \in \partial B(0,\epsilon)$, it already points in the direction as the outward normal;i.e., $\nu = \frac{y}{|y|}$. With this:
+		\begin{align*}
+			\frac{\partial \Phi}{\partial \nu}(y)
+			&= D \Phi(y) \cdot \nu \\
+			&= -c_n (n-2)|y|^{-n}y \cdot \frac{y}{|y|} \\
+			&= -c_n (n-2) |y|^{-n-1} (y\cdot y)\\
+			&= -c_n(n-2)|y|^{-n-1}|y|^2 \\
+			&= -c_n(n-2)|y|^{1-n}.
+		\end{align*}
+		But since we're integrating on $\partial B(0,\epsilon)$, we have $|y| = \epsilon$. The integral $L_\epsilon$ becomes:
+		\begin{align*}
+			L_\epsilon
+			&= -c_n(n-2)\epsilon^{1-n} \int_{\partial B(0,\epsilon)}^{} f(x-y)dS(y) \\
+			&= -c_n(n-2)\epsilon^{1-n} \frac{n \alpha(n) \epsilon^{n-1}}{n \alpha(n) \epsilon^{n-1}}\int_{\partial B(0,\epsilon)}^{} f(x-y)dS(y) \\
+			&= -c_n(n-2)\epsilon^{1-n} n \alpha(n)\epsilon^{n-1}\avg_{\partial B(0,\epsilon)}^{} f(x-y)dS(y) \\
+			&= -\avg_{\partial B(0,\epsilon)}^{} f(x-y)dS(y).
+		\end{align*}
+		Thus $L_\epsilon \rightarrow -f(x)$ as $\epsilon \rightarrow 0$, establishing the theorem.
 	\end{proof}
 
 \begin{definition}
 	The equation: $$-\Delta u = f$$ arising from Theorem~\ref{thm:laplace-poisson} is called \textui{Poisson's equation}. 
 \end{definition}
 
-\begin{definition}
-	Let $U \subset \bfR^n$ and $f \in  L^1(\bfR,\mu)$. The \textui{average of $f$} over $U$ is:
-	\[
-		\avg_{}^{} f d\mu := \frac{1}{\mu(U)}\int_{U}^{} fd \mu.
-	\] 
-\end{definition}
+\subsection{Consequences of the Mean Value Property}
 
 \begin{theorem}[Mean-Value Property]\label{thm:mvp}
 	Let $U \subset \bfR^n$ and $x \in U$. Suppose $u \in C^2(U)$ and $\Delta u = 0 $ in $U$. For each $0 < r < \dist(x, \partial U)$, we have:
@@ -228,32 +329,55 @@
 \begin{theorem}
 	If $u \in C^2(U)$ satisfies $u(x) = \avg_{\partial B(x,r)} u dS$ for every $B(x,r) \subset U$, then $\Delta u = 0$.
 \end{theorem}
-	{\color{red}
 	\begin{proof}
-		
+		Suppose towards contradiction $\Delta u(x_0) > 0$ for some $x_0 \in U$. Then there exists some $\epsilon > 0$ such that $\Delta u(y) > 0$ for all $y \in B(x_0, \epsilon)$. For $0 < r < \epsilon$, define $\rho(r) := \avg_{\partial B(x_0,r)}^{} u(y)dy$. By the same calculations made in Theorem~\ref{thm:mvp}, we have $\rho'(r) > 0$. But since $\rho(r) = u(x_0)$ by hypothesis, we also have $\rho'(r) = 0$. This is a contradiction, hence $\Delta u  = 0$.
 	\end{proof}
-	}
 
 \begin{theorem}
 	Let $U \subset \bfR^n$. Let $u \in C(U)$. If $u$ satisfies:
 	\[
 		u(x) = \avg_{\partial B(x,r)}u dS = \avg_{B(x,r)}u(y)dy,
 	\] 
-	then $u \in C^\infty(U)$.
+	for any $B(x,r) \subset U$, then $u \in C^\infty(U)$.
 \end{theorem}
-	{\color{red}
 	\begin{proof}
-			
+		Let $x \in U$. Choose $0 < \epsilon < \dist(x,\partial U)$. Then:
+		\begin{align*}
+			u^{\epsilon}(x)
+			&= (u \ast \eta_\epsilon)(x) \\
+			&= \int_{\bfR^n}^{} u(x-y)\eta_\epsilon(y)\,dy.
+		\end{align*}
+		Since $\eta_\epsilon$ is zero outside of $B(0,\epsilon)$, we have:
+		\begin{align*}
+			u^\epsilon(x)
+			&=\int_{B(0,\epsilon)}^{} u(x-y)\eta_\epsilon(y)\,dy\\
+			&= \int_{0}^{\epsilon} \int_{S^{n-1}}^{} u(x-r\omega)\eta_\epsilon(r\omega)r^{n-1}\,d\omega dr.
+		\end{align*}
+		Since $\eta_\epsilon$ is a radial function, it does not depend on $\omega$, allowing us to rearrange the above integral as follows:
+		\begin{align*}
+			u^\epsilon(x)
+			&= \int_{0}^{\epsilon} \eta_\epsilon(r\omega)r^{n-1} \left( \int_{S^{n-1}}^{} u(x-r\omega)\,d\omega \right)\,dr.
+		\end{align*}
+		By hypothesis, $u(x) = \avg_{\partial B(x,r)}^{} u dS$ for any $B(x,r) \subset U$. Recalling that the surface area of the unit $n$-sphere is $n\alpha(n)$, we can rewrite the inner integral as:
+		\begin{align*}
+			u^\epsilon(x)
+			&= \int_{0}^{\epsilon} \eta_\epsilon(r\omega)r^{n-1}\Bigl(n \alpha(n)u(x)\Bigr)\,dr \\
+			&= u(x) \int_{0}^{\epsilon} \eta_\epsilon(r\omega) r^{n-1} \Bigl(n\alpha(n) \Bigr)\,dr.
+		\end{align*}
+		But $n\alpha(n) = \int_{S^{n-1}}^{}\,d\omega$. Substituting and rearranging gives: 
+		\begin{align*}
+			u^\epsilon(x)
+			&= u(x) \int_{0}^{\epsilon} \int_{S^{n-1}}^{}\eta_\epsilon(r\omega)r^{n-1}\,d\omega dr  \\
+			&= u(x) \int_{B(0,\epsilon)}^{} \eta_\epsilon(y)\,dy \\
+			&= u(x).
+		\end{align*}
+			Thus $u^\epsilon(x) = u(x)$ on $U_\epsilon$. By Theorem~\ref{}, this establishes $u \in C^\infty(U_\epsilon)$. To conclude $u \in C^\infty(U)$, for any compact set $K \subset U$ and $\epsilon < \dist(K,\partial U)$, we have $K \subset U_\epsilon$, hence $u = e^\epsilon$ on $K$. Since $K$ was arbitrary, we are done.
 	\end{proof}
-	}
 
 \begin{corollary}
 	Let $U \subset \bfR^n$. If $u$ satsifies $\Delta u  =0$ in $U$, then $u \in C^\infty(U)$.
 \end{corollary}
-	{\color{red}
-	\begin{proof}
-			
-	\end{proof}}
+
 
 \begin{theorem}[Maximum Principle]\label{thm:maximum-prince}
 	Let $U \subset \bfR^n$ and $u \in C^2(U) \cap C(\overline{U})$. Assume $\Delta u = 0$ in U. Then:
@@ -301,7 +425,7 @@
  	A similar theorem can be stated in terms of local minima of functions, and the proof follows by consider $-u(x)$ and applying the maximum principle.
  \end{remark}
 
- \begin{corollary}
+ \begin{corollary}\label{cor:unique}
  	Let $y \in C(\partial U)$ and $f \in C(U)$. Solutions to the boundary value problem:
 	\[
 		\begin{cases}
@@ -361,6 +485,19 @@
 		Defining $C:= \frac{n 2^{n+1}}{\alpha(n)}$ and taking the gradient of $u_{x_i}(x_0)$ gives the desired result.
 	\end{proof}
 
+\begin{theorem}
+	Assume $\Delta u = 0$ in $U$. Then:
+	\[
+		|D^\alpha u(x_0)| \leq \frac{C_k}{r^{n+|\alpha|}} \lnorm u \rnorm_{L^1(B(x_0,r))}
+	\] 
+	for each $B(x_0,r) \subset U$.
+\end{theorem}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+
 \begin{corollary}[Liouville]
 	Suppose $u:\bfR^n \rightarrow \bfR$ is harmonic. If $u$ is bounded, then $u$ is constant.
 \end{corollary}
@@ -376,17 +513,228 @@
 		As we are assuming $u$ is harmonic on all of $\bfR^n$, taking $r \rightarrow \infty$ does not fail any of the necessary assumptions made in Theorem~\ref{thm:ide}. Since $u_{x_i}(x_0) = 0$, we conclude that $u$ is constant.
 	\end{proof}
 
-\begin{theorem}
-	Assume $\Delta u = 0$ in $U$. Then:
+\subsection{Green's Function, Poisson's Formula, and Analyticity}
+
+\begin{example}
+	Let $U \subset \bfR^n$ be open, bounded, and $\partial U$ is $C^1$. Suppose $u \in C^2(U)\cap C^1(\overline{U})$. Can we write a formula for $u$ in terms of its boundary values? Fix $x \in U$ and choose $\epsilon > 0$ such that $B(x,\epsilon) \subset U$. As a trick, consider Green's Formula III applied to the following integral:
+	\begin{align*}
+		&\phantom{=}\int_{U \setminus B(x,\epsilon)}^{} u(y) \Delta \Phi(y-x) - \Phi(y-x)\Delta u(y)\,dy\\
+		&= \int_{\partial (U \setminus B(x,\epsilon))}^{} u(y) \frac{\partial \Phi}{\partial \nu}(y-x) - \Phi(y-x) \frac{\partial u}{\partial \nu}(y)\,dS(y) \\
+		&= \int_{\partial U}^{} u(y) \frac{\partial \Phi}{\partial \nu}(y-x) - \Phi(y-x) \frac{\partial u}{\partial \nu}(y)\,dS(y) - \int_{\partial B(x,\epsilon)}^{} \underbrace{u(y) \frac{\partial \Phi}{\partial \nu}(y-x)}_{(\ast)} - \underbrace{\Phi(y-x) \frac{\partial u}{\partial \nu}(y)}_{(\ast\ast)}\,dS(y).
+	\end{align*}
+	First, note that $\Delta \Phi(x) = 0$, so our original integral can be simplified. Moreover, the derivations of $|K_\epsilon|$ and $|L_\epsilon|$ as $\epsilon \rightarrow 0$ from Theorem~\ref{} can be replicated on $(\ast\ast)$ and $(\ast)$ respectively. As such, we have:
+	\begin{align*}
+		\left| \int_{\partial B(x,\epsilon)}^{} \Phi(y-x) \frac{\partial u }{\partial \nu}(y)\,dS(y) \right| &\rightarrow 0 \\
+		-\int_{\partial B(x,\epsilon)}^{}u(y) \frac{\partial \Phi}{\partial \nu}(y-x) &\rightarrow u(x). 
+	\end{align*}
+	All together, sending $\epsilon \rightarrow 0$ gives:
 	\[
-		|D^\alpha u(x_0)| \leq \frac{C_k}{r^{n+k}} \lnorm u \rnorm_{L^1(B(x_0,r))}
+		u(x) = -\int_{U}^{} \Phi(y-x)\Delta u(y)\,dy -\int_{\partial U}^{} u(y) \frac{\partial \Phi}{\partial \nu}(y-x) - \Phi(y-x) \frac{\partial u}{\partial \nu}(y) \,dS(y)
+	\]
+	The first term of this integral is sticking around unless we assume $u$ to be harmonic. The term  $u(y) \frac{\partial \Phi}{\partial \nu}(y-x)$ is exactly what we were hoping for \textemdash it requires us to know information about $u$ along its boundary. The term $\Phi(x-y) \frac{\partial u}{\partial \nu}$ is problematic however. With the given information, we are unable to compute $\frac{\partial u }{\partial \nu}(y)$. Our goal is to construct a \textit{corrector function} which cancels with the unknown term.
+\end{example}
+
+
+\begin{definition}
+	Let $U \subset \bfR^n$. For $x,y \in U$ with $x \neq y$, \textui{Green's function} for the region $U$ is:
+	\[
+		G(x,y) := \Phi(y-x) - \phi^x(y),
 	\] 
-	for each $B(x_0,r) \subset U$ and each multiindex $\alpha$ of order $|\alpha| = k$.
+	where $\phi^x(y)$ is a \textui{corrector function} which solves the following boundary-value problem:
+	\[
+		\begin{cases}
+			\Delta \phi^x = 0, & \text{in }U \\
+			\phi^x = \Phi(y-x),& \text{on }\partial U
+		\end{cases}.
+	\] 
+\end{definition}
+
+\begin{theorem}
+	If $u \in C^2(\overline{U})$ solves the boundary-value problem:
+	\[
+		\begin{cases}
+			-\Delta u = f, & \text{in }U\\
+			u=g,& \text{on }\partial U
+		\end{cases},
+	\] 
+	then:
+	\[
+		u(x) = -\int_{\partial U}^{} g(y) \frac{\partial G}{\partial \nu}(x,y)\,dS(y) + \int_{U}^{} f(y) G(x,y)\,dy
+	\] 
 \end{theorem}
 	{\color{red}
 	\begin{proof}
 			
 	\end{proof}}
 
+\begin{theorem}
+	Suppose $u$ solves the boundary-value problem:
+	\[
+		\begin{cases}
+			\Delta u = 0,&\text{in }B^o(0,1) \\
+			u=g,& \text{on }\partial B(0,1)
+		\end{cases}.
+	\] 
+	Then:
+	\[
+		u(x) = \frac{1-|x|^2}{n \alpha(n)} \int_{\partial B(0,1)}^{} \frac{g(y)}{|x-y|^n}\,dS(y).
+	\] 
+\end{theorem}
+	\begin{proof}
+		We must determine the corrector function:
+		\[
+			\begin{cases}
+				\Delta \phi^x = 0,& \text{in }B^o(0,1) \\
+				\phi^x(y) = \Phi(y-x),&\text{on }\partial U
+			\end{cases}.
+		\] 
+		Claim: $\phi^x(y) := \Phi \left( |x|(y-\tilde{x} )\right)$ satisfies the above BVP, where $\tilde{x} := \frac{x}{|x|^2}$. Clearly $\phi^x(y)$ is harmonic for each $y \in B^o(0,1)$. Now let $y \in \partial B(0,1)$. 
+	\end{proof}
 
 
+
+
+
+
+
+
+
+\subsection{Harnack's Inequality}
+
+
+\begin{theorem}[Harnack's Inequality]
+	Let $U \subset \bfR^n$ be open and bounded. Assume $\Delta u = 0$ in $U$ and $u(x) \geq 0$ for all $x \in U$. For any $V \subset\subset U$ which is open and connected, there exists a constant $C(U,V)$ depending only on $U$ and $V$ such that $\sup_V u \leq C \inf_V u$.
+\end{theorem}
+	\begin{proof}
+		Let $r = \frac{1}{4}\dist(V,\partial U)$. Let $x,y \in V$ with $|x-y|<r$. Then $B(x,r) \subset B(y,2r)$. By the Mean Value Principle:
+		\begin{align*}
+			u(x)
+			&= \avg_{B(x,r)}^{} u(z)\,dz \\
+			&= \frac{1}{\alpha(n)r^n}\int_{B(x,r)}^{} u(z)\,dz \\
+			&\leq \frac{1}{\alpha(n)r^{n}}\int_{B(y,2r)}^{} u(z)\,dz \\
+			&= \frac{2^n}{\alpha(n)r^n 2^n}\int_{B(y,2r)}^{} u(z)\,dz \\
+			&= 2^n u(y).
+		\end{align*}
+		Let $\{B_i\}_{i = 1}^N$ be an open cover of $\overline{V}$ with finitely many balls of radius $\frac{r}{2}$. Since $V$ is connected, for any $x,y \in V$ there is a chain $B_{i_1},\ldots,B_{i_\ell}$ such that $x \in B_{i_1}$, $y \in B_{i_\ell}$, and $B_{i_{j}} \cap B_{i_{j+1}} \neq \emptyset$ for each $j=1,\ldots,\ell-1$. Pick an arbitrary $y_j \in B_{i_j}\cap B_{i_{j+1}}$\footnote{We don't need to be concerned that the balls intersect only at a single point. As the open balls form a base for $\bfR^n$, we can find another open ball contained in each of their intersections.}. Then by our previous calculation:
+		\begin{align*}
+			u(x)
+			& \leq 2^n u(y_1) \\
+			& \leq 2^n 2^n u(y_2) \\
+			&\vdots \\
+			& \leq 2^{\ell n }u(y).
+		\end{align*}
+		As $x \in V$ was arbitrary, we have $\sup_V u \leq C u(y)$. As $y \in V$ was arbitrary, we have $\sup_V u \leq C \inf_V u $. 
+		\iffalse
+		\begin{center}
+			\begin{tikzpicture}[scale=0.85]
+			\coordinate (y) at (0,0);
+			\coordinate (x) at (0.65,0.25);
+			\def\r{0.8}
+			\draw[thick] (y) circle ({2*\r});
+			\draw[thick] (x) circle (\r);
+			\fill (y) circle (1.6pt) node[below left] {$y$};
+			\fill (x) circle (1.6pt) node[below right] {$x$};
+			\node at (-1.9,1.5) {$B(y,2r)$};
+			\node at (-0.6,0.8) {$B(x,r)$};
+			\end{tikzpicture}
+		\end{center}
+		\fi
+	\end{proof}
+
+\subsection{Energy Methods}
+
+Below is an alternative proof of uniqueness for the boundary value problem in Corollary~\ref{cor:unique} that does not rely on the Mean Value Property.
+\begin{lemma}\label{lemma:em}
+	Let $U \subset \bfR^n$ be open, bounded, and $\partial U$ is $C^1$. Suppose $u \in C^2(\overline{U})$. If:
+	\[
+		\begin{cases}
+			\Delta u =0,& \text{in } U \\
+			u = 0,& \text{on } \partial U
+		\end{cases},
+	\]
+	then $u \equiv 0$.
+\end{lemma}
+	\begin{proof}
+		We employ the following trick and then apply integration by parts:
+		\begin{align*}
+			0
+			&= - \int_{U}^{} u \Delta u\,dx \\
+			&= - \int_{U}^{} \sum_{i=1}^{n} u u_{x_i x_i}\,dx \\
+			&= -\sum_{i=1}^{n} \int_{U}^{} u u_{x_i x_i}\, dx \\
+			&= -\sum_{i = 1}^{n} \left( -\int_{U}^{} u_{x_i}u_{x_i}\,dx + \int_{\partial U}^{} u u_{x_i}\nu^i\,dS \right)  \\
+			&= \int_{U}^{} |Du|^2\,dx.
+		\end{align*}
+		Hence $Du$ is zero, meaning that $u$ is constant. Since $u$ attains its maximum and minimum on its boundary, it must be the case that $u \equiv 0$.
+	\end{proof}
+
+\begin{theorem}
+	Let $U \subset \bfR^n$ be open, bounded, and $\partial U$ is $C^1$. Suppose $u \in C^2(\overline{U})$ satisfies:
+	\[
+		\begin{cases}
+			-\Delta u = f, & \text{in } U \\
+			u = g,& \text{on } \partial U	
+		\end{cases}.
+	\] 
+	Then $u$ is unique.
+\end{theorem}
+	\begin{proof}
+		If $u$ and $v$ are solutions to the above boundary value problem, then $u-v$ satisfies the necessary conditions in Lemma~\ref{lemma:em}. 
+	\end{proof}
+
+\begin{theorem}[Dirichlet Principle]
+	Let $U \subset \bfR^n$ be open, bounded, and $\partial U$ is $C^1$. Consider the boundary value problem:
+		\[
+		\begin{cases}
+			-\Delta u = f, & \text{in } U \\
+			u = g,& \text{on } \partial U	
+		\end{cases},
+		\]
+	where $f \in C(U)$ and $g \in C(\partial U)$. Define:
+	\begin{align*}
+		\cA & :=\{w \in C^2(\overline{U}) : w = g \text{ on }\partial U\},\hspace{10pt}I[w] := \int_{U}^{} \left( \frac{1}{2}|Dw|^2 - fw \right)\,dx 
+	\end{align*}
+	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+		\item If $u \in \cA$ satisfies the above BVP, then $u$ minimzes $I$.
+		\item If $u \in \cA$ minimizes $I$, then $u$ satisfies the above BVP.
+	\end{enumerate}
+\end{theorem}
+	\begin{proof}
+		(a)Let $u \in C^2(\overline{U})$ satisfy the above BVP. Let $w \in \cA$. Then:
+		\begin{align*}
+			I[w]
+			&= I[u+(w-u)] \\
+			&= \int_U \frac12 |D(u+(w-u))|^2 - f(u+(w-u))\,dx \\
+			&= \int_U \frac12 |Du+D(w-u)|^2 - fu - f(w-u)\,dx \\
+			&= \int_U \frac12\left(|Du|^2 + 2Du\cdot D(w-u) + |D(w-u)|^2\right)- fu - f(w-u)\,dx \\
+			&= \int_U \frac12 |Du|^2 - fu\,dx+ \int_U Du\cdot D(w-u) - f(w-u)\,dx+ \int_U \frac{1}{2}|D(w-u)|^2\,dx \\
+			&= I[u]+ \int_U Du\cdot D(w-u)\,dx - \int_{U}^{} f(w-u)\,dx+ \int_U \frac{1}{2}|D(w-u)|^2\,dx.
+		\end{align*}
+		Applying Greens Formula II to $\int_{U}^{} Du \cdot D(w-u)\,dx$ gives:
+		\begin{align*}
+			\int_{U}^{} Du \cdot D(w-u)\,dx
+			&= -\int_{U}^{} (w-u) \Delta u\,dx + \int_{\partial U}^{} \nu \cdot D(w-u) u \,dS.
+		\end{align*}
+		Note that $\Delta u =f$ in $U$ and $w-u = 0$ on $\partial U$. Hence:
+		\begin{align*}
+			\int_{U}^{} (w-u)\Delta u \,dx = -\int_{U}^{} (w-u)f\,dx.
+		\end{align*}
+		The equation for $I[w]$ now simplifies to:
+		\begin{align*}
+			I[w]
+			&= I[u] + \int_{U}^{} \frac{1}{2}|D(w-u)|^2\,dx \\
+			& \geq I[u].
+		\end{align*}
+		Thus $u$ minimizes $I$.
+
+		(b) Suppose $u \in \cA$ minimizes $I$. Fix $v \in C_c^\infty(U)$. Define $i(t):= I[u+tv]$. Then:
+		\begin{align*}
+			0
+			&= i'(0) \\
+			&= \int_{U}^{} (Du \cdot Dv - fv)\,dx \\
+			&= \int_{U}^{}(-v\Delta u -fv)\,dx \\
+			&= \int_{U}^{} (-\Delta u - f)v\,dx \\
+		\end{align*}
+		It must be the case that $-\Delta u = f$ in $U$. Hence $U$ satisfies the above BVP.
+	\end{proof}
+
+\section{}

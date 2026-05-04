@@ -1,4 +1,4 @@
-\chapter{Introduction}
+\chapter{Preliminaries}
 \pagenumbering{arabic}
 \vspace{-25pt}
 
@@ -64,6 +64,13 @@ For the remainder of this chapter: let $U \subset \bfR^n$ be an open set. An ele
 
 \section{Multivariable Calculus}
 
+\begin{definition}
+	Let $U \subset \bfR^n$ and $f \in  L^1(\bfR,\mu)$. The \textui{average of $f$} over $U$ is:
+	\[
+		\avg_{}^{} f d\mu := \frac{1}{\mu(U)}\int_{U}^{} fd \mu.
+	\] 
+\end{definition}
+
 \begin{theorem}[Fubini]
 	If $u \in L^1(U)$, then:
 	\[
@@ -124,13 +131,13 @@ For the remainder of this chapter: let $U \subset \bfR^n$ be an open set. An ele
 \begin{theorem}[Green's Formulas]
 	Let $u,v \in C^1(\overline{U})$ and let $\partial U$ be $C^1$. Then:
 	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
-        \item $\ds \int_U \Delta u dx = \int_{\partial U}\frac{\partial u}{\partial \nu}dS$,
-        \item $\ds \int_U Dv \cdot Du dx = -\int_U u\Delta v dx + \int_{\partial U}\frac{\partial u}{\partial \nu} u dS$, 
-        \item $\ds \int_U u \Delta v - v \Delta u dx = \int_{\partial U} u\frac{\partial v}{\partial \nu} - v \frac{\partial u}{\partial \nu}dS$.
+        \item $\ds \int_U \Delta u dx = \int_{\partial U}\frac{\partial u}{\partial \nu}\,dS$,
+        \item $\ds \int_U Dv \cdot Du dx = -\int_U (\Delta v)u\,dx + \int_{\partial U}\frac{\partial u}{\partial \nu} u\,dS$, 
+        \item $\ds \int_U u \Delta v - v \Delta u\,dx = \int_{\partial U} u\frac{\partial v}{\partial \nu} - v \frac{\partial u}{\partial \nu}\,dS$.
     \end{enumerate}
 \end{theorem}
 	
-\section{Polar Coordinated in $\bfR^n$ }
+\section{Polar Coordinates in $\bfR^n$ }
 
 \begin{remark}
 	In $\bfR^n$, for any $x \neq 0$, we can write:
@@ -173,13 +180,6 @@ For the remainder of this chapter: let $U \subset \bfR^n$ be an open set. An ele
 \end{definition}
 
 \begin{definition}
-	For $\epsilon > 0$, we define:
-	\[
-		U_\epsilon := \{x \in U \mid \dist(x, \partial U) > \epsilon\}.
-	\] 
-\end{definition}
-
-\begin{definition}
 	\phantom{a}
 	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
 		\item Let $x \in \bfR^n$. The \textui{standard mollifier} is the function:
@@ -192,40 +192,31 @@ For the remainder of this chapter: let $U \subset \bfR^n$ be an open set. An ele
 		\] 
 		where $C$ is chosen so that $\int_{\bfR^n}^{} \eta(x)dx = 1$.
 
-		\item For all $\epsilon > 0$, define:
-			\[
-				\eta_\epsilon(x) := \frac{1}{\epsilon^n}\eta\left( \frac{x}{\epsilon}\right).
-			\] 
+		\item For all $\epsilon > 0$, define $\eta_\epsilon(x) := \frac{1}{\epsilon^n}\eta\left( \frac{x}{\epsilon}\right)$.
 	\end{enumerate}
 \end{definition}
 
+\begin{remark}
+	The standard mollifier is a radial function.
+\end{remark}
+
 \begin{proposition}
-	We have $\eta \in C^\infty_c(\bfR^n)$. Moreover, for all $\epsilon > 0$, we have:
+	\mbox{}
 	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
-		\item $\eta_\epsilon \in C^\infty_c(\bfR^n)$;
+		\item $\eta_\epsilon \in C_c^\infty(\bfR^n)$;
 		\item $\supp \eta_\epsilon = B(0,\epsilon)$;
-		\item $\int_{\bfR^n}^{} \eta_\epsilon(x)dx = 1$.
+		\item $\int_{\bfR^n}^{} \eta_\epsilon(x)\,dx = 1$.
 	\end{enumerate}
 \end{proposition}
 
-\begin{definition}
-	\phantom{a}
+\begin{theorem}
+	Let $U \subset \bfR^n$ be open and $f \in \Loc^1(U)$. Define $U_\epsilon := \{y \in U : \epsilon <  \dist(y,\partial U)\}$ and $f^{\epsilon}(x) := (f \ast \eta_\epsilon)(x)$. Then:
+	\mbox{}
 	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
-		\item For $\epsilon > 0$, we define:
-			\[
-				U_\epsilon := \{x \in U \mid \dist(x, \partial U) > \epsilon\}.
-			\] 
-		\item If $f \in \Loc^p(U)$, we define it \textui{mollifier} as:
-			\begin{align*}
-				f^{\epsilon}(x)
-				&:=   \restr{(\eta_\epsilon \ast f)}{U_\epsilon}\\
-				&= \int_{U}^{} \eta_\epsilon(x-y)f(y)dy \\
-				&= \int_{B(0,\epsilon}^{} \eta_\epsilon(y)f(x-y)dy. \\
-			\end{align*}
-		
+		\item $f^\epsilon \in C^\infty(U_\epsilon)$;
+		\item If $f \in C(U)$, then $f^\epsilon \rightarrow f$ uniformly on compact subsets of $U$.
 	\end{enumerate}
-\end{definition}
-
+\end{theorem}
 
 
 

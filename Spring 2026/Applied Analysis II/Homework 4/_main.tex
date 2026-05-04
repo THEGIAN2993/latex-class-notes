@@ -101,13 +101,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
 \begin{problem}
 	For $x \in \bfR$, define $v(x) := e^{-\frac{1}{2}x^2}$. Show that $\hat{v}(y) = e^{-\frac{1}{2}y^2}$.
 \end{problem}
-	{\color{red}
-	\begin{proof}
-			
-	\end{proof}}
+\newpage
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -118,9 +117,98 @@
 	\] 
 \end{problem}
 	\begin{proof}
-		
+		Observe that:
+		\begin{align*}
+			\hat{g}(y)
+			&= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} g(x)e^{-ixy}\,dx \\
+			&= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} f(ax)e^{-ixy\,}dx.
+		\end{align*}
+		The substition $x = \frac{t}{a}$ gives $dx = \frac{1}{a}dt$. Hence:
+		\begin{align*}
+			\hat{g}(y)
+			&= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} \frac{1}{a}f(t)e^{-it \frac{y}{a}}\,dy \\
+			&= \frac{1}{a}\hat{f}\left( \frac{y}{a} \right). \qedhere
+		\end{align*}
 	\end{proof}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}
+	For $x \in \bfR$ and $\epsilon > 0$, let $v_\epsilon(x) := e^{-\epsilon x^2}$. Use the previous two problems to show that:
+	\[
+		\widehat{v_\epsilon}(y) = \frac{1}{\sqrt{2\epsilon}}e^{\frac{-y^2}{4\epsilon}}.
+	\]	
+\end{problem}
+	\begin{proof}
+		Let $f(x) = e^{-\frac{1}{2}x^2}$ Then $v_\epsilon(x) = f\left(\sqrt{2\epsilon}x\right)$. By Problem 4 and 5, we have: 
+		\begin{align*}
+			\widehat{v_\epsilon}(y) 
+			&= \cF\left(f\left(\sqrt{2\epsilon}x\right)\right) \\
+			&= \frac{1}{\sqrt{2 \epsilon}} \widehat{f}\left( \frac{y}{\sqrt{2\epsilon}} \right) \\
+			&= \frac{1}{\sqrt{2 \epsilon}} f\left( \frac{y}{\sqrt{2\epsilon}} \right) \\
+			&= \frac{1}{\sqrt{2\epsilon}}e^{\frac{-y^2}{4 \epsilon}}. \qedhere
+		\end{align*}
+	\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}
+	For $x \in \bfR^n$ and $\epsilon > 0$, let $v_\epsilon(x) := e^{- \epsilon|x|^2}$. Use Fubini's theorem and the previous problem to show that:
+	\[
+		\widehat{v_\epsilon}(y) = \frac{1}{(2\epsilon)^{\frac{n}{2}}}e^{\frac{-|y|^2}{4\epsilon}}.
+	\]
+\end{problem}
+	\begin{proof}
+		First note that we can rewrite $v_\epsilon(x)$ and $e^{-i x \cdot y}$ as:
+		\begin{align*}
+			v_\epsilon(x) &= e^{-\epsilon|x|^2} = \prod_{j=1}^n e^{-x_j^2}, \\
+			e^{-i x \cdot y} & = \prod_{j=1}^n e^{-ix_jy_j}.
+		\end{align*}
+		Using this fact and Fubini's theorem yields:
+		\begin{align*}
+			\widehat{v_\epsilon}(y)
+			&= \frac{1}{(2\pi)^{\frac{n}{2}}}\int_{\bfR^n}^{} v_\epsilon(x)e^{-i x \cdot y}dx \\
+			&= \left( \frac{1}{\sqrt{2\pi}} \right)^n \int_{-\infty}^{\infty} \ldots \int_{-\infty}^{\infty} \prod_{j=1}^n	e^{-x_j^2}e^{-i x_j y_j}\,dx_1\ldots dx_n.
+		\end{align*}
+		For a fixed $j$, note that $\int_{-\infty}^{\infty} e^{x_j^2}e^{-i x_j y_j}dx_j$ is viewed as a constant when integrated against any other $x_k$ such that $k \neq j$. Using this fact, and by Problem 6, we have:
+		\begin{align*}
+			\widehat{v_\epsilon}
+			&=  \left( \frac{1}{\sqrt{2\pi}} \right)^n \int_{-\infty}^{\infty} \ldots \int_{-\infty}^{\infty} \prod_{j=1}^n	e^{-x_j^2}e^{-i x_j y_j}\,dx_1\ldots dx_n\\
+			&= \prod_{j=1}^n \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} e^{-x_j^2}e^{-i x_j y_j}dx_j \\
+			&= \prod_{j=1}^n \frac{1}{\sqrt{2\epsilon}}e^{\frac{-y_j^2}{4\epsilon}} \\
+			&= \frac{1}{(2\epsilon)^{\frac{n}{2}}}e^{\frac{-|y|^2}{4\epsilon}}. \qedhere
+		\end{align*}
+	\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}
+	Show that $\int_{-\infty}^{\infty} e^{-x^2}dx = \sqrt{\pi}$. Then use this to show that:
+	\[
+		\int_{\bfR^n}^{} e^{-|x|^2}dx = \pi^{\frac{n}{2}}.
+	\] 
+\end{problem}
+	\begin{proof}
+		Let $I = \int_{-\infty}^{\infty} e^{-x^2}dx$. Then:
+		\begin{align*}
+			I^2
+			&= \left( \int_{-\infty}^{\infty} e^{-x^2}\,dx \right)^2  \\
+			&= \left( \int_{-\infty}^{\infty} e^{-x^2}\,dx \right) \left( \int_{-\infty}^{\infty}e^{-y^2}\,dy  \right)   \\
+			&= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} e^{-(x^2+y^2)}\,dxdy \\
+			&= \int_{0}^{2\pi} \int_{0}^{\infty} e^{-r^2}r\,drd\theta \\
+			&= \int_{0}^{2\pi} \left( \frac{1}{2}\int_{0}^{\infty} e^{-u}\,du \right) \,d\theta \\
+			&= \int_{0}^{2\pi} \frac{1}{2}\,d\theta \\
+			&= \pi.
+		\end{align*}
+		Thus $I = \sqrt{\pi}$. Hence:
+		\begin{align*}
+			\int_{\bfR^n}^{} e^{-|x|^2}\,dx
+			&= \int_{-\infty}^{\infty} \ldots\int_{-\infty}^{\infty} \prod_{j=1}^ne^{-x_j^2}\,dx_1\ldots dx_n \\
+			&= \prod_{j=1}^n \int_{-\infty}^{\infty} e^{x_j^2}dx_j \\
+			&= \prod_{j=1}^n \sqrt{\pi} \\
+			&= \pi^{\frac{n}{2}}. \qedhere
+		\end{align*}
+	\end{proof}
 
 
 
