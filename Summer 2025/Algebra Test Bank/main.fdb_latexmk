@@ -1,6 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1760145840.49301 "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/Summer 2025/Algebra Test Bank/main.tex" "main.pdf" "main" 1760145841.22697 0
-  "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/Summer 2025/Algebra Test Bank/main.tex" 1760145839.64264 64483 25aa089e8fb6c06edf1319ae9b4ae444 ""
+["pdflatex"] 1777929636.79039 "main.tex" "main.pdf" "main" 1777929638.29632 0
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/ecbx1000.tfm" 1136768653 3584 2d666ecf6d466d8b007246bc2f94d9da ""
@@ -226,10 +225,10 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1758769034 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "main.aux" 1760145841.12312 23983 bcb99e7582fd87cc37fec30d28a677dd "pdflatex"
-  "main.out" 1760145840.87222 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.tex" 1760145839.64264 64483 25aa089e8fb6c06edf1319ae9b4ae444 ""
-  "main.unq" 1760145840.74343 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.aux" 1777929638.15989 23983 bcb99e7582fd87cc37fec30d28a677dd "pdflatex"
+  "main.out" 1777929637.80108 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.tex" 1777929634.97031 64483 25aa089e8fb6c06edf1319ae9b4ae444 ""
+  "main.unq" 1777929637.34539 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   (generated)
   "main.aux"
   "main.log"

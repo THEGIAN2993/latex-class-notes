@@ -80,6 +80,10 @@ Unless otherwise stated, assume $I:=[0,1]$.
     Theorem~\ref{thm:groupoid} establishes that $C(I,X)/\simeq_p$ is a \textit{groupoid}. Here $\ast$ is not a binary operation as it is not necessarily defined for all pairs of elements in $C(I,X)/\simeq_p$. Furthermore, the identity element is not unique for all path-homotopy equivalences.
 \end{remark}
 
+\begin{definition}
+	A space $X$ is \textui{contractible} if the identity map $i_X:X \rightarrow X$ is nullhomotopic.
+\end{definition}
+
 \section{The Fundamental Group}
 
 \begin{definition}
@@ -346,7 +350,7 @@ In this case, we say $f$ and $g$ are \textui{homotopic $\rel A$}.
 		\item Let $U$ be an open set of $B$. If there exists a family of open sets $\{V_\alpha\}$ of $E$ such that:
 			\begin{itemize}[itemsep=1pt,topsep=3pt]
 				\item $p^{-1}(U) = \bigsqcup_\alpha V_\alpha$,
-				\item $\restr{p}{V_\alpha}:V_\alpha \rightarrow B$ is a homeomorphism for all $\alpha$,
+				\item $\restr{p}{V_\alpha}:V_\alpha \rightarrow U$ is a homeomorphism for all $\alpha$,
 			\end{itemize}
 		then $U$ is called an \textui{elementary neighborhood} of $B$. The family $\{V_\alpha\}$ are called the \textui{slices} of $p^{-1}(U)$.
 

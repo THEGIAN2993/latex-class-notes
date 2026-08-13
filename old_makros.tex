@@ -1,36 +1,10 @@
-\usepackage[T1]{fontenc}
-\usepackage{amsmath,amsthm,amssymb}
-\usepackage[fixamsmath]{mathtools}  % Extension to amsmath
-\usepackage[cal=cm, scr=rsfs, frak=euler, bb=ams]{mathalpha}
-% Some standard theorem definitions
-\newtheorem*{theorem}{Theorem}
-\newtheorem*{proposition}{Proposition}
-\newtheorem*{lemma}{Lemma}
-\newtheorem*{corollary}{Corollary}
-\theoremstyle{definition}\newtheorem*{example}{Example}
-\theoremstyle{definition}\newtheorem*{exercise}{Exercise}
-\theoremstyle{definition}\newtheorem*{problem}{Problem}
-\theoremstyle{definition}\newtheorem*{question}{Question}
-\theoremstyle{definition}\newtheorem*{definition}{Definition}
-\theoremstyle{remark}\newtheorem*{answer}{Answer}
-\theoremstyle{remark}\newtheorem*{solution}{Solution}
+%to make the correct symbol for Sha
+%\newcommand\cyr{%
+%\renewcommand\rmdefault{wncyr}%
+%\renewcommand\sfdefault{wncyss}%
+%\renewcommand\encodingdefault{OT2}%
+%\normalfont \selectfont} \DeclareTextFontCommand{\textcyr}{\cyr}
 
-
-
-\usepackage{pgfplots}
-\usepackage{enumitem}
-\usepackage[utf8x]{inputenc}
-\usepackage{tikz}
-\usepackage{tikz-cd}
-\usepackage{wasysym}
-\usepackage{cancel}
-\usepackage{lipsum}
-
-% Extras
-\usepackage{hwemoji}  % Support Unicode emojis
-\DeclareUnicodeCharacter{FE0E}{}
-\DeclareUnicodeCharacter{FE0F}{}
-\renewcommand{\div}{\divisionsymbol}
 
 \DeclareMathOperator{\ab}{ab}
 \newcommand{\absgal}{\G_{\bbQ}}
@@ -61,6 +35,7 @@
 \DeclareMathOperator{\Dom}{Dom}
 \DeclareMathOperator{\disc}{disc}
 \DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\Div}{div}
 \DeclareMathOperator{\dR}{dR}
 \DeclareMathOperator{\Eis}{Eis}
 \DeclareMathOperator{\End}{End}
@@ -109,7 +84,7 @@
 \DeclareMathOperator{\PGSp}{PGSp}
 \DeclareMathOperator{\rank}{rank}
 \DeclareMathOperator{\Ran}{Ran}
-\DeclareMathOperator{\Rel}{Rel}
+\DeclareMathOperator{\rel}{Rel}
 \DeclareMathOperator{\Real}{Re}
 \DeclareMathOperator{\RES}{res}
 \DeclareMathOperator{\Res}{Res}
@@ -138,6 +113,35 @@
 \DeclareMathOperator{\Un}{U}
 \DeclareMathOperator{\val}{val}
 \DeclareMathOperator{\vol}{vol}
+
+\newcommand{\Loc}{L_{\operatorname{loc}}}
+
+\DeclareMathOperator{\Sets}{S \mkern1.04mu e \mkern1.04mu t \mkern1.04mu s}
+    \newcommand{\cSets}{\scalebox{1.02}{\contour{black}{$\Sets$}}}
+    
+\DeclareMathOperator{\Groups}{G \mkern1.04mu r \mkern1.04mu o \mkern1.04mu u \mkern1.04mu p \mkern1.04mu s}
+    \newcommand{\cGroups}{\scalebox{1.02}{\contour{black}{$\Groups$}}}
+
+\DeclareMathOperator{\TTop}{T \mkern1.04mu o \mkern1.04mu p}
+    \newcommand{\cTop}{\scalebox{1.02}{\contour{black}{$\TTop$}}}
+
+\DeclareMathOperator{\Htp}{H \mkern1.04mu t \mkern1.04mu p}
+    \newcommand{\cHtp}{\scalebox{1.02}{\contour{black}{$\Htp$}}}
+
+\DeclareMathOperator{\Mod}{M \mkern1.04mu o \mkern1.04mu d}
+    \newcommand{\cMod}{\scalebox{1.02}{\contour{black}{$\Mod$}}}
+
+\DeclareMathOperator{\Ab}{A \mkern1.04mu b}
+    \newcommand{\cAb}{\scalebox{1.02}{\contour{black}{$\Ab$}}}
+
+\DeclareMathOperator{\Rings}{R \mkern1.04mu i \mkern1.04mu n \mkern1.04mu g \mkern1.04mu s}
+    \newcommand{\cRings}{\scalebox{1.02}{\contour{black}{$\Rings$}}}
+
+\DeclareMathOperator{\ComRings}{C \mkern1.04mu o \mkern1.04mu m \mkern1.04mu R \mkern1.04mu i \mkern1.04mu n \mkern1.04mu g \mkern1.04mu s}
+    \newcommand{\cComRings}{\scalebox{1.05}{\contour{black}{$\ComRings$}}}
+
+\DeclareMathOperator{\hHom}{H \mkern1.04mu o \mkern1.04mu m}
+    \newcommand{\cHom}{\scalebox{1.02}{\contour{black}{$\hHom$}}}
 
 \renewcommand{\k}{\kappa}
 \newcommand{\Ff}{F_{f}}
@@ -326,12 +330,158 @@
 \newcommand{\ov}[1]{\overline{#1}}
 \newcommand{\res}[1]{\underset{#1}{\RES}\,}
 \newcommand{\up}{\upsilon}
+\newcommand{\e}{\epsilon}
+
+
+\makeatletter
+\newcommand*{\mint}[1]{%
+  % #1: overlay symbol
+  \mint@l{#1}{}%
+}
+\newcommand*{\mint@l}[2]{%
+  % #1: overlay symbol
+  % #2: limits
+  \@ifnextchar\limits{%
+    \mint@l{#1}%
+  }{%
+    \@ifnextchar\nolimits{%
+      \mint@l{#1}%
+    }{%
+      \@ifnextchar\displaylimits{%
+        \mint@l{#1}%
+      }{%
+        \mint@s{#2}{#1}%
+      }%
+    }%
+  }%
+}
+\newcommand*{\mint@s}[2]{%
+  % #1: limits
+  % #2: overlay symbol
+  \@ifnextchar_{%
+    \mint@sub{#1}{#2}%
+  }{%
+    \@ifnextchar^{%
+      \mint@sup{#1}{#2}%
+    }{%
+      \mint@{#1}{#2}{}{}%
+    }%
+  }%
+}
+\def\mint@sub#1#2_#3{%
+  \@ifnextchar^{%
+    \mint@sub@sup{#1}{#2}{#3}%
+  }{%
+    \mint@{#1}{#2}{#3}{}%
+  }%
+}
+\def\mint@sup#1#2^#3{%
+  \@ifnextchar_{%
+    \mint@sup@sub{#1}{#2}{#3}%
+  }{%
+    \mint@{#1}{#2}{}{#3}%
+  }%
+}
+\def\mint@sub@sup#1#2#3^#4{%
+  \mint@{#1}{#2}{#3}{#4}%
+}
+\def\mint@sup@sub#1#2#3_#4{%
+  \mint@{#1}{#2}{#4}{#3}%
+}
+\newcommand*{\mint@}[4]{%
+  % #1: \limits, \nolimits, \displaylimits
+  % #2: overlay symbol: -, =, ...
+  % #3: subscript
+  % #4: superscript
+  \mathop{}%
+  \mkern-\thinmuskip
+  \mathchoice{%
+    \mint@@{#1}{#2}{#3}{#4}%
+        \displaystyle\textstyle\scriptstyle
+  }{%
+    \mint@@{#1}{#2}{#3}{#4}%
+        \textstyle\scriptstyle\scriptstyle
+  }{%
+    \mint@@{#1}{#2}{#3}{#4}%
+        \scriptstyle\scriptscriptstyle\scriptscriptstyle
+  }{%
+    \mint@@{#1}{#2}{#3}{#4}%
+        \scriptscriptstyle\scriptscriptstyle\scriptscriptstyle
+  }%
+  \mkern-\thinmuskip
+  \int#1%
+  \ifx\\#3\\\else_{#3}\fi
+  \ifx\\#4\\\else^{#4}\fi  
+}
+\newcommand*{\mint@@}[7]{%
+  % #1: limits
+  % #2: overlay symbol
+  % #3: subscript
+  % #4: superscript
+  % #5: math style
+  % #6: math style for overlay symbol
+  % #7: math style for subscript/superscript
+  \begingroup
+    \sbox0{$#5\int\m@th$}%
+    \sbox2{$#5\int_{}\m@th$}%
+    \dimen2=\wd0 %
+    % => \dimen2 = width of \int
+    \let\mint@limits=#1\relax
+    \ifx\mint@limits\relax
+      \sbox4{$#5\int_{\kern1sp}^{\kern1sp}\m@th$}%
+      \ifdim\wd4>\wd2 %
+        \let\mint@limits=\nolimits
+      \else
+        \let\mint@limits=\limits
+      \fi
+    \fi
+    \ifx\mint@limits\displaylimits
+      \ifx#5\displaystyle
+        \let\mint@limits=\limits
+      \fi
+    \fi
+    \ifx\mint@limits\limits
+      \sbox0{$#7#3\m@th$}%
+      \sbox2{$#7#4\m@th$}%
+      \ifdim\wd0>\dimen2 %
+        \dimen2=\wd0 %
+      \fi
+      \ifdim\wd2>\dimen2 %
+        \dimen2=\wd2 %
+      \fi
+    \fi
+    \rlap{%
+      $#5%
+        \vcenter{%
+          \hbox to\dimen2{%
+            \hss
+            $#6{#2}\m@th$%
+            \hss
+          }%
+        }%
+      $%
+    }%
+  \endgroup
+}
+\newcommand{\avg}{\mint{-}}
+
+
+
 
 \newcommand{\tac}{\textasteriskcentered}
 
 %mahesh macros
 \newcommand{\tm}{\textrm}
 
+%Comments
+\newcommand{\com}[1]{\vspace{5 mm}\par \noindent
+\marginpar{\textsc{Comment}} \framebox{\begin{minipage}[c]{0.95
+\textwidth} \tt #1 \end{minipage}}\vspace{5 mm}\par}
+
+\newcommand{\Bmu}{\mbox{$\raisebox{-0.59ex}
+  {$l$}\hspace{-0.18em}\mu\hspace{-0.88em}\raisebox{-0.98ex}{\scalebox{2}
+  {$\color{white}.$}}\hspace{-0.416em}\raisebox{+0.88ex}
+  {$\color{white}.$}\hspace{0.46em}$}{}}  %need graphicx and xcolor. this produces blackboard bold mu 
 
 \newcommand{\hooktwoheadrightarrow}{%
   \hookrightarrow\mathrel{\mspace{-15mu}}\rightarrow
@@ -352,13 +502,45 @@
 \newcommand{\bone}{\mathbf{1}}
 \newcommand{\sign}{\mathrm{sign}}
 \newcommand{\eps}{\varepsilon}
-\newcommand{\textui}[1]{\uline{\textit{#1}}}
+\newcommand{\textui}[1]{\underline{\textit{#1}}}
 
+%\newcommand{\ov}{\overline}
+%\newcommand{\un}{\underline}
 \newcommand{\fin}{\mathrm{fin}}
+
+\newcommand{\chnum}{\titleformat
+{\chapter} % command
+[display] % shape
+{\centering} % format
+{\Huge \color{black} \shadowbox{\thechapter}} % label
+{-0.5em} % sep (space between the number and title)
+{\LARGE \color{black} \underline} % before-code
+}
+
+\newcommand{\chunnum}{\titleformat
+{\chapter} % command
+[display] % shape
+{} % format
+{} % label
+{0em} % sep
+{ \begin{flushright} \begin{tabular}{r}  \Huge \color{black}
+} % before-code
+[
+\end{tabular} \end{flushright} \normalsize
+] % after-code
+}
 
 \newcommand{\nl}{\newline \mbox{}}
 
 \newcommand{\h}[1]{\hspace{#1pt}}
+
+\newcommand{\littletaller}{\mathchoice{\vphantom{\big|}}{}{}{}}
+\newcommand\restr[2]{{% we make the whole thing an ordinary symbol
+  \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
+  #1 % the function
+  \littletaller % pretend it's a little taller at normal size
+  \right|_{#2} % this is the delimiter
+  }}
 
 \newcommand{\mtext}[1]{\hspace{6pt}\text{#1}\hspace{6pt}}
 
@@ -369,3 +551,60 @@
 \newcommand{\ts}{\textstyle}
 
 
+\newcommand{\sfrac}[2]{{}^{#1}\mskip -5mu/\mskip -3mu_{#2}}
+
+
+\makeatletter
+\newcommand*{\da@rightarrow}{\mathchar"0\hexnumber@\symAMSa 4B }
+\newcommand*{\da@leftarrow}{\mathchar"0\hexnumber@\symAMSa 4C }
+\newcommand*{\xdashrightarrow}[2][]{%
+  \mathrel{%
+    \mathpalette{\da@xarrow{#1}{#2}{}\da@rightarrow{\,}{}}{}%
+  }%
+}
+\newcommand{\xdashleftarrow}[2][]{%
+  \mathrel{%
+    \mathpalette{\da@xarrow{#1}{#2}\da@leftarrow{}{}{\,}}{}%
+  }%
+}
+\newcommand*{\da@xarrow}[7]{%
+  % #1: below
+  % #2: above
+  % #3: arrow left
+  % #4: arrow right
+  % #5: space left 
+  % #6: space right
+  % #7: math style 
+  \sbox0{$\ifx#7\scriptstyle\scriptscriptstyle\else\scriptstyle\fi#5#1#6\m@th$}%
+  \sbox2{$\ifx#7\scriptstyle\scriptscriptstyle\else\scriptstyle\fi#5#2#6\m@th$}%
+  \sbox4{$#7\dabar@\m@th$}%
+  \dimen@=\wd0 %
+  \ifdim\wd2 >\dimen@
+    \dimen@=\wd2 %   
+  \fi
+  \count@=2 %
+  \def\da@bars{\dabar@\dabar@}%
+  \@whiledim\count@\wd4<\dimen@\do{%
+    \advance\count@\@ne
+    \expandafter\def\expandafter\da@bars\expandafter{%
+      \da@bars
+      \dabar@ 
+    }%
+  }%  
+  \mathrel{#3}%
+  \mathrel{%   
+    \mathop{\da@bars}\limits
+    \ifx\\#1\\%
+    \else
+      _{\copy0}%
+    \fi
+    \ifx\\#2\\%
+    \else
+      ^{\copy2}%
+    \fi
+  }%   
+  \mathrel{#4}%
+}
+\makeatother
+
+\renewcommand{\bs}[1]{\boldsymbol{#1}}

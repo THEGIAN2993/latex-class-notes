@@ -1,0 +1,79 @@
+\chapter{Banach Algebras}
+
+Unless otherwise stated, let $\bfF = \bfC$.
+
+\section{Definitions and Examples}
+
+\begin{definition}
+	An \textui{algebra} is an $\bfF$-vector space $V$ equipped with a multiplication operator making $V$ into a ring such that, for all $\alpha \in \bfF$ and $x,y \in V$, we have:
+	\mbox{}
+	\begin{itemize}[itemsep=1pt,topsep=3pt]
+		\item $\alpha (xy) = (\alpha x) y = x (\alpha y)$.
+	\end{itemize}
+\end{definition}
+
+\begin{definition}
+	A \textui{normed algebra} is an algebra $V$ equipped with a norm $\lnorm \cdot \rnorm$ making $V$ into a normed linear space such that, for all $x,y \in V$, we have:
+	\mbox{}
+	\begin{itemize}[itemsep=1pt,topsep=3pt]
+		\item $\lnorm xy \rnorm \leq \lnorm x \rnorm \lnorm y \rnorm$.
+	\end{itemize}
+	If $V$ has an identity $e$, then it is assumed that $\lnorm e \rnorm = 1$.
+\end{definition}
+
+\begin{proposition}
+	If $V$  
+\end{proposition}
+
+
+
+
+
+
+\begin{definition}
+	An \textui{$\bfF$-algebra} is an $\bfF$-vector space $A$ equipped with a multiplication operation that makes $V$ into a ring such that for all $\alpha \in \bfF$ and $a,b \in V$, we have $\alpha(ab) = (\alpha a)b = a(\alpha b)$. An element $e \in A$ satisfying $ea = ae = a$ for all $a \in A$ is called an \textui{identity}. 
+\end{definition}
+
+\begin{proposition}
+	Let $A$ be a normed $\bfF$-algebra with identity $e$. Suppose that, for every $\alpha \in \bfF$, we have $\lnorm \alpha e \rnorm = |\alpha|$. Then the map $\bfF \rightarrow A$ given by $\alpha \mapsto \alpha e$ is an isometric isomorphism of $\bfF$ onto the subalgebra $\bfF e = \{\alpha e : \alpha \in \bfF\}$.
+\end{proposition}
+
+\begin{remark}
+	It will be assumed that $\bfF \subseteq A$ via the above identification. As such, the identity of an algebra will always be denoted by $1$.
+\end{remark}
+
+\begin{definition}
+	A \textui{normed $\bfF$-algebra} is an $\bfF$-algebra $A$ equipped with a norm $\lnorm \cdot \rnorm$ such that, for all $a,b \in A$, we have $\lnorm ab \rnorm \leq \lnorm a \rnorm \lnorm b \rnorm$. If $A$ is a Banach space with respect to this norm, then $A$ is called a \textui{Banach algebra}. 
+\end{definition}
+
+\begin{proposition}
+	Let $A$ be a Banach algebra without identity with norm $\lnorm \cdot \rnorm$. Define binary operations on $A \times \bfF$ by:
+	\mbox{}
+	\begin{itemize}[itemsep=1pt,topsep=3pt]
+		\item $(a,\alpha) + (b,\beta) := (a + b, \alpha + \beta)$;
+		\item $\beta(a,\alpha) := (\beta a, \beta \alpha)$;
+		\item $(a,\alpha)(b,\beta) := (ab + \alpha b + \beta a, \alpha \beta)$.
+	\end{itemize}
+	Moreover, define: 
+	\mbox{}
+	\begin{itemize}[itemsep=1pt,topsep=3pt]
+		\item $\lnorm (a,\alpha) \rnorm := \lnorm a \rnorm + |\alpha|$.
+	\end{itemize}
+	Then $A \times \bfF$ with the above binary operations and norm is a Banach algebra with identity $(0,1)$. Furthermore, $a \mapsto (a,0)$ is an isometric isomorphism 
+\end{proposition}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+\begin{definition}
+	Let $A$ be an $\bfF$-algebra. \textui{left ideal} (resp. \textui{right ideal}) of $A$ is a subalgebra $M$ of $A$ such that $ax \in M$ (resp. $xa \in M$) whenever $a \in A$ and $x \in M$. If $A$ is both a left and right ideal, we simply refer to it as an \textui{ideal}.  
+
+
+	We drop the asdf and refer to it as an ideal. 
+\end{definition}
+
+
+
+\section{The Spectrum}
+

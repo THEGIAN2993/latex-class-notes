@@ -1,0 +1,118 @@
+\chapter{Functional Analytic Methods for PDEs}
+
+\section{Weak Derivatives and Sobolev Spaces}
+
+\subsection{H\"older spaces}
+
+\begin{definition}
+	Let $0 < \gamma \leq 1$. A function $u:U \rightarrow \bfR$ is \textui{H\"older continuous} with exponent $\gamma$ if:
+	\[
+		|u(x) - u(y)| \leq c|x-y|^{\gamma}.
+	\]
+	The space of H\"older continuous functions is denoted $C^{0,\gamma}(U)$.
+\end{definition}
+
+\begin{remark}
+	This is "easier to show" than being Lipschitz continuous; it is a less restrictive condition than Lipschitz continuity.
+\end{remark}
+
+\begin{definition}
+	Let $u \in C^{0,\gamma}(\overline{U})$.
+	\mbox{}
+	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+		\item The \textui{$\gamma^{\text{th}}$-H\"older seminorm} is $[u]_{C^{0,\gamma}(\overline{U})} := \sup_{x,y \in U} \frac{|u(x) -u(y)}{|x-y|^\gamma}$.
+		\item The \textui{$\gamma^{\text{th}}$-H\"older norm} is $\lnorm u \rnorm_{C^{0,\gamma}(\overline{U})}:=[u]_{C^{0,\gamma}(\overline{U})} + \lnorm u \rnorm_{C(\overline{U})}$.
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}
+	The \textui{H\"older Space} $C^{k,\gamma}(\overline{U})$ consists of all function $u \in C^k(\overline{U})$ for which $\lnorm u \rnorm_{C^{k,\gamma}(\overline{U})} < \infty$.
+\end{definition}
+
+\subsection{Weak Derivatives}
+
+\begin{example}
+	Suppose $u \in C^1(U)$, $\partial U$ is $C^1$, and  $\varphi \in C_c^\infty(U)$. Integration by parts gives the following identity:
+	\begin{align*}
+		\int_{U}^{} u_{x_i}\varphi\,dx 
+		&= - \int_{U}^{} u \varphi_{x_i}\,dx + \int_{\partial U}^{} u \varphi \nu^i \,dS \\
+		&= - \int_{U}^{} u \varphi_{x_i}\,dx.
+	\end{align*}
+	If $U \in C^k(U)$ where $k = |\alpha|$, then by repeatedly applying integration by parts we get:
+	\begin{align*}
+		\int_{U}^{} D^\alpha u \varphi\,dx = (-1)^{|\alpha|} \int_{U}^{} u D^\alpha \varphi\,dx
+	\end{align*}
+	However, if $u$ is a function but $D^\alpha u$ does not exist in the classical sense, it is still true that the mapping:
+	\begin{align*}
+		\varphi \mapsto (-1)^{|\alpha|} \int_{U}^{} u D^\alpha \phi \,dx
+	\end{align*}
+	from $C_c^\infty(U) \rightarrow \bfR^n$ is a well-defined linear functional. It makes sensethen to define $\varphi$ as the "derivative" of $u$ in this case.
+\end{example}
+
+\begin{definition}
+	Let $u,v \in L_{\text{loc}}^1(U)$. We say $v$ is the \textui{$\alpha^\text{th}$-weak partial derivative of $u$}, written $D^\alpha u := v$, if for all $\varphi \in C^\infty_c(U)$ we have:
+	\[
+		\int_{U}^{} v \varphi\,dx = (-1)^|\alpha| \int_{U}^{} u D^\alpha \varphi\,dx.
+	\] 
+\end{definition}
+
+\begin{proposition}
+	Let $u \in L_{\text{loc}}^1(U)$. Then $D^\alpha u$ is unique up to a set of measure zero.
+\end{proposition}
+	\begin{proof}
+		Suppose $v = D^\alpha u = w$. Then for all $\varphi \in C_c^\infty (\bfR)$:
+		\begin{align*}
+			\int_{U}^{} v \varphi\,dx
+			&= (-1)^{|\alpha|}\int_{U}^{} u D^\alpha \varphi \,dx \\
+			&= \int_{U}^{} w \varphi\,dx.
+		\end{align*}
+		Rearranging gives:
+		\begin{align*}
+			\int_{U}^{} (v-w)\varphi\,dx = 0.
+		\end{align*}
+		Since $\varphi$ is a smooth bump function, it must be the case that $v - w = 0$ a.e., establishing the claim.
+	\end{proof}
+
+{\color{red}\begin{example}
+	weak derivative of absolute value.
+\end{example}}
+
+{\color{red} \begin{example}
+weak derivative of weak derivative of absolute value does not exist.	
+\end{example}}
+
+\begin{definition}
+	Let $k \in \bfN$ and $1 \leq p \leq \infty$. The \textui{Sobolev space} $W^{k,p}(U)$ consists of all functions $u \in L_{\text{loc}}^1(U)$ whose weak deriavites $D^\alpha u$ exist and belong to $L^p(U)$. For $u \in W^{k,p}(U)$, we define its norm to be:
+	\begin{align*}
+		\lnorm u \rnorm_{W^{k,p}} := 
+		\begin{cases}
+			\left( \sum_{|\alpha| \leq k}^{} \int_{U}^{} |D^\alpha u|^p \,dx \right)^{\frac{1}{p}}, & 1 \leq p < 1 \\
+			\sum_{|\alpha| \leq k}^{} \lnorm D^\alpha u \rnorm_{L^\infty(U)}, & p = \infty
+		\end{cases}.
+	\end{align*}
+	For the case of $p = 2$, we redefine $H^k(U) := W^{k,2}(U)$. The closure of $C_c^\infty(U)$ with respect to the norm $\lnorm \cdot \rnorm_{H^k(U)}$ is denoted by $H_0^k(U)$.
+\end{definition}
+
+\begin{theorem}
+	Let $u,v \in W^{k,p}(U)$.
+	\mbox{}
+	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+		\item For $|\alpha| \leq k$, we have $D^\alpha u \in W^{k - |\alpha|,p}(U)$. In particular, $D^\beta(D^\alpha u ) = D^\alpha(D^\beta u )$ if $|\alpha + \beta| \leq k$.
+		\item $D^\alpha(u + \lambda v) = D^\alpha u + \lambda D^\alpha v$.
+		\item If $V \subset U$, then $u,v \in W^{k,p}(V)$.
+		\item If $\zeta \in C_c^\infty(U)$, then $\zeta u \in W^{k,p}(U)$ and $\frac{\partial}{\partial x_i}(\zeta u ) = \zeta_{x_i}u + \zeta (D^{e_i}u)$.
+	\end{enumerate}
+\end{theorem}
+{\color{red}
+\begin{proof}
+		
+\end{proof}}
+
+\begin{theorem}
+	$(W^{k,p}(U),\lnorm \cdot \rnorm_{W^{k,p}(U)})$ is a Banach space.
+\end{theorem}
+
+
+
+
+\section{Elliptic PDEs}

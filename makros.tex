@@ -1,3 +1,11 @@
+% ============================================================
+% makros.tex — reorganized, full restored version
+% ============================================================
+
+% ============================================================
+% Sha / Cyrillic support notes
+% ============================================================
+
 %to make the correct symbol for Sha
 %\newcommand\cyr{%
 %\renewcommand\rmdefault{wncyr}%
@@ -5,9 +13,11 @@
 %\renewcommand\encodingdefault{OT2}%
 %\normalfont \selectfont} \DeclareTextFontCommand{\textcyr}{\cyr}
 
+% ============================================================
+% Math operators
+% ============================================================
 
 \DeclareMathOperator{\ab}{ab}
-\newcommand{\absgal}{\G_{\bbQ}}
 \DeclareMathOperator{\ad}{ad}
 \DeclareMathOperator{\adj}{adj}
 \DeclareMathOperator{\alg}{alg}
@@ -114,7 +124,44 @@
 \DeclareMathOperator{\val}{val}
 \DeclareMathOperator{\vol}{vol}
 
+% ============================================================
+% General aliases and short macros
+% ============================================================
+
+\newcommand{\absgal}{\G_{\bbQ}}
 \newcommand{\Loc}{L_{\operatorname{loc}}}
+\renewcommand{\k}{\kappa}
+\newcommand{\Ff}{F_{f}}
+%\newcommand{\ts}{\,^{t}\!}
+\newcommand{\lat}{\mathscr{L}}
+\newcommand{\ov}[1]{\overline{#1}}
+\newcommand{\up}{\upsilon}
+\newcommand{\e}{\epsilon}
+\newcommand{\tac}{\textasteriskcentered}
+
+%mahesh macros
+\newcommand{\tm}{\textrm}
+
+\newcommand{\bone}{\mathbf{1}}
+\newcommand{\sign}{\mathrm{sign}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\textui}[1]{\underline{\textit{#1}}}
+
+%\newcommand{\ov}{\overline}
+%\newcommand{\un}{\underline}
+\newcommand{\fin}{\mathrm{fin}}
+\newcommand{\nl}{\newline \mbox{}}
+\newcommand{\h}[1]{\hspace{#1pt}}
+\newcommand{\mtext}[1]{\hspace{6pt}\text{#1}\hspace{6pt}}
+\newcommand{\lnorm}{\left\lVert}
+\newcommand{\rnorm}{\right\rVert}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\ts}{\textstyle}
+\newcommand{\sfrac}[2]{{}^{#1}\mskip -5mu/\mskip -3mu_{#2}}
+
+% ============================================================
+% Category-style operators and contoured variants
+% ============================================================
 
 \DeclareMathOperator{\Sets}{S \mkern1.04mu e \mkern1.04mu t \mkern1.04mu s}
     \newcommand{\cSets}{\scalebox{1.02}{\contour{black}{$\Sets$}}}
@@ -143,12 +190,10 @@
 \DeclareMathOperator{\hHom}{H \mkern1.04mu o \mkern1.04mu m}
     \newcommand{\cHom}{\scalebox{1.02}{\contour{black}{$\hHom$}}}
 
-\renewcommand{\k}{\kappa}
-\newcommand{\Ff}{F_{f}}
-%\newcommand{\ts}{\,^{t}\!}
+% ============================================================
+% Mathcal
+% ============================================================
 
-
-%Mathcal
 \newcommand{\cA}{\mathcal{A}}
 \newcommand{\cB}{\mathcal{B}}
 \newcommand{\cC}{\mathcal{C}}
@@ -176,8 +221,67 @@
 \newcommand{\cY}{\mathcal{Y}}
 \newcommand{\cZ}{\mathcal{Z}}
 
+% ============================================================
+% Mathscrl% 
+%============================================================
 
-%mathfrak (missing \fi)
+\newcommand{\scra}{\mathscr{a}}
+\newcommand{\scrA}{\mathscr{A}}
+\newcommand{\scrb}{\mathscr{b}}
+\newcommand{\scrB}{\mathscr{B}}
+\newcommand{\scrc}{\mathscr{c}}
+\newcommand{\scrC}{\mathscr{C}}
+\newcommand{\scrd}{\mathscr{d}}
+\newcommand{\scrD}{\mathscr{D}}
+\newcommand{\scre}{\mathscr{e}}
+\newcommand{\scrE}{\mathscr{E}}
+\newcommand{\scrf}{\mathscr{f}}
+\newcommand{\scrF}{\mathscr{F}}
+\newcommand{\scrg}{\mathscr{g}}
+\newcommand{\scrG}{\mathscr{G}}
+\newcommand{\scrh}{\mathscr{h}}
+\newcommand{\scrH}{\mathscr{H}}
+\newcommand{\scri}{\mathscr{i}}
+\newcommand{\scrI}{\mathscr{I}}
+\newcommand{\scrj}{\mathscr{j}}
+\newcommand{\scrJ}{\mathscr{J}}
+\newcommand{\scrk}{\mathscr{k}}
+\newcommand{\scrK}{\mathscr{K}}
+\newcommand{\scrl}{\mathscr{l}}
+\newcommand{\scrL}{\mathscr{L}}
+\newcommand{\scrm}{\mathscr{m}}
+\newcommand{\scrM}{\mathscr{M}}
+\newcommand{\scrn}{\mathscr{n}}
+\newcommand{\scrN}{\mathscr{N}}
+\newcommand{\scro}{\mathscr{o}}
+\newcommand{\scrO}{\mathscr{O}}
+\newcommand{\scrp}{\mathscr{p}}
+\newcommand{\scrP}{\mathscr{P}}
+\newcommand{\scrq}{\mathscr{q}}
+\newcommand{\scrQ}{\mathscr{Q}}
+\newcommand{\scrr}{\mathscr{r}}
+\newcommand{\scrR}{\mathscr{R}}
+\newcommand{\scrs}{\mathscr{s}}
+\newcommand{\scrS}{\mathscr{S}}
+\newcommand{\scrt}{\mathscr{t}}
+\newcommand{\scrT}{\mathscr{T}}
+\newcommand{\scru}{\mathscr{u}}
+\newcommand{\scrU}{\mathscr{U}}
+\newcommand{\scrv}{\mathscr{v}}
+\newcommand{\scrV}{\mathscr{V}}
+\newcommand{\scrw}{\mathscr{w}}
+\newcommand{\scrW}{\mathscr{W}}
+\newcommand{\scrx}{\mathscr{x}}
+\newcommand{\scrX}{\mathscr{X}}
+\newcommand{\scry}{\mathscr{y}}
+\newcommand{\scrY}{\mathscr{Y}}
+\newcommand{\scrz}{\mathscr{z}}
+\newcommand{\scrZ}{\mathscr{Z}}
+
+% ============================================================
+% Mathfrak (missing \fi)
+% ============================================================
+
 \newcommand{\fa}{\mathfrak{a}}
 \newcommand{\fA}{\mathfrak{A}}
 \newcommand{\fb}{\mathfrak{b}}
@@ -230,8 +334,10 @@
 \newcommand{\fz}{\mathfrak{z}}
 \newcommand{\fZ}{\mathfrak{Z}}
 
+% ============================================================
+% Mathbf
+% ============================================================
 
-%mathbf
 \newcommand{\bfA}{\mathbf{A}}
 \newcommand{\bfB}{\mathbf{B}}
 \newcommand{\bfC}{\mathbf{C}}
@@ -286,7 +392,9 @@
 \newcommand{\bfy}{\mathbf{y}}
 \newcommand{\bfz}{\mathbf{z}}
 
-%blackboard bold
+% ============================================================
+% Blackboard bold
+% ============================================================
 
 \newcommand{\bbA}{\mathbb{A}}
 \newcommand{\bbB}{\mathbb{B}}
@@ -314,7 +422,21 @@
 \newcommand{\bbX}{\mathbb{X}}
 \newcommand{\bbY}{\mathbb{Y}}
 \newcommand{\bbZ}{\mathbb{Z}}
+
+\newcommand{\Bmu}{\mbox{$\raisebox{-0.59ex}
+  {$l$}\hspace{-0.18em}\mu\hspace{-0.88em}\raisebox{-0.98ex}{\scalebox{2}
+  {$\color{white}.$}}\hspace{-0.416em}\raisebox{+0.88ex}
+  {$\color{white}.$}\hspace{0.46em}$}{}}  %need graphicx and xcolor. this produces blackboard bold mu 
+
+% ============================================================
+% Greek-letter aliases
+% ============================================================
+
 \newcommand{\jota}{\jmath}
+
+% ============================================================
+% Matrices
+% ============================================================
 
 \newcommand{\bmat}{\left( \begin{matrix}}
 \newcommand{\emat}{\end{matrix} \right)}
@@ -325,13 +447,13 @@
 \newcommand{\pmat}{\left( \begin{smallmatrix}}
 \newcommand{\epmat}{\end{smallmatrix} \right)}
 
-\newcommand{\lat}{\mathscr{L}}
 \newcommand{\mat}[4]{\begin{pmatrix}{#1}&{#2}\\{#3}&{#4}\end{pmatrix}}
-\newcommand{\ov}[1]{\overline{#1}}
-\newcommand{\res}[1]{\underset{#1}{\RES}\,}
-\newcommand{\up}{\upsilon}
-\newcommand{\e}{\epsilon}
 
+% ============================================================
+% Residues and averaged integrals
+% ============================================================
+
+\newcommand{\res}[1]{\underset{#1}{\RES}\,}
 
 \makeatletter
 \newcommand*{\mint}[1]{%
@@ -464,24 +586,20 @@
   \endgroup
 }
 \newcommand{\avg}{\mint{-}}
+\makeatother
 
-
-
-
-\newcommand{\tac}{\textasteriskcentered}
-
-%mahesh macros
-\newcommand{\tm}{\textrm}
+% ============================================================
+% Comments and drafting helpers
+% ============================================================
 
 %Comments
 \newcommand{\com}[1]{\vspace{5 mm}\par \noindent
 \marginpar{\textsc{Comment}} \framebox{\begin{minipage}[c]{0.95
 \textwidth} \tt #1 \end{minipage}}\vspace{5 mm}\par}
 
-\newcommand{\Bmu}{\mbox{$\raisebox{-0.59ex}
-  {$l$}\hspace{-0.18em}\mu\hspace{-0.88em}\raisebox{-0.98ex}{\scalebox{2}
-  {$\color{white}.$}}\hspace{-0.416em}\raisebox{+0.88ex}
-  {$\color{white}.$}\hspace{0.46em}$}{}}  %need graphicx and xcolor. this produces blackboard bold mu 
+% ============================================================
+% Arrows
+% ============================================================
 
 \newcommand{\hooktwoheadrightarrow}{%
   \hookrightarrow\mathrel{\mspace{-15mu}}\rightarrow
@@ -494,65 +612,6 @@
   \mathrel{\mspace{-15mu}}\rightarrow
 }
 \makeatother
-
-\renewcommand{\geq}{\geqslant}
-\renewcommand{\leq}{\leqslant}
-\newcommand{\midd}{\hspace{4pt}\middle|\hspace{4pt}}
-    
-\newcommand{\bone}{\mathbf{1}}
-\newcommand{\sign}{\mathrm{sign}}
-\newcommand{\eps}{\varepsilon}
-\newcommand{\textui}[1]{\underline{\textit{#1}}}
-
-%\newcommand{\ov}{\overline}
-%\newcommand{\un}{\underline}
-\newcommand{\fin}{\mathrm{fin}}
-
-\newcommand{\chnum}{\titleformat
-{\chapter} % command
-[display] % shape
-{\centering} % format
-{\Huge \color{black} \shadowbox{\thechapter}} % label
-{-0.5em} % sep (space between the number and title)
-{\LARGE \color{black} \underline} % before-code
-}
-
-\newcommand{\chunnum}{\titleformat
-{\chapter} % command
-[display] % shape
-{} % format
-{} % label
-{0em} % sep
-{ \begin{flushright} \begin{tabular}{r}  \Huge \color{black}
-} % before-code
-[
-\end{tabular} \end{flushright} \normalsize
-] % after-code
-}
-
-\newcommand{\nl}{\newline \mbox{}}
-
-\newcommand{\h}[1]{\hspace{#1pt}}
-
-\newcommand{\littletaller}{\mathchoice{\vphantom{\big|}}{}{}{}}
-\newcommand\restr[2]{{% we make the whole thing an ordinary symbol
-  \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
-  #1 % the function
-  \littletaller % pretend it's a little taller at normal size
-  \right|_{#2} % this is the delimiter
-  }}
-
-\newcommand{\mtext}[1]{\hspace{6pt}\text{#1}\hspace{6pt}}
-
-\newcommand{\lnorm}{\left\lVert}
-\newcommand{\rnorm}{\right\rVert}
-
-\newcommand{\ds}{\displaystyle}
-\newcommand{\ts}{\textstyle}
-
-
-\newcommand{\sfrac}[2]{{}^{#1}\mskip -5mu/\mskip -3mu_{#2}}
-
 
 \makeatletter
 \newcommand*{\da@rightarrow}{\mathchar"0\hexnumber@\symAMSa 4B }
@@ -607,4 +666,60 @@
 }
 \makeatother
 
-\renewcommand{\bs}[1]{\boldsymbol{#1}}
+% ============================================================
+% Relation and delimiter spacing
+% ============================================================
+
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\newcommand{\midd}{\hspace{4pt}\middle|\hspace{4pt}}
+
+% ============================================================
+% Left Right Updated Deliminators
+% ============================================================
+
+\makeatletter
+\NewDocumentCommand\Left{O{}}{%
+    \IfValueTF{#1}{\notblank{#1}{\mathopen\bBigg@{#1}}{\left}}{\left}}
+\NewDocumentCommand\Right{O{}}{%
+    \IfValueTF{#1}{\notblank{#1}{\mathopen\bBigg@{#1}}{\right}}{\right}}
+\makeatother
+
+% ============================================================
+% Restrictions
+% ============================================================
+
+\newcommand{\littletaller}{\mathchoice{\vphantom{\big|}}{}{}{}}
+\newcommand\restr[2]{{% we make the whole thing an ordinary symbol
+  \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
+  #1 % the function
+  \littletaller % pretend it's a little taller at normal size
+  \right|_{#2} % this is the delimiter
+  }}
+
+% ============================================================
+% Chapter title formatting
+% ============================================================
+
+\newcommand{\chnum}{\titleformat
+{\chapter} % command
+[display] % shape
+{\centering} % format
+{\Huge \color{black} \shadowbox{\thechapter}} % label
+{-0.5em} % sep (space between the number and title)
+{\LARGE \color{black} \underline} % before-code
+}
+
+\newcommand{\chunnum}{\titleformat
+{\chapter} % command
+[display] % shape
+{} % format
+{} % label
+{0em} % sep
+{ \begin{flushright} \begin{tabular}{r}  \Huge \color{black}
+} % before-code
+[
+\end{tabular} \end{flushright} \normalsize
+] % after-code
+}
+

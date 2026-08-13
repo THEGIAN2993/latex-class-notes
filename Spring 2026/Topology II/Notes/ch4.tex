@@ -1,0 +1,125 @@
+\chapter{Classification of Surfaces}
+
+\section{Topological Manifolds and Surfaces}
+
+\begin{definition}
+	A \textui{topological $n$-dimensional manifold} $M$ is a Hausdorff topological space with a countable basis such that each point $p \in M$ is contained in an open set $U_p$ which is homeomorphic to $B(0,1) \subset \bfR^n$.
+\end{definition}
+
+\begin{example}
+	$\bfR^n$, $S^n$, open subsets of $\bfR^n$ and $T^n$ are all topological manifolds.
+\end{example}
+
+\begin{definition}
+	A \textui{surface} is a connected 2-dimensional manifold.
+\end{definition}
+
+\section{Connected Sums of Surfaces}
+
+\begin{definition}
+	Let $S_1$ and $S_2$ be two $n$-dimensional topological manifolds. Let $\overline{B}(0,1) \subset \bfR^n$ be the closed ball in $\bfR^n$. Let $\alpha$ and $\beta$ be continuous injections from $\overline{B}(0,1)$ to $S_1$ and $S_2$ respectively. Define:
+	\[
+		S:=\Bigl(S_1 \setminus \alpha(B(0,1)) \Bigr) \cup \Bigl(S_2 \setminus \beta(B(0,1)) \Bigr).
+	\] 
+	Define an equivalence relation on $S$ as follows: $x \sim y$ if and only if $x=y$ or $\alpha^{-1}(x) = \beta^{-1}(y)$. The \textui{connected sum} $S_1 \# S_2$ is defined as the quotient space $S/\sim$.
+\end{definition}
+
+\begin{proposition}
+	Let $S_1$ and $S_2$ be surfaces:
+	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+		\item $S_1 \# S_2$ is a surface.
+		\item $S_1 \# S_2$ does not depend on the choice of closed balls.
+	\end{enumerate}
+\end{proposition}
+
+\begin{definition}
+	A surface is \textui{orientable} if every closed path in orientation preserving. It is \textui{non-orientable}  if it contains at least one orientation reversing path.
+\end{definition}
+
+\begin{proposition}
+	\mbox{}
+	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+		\item If $S_1$ is a non-orientable surface and $S_2$ is an orientable surface, then $S_1 \# S_2$ is non-orientable.
+		\item If $S_1$ and $S_2$ are non-orientable, then $S_1 \# S_2$ is non-orientable.
+		\item If $S_1$ and $S_2$ are orientable, then $S_1 \# S_2$ is orientable.
+	\end{enumerate}
+\end{proposition}
+
+\begin{definition}
+	\mbox{}
+	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+		\item The \textui{orientable surface of genus $g$} is $\#_g T^2$.
+		\item The \textui{Klein bottle} is $T^2 \# T^2$.
+	\end{enumerate}
+\end{definition}
+
+\section{Triangulations of Compact Surfaces}
+
+\begin{definition}
+	A \textui{triangulation} of a compact surface $S$ consists of a finite family of closed subsets $\{T_1,\ldots T_k\}$ that cover $S$ and a family of homeomorphisms $\{\varphi_i:T_i' \rightarrow T_i : i = 1,\ldots ,n\}$, where each $T_i'$ is a triangle in $\bfR^2$. Moreover, for distinct $T_i$ and $T_j$ one of the following must be true:
+	\mbox{}
+	\begin{enumerate}[label = (\roman*),itemsep=1pt,topsep=3pt]
+		\item $T_i \cap T_j = \emptyset$;
+		\item $T_i \cap T_j$ is a single vertex;
+		\item $T_i \cap T_j$ is an edge.
+	\end{enumerate}
+	The subsets $T_j$ are called the \textui{triangles} of $S$.
+\end{definition}
+
+\begin{theorem}
+	Every compact surface admits a triangulation.
+\end{theorem}
+
+\begin{definition}
+	Let $S$ be a compact surface with triangulation $\{T_1,\ldots, T_n\}$. Let:
+	\mbox{}
+	\begin{itemize}[itemsep=1pt,topsep=3pt]
+		\item $v = $ total number of vertices of $S$;
+		\item $e = $ total number of edges of $S$;
+		\item $t = $ total number of triangles of $S$.
+	\end{itemize}
+	Then the \textui{Euler characteristic} of $S$ is $\chi(S) := v - e + t$.
+\end{definition}
+
+\begin{example}
+	\mbox{}
+	\begin{itemize}[itemsep=1pt,topsep=3pt]
+		\item $\chi(S^2) = 2$.
+		\item $\chi(\bfR P^2) = 1$.
+		\item $\chi(T^2) = 0$.
+	\end{itemize}
+\end{example}
+
+\section{Euler Characteristic and Covering Spaces}
+
+\begin{proposition}
+	Let $S_1$ and $S_2$ be compact surfaces. Then $\chi(S_1 \# S_2) = \chi(S_1) + \chi(S_2) - 2$.
+\end{proposition}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+\begin{proposition}
+	Let $B$ be a compact connected surface. Suppose that $p:E \rightarrow B$ is an $n$-sheeted covering map where $E$ is connected. Then $E$ is a compact surface and $\chi(E) = n \chi(B)$.
+\end{proposition}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+\begin{proposition}
+	\mbox{}
+	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+		\item 
+	\end{enumerate}
+\end{proposition}
+
+
+
+
+first one, identity fundamental group
+homotopy equivalences, deformation retracts, and they induce isomorphisms of fundamental groups and stuff
+
+
+second one, covering spaces

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  3 MAY 2026 20:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  10 JUN 2026 09:02
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1773,12 +1773,20 @@ File: upzd.fd 2001/06/04 font definitions for U/pzd.
 LaTeX Font Info:    Trying to load font information for U+psy on input line 64.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/upsy.fd
 File: upsy.fd 2001/06/04 font definitions for U/psy.
-))) (/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex)
+)) (/usr/local/texlive/2025/texmf-dist/tex/latex/tools/bm.sty
+Package: bm 2023/12/19 v1.2f Bold Symbol Support (DPC/FMi)
+\symboldoperators=\mathgroup10
+\symboldletters=\mathgroup11
+\symboldsymbols=\mathgroup12
+\symboldlargesymbols=\mathgroup13
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 149.
+)) (/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex)
 Package translations Info: No language package found. I am going to use `english' as default language. on input line 5.
 LaTeX Font Info:    Trying to load font information for T1+jkpl on input line 5.
- (/usr/local/texlive/2025/texmf-dist/tex/latex/kpfonts/t1jkpl.fd
+
+(/usr/local/texlive/2025/texmf-dist/tex/latex/kpfonts/t1jkpl.fd
 File: t1jkpl.fd 2007/08/30 Fontinst v1.928 font definitions for T1/jkpl.
-) (./_main.aux (./ch1.aux) (./ch2.aux))
+) (./_main.aux (./ch1.aux) (./ch2.aux) (./ch3.aux))
 \openout1 = `_main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/jkpl/m/it on input line 5.
@@ -1996,13 +2004,35 @@ LaTeX Warning: Reference `' on page 17 undefined on input line 525.
 
 [19]
 
-[20])
+[20]
 
 [21]
+
+[22]
+
+[23]
+
+[24])
+
+[25]
+\openout2 = `ch3.aux'.
+
+ (./ch3.tex
+
+[26
+
+
+
+
+]
+
+[27])
+
+[28]
 \tf@toc=\write6
 \openout6 = `_main.toc'.
 
- (./_main.aux (./ch1.aux) (./ch2.aux))
+ (./_main.aux (./ch1.aux) (./ch2.aux) (./ch3.aux))
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2020/03/25>
@@ -2012,21 +2042,21 @@ L3 programming layer <2020/03/25>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `_main.out' has not changed.
-(rerunfilecheck)             Checksum: CE97A3545BE5BEECC21F9915BD9776EE;2555.
+(rerunfilecheck)             Checksum: CFAC09E2437C266067AC51A35B9CBEBF;3705.
  ) 
 Here is how much of TeX's memory you used:
- 43750 strings out of 473190
- 990521 string characters out of 5715801
- 1515010 words of memory out of 5000000
- 66112 multiletter control sequences out of 15000+600000
- 669723 words of font info for 151 fonts, out of 8000000 for 9000
+ 44015 strings out of 473190
+ 993556 string characters out of 5715801
+ 1517010 words of memory out of 5000000
+ 66313 multiletter control sequences out of 15000+600000
+ 685490 words of font info for 183 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  107i,16n,110p,1083b,832s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2025/texmf-dist/fonts/type1/public/kpfonts/jkplbn8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/kpfonts/jkplbne.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/kpfonts/jkplex.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/kpfonts/jkplexa.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/kpfonts/jkplmi.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/kpfonts/jkplmia.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/kpfonts/jkplmit8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/kpfonts/jkplmite.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/kpfonts/jkplmn8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/kpfonts/jkplmne.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/kpfonts/jkplsy.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/kpfonts/jkplsyb.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/kpfonts/jkplsyc.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/kpfonts/jkpsya.pfb>
-Output written on _main.pdf (22 pages, 195921 bytes).
+</usr/local/texlive/2025/texmf-dist/fonts/type1/public/kpfonts/jkplbn8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/kpfonts/jkplex.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/kpfonts/jkplexa.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/kpfonts/jkplmi.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/kpfonts/jkplmia.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/kpfonts/jkplmit8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/kpfonts/jkplmite.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/kpfonts/jkplmn8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/kpfonts/jkplmne.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/kpfonts/jkplsy.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/kpfonts/jkplsyc.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/kpfonts/jkpsya.pfb>
+Output written on _main.pdf (29 pages, 207872 bytes).
 PDF statistics:
- 365 PDF objects out of 1000 (max. 8388607)
- 309 compressed objects within 4 object streams
- 116 named destinations out of 1000 (max. 500000)
- 133 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 459 PDF objects out of 1000 (max. 8388607)
+ 400 compressed objects within 4 object streams
+ 162 named destinations out of 1000 (max. 500000)
+ 189 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,4 +1,4 @@
-\chapter{Solutions to Linear Partial Differential Equations}
+\chapter{Classical Linear PDEs}
 \vspace{-25pt}
 
 \section{The Transport Equation}
@@ -737,4 +737,174 @@ Below is an alternative proof of uniqueness for the boundary value problem in Co
 		It must be the case that $-\Delta u = f$ in $U$. Hence $U$ satisfies the above BVP.
 	\end{proof}
 
-\section{}
+\section{The Heat Equation}
+
+\subsection{The Fourier Transform}
+
+\begin{definition}
+	The \textui{Fourier transform} of a function $u \in L^1(\bfR^n)$ is defined by:
+	\[
+		\hat{u}(y) := \frac{1}{(2\pi)^{\frac{n}{2}}} \int_{\bfR^n}^{} u(x) e^{-i (x \cdot y)}\,dx.
+	\] 
+	The \textui{inverse Fourier transform} is given by:
+	\[
+		\check{u}(y) := \frac{1}{(2\pi)^{\frac{n}{2}}} \int_{\bfR^n}^{} u(x) e^{i (x \cdot y)}\,dx.
+	\] 
+\end{definition}
+
+
+
+\begin{lemma}
+	For $x \in \bfR^n$ and $t > 0$, define $\Phi(x,t):= \frac{1}{(4\pi t)^{\frac{n}{2}}}e^{-\frac{|x|^2}{4t}}$.
+	\mbox{}
+	\begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+		\item $\int_{\bfR^n}^{} \Phi(x,t)\,dx = 1$.
+		\item If $w \in C(\bfR^n) \cap L^1(\bfR^n)$, then $\lim_{t \rightarrow 0^+}\int_{\bfR^n}^{} \Phi(x,t)w(x)\,dx = w(0)$.
+	\end{enumerate}
+\end{lemma}
+	\begin{proof}
+		(1) Rewrite $\Phi$ as:
+		\[
+		\Phi(x,t):= \frac{1}{(4\pi t)^{\frac{n}{2}}}e^{-\left|\frac{x}{\sqrt{4t}}\right|^2}.
+		\] 
+		Take $y := \frac{x}{\sqrt{4t}}$. Then $dy = \frac{dx}{(4t)^{\frac{n}{2}}}$. Fubinis Theorem will yield:
+
+		\begin{align*}
+			\int_{\bfR^n}^{} \Phi(x,t)\,dx
+			&= \frac{1}{(4 \pi t)^{n/2}}\int_{\bfR^n}^{} e^{-|y|^2}(4t)^{\frac{n}{2}}\,dx \\
+			&= \frac{1}{\pi^{\frac{n}{2}}}\int_{\bfR^n}^{} e^{-|y|^2}dx \\
+			&= \frac{1}{\pi^{\frac{n}{2}}} \int_{-\infty}^{\infty} \ldots \int_{-\infty}^{\infty} e^{-\sum_{i=1}^{n} y_i^2}\,dy_1\ldots dy_n \\
+			&= \left( \frac{1}{\sqrt{\pi}} \int_{-\infty}^{\infty} e^{-y_1^2}\,dy_1 \right) \ldots \left( \frac{1}{\sqrt{\pi}} \int_{-\infty}^{\infty} e^{-y_n^2}\,dy_n \right)  \\
+			&= 1.
+		\end{align*}
+
+		(2) Fix $t > 0$. Making the same substitution as above gives:
+		\begin{align*}
+			\int_{\bfR^n}^{} \Phi(x,t)w(x)\,dx
+			&= \int_{\bfR^n}^{} \frac{1}{(4\pi t)^{\frac{n}{2}}}e^{\frac{-|x|^2}{4t}}w(x)\,dx \\
+			&= \frac{1}{\pi^{\frac{n}{2}}}\int_{\bfR^n}^{} e^{-|y|^2}w(\sqrt{4t}y)\,dx.
+		\end{align*}
+		Hence:
+		\begin{align*}
+			\lim_{t \rightarrow 0^+}\int_{\bfR^n}^{} \Phi(x,t)w(x)\,dx
+			&= \lim_{t \rightarrow 0^=} \int_{\bfR^n}^{} e^{-|y|}w(\sqrt{4t}y)\,dy  \\
+			&= \frac{1}{\pi^{\frac{n}{2}}}\int_{\bfR^n}^{}  e^{-|y|^2} \left( \lim_{t \rightarrow 0^+} w(\sqrt{4t}y) \right)\,dy \\
+			&= \frac{w(0)}{\pi^{\frac{n}{2}}} \int_{\bfr^n}^{} e^{-|y|^2}\,dy  \\
+			&= w(0). \qedhere
+		\end{align*}
+	\end{proof}
+
+\begin{lemma}
+	If $u,v \in L^1(\bfR^n)$, then $(u \ast v) \in L^1(\bfR^n)$.
+\end{lemma}
+	\begin{proof}
+		Let $w:=u\ast v$. We have:
+		\begin{align*}
+			\int_{\bfR^n}^{} |w(y)|\,dy
+			&= \int_{\bfR^n}^{} \left| \int_{\bfR^n}^{} u(y-x)v(x)\,dx \right| \,dy \\
+			&\leq \int_{\bfR^n}^{} \int_{\bfR^n}^{} |u(y-x)||v(x)|\,dxdy \\
+			&\leq \int_{\bfR^n}^{} \int_{\bfR^n}^{} |u(y-x)||v(x)|\,dydx \\
+			&= \int_{\bfr^n}^{} \left( \int_{\bfR^n}^{} |u(y-x)\,dy \right) |v(x)|\,dx \\
+			&= \int_{\bfR^n}^{} \lnorm u \rnorm_{L^1(\bfR^n)}|v(x)|\,dx \\
+			&= \lnorm u \rnorm_{L^1(\bfR^n)}\lnorm v \rnorm_{L^1(\bfR^n)}.
+		\end{align*}
+		Thus $w \in L^1(\bfR^n)$.
+	\end{proof}
+
+\begin{lemma}
+	If $u,v \in L^1(\bfR^n) \cap L^2(\bfR^n)$, then $(u \ast v) \in C(\bfR^n)$.
+\end{lemma}
+	\begin{proof}
+		Define $w:=u \ast v$. Let $\epsilon > 0$. Find $\varphi \in C^\infty_c(\bfR^n)$ such that $\lnorm \varphi - u \rnorm_{L^2(\bfR^n)} < \epsilon$. Since $\varphi$ is continuous, find $\delta > 0$ such that for any $x,y \in \bfR^n$ we have $|x-y| < \delta$ implies $|\varphi(x) - \varphi(y)| < \epsilon$. If $|x-y| < \delta$, then:
+		\begin{align*}
+			|w(x) - w(y)|
+			&= \left| \int_{\bfR^n}^{}u(x-z)v(z)\,dz - \int_{\bfR^n}^{} u(y-z)v(z)\,dz  \right|  \\
+			&\leq \int_{\bfR^n}^{} |u(x-z) - u(y-z)|v(z)\,dz \\
+		\end{align*}
+		We can rewrite this final integral as:
+		\[
+			\int_{\bfR^n}^{} |u(x-z)-\varphi(x-z)||v(z)|\,dz + \int_{\bfR^n}^{} |\varphi(x-z) - \varphi(y-z)||v(z)|\,dz + \int_{\bfR^n}^{} |\varphi(y-z) - u(y-z)||v(z)|\,dz.	
+		\] 
+		Note that if $|x-y| < \delta$, then $|(x-z) - (y-z)| < \delta$. Using this on the second integral, as well as applying Cauchy-Schwartz to the first and third integral gives:
+		\begin{align*}
+			|w(x) - w(y)|
+			&\leq 2\lnorm u - \varphi \rnorm_{L^2(\bfR^n)}\lnorm v \rnorm_{L^2(\bfR^n)} + \epsilon \lnorm v \rnorm_{L^2(\bfR^n)} \\
+			& < 2\epsilon \lnorm v \rnorm_{L^2(\bfR^n)} + \epsilon \lnorm v \rnorm_{L^2(\bfR^n)}. \qedhere
+		\end{align*}
+	\end{proof}
+
+
+\begin{theorem}[Plancharel]
+	Let $u \in L^1(\bfR^n)\cap L^2(\bfR^n)$. Then $\hat{u},\check{u} \in L^2(\bfR^n)$ and:
+	\[
+		\lnorm \hat{u} \rnorm_{L^2(\bfR^n)} = \lnorm u \rnorm_{L^2(\bfR^n)} = \lnorm \check{u} \rnorm_{L^2(\bfR^n)}.
+	\] 
+\end{theorem}
+	\begin{proof}
+		We will first show that if $v,w \in L^1(\bfR^n)$, then $\hat{v},\hat{w} \in L^\infty(\bfR^n)$. Indeed:
+		\begin{align*}
+			|\hat{v}(y)| 
+			&= \left| \frac{1}{(2\pi)^{\frac{n}{2}}} \int_{\bfR^n}^{} v(x)e^{-i (x \cdot y)}\,dy \right|  \\
+			& \leq \frac{1}{(2\pi)^{\frac{n}{2}}} \int_{\bfR^n}^{} |v(x)|\,dx \\
+			&= \frac{1}{(2 \pi)^{\frac{n}{2}}} \lnorm v \rnorm_{L^1(\bfR^n)}.
+		\end{align*}
+		This is true for all $y \in \bfR^n$, hence $\lnorm u \rnorm_{L^\infty(\bfR^n)} < \infty$. The same argument applies for $w$. With this, we have that $\int_{\bfR^n}^{} v(x) \hat{w}(x)\,dx$ exists and is equal to $\int_{\bfR^n}^{} \hat{v}(y)w(y)\,dy$. Indeed:
+		\begin{align*}
+			\int_{\bfR^n}^{} v(x)\hat{w}(x)\,dx
+			&= \int_{\bfR^n}^{} v(x) \left( \frac{1}{(2\pi)^{\frac{n}{2}}} \int_{\bfR^n}^{} w(y) e^{-i (x \cdot y)}\,dy \right)\,dx \\
+			&= \frac{1}{(2\pi)^{\frac{n}{2}}} \int_{\bfR^n}^{} \int_{\bfR^n}^{} v(x)w(y)e^{-i (x\cdot y)}\,dxdy\\
+		\end{align*}
+	\end{proof}
+
+\begin{definition}
+	For $u \in L^2(\bfR^n)$, let $\{u_k\}_{k = 1}^\infty$ be a Cauchy sequence in $L^1(\bfR^n)\cap L^2(\bfR^n)$ such that $u_k \rightarrow u$ in $L^2(\bfR^n)$. Then $\{\hat{u_k}\}_{k=1}^\infty$ is also Cauchy in $L^{2}(\bfR^n)$ and we define the \textui{Fourier transform} of $u$ to be $\hat{u}:= \lim_{k \rightarrow \infty}\hat{u_k}$.	
+\end{definition}
+
+\begin{theorem}
+	Let $u,v \in L^2(\bfR^n)$.
+	\mbox{}
+	\begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+		\item $\int_{\bfR^n}^{} u \overline{v}\,dx = \int_{\bfR^n}^{} \hat{u} \overline{\hat{v}}\,dy$.
+		\item $(D^\alpha u)^\wedge = (iy)^\alpha \hat{u}$ for each multiindex $\alpha$ such that $D^\alpha u \in L^2(\bfR^n)$.
+		\item If $u,v \in L^1(\bfR^n)\cap L^2(\bfR^n)$, then $(u \ast v)^\wedge = (2\pi)^{\frac{n}{2}}\hat{u} \hat{v}$.
+		\item $u = (\hat{u})^\vee$.
+	\end{enumerate}
+\end{theorem}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+\begin{example}
+	Let $u \in C^2(\bfR)$. Consider the ODE:
+	\[
+		u''-u = f.
+	\] 
+	Applying the Fourier Transform to both sides gives:
+	\[
+		\hat{u''}(y) - \hat{u}(y) = \hat{f}(y).
+	\] 
+	In general, note that:
+	\begin{align*}
+		\hat{u'}(y)
+		&= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} u'(x) e^{-xy}\,dx \\
+		&=  \frac{1}{\sqrt{2pi}} \left( f(x) e^{-ixy} \Big|^\infty_{-\infty} + iy \int_{-\infty}^{\infty} u(x) e^{-xy}\,dx\right) \\
+		&= iy \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} u(x)e^{-ixy}\,dx\\
+		&= iy \hat{u}(y) \\
+	\end{align*}
+	This means:
+	\[
+		(iy)^2 \hat{u}(y) - \hat{u}(y) = \hat{f}(y).
+	\] 
+	Solving for $\hat{u}(y)$ yields:
+	\[
+		\hat{u}(y) = \frac{\hat{f}(y)}{1+y^2}.
+	\] 
+	Taking the inverse Fourier transform on both sides gives:
+	\begin{align*}
+		u(x)
+		&= \frac{1}{\sqrt{2\pi}} \left(f(x) \ast \left(\frac{1}{1+x^2}\right)^\vee \right) \\
+	\end{align*}
+\end{example}
+
+\subsection{The Heat Equation}

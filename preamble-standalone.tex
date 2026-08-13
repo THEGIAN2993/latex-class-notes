@@ -1,0 +1,138 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Font options
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\iffalse
+%font style 1
+\usepackage[p,osf]{scholax}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage[scaled=1.075,ncf,vvarbb]{newtxmath}
+\fi
+
+%font style2
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage[fixamsmath]{mathtools}  % Extension to amsmath
+\usepackage{amsthm}
+\usepackage{amssymb}
+\renewcommand*{\mathbf}[1]{\mathbb{#1}}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+%font style 3
+%\usepackage{newpxtext}
+%\usepackage{eulerpx}
+%\usepackage{mathrsfs}
+%\usepackage{eucal}
+
+\usepackage[uprightgreeks,light]{kpfonts}
+\usepackage{datetime}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Theorem environments
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{keytheorems}
+
+\newkeytheoremstyle{def}{
+    inherit-style=definition,
+    spaceabove=1.5em,
+    spacebelow=1.5em,
+    postheadspace=0.5em,
+}
+
+\newkeytheoremstyle{thm}{
+    spaceabove=1.5em,
+    spacebelow=1.5em,
+    postheadspace=0.5em,
+}
+
+\newkeytheorem{theorem}[
+    name = Theorem,
+    style=thm,
+    numberwithin = subsection,
+]
+
+\newkeytheorem{theorem*}[
+    name=Theorem,
+    style=thm,
+    numbered=false
+]
+
+\newkeytheorem{proposition}[
+    name = Proposition,
+    style=thm,
+    numberwithin = subsection,
+    sibling=theorem
+]
+
+\newkeytheorem{lemma}[
+    name = Lemma,
+    style=thm,
+    numberwithin = subsection,
+    sibling=theorem
+]
+
+\newkeytheorem{corollary}[
+    name = Corollary,
+    style=thm,
+    numberwithin = subsection,
+    sibling=theorem
+]
+
+\newkeytheorem{definition}[
+    name = Definition,
+    style=def,
+    numberwithin = subsection,
+    style = definition
+]
+
+\newkeytheorem{example}[
+    name = Example,
+    style=def,
+    numberwithin = subsection,
+    style = definition
+]
+
+\newkeytheorem{remark}[
+    name=Remark,
+    style=remark,
+    numbered=false
+]
+
+\newkeytheorem{question}[
+    name=Question,
+    style=remark,
+    numbered=false
+]
+
+\newkeytheorem{exercise}[
+    name = Exercise,
+    style=thm
+]
+\newkeytheorem{problem}[
+    name = Problem,
+    style=thm
+]
+
+\newkeytheorem{axiom}[name = Axiom]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Graphics, symbols, and miscellaneous packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{float}
+\usepackage{wasysym}
+\usepackage{hyperref}
+\usepackage[normalem]{ulem}
+\usepackage{pgfplots}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning,arrows.meta}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=1.18}
+\usepackage{etoolbox}
+\usepackage{bm}
+\usepackage{enumitem}

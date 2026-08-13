@@ -404,6 +404,8 @@ INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/upsy.fd
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/upsy.fd
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/upsy.fd
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/tools/bm.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/tools/bm.sty
 INPUT /Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex
 INPUT /Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex
 INPUT /Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex
@@ -420,6 +422,9 @@ INPUT ch1.aux
 INPUT ./ch2.aux
 INPUT ./ch2.aux
 INPUT ch2.aux
+INPUT ./ch3.aux
+INPUT ./ch3.aux
+INPUT ch3.aux
 OUTPUT _main.aux
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/kpfonts/omljkpl.fd
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/kpfonts/omljkpl.fd
@@ -512,6 +517,18 @@ INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/wasysym/uwasy.fd
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/wasy/wasy10.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/wasy/wasy8.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/wasy/wasy6.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplbn7t.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplbn7t.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplbn7t.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplbmi.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplbmi.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplbmi.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplbsy.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplbsy.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplbsy.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplbex.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplbex.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplbex.tfm
 INPUT ./ch1.tex
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplmn8t.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/kpfonts/jkplmn8t.vf
@@ -532,6 +549,7 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplbne.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/kpfonts/jkplbn8t.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplbn8r.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplbne.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/kpfonts/jkplbn7t.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/kpfonts/jkplmn8t.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplmn8r.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplmne.tfm
@@ -580,6 +598,18 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplsyc.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplexa.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplexa.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/wasy/wasy10.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplbn7t.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplbn7t.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplbmi.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplbmi.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplbsy.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplbsy.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplbex.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplbex.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/kpfonts/jkplbn7t.vf
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/kpfonts/jkplbn7t.vf
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplbne.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplbn8r.tfm
 INPUT ./ch2.tex
 OUTPUT ch2.aux
 INPUT ./ch2.tex
@@ -605,6 +635,14 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplsyc.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplexa.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplexa.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/wasy/wasy7.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplbn7t.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplbn7t.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplbmi.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplbmi.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplbsy.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplbsy.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplbex.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplbex.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplmn8t.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/kpfonts/jkplmn8t.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplmn8r.tfm
@@ -612,6 +650,14 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplmne.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/kpfonts/jkplmn8t.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplmn8r.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplmne.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/kpfonts/jkplbn7t.vf
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplbne.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/kpfonts/jkplbn8r.tfm
+INPUT ./ch3.tex
+OUTPUT ch3.aux
+INPUT ./ch3.tex
+INPUT ./ch3.tex
+INPUT ch3.tex
 OUTPUT _main.toc
 INPUT _main.aux
 INPUT ./ch1.aux
@@ -620,10 +666,12 @@ INPUT ch1.aux
 INPUT ./ch2.aux
 INPUT ./ch2.aux
 INPUT ch2.aux
+INPUT ./ch3.aux
+INPUT ./ch3.aux
+INPUT ch3.aux
 INPUT ./_main.out
 INPUT ./_main.out
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/kpfonts/jkplbn8a.pfb
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/kpfonts/jkplbne.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/kpfonts/jkplex.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/kpfonts/jkplexa.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/kpfonts/jkplmi.pfb
@@ -633,6 +681,5 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/kpfonts/jkplmite.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/kpfonts/jkplmn8a.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/kpfonts/jkplmne.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/kpfonts/jkplsy.pfb
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/kpfonts/jkplsyb.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/kpfonts/jkplsyc.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/kpfonts/jkpsya.pfb

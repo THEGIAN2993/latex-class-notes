@@ -1,46 +1,295 @@
-\chapter{Locally Convex Topological Vector Spaces}
+\chapter{Topological Vector Spaces}
 \pagenumbering{arabic}
 
+\iffalse
 A topological vector space is a vector space whose addition and scalar multiplication is continuous. Like arbitrary topological spaces, at times they can be too general to produce any interesting results or theorems. As our interest lies in functional analysis and the study of function spaces, it turns out that local convexity is the minimal topological condition needed for the Hahn-Banach theorem to hold. Throughout, assume $\bfF$ to be either $\bfR$ or $\bfC$, and let \textit{TVS} abbreviate "topological vector space" over $\bfF$.
+\fi
+
+Throughout, assume $\bfF$ to be either $\bfR$ or $\bfC$.
+
 \section{Basic Definitions and Examples}
 
+\subsection{Vector Topologies}
+
 \begin{definition}
-	Let $X$ be an $\bfF$-vector space. A map $p:X \rightarrow \bfR$ is a \textui{seminorm} if it satisfies the following conditions:
+	Suppose $T$ is a topology on an $\bfF$-vector space $X$ such that:
 	\mbox{}
 	\begin{itemize}[itemsep=1pt,topsep=3pt]
-		\item $p(x+y) \leq p(x) + p(y)$ for all $x,y \in X$;
-		\item $p(sx) = |s|p(x)$ for all $s \in \bfF$, $x \in X$.
+		\item for every $x \in X$, the set $\{x\}$ is closed;
+		\item the vector space operations are continuous with respect to $T$.
 	\end{itemize}
+	Under these conditions, $T$ is called a \textui{vector topology} and $X$ is said to be a \textui{topological vector space} (abbrev. \textui{TVS}).
 \end{definition}
 
+\begin{definition}
+	Let $X$ be a TVS.
+	\mbox{}
+	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+		\item A set $C \subset X$ is said to be \textui{convex} if $tC + (1-t)C \subset C$ for every $0 \leq t \leq 1$.
+		\item A set $B \subset X$ is said to be \textui{balanced} if $\alpha B \subset B$ for every $\alpha \in \bfF$ with $|\alpha| \leq 1$
+	\end{enumerate}
+\end{definition}
+
+\begin{proposition}\label{prop:translation-invariant-top}
+	Let $X$ be a TVS.
+	\mbox{}
+	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+		\item The \textit{translation operator} $T_a:X \rightarrow X$ given by $T_a = a + x$ is a homeomorphism.
+		\item The \textit{multiplication operator} $M_\lambda:X \rightarrow X$ given by $M_\lambda(x) = \lambda x$ is a homeomorphism.
+	\end{enumerate}
+\end{proposition}
+	\begin{proof}
+		The continuity and bijectivity of $T_a$ and $M_\lambda$ follow from the vector space axioms. Their inverses, $T_{-a}$ and $M_{1/\lambda}$, are also continuous due to the vector space axioms.
+	\end{proof}
+
 \begin{remark}
-	The two conditions above imply $p(0) = 0$ and $p(x) \geq 0$ for all $x \in X$.
+	Recall that:
+	\mbox{}
+	\begin{itemize}[itemsep=1pt,topsep=3pt]
+		\item a \textit{neighborhood} of a point $x \in X$ is any open set that contains $x$;
+		\item a collection $N$ of neighborhoods of a point $x \in X$ is a \textit{local base at $x$} if every neighborhood of $x$ contains a member of $N$.
+	\end{itemize}
+	A consequence of Proposition~\ref{prop:translation-invariant-top} is that every vector topology is \textit{translation-invariant}; i.e., a set $E \subset X$ is open if and only if each of its translates $a + E$ is open. As such, any vector topology is completely determined by any local base, which leads us to the following definition.
 \end{remark}
 
 \begin{definition}
-	A \textui{locally convex TVS} (abbrev. \textui{LCS}) is a TVS whose topology is defined by a family of seminorms $\left\{ p_\alpha \right\}_\alpha$ such that the following condition is satisfied:
+	A \textui{local base} of a TVS is a collection $\scrB$ of neighborhoods of 0 such that every neighborhood of 0 contains a member of $\scrB$.
+\end{definition}
+
+\subsection{Separation Properties}
+
+\begin{lemma}\label{lemma:symmetric-neighborhood}
+	Let $X$ be a TVS. If $W$ is a neighborhood of $0$ in $X$, then there is a neighborhood $U$ of $0$ such that $U = -U$ and $U + U \subset W$.
+\end{lemma}
+	\begin{proof}
+		Let $P:X \times X \rightarrow X$ denote addition. Since addition is continuous, it is continuous at $0$. Hence $P^{-1}(W)$ is a neighborhood of $(0,0)$. In particular, there exists open sets $V_1$ and $V_2$ of $X$ such that $(0,0) \in V_1 \times V_2 \subseteq P^{-1}(W)$.  Now define $U := V_1 \cap V_2 \cap (-V_1) \cap (-V_2)$. This is an open set of $X$ containing zero which is symmetric and contained in both $V_1$ and $V_2$. Thus:
+		\[
+			U+U = P(U \times U) \subseteq P(V_1 \times V_2) \subseteq W. \qedhere
+		\] 
+	\end{proof}
+
+\begin{lemma}\label{lemma:add-disjoint}
+	Let $X$ be a TVS. Suppose $K$ and $C$ are subsets of $X$ where $K$ is compact, $C$ is closed, and $K \cap C = \emptyset$. Then $0$ has a neighborhood $V$ such that:
 	\[
-		\bigcap_{\alpha} \left\{ x : p_\alpha(x) = 0 \right\} = \{0\}.
+		(K + V) \cap (C+V) = \emptyset.
 	\] 
+\end{lemma}
+	\begin{proof}
+		Suppose $x \in K$. Then $x \not\in C$, implying that $C^c$ is a neighborhood of $x$. By Proposition~\ref{prop:translation-invariant-top}, the translation $C^c - x$ is a neighborhood of $0$, so by Lemma~\ref{lemma:symmetric-neighborhood} we can find a symmetric neighborhood $V_x$ of $0$ such that:
+		\[
+			V_x + V_x + V_x \subset C^c - x.
+		\] 
+		This can be rewritten as:
+		\[
+			x + V_x + V_x + V_x \subset C^c.
+		\] 
+		Claim: $(x+V_x + V_x) \cap (V_x + C) = \emptyset$. Indeed, if $z \in (x + V_x + V_x) \cap (V_x + C)$, then $z = x+v_1+v_2$ and $z = v_3 + c$ for $v_1,v_2,v_3 \in V_x$ and $c \in C$. Equating the two yields $x+v_1+v_2 - v_3 = c$, which is a contradiction as we showed $(x + V_x + V_x + V_x) \cap C = \emptyset$.
+
+	Since $x + V_x$ is a neighborhood of $x$, we can cover $K$ as follows:
+		\[
+			K \subset \bigcup_{x \in K}(x +V_x).
+		\]
+		Since $K$ is compact, there are finitely many points $x_1,\ldots ,x_n$ in $K$ such that:
+		\[
+			K \subset (x_1 = V_{x_1}) \cup \ldots \cup (x_n + V_{x_n}).
+		\]
+		Define $V:= V_{x_1} \cap \ldots \cap V_{x_n}$. Then:
+		\[
+			K+V \subset \bigcup_{i = 1}^n (x_i + V_{x_i} = V) \subset \bigcup_{i = 1}^n (x_i + V_{x_i} + V_{x_i}).
+		\] 
+		By our claim, no term in the last union intersects $C+V$, establishing the proof.
+	\end{proof}
+
+\begin{theorem}
+	Let $X$ be a TVS. Suppose $K$ and $C$ are subsets of $X$ where $K$ is compact, $C$ is closed, and $K \cap C = \emptyset$. There exists disjoint open sets that contain $K$ and $C$, respectively.
+\end{theorem}
+	\begin{proof}
+		From Lemma~\ref{lemma:add-disjoint}, note that $K+V$ is a union of translates $x+V$ of $V$. Thus $K+V$ is an open set that contains $K$. Similarly, as $C$ is the union of translates $x + C$, it is an open set containing $C$.
+	\end{proof}
+
+\begin{corollary}
+	If $X$ is a TVS, and $\scrB$ is a local base for $X$, then every member of $\scrB$ contains the closure of some member of $\scrB$.
+\end{corollary}
+	\begin{proof}
+		Let $B \in \scrB$. Since $\{0\}$ is compact and $X \setminus B$ is closed, Lemma~\ref{lemma:add-disjoint} says there exists a neighborhood $V$ of $0$ such that:
+		\[
+			(\{0\} + V) \cap (X \setminus B) = \emptyset.
+		\] 
+		This simpifies to:
+		\[
+			V \cap (X \setminus B) = \emptyset.
+		\] 
+		It is a general fact that an open set which is disjoint from a set is also disjoint from its closure. Hence:
+		\[
+			\overline{V} \cap (X \setminus B) = \emptyset.
+		\] 
+		This implies:
+		\[
+			\overline{V} \subset B.
+		\] 
+		Since $V$ is a neighborhood of $0$ and $\scrB$ is a local base, we can find a $B' \in \scrB$ such that $B' \subset V$. Hence $\overline{B'} \subset \overline{V} \subset B$, establishing the claim.
+	\end{proof}
+
+\begin{corollary}
+	Every TVS is a Hausdorff space.
+\end{corollary}
+	\begin{proof}
+		Apply Lemma~\ref{lemma:add-disjoint} to a pair of distinct points in the place of $K$ and $C$. 
+	\end{proof}
+
+\subsection{Local Convexity}
+
+\begin{definition}
+	Let $X$ be a TVS and $T$ its vector topology.
+	\mbox{}
+	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+		\item $X$ is \textui{locally convex} if there is a local base $\scrB$ whose members are convex.
+		\item $X$ is a \textui{Fr\'echet space} if $X$ is locally convex and its topology $T$ is induced by a complete invariant metric.
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}
+	A \textui{seminorm} on an $\bfF$-vector space is a function $p:X \rightarrow \bfR$ such that:
+	\mbox{}
+	\begin{itemize}[itemsep=1pt,topsep=3pt]
+		\item $p(x+y) \leq p(x) + p(y)$;
+		\item $p(\alpha x ) = |\alpha| p(x)$
+	\end{itemize}
+	for all $x,y \in X$ and $\alpha \in \bfF$.
 \end{definition}
 
 \begin{proposition}
-	Let $X$ be a LCS. Then $X$ is Hausdorff.
-\end{proposition}
-	\begin{proof}
-		Let $\epsilon > 0$. Let $x,y \in X$ such that $x\neq y$. Then $x - y \neq 0$, so we can find a seminorm $p$ such that $p(x-y) > \epsilon > 0$. Define $U := \{z : p(x-z) < \frac{\epsilon}{2}\}$ and $V:= \{z : p(y-z) < \frac{\epsilon}{2}\}$. If $z \in U \cap V$, then $p(x-y) \leq p(x-z) + p(z - y) < \epsilon$, a contradiction. As $p(0) = 0$, it is clear that $U$ and $V$ are neighborhoods of $x$ and $y$ respectively. Thus $X$ is Hausdorff.
-	\end{proof}
-
-\begin{proposition}
-	Let $X$ be a TVS and let $p$ be a seminorm on $X$. The following are equivalent:
+	Suppose $p$ is a seminorm on an $\bfF$-vector space $X$.
 	\mbox{}
 	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
-		\item $p$ is continuous;
-		\item $\{x \in X : p(x) < 1\}$ is open;
-		\item $0 \in \{x \in X : p(x) < 1\}^o$;
-		\item $0 \in \{x \in X : p(x) \leq 1\}^o$;
-		\item $p$ is continuous at $0$;
-		\item There exists a continuous seminorm $q$ on $X$ such that $p \geq q$.
+		\item $p(0)=0$.
+		\item $|p(x)-p(y)| \leq p(x-y)$.
+		\item $p(x) \geq 0$.
+		\item $\{x:p(x) = 0\}$ is a  subspace of $X$.
 	\end{enumerate}
 \end{proposition}
+	{\color{red}
+	\begin{proof}
+		
+	\end{proof}}
 
+\begin{definition}
+	A family $\scrP$ of seminorms on an $\bfF$-vector space $X$ is called \textui{separating} if each $x\neq 0$ corresponds to at least one $p \in \scrP$ with $p(x)\neq \emptyset $.
+\end{definition}
+
+\begin{definition}
+	Let $X$ be a $\bfF$-vector space.
+	\mbox{}
+	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+		\item A convex set $A \subset X$ is \textui{absorbing} if for every $x \in X$, there exists a scalar $t > 0$ (possibly depending on $x$) such that $x \in tA$.
+		\item If $A$ is an absorbing set, the \textui{Minkowski functional} of $A$ is a function $\mu_A:X \rightarrow \bfF$ defined by:			\[
+			\mu_A(x) := \inf \{t : t^{-1}x \in A\}
+		\] 
+	\end{enumerate}
+\end{definition}
+
+\begin{proposition}
+	Suppose $p$ is a seminorm on an $\bfF$-vector space $X$. The set $B := \{x : p(x) < 1\}$ is convex, balanced, absorbing, and $p = \mu_b$.
+\end{proposition}
+	\begin{proof}
+		For any $x \in X$ and $\alpha \in \bfF$ we have:
+		\begin{align*}
+			p(\alpha x) 
+			& = |\alpha|p(x) \\
+			&\leq p(x) \\ 
+			& < 1.
+		\end{align*}
+		Thus $B$ is balanced. For any $x,y \in X$ and $0 < t < 1$ we have:
+		\begin{align*}
+			p(tx + (1-t)y)
+			& \leq p(tx) + p((1-t)y) \\
+			&= tp(x) + (1-t)p(y) \\
+			&\leq t + (1-t)  \\
+			&= 1.
+		\end{align*}
+		Thus $B$ is convex. If $x \in X$ and $s > p(x)$, we have:
+		\begin{align*}
+			p(s^{-1}x)
+			&= s^{-1}p(x)\\
+			&< 1.
+		\end{align*}
+		Thus $s^{-1}x \in B$, hence $B$ is absorbing. We will now show that $p = \mu_B$. Let $x \in X$ and $s \in \bfF$ such that $p(x) < s$. Then $p(s^{-1}x) < 1$, implying that $s \in \{t : t^{-1}x \in B\}$. This means $\mu_B(x) \leq s$, and taking the infimum over all $s$ such that $p(x) < s$ gives $\mu_B(x) \leq p(x)$. Conversely, let $x \in X$ and $r \in \bfF$ such that $0 < r \leq p(x)$. Then $1 \leq p(r^{-1}x)$, implying that $r \not\in \{t : t^{-1} x \in B\}$. We've established the inclusion $\{t:t^{-1}x \in B\} \subseteq (p(x),\infty)$, and taking the infimum of both sides gives $p(x) \leq \mu_B(x)$. Thus $p = \mu_B$.
+	\end{proof}
+
+\begin{theorem}
+	Suppose $A$ is a convex absorbing set in a vector space $X$. 
+	\mbox{}
+	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+		\item $\mu_A(x+y) \leq \mu_A(x) + \mu_A(y)$.
+		\item $\mu_A(tx) = t \mu_A(x)$ if $t \geq 0$.
+		\item $\mu_A$ is a seminorm if $A$ is balanced.
+		\item If $B = \{x : \mu_A(x) < 1\}$ and $C = \{x : \mu_A(x) \leq 1\}$, then $B \subset A \subset C$ and $\mu_B = \mu_A = \mu_C$.
+	\end{enumerate}
+\end{theorem}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+\begin{theorem}
+	Let $X$ be a TVS. Suppose $\scrB$ is a convex balanced local base in $X$.
+	\mbox{}
+	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+		\item For every $V \in \scrB$, we have $V = \{x \in X : \mu_V(x) < 1\}$.
+		\item $\{\mu_V : V \in \scrB\}$ is a separating family of continuous seminorms.
+	\end{enumerate}
+\end{theorem}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+\begin{theorem}\label{thm:137}
+	Suppose $\scrP$ is a separating family of seminorms on a vector space $X$. Associate to each $p \in \scrP$ and to each $n \in \bfN$ the set:
+	\[
+		V(p,n) := \left\{ x:p(x) < \frac{1}{n} \right\}.
+	\] 
+	Let $\scrB$ be the collection of all finite intersections of the sets $V(p,n)$. Then $\cB$ is a convex balanced local base for a topology $T$ on $X$ such that:
+	\mbox{}
+	\begin{itemize}[itemsep=1pt,topsep=3pt]
+		\item every $p \in \scrP$ is continuous;
+		\item a set $E \subset X$ is bounded if and only if every $p \in \scrP$ is bounded on $E$.
+	\end{itemize}
+\end{theorem}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+\begin{theorem}
+	Let $X$ be a TVS and $\scrB$ a convex balanced local base in $X$. Let $T_1$ denote the topology generated by $\scrB$. Let $T_2$ denote the topology generated by $\{V(\mu_V,n):V \in \scrB, n \in \bfN\}$, where $V(\mu_V,n)$ is defined as per Theorem~\ref{thm:137}. Then $T_1 = T_2$.
+\end{theorem}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+\section{Weak Topologies}
+
+\subsection{Preliminaries}
+\begin{definition}
+	Let $T_1$ and $T_2$ be two topologies on a set $X$. If $T_1 \subset T_2$ (that is, every set open in $T_1$ is open in $T_2$), then we say $T_1$ is \textui{weaker} than $T_2$, or that $T_2$ is \textui{stronger} than $T_1$.
+\end{definition}
+
+\begin{proposition}
+	Let $T_1$ and $T_2$ be topologies on a set $X$. Suppose $T_1 \subset T_2$, $T_1$ is Hausdorff, and $T_2$ is compact. Then $T_1 = T_2$.
+\end{proposition}
+	\begin{proof}
+		Let $F \subset X$ be $T_2$-closed. Since $X$ is $T_2$-compact, and since every closed subset of a compact set is compact, we have that $F$ is $T_2$-compact. Since $T_1 \subset T_2$, every $T_1$-open cover of $F$ is also a $T_2$-open cover. Hence $F$ is $T_1$-compact. Since $T_1$ is Hausdorff, every compact set must be closed; i.e., $F$ is $T_1$-closed. This establishes the inclusion $T_2 \subset T_1$, completing claim. 
+	\end{proof}
+
+\begin{definition}
+	Let $X$ be a set and $\scrF$ is a nonempty family of functions $f:X \rightarrow Y_f$, where each $Y_f$ is a topological space. Let $T$ be the collection of all unions of finite intersections of sets $f^{-1}(V)$, with $f \in \scrF$ and $V \in Y_f$. Then $T$ is a topology on $X$, and is called the \textui{weak topology on $X$ induced by $\scrF$}, or more concisely, the \textui{$\scrF$-topology} of $X$.
+\end{definition}
+
+\begin{proposition}
+	If $\scrF$ is a family of mapping $f:X \rightarrow Y_f$, where $X$ is a set and each $Y_f$ is a Hausdorff space, and if $\scrF$ separates points on $X$, then the $\scrF$-topology of $X$ is a Hausdorff topology.
+\end{proposition}
+	\begin{proof}
+		Let $p,q \in X$ with $p \neq q$. Since $\scrF$ separates points on $X$, ;
+	\end{proof}

@@ -1,0 +1,265 @@
+\documentclass[reqno]{amsart}
+
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/preamble-standalone.tex}
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
+
+\title[Banach and C*-Algebras, En Route to Continuous Functional Calculus]{$C*$-Algebras and the Gelfand Theory}
+\author{Gianluca Crescenzo}
+
+\begin{document}
+
+\begin{abstract}
+	The Gelfand-Naimark-Segal construction is a core idea in the proof of the spectral theorem for normal operators on a Hilbert space. Gelfand's Theorem provides the core representation theory that drives the construction as well as naturally providing an entry point to the study of $C*$-algebras, the core subset of operator algebras. This thesis will explore these ideas via the proof of the full spectram theorem. As an application of this representation theory, an exposition will be made on results from a recent paper by J.E. Pascoe and Ryan Tully-Doyle titled "Induced Stinespring Factoization and the Wittstock Support Theorem"
+\end{abstract}
+
+\maketitle
+
+\iffalse
+\section{Cauchy's Theorem}\label{Section:Cauchy's Theorem}
+
+\begin{definition}
+	Let $G \subset \bfC$ be open and $f:G \rightarrow \bfC$.
+	\mbox{}
+	\begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+		\item The function $f$ is \emph{differentiable at a point $a \in G$} if
+			\[
+				\lim_{h \rightarrow 0}\frac{f(a+h) - f(a)}{h}
+			\] 
+			exists. The value of this limit is denoted $f'(a)$. If $f$ is differentiable for each $a \in G$, then we simply say $f$ is \emph{differentiable}
+		\item The function $f$ is \emph{analytic} if $f$ is continuously differentiable.
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}
+	A \emph{path} is a continuous function $\gamma:[a,b] \rightarrow \bfC$.
+\end{definition}
+
+\begin{definition}
+	Let $\gamma:[a,b] \rightarrow \bfC$ be a path.
+	\mbox{}
+	\begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+		\item If $\gamma'(t)$ exists for each $t \in [a,b]$ and $\gamma':[a,b] \rightarrow \bfC$ is continuous, then $\gamma$ is a \emph{smooth path}.
+		\item If there is a partition of $[a,b]$ such that $\gamma$ is smooth along each subinterval, then $\gamma$ is \emph{piecewise smooth}.
+		\item If $\gamma$ is of bounded variation, then it is called a \emph{rectifiable path}.
+		\item The set $\{\gamma(t):a \leq t \leq b\}$ is called the \emph{trace} of $\gamma$ and is denoted by $\{\gamma\}$.
+	\end{enumerate}
+\end{definition}
+
+\begin{theorem}\label{thm:existence-of-cont-int}
+	Let $\gamma:[a,b] \rightarrow \bfC$ be a rectifiable path, and let $f:[a,b] \rightarrow \bfC$ be continuous. There exists a unique $I \in \bfC$ such that, for every $\epsilon > 0$, there exists $\delta > 0$ with the following property: if $\{t_0 < t_1,\ldots, <t_m\}$ is a partition of $[a,b]$ with $\max \{t_k - t_{k-1} : 1 \leq k \leq m \} < \delta$, then for every choice of points $x_k \in [t_{k-1},t_k]$ we have:
+	\[
+		\left| I - \sum_{k = 1}^{m}  f(x_k) \left( \gamma(t_k) - \gamma(t_{k-1}) \right)  \right| < \epsilon.
+	\] 
+\end{theorem}
+
+\begin{definition}
+	The number $I \in \bfC$ established in Theorem~\ref{thm:existence-of-cont-int} is called the \emph{Riemann-Stieltjes integral of $f$ with respect to $\gamma$} over $[a,b]$ and is denoted by:
+	\[
+		\int_{a}^{b} f\,d\gamma.
+	\] 
+\end{definition}
+
+\begin{theorem}
+	If $\gamma$ is a piecewise smooth path and $f:[a,b] \rightarrow \bfC$ is continuous then:
+	\[
+		\int_{a}^{b} f\,d \gamma = \int_{a}^{b} f(t) \gamma'(t)\,dt.
+	\] 
+\end{theorem}
+
+\begin{definition}
+	If $\gamma:[a,b] \rightarrow \bfC$ is a rectifiable path and $f:\{\gamma\} \rightarrow \bfC$ is continuous, then the \emph{line integral of $f$ along $\gamma$} is:
+	\[
+		\int_{a}^{b} f(\gamma(t))\,d\gamma(t).	
+	\] 
+\end{definition}
+
+\fi
+\section{Banach Algebras}\label{Section:Banach Algebras}
+
+\subsection{Basic Definitions and Examples}
+
+\begin{definition}
+	An \emph{algebra} over $\bfF$ is a vector space $\scrA$ over $\bfF$ that has a multiplication operation making $\scrA$ into a ring such that, for any $\alpha \in \bfF$ and $a,b \in \scrA$, we have $\alpha(ab) = (\alpha a)b = a (\alpha b)$. If $\scrA$ admits an identity element, we say $\scrA$ is \emph{unital}.
+\end{definition}
+
+\begin{definition}
+	A \emph{normed algebra} is an algebra $\scrA$ over $\bfF$ which has a norm $\lnorm \cdot \rnorm$ making $\scrA$ into a normed linear space and also admitting the property that, for any $a,b \in \scrA$, we have $\lnorm ab \rnorm \leq \lnorm a \rnorm \lnorm b \rnorm$. If $\scrA$ is a Banach space, then $\scrA$ is called a \emph{Banach algebra}. If $\scrA$ has an identity $e$, then it is assumed that $\lnorm e \rnorm = 1$.
+\end{definition}
+
+\begin{proposition}
+	If $\scrA$ is an algebra without identity, define algebraic operations on $\scrA \times \bfF$ by:
+	\mbox{}
+	\begin{enumerate}[label = (\roman*),itemsep=1pt,topsep=3pt]
+		\item $(a,\alpha) + (b,\beta) := (a+b,\alpha + \beta)$,
+		\item $\beta(a,\alpha) := (\beta a, \beta \alpha)$,
+		\item $(a,\alpha)(b,\beta) := (ab + \alpha \beta + \beta a, \alpha \beta)$.
+	\end{enumerate}
+	Then $\scrA \times \bfF$ is an algebra with identity $(0,1)$.
+\end{proposition}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+
+\begin{proposition}
+	Let $\scrA$ be an algebra over $\bfF$ in which $(\scrA,\lnorm \cdot \rnorm_A)$ is a Banach space. For every $a \in \scrA$, suppose that the maps $x \mapsto ax$ and $x \mapsto xa$ of $\scrA \rightarrow \scrA$ are continuous. Let $\scrA \times \bfF$ be the algebra with operations given from Proposition~\ref{}. For $a \in \scrA$, define $L_a:A \times \bfF \rightarrow \scrA \times \bfF$ by $L_a(x,\xi) := (ax + \xi a,0)$.
+\end{proposition}
+	\mbox{}
+	\begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+		\item Define $\lnorm (a,\alpha) \rnorm_{\scrA \times \bfF}:= \lnorm a \rnorm_A + |\alpha|$. Then $\scrA \times \bfF$ is a Banach space and an algebra with identity $(0,1)$.
+		\item The map $a \rightarrow (a,0)$ is an isometric isomorphism between $\scrA$ and $\scrA \times \{0\}$.
+		\item For each $a \in \scrA$, we have $L_a \in \cB(\scrA \times \bfF)$.
+		\item Define $\lnorm a \rnorm_{\ast} := \lnorm L_a \rnorm_{\cB(\scrA \times \bfF)}$. Then $\lnorm \cdot \rnorm_{\ast}$ is equivalent to the norm $\lnorm \cdot \rnorm_A$, and in particular $(\scrA,\lnorm \cdot \rnorm_{\ast})$ is a Banach algebra.
+	\end{enumerate}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+Parts (1) and (2) show that $\scrA$ may be identified isometrically with the ideal $\scrA \times \{0\}$ of the unital algebra $\scrA \times \bfF$, whose identity is $(0,1)$. Thus, every algebra may be embedded isometrically into a unital algebra. When an algebra is already unital, it makes sense then to denote its identity by $1$. We will use this convention throughout the rest of the paper.
+
+	Parts (3) and (4) show that the usual submultiplicativity condition on the norm need not be assumed. Indeed, if $\scrA$ is complete and multiplication is continuous, then the norm $\lnorm a \rnorm_{\ast}$ is equivalent to the original norm on $\scrA$ satisfying the submultiplicativity condition.
+
+
+\subsection{Ideals and Quotients}
+
+\begin{definition}
+	Let $\scrA$ be an algebra. A \emph{left ideal} (resp. \emph{right ideal}) of $\scrA$ is a subalgebra $\scrM$ of $\scrA$ such that, for all $a \in \scrA$ and $x \in \scrM$, then $ax \in \scrM$ (resp. $xa \in \scrM$). If $\scrM$ is both a left and right ideal, then $\scrM$ is simply called an \emph{ideal} (or \emph{bilaterial ideal}).
+\end{definition}
+
+\begin{definition}
+	Let $\scrA$ be a unital algebra. An element $a \in \scrA$ is \emph{left invertible} (resp. \emph{right invertible}) if there exists an element $x \in \scrA$ such that $xa = 1$ (resp. $ax = 1$). If an element $a \in \scrA$ is both left and right invertible, then $a$ is simply called \emph{invertible}.
+\end{definition}
+
+\begin{proposition}\label{prop:ideals-and-inverts}
+	Let $A$ be a unital algebra.
+	\mbox{}
+	\begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+		\item If $a \in \scrA$ is invertible, there is a unique element $a^{-1}$ such that $a a^{-1} = a^{-1} a = 1$.
+		\item If $a \in \scrA$ is left invertible, and $\scrM$ is a left ideal in $\scrA$ containing $a$, then $\scrM = \scrA$.
+	\end{enumerate}
+\end{proposition}
+	\begin{proof}
+		(1) Since $a$ is invertible, there exists $x,y \in \scrA$ such that $xa = 1 = ay$. Hence $y=1y=(xa)y = x(ay) = x1 = x$.
+
+		(2) Since $a \in \scrA$ is left invertible, there exists $x \in \scrA$ such that $xa = 1$. Since $\scrM$ is a left ideal and $a \in \scrM$, it must be the case that $1 = xa \in \scrM$. Since $1 \in \scrM$, we have $y = y1 \in \scrM$ for all $y \in \scrA$. Thus $\scrA \subseteq \scrM$. 
+	\end{proof}
+
+Part (2) of Proposition~\ref{} says that every element of a proper left ideal is necessarily not left invertible.
+
+\begin{lemma}\label{lemma:norm-le-1}
+	If $\scrA$ is a unital Banach algebra and $x \in \scrA$ such that $\lnorm x-1 \rnorm < 1$, then $x$ is invertible.
+\end{lemma}
+	\begin{proof}
+		Define $y:=1-x$. Note that:
+		\begin{align*}
+			\lnorm y \rnorm
+			&= \lnorm 1-x \rnorm \\
+			&= \lnorm x-1 \rnorm \\
+			&< 1.
+		\end{align*}
+		Since $\scrA$ is a Banach algebra, it follows via induction that:
+		\[
+			\lnorm y^n \rnorm \leq \lnorm y \rnorm^n.
+		\]
+		Since $\lnorm y \rnorm < 1$, the series $\sum_{n=0}^{\infty} \lnorm y \rnorm^n$ converges, hence by the comparison test $\sum_{n=0}^{\infty} \lnorm y^n \rnorm$ converges. Because $\scrA$ is complete, $z:=\sum_{n=0}^{\infty}y^n$ also converges. Taking $z_k := \sum_{n=0}^{k}y^n$, we can see:
+		\begin{align*}
+			z_k(1-y)
+			&= \sum_{n=0}^{k} y^n - \sum_{n=0}^{k} y^{n+1} \\
+			&= 1-y^{k+1}. \\
+		\end{align*}
+		It is clear that $\sum_{n=0}^{\infty} y^{n+1}$ converges by the same reasoning from above. Hence $y^{n+1} \rightarrow 0$ as $n \rightarrow \infty$. This gives:
+		\begin{align*}
+			z(1-y)
+			&= \lim_{n \rightarrow \infty}z_n(1-y) \\
+			&= \lim_{n \rightarrow \infty}1-y^{n+1} \\
+			&= 1. \\
+		\end{align*}
+		An identical argument will show that $(1-y)z = 1$. Thus $(1-y) = 1-(1-x) = x$ is invertible.
+	\end{proof}
+
+The following fact surfaced in the preceeding proof.
+
+\begin{corollary}\label{cor:power-series-basic}
+	Let $\scrA$ be a unital Banach algebra. If $a \in \scrA$ and $\lnorm a \rnorm < 1$, then $(1-a)^{-1} = \sum_{k=0}^{\infty} a^k$.
+\end{corollary}
+
+\begin{lemma}\label{lemma:inverse-pertubation}
+	Let $\scrA$ be a unital Banach algebra. If $b_0 a_0 = 1$ and $\lnorm a - a_0 \rnorm < \lnorm b_0 \rnorm^{-1}$, then $a$ is left invertible. 
+\end{lemma}	
+	\begin{proof}
+		Rearranging $\lnorm a-a_0 \rnorm < \lnorm b_0 \rnorm^{-1}$ yields $\lnorm b_0 a - 1 \rnorm < 1$. By Lemma~\ref{lemma:norm-le-1}, the element $b_0a$ is invertible. Hence there exists $x \in \scrA$ such that $xb_0a = 1$, implying that $a$ is left invertible.
+	\end{proof}
+
+\begin{theorem}
+	If $\scrA$ is a unital Banach algebra, then:
+	\mbox{}
+	\begin{enumerate}[label = (\roman*),itemsep=1pt,topsep=3pt]
+		\item $G_l := \{a \in \scrA : a \text{ is left invertible }\}$,
+		\item $G_r := \{a \in A: a \text{ is right invertible }\}$,
+		\item $G := \{a \in \scrA : a \text{ is invertible}\}$,
+	\end{enumerate}
+	are all open subsets of $\scrA$. Moreover, the map $a \mapsto a ^{-1}$ of $G \rightarrow G$ is continuous.
+\end{theorem}
+	\begin{proof}
+		Let $a_0 \in G_l$. If $a \in B(a_0, \lnorm b_0 \rnorm^{-1})$, then $\lnorm a-a_0 \rnorm < \lnorm b_0 \rnorm^{-1}$, so by Lemma~\ref{lemma:inverse-pertubation} $a$ is left invertible. Thus $a_0 \in B(a_0,\lnorm b_0 \rnorm^{-1}) \subseteq G_l$, establishing $G_l$ as open. It follows similarly that $G_r$ is open, and since $G = G_l \cap G_r$, it is open as well. 
+
+		To prove that $a \mapsto a^{-1}$ is continuous, we first prove an intermediary result. Let $\{a_n\}$ be a sequence in $G$ such that $a_n \rightarrow 1$. Let $0 < \delta <1$ and suppose $\lnorm a_n - 1 \rnorm < \delta$. By Corollary~\ref{cor:power-series-basic}:
+		\begin{align*}
+			a_n^{-1}
+			&= (1-(1-a_n))^{-1} \\
+			&= \sum_{k=0}^{\infty} (1-a_n)^k \\
+			&= 1+ \sum_{k=1}^{\infty} (1-a_n)^k.
+		\end{align*}
+		Hence $a_n^{-1} - 1 = \sum_{k=1}^{\infty} (1-a_n)^k$. Thus:
+		\begin{align*}
+			\lnorm a_n^{-1} - 1 \rnorm
+			&= \lnorm \sum_{k=1}^{\infty} (1-a_n)k \rnorm \\
+			&\leq \sum_{k=1}^{\infty} \lnorm 1-a_n \rnorm^k \\
+			&= \sum_{k=1}^{\infty} \delta^k \\
+			&= \frac{\delta}{1-\delta}. 
+		\end{align*}
+		If $\epsilon > 0$ is given, then $\delta$ can be chosen such that $\frac{\delta}{1-\delta} < \epsilon$. So $\lnorm a_n - 1 \rnorm < \delta$ implies $\lnorm a_n^{-1} - 1 \rnorm < \epsilon$. Hence $a_n^{-1} \rightarrow 1$.
+		With this, let $a \in G$ be arbitrary and suppose $\{a_n\}$ is a sequence in $G$ such that $a_n \rightarrow a$. Then $a^{-1}a_n \rightarrow 1$. The intermediary result above gives $a_n^{-1}a = (a^{-1}a_n)^{-1} \rightarrow 1$. Hence $a_n^{-1} = a_n^{-1}aa^{-1} \rightarrow a^{-1}$.
+	\end{proof}
+
+\begin{definition}
+	A \emph{maximal ideal} is a proper ideal that is contained in no larger proper ideal.
+\end{definition}
+
+\begin{corollary}
+	Let $\scrA$ be a unital Banach algebra.
+	\mbox{}
+	\begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+		\item The closure of a proper left (resp. right, bilateral) ideal is a proper left (resp. right, bilateral) ideal.
+		\item A maximal left (resp. right, bilateral) ideal is closed.
+	\end{enumerate}
+\end{corollary}
+	\begin{proof}
+		(1) Let $\scrM$ be a left ideal of $\scrA$. The proof showing $\overline{\scrM}$ is a subalgebra is omitted, but the idea can be replicated from the following. Let $a \in \scrA$ and $x \in \overline{\scrM}$. There exists a sequence $\{x_n\}$ in $\scrM$ such that $x_n \rightarrow x$. Then $\{a x_n\}$ is a sequence in $\scrM$ such that $a x_n \rightarrow ax$. Thus $ax \in \overline{\scrM}$, so $\overline{\scrM}$ is a left ideal. By part (2) of Proposition~\ref{prop:ideals-and-inverts}, $\scrM \cap G_l = \emptyset$, which implies that $\scrM \subseteq \scrA \setminus G_l$. Since $\scrA \setminus G_l$ is closed, and since $\overline{\scrM}$ is the smallest closed set containing $\scrM$, we have $\overline{\scrM} \subseteq \scrA \setminus G_l$. Since $G_l$ is necessarily nonempty, $\overline{\scrM} \neq \scrA$, hence it is proper.
+
+		(2) If $\scrM$ is a maximal left ideal, then $\overline{\scrM}$ is a proper ideal by (1). Hence $\scrM = \overline{\scrM}$ by maximality.
+	\end{proof}
+
+\begin{proposition}
+	If $\scrA$ is a Banach algebra and $\scrM$ is a proper closed ideal in $\scrA$, then $\scrA / \scrM$ is a Banach algebra. If 
+\end{proposition}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
