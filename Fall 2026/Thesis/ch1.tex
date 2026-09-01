@@ -1,0 +1,284 @@
+\pagenumbering{arabic}
+\chapter{Complex Variables}
+
+\section{Basic Definitions and Results}
+
+\begin{definition}
+	Let $G \subset \bfC$ be open and $f:G \rightarrow \bfC$.
+	\mbox{}
+	\begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+		\item The function $f$ is \emph{differentiable at a point $a \in G$} if
+			\[
+				\lim_{h \rightarrow 0}\frac{f(a+h) - f(a)}{h}
+			\] 
+			exists. The value of this limit is denoted $f'(a)$. If $f$ is differentiable for each $a \in G$, then we simply say $f$ is \emph{differentiable}
+		\item The function $f$ is \emph{analytic} if $f$ is continuously differentiable.
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}
+	A \emph{path} is a continuous function $\gamma:[a,b] \rightarrow \bfC$.
+\end{definition}
+
+\begin{definition}
+	Let $\gamma:[a,b] \rightarrow \bfC$ be a path.
+	\mbox{}
+	\begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+		\item If $\gamma'(t)$ exists for each $t \in [a,b]$ and $\gamma':[a,b] \rightarrow \bfC$ is continuous, then $\gamma$ is a \emph{smooth path}.
+		\item If there is a partition of $[a,b]$ such that $\gamma$ is smooth along each subinterval, then $\gamma$ is \emph{piecewise smooth}.
+		\item If $\gamma$ is of bounded variation, then it is called a \emph{rectifiable path}.
+		\item The set $\{\gamma(t):a \leq t \leq b\}$ is called the \emph{trace} of $\gamma$ and is denoted by $\{\gamma\}$.
+		\item The path $\gamma$ is said to be \emph{closed} if $\gamma(a) = \gamma(b)$.
+	\end{enumerate}
+\end{definition}
+
+\begin{theorem}\label{thm:existence-of-cont-int}
+	Let $\gamma:[a,b] \rightarrow \bfC$ be a rectifiable path, and let $f:[a,b] \rightarrow \bfC$ be continuous. There exists a unique $I \in \bfC$ such that, for every $\epsilon > 0$, there exists $\delta > 0$ with the following property: if $\{t_0 < t_1,\ldots, <t_m\}$ is a partition of $[a,b]$ with $\max \{t_k - t_{k-1} : 1 \leq k \leq m \} < \delta$, then for every choice of points $x_k \in [t_{k-1},t_k]$ we have:
+	\[
+		\left| I - \sum_{k = 1}^{m}  f(x_k) \left( \gamma(t_k) - \gamma(t_{k-1}) \right)  \right| < \epsilon.
+	\] 
+\end{theorem}
+{\color{red}
+\begin{proof}
+		
+\end{proof}}
+
+\begin{definition}
+	The number $I \in \bfC$ established in Theorem~\ref{thm:existence-of-cont-int} is called the \emph{Riemann-Stieltjes integral of $f$ with respect to $\gamma$} over $[a,b]$ and is denoted by:
+	\[
+		\int_{a}^{b} f\,d\gamma.
+	\] 
+\end{definition}
+
+\begin{theorem}
+	If $\gamma$ is a piecewise smooth path and $f:[a,b] \rightarrow \bfC$ is continuous then:
+	\[
+		\int_{a}^{b} f\,d \gamma = \int_{a}^{b} f(t) \gamma'(t)\,dt.
+	\] 
+\end{theorem}
+{\color{red}
+\begin{proof}
+		
+\end{proof}}
+
+\begin{definition}
+	If $\gamma:[a,b] \rightarrow \bfC$ is a rectifiable path and $f:\{\gamma\} \rightarrow \bfC$ is continuous, then the \emph{line integral of $f$ along $\gamma$} is:
+	\[
+		\int_{a}^{b} f(\gamma(t))\,d\gamma(t).	
+	\]
+	This line integral is also denoted by $\int_{\gamma}^{} f = \int_{\gamma}^{} f(z)\,dz$.
+\end{definition}
+
+\begin{example}
+	Let $a \in \bfC$ be arbitrary and consider the path $\gamma:[0,1] \rightarrow \bfC$ given by $\gamma(t) := a + e^{2\pi i n t}$. Let $f:\bfC \setminus \{a\} \rightarrow \bfC$ be given by $f(z) := (z-a)^{-1}$. The line integral of $f$ along $\gamma$ is:
+	\begin{align*}
+		\int_{\gamma}^{} f(z)\,dz
+		&= \int_{0}^{1} f(\gamma(t))\,d\gamma(t) \\
+		&= \int_{0}^{1} e^{-2\pi i n t}\,d\gamma(t).
+	\end{align*}
+	Since $e^{-2\pi i n t}$ is smooth, Theorem~\ref{} gives:
+	\begin{align*}
+		\int_{0}^{1} e^{-2 \pi i n t}\,d\gamma(t)
+		&= \int_{0}^{1} e^{-2 \pi i n t} \gamma'(t)\,dt \\
+		&= \int_{0}^{1} e^{-2 \pi i n t} \left( 2\pi i n e^{2 \pi i  n t} \right)\,dt  \\
+		&= 2\pi i n.
+	\end{align*}
+\end{example}
+
+\begin{lemma}
+	If $\gamma:[a,b] \rightarrow \bfC$ is a rectifiable path and $\varphi:[c,d] \rightarrow [a,b]$ is continuous, non-decreasing, and surjective, then $\gamma \circ \varphi : [c,d] \rightarrow \bfC$ is a rectifiable path and $\{\gamma\} = \{\gamma \circ \varphi\}$.
+\end{lemma}
+{\color{red}
+\begin{proof}
+		
+\end{proof}}
+
+\begin{proposition}
+	Let $\gamma:[a,b] \rightarrow \bfC$ and $\sigma:[c,d] \rightarrow \bfC$ be rectifiable paths. Define $\sigma \sim \gamma$ if there exists a function $\varphi:[c,d] \rightarrow [a,b]$ such that $\varphi$ is continuous, strictly increasing, $\varphi(c) = a$ and $\varphi(d) = b$, and $\sigma = \gamma \circ \varphi$. Then $\sim$ is an equivalence relation.
+\end{proposition}
+{\color{red}
+\begin{proof}
+		
+\end{proof}}
+
+\begin{definition}
+	Using the terminology of Proposition~\ref{}, two paths $\gamma$ and $\sigma$ are \emph{equivalent} if $\gamma \sim \sigma$. The function $\varphi$ is called a \emph{change of parameter}. An equivalence class of paths is called a \emph{curve}.
+\end{definition}
+
+\begin{remark}
+	The trace of a curve is the trace of any of its representatives. If $f$ is continuous on the trace of a curve, then the integral over $f$ over the curve is the integral of $f$ over any representative of the curve. A curve is smooth if and only if one of its representatives is smooth. 
+\end{remark}
+
+\begin{lemma}
+	If $G$ is an open set in $\bfC$, $\gamma:[a,b] \rightarrow G$ is a rectifiable path, and $f:G \rightarrow \bfC$ is continuous, then for every $\epsilon > 0$ there is a polygonal path $\Gamma$ in $G$ such that $\Gamma(a) = \gamma(a)$, $\Gamma(b) = \gamma(b)$, and $\left| \int_{\gamma}^{} f - \int_{\Gamma}^{} f \right| < \epsilon$. 
+\end{lemma}
+{\color{red}
+\begin{proof}
+		
+\end{proof}}
+
+\begin{theorem}
+	Let $G \subseteq \bfC$ be open and let $\gamma$ be a rectifiable path in $G$ with initial and end points $\alpha$ and $\beta$ respectively. If $f:G \rightarrow \bfC$ is a continuous function with primitive $F:G \rightarrow \bfC$, then:
+	\[
+		\int_{\gamma}^{}f  = F(\beta)-F(\alpha),
+	\] 
+	(Recall that $F$ is a \emph{primitive} of $f$ when $F' = f$.)
+\end{theorem}
+{\color{red}
+\begin{proof}
+		
+\end{proof}}
+
+\begin{corollary}
+	Let $G \subseteq \bfC$ be open and let $\gamma$ be a closed rectifiable path in $G$. If $f:G \rightarrow \bfC$ is a continuous function with primitive $F:G \rightarrow \bfC$, then $\int_{\gamma}^{} f = 0$.
+\end{corollary}
+
+\section{Winding Numbers and Cauchy's Integral Formula}
+
+\begin{proposition}
+	If $\gamma:[0,1] \rightarrow \bfC$ is a closed rectifiable curve and $a \not\in \{\gamma\}$, then:
+	\[
+		\frac{1}{2\pi i}\int_{\gamma}^{} \frac{dz}{z-a}
+	\] 
+	is an integer.
+\end{proposition}
+{\color{red}
+\begin{proof}
+		
+\end{proof}}
+
+\begin{definition}
+	If $\gamma$ is a closed rectifiable curve in $\bfC$, then for $a \not\in \{gammma\}$, the \emph{index of $\gamma$} with respect to the point $a$ is:
+	\[
+		n(\gamma : a) := \frac{1}{2\pi i} \int_{\gamma}^{} (z-a)^{-1}dz. 
+	\] 
+\end{definition}
+
+{\color{red} Cauchy's Theorem Stuff\ldots}
+
+\section{The Jordan Curve Theorem}
+
+\begin{definition}
+	Let $G \subseteq \bfC$ be open. A closed rectifiable curve $\gamma$ is \emph{positively oriented} if for every $a \in G \setminus \{\gamma\}$, $n(\gamma;a)$ is either $0$ or $1$. In this case the \emph{inside} of $\gamma$ is $\ins \gamma := \{a \in \bfC \setminus \{gamma\} : n(\gamma;a) = 1\}$. The \emph{outside} of $\gamma$ is $\out \gamma := \{a \in \bfC \setminus \{\gamma\}: n(\gamma;a) = 0\}$.
+\end{definition}
+
+\begin{definition}
+	A curve $\gamma:[0,1] \rightarrow \bfC$ is \emph{simple} if $\gamma(s) = \gamma(t)$ implies either:
+	\mbox{}
+	\begin{itemize}[itemsep=1pt,topsep=3pt]
+		\item $s = t$,
+		\item $s=0$ and $t = 1$, or
+		\item $s=1$ and $t = 0$.
+	\end{itemize}
+\end{definition}
+
+\begin{theorem}[Jordan Curve Theorem]
+	If $\gamma$ is a simple closed rectifiable curve, then $\bfC \setminus \{\gamma\}$ consists of exactly two connected components, each of which is bounded by $\{\gamma\}$.
+\end{theorem}
+
+\section{Banach-Valued Integration}
+
+\begin{definition}
+	Let $G \subseteq \bfC$ be open and $X$ a Banach space. If $f:G \rightarrow X$, define the \emph{derivative of $f$ at $z_0$} to be:
+	\[
+		f'(z_0) := \lim_{h \rightarrow 0}\frac{f(z_0 + h) - f(z_0)}{h},
+	\] 
+	provided the limit exists. If the derivative of $f$ exists for all $z \in G$, we say that $f$ is differentiable. The function $f$ is called \emph{analytic} if $f$ is continuously differentiable on $G$.
+\end{definition}
+
+\begin{remark}
+	Let $X$ be a Banach space. For any $x \in X$, recall that the \emph{evaluation map} is $\hat{\cdot}:X^\ast \rightarrow \bfF$ given by $\hat{x}(x^\ast) := x^\ast(x)$. We introduce the following notation for convenience:
+	\mbox{}
+	\begin{itemize}[itemsep=1pt,topsep=3pt]
+		\item For $x^\ast \in X^\ast$, define $\left<\cdot, x^\ast \right>:X \rightarrow \bfF$ by $x \mapsto x^\ast(x)$.
+		\item For $x \in X$, define $\left<x,\ast \right> :X^\ast \rightarrow \bfF$ by $x^\ast \mapsto \hat{x}(x^\ast) = x^\ast (x)$.
+	\end{itemize}
+	We call $\left<\cdot,\cdot \right>$ the \emph{canonical evaluation map}.
+\end{remark}
+
+
+\begin{proposition}
+	Let $G \subseteq \bfC$ be open and $X$ a Banach space. If $f:G \rightarrow X$ is analytic and $x^\ast \in X^\ast$, then $z \mapsto \left<f(z),x^\ast \right>$ is analytic on $G$ and its derivative is $\left<f'(z),x^\ast \right>$.	
+\end{proposition}
+	\begin{proof}
+		As $z\mapsto \left<f(z),x^\ast \right>$ is the composition of continuous maps, it is surely continuous. If such a function is denoted by $g$, then for any $z_0 \in G$ we have:
+		\begin{align*}
+			g'(z_0)
+			&= \lim_{h \rightarrow 0} \frac{g(z_0 + h) - g(z_0)}{h} \\
+			&= \lim_{h \rightarrow 0} \frac{\left<f(z_0 + h),x^\ast \right> - \left<f(z_0),x^\ast \right>}{h} \\
+			&= \lim_{h \rightarrow 0}\left<\frac{f(z_0 + h) - f(z_0)}{h},x^\ast \right> \\
+			&= \left< \lim_{h \rightarrow 0}\frac{f(z_0 + h) - f(z_0)}{h} , x^\ast\right> \\
+			&= \left<f'(z_0),x^\ast \right>.
+		\end{align*}
+		Since $g'(z_0)$ exists for all $z_0 \in G$, $g$ is differentiable. Since $g'$ is the composition of continous maps, it is continuous. Thus $z \mapsto \left<f(z), x^\ast \right>$ is analytic. 
+	\end{proof}
+
+\begin{proposition}
+	Let $G \subseteq \bfC$ be open and $X$ a Banach space. If $f:G \rightarrow X$ is a function such that $z \mapsto \left<f(z),x^\ast \right>$ is analytic for each $x^\ast \in X^\ast$, then $f$ is analytic.
+\end{proposition}
+	\begin{proof}
+		Since $G \subseteq \bfC$ is open, choose $r > 0$ such that $\overline{B}(z,r) \subseteq G$. Let $0 < \delta < \frac{r}{2}$, and let $s,t$ satisfy $0 < |s|,|t| < \delta$. Fix $x^\ast \in X^\ast$ with $\lnorm x^\ast \rnorm \leq 1$ and let $g:= \left<f(\cdot),x^\ast \right>$. Since $z,z-s,z-t \in B^\circ(z,r)$, we can apply Cauchy's Integral Formula to $g(z)$, $g(z-s)$, and $g(z-t)$ (respectively). With this, observe that:
+		\begin{align*}
+			\left| \frac{g(z+s) - g(z)}{s} - \frac{g(z+t) - g(z)}{t} \right| 
+			&= \left| \frac{1}{2\pi i} \int_{\partial \overline{B}(z,r)}^{} \frac{g(w)(s-t)}{(w-z)(w-z-s)(w-z-t)}\,dw \right|  \\
+			&\leq \frac{1}{2 \pi} \int_{\partial \overline{B}(z,r)}^{} \frac{|g(w)| |s-t|}{|w-z||w-z-s||w-z-t|}\,dw 
+		\end{align*}
+		Note that $|s - t| \leq 2\delta$ and $|w-z||w-z-s||w-z-t| \geq \frac{r^3}{8}$. Hence:
+		\begin{align*}
+			\left| \frac{g(z+s) - g(z)}{s} - \frac{g(z+t) - g(z)}{t} \right| 
+			&\leq \frac{8\delta}{\pi r^3} \int_{\partial \overline{B}(z,r)}^{} |g(w)|\,dw \\
+			&\leq c \delta \sup_{w \in \partial \overline{B}(z,r)} |g(w)| \\
+			&= c\delta \sup_{w \in \partial \overline{B}(z,r)}|\left<f(w),x^\ast \right>| \\
+		\end{align*}
+		Note that $\left<f(w),\cdot \right>:X^\ast \rightarrow \bfC$ is continuous for all $x^\ast \in X^\ast$. Hence $|\left<f(w),x^\ast \right>| = |x^\ast(f(w))| \leq \lnorm x^\ast \rnorm \lnorm f(w) \rnorm \leq \lnorm f(w) \rnorm$. The above inequality can be written as:
+		\[
+			\left| \left<\frac{f(z+s) - f(z)}{s} - \frac{f(z+t) - f(z)}{t}, x^\ast \right> \right| \leq c\delta \sup_{w \in \partial \overline{B}(z,r)}\lnorm f(w) \rnorm.
+		\] 
+		Since the right-hand side is independent of $x^\ast \in X^\ast$, we have:
+		\[
+			\sup_{\lnorm x^\ast \rnorm \leq 1}\left| \left<\frac{f(z+s) - f(z)}{s} - \frac{f(z+t) - f(z)}{t}, x^\ast \right> \right| \leq c\delta \sup_{w \in \partial \overline{B}(z,r)}\lnorm f(w) \rnorm.
+		\] 
+		By a corollary of the Hahn-Banach Theorem, this gives:
+		\[
+			\lnorm \frac{f(z+s) - f(z)}{s} - \frac{f(z+t) - f(z)}{t} \rnorm \leq c\delta \sup_{w \in \partial \overline{B}(z,r)}\lnorm f(w) \rnorm.
+		\]
+		Given any $\epsilon>0$, choose $0 < \delta < \frac{r}{2}$ such that $\delta \leq \frac{c}{\sup_{w \in \partial \overline{B}(z,r)}\lnorm f(w) \rnorm}$. If $0 < |s|,|t| < \delta$, then $\lnorm \frac{f(z+s) - f(z)}{s} - \frac{f(z+t) - f(z)}{t} \rnorm < \epsilon$. Since $X$ is complete, by the Cauchy Criterion for limits $f'(z) = \lim_{h \rightarrow 0}\frac{f(z+h) - f(z)}{h} = 0$. Since $z \in G$ was arbitrary, $f$ is analytic.
+	\end{proof}
+
+\begin{theorem}
+	Let $G \subseteq \bfC$ be open and $X$ a Banach space. Let $\gamma$ be a rectifiable curve in $G$ and $f$ a continuous function defined in a neighborhood of $\{\gamma\}$ with values in $X$. There exists a unique $I \in X$ such that, for every $\epsilon > 0$, there exists $\delta > 0$ with the following property: if $\{t_0 < t_1 < \ldots < t_m\}$ is a partition of $[0,1]$ with $\max \{t_k - t_{k-1} : 1 \leq k \leq m\} < \delta$, then for every choice of points $x_k \in [t_{k-1},t_k]$ we have:
+	\[
+	\lnorm I - \sum_{k=1}^{m} f(\gamma(x_j))(\gamma(t_j) - \gamma(t_{k-1}) \rnorm < \epsilon.
+	\] 
+\end{theorem}
+{\color{red}
+\begin{proof}
+		
+\end{proof}}
+
+\begin{definition}
+	The element $I \in X$ established in Theorem~\ref{} is called the \emph{line integral of $f$ along $\gamma$} and is denoted by:
+	\[
+		\int_{0}^{1} f(\gamma(t))\,d\gamma(t).
+	\] 
+	This line integral is also denoted by $\int_{\gamma}^{} f = \int_{\gamma}^{} f(z)\,dz$.
+\end{definition}
+
+\begin{proposition}
+	Let $G \subseteq \bfC$ be open and $\gamma$ a rectifiable curve in $G$ Suppose $f$ is a continuous function defined in a neighborhood of $\{\gamma\}$ with values in $X$. For every $x^\ast \in X^\ast$, we have:
+	\[
+		\left<\int_{\gamma}^{} f,x^\ast \right> = \int_{\gamma}^{} \left<f(\cdot), x^\ast \right>.
+	\] 
+\end{proposition}
+
+\begin{theorem}[Cauchy's Theorem]
+	If $X$ is a Banach space, $G$ is an open subset of $\bfC$, $f:G \rightarrow X$ is an analytic function, and $\gamma_1,\ldots ,\gamma_m$ are closed rectifiable curves in $G$ such that $\sum_{j=1}^{m} n(\gamma_j ; a) = 0$ for all $a \in \bfC \setminus G$, then $\sum_{j=1}^{m}  \int_{\gamma_j}^{} f = 0$.
+\end{theorem}
+
+\begin{theorem}[Cauchy's Integral Formula]
+	If $X$ is a Banach space, $G$ is an open subset of $\bfC$, $f:G \rightarrow X$ is analytic, $\gamma$ is a closed rectifiable curve in $G$ such that $n(\gamma;a) = 0$ for every $a \in \bfC \setminus G$, and $\lambda \in G \setminus\{\gamma\}$, then for every integer $k \geq 0$:
+	\[
+		n(\gamma;\lambda)f^{(k)}(\lambda) = \frac{k!}{2\pi i} \int_{\gamma}^{} (z-\lambda)^{-(k+1)}f(z)\,dz.
+	\] 
+\end{theorem}
+

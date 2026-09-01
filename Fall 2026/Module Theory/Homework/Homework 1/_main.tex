@@ -1,0 +1,215 @@
+\documentclass[10pt,oneside,openany]{memoir}
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/preamble-hw.tex}
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
+\begin{document}
+\homeworktitle
+{Math 5023} %class
+{Homework 1} %assignment
+{Gianluca Crescenzo} %name
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Throughout, let $R$ be a commutative ring with $1$, and $M$ an $R$-module.
+
+\begin{exercise}
+	Let $I \subset R$ be an ideal, $M$ an $R$-module. Prove $IM = \left\{\sum a_i m_i : a_i \in I, m_i \in M,\text{ finite sum}\right\}$ is a submodule of $M$.
+\end{exercise}
+{\color{blue}
+
+	\begin{proof}
+		It is clear that $IM$ is nonempty and closed under addition, as $1 \in IM$ and the sum of two finite sums will also be finite and of the form $\sum_{}^{} a_i m_i$. For any $r \in R$ and $\sum_{}^{} a_i m_i$, we have $r \left( \sum_{}^{} a_i m_i \right) = \sum_{}^{} (ra_i)m_i$. Since $I$ is an ideal, $ra_i \in I$. Hence $IM$ is a submodule of $M$
+	\end{proof}
+}
+\begin{exercise}
+	Suppose $M$ is an $R$-module, and $X \subset M$ is a subset. Prove that
+$N = \langle X\rangle$ is the \textit{smallest} submodule containing the set $X$.
+First formulate what \lq\lq smallest\rq\rq\ means.
+\end{exercise}
+{\color{blue}
+
+	\begin{proof}
+		Suppose $Y$ is a submodule of $M$ such that $X \subset Y \subset N$. Let $\sum_{}^{} rx \in N$. Since $X \subseteq Y$, $x \in Y$. Since $Y$ is a submodule, $\sum_{}^{} rx \in Y$. Thus $N \subseteq Y$; i.e., $Y = N$.
+	\end{proof}
+}
+\begin{exercise}
+	Let $V$ be the 3-dimensional $\mathbb{Q}$-vector space $\{a_0+a_1\sqrt[3]{2}+a_2\sqrt[3]{4}:a_i\in\mathbb{Q}\}$, and let $T=\sqrt[3]{2}+\sqrt[3]{4}$.
+	\mbox{}
+	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+		\item Convince yourself that left-multiplication by $T$ is a $\bfQ$-linear transformation on $V$. 
+		\item Find a matrix for $T$ with respect to the basis $\{1,\sqrt[3]{2},\sqrt[3]{4}\}$.
+		\item Compute $f(x)v$, where $f(x)=x^2-2x-4$, $x$ acts as the linear transformation $T$, and $v=2+\sqrt[3]{2}+\sqrt[3]{4}$.
+		\item Find a polynomial $p(x)$ such that $p(x)v=0$ for all $v$.
+	\end{enumerate}
+\end{exercise}
+{\color{blue}
+
+	\begin{proof}
+		(a) Given \(T=\sqrt[3]{2}+\sqrt[3]{4}\) and \(v\in V\), write, \(v=a_0+a_1\sqrt[3]{2}+a_2\sqrt[3]{4}\), where \(a_0,a_1,a_2\in\bfQ\). Then:
+		\begin{align*}
+			T(v)
+&= \left(\sqrt[3]{2}+\sqrt[3]{4}\right)
+   \left(a_0+a_1\sqrt[3]{2}+a_2\sqrt[3]{4}\right) \\
+&= a_0\sqrt[3]{2}+a_0\sqrt[3]{4}
+   +a_1\sqrt[3]{4}+2a_1+2a_2+2a_2\sqrt[3]{2} \\
+&= (2a_1+2a_2)+(a_0+2a_2)\sqrt[3]{2}
+   +(a_0+a_1)\sqrt[3]{4} \\
+&\in V.
+		\end{align*}
+		Since each coefficient is rational, \(T\) takes elements of \(V\) to elements of \(V\). Moreover, by associativity and distributivity, for any \(v_1,v_2\in V\) and \(q\in\mathbb{Q}\), we have $T(v_1+qv_2)=Tv_1+qTv_2$. Therefore, left-multiplication by \(T\) is a \(\bfQ\)-linear transformation on \(V\).
+
+		(b) Let \(\mathcal{B}=(1,\sqrt[3]{2},\sqrt[3]{4})\). We compute the image of each basis vector as follows:
+		\begin{align*}
+			T(1)
+&= 0\cdot 1+1\cdot\sqrt[3]{2}+1\cdot\sqrt[3]{4}, \\
+T\left(\sqrt[3]{2}\right)
+&= 2\cdot 1+0\cdot\sqrt[3]{2}+1\cdot\sqrt[3]{4}, \\
+T\left(\sqrt[3]{4}\right)
+&= 2\cdot 1+2\cdot\sqrt[3]{2}+0\cdot\sqrt[3]{4}.
+		\end{align*}
+		Thus:
+		\[
+			[T]_{\mathcal{B}}
+=
+\begin{pmatrix}
+0 & 2 & 2 \\
+1 & 0 & 2 \\
+1 & 1 & 0
+\end{pmatrix}.
+		\] 
+
+		(c) We have:
+		\begin{align*}
+			f(x)v
+&= (T^2-2T-4)\left(2+\sqrt[3]{2}+\sqrt[3]{4}\right) \\
+&= \left(\left(\sqrt[3]{2}+\sqrt[3]{4}\right)^2
+-2\left(\sqrt[3]{2}+\sqrt[3]{4}\right)-4\right)
+\left(2+\sqrt[3]{2}+\sqrt[3]{4}\right) \\
+&= \left(\sqrt[3]{4}+4+2\sqrt[3]{2}
+-2\sqrt[3]{2}-2\sqrt[3]{4}-4\right)
+\left(2+\sqrt[3]{2}+\sqrt[3]{4}\right) \\
+&= -\sqrt[3]{4}\left(2+\sqrt[3]{2}+\sqrt[3]{4}\right) \\
+&= -2\sqrt[3]{4}-2-2\sqrt[3]{2}.
+		\end{align*}
+
+		(d) Let \(p(x)\) be the characteristic polynomial of \([T]_{\mathcal{B}}\). Then \(p(x)v=0\) for all \(v\in V\) by the Cayley--Hamilton theorem.
+	\end{proof}
+}
+
+\begin{exercise}
+	Suppose $\{M_i:i\in I\}$ is a set of submodules of $M$
+	\mbox{}
+	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+		\item Prove that $\sum_i M_i$ is a submodule of $M$, where all sums are finite. Prove that $\sum_i M_i$ is the smallest submodule of $M$ that contains all of the $M_i$.:w
+		\item Prove that $\bigcap_i M_i$ is a submodule of $M$.
+	\end{enumerate}
+\end{exercise}
+{\color{blue}
+
+	\begin{proof}
+		Define $N := \sum_{i}^{} M_i$.
+
+		(a) Note $N \neq 0$ since $1 \in N$. Let $\sum_{}^{} m_i, \sum_{}^{n_i} \in N$. The sum of these two elements is clearly a finite sum, hence they are an element of $N$. Let $r \in R$ and $\sum_{}^{} m_i \in N$. Then $r \left( \sum_{}^{} m_i \right)  = \sum_{}^{} r m_i$. Since $rm_i \in M_i$ for each $i$, we have $r\left( \sum_{}^{} m_i \right) \in N$. Thus $N$ is a submodule of $M$. Suppose now that $Y$ is a submodule of $M$ such that $\bigcup_{i} M_i \subseteq Y \subseteq N.$ Let $\sum_{}^{}m_i \in N$. Note that each $m_i \in \bigcup_i M_i \subseteq Y$. Since $Y$ is a submodule, $\sum_{}^{} m_i \in Y$. Hence $Y = N$.
+
+		(b) Note $\bigcap_i M_i \neq 0 $ because $1 \in M_i$ for all $i$. Let $m,n \in \bigcap_i M_i$. Then $m,n \in M_i$ for all $i$. Hence for all $r \in R$, we have $m+rn \in M_i$ for all $i$. Thus $m+rn \in \bigcap_i M_i$, hence it is a submodule of $M$.
+	\end{proof}
+}
+
+\begin{exercise}
+	Suppose $M_1\subset M_2\subset M_3\subset\cdots$ is an ascending sequence of submodules of an $R$-module $M$. Prove that $\bigcup_i M_i$ is a submodule of $M$.
+\end{exercise}
+{\color{blue}
+
+	\begin{proof}
+		Note that $1 \in \bigcup_{i}M_i$ because $1 \in M_i$ for all $i$. If $m,n \in \bigcup_i M_i$, then $m \in M_j$ and $n \in M_k$ for some indices $j,k$. There exists some index $\ell$ such that $M_j,M_k \subseteq M_\ell$, hence $m,n \in M_\ell$. Thus $m+n \in M_\ell \subseteq \bigcup_i M_i$. Moreover, for any $r \in R$, we have $mr \in M_\ell \subseteq \bigcup_i M_i$. Thus $\bigcup_i M_i$ is a submodule.
+	\end{proof}
+}
+
+\begin{exercise}
+	Suppose $f : M \longrightarrow M'$ and $g : N \longrightarrow N'$ are
+$R$-module homomorphisms.
+	\mbox{}
+	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+		\item Prove that $f$ and $g$ induce $R$-module homomorphisms $f^* : \mathrm{Hom}_R(M',N) \longrightarrow \mathrm{Hom}_R(M,N)$ and $g_* : \mathrm{Hom}_R(M,N) \longrightarrow \mathrm{Hom}_R(M,N')$.
+		\item Prove that if $f$ is onto then $f^*$ is one-to-one, and if $g$ is one-to-one then $g_*$ is one-to-one.
+	\end{enumerate}
+\end{exercise}
+{\color{blue}
+
+	\begin{proof}
+		(a) Define $f^\ast:\Hom_R(M',N) \rightarrow \Hom_R(M,N)$ by $f^\ast(\varphi) := f \circ \varphi$. This is indeed an $R$-module homomorphism, as for any $\varphi_1,\varphi_2 \in \Hom_R(M',N)$ and $r \in R$ we have:
+		\begin{align*}
+			f^\ast(\varphi_1 + r\varphi_2)(m) 
+			&= \bigl( (\varphi_1 + r \varphi_2) \circ f \bigr)(m) \\
+			&=  (\varphi_1 + r \varphi_2)\bigl( f(m) \bigr)\\
+			&= \varphi_1(f(m)) + r \varphi_2(f(m)) \\
+			&= \bigl( (\varphi_1 \circ f) + r (\varphi_2 \circ f) \bigr)(m) \\
+			&= \bigl( f^\ast(\varphi_1) + r f^\ast(\varphi_2) \bigr)(m).
+		\end{align*}
+		Similarly, define $g_\ast:\Hom_R(M,N) \rightarrow \Hom_R(M,N')$ by $g_\ast(\varphi):= g \circ \varphi$. Then $g_\ast$ is an $R$-module homomorphism, as for any $\varphi_1,\varphi_2 \in \Hom_R(M,N)$ and $r \in R$ we have:
+		\begin{align*}
+			g_\ast(\varphi_1 + r \varphi_2)(m)
+			&= \bigl( g \circ (\varphi_1 + r \varphi_2) \bigr)(m) \\
+			&= g \bigl( (\varphi_1 + r\varphi_2)(m) \bigr) \\
+			&= g \bigl( \varphi_1(m) + r \varphi_2(m) \bigr) \\
+			&= (g \circ \varphi_1)(m) + r (g \circ \varphi_2)(m) \\
+			&= \bigl( (g \circ \varphi_1 \bigr) + r (g \circ \varphi_2)(m).
+		\end{align*}
+
+		(b) Suppose $f^\ast(\varphi_1) = f^\ast(\varphi_2)$ for some $\varphi_1,\varphi_2 \in \Hom_R(M',N)$. Then $\varphi_1(f(m)) = \varphi_2(f(m))$ for every $m \in M'$. Since $f$ is onto, there exists $x \in M$ such that $f(m) = x$. Thus $\varphi_1(x) = \varphi_2(x)$. Since $\varphi_1$ and $\varphi_2$ are equal on all elements, we have that $\varphi_1 = \varphi_2$. Thus $f^\ast$ is one-to-one. Now suppose $g_\ast(\psi_1) = g_\ast(\psi_2)$ for some $\psi_1,\psi_2 \in \Hom_R(M,N)$. Then $g(\psi_1(m)) = g(\psi_2(m))$ for all $m \in M$. Since $g$ is one-to-one, $\psi_1(m) = \psi_2(m)$ for all $m \in M$. Since $\psi_1$ and $\psi_2$ are equal on all elements, we have $\psi_1 = \psi_2$. Thus $g_\ast$ is one-to-one.
+	\end{proof}
+}
+
+\begin{exercise}
+	If $N$ is a submodule of $M$, the \textit{annihilator of $N$ in $R$} is
+$\mathrm{Ann}_R(N)=\{r\in R:rn=0\ \forall n\in N\}$.
+	\mbox{}
+	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+		\item Prove $\mathrm{Ann}_R(N)$ is a 2-sided ideal of $R$. 
+		\item Suppose $M=\mathbb{Z}_{24}\times\mathbb{Z}_{15}\times\mathbb{Z}_{50}$. Compute $\mathrm{Ann}_{\mathbb{Z}}(M)$.
+	\end{enumerate}
+\end{exercise}
+{\color{blue}
+
+	\begin{proof}
+		(a) Note that $\Ann_R(N) \neq \emptyset$ because $0 \in \Ann_R(N)$. If $r_1,r_2 \in \Ann_R(N)$, then $(r_1 - r_2)n = r_1n - r_2n = 0$, hence $r_1 - r_2 \in Ann_R(N)$. If $x \in \Ann_R(N)$, and $r \in R$, then $(xr)n = (rx)n = 0$ and $(rx)n =  r(xn) = 0$. Thus $xr,rx \in \Ann_R(N)$, implying that it is a 2-sided ideal of $R$;
+
+		(b) It is enough to determine all $\alpha \in \bfZ$ such that $\alpha(\overline{1},\overline{0},\overline{0}) = 0$, $\alpha(\overline{0},\overline{1},\overline{0}) = 0$, and $\alpha(\overline{0},\overline{0},\overline{1}) = 0$. This is equivalent to determining all $\alpha$ such that $\overline{\alpha} \equiv 0 \pmod{24}$, $\overline{\alpha}\equiv 0\pmod{15}$, and $\overline{\alpha}\equiv 0 \pmod{50}$. This system of equations is equivalent to $\overline{\alpha} \equiv 0 \pmod{\lcm(24,15,50)}$, thus $\Ann_\bfZ(M) = \left<\lcm(24,15,50) \right>$.
+	\end{proof}
+}
+
+\begin{exercise}
+	Assume $R$ is commutative. Show that $M$ is an irreducible $R$-module if and only if $M$ is $R$-isomorphic to $R/\mathfrak m$, for some maximal (2-sided) ideal $\mathfrak m$.
+\end{exercise}
+{\color{blue}
+
+	\begin{proof}
+		Suppose that $M$ is an irreducible $R$-module. For any $m \in M$, note that $\left< m\right>$ is a submodule of $M$. Hence $M = \left<m \right>$. Define $\varphi:R \rightarrow M$ by $r \mapsto rm$. This is clearly an $R$-module homomorphism, as $\varphi(r_1 + r_2) = (r_1 + r_2)m = r_1m + r_2m = \varphi(r_1) + \varphi(r_2)$ and $\varphi(r r_0) = (r r_0)m = r (r_0 m) = r \varphi(r_0).$ Treating $M$ and $R$ as groups, by the First Isomorphism Theorem we have $R/\ker\varphi \cong \Image \varphi$. Note that $\varphi$ is surjective, as for any $m \in M = \left<m \right>$, we have $m = r_0m$ for some $r_0 \in R$; i.e., $\varphi(r_0) = r_0m = m$. Hence $R/\ker\varphi = M$. It remains to show that $\ker \varphi$ is a maximal ideal. Suppose $J$ is an ideal of $R$ such that $\ker\varphi \subseteq J \subseteq R$. By the Third Isomorphism Theorem, we have $(R/\ker\varphi) (J/\ker\varphi) \cong R/J$, and in particular, $J/\ker\varphi$ is an ideal of $R/\ker\varphi \cong M$. Since $M$ is irreducible, either $J/\ker\varphi = 0$ or $J/\ker\varphi = M$. If $J/\ker\varphi = 0$, then $J = \ker\varphi$. If $J/\ker\varphi = M$, then $J = R$. Thus $\ker\varphi$ is a maximal ideal.
+
+		Conversely, let $\varphi: M \rightarrow R/\fm$ be an $R$-isomorphism for some maximal ideal $\fm$. Let $N$ be a submodule of $M$. Note that $\varphi(N)$ is an ideal, as it is closed under addition and scalar multiplication by $R$. Since $\fm$ is maximal, $R/\fm$ is a field. Hence $\varphi(N)=  0$ or $\varphi(N) = R/\fm$, implying that $N = 0$ or $N = M$. Thus $M$ is irreducible.
+	\end{proof}
+}
+
+\begin{exercise}
+	Suppose $N\subset M$ is a submodule. Prove that if $N$ and $M/N$ are finitely generated, then $M$ is finitely generated.
+\end{exercise}
+{\color{blue}
+
+	\begin{proof}
+		If $N$ is finitely generated, then $N = \left<X \right>$ for some $X \subset N$. Let $m \in M$ be arbitrary and consider $m +\left<X \right> \in M / \left<X \right>$. Since $M / \left<X \right>$ is finitely generated, there is a subset $Y \subset M/\left<X \right>$ such that $M/\left<X \right> = \left<Y \right>$. Hence there exists $r_1,\ldots ,r_n \in R$ and $y_1+\left<X \right>,\ldots ,y_n+\left<X \right> \in Y$ such that:
+		\begin{align*}
+			m + \left<X \right>
+			&= \sum_{i=1}^{n} r_i (y_i + \left<X \right>) \\
+			&= \left(\sum_{i=1}^{n} r_i y_i \right) + \left<X \right>.
+		\end{align*}
+		This means $m - \left( \sum_{i=1}^{n} r_i y_i \right) \in \left<X \right>$, so there exists $s_1,\ldots ,s_k \in R$ and $x_1,\ldots ,x_k \in X$ such that:
+		\[
+			m - \left( \sum_{i=1}^{n} r_i y_i \right) = \sum_{i=1}^{k} s_i x_i.
+		\] 
+		Thus $m = \left( \sum_{i=1}^{n} r_i y_i \right) + \left( \sum_{i=1}^{k} s_i x_i \right)$. Since $m \in M$ was arbitary, $M$ is finitely generated.
+	\end{proof}
+}
+
+
+
+\end{document}

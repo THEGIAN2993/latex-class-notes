@@ -1,0 +1,11 @@
+\contentsline {chapter}{Contents}{i}{section*.2}%
+\contentsline {chapter}{\chapternumberline {1}Complex Variables}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Basic Definitions and Results}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Winding Numbers and Cauchy's Integral Formula}{3}{section.1.2}%
+\contentsline {section}{\numberline {1.3}The Jordan Curve Theorem}{4}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Banach-Valued Integration}{4}{section.1.4}%
+\contentsline {chapter}{\chapternumberline {2}Banach Algebras}{7}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Basic Definitions and Results}{7}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Ideals and Quotients}{8}{section.2.2}%
+\contentsline {section}{\numberline {2.3}The Spectrum}{12}{section.2.3}%
+\contentsline {section}{\numberline {2.4}The Riesz Functional Calculus}{12}{section.2.4}%

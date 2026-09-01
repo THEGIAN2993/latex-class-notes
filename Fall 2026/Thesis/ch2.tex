@@ -1,82 +1,6 @@
-\documentclass[reqno]{amsart}
+\chapter{Banach Algebras}
 
-\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/preamble-standalone.tex}
-\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
-
-\title[Banach and C*-Algebras, En Route to Continuous Functional Calculus]{$C*$-Algebras and the Gelfand Theory}
-\author{Gianluca Crescenzo}
-
-\begin{document}
-
-\begin{abstract}
-	The Gelfand-Naimark-Segal construction is a core idea in the proof of the spectral theorem for normal operators on a Hilbert space. Gelfand's Theorem provides the core representation theory that drives the construction as well as naturally providing an entry point to the study of $C*$-algebras, the core subset of operator algebras. This thesis will explore these ideas via the proof of the full spectram theorem. As an application of this representation theory, an exposition will be made on results from a recent paper by J.E. Pascoe and Ryan Tully-Doyle titled "Induced Stinespring Factoization and the Wittstock Support Theorem"
-\end{abstract}
-
-\maketitle
-
-\iffalse
-\section{Cauchy's Theorem}\label{Section:Cauchy's Theorem}
-
-\begin{definition}
-	Let $G \subset \bfC$ be open and $f:G \rightarrow \bfC$.
-	\mbox{}
-	\begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
-		\item The function $f$ is \emph{differentiable at a point $a \in G$} if
-			\[
-				\lim_{h \rightarrow 0}\frac{f(a+h) - f(a)}{h}
-			\] 
-			exists. The value of this limit is denoted $f'(a)$. If $f$ is differentiable for each $a \in G$, then we simply say $f$ is \emph{differentiable}
-		\item The function $f$ is \emph{analytic} if $f$ is continuously differentiable.
-	\end{enumerate}
-\end{definition}
-
-\begin{definition}
-	A \emph{path} is a continuous function $\gamma:[a,b] \rightarrow \bfC$.
-\end{definition}
-
-\begin{definition}
-	Let $\gamma:[a,b] \rightarrow \bfC$ be a path.
-	\mbox{}
-	\begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
-		\item If $\gamma'(t)$ exists for each $t \in [a,b]$ and $\gamma':[a,b] \rightarrow \bfC$ is continuous, then $\gamma$ is a \emph{smooth path}.
-		\item If there is a partition of $[a,b]$ such that $\gamma$ is smooth along each subinterval, then $\gamma$ is \emph{piecewise smooth}.
-		\item If $\gamma$ is of bounded variation, then it is called a \emph{rectifiable path}.
-		\item The set $\{\gamma(t):a \leq t \leq b\}$ is called the \emph{trace} of $\gamma$ and is denoted by $\{\gamma\}$.
-	\end{enumerate}
-\end{definition}
-
-\begin{theorem}\label{thm:existence-of-cont-int}
-	Let $\gamma:[a,b] \rightarrow \bfC$ be a rectifiable path, and let $f:[a,b] \rightarrow \bfC$ be continuous. There exists a unique $I \in \bfC$ such that, for every $\epsilon > 0$, there exists $\delta > 0$ with the following property: if $\{t_0 < t_1,\ldots, <t_m\}$ is a partition of $[a,b]$ with $\max \{t_k - t_{k-1} : 1 \leq k \leq m \} < \delta$, then for every choice of points $x_k \in [t_{k-1},t_k]$ we have:
-	\[
-		\left| I - \sum_{k = 1}^{m}  f(x_k) \left( \gamma(t_k) - \gamma(t_{k-1}) \right)  \right| < \epsilon.
-	\] 
-\end{theorem}
-
-\begin{definition}
-	The number $I \in \bfC$ established in Theorem~\ref{thm:existence-of-cont-int} is called the \emph{Riemann-Stieltjes integral of $f$ with respect to $\gamma$} over $[a,b]$ and is denoted by:
-	\[
-		\int_{a}^{b} f\,d\gamma.
-	\] 
-\end{definition}
-
-\begin{theorem}
-	If $\gamma$ is a piecewise smooth path and $f:[a,b] \rightarrow \bfC$ is continuous then:
-	\[
-		\int_{a}^{b} f\,d \gamma = \int_{a}^{b} f(t) \gamma'(t)\,dt.
-	\] 
-\end{theorem}
-
-\begin{definition}
-	If $\gamma:[a,b] \rightarrow \bfC$ is a rectifiable path and $f:\{\gamma\} \rightarrow \bfC$ is continuous, then the \emph{line integral of $f$ along $\gamma$} is:
-	\[
-		\int_{a}^{b} f(\gamma(t))\,d\gamma(t).	
-	\] 
-\end{definition}
-
-\fi
-\section{Banach Algebras}\label{Section:Banach Algebras}
-
-\subsection{Basic Definitions and Examples}
+\section{Basic Definitions and Results}
 
 \begin{definition}
 	An \emph{algebra} over $\bfF$ is a vector space $\scrA$ over $\bfF$ that has a multiplication operation making $\scrA$ into a ring such that, for any $\alpha \in \bfF$ and $a,b \in \scrA$, we have $\alpha(ab) = (\alpha a)b = a (\alpha b)$. If $\scrA$ admits an identity element, we say $\scrA$ is \emph{unital}.
@@ -122,7 +46,7 @@ Parts (1) and (2) show that $\scrA$ may be identified isometrically with the ide
 	Parts (3) and (4) show that the usual submultiplicativity condition on the norm need not be assumed. Indeed, if $\scrA$ is complete and multiplication is continuous, then the norm $\lnorm a \rnorm_{\ast}$ is equivalent to the original norm on $\scrA$ satisfying the submultiplicativity condition.
 
 
-\subsection{Ideals and Quotients}
+\section{Ideals and Quotients}
 
 \begin{definition}
 	Let $\scrA$ be an algebra. A \emph{left ideal} (resp. \emph{right ideal}) of $\scrA$ is a subalgebra $\scrM$ of $\scrA$ such that, for all $a \in \scrA$ and $x \in \scrM$, then $ax \in \scrM$ (resp. $xa \in \scrM$). If $\scrM$ is both a left and right ideal, then $\scrM$ is simply called an \emph{ideal} (or \emph{bilaterial ideal}).
@@ -237,29 +161,98 @@ The following fact surfaced in the preceeding proof.
 	\end{enumerate}
 \end{corollary}
 	\begin{proof}
-		(1) Let $\scrM$ be a left ideal of $\scrA$. The proof showing $\overline{\scrM}$ is a subalgebra is omitted, but the idea can be replicated from the following. Let $a \in \scrA$ and $x \in \overline{\scrM}$. There exists a sequence $\{x_n\}$ in $\scrM$ such that $x_n \rightarrow x$. Then $\{a x_n\}$ is a sequence in $\scrM$ such that $a x_n \rightarrow ax$. Thus $ax \in \overline{\scrM}$, so $\overline{\scrM}$ is a left ideal. By part (2) of Proposition~\ref{prop:ideals-and-inverts}, $\scrM \cap G_l = \emptyset$, which implies that $\scrM \subseteq \scrA \setminus G_l$. Since $\scrA \setminus G_l$ is closed, and since $\overline{\scrM}$ is the smallest closed set containing $\scrM$, we have $\overline{\scrM} \subseteq \scrA \setminus G_l$. Since $G_l$ is necessarily nonempty, $\overline{\scrM} \neq \scrA$, hence it is proper.
+		(1) Let $\scrM$ be a proper left ideal of $\scrA$. The proof showing $\overline{\scrM}$ is a subalgebra is omitted, but the idea can be replicated from the following. Let $a \in \scrA$ and $x \in \overline{\scrM}$. There exists a sequence $\{x_n\}$ in $\scrM$ such that $x_n \rightarrow x$. Then $\{a x_n\}$ is a sequence in $\scrM$ such that $a x_n \rightarrow ax$. Thus $ax \in \overline{\scrM}$, so $\overline{\scrM}$ is a left ideal. Let $G_l$ denote the elements of $\scrA$ which are left invertible. By part (2) of Proposition~\ref{prop:ideals-and-inverts}, $\scrM \cap G_l = \emptyset$, which implies that $\scrM \subseteq \scrA \setminus G_l$. Since $\scrA \setminus G_l$ is closed, and since $\overline{\scrM}$ is the smallest closed set containing $\scrM$, we have $\overline{\scrM} \subseteq \scrA \setminus G_l$. Since $G_l$ is necessarily nonempty, $\overline{\scrM} \neq \scrA$, hence it is proper.
 
 		(2) If $\scrM$ is a maximal left ideal, then $\overline{\scrM}$ is a proper ideal by (1). Hence $\scrM = \overline{\scrM}$ by maximality.
 	\end{proof}
 
+\begin{theorem}
+	If $\scrA$ is a Banach algebra and $\scrM$ is a proper closed ideal in $\scrA$, then $\scrA/\scrM$ is a Banach algebra with norm given by:
+	\[
+		\lnorm a + \scrM \rnorm := \inf \{\lnorm a + x \rnorm : x \in \scrM\}.
+	\] 
+	If $\scrA$ has an identity, so does $\scrA/\scrM$.
+\end{theorem}
+	\begin{proof}
+		The proof that $\scrA/\scrM$ is a normed linear space with well-defined operations given by $(a+\scrM) + (b+\scrM) = (a+b) + \scrM$ and $\alpha(a+\scrM) = (\alpha a) + \scrM$ is omitted. We will first show that $\scrA/\scrM$ is a Banach space. Let $\{a_n + \scrM\}_n$ be a Cauchy sequence in $\scrA/\scrM$. There is a subsequence $\{a_{n_k} + \scrM\}_k$ such that:\footnote{Suppose $\{x_n\}$ is a Cauchy sequence. For $\epsilon = 2^{-1}$, choose $N_1$ such that $m,n \geq N_1$ implies $\lnorm x_m - x_n \rnorm < 2^{-1}$. Now choose $n_1 \geq N_1$. For $\epsilon = 2^{-2}$, choose $N_2$ such that $m,n \geq N_2$ implies $\lnorm x_m - x_n \rnorm < 2^{-2}$. Choose $n_2 \geq \max \{N_2, n_1 + 1\}$. Since $n_1, n_2 \geq N_1$, we have $\lnorm x_{n_2} - x_{n_1} \rnorm < 2^{-1}$. Inductively, we obtain a subsequence $\{x_{n_k}\}_k$ satisfying the above propety. }
+		\[
+			\lnorm (a_{n_k} + \scrM) - (a_{n_{k+1}} + \scrM)\rnorm = \lnorm (a_{n_k} - a_{n_{k+1}}) + \scrM \rnorm < 2^{-k}.	
+		\] 
+		Let $y_1 = 0$. By the definition of $\lnorm \cdot \rnorm$ on $\scrA/\scrM$, choose $y_2 \in \scrM$ such that:
+		\[
+			\lnorm a_{n_1} - a_{n_2} + y_2 \rnorm \leq \lnorm a_{n_1} - a_{n_2} + \scrM \rnorm + 2^{-1} < 2 \cdot 2^{-1}.
+		\] 
+		With $y_2$ fixed, choose $y_3 \in \scrM$ such that:
+		\begin{align*}
+			\lnorm (a_{n_2} + y_2) - (a_{n_3} - y_2) \rnorm
+			&= \lnorm a_{n_2} - a_{n_3} + (y_2 - y_3) \rnorm \\
+			&\leq \lnorm a_{n_2} - a_{n_3} + \scrM \rnorm + 2^{-2}  \\
+			&< 2 \cdot 2^{-2}.
+		\end{align*}
+		Inductively, we obtain a sequence $\{y_k\}_k$ in $\scrM$ such that:
+		\[
+			\lnorm (a_{n_k} + y_k) - (a_{n_{k+1}} + y_{k+1}) \rnorm < 2 \cdot 2^{-k}.
+		\] 
+		In particular, for $j < k$ we have:
+		\begin{align*}
+			\lnorm (a_{n_k} + y_j) - (a_{n_k} + y_k) \rnorm
+			&\leq \lnorm (a_{n_j} + y_j)-(a_{n_{j+1}} + y_{j+1}) \rnorm + \ldots +\lnorm (a_{n_{k-1}} + y_{k-1}) - (a_{n_k} + y_k) \rnorm  \\
+			&\leq \sum_{i=j}^{k} 2\cdot_2^{-k}  \\
+			&\leq \sum_{i=j}^{\infty} 2\cdot_2^{-k}  \\
+			&= 2^{2-j}.
+		\end{align*}
+		Thus $\{a_{n_k} + y_k\}_k$ is a Cauchy sequence in $\scrA$. Since $\scrA$ is complete, there exists $a_0 \in \scrA$ such that $a_{n_k} + y_k \rightarrow a_0$. Since the projection $\pi:\scrA \rightarrow \scrA/\scrM$ is continuous, we have:
+		\begin{align*}
+			\lim_{k \rightarrow \infty}a_{n_k} + \scrM
+			&= \lim_{k \rightarrow \infty} \pi(a_{n_k} + y_k) \\
+			&= \pi\left(\lim_{k \rightarrow \infty} a_{n_k} + y_k \right) \\
+			&= \pi(a_0) \\
+			&= a_0 + \scrM.
+		\end{align*}
+		Since $\{a_n + \scrM\}_n$ is a Cauchy sequence with a convergent subsequence, it is convergent. Thus $\scrA/\scrM$ is a Banach space.
+
+		The proof that $\scrA/\scrM$ is an algebra with well-defined multiplication given by $(a+\scrM)(b+\scrM) = ab + \scrM$ is omitted. Let $a,b \in \scrA$ and $u,v \in \scrM$. Then $(a+u)(b+v) = ab + (av + ub + uv) \in ab+\scrM$. Hence:
+		\begin{align*}
+			\lnorm (a+\scrM)(b+\scrM) \rnorm
+			&= \lnorm ab + \scrM \rnorm \\
+			&\leq \lnorm (a+u)(b+v) \rnorm.
+		\end{align*}
+		Taking the infimum over all $u,v \in \scrM$ gives $\lnorm (a+\scrM)(b+\scrM) \rnorm \leq \lnorm a+\scrM \rnorm \lnorm b+\scrM \rnorm$. Thus $\scrA/\scrM$ is a Banach algebra. Moreover, $1 + \scrM$ is indeed the identity of $\scrA/\scrM$ as $(1+\scrM)(a+\scrM) = (1a + \scrM) = a + \scrM = (a1 + \scrM) = (a + \scrM)(1 + \scrM)$
+	\end{proof}
+
+\section{The Spectrum}
+
+\begin{definition}
+	If $\scrA$ is a unital Banach algebra and $a \in \scrA$, the \emph{spectrum of $a$} is:
+	\[
+		\sigma(a) := \{a \in \bfF : a - \alpha \text{ is not invertible }\}.
+	\] 
+	The \emph{left spectrum of $a$} is:
+	\[
+		\sigma_l(a) := \{a \in \bfF : a - \alpha \text{ is not left invertible }\}.
+	\] 
+	The \emph{right spectrum of $a$}, denoted $\sigma_r(a)$, is defined similarly.
+\end{definition}
+
+\begin{definition}
+	If $\scrA$ is a unital Banach algebra and $a \in \scrA$, the \emph{resolvent set of $a$} is $\rho(a) := \bfF \setminus \sigma(a)$. The \emph{left} and \emph{right resolvents of $a$} are $\rho_l(a) := \bfF \setminus \sigma_l(a)$ and $\rho_r(a) := \bfF \setminus \sigma_r(a)$.
+\end{definition}
+
+\begin{example}
+	Let $X$ be compact. If $f \in C(X)$, then $\sigma(f) = f(X)$. Indeed, let $\alpha \in f(X)$. Then $\alpha = f(x_0)$ for some $x_0 \in X$. Hence $0 = f(x_0) - \alpha \in (f-\alpha)(X)$. It must be the case that $(f-\alpha)^{-1}$ does not exist, so $\alpha \in \sigma(f)$. Conversely, if $f-\alpha$ is not invertible, then $(f-\alpha)^{-1}$ does not exist. This means $0 = f(x_0) - \alpha$ for some $x_0 \in X$, hence $\alpha = f(x_0)$. 
+\end{example}
+
+\begin{example}
+	Let $X$ be a Banach space. If $A \in \scrB(X)$, then $\sigma(A) = \{\alpha \in \bfF : \text{ either }\ker(A-\alpha) \neq 0\text{ or }\Image(A-\alpha) \neq X\}$. Indeed, if $A - \alpha$ is not invertible, then it is either not injective or not surjective. In fact, this means that $\rho(A) = \bfF \setminus \sigma(A) = \{\alpha \in \bfF : A - \alpha \text{ is bijective }\}$. If $\alpha \in \rho(A)$, then $\alpha \not\in \sigma(A)$, hence $\ker(A - \alpha) = 0$ and $\Image(A - \alpha) = X$. Hence $A - \alpha$ is bijective. Conversely, suppose $A - \alpha$ is bijective. By the Open Mapping Theorem, $A-\alpha$ is an open map. For any open subset $U \subseteq X$, the set $((A-\alpha)^{-1})^{-1}(U) = (A-\alpha)(U)$ is open. Thus $(A-\alpha)^{-1} \in \scrB(X)$, hence $\alpha \in \rho(A)$.
+\end{example}
+
 \begin{proposition}
-	If $\scrA$ is a Banach algebra and $\scrM$ is a proper closed ideal in $\scrA$, then $\scrA / \scrM$ is a Banach algebra. If 
+	Let $\scrA$ be a Banach algebra with identity
 \end{proposition}
 
+\section{The Riesz Functional Calculus}
 
+\begin{definition}
+	A closed rectifiable curve $\gamma$ is \emph{positively oriented} if\ldots 
+\end{definition}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\end{document}

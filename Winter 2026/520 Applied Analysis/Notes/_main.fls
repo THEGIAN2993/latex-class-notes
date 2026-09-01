@@ -2,7 +2,7 @@ PWD /Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/Winter 
 INPUT /usr/local/texlive/2025/texmf.cnf
 INPUT /usr/local/texlive/2025/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/Winter 2026/520 Applied Analysis/Notes/_main.tex
+INPUT _main.tex
 OUTPUT _main.log
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/memoir/memoir.cls
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/memoir/memoir.cls

@@ -85,82 +85,85 @@
 \usepackage{keytheorems}
 
 \newkeytheoremstyle{def}{
-    inherit-style=definition,
-    spaceabove=1.5em,
-    spacebelow=1.5em,
-    postheadspace=0.5em,
+    	inherit-style=definition,
+    	spaceabove=1.5em,
+    	spacebelow=1.5em,
+    	postheadspace=0.5em,
 }
 
 \newkeytheoremstyle{thm}{
-    spaceabove=1.5em,
-    spacebelow=1.5em,
-    postheadspace=0.5em,
+    	spaceabove=1.5em,
+    	spacebelow=1.5em,
+    	postheadspace=0.5em,
 }
 
 \newkeytheorem{theorem}[
-    name = Theorem,
-    style=thm,
-    numberwithin = section,
+    	name = Theorem,
+    	style=thm,
+    	numberwithin = section,
 ]
 
 \newkeytheorem{theorem*}[
-    name=Theorem,
-    style=thm,
-    numbered=false,
-    numberwithin = section
+    	name=Theorem,
+    	style=thm,
+    	numbered=false,
+    	numberwithin = section
 ]
 
 \newkeytheorem{proposition}[
-    name = Proposition,
-    style=thm,
-    sibling=theorem
+    	name = Proposition,
+    	style=thm,
+    	sibling=theorem
 ]
 
 \newkeytheorem{lemma}[
-    name = Lemma,
-    style=thm,
-    sibling=theorem
+    	name = Lemma,
+    	style=thm,
+    	sibling=theorem
 ]
 
 \newkeytheorem{corollary}[
-    name = Corollary,
-    style=thm,
-    sibling=theorem
+    	name = Corollary,
+    	style=thm,
+    	sibling=theorem
 ]
 
 \newkeytheorem{definition}[
-    name = Definition,
-    style=def,
-    numberwithin = section,
-    style = definition
+    	name = Definition,
+    	style=def,
+    	numberwithin = section,
+    	style = definition
 ]
 
 \newkeytheorem{example}[
-    name = Example,
-    style=def,
-    numberwithin = section,
-    style = definition
+    	name = Example,
+    	style=def,
+    	numberwithin = section,
+    	style = definition
 ]
 
 \newkeytheorem{remark}[
-    name=Remark,
-    style=remark,
-    numbered=false
+    	name=Remark,
+    	style=remark,
+    	numbered=false
 ]
 
 \newkeytheorem{question}[
-    name=Question,
-    style=remark,
-    numbered=false
+    	name=Question,
+    	style=remark,
+    	numbered=false
 ]
 
 \newkeytheorem{exercise}[
-    name = Exercise,
-    style=thm,
-    numberwithin = section
+    	name = Exercise,
+    	style=def,
 ]
 
-\newkeytheorem{axiom}[name = Axiom]
+\newkeytheorem{recall}[
+	name = Recall,
+	style=def,
+	numberwithin = section
+]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Section and chapter formatting
@@ -224,6 +227,7 @@
 \usepackage{pifont}
 \usepackage{etoolbox}
 \usepackage{bm}
+\usepackage{kbordermatrix}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Final formatting

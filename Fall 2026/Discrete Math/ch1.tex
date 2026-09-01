@@ -1,0 +1,139 @@
+\pagenumbering{arabic}
+\chapter{Representation of Finite Groups}
+
+\section{Matrix Representations}
+
+\begin{definition}
+	Let $G$ be a finite group. Let $\operatorname{GL}_n(\bfC)$ be the set of $n \times n$ invertible matrices over $\bfC$. A \emph{degree $n$ (matrix) representation} of $G$ is a homomorphism $X:G \rightarrow \operatorname{GL}_n(\bfC)$.
+\end{definition}
+
+\begin{example}
+	Let $G$ be any group. Let $X:G \rightarrow \GL_1(\bfC)$ be defined by $X(g) = 1$ for all $g \in G$. This is the \textit{trivial representation}.
+\end{example}
+
+\begin{example}
+	Let $X:\bfZ_2 \times \bfZ_2 \rightarrow \GL_2(\bfC)$ be defined by:
+	\begin{align*}
+		X\bigl((0,0) \bigr) &:= \begin{bmatrix} 1 & 0 \\ 0 & 1  \end{bmatrix} \\ 
+		X\bigl(1,0) \bigr) &:= \begin{bmatrix} 0 & 1 \\ 1 & 0  \end{bmatrix} \\ 
+		X\bigl((0,1) \bigr) &:= \begin{bmatrix} -1 & 0 \\ 0 & -1  \end{bmatrix} \\ 
+	\end{align*}
+	Note that $\begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}$ and $\begin{bmatrix} -1 & 0 \\ 0 & -1 \end{bmatrix}$ are their own inverses, as are $(1,0), (0,1) \in \bfZ_2 \times \bfZ_2$. The last element is predetermined as:
+	\[
+		X\bigl((1,1)\bigr) := \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix} \begin{bmatrix} -1 & 0 \\ 0 & - 1 \end{bmatrix}. 
+	\] 
+\end{example}
+
+\begin{recall}
+	The \textit{sign} of a permutation is a function $\sgn:S_n \rightarrow \{\pm 1\}$ defined by $\sgn(\sigma) := (-1)^m$, where $m$ is the number of transpositions in the permuations decomposition. For example, $(2\,3\,6\,4) = (2\,3)(3\,6)(6\,4)$, hence $\sgn\bigl((2\,3\,6\,4)\bigr) = (-1)^3 = -1$.
+\end{recall}
+
+\begin{example}
+	Let $X:S_n \rightarrow \GL_1(\bfC)$ be defined by $X(\sigma) := \sgn(\sigma)$. This is a representation, as the sign function is multiplicative. Indeed, if $\sigma$ is a $k$-transposition and $\tau$ is a $t$-transposition, then $\sigma \tau$ is a $k+t$ transposition. This proves that $\sgn(\sigma)\sgn(\tau) = \sgn(\sigma \tau)$, as even $+$ even $=$ even, even $+$ odd $=$ odd, odd $+$ even $=$ odd, and odd $+$ odd $=$ even.
+\end{example}
+
+\begin{recall}
+	A \textit{group action} of a group $G$ on a set $A$ is a map $G \times A \rightarrow A$ (written $g.a$ for all $g \in G$ and $a \in A$) satisfying the following properties:
+	\mbox{}
+	\begin{itemize}[itemsep=1pt,topsep=3pt]
+		\item $g_1.(g_2.a) = (g_1g_2).a$ for all $g_1,g_2 \in G$, $a\in A$, and
+		\item $1.a = a$ for all $a \in A$.
+	\end{itemize}
+\end{recall}
+
+\begin{example}
+	Let $S = \{ \{1,2\},\{1,3\},\{1,4\},\{2,3\},\{2,4\},\{3,4\}\}$ and $G = S_4$. A group action of $S_4$ on $S$ can be defined by the group element of $S_4$ permuting a two-element set of $S$. For example:
+	\begin{align*}
+		(1\,2) . \{1,3\} &:= \{2,3\}, \\
+		(1\,2\,3\,4).\{1,2\} &:= \{2,3\}.
+	\end{align*}
+	This is indeed a group action, as:
+	\begin{align*}
+		(1\,2).\bigl( (1\,2\,3\,4).\{1,2\}\bigr) &= (1\,2).\{2,3\} = \{1,3\} \\
+		\bigl((1\,2)(1\,2\,3\,4) \bigr).\{1,2\} &= (2\,3\,4) . \{1,2\} = \{1,3\}.
+	\end{align*}
+\end{example}
+
+\begin{example}
+	Given $S$ from the previous example, we can define an action on $S$ by $\bfZ_4$. First, note that if $\sigma$ is a 4-cycle, then $\bfZ_4 \rightarrow \left<\sigma \right>$ is an isomorphism given by $[k] \mapsto \sigma^k$. This means if we fix a 4-cycle, we can define an action on $S$ by $\bfZ_4$. For example, we can define:
+	\begin{align*}
+		[0].\{1,2\} &:= (1).\{1,2\} = \{1,2\} \\
+		[1].\{1,2\} &:= (1\,2\,3\,4).\{1,2\} = \{2,3\} \\
+		[2].\{1,2\} &:= (1\,2\,3\,4)^2.\{1,2\} = (1\,2\,3\,4).\{2,3\} = \{3,4\} \\
+		[3].\{1,2\} &:= (1\,2\,3\,4)^3.\{1,2\} = \{1,4\}.
+	\end{align*}
+\end{example}
+
+
+\begin{example}
+	Let:
+	\[
+		V := \left\{ \begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix} : x_1 + x_2 + x_3 = 0 \right\}
+	\] 
+	be a subspace of $\bfC^3$. Given the set information, we can write $x_1 = -x_2 - x_3$, hence there are two-free variables. If $x_2 = 1$ and $x_3 = 0$, then one of our basis elements is $\begin{bmatrix} -1 \\ 1 \\ 0 \end{bmatrix}$. If $x_2 = 0$ and $x_3 = 1$, then our other basis element is $\begin{bmatrix} -1 \\ 0 \\ 1 \end{bmatrix}$.
+
+	The group $S_3$ acts on $V$ by permuting coordinates. For example:
+	\[
+		(1\,2\,3).\begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix} = \begin{bmatrix} x_2 \\ x_3 \\x_1 \end{bmatrix}.
+	\]
+	Since $V$ is a two-dimensional subspace of $\bfC$ with basis $\left\{ v_1:= \begin{bmatrix} -1 \\ 1 \\ 0 \end{bmatrix}, v_2:= \begin{bmatrix} -1 \\ 0 \\ 1 \end{bmatrix}\right\} $, we can construct a representation $X:V \rightarrow \GL_2(\bfC)$ as follows. First, note that:
+	\begin{align*}
+		(1).v_1 &= v_1 = (1)v_1 + (0)v_2, \\
+		(1).v_2 &= v_2 = (0)v_1 + (1)v_2.
+	\end{align*}
+	Hence define:
+	\begin{align*}
+		X\bigl( (1)\bigr) := \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}.
+	\end{align*}
+	Similarly,
+	\begin{align*}
+		(1\,2).v_1 &= (1\,2). \begin{bmatrix} 1 \\ -1 \\ 0 \end{bmatrix} = \begin{bmatrix} -1 \\ 1 \\ 0 \end{bmatrix} = -v_1 = (-1)v_1 + (0)v_2, \\
+		(1\,2).v_2 &= (1\,2). \begin{bmatrix} 1 \\ 0 \\ -1 \end{bmatrix} = \begin{bmatrix} 0 \\ 1 \\ -1 \end{bmatrix} = -v_1 + v_2 = (-1)v_1 + (1)v_2.
+	\end{align*}
+	Thus:
+	\begin{align*}
+		X\bigl((1\,2) \bigr) := \begin{bmatrix} -1 & 0 \\ -1 & 1 \end{bmatrix} .
+	\end{align*}
+	This can be done for all 9 elements of $S_3$. One must then verify by 36 different computations to show that $X$ is indeed a group homomorphism. This is tedious, and instead we will show that a group action \textit{induces} a group homomorphism.
+\end{example}
+
+\begin{theorem}
+	Let $G$ act on $S := \{s_1,\ldots ,s_n\}$. Define $X:G \rightarrow \GL_n(\bfC)$ by:
+	\[
+		X(g)_{ij}:= 
+		\begin{cases}
+			1, & g.s_j = s_i \\
+			0, & \text{otherwise}
+		\end{cases}.
+	\]
+	Then $X$ is a degree $n$ representation.
+\end{theorem}
+	\begin{proof}
+		Let $V$ be the (free) vector space over $\bfC$ with basis $S$. Note that linear maps are defined by their action on a basis. Fix an element $g \in G$. We define a linear map that sends $s_j$ to $g.s_j$ for all $j = 1,\ldots ,n$. Then the matrix for this linear map is $X$. Since $\epsilon.s_j = s_j$ and $g.(h.s_j) = (gh).s$, then $X(\epsilon) = I_n$ and $X(gh) = X(g)X(h)$. Thus $X$ is a homomorphism. 
+	\end{proof}
+
+\begin{example}
+	Consider the set $S$ from Example~\ref{}. Let $s_1 := \{1,2\}$, $s_2 := \{1,3\}$, and so on. Given the representation defined in Theorem~\ref{}, if we want to compute $X\bigl( (4\,3\,2\,1)\bigr)$ then consider:
+	\begin{align*}
+		(4\,3\,2\,1).s_1 &= (4\,3\,2\,1).\{1,2\} = \{1,4\} = s_3, \\
+		(4\,3\,2\,1).s_2 &= (4\,3\,2\,1).\{1,3\} = \{2,4\} = s_5, \\
+		(4\,3\,2\,1\,).s_3 &= (4\,3\,2\,1).\{1,4\} = \{3,4\} = s_6, \\
+				 &\vdots
+	\end{align*}
+	Since $(4\,3\,2\,1).s_1 = s_3$, their will be a $1$ in the third row and first column of $X\bigl( (4\,3\,2\,1) \bigr)_{ij}$. Hence: 
+\[
+	X\bigl( (4\,3\,2\,1)\bigr)\hspace{3pt} = \hspace{5pt} 
+\kbordermatrix{
+      & s_1 & s_2 & s_3 & s_4 & s_5 & s_6 \\
+s_1  & 0 & 0 & 0 & 1 & 0 & 0 \\
+s_2  & 0 & 0 & 0 & 0 & 1 & 0 \\
+s_3  & 1 & 0 & 0 & 0 & 0 & 0 \\
+s_4  & 0 & 0 & 0 & 0 & 0 & 1 \\
+s_5  & 0 & 1 & 0 & 0 & 0 & 0 \\
+s_6  & 0 & 0 & 1 & 0 & 0 & 0
+}.
+\]
+\end{example}
+
+
+

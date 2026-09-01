@@ -1,0 +1,569 @@
+\documentclass[reqno]{amsart}
+
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/preamble-standalone.tex}
+\input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
+
+\title[Banach and C*-Algebras, En Route to Continuous Functional Calculus]{$C*$-Algebras and the Gelfand Theory}
+\author{Gianluca Crescenzo}
+
+\begin{document}
+
+\begin{abstract}
+	The Gelfand-Naimark-Segal construction is a core idea in the proof of the spectral theorem for normal operators on a Hilbert space. Gelfand's Theorem provides the core representation theory that drives the construction as well as naturally providing an entry point to the study of $C*$-algebras, the core subset of operator algebras. This thesis will explore these ideas via the proof of the full spectram theorem. As an application of this representation theory, an exposition will be made on results from a recent paper by J.E. Pascoe and Ryan Tully-Doyle titled "Induced Stinespring Factoization and the Wittstock Support Theorem"
+\end{abstract}
+
+\maketitle
+
+\iffalse
+\section{Functions of One Complex Variable}\label{Section:focv}
+
+\subsection{Scalar-valued Analytic Functions and Power Series}
+
+\begin{definition}
+	Let $G \subset \bfC$ be open and $f:G \rightarrow \bfC$.
+	\mbox{}
+	\begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+		\item The function $f$ is \emph{differentiable at a point $a \in G$} if
+			\[
+				\lim_{h \rightarrow 0}\frac{f(a+h) - f(a)}{h}
+			\] 
+			exists. The value of this limit is denoted $f'(a)$. If $f$ is differentiable for each $a \in G$, then we simply say $f$ is \emph{differentiable}
+		\item The function $f$ is \emph{analytic} if $f$ is continuously differentiable.
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}
+	A \emph{path} is a continuous function $\gamma:[a,b] \rightarrow \bfC$.
+\end{definition}
+
+\begin{definition}
+	Let $\gamma:[a,b] \rightarrow \bfC$ be a path.
+	\mbox{}
+	\begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+		\item If $\gamma'(t)$ exists for each $t \in [a,b]$ and $\gamma':[a,b] \rightarrow \bfC$ is continuous, then $\gamma$ is a \emph{smooth path}.
+		\item If there is a partition of $[a,b]$ such that $\gamma$ is smooth along each subinterval, then $\gamma$ is \emph{piecewise smooth}.
+		\item If $\gamma$ is of bounded variation, then it is called a \emph{rectifiable path}.
+		\item The set $\{\gamma(t):a \leq t \leq b\}$ is called the \emph{trace} of $\gamma$ and is denoted by $\{\gamma\}$.
+	\end{enumerate}
+\end{definition}
+
+\begin{theorem}\label{thm:existence-of-cont-int}
+	Let $\gamma:[a,b] \rightarrow \bfC$ be a rectifiable path, and let $f:[a,b] \rightarrow \bfC$ be continuous. There exists a unique $I \in \bfC$ such that, for every $\epsilon > 0$, there exists $\delta > 0$ with the following property: if $\{t_0 < t_1,\ldots, <t_m\}$ is a partition of $[a,b]$ with $\max \{t_k - t_{k-1} : 1 \leq k \leq m \} < \delta$, then for every choice of points $x_k \in [t_{k-1},t_k]$ we have:
+	\[
+		\left| I - \sum_{k = 1}^{m}  f(x_k) \left( \gamma(t_k) - \gamma(t_{k-1}) \right)  \right| < \epsilon.
+	\] 
+\end{theorem}
+{\color{red}
+\begin{proof}
+		
+\end{proof}}
+
+\begin{definition}
+	The number $I \in \bfC$ established in Theorem~\ref{thm:existence-of-cont-int} is called the \emph{Riemann-Stieltjes integral of $f$ with respect to $\gamma$} over $[a,b]$ and is denoted by:
+	\[
+		\int_{a}^{b} f\,d\gamma.
+	\] 
+\end{definition}
+
+\begin{theorem}
+	If $\gamma$ is a piecewise smooth path and $f:[a,b] \rightarrow \bfC$ is continuous then:
+	\[
+		\int_{a}^{b} f\,d \gamma = \int_{a}^{b} f(t) \gamma'(t)\,dt.
+	\] 
+\end{theorem}
+{\color{red}
+\begin{proof}
+		
+\end{proof}}
+
+\begin{definition}
+	If $\gamma:[a,b] \rightarrow \bfC$ is a rectifiable path and $f:\{\gamma\} \rightarrow \bfC$ is continuous, then the \emph{line integral of $f$ along $\gamma$} is:
+	\[
+		\int_{a}^{b} f(\gamma(t))\,d\gamma(t).	
+	\]
+	This line integral is also denoted by $\int_{\gamma}^{} f = \int_{\gamma}^{} f(z)\,dz$.
+\end{definition}
+
+\begin{example}
+	Let $a \in \bfC$ be arbitrary and consider the path $\gamma:[0,1] \rightarrow \bfC$ given by $\gamma(t) := a + e^{2\pi i n t}$. Let $f:\bfC \setminus \{a\} \rightarrow \bfC$ be given by $f(z) := (z-a)^{-1}$. The line integral of $f$ along $\gamma$ is:
+	\begin{align*}
+		\int_{\gamma}^{} f(z)\,dz
+		&= \int_{0}^{1} f(\gamma(t))\,d\gamma(t) \\
+		&= \int_{0}^{1} e^{-2\pi i n t}\,d\gamma(t).
+	\end{align*}
+	Since $e^{-2\pi i n t}$ is smooth, Theorem~\ref{} gives:
+	\begin{align*}
+		\int_{0}^{1} e^{-2 \pi i n t}\,d\gamma(t)
+		&= \int_{0}^{1} e^{-2 \pi i n t} \gamma'(t)\,dt \\
+		&= \int_{0}^{1} e^{-2 \pi i n t} \left( 2\pi i n e^{2 \pi i  n t} \right)\,dt  \\
+		&= 2\pi i n.
+	\end{align*}
+\end{example}
+
+\begin{proposition}
+	If $\gamma:[a,b] \rightarrow \bfC$ is a rectifiable path and $\varphi:[c,d] \rightarrow [a,b]$ is a continuous non-decreasing function with $\varphi(c) = a$, $\varphi(d) = b$, then for any continuous function $f: \{\gamma\} \rightarrow \bfC$ we have:
+	\[
+		\int_{\gamma}^{} f = \int_{\gamma \circ \varphi}^{} f.
+	\] 
+\end{proposition}
+{\color{red}
+\begin{proof}
+		
+\end{proof}}
+
+\begin{lemma}
+	If $\gamma:[a,b] \rightarrow \bfC$ is a rectifiable path and $\varphi:[c,d] \rightarrow [a,b]$ is continuous, non-decreasing, and surjective, then $\gamma \circ \varphi : [c,d] \rightarrow \bfC$ is a rectifiable path and $\{\gamma\} = \{\gamma \circ \varphi\}$.
+\end{lemma}
+{\color{red}
+\begin{proof}
+		
+\end{proof}}
+
+\begin{proposition}
+	Let $\gamma:[a,b] \rightarrow \bfC$ and $\sigma:[c,d] \rightarrow \bfC$ be rectifiable paths. Define $\sigma \sim \gamma$ if there exists a function $\varphi:[c,d] \rightarrow [a,b]$ such that $\varphi$ is continuous, strictly increasing, $\varphi(c) = a$ and $\varphi(d) = b$, and $\sigma = \gamma \circ \varphi$. Then $\sim$ is an equivalence relation.
+\end{proposition}
+{\color{red}
+\begin{proof}
+		
+\end{proof}}
+
+\begin{definition}
+	Using the terminology of Proposition~\ref{}, two paths $\gamma$ and $\sigma$ are \emph{equivalent} if $\gamma \sim \sigma$. The function $\varphi$ is called a \emph{change of parameter}. An equivalence class of parths is called a \emph{curve}.
+\end{definition}
+
+\begin{remark}
+	The trace of a curve is the trace of any of its representatives. If $f$ is continuous on the trace of a curve, then the integral over $f$ over the curve is the integral of $f$ over any representative of the curve. A curve is smooth if and only if one of its representatives is smooth. 
+\end{remark}
+
+\begin{theorem}
+	Let $G \subseteq \bfC$ be open and let $\gamma$ be a rectifiable path in $G$ with initial and end points $\alpha$ and $\beta$ respectively. If $f:G \rightarrow \bfC$ is a continuous function, then:
+	\[
+		\int_{\gamma}^{}f  = F(\beta) F(\alpha),
+	\] 
+	where $F:G \rightarrow \bfC$ is the function satisfying $F' = f$.
+\end{theorem}
+{\color{red}
+\begin{proof}
+		
+\end{proof}}
+
+\begin{lemma}
+	If $G$ is an open set in 
+\end{lemma}
+
+\subsection{Cauchy's Theorem and Integral Formula on a Disk}
+
+\subsection{Winding Numbers}
+\fi
+
+
+
+\section{Banach-Valued Analytic Functions}
+
+\begin{definition}
+	A \emph{path} is a continuous function $\gamma:[a,b] \rightarrow \bfC$.
+\end{definition}
+
+\begin{definition}
+	Let $\gamma:[a,b] \rightarrow \bfC$ be a path.
+	\mbox{}
+	\begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+		\item If $\gamma'(t)$ exists for each $t \in [a,b]$ and $\gamma':[a,b] \rightarrow \bfC$ is continuous, then $\gamma$ is a \emph{smooth path}.
+		\item If there is a partition of $[a,b]$ such that $\gamma$ is smooth along each subinterval, then $\gamma$ is \emph{piecewise smooth}.
+		\item If $\gamma$ is of bounded variation, then it is called a \emph{rectifiable path}.
+		\item The set $\{\gamma(t):a \leq t \leq b\}$ is called the \emph{trace} of $\gamma$ and is denoted by $\{\gamma\}$.
+	\end{enumerate}
+\end{definition}
+
+\begin{lemma}
+	If $\gamma:[a,b] \rightarrow \bfC$ is a rectifiable path and $\varphi:[c,d] \rightarrow [a,b]$ is continuous, non-decreasing, and surjective, then $\gamma \circ \varphi : [c,d] \rightarrow \bfC$ is a rectifiable path and $\{\gamma\} = \{\gamma \circ \varphi\}$.
+\end{lemma}
+{\color{red}
+\begin{proof}
+		
+\end{proof}}
+
+\begin{proposition}
+	Let $\gamma:[a,b] \rightarrow \bfC$ and $\sigma:[c,d] \rightarrow \bfC$ be rectifiable paths. Define $\sigma \sim \gamma$ if there exists a function $\varphi:[c,d] \rightarrow [a,b]$ such that $\varphi$ is continuous, strictly increasing, $\varphi(c) = a$ and $\varphi(d) = b$, and $\sigma = \gamma \circ \varphi$. Then $\sim$ is an equivalence relation.
+\end{proposition}
+{\color{red}
+\begin{proof}
+		
+\end{proof}}
+
+\begin{definition}
+	Using the terminology of Proposition~\ref{}, two paths $\gamma$ and $\sigma$ are \emph{equivalent} if $\gamma \sim \sigma$. The function $\varphi$ is called a \emph{change of parameter}. An equivalence class of parths is called a \emph{curve}.
+\end{definition}
+
+\begin{remark}
+	The trace of a curve is the trace of any of its representatives. If $f$ is continuous on the trace of a curve, then the integral over $f$ over the curve is the integral of $f$ over any representative of the curve. A curve is smooth if and only if one of its representatives is smooth. 
+\end{remark}
+
+\begin{definition}
+	Let $G \subseteq \bfC$ be open and $X$ a Banach space. If $f:G \rightarrow X$, define the \emph{derivative of $f$ at $z_0$} to be:
+	\[
+		f'(z_0) := \lim_{h \rightarrow 0}\frac{f(z_0 + h) - f(z_0)}{h},
+	\] 
+	provided the limit exists. If the derivative of $f$ exists for all $z \in G$, we say that $f$ is differentiable. The function $f$ is called \emph{analytic} if $f$ is continuously differentiable on $G$.
+\end{definition}
+
+\begin{remark}
+	Let $X$ be a Banach space. For any $x \in X$, recall that the \emph{evaluation map} is $\hat{\cdot}:X^\ast \rightarrow \bfF$ given by $\hat{x}(x^\ast) := x^\ast(x)$. We introduce the following notation for convenience:
+	\mbox{}
+	\begin{itemize}[itemsep=1pt,topsep=3pt]
+		\item For $x^\ast \in X^\ast$, define $\left<\cdot, x^\ast \right>:X \rightarrow \bfF$ by $x \mapsto x^\ast(x)$.
+		\item For $x \in X$, define $\left<x,\ast \right> :X^\ast \rightarrow \bfF$ by $x^\ast \mapsto \hat{x}(x^\ast) = x^\ast (x)$.
+	\end{itemize}
+	We call $\left<\cdot,\cdot \right>$ the \emph{canonical evaluation map}.
+\end{remark}
+
+
+\begin{proposition}
+	Let $G \subseteq \bfC$ be open and $X$ a Banach space. If $f:G \rightarrow X$ is analytic and $x^\ast \in X^\ast$, then $z \mapsto \left<f(z),x^\ast \right>$ is analytic on $G$ and its derivative is $\left<f'(z),x^\ast \right>$.	
+\end{proposition}
+	\begin{proof}
+		As $z\mapsto \left<f(z),x^\ast \right>$ is the composition of continuous maps, it is surely continuous. If such a function is denoted by $g$, then for any $z_0 \in G$ we have:
+		\begin{align*}
+			g'(z_0)
+			&= \lim_{h \rightarrow 0} \frac{g(z_0 + h) - g(z_0)}{h} \\
+			&= \lim_{h \rightarrow 0} \frac{\left<f(z_0 + h),x^\ast \right> - \left<f(z_0),x^\ast \right>}{h} \\
+			&= \lim_{h \rightarrow 0}\left<\frac{f(z_0 + h) - f(z_0)}{h},x^\ast \right> \\
+			&= \left< \lim_{h \rightarrow 0}\frac{f(z_0 + h) - f(z_0)}{h} , x^\ast\right> \\
+			&= \left<f'(z_0),x^\ast \right>.
+		\end{align*}
+		Since $g'(z_0)$ exists for all $z_0 \in G$, $g$ is differentiable. Since $g'$ is the composition of continous maps, it is continuous. Thus $z \mapsto \left<f(z), x^\ast \right>$ is analytic. 
+	\end{proof}
+
+\begin{proposition}
+	Let $G \subseteq \bfC$ be open and $X$ a Banach space. If $f:G \rightarrow X$ is a function such that $z \mapsto \left<f(z),x^\ast \right>$ is analytic for each $x^\ast \in X^\ast$, then $f$ is analytic.
+\end{proposition}
+	\begin{proof}
+		Since $G \subseteq \bfC$ is open, choose $r > 0$ such that $\overline{B}(z,r) \subseteq G$. Let $0 < \delta < \frac{r}{2}$, and let $s,t$ satisfy $0 < |s|,|t| < \delta$. Fix $x^\ast \in X^\ast$ with $\lnorm x^\ast \rnorm \leq 1$ and let $g:= \left<f(\cdot),x^\ast \right>$. Since $z,z-s,z-t \in B^\circ(z,r)$, we can apply Cauchy's Integral Formula to $g(z)$, $g(z-s)$, and $g(z-t)$ (respectively). With this, observe that:
+		\begin{align*}
+			\left| \frac{g(z+s) - g(z)}{s} - \frac{g(z+t) - g(z)}{t} \right| 
+			&= \left| \frac{1}{2\pi i} \int_{\partial \overline{B}(z,r)}^{} \frac{g(w)(s-t)}{(w-z)(w-z-s)(w-z-t)}\,dw \right|  \\
+			&\leq \frac{1}{2 \pi} \int_{\partial \overline{B}(z,r)}^{} \frac{|g(w)| |s-t|}{|w-z||w-z-s||w-z-t|}\,dw 
+		\end{align*}
+		Note that $|s - t| \leq 2\delta$ and $|w-z||w-z-s||w-z-t| \geq \frac{r^3}{8}$. Hence:
+		\begin{align*}
+			\left| \frac{g(z+s) - g(z)}{s} - \frac{g(z+t) - g(z)}{t} \right| 
+			&\leq \frac{8\delta}{\pi r^3} \int_{\partial \overline{B}(z,r)}^{} |g(w)|\,dw \\
+			&\leq c \delta \sup_{w \in \partial \overline{B}(z,r)} |g(w)| \\
+			&= c\delta \sup_{w \in \partial \overline{B}(z,r)}|\left<f(w),x^\ast \right>| \\
+		\end{align*}
+		Note that $\left<f(w),\cdot \right>:X^\ast \rightarrow \bfC$ is continuous for all $x^\ast \in X^\ast$. Hence $|\left<f(w),x^\ast \right>| = |x^\ast(f(w))| \leq \lnorm x^\ast \rnorm \lnorm f(w) \rnorm \leq \lnorm f(w) \rnorm$. The above inequality can be written as:
+		\[
+			\left| \left<\frac{f(z+s) - f(z)}{s} - \frac{f(z+t) - f(z)}{t}, x^\ast \right> \right| \leq c\delta \sup_{w \in \partial \overline{B}(z,r)}\lnorm f(w) \rnorm.
+		\] 
+		Since the right-hand side is independent of $x^\ast \in X^\ast$, we have:
+		\[
+			\sup_{\lnorm x^\ast \rnorm \leq 1}\left| \left<\frac{f(z+s) - f(z)}{s} - \frac{f(z+t) - f(z)}{t}, x^\ast \right> \right| \leq c\delta \sup_{w \in \partial \overline{B}(z,r)}\lnorm f(w) \rnorm.
+		\] 
+		By a corollary of the Hahn-Banach Theorem, this gives:
+		\[
+			\lnorm \frac{f(z+s) - f(z)}{s} - \frac{f(z+t) - f(z)}{t} \rnorm \leq c\delta \sup_{w \in \partial \overline{B}(z,r)}\lnorm f(w) \rnorm.
+		\]
+		Given any $\epsilon>0$, choose $0 < \delta < \frac{r}{2}$ such that $\delta \leq \frac{c}{\sup_{w \in \partial \overline{B}(z,r)}\lnorm f(w) \rnorm}$. If $0 < |s|,|t| < \delta$, then $\lnorm \frac{f(z+s) - f(z)}{s} - \frac{f(z+t) - f(z)}{t} \rnorm < \epsilon$. Since $X$ is complete, by the Cauchy Criterion for limits $f'(z) = \lim_{h \rightarrow 0}\frac{f(z+h) - f(z)}{h} = 0$. Since $z \in G$ was arbitrary, $f$ is analytic.
+	\end{proof}
+
+\begin{theorem}
+	Let $G \subseteq \bfC$ be open and $X$ a Banach space. Let $\gamma$ be a rectifiable curve in $G$ and $f$ a continuous function defined in a neighborhood of $\{\gamma\}$ with values in $X$. There exists a unique $I \in X$ such that, for every $\epsilon > 0$, there exists $\delta > 0$ with the following property: if $\{t_0 < t_1 < \ldots < t_m\}$ is a partition of $[0,1]$ with $\max \{t_k - t_{k-1} : 1 \leq k \leq m\} < \delta$, then for every choice of points $x_k \in [t_{k-1},t_k]$ we have:
+	\[
+	\lnorm I - \sum_{k=1}^{m} f(\gamma(x_j))(\gamma(t_j) - \gamma(t_{k-1}) \rnorm < \epsilon.
+	\] 
+\end{theorem}
+{\color{red}
+\begin{proof}
+		
+\end{proof}}
+
+\begin{definition}
+	The element $I \in X$ established in Theorem~\ref{} is called the \emph{line integral of $f$ along $\gamma$} and is denoted by:
+	\[
+		\int_{0}^{1} f(\gamma(t))\,d\gamma(t).
+	\] 
+	This line integral is also denoted by $\int_{\gamma}^{} f = \int_{\gamma}^{} f(z)\,dz$.
+\end{definition}
+
+
+
+\begin{proposition}
+	
+\end{proposition}
+
+\begin{proposition}
+	
+\end{proposition}
+
+\begin{theorem}
+	If $X$ is a Banach space, $G \subseteq \bfC$ is open, $f:G \rightarrow X$ is analytic, and $\gamma_1,\ldots ,\gamma_m$ are closed rectifiable curves in $G$ satisfying $\sum_{j=1}^{m} n(\gamma_j ; a) = 0$ for all $a \in \bfC \setminus G$, then $\sum_{j=1}^{m} \int_{\gamma_j}^{f} = 0 $.
+\end{theorem}
+
+
+\section{Banach Algebras}\label{Section:Banach Algebras}
+
+\subsection{Basic Definitions and Examples}
+
+\begin{definition}
+	An \emph{algebra} over $\bfF$ is a vector space $\scrA$ over $\bfF$ that has a multiplication operation making $\scrA$ into a ring such that, for any $\alpha \in \bfF$ and $a,b \in \scrA$, we have $\alpha(ab) = (\alpha a)b = a (\alpha b)$. If $\scrA$ admits an identity element, we say $\scrA$ is \emph{unital}.
+\end{definition}
+
+\begin{definition}
+	A \emph{normed algebra} is an algebra $\scrA$ over $\bfF$ which has a norm $\lnorm \cdot \rnorm$ making $\scrA$ into a normed linear space and also admitting the property that, for any $a,b \in \scrA$, we have $\lnorm ab \rnorm \leq \lnorm a \rnorm \lnorm b \rnorm$. If $\scrA$ is a Banach space, then $\scrA$ is called a \emph{Banach algebra}. If $\scrA$ has an identity $e$, then it is assumed that $\lnorm e \rnorm = 1$.
+\end{definition}
+
+\begin{proposition}
+	If $\scrA$ is an algebra without identity, define algebraic operations on $\scrA \times \bfF$ by:
+	\mbox{}
+	\begin{enumerate}[label = (\roman*),itemsep=1pt,topsep=3pt]
+		\item $(a,\alpha) + (b,\beta) := (a+b,\alpha + \beta)$,
+		\item $\beta(a,\alpha) := (\beta a, \beta \alpha)$,
+		\item $(a,\alpha)(b,\beta) := (ab + \alpha \beta + \beta a, \alpha \beta)$.
+	\end{enumerate}
+	Then $\scrA \times \bfF$ is an algebra with identity $(0,1)$.
+\end{proposition}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+
+\begin{proposition}
+	Let $\scrA$ be an algebra over $\bfF$ in which $(\scrA,\lnorm \cdot \rnorm_A)$ is a Banach space. For every $a \in \scrA$, suppose that the maps $x \mapsto ax$ and $x \mapsto xa$ of $\scrA \rightarrow \scrA$ are continuous. Let $\scrA \times \bfF$ be the algebra with operations given from Proposition~\ref{}. For $a \in \scrA$, define $L_a:A \times \bfF \rightarrow \scrA \times \bfF$ by $L_a(x,\xi) := (ax + \xi a,0)$.
+\end{proposition}
+	\mbox{}
+	\begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+		\item Define $\lnorm (a,\alpha) \rnorm_{\scrA \times \bfF}:= \lnorm a \rnorm_A + |\alpha|$. Then $\scrA \times \bfF$ is a Banach space and an algebra with identity $(0,1)$.
+		\item The map $a \rightarrow (a,0)$ is an isometric isomorphism between $\scrA$ and $\scrA \times \{0\}$.
+		\item For each $a \in \scrA$, we have $L_a \in \cB(\scrA \times \bfF)$.
+		\item Define $\lnorm a \rnorm_{\ast} := \lnorm L_a \rnorm_{\cB(\scrA \times \bfF)}$. Then $\lnorm \cdot \rnorm_{\ast}$ is equivalent to the norm $\lnorm \cdot \rnorm_A$, and in particular $(\scrA,\lnorm \cdot \rnorm_{\ast})$ is a Banach algebra.
+	\end{enumerate}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+Parts (1) and (2) show that $\scrA$ may be identified isometrically with the ideal $\scrA \times \{0\}$ of the unital algebra $\scrA \times \bfF$, whose identity is $(0,1)$. Thus, every algebra may be embedded isometrically into a unital algebra. When an algebra is already unital, it makes sense then to denote its identity by $1$. We will use this convention throughout the rest of the paper.
+
+	Parts (3) and (4) show that the usual submultiplicativity condition on the norm need not be assumed. Indeed, if $\scrA$ is complete and multiplication is continuous, then the norm $\lnorm a \rnorm_{\ast}$ is equivalent to the original norm on $\scrA$ satisfying the submultiplicativity condition.
+
+
+\subsection{Ideals and Quotients}
+
+\begin{definition}
+	Let $\scrA$ be an algebra. A \emph{left ideal} (resp. \emph{right ideal}) of $\scrA$ is a subalgebra $\scrM$ of $\scrA$ such that, for all $a \in \scrA$ and $x \in \scrM$, then $ax \in \scrM$ (resp. $xa \in \scrM$). If $\scrM$ is both a left and right ideal, then $\scrM$ is simply called an \emph{ideal} (or \emph{bilaterial ideal}).
+\end{definition}
+
+\begin{definition}
+	Let $\scrA$ be a unital algebra. An element $a \in \scrA$ is \emph{left invertible} (resp. \emph{right invertible}) if there exists an element $x \in \scrA$ such that $xa = 1$ (resp. $ax = 1$). If an element $a \in \scrA$ is both left and right invertible, then $a$ is simply called \emph{invertible}.
+\end{definition}
+
+\begin{proposition}\label{prop:ideals-and-inverts}
+	Let $A$ be a unital algebra.
+	\mbox{}
+	\begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+		\item If $a \in \scrA$ is invertible, there is a unique element $a^{-1}$ such that $a a^{-1} = a^{-1} a = 1$.
+		\item If $a \in \scrA$ is left invertible, and $\scrM$ is a left ideal in $\scrA$ containing $a$, then $\scrM = \scrA$.
+	\end{enumerate}
+\end{proposition}
+	\begin{proof}
+		(1) Since $a$ is invertible, there exists $x,y \in \scrA$ such that $xa = 1 = ay$. Hence $y=1y=(xa)y = x(ay) = x1 = x$.
+
+		(2) Since $a \in \scrA$ is left invertible, there exists $x \in \scrA$ such that $xa = 1$. Since $\scrM$ is a left ideal and $a \in \scrM$, it must be the case that $1 = xa \in \scrM$. Since $1 \in \scrM$, we have $y = y1 \in \scrM$ for all $y \in \scrA$. Thus $\scrA \subseteq \scrM$. 
+	\end{proof}
+
+Part (2) of Proposition~\ref{} says that every element of a proper left ideal is necessarily not left invertible.
+
+\begin{lemma}\label{lemma:norm-le-1}
+	If $\scrA$ is a unital Banach algebra and $x \in \scrA$ such that $\lnorm x-1 \rnorm < 1$, then $x$ is invertible.
+\end{lemma}
+	\begin{proof}
+		Define $y:=1-x$. Note that:
+		\begin{align*}
+			\lnorm y \rnorm
+			&= \lnorm 1-x \rnorm \\
+			&= \lnorm x-1 \rnorm \\
+			&< 1.
+		\end{align*}
+		Since $\scrA$ is a Banach algebra, it follows via induction that:
+		\[
+			\lnorm y^n \rnorm \leq \lnorm y \rnorm^n.
+		\]
+		Since $\lnorm y \rnorm < 1$, the series $\sum_{n=0}^{\infty} \lnorm y \rnorm^n$ converges, hence by the comparison test $\sum_{n=0}^{\infty} \lnorm y^n \rnorm$ converges. Because $\scrA$ is complete, $z:=\sum_{n=0}^{\infty}y^n$ also converges. Taking $z_k := \sum_{n=0}^{k}y^n$, we can see:
+		\begin{align*}
+			z_k(1-y)
+			&= \sum_{n=0}^{k} y^n - \sum_{n=0}^{k} y^{n+1} \\
+			&= 1-y^{k+1}. \\
+		\end{align*}
+		It is clear that $\sum_{n=0}^{\infty} y^{n+1}$ converges by the same reasoning from above. Hence $y^{n+1} \rightarrow 0$ as $n \rightarrow \infty$. This gives:
+		\begin{align*}
+			z(1-y)
+			&= \lim_{n \rightarrow \infty}z_n(1-y) \\
+			&= \lim_{n \rightarrow \infty}1-y^{n+1} \\
+			&= 1. \\
+		\end{align*}
+		An identical argument will show that $(1-y)z = 1$. Thus $(1-y) = 1-(1-x) = x$ is invertible.
+	\end{proof}
+
+The following fact surfaced in the preceeding proof.
+
+\begin{corollary}\label{cor:power-series-basic}
+	Let $\scrA$ be a unital Banach algebra. If $a \in \scrA$ and $\lnorm a \rnorm < 1$, then $(1-a)^{-1} = \sum_{k=0}^{\infty} a^k$.
+\end{corollary}
+
+\begin{lemma}\label{lemma:inverse-pertubation}
+	Let $\scrA$ be a unital Banach algebra. If $b_0 a_0 = 1$ and $\lnorm a - a_0 \rnorm < \lnorm b_0 \rnorm^{-1}$, then $a$ is left invertible. 
+\end{lemma}	
+	\begin{proof}
+		Rearranging $\lnorm a-a_0 \rnorm < \lnorm b_0 \rnorm^{-1}$ yields $\lnorm b_0 a - 1 \rnorm < 1$. By Lemma~\ref{lemma:norm-le-1}, the element $b_0a$ is invertible. Hence there exists $x \in \scrA$ such that $xb_0a = 1$, implying that $a$ is left invertible.
+	\end{proof}
+
+\begin{theorem}
+	If $\scrA$ is a unital Banach algebra, then:
+	\mbox{}
+	\begin{enumerate}[label = (\roman*),itemsep=1pt,topsep=3pt]
+		\item $G_l := \{a \in \scrA : a \text{ is left invertible }\}$,
+		\item $G_r := \{a \in A: a \text{ is right invertible }\}$,
+		\item $G := \{a \in \scrA : a \text{ is invertible}\}$,
+	\end{enumerate}
+	are all open subsets of $\scrA$. Moreover, the map $a \mapsto a ^{-1}$ of $G \rightarrow G$ is continuous.
+\end{theorem}
+	\begin{proof}
+		Let $a_0 \in G_l$. If $a \in B(a_0, \lnorm b_0 \rnorm^{-1})$, then $\lnorm a-a_0 \rnorm < \lnorm b_0 \rnorm^{-1}$, so by Lemma~\ref{lemma:inverse-pertubation} $a$ is left invertible. Thus $a_0 \in B(a_0,\lnorm b_0 \rnorm^{-1}) \subseteq G_l$, establishing $G_l$ as open. It follows similarly that $G_r$ is open, and since $G = G_l \cap G_r$, it is open as well. 
+
+		To prove that $a \mapsto a^{-1}$ is continuous, we first prove an intermediary result. Let $\{a_n\}$ be a sequence in $G$ such that $a_n \rightarrow 1$. Let $0 < \delta <1$ and suppose $\lnorm a_n - 1 \rnorm < \delta$. By Corollary~\ref{cor:power-series-basic}:
+		\begin{align*}
+			a_n^{-1}
+			&= (1-(1-a_n))^{-1} \\
+			&= \sum_{k=0}^{\infty} (1-a_n)^k \\
+			&= 1+ \sum_{k=1}^{\infty} (1-a_n)^k.
+		\end{align*}
+		Hence $a_n^{-1} - 1 = \sum_{k=1}^{\infty} (1-a_n)^k$. Thus:
+		\begin{align*}
+			\lnorm a_n^{-1} - 1 \rnorm
+			&= \lnorm \sum_{k=1}^{\infty} (1-a_n)k \rnorm \\
+			&\leq \sum_{k=1}^{\infty} \lnorm 1-a_n \rnorm^k \\
+			&= \sum_{k=1}^{\infty} \delta^k \\
+			&= \frac{\delta}{1-\delta}. 
+		\end{align*}
+		If $\epsilon > 0$ is given, then $\delta$ can be chosen such that $\frac{\delta}{1-\delta} < \epsilon$. So $\lnorm a_n - 1 \rnorm < \delta$ implies $\lnorm a_n^{-1} - 1 \rnorm < \epsilon$. Hence $a_n^{-1} \rightarrow 1$.
+		With this, let $a \in G$ be arbitrary and suppose $\{a_n\}$ is a sequence in $G$ such that $a_n \rightarrow a$. Then $a^{-1}a_n \rightarrow 1$. The intermediary result above gives $a_n^{-1}a = (a^{-1}a_n)^{-1} \rightarrow 1$. Hence $a_n^{-1} = a_n^{-1}aa^{-1} \rightarrow a^{-1}$.
+	\end{proof}
+
+\begin{definition}
+	A \emph{maximal ideal} is a proper ideal that is contained in no larger proper ideal.
+\end{definition}
+
+\begin{corollary}
+	Let $\scrA$ be a unital Banach algebra.
+	\mbox{}
+	\begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+		\item The closure of a proper left (resp. right, bilateral) ideal is a proper left (resp. right, bilateral) ideal.
+		\item A maximal left (resp. right, bilateral) ideal is closed.
+	\end{enumerate}
+\end{corollary}
+	\begin{proof}
+		(1) Let $\scrM$ be a proper left ideal of $\scrA$. The proof showing $\overline{\scrM}$ is a subalgebra is omitted, but the idea can be replicated from the following. Let $a \in \scrA$ and $x \in \overline{\scrM}$. There exists a sequence $\{x_n\}$ in $\scrM$ such that $x_n \rightarrow x$. Then $\{a x_n\}$ is a sequence in $\scrM$ such that $a x_n \rightarrow ax$. Thus $ax \in \overline{\scrM}$, so $\overline{\scrM}$ is a left ideal. Let $G_l$ denote the elements of $\scrA$ which are left invertible. By part (2) of Proposition~\ref{prop:ideals-and-inverts}, $\scrM \cap G_l = \emptyset$, which implies that $\scrM \subseteq \scrA \setminus G_l$. Since $\scrA \setminus G_l$ is closed, and since $\overline{\scrM}$ is the smallest closed set containing $\scrM$, we have $\overline{\scrM} \subseteq \scrA \setminus G_l$. Since $G_l$ is necessarily nonempty, $\overline{\scrM} \neq \scrA$, hence it is proper.
+
+		(2) If $\scrM$ is a maximal left ideal, then $\overline{\scrM}$ is a proper ideal by (1). Hence $\scrM = \overline{\scrM}$ by maximality.
+	\end{proof}
+
+\begin{theorem}
+	If $\scrA$ is a Banach algebra and $\scrM$ is a proper closed ideal in $\scrA$, then $\scrA/\scrM$ is a Banach algebra with norm given by:
+	\[
+		\lnorm a + \scrM \rnorm := \inf \{\lnorm a + x \rnorm : x \in \scrM\}.
+	\] 
+	If $\scrA$ has an identity, so does $\scrA/\scrM$.
+\end{theorem}
+	\begin{proof}
+		The proof that $\scrA/\scrM$ is a normed linear space with well-defined operations given by $(a+\scrM) + (b+\scrM) = (a+b) + \scrM$ and $\alpha(a+\scrM) = (\alpha a) + \scrM$ is omitted. We will first show that $\scrA/\scrM$ is a Banach space. Let $\{a_n + \scrM\}_n$ be a Cauchy sequence in $\scrA/\scrM$. There is a subsequence $\{a_{n_k} + \scrM\}_k$ such that:\footnote{Suppose $\{x_n\}$ is a Cauchy sequence. For $\epsilon = 2^{-1}$, choose $N_1$ such that $m,n \geq N_1$ implies $\lnorm x_m - x_n \rnorm < 2^{-1}$. Now choose $n_1 \geq N_1$. For $\epsilon = 2^{-2}$, choose $N_2$ such that $m,n \geq N_2$ implies $\lnorm x_m - x_n \rnorm < 2^{-2}$. Choose $n_2 \geq \max \{N_2, n_1 + 1\}$. Since $n_1, n_2 \geq N_1$, we have $\lnorm x_{n_2} - x_{n_1} \rnorm < 2^{-1}$. Inductively, we obtain a subsequence $\{x_{n_k}\}_k$ satisfying the above propety. }
+		\[
+			\lnorm (a_{n_k} + \scrM) - (a_{n_{k+1}} + \scrM)\rnorm = \lnorm (a_{n_k} - a_{n_{k+1}}) + \scrM \rnorm < 2^{-k}.	
+		\] 
+		Let $y_1 = 0$. By the definition of $\lnorm \cdot \rnorm$ on $\scrA/\scrM$, choose $y_2 \in \scrM$ such that:
+		\[
+			\lnorm a_{n_1} - a_{n_2} + y_2 \rnorm \leq \lnorm a_{n_1} - a_{n_2} + \scrM \rnorm + 2^{-1} < 2 \cdot 2^{-1}.
+		\] 
+		With $y_2$ fixed, choose $y_3 \in \scrM$ such that:
+		\begin{align*}
+			\lnorm (a_{n_2} + y_2) - (a_{n_3} - y_2) \rnorm
+			&= \lnorm a_{n_2} - a_{n_3} + (y_2 - y_3) \rnorm \\
+			&\leq \lnorm a_{n_2} - a_{n_3} + \scrM \rnorm + 2^{-2}  \\
+			&< 2 \cdot 2^{-2}.
+		\end{align*}
+		Inductively, we obtain a sequence $\{y_k\}_k$ in $\scrM$ such that:
+		\[
+			\lnorm (a_{n_k} + y_k) - (a_{n_{k+1}} + y_{k+1}) \rnorm < 2 \cdot 2^{-k}.
+		\] 
+		In particular, for $j < k$ we have:
+		\begin{align*}
+			\lnorm (a_{n_k} + y_j) - (a_{n_k} + y_k) \rnorm
+			&\leq \lnorm (a_{n_j} + y_j)-(a_{n_{j+1}} + y_{j+1}) \rnorm + \ldots +\lnorm (a_{n_{k-1}} + y_{k-1}) - (a_{n_k} + y_k) \rnorm  \\
+			&\leq \sum_{i=j}^{k} 2\cdot_2^{-k}  \\
+			&\leq \sum_{i=j}^{\infty} 2\cdot_2^{-k}  \\
+			&= 2^{2-j}.
+		\end{align*}
+		Thus $\{a_{n_k} + y_k\}_k$ is a Cauchy sequence in $\scrA$. Since $\scrA$ is complete, there exists $a_0 \in \scrA$ such that $a_{n_k} + y_k \rightarrow a_0$. Since the projection $\pi:\scrA \rightarrow \scrA/\scrM$ is continuous, we have:
+		\begin{align*}
+			\lim_{k \rightarrow \infty}a_{n_k} + \scrM
+			&= \lim_{k \rightarrow \infty} \pi(a_{n_k} + y_k) \\
+			&= \pi\left(\lim_{k \rightarrow \infty} a_{n_k} + y_k \right) \\
+			&= \pi(a_0) \\
+			&= a_0 + \scrM.
+		\end{align*}
+		Since $\{a_n + \scrM\}_n$ is a Cauchy sequence with a convergent subsequence, it is convergent. Thus $\scrA/\scrM$ is a Banach space.
+
+		The proof that $\scrA/\scrM$ is an algebra with well-defined multiplication given by $(a+\scrM)(b+\scrM) = ab + \scrM$ is omitted. Let $a,b \in \scrA$ and $u,v \in \scrM$. Then $(a+u)(b+v) = ab + (av + ub + uv) \in ab+\scrM$. Hence:
+		\begin{align*}
+			\lnorm (a+\scrM)(b+\scrM) \rnorm
+			&= \lnorm ab + \scrM \rnorm \\
+			&\leq \lnorm (a+u)(b+v) \rnorm.
+		\end{align*}
+		Taking the infimum over all $u,v \in \scrM$ gives $\lnorm (a+\scrM)(b+\scrM) \rnorm \leq \lnorm a+\scrM \rnorm \lnorm b+\scrM \rnorm$. Thus $\scrA/\scrM$ is a Banach algebra. Moreover, $1 + \scrM$ is indeed the identity of $\scrA/\scrM$ as $(1+\scrM)(a+\scrM) = (1a + \scrM) = a + \scrM = (a1 + \scrM) = (a + \scrM)(1 + \scrM)$
+	\end{proof}
+
+\subsection{The Spectrum}
+
+\begin{definition}
+	If $\scrA$ is a unital Banach algebra and $a \in \scrA$, the \emph{spectrum of $a$} is:
+	\[
+		\sigma(a) := \{a \in \bfF : a - \alpha \text{ is not invertible }\}.
+	\] 
+	The \emph{left spectrum of $a$} is:
+	\[
+		\sigma_l(a) := \{a \in \bfF : a - \alpha \text{ is not left invertible }\}.
+	\] 
+	The \emph{right spectrum of $a$}, denoted $\sigma_r(a)$, is defined similarly.
+\end{definition}
+
+\begin{definition}
+	If $\scrA$ is a unital Banach algebra and $a \in \scrA$, the \emph{resolvent set of $a$} is $\rho(a) := \bfF \setminus \sigma(a)$. The \emph{left} and \emph{right resolvents of $a$} are $\rho_l(a) := \bfF \setminus \sigma_l(a)$ and $\rho_r(a) := \bfF \setminus \sigma_r(a)$.
+\end{definition}
+
+\begin{example}
+	Let $X$ be compact. If $f \in C(X)$, then $\sigma(f) = f(X)$. Indeed, let $\alpha \in f(X)$. Then $\alpha = f(x_0)$ for some $x_0 \in X$. Hence $0 = f(x_0) - \alpha \in (f-\alpha)(X)$. It must be the case that $(f-\alpha)^{-1}$ does not exist, so $\alpha \in \sigma(f)$. Conversely, if $f-\alpha$ is not invertible, then $(f-\alpha)^{-1}$ does not exist. This means $0 = f(x_0) - \alpha$ for some $x_0 \in X$, hence $\alpha = f(x_0)$. 
+\end{example}
+
+\begin{example}
+	Let $X$ be a Banach space. If $A \in \scrB(X)$, then $\sigma(A) = \{\alpha \in \bfF : \text{ either }\ker(A-\alpha) \neq 0\text{ or }\Image(A-\alpha) \neq X\}$. Indeed, if $A - \alpha$ is not invertible, then it is either not injective or not surjective. In fact, this means that $\rho(A) = \bfF \setminus \sigma(A) = \{\alpha \in \bfF : A - \alpha \text{ is bijective }\}$. If $\alpha \in \rho(A)$, then $\alpha \not\in \sigma(A)$, hence $\ker(A - \alpha) = 0$ and $\Image(A - \alpha) = X$. Hence $A - \alpha$ is bijective. Conversely, suppose $A - \alpha$ is bijective. By the Open Mapping Theorem, $A-\alpha$ is an open map. For any open subset $U \subseteq X$, the set $((A-\alpha)^{-1})^{-1}(U) = (A-\alpha)(U)$ is open. Thus $(A-\alpha)^{-1} \in \scrB(X)$, hence $\alpha \in \rho(A)$.
+\end{example}
+
+\subsection{Vector-Valued Analytic Functions}
+
+\subsection{The Riesz Functional Calculus}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,86 @@
+\chapter*{Exercises}
+\addcontentsline{toc}{chapter}{Exercises}
+
+\begin{exercise}
+	\phantom{a}
+	\mbox{}
+	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+		\item Let $E$ be an $n \times n$ matrix over $\bfC$ such that $E \neq I_n$, $E \neq 0$, and $E^2 = E$. Show that there is an $n \times n$ matrix $T$ such that:
+			\[
+				E = T^{-1} \begin{bmatrix} I_k & 0 \\ 0 & 0 \end{bmatrix} T
+			\]
+		for some $k$.
+
+		\item Let $G$ be a group and $X$ be a function mapping $G$ into the set of (possible singular) $n \times n$ matrices over $\bfC$ such that $X(\epsilon) \neq 0$ and $X(gh) = X(g)X(h)$ for all $g,h \in G$. Show that there is an $n \times n$ matrix $T$ and a matrix representation $Y$ of $G$ such that:
+			\[
+				X(g) = T^{-1} \begin{bmatrix} Y(g) & 0 \\ 0 & 0  \end{bmatrix} T
+			\] 
+			for all $g \in G$.
+	\end{enumerate}
+\end{exercise}
+	\begin{proof}
+		(a) Since $E$ is a projection, its eigenvalues are $\lambda = 0$ and $\lambda =1$. Let $E_0 := \ker(E)$ and $E_1 := \ker(E - I_n)$ denote the eigenspaces of $\lambda = 0$ and $\lambda  = 1$. Note that $Ev \in E_1$, as:
+		\begin{align*}
+			(E-I_n)(Ev)
+			&= E^2v - Ev\\
+			&= 0.
+		\end{align*}
+		Similarly, $v-Ev \in E_0$ since:
+		\begin{align*}
+			E(v-Ev)
+			&= Ev - E^2v \\
+			&= 0.
+		\end{align*}
+		Since every $v \in V$ can be written as $(v - Ev) + Ev$, this means $V = E_0 + E_1$. If $x \in E_0 \cap E_1$, then $Ex = 0$ and $Ex = x$. It must be the case that $x = 0$, hence $V = E_0 \oplus E_1$. Since $V$ is the direct sum of eigenspaces, $E$ is diagonalizable. Assuming that $\dim(E_1) = k$ and $\dim(E_0) = n-k$, there exists a matrix $T$ such that $E = T^{-1}\begin{bmatrix} I_k & 0 \\ 0 & 0 \end{bmatrix} T$.
+
+		(b) Note that $X(\epsilon)^2 = X(\epsilon)X(\epsilon) = X(\epsilon)$. Hence by part (a) there exists an $n \times n$ matrix $T$ such that:
+		\[
+			X(g) = T^{-1}\begin{bmatrix} I_k & 0 \\ 0 & 0 \end{bmatrix} T.
+		\]
+		Note that:
+		\[
+			T\,X(g)\,T^{-1} = (T\,X(g)\,T^{-1})(T\,X(\epsilon)\,T^{-1}) = (T\,X(g)\,T^{-1}) \begin{bmatrix} I_k & 0 \\ 0 & 0 \end{bmatrix}.
+		\]
+		Similarly:
+		\[
+			T\,X(g)\,T^{-1} = (T\,X(\epsilon)\,T^{-1})(T\,X(g)\,T^{-1}) = \begin{bmatrix} I_k & 0 \\ 0 & 0 \end{bmatrix} (T\,X(g)\,T^{-1}).
+		\]
+		Since $(T\,X(g)\,T^{-1}) \begin{bmatrix} I_k & 0 \\ 0 & 0 \end{bmatrix} = \begin{bmatrix} I_k & 0 \\ 0 & 0 \end{bmatrix} (T\,X(g)\,T^{-1})$, it must be the case that $T\,X(g)\,T^{-1} = \begin{bmatrix} Y(g) & 0 \\ 0 & 0 \end{bmatrix} $ for some $Y(g) \in \Mat_k(\bfC)$. It remains to show that $Y$ is a representation. Note that:
+		\[
+			\begin{bmatrix} Y(\epsilon) & 0 \\ 0 & 0 \end{bmatrix} = T\,X(\epsilon)\,T^{-1} = \begin{bmatrix} I_k & 0 \\ 0 & 0 \end{bmatrix}.
+		\] 
+		Thus $Y(\epsilon) = I_k$. Similarly:
+		\begin{align*}
+			\begin{bmatrix} Y(gh) & 0 \\ 0 & 0 \end{bmatrix} 
+			&= T\,X(gh)\,T^{-1} \\
+			&= (T\,X(g)\,T^{-1})(T\,X(h)\,T^{-1}) \\
+			&= \begin{bmatrix} Y(g) & 0 \\ 0 & 0 \end{bmatrix} \begin{bmatrix} Y(h) & 0 \\ 0 & 0 \end{bmatrix} \\
+			&= \begin{bmatrix} Y(g)Y(h) & 0 \\ 0 & 0 \end{bmatrix}.
+		\end{align*}
+		Thus $Y(gh) = Y(g)Y(h)$. It remains to show that $\Image Y = GL_n(\bfC)$. Indeed, for any $Y(g) \in \Image Y$ we have $Y(\epsilon) = Y(g g^{-1}) = Y(g) Y(g^{-1})$, hence $Y(g)$ does have an inverse. Thus, we've shown that there exists an $n \times n$ matrix $T$ and matrix representation $Y$ of $G$ such that:
+		\[
+			X(g) = T^{-1} \begin{bmatrix} Y(g) & 0 \\ 0 & 0 \end{bmatrix} T\qedhere
+		\]
+	\end{proof}
+
+\begin{exercise}
+	For $\sigma = \sigma_1\ldots \sigma_n \in S_n$, written in one line notation, $\inv \sigma$ is the number of pairs $i < j$ such that $\sigma_i > \sigma_j$. Define $\sign \sigma := (-1)^{\inv \sigma}$. Show that switching the position of any two integers in $\sigma$ changes $\inv \sigma$ by an odd number. This fact implies:
+	\[
+		\sign(\sigma \tau) = \sign \sigma \, \sign \tau,
+	\] 
+	where $\tau$ is any transposition. Since any permutation can be written as a product of transpositions, this means that the sign representation $X(\sigma) = \sign (\sigma)$ is indeed a matrix representation of $S_n$.
+\end{exercise}
+	\begin{proof}
+		Let $\tau$ be obtained from $\sigma$ by swapping the entries in positions $p < q$. After the swap, suppose $\sigma_p < \sigma_q$. Let $m = \card \{r: p < r < q \text{ and }\sigma_p < \sigma_r < \sigma_q\}$. Any inversions involving neither $p$ nor $q$ is unchanged, hence the total number of inversions is unchanged. Entries outside the interval from $p$ to $q$ also leave the total number of inversions unchanged. The pair $(p,q)$ was not an inversion in $\sigma$, but becomes one in $\tau$, contributing $+1$. Now consider $p < r < q$. If $\sigma_p < \sigma_r < \sigma_q$, then after the swap $(p,r)$ and $(r,q)$ are inversions. Thus each $r$ contributes $+2$. If $\sigma_r < \sigma_p$ or $\sigma_r > \sigma_q$, then in either case the pairs contribute one inversion both before and after the swap, so there is no change. Thus:
+		\[
+			\inv(\tau) - \inv(\sigma) = 1 + 2m,
+		\] 
+		which is odd. If $\sigma_p > \sigma_q$, the same argument gives $-(1+2m)$ which is also odd. 
+
+		If $\sigma \in S_n$ and $\tau$ is a transposition, then:
+		\[
+			\sign(\sigma \tau) = 
+		\] 
+	\end{proof}
+
+
