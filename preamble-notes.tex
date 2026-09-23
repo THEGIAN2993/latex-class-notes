@@ -2,33 +2,38 @@
 % Font options
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\iffalse
-%font style 1
-\usepackage[p,osf]{scholax}
-\usepackage{amsmath,amsthm,amssymb}
-\usepackage[scaled=1.075,ncf,vvarbb]{newtxmath}
-\fi
 
-%font style2
+% style 1: ScholaX text + NewTX math ----------
+% \usepackage[T1]{fontenc}
+% \usepackage{mathtools} % Loads amsmath
+% \usepackage{amsthm}
+% \usepackage[p,osf]{scholax}
+% \usepackage[scaled=1.075,ncf,vvarbb]{newtxmath}
+% \renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
+
+% style 2: NewPX text + Euler math
 \usepackage[T1]{fontenc}
-\usepackage{amsmath}
-\usepackage[fixamsmath]{mathtools}  % Extension to amsmath
+\usepackage{mathtools}
 \usepackage{amsthm}
-\usepackage{amssymb}
-\renewcommand*{\mathbf}[1]{\mathbb{#1}}
-\renewcommand{\qedsymbol}{$\blacksquare$}
+\usepackage{newpxtext}
+\usepackage{eulerpx}
+\renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
+\renewcommand*{\mathbf}[1]{\varmathbb{#1}}
 
-%\usepackage{newpxtext}
-%\usepackage{eulerpx}
-%\usepackage{mathrsfs}
-%\usepackage{eucal}
 
-\usepackage[uprightgreeks,light]{kpfonts}
-\usepackage{datetime}
+
+% Style 3: KP Fonts ----------
+% \usepackage[T1]{fontenc}
+% \usepackage{mathtools} % Loads amsmath
+% \usepackage{amsthm}
+% \usepackage[uprightgreeks,light]{kpfonts}
+% \renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Page layout and headers
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\usepackage{datetime}
 \usepackage[margin=1.5in]{geometry}
 \usepackage{xparse}
 \usepackage{fancyhdr}
@@ -171,6 +176,7 @@
 
 \usepackage{enumitem}
 \usepackage[explicit]{titlesec}
+\usepackage{appendix}
 
 \titleformat{\chapter}[display]
     	{\bfseries\LARGE\raggedright}
@@ -227,7 +233,6 @@
 \usepackage{pifont}
 \usepackage{etoolbox}
 \usepackage{bm}
-\usepackage{kbordermatrix}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Final formatting

@@ -1,25 +1,37 @@
-\documentclass[preview, border=10pt]{standalone}
+\documentclass[preview, border=12pt]{standalone}
 \input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/preamble-hw.tex}
 \input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
+\renewcommand*{\mathbf}[1]{\varmathbb{#1}}
+\renewcommand*{\emph}[1]{\textit{#1}}
+\setlength{\parskip}{0.5\baselineskip}
 \begin{document}
+Let $X = \{1,\ldots ,n\}$. For each $\alpha \in \{1,\ldots ,n\}$, let $\hat{\alpha}:C(X) \rightarrow \bfC$ be given by $\hat{\alpha}(f) := f(\alpha)$. Then $\Sigma_{C(X)} = \{\hat{1},\hat{2},\ldots ,\hat{n}\}$, where $\Sigma_{C(X)}$ is the set of all nonzero algebra homomorphisms from $C(X)$ to $\bfC$ (i.e., the characters of $C(X)$). \\
 
-\begin{verbatim}
- ▄         ▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄            ▄            ▄▄▄▄▄▄▄▄▄▄▄ 
-▐░▌       ▐░▌▐░░░░░░░░░░░▌▐░▌          ▐░▌          ▐░░░░░░░░░░░▌
-▐░▌       ▐░▌▐░█▀▀▀▀▀▀▀▀▀ ▐░▌          ▐░▌          ▐░█▀▀▀▀▀▀▀█░▌
-▐░▌       ▐░▌▐░▌          ▐░▌          ▐░▌          ▐░▌       ▐░▌
-▐░█▄▄▄▄▄▄▄█░▌▐░█▄▄▄▄▄▄▄▄▄ ▐░▌          ▐░▌          ▐░▌       ▐░▌
-▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░▌          ▐░▌          ▐░▌       ▐░▌
-▐░█▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀▀▀▀▀▀ ▐░▌          ▐░▌          ▐░▌       ▐░▌
-▐░▌       ▐░▌▐░▌          ▐░▌          ▐░▌          ▐░▌       ▐░▌
-▐░▌       ▐░▌▐░█▄▄▄▄▄▄▄▄▄ ▐░█▄▄▄▄▄▄▄▄▄ ▐░█▄▄▄▄▄▄▄▄▄ ▐░█▄▄▄▄▄▄▄█░▌
-▐░▌       ▐░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌
- ▀         ▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀ 
-                                                                                             
-                                                                         
-\end{verbatim}
+First, note that $\{\delta_1,\ldots ,\delta_n\}$ is a basis for $C(X)$, where each $\delta_i$ is defined by:
+\[
+	\delta_i(j) = \begin{cases} 1, & i = j\\ 0, & \text{otherwise}\end{cases}.
+\] 
+Clearly $\{\hat{1},\hat{2},\ldots ,\hat{n}\} \subseteq \Sigma_{C(X)}$, as for any $\hat{\alpha} \in \{\hat{1},\hat{2},\ldots ,\hat{n}\}$ we have:
+\begin{align*}
+	\hat{\alpha}(f+g) &= (f+g)(\alpha) = f(\alpha) + g(\alpha), \\
+	\hat{\alpha}(fg) &= (fg)(\alpha) = f(\alpha) g(\alpha), \\
+	\hat{\alpha}(\lambda f) &= (\lambda f)(\alpha) = \lambda f(\alpha).
+\end{align*}
+Moreover, each $\hat{\alpha}$ is nonzero, as $\hat{\alpha}(\delta_\alpha) = \delta_\alpha(\alpha) = 1$. \\
 
+Claim: for any $h \in \Sigma_{C(X)}$, there is exactly one $\delta_i \in \{\delta_1,\ldots ,\delta_n\}$ such that $h(\delta_i) = 1$, and $h(\delta_j) = 0$ for every $j \neq i$. Since $\delta_i^2 = \delta_i$, we have $h(\delta_i)^2 = h(\delta_i^2) = h(\delta_i)$. Hence $h(\delta_i) = 1$ or $0$. If it were the case that $h(\delta_i) = 0$ for all $i = 1,\ldots ,n$, then $h$ would be the zero functional which contradicts it being an element of $\Sigma_{C(X)}$. Now consider $\sum_{\alpha = 1}^{n} \delta_\alpha$. It is also true that $\left(\sum_{\alpha = 1}^{n} \delta_\alpha\right)^2 = \sum_{\alpha =1}^{n} \delta_\alpha$, hence:
+\[
+	\left( \sum_{\alpha = 1}^{n} h(\delta_\alpha) \right)^2 = \sum_{\alpha = 1}^{n} h(\delta_\alpha).
+\]
+It must be the case that $\sum_{\alpha = 1}^{n} h(\delta_\alpha) = 1$. Since $h(\delta_\alpha)$ can be either $1$ or $0$, this is only true when $h(\delta_\alpha) = 1$ for exactly one $\delta_\alpha \in \{\delta_1,\ldots ,\delta_n\}$. \\
 
-
-
+With this, let $h \in \Sigma_{C(X)}$. Suppose $i$ is the unique index such that $h(\delta_i) = 1$. Then for any $f \in C(X)$:
+\begin{align*}
+	h(f)
+	&= h \left( \sum_{\alpha = 1}^{n}f(\alpha)\delta_\alpha  \right)  \\
+	&= \sum_{\alpha = 1}^{n} f(\alpha)h(\delta_\alpha) \\
+	&= f(i) \\
+	&= \hat{i}(f).
+\end{align*}
+Thus $h \in \{\hat{1},\hat{2},\ldots ,\hat{n}\}$, establishing $\Sigma_{C(X)} = \{\hat{1},\hat{2},\ldots ,\hat{n}\}$.
 \end{document}

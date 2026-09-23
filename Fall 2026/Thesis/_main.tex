@@ -1,6 +1,11 @@
-\documentclass[10pt,oneside,openany]{memoir}
+\documentclass[12pt,oneside,openany]{memoir}
 \input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/preamble-notes.tex}
+\usepackage{kbordermatrix}
+\usepackage{nicematrix}
 \input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
+\renewcommand*{\mathbf}[1]{\varmathbb{#1}}
+\renewcommand*{\emph}[1]{\textit{#1}}
+
 \renewcommand{\projecttitle}{Thesis}
 
 \begin{document}
@@ -13,11 +18,15 @@ Test
 \tableofcontents
 \vfill
 \specialdate
-Last update: \today
+Last update: Test \today
 
 %\include{preliminaries}
 \include{ch1.tex}
-\include{ch2.tex}
+\begin{appendices}
+\include{app2.tex}
+\include{app1.tex}
+
+\end{appendices}
 
 \end{document}
 

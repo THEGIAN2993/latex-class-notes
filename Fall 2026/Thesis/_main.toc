@@ -1,11 +1,19 @@
 \contentsline {chapter}{Contents}{i}{section*.2}%
-\contentsline {chapter}{\chapternumberline {1}Complex Variables}{1}{chapter.1}%
+\contentsline {chapter}{\chapternumberline {1}Banach Algebras}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Basic Definitions and Results}{1}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Winding Numbers and Cauchy's Integral Formula}{3}{section.1.2}%
-\contentsline {section}{\numberline {1.3}The Jordan Curve Theorem}{4}{section.1.3}%
-\contentsline {section}{\numberline {1.4}Banach-Valued Integration}{4}{section.1.4}%
-\contentsline {chapter}{\chapternumberline {2}Banach Algebras}{7}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Basic Definitions and Results}{7}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Ideals and Quotients}{8}{section.2.2}%
-\contentsline {section}{\numberline {2.3}The Spectrum}{12}{section.2.3}%
-\contentsline {section}{\numberline {2.4}The Riesz Functional Calculus}{12}{section.2.4}%
+\contentsline {section}{\numberline {1.2}Ideals and Quotients}{2}{section.1.2}%
+\contentsline {section}{\numberline {1.3}The Spectrum}{7}{section.1.3}%
+\contentsline {section}{\numberline {1.4}The Riesz Functional Calculus}{8}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Abelian Banach Algebras}{13}{section.1.5}%
+\contentsline {appendix}{\chapternumberline {A}Topological Vector Spaces and Weak Topologies}{15}{chapter.A}%
+\contentsline {section}{\numberline {A.1}Preliminaries}{15}{section.A.1}%
+\contentsline {section}{\numberline {A.2}Vector Topologies and Separation Properties}{16}{section.A.2}%
+\contentsline {section}{\numberline {A.3}Local Convexity}{19}{section.A.3}%
+\contentsline {section}{\numberline {A.4}Topologies Induced by a Family of Sets}{22}{section.A.4}%
+\contentsline {section}{\numberline {A.5}Dual Systems and Weak Topologies}{23}{section.A.5}%
+\contentsline {section}{\numberline {A.6}Weak* Topologies and the Banach-Alaoglu Theorem}{25}{section.A.6}%
+\contentsline {section}{\numberline {A.7}The Stone-\v {C}ech Compactification}{26}{section.A.7}%
+\contentsline {appendix}{\chapternumberline {B}Complex Variables}{27}{chapter.B}%
+\contentsline {section}{\numberline {B.1}Basic Definitions and Results}{27}{section.B.1}%
+\contentsline {section}{\numberline {B.2}Winding Numbers and Cauchy's Integral Formula}{30}{section.B.2}%
+\contentsline {section}{\numberline {B.3}Banach-Valued Integration}{30}{section.B.3}%

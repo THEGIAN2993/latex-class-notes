@@ -2,7 +2,7 @@ PWD /Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/Fall 20
 INPUT /usr/local/texlive/2025/texmf.cnf
 INPUT /usr/local/texlive/2025/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/Fall 2025/550 Measure Theory/Notes/_main.tex
+INPUT _main.tex
 OUTPUT _main.log
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/memoir/memoir.cls
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/memoir/memoir.cls

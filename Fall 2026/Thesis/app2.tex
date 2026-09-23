@@ -1,0 +1,549 @@
+\chapter{Topological Vector Spaces and Weak Topologies}
+
+\noindent Throughout, unless otherwise stated, assume $\bfF = \bfR$ or $\bfC$.
+
+\section{Preliminaries}
+
+Throughout, assume $X$ to be a topological space.
+
+\begin{definition}
+	If $E \subset X$, a \emph{neighborhood} of $E$ is a set $A \subset X$ such that $E \subset \Int A$.
+\end{definition}
+
+\begin{definition}
+	If $\scrE \subset \scrP(X)$, the topology \emph{generated} by $\scrE$, denoted by $\scrT(\scrE)$, is defined as the intersection of all topologies on $X$ containing $\scrE$. The generating set $\scrE$ is called a \emph{subbase}.
+\end{definition}
+
+\begin{definition}
+	If $\scrT$ is a topology on $X$, a \emph{local base} for $T$ at $x \in X$ is a family $\scrN \subseteq \scrT$ such that:
+	\mbox{}
+	\begin{itemize}[itemsep=1pt,topsep=3pt]
+		\item $x \in V$ for all $V \in \scrN$;
+		\item if $U \in \scrT$ and $x \in U$, there exists $V \in \scrN$ such that $x \in V$ and $V \subseteq U$.
+	\end{itemize}
+\end{definition}
+
+\begin{definition}
+	A \emph{base} for a topology $\scrT$ on $X$ is a family $\scrB \subseteq \scrT$ that contains a local base for $\scrT$ at every $x \in X$.
+\end{definition}
+
+\begin{example}
+	If $X$ is a metric space, all open balls centered at $x \in X$ form a local base. The collection of all open balls in $X$ form a  base.
+\end{example}
+
+\begin{proposition}
+	If $\scrT$ is a topology on $X$ and $\scrE \subset \scrT$, then $\scrE$ is a base if and only if every nonempty $U \in \scrT$ is a union of members of $\scrE$.
+\end{proposition}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+\begin{proposition}
+	If $\scrE \subset \scrP(X)$, then $\scrE$ is a base for a topology on $X$ if and only if:
+	\mbox{}
+	\begin{itemize}[itemsep=1pt,topsep=3pt]
+		\item each $x \in X$ is contained in some $V \in \scrE$;
+		\item If $U,V \in \scrE$ and $x \in U \cap V$, there exists $W \in \scrE$ such that $x \in W \subseteq (U \cap V)$.
+	\end{itemize}
+\end{proposition}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+
+\begin{proposition}
+	If $\scrE \subset \scrP(X)$, the topology $\scrT(\scrE)$ consists of $\emptyset$, $X$, and all unions of finite intersections of members of $\scrE$.
+\end{proposition}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+\begin{proposition}
+	Let $\scrE \subset \scrP(X)$. The collection of all finite intersections of elements in $\scrE$ form a base for $\scrT(\scrE)$.
+\end{proposition}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+\section{Vector Topologies and Separation Properties}
+\begin{definition}
+	Suppose $\scrT$ is a topology on an $\bfF$-vector space $X$ such that:
+	\mbox{}
+	\begin{itemize}[itemsep=1pt,topsep=3pt]
+		\item for every $x \in X$, the set $\{x\}$ is closed;
+		\item the vector space operations are continuous with respect to $\scrT$.
+	\end{itemize}
+	Under these conditions, $\scrT$ is called a \textui{vector topology} and $X$ is said to be a \textui{topological vector space} (abbrev. \textui{TVS}).
+\end{definition}
+
+\begin{definition}
+	Let $X$ be a TVS.
+	\mbox{}
+	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+		\item A set $C \subset X$ is said to be \textui{convex} if $tC + (1-t)C \subset C$ for every $0 \leq t \leq 1$.
+		\item A set $B \subset X$ is said to be \textui{balanced} if $\alpha B \subset B$ for every $\alpha \in \bfF$ with $|\alpha| \leq 1$
+	\end{enumerate}
+\end{definition}
+
+\begin{proposition}\label{prop:translation-invariant-top}
+	Let $X$ be a TVS.
+	\mbox{}
+	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+		\item The \textit{translation operator} $T_a:X \rightarrow X$ given by $T_a(x) = a + x$ is a homeomorphism.
+		\item The \textit{multiplication operator} $M_\lambda:X \rightarrow X$ given by $M_\lambda(x) = \lambda x$ is a homeomorphism.
+	\end{enumerate}
+\end{proposition}
+	\begin{proof}
+		The continuity and bijectivity of $T_a$ and $M_\lambda$ follow from the vector space axioms. Their inverses, $T_{-a}$ and $M_{1/\lambda}$, are also continuous due to the vector space axioms.
+	\end{proof}
+
+\begin{remark}
+A consequence of Proposition~\ref{prop:translation-invariant-top} is that every vector topology is \textit{translation-invariant}; i.e., a set $E \subset X$ is open if and only if each of its translates $a + E$ is open. As such, any vector topology is completely determined by any of its local bases. The following proposition illustrates this. 
+\end{remark}
+
+\begin{proposition}
+	Let $\scrT$ be a vector topology on $X$. If $\scrB$ is a local base at $0$, then every open set of $X$ can be written as a union of translates of members of $\scrB$.
+\end{proposition}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+\begin{definition}
+	If $X$ is a TVS, then a (\emph{canonical}) \emph{local base} is a local base at $0$
+\end{definition}
+
+\begin{lemma}\label{lemma:symmetric-neighborhood}
+	Let $X$ be a TVS. If $W$ is a neighborhood of $0$ in $X$, then there is a neighborhood $U$ of $0$ such that $U = -U$ and $U + U \subset W$.
+\end{lemma}
+	\begin{proof}
+		Let $P:X \times X \rightarrow X$ denote addition. Since addition is continuous, it is continuous at $0$. Hence $P^{-1}(W)$ is a neighborhood of $(0,0)$. In particular, there exists open sets $V_1$ and $V_2$ of $X$ such that $(0,0) \in V_1 \times V_2 \subseteq P^{-1}(W)$.  Now define $U := V_1 \cap V_2 \cap (-V_1) \cap (-V_2)$. This is an open set of $X$ containing zero which is symmetric and contained in both $V_1$ and $V_2$. Thus:
+		\[
+			U+U = P(U \times U) \subseteq P(V_1 \times V_2) \subseteq W. \qedhere
+		\] 
+	\end{proof}
+
+\begin{lemma}\label{lemma:add-disjoint}
+	Let $X$ be a TVS. Suppose $K$ and $C$ are subsets of $X$ where $K$ is compact, $C$ is closed, and $K \cap C = \emptyset$. Then $0$ has a neighborhood $V$ such that:
+	\[
+		(K + V) \cap (C+V) = \emptyset.
+	\] 
+\end{lemma}
+	\begin{proof}
+		Suppose $x \in K$. Then $x \not\in C$, implying that $C^c$ is a neighborhood of $x$. By Proposition~\ref{prop:translation-invariant-top}, the translation $C^c - x$ is a neighborhood of $0$, so by Lemma~\ref{lemma:symmetric-neighborhood} we can find a symmetric neighborhood $V_x$ of $0$ such that:
+		\[
+			V_x + V_x + V_x \subset C^c - x.
+		\] 
+		This can be rewritten as:
+		\[
+			x + V_x + V_x + V_x \subset C^c.
+		\] 
+		Claim: $(x+V_x + V_x) \cap (V_x + C) = \emptyset$. Indeed, if $z \in (x + V_x + V_x) \cap (V_x + C)$, then $z = x+v_1+v_2$ and $z = v_3 + c$ for $v_1,v_2,v_3 \in V_x$ and $c \in C$. Equating the two yields $x+v_1+v_2 - v_3 = c$, which is a contradiction as we showed $(x + V_x + V_x + V_x) \cap C = \emptyset$.
+
+	Since $x + V_x$ is a neighborhood of $x$, we can cover $K$ as follows:
+		\[
+			K \subset \bigcup_{x \in K}(x +V_x).
+		\]
+		Since $K$ is compact, there are finitely many points $x_1,\ldots ,x_n$ in $K$ such that:
+		\[
+			K \subset (x_1 = V_{x_1}) \cup \ldots \cup (x_n + V_{x_n}).
+		\]
+		Define $V:= V_{x_1} \cap \ldots \cap V_{x_n}$. Then:
+		\[
+			K+V \subset \bigcup_{i = 1}^n (x_i + V_{x_i} = V) \subset \bigcup_{i = 1}^n (x_i + V_{x_i} + V_{x_i}).
+		\] 
+		By our claim, no term in the last union intersects $C+V$, establishing the proof.
+	\end{proof}
+
+\begin{theorem}
+	Let $X$ be a TVS. Suppose $K$ and $C$ are subsets of $X$ where $K$ is compact, $C$ is closed, and $K \cap C = \emptyset$. There exists disjoint open sets that contain $K$ and $C$, respectively.
+\end{theorem}
+	\begin{proof}
+		From Lemma~\ref{lemma:add-disjoint}, note that $K+V$ is a union of translates $x+V$ of $V$. Thus $K+V$ is an open set that contains $K$. Similarly, as $C$ is the union of translates $x + C$, it is an open set containing $C$.
+	\end{proof}
+
+\begin{corollary}
+	If $X$ is a TVS, and $\scrB$ is a local base for $X$, then every member of $\scrB$ contains the closure of some member of $\scrB$.
+\end{corollary}
+	\begin{proof}
+		Let $B \in \scrB$. Since $\{0\}$ is compact and $X \setminus B$ is closed, Lemma~\ref{lemma:add-disjoint} says there exists a neighborhood $V$ of $0$ such that:
+		\[
+			(\{0\} + V) \cap (X \setminus B) = \emptyset.
+		\] 
+		This simpifies to:
+		\[
+			V \cap (X \setminus B) = \emptyset.
+		\] 
+		It is a general fact that an open set which is disjoint from a set is also disjoint from its closure. Hence:
+		\[
+			\overline{V} \cap (X \setminus B) = \emptyset.
+		\] 
+		This implies:
+		\[
+			\overline{V} \subset B.
+		\] 
+		Since $V$ is a neighborhood of $0$ and $\scrB$ is a local base, we can find a $B' \in \scrB$ such that $B' \subset V$. Hence $\overline{B'} \subset \overline{V} \subset B$, establishing the claim.
+	\end{proof}
+
+\begin{corollary}
+	Every TVS is a Hausdorff space.
+\end{corollary}
+	\begin{proof}
+		Apply Lemma~\ref{lemma:add-disjoint} to a pair of distinct points in the place of $K$ and $C$. 
+	\end{proof}
+
+
+\section{Local Convexity}
+
+\begin{definition}
+	Let $X$ be a TVS and $\scrT$ its vector topology.
+	\mbox{}
+	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+		\item $X$ is \textui{locally convex} if there is a local base $\scrB$ whose members are convex.
+		\item $X$ is a \textui{Fr\'echet space} if $X$ is locally convex and its topology $T$ is induced by a complete invariant metric.
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}
+	A \textui{seminorm} on an $\bfF$-vector space is a function $p:X \rightarrow \bfR$ such that:
+	\mbox{}
+	\begin{itemize}[itemsep=1pt,topsep=3pt]
+		\item $p(x+y) \leq p(x) + p(y)$;
+		\item $p(\alpha x ) = |\alpha| p(x)$
+	\end{itemize}
+	for all $x,y \in X$ and $\alpha \in \bfF$.
+\end{definition}
+
+\begin{proposition}
+	Suppose $p$ is a seminorm on an $\bfF$-vector space $X$.
+	\mbox{}
+	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+		\item $p(0)=0$.
+		\item $|p(x)-p(y)| \leq p(x-y)$.
+		\item $p(x) \geq 0$.
+		\item $\{x:p(x) = 0\}$ is a  subspace of $X$.
+	\end{enumerate}
+\end{proposition}
+	{\color{red}
+	\begin{proof}
+		
+	\end{proof}}
+
+\begin{definition}
+	A family $\scrP$ of seminorms on an $\bfF$-vector space $X$ is called \textui{separating} if each $x\neq 0$ corresponds to at least one $p \in \scrP$ with $p(x)\neq \emptyset $.
+\end{definition}
+
+\begin{definition}
+	Let $X$ be a $\bfF$-vector space.
+	\mbox{}
+	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+		\item A convex set $A \subset X$ is \textui{absorbing} if for every $x \in X$, there exists a scalar $t > 0$ (possibly depending on $x$) such that $x \in tA$.
+		\item If $A$ is an absorbing set, the \textui{Minkowski functional} of $A$ is a function $\mu_A:X \rightarrow \bfF$ defined by:			\[
+			\mu_A(x) := \inf \{t : t^{-1}x \in A\}
+		\] 
+	\end{enumerate}
+\end{definition}
+
+\begin{proposition}
+	Suppose $p$ is a seminorm on an $\bfF$-vector space $X$. The set $B := \{x : p(x) < 1\}$ is convex, balanced, absorbing, and $p = \mu_b$.
+\end{proposition}
+	\begin{proof}
+		For any $x \in X$ and $\alpha \in \bfF$ we have:
+		\begin{align*}
+			p(\alpha x) 
+			& = |\alpha|p(x) \\
+			&\leq p(x) \\ 
+			& < 1.
+		\end{align*}
+		Thus $B$ is balanced. For any $x,y \in X$ and $0 < t < 1$ we have:
+		\begin{align*}
+			p(tx + (1-t)y)
+			& \leq p(tx) + p((1-t)y) \\
+			&= tp(x) + (1-t)p(y) \\
+			&\leq t + (1-t)  \\
+			&= 1.
+		\end{align*}
+		Thus $B$ is convex. If $x \in X$ and $s > p(x)$, we have:
+		\begin{align*}
+			p(s^{-1}x)
+			&= s^{-1}p(x)\\
+			&< 1.
+		\end{align*}
+		Thus $s^{-1}x \in B$, hence $B$ is absorbing. We will now show that $p = \mu_B$. Let $x \in X$ and $s \in \bfF$ such that $p(x) < s$. Then $p(s^{-1}x) < 1$, implying that $s \in \{t : t^{-1}x \in B\}$. This means $\mu_B(x) \leq s$, and taking the infimum over all $s$ such that $p(x) < s$ gives $\mu_B(x) \leq p(x)$. Conversely, let $x \in X$ and $r \in \bfF$ such that $0 < r \leq p(x)$. Then $1 \leq p(r^{-1}x)$, implying that $r \not\in \{t : t^{-1} x \in B\}$. We've established the inclusion $\{t:t^{-1}x \in B\} \subseteq (p(x),\infty)$, and taking the infimum of both sides gives $p(x) \leq \mu_B(x)$. Thus $p = \mu_B$.
+	\end{proof}
+
+\begin{theorem}
+	Suppose $A$ is a convex absorbing set in a vector space $X$. 
+	\mbox{}
+	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+		\item $\mu_A(x+y) \leq \mu_A(x) + \mu_A(y)$.
+		\item $\mu_A(tx) = t \mu_A(x)$ if $t \geq 0$.
+		\item $\mu_A$ is a seminorm if $A$ is balanced.
+		\item If $B = \{x : \mu_A(x) < 1\}$ and $C = \{x : \mu_A(x) \leq 1\}$, then $B \subset A \subset C$ and $\mu_B = \mu_A = \mu_C$.
+	\end{enumerate}
+\end{theorem}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+\begin{theorem}
+	Let $X$ be a TVS. Suppose $\scrB$ is a convex balanced local base in $X$.
+	\mbox{}
+	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
+		\item For every $V \in \scrB$, we have $V = \{x \in X : \mu_V(x) < 1\}$.
+		\item $\{\mu_V : V \in \scrB\}$ is a separating family of continuous seminorms.
+	\end{enumerate}
+\end{theorem}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+\begin{theorem}\label{thm:137}
+	Suppose $\scrP$ is a separating family of seminorms on a vector space $X$. Associate to each $p \in \scrP$ and to each $n \in \bfN$ the set:
+	\[
+		V(p,n) := \left\{ x:p(x) < \frac{1}{n} \right\}.
+	\] 
+	Let $\scrB$ be the collection of all finite intersections of the sets $V(p,n)$, and let $\scrB'$ be the subset of $\scrB$ only containing neighborhoods of $0$. Then $\cB'$ is a convex balanced local base for a topology $\scrT$ on $X$ such that:
+	\mbox{}
+	\begin{itemize}[itemsep=1pt,topsep=3pt]
+		\item every $p \in \scrP$ is continuous;
+		\item a set $E \subset X$ is bounded if and only if every $p \in \scrP$ is bounded on $E$.
+	\end{itemize}
+\end{theorem}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+\begin{theorem}
+	Let $X$ be a TVS. Suppose:
+	\mbox{}
+	\begin{itemize}[itemsep=1pt,topsep=3pt]
+		\item $\scrB$ is a convex balanced local base in $X$;
+		\item $\scrP$ is a separating family of seminorms on $X$.
+	\end{itemize}
+	Let $\scrT_1$ be the topology associated with $\scrB$. Let $\scrT_2$ be the topology associated to the convex balanced local base constructed using $\scrP$ as per Theorem~\ref{thm:137}. Then $\scrT_1 = \scrT_2$.
+\end{theorem}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+\iffalse
+\begin{remark}
+	Theorem~\ref{}, ~\ref{}, and ~\ref{} show that seminorms and local convexity are closely related. Theorem~\ref{} says that any convex balanced local base in $X$ induces a separating family of continuous seminorms. Converserly, Theorem~\ref{} says that any seperating family of seminorms gives rise to a convex balanced local base making every seminorm continuous. Theorem~\ref{} says that the topologies induced by these two separate constructions are identical, hence an equivalent definition for a locally convex TVS is one which has a separating family of seminorms. 
+\end{remark}
+\fi
+
+
+\section{Topologies Induced by a Family of Sets}
+
+\begin{definition}
+	Let $\scrT_1$ and $\scrT_2$ be two topologies on a set $X$. If $\scrT_1 \subset \scrT_2$ (that is, every set open in $\scrT_1$ is open in $\scrT_2$), then we say $\scrT_1$ is \textui{weaker} than $\scrT_2$, or that $\scrT_2$ is \textui{stronger} than $\scrT_1$.
+\end{definition}
+
+\iffalse
+\begin{proposition}
+	Let $T_1$ and $T_2$ be topologies on a set $X$. Suppose $T_1 \subset T_2$, $T_1$ is Hausdorff, and $T_2$ is compact. Then $T_1 = T_2$.
+\end{proposition}
+	\begin{proof}
+		Let $F \subset X$ be $T_2$-closed. Since $X$ is $T_2$-compact, and since every closed subset of a compact set is compact, we have that $F$ is $T_2$-compact. Since $T_1 \subset T_2$, every $T_1$-open cover of $F$ is also a $T_2$-open cover. Hence $F$ is $T_1$-compact. Since $T_1$ is Hausdorff, every compact set must be closed; i.e., $F$ is $T_1$-closed. This establishes the inclusion $T_2 \subset T_1$, completing claim.
+	\end{proof}
+\fi
+
+\begin{definition}
+	Let $X$ be a set and $\{f_\alpha:X \rightarrow Y_\alpha\}_{\alpha \in I}$ be a collection of maps into some topological spaces $Y_\alpha$. The topology generated by $\{f_\alpha^{-1}(U_\alpha) : \alpha \in I, U_\alpha \text{ open in }Y_\alpha\}$ is called the \emph{initial topology} on $X$ generated by $\{f_\alpha\}_{\alpha \in I}$.
+\end{definition}
+
+\begin{proposition}
+	The initial topology generated by $\{f_\alpha\}_{\alpha \in I}$ is the weakest topology making all the $f_\alpha$ continuous.
+\end{proposition}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+\begin{example}
+	If $\{X_\alpha\}_{\alpha \in I}$ is a family of topological spaces, the product topology on $\prod_{\alpha \in I}X_\alpha$ is the initial topology generated by $\{\pi_\alpha\}_{\alpha \in I}$, where each $\pi_j$ is the projection onto $X_j$.
+\end{example}
+
+\begin{definition}
+	A family $\scrF$ of maps on a set $X$ is called \emph{separating} if for any $x,y \in X$ with $x\neq y$, there exists a function $f \in \scrF$ such that $f(x) \neq f(y)$.
+\end{definition}
+
+\begin{proposition}
+	If $\{f_\alpha:X \rightarrow Y\}_\alpha$ is a separating family of maps, where $X$ is a set and each $Y_\alpha$ is a Hausdorff space, then the initial topology on $X$ generated by $\{f_\alpha\}_\alpha$ is Hausdorff.
+\end{proposition}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+
+\iffalse
+\begin{lemma}
+	Suppose $f,f_1,f_2,\ldots ,f_n$ are linear functionals on an $\bfF$-vector space $X$. Let $N:= \{x \in X : f_1(x) = f_2(x) = \ldots  = f_n(x) = 0\}$. The following are equivalent:
+	\mbox{}
+	\begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+		\item There are scalars $\alpha_1,\ldots ,\alpha_n \in \bfF$ such that $f = \alpha_1 f_1 + \ldots \alpha_n f_n$.
+		\item There exists $0 \leq \gamma < \infty$ such that $|f(x)| \leq \gamma \max \{|f_i(x)| : 1 \leq i \leq n\}$.
+		\item $f(x) = 0$ for every $x \in N$.
+	\end{enumerate}
+\end{lemma}
+	\begin{proof}
+		For (1) implies (2), take $\gamma := \max \{\alpha_i : 1 \leq i \leq n\}$. The result then follows using the homogeneity of the absolute value. For (2) implies (3), note that the right-hand side of the inequality must equal to zero, hence $f(x) = 0$ for every $x \in N$. For (3) implies (2), define $\pi:X \rightarrow \bfF^n$ by $\pi(x) := \bigl( f_1(x),\ldots ,f_n(x) \bigr)$. Define a map $\lambda:\pi(X) \rightarrow \bfF$ by $\lambda(\pi(x)) := f(x)$. Clearly this map is a linear function, it remains to show that it is well-defined. If $\pi(x) = \pi(x')$, then $f_i(x) = f_i(x')$ for each $1 \leq i \leq n$. Hence $f(x-x') = 0$ for each $1 \leq i \leq n$, so by hypothesis $f(x) = f(x')$. With this, we can now extend $\lambda$ to a linear functional $\Lambda$ on $\bfF^n$. If $e^1,\ldots ,e^n$ denote the standard basis elements of $\bfF^n$, we have:
+		\begin{align*}
+			f(x)
+			&= \Lambda(\pi(x)) \\
+			&= \Lambda(f_1(x),\ldots ,f_n(x)) \\
+			&= \Lambda\bigl( f_1(x)e^1 + \ldots f_n(x)e^n \bigr) \\
+			&= f_1\Lambda(e^1) + \ldots f_n\Lambda(e^n). \qedhere
+		\end{align*}
+	\end{proof}
+\fi
+
+
+
+
+\section{Dual Systems and Weak Topologies}
+
+\begin{definition}
+	Let $X$ be a TVS. The \emph{algebraic dual} of $X$, denoted by $X^\sharp$, is the set of all linear functionals on $X$. The \emph{continuous} (or \emph{topological}) \emph{dual} of $X$, denoted by $X^\ast$, is the subspace of $X^\sharp$ consisting of all continuous linear functions on $X$.
+\end{definition}
+
+\begin{definition}
+	Let $X$ and $Y$ be $\bfF$-vector spaces and $b:X \times Y \rightarrow \bfF$ a bilinear form satisfying:
+	\mbox{}
+	\begin{itemize}[itemsep=1pt,topsep=3pt]
+		\item $b(x_0,y) = 0$ for all $y \in Y$ implies $x_0 = 0$;
+		\item $b(x,y_0) = 0$ for all $x \in X$ implies $y_0 = 0$.
+	\end{itemize}
+	The triple $(X,Y,b)$ is called a \emph{dual system}. We say that the function $b$ places $X$ and $Y$ in \emph{duality}. The function $b$ is called the \emph{canonical bilinear form} of duality, and is usually denoted by $ \left<\cdot,\cdot \right>$. The triple $(X,Y, \left<\cdot,\cdot \right>)$ is more conveniently denoted by $\left<X,Y \right>$.
+\end{definition}
+
+\begin{remark}
+	If $\left<X,Y \right>$ is a system, then by the symmetry of the above definition $\left<Y,X \right>$ is also a system. Hence any proposition being made about $\left<X,Y \right>$ also holds for $\left<Y,X \right>$.
+\end{remark}
+
+\begin{example}
+	If $X$ is an $\bfF$-vector space, the map $\left<x,f \right> \mapsto f(x)$ of $X \times X^\sharp \rightarrow \bfF$ is a bilinear form, and hence defines a dual system $\left<X,X^\sharp \right>$. More can be said if $X$ is a LCS: since $X^\ast$ is a subspace of $X^\sharp$ which separates points in $X$, the restriction of $X \times X^\sharp$ onto $X \times X^\ast$ induces a dual system $\left<X,X^\ast \right>$.
+\end{example}
+
+
+\begin{proposition}
+	If $\left<X,Y \right>$ is a dual system, then $Y$ is isomorphic to a subspace of $X^\sharp$.
+\end{proposition}
+	\begin{proof}
+		For every $y \in Y$, note that $\left<\cdot,y \right>:X \rightarrow \bfF$ is a linear functional on $X$. Define $\varphi:Y \rightarrow X^\sharp$ by $\varphi(y):= \left<\cdot,y \right>$. Since $\left<\cdot,\cdot \right>$ is bilinear, $\varphi$ is linear. Moreover, its kernel is clearly trivial, hence by the First Isomorphism Theorem $Y \cong \varphi(Y) \subseteq X^\sharp$.
+	\end{proof}
+
+\begin{proposition}
+	Let $\left<X,Y \right>$ be a dual system and suppose $\{y_1,\ldots ,yn\}$ is a linearly independent subset of $Y$. There exists a linearly independent subset $\{x_1,\ldots ,x_n\}$ of $X$ such that $\left<x_i,y_j \right> = \delta_{ij}$.
+\end{proposition}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+\begin{corollary}\label{cor:lin-funct-rel}
+	Let $X$ be an $\bfF$-vector space and let $g, f_1,f_2,\ldots ,f_n$ be linear functionals on $X$. For any $x \in X$, if we have $f_i(x) = 0$ for all $i = 1,\ldots ,n$ implies $g(x) = 0$, then $g$ is a linear combination of $f_1,f_2,\ldots ,f_n$.
+\end{corollary}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+\begin{definition}
+	Let $\left<X,Y \right>$ be a dual system. The \emph{weak topology} on $X$, denoted $\sigma(X,Y)$, is the initial topology on $X$ generated by $\{\left<\cdot,y \right> : y \in Y\}$.
+\end{definition}
+
+\begin{proposition}\label{prop:dual-is-lcs}
+	If $\left<X,Y \right>$ is a dual system, then $\bigl( X,\sigma(X,Y) \bigr)$ is a LCS.
+\end{proposition}
+	\begin{proof}
+		Consider the collection of maps $ \scrP := \{|\left<\cdot,y \right>| : y \in Y\}$. By the bilinearly of $\left<\cdot,\cdot \right>$ and properties of the absolute value, we have $|\left<x_1 + x_2, y \right>| \leq |\left<x_1,y \right>| + |\left<x_2,y \right>|$ and $|\left<\alpha x,y \right>| = |\alpha| |\left<x,y \right>|$. Moreover, the contrapositive of the definition of $\left<\cdot,\cdot \right>$ says that if $x \neq 0$, then there exists a $y \in Y$ such that $\left<x,y \right> \neq 0$. Thus $\scrP$ is a separating family of seminorms, so by Theorem~\ref{thm:137} $X$ is a LCS.
+	\end{proof}
+
+\begin{theorem}\label{thm:dual-isom}
+	Let $\left<X,Y \right>$ be a dual system. Then $\bigl( X,\sigma(X,Y) \bigr)^\ast \cong Y$.
+\end{theorem}
+	\begin{proof}
+		Define $\varphi:Y \rightarrow \bigl( X,\sigma(X,Y) \bigr)^\ast$ by $\varphi(y)(x) := \left<x,y \right>$. This map is clearly linear and its kernel is trivial. It remains to show surjectivity. Let $f \in \bigl( X,\sigma(X,Y) \bigr)^\ast$. We showed in Proposition~\ref{prop:dual-is-lcs} that $\{|\left<\cdot,y \right>|:y \in Y\}$ is a family of seminorms generating the topology on $\bigl( X,\sigma(X,Y) \bigr)$, hence by Proposition~\ref{} there exists $y_1,\ldots ,y_n \in Y$ such that $|f(x)| \leq \gamma \max \{|\left<x,y_i \right>| : i = 1,\ldots ,n\}$ for every $x \in X$ and for some $\gamma > 0$. If $\left<x,y_i \right> = 0$ for every $i = 1,\ldots ,n$, then it must be the case that $f(x) = 0$. Hence by Corollary~\ref{cor:lin-funct-rel} there exists $\alpha_1,\ldots ,\alpha_n \in \bfF$ such that $f = \sum_{i=1}^{n}\alpha_i \left<\cdot,y_i \right>$. Note that $\sum_{i=1}^{n}\alpha_i y_i \in Y$, which gives:
+		\begin{align*}
+			\varphi \left( \sum_{i=1}^{n} \alpha_i y_i \right) 
+			&= \sum_{i=1}^{n} \alpha_i \varphi(y_i) \\
+			&= \sum_{i=1}^{n} \alpha_i \left<\cdot,y_i \right> \\
+			&= f.
+		\end{align*}
+		Thus $\bigl( X,\sigma(X,Y) \bigr)^\ast \cong Y$.
+	\end{proof}
+
+\section{Weak* Topologies and the Banach-Alaoglu Theorem}
+
+\begin{remark}
+	If $X$ is a TVS, then $\sigma(X,X^\ast)$ is a second topology on $X$. However, $X^\ast$ has no topology to begin with. One might consider endowing $X^\ast$ with $\sigma(X^\ast,X^{\ast\ast})$, but there is a more natural choice. Recall that a dual system $\left<X,Y \right>$ is symmetric; i.e., any proprty on $\left<X,Y \right>$ also holds for $\left<Y,X \right>$. Hence the dual system $\left<X,X^\ast \right>$ with bilinear form $\left<x,x^\ast \right>:= x^\ast(x)$ is the exact same as the dual system $\left<X^\ast,X \right>$ with bilinear form $\left<x^\ast,x \right> := x^\ast(x)$. This leads to the following definition:
+\end{remark}
+
+\begin{definition}
+	If $X$ is a TVS, the \emph{weak* topology} on $X^\ast$ is $\sigma(X^\ast,X)$; i.e., it is the initial topology generated by $\{\left<x^\ast,\cdot \right>: x^\ast \in X^\ast\}$.
+\end{definition}
+
+\begin{theorem}
+	If $X$ is a LCS, then $\bigl( X^\ast, \sigma(X^\ast,X) \bigr)^\ast \cong X$.
+\end{theorem}	
+	\begin{proof}
+		Theorem~\ref{thm:dual-isom}
+	\end{proof}
+
+\begin{remark}
+	Since $X$ is the dual of $\bigl( X^\ast,\sigma(X^\ast,X) \bigr)^\ast$, does this mean there is a third topology on $X$, namely the weak* topology? The answer is no. The topology $\sigma\bigl( \bigl( X,\sigma(X^\ast,X) \bigr), X^\ast \bigr)$ is the weakest topology on $X$ making the maps $\{\left<\cdot,x^\ast \right>: x^\ast \in X^\ast\}$ continuous. But this is precisely $\sigma(X,X^\ast)$, hence the topologies are the same.
+\end{remark}
+
+\begin{definition}
+	Let $X$ be a TVS. If $A \subseteq X$ is closed in $\sigma(X,X^\ast)$, we say $A$ is \emph{weakly closed}. The closure of $A$ in $\sigma(X,X^\ast)$ is denoted $\cl^\ast A$.
+\end{definition}
+
+\begin{proposition}
+	If $X$ is a LCS and $A \subseteq X$ is convex, then $\cl A = \cl^\ast A$.
+\end{proposition}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+\begin{corollary}
+	Let $X$ be a LCS. A convex subset of $X$ is closed if and only if it is weakly closed.
+\end{corollary}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+\begin{definition}
+	Let $X$ be a TVS. If $A \subseteq X$, the \emph{polar} of $A$, denoted $A^\circ$, is the subset of $X^\ast$ defined by: $$A^\circ := \{x^\ast \in X^\ast : |\left<a,x^\ast \right>| \leq 1 \text{ for all $a \in A$ }\}.$$ If $B \subseteq X$, the \emph{prepolar} of $B$, denoted $^\circ B$, is the subset of $X$ defined by: $$^\circ B := \{x \in X : |\left<x,b^\ast \right>| \leq 1 \text{ for all $b^\ast \in B$}\}. $$ If $E \subseteq X$, the \emph{bipolar} of $E$ is the set $^\circ E ^\circ$.
+\end{definition}
+
+\begin{theorem}[Alaoglu's Theorem]
+	Let $X$ be a TVS and $\scrB$ its local base. If $V \in \scrB$, then $V^\circ$ is compact in $\sigma(X^\ast,X)$; i.e., it is weak*-compact.
+\end{theorem}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+\begin{theorem}[Banach-Alaoglu]
+	If $X$ is a normed linear space, then $\overline{B}_{X^\ast}(0,1)$ is compact in $\sigma(X^\ast,X)$; i.e., it is weak*-compact.
+\end{theorem}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+\section{The Stone-\v{C}ech Compactification}
+
