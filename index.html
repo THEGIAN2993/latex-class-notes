@@ -2,21 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Gianluca Crescenzo / Student at Cal Poly</title>
+  <title>class notes</title>
 </head>
 
 <body>
 <pre>
 
-<b>Gianluca Crescenzo / Student at Cal Poly</b>
+<b>gianluca crescenzo / grad student @ cal poly</b>
 
-these are my class notes.
+these are my class notes. most are unfinished. last pushed to github <span id="last-pushed">loading...</span>
 
 
 <b>Fall 2026 (Cal Poly)</b>
 
 > <a href="Fall%202026/Discrete%20Math/_main.pdf" target="_blank" rel="noopener">MATH 5053 Discrete Mathematics</a>
-> <a href="Fall%202026/Module%20Math/_main.pdf" target="_blank" rel="noopener">MATH 5203 Linear Algebra & Module Theory</a>
+> <a href="Fall%202026/Module/_main.pdf" target="_blank" rel="noopener">MATH 5203 Linear Algebra & Module Theory</a>
 > <a href="Fall%202026/Thesis/_main.pdf" target="_blank" rel="noopener">MATH 5599 Thesis</a>
 
 
@@ -62,5 +62,24 @@ these are my class notes.
 > <a href="Fall%202024/Advanced%20Linear%20Algebra/395%20Notes/_main.pdf" target="_blank" rel="noopener">MATH 395 Advanced Linear Algebra</a>
 
 </pre>
+<script>
+  fetch("https://api.github.com/repos/THEGIAN2993/latex-class-notes")
+    .then(response => {
+      if (!response.ok) throw new Error("Could not load GitHub data");
+      return response.json();
+    })
+    .then(repo => {
+      document.getElementById("last-pushed").textContent =
+        new Date(repo.pushed_at).toLocaleDateString("en-US", {
+          month: "long",
+          day: "numeric",
+          year: "numeric",
+          timeZone: "America/Los_Angeles"
+        });
+    })
+    .catch(() => {
+      document.getElementById("last-pushed").textContent = "unavailable";
+    });
+</script>
 </body>
 </html>
