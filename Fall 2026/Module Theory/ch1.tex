@@ -1,0 +1,89 @@
+\pagenumbering{arabic}
+
+\chapter{Modules Over a Commutative Ring}
+
+\section{Categories}
+
+\begin{definition}
+	A \emph{category} $\scrC$ is a pair of classes $(\obj(\scrC), \Hom(\scrC))$, where $\obj(\scrC)$ are the \emph{objects} of $\scrC$, and $\Hom(\scrC)$ are the \emph{morphisms} of $\scrC$. Every morphism involes two objects, the \emph{source} (i.e., the domain of the morphism) and the \emph{target} (i.e., the codomain of the morphism). Every object must be identified with a unique \emph{identity morphism} sending the object to iteslf. The morphisms must satisfy composition, and such a composition must be associative. The set of morphisms between two objects $A$ and $B$ is denoted $\Hom_\scrC(A,B)$.
+\end{definition}
+
+\begin{example}
+	The category \catname{Set} has as objects sets and morphisms set maps. The category \catname{Group} and \catname{Ring} are defined similarly. The category \catname{Top} has as objects topological spaces and morphisms continuous maps. The category \catname{$k$-Vec} has as objects $k$-vector spaces and morphisms linear transformations.
+\end{example}
+
+\begin{definition}
+	Let $\scrC$ be a category.
+	\mbox{}
+	\begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+		\item An \emph{initial object} of $\scrC$ is some $I \in \obj(\scrC)$ such that for every $A \in \obj(\scrC)$, there exists a unique morphism $I \rightarrow A$.
+		\item A \emph{terminal object} of $\scrC$ is some $T \in \obj(\scrC)$ such that for every $B \in \obj(\scrC)$, there exists a unique morphism $B \rightarrow T$.
+		\item A \emph{zero object} of $\scrC$ is an object that is both initial and terminal.
+	\end{enumerate}
+\end{definition}
+
+\begin{example}
+	In \catname{Set}, the emptyset is an initial object and the singletons are terminal objects. There does not exist a zero object in \catname{Set}. In \catname{Ring}, \catname{Group}, \catname{$k$-Vec}, $\{0\}$ is a zero object.
+\end{example}
+
+\begin{definition}
+	Let $\scrC$ be a category and $\{A_i\}_{i \in I}$ a family of objects in $\scrC$.
+	\mbox{}
+	\begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+		\item A \emph{cone} over $\{A_i\}_{i \in I}$ is a pair $\bigl( A,\{f_i\}_{i \in I} \bigr)$ such that $f_i:A \rightarrow A_i$ is a morphism in $\scrC$ for all $i$.
+		\item A \emph{cocone} over $\{A_i\}_{i \in I}$ is a pair $\bigl( B, \{g_i\}_{i \in I} \bigr)$ such that $g_i:A_i \rightarrow B$ is a morphism in $\scrC$ for all $i$.
+	\end{enumerate}
+\end{definition}
+
+\begin{example}
+	Let $\scrC$ be a category and let $\{A_i\}_{i \in I}$ be a family of objects in $\scrC$. The category \catname{Cone$(\{A_i\}_{i \in I})$} (or just denoted \catname{Cone} if the context is clear) has as objects cones over $\{A_i\}_{i \in I}$ and as morphisms $\bigl( A,\{f_i\}_{i \in I} \bigr) \rightarrow \bigl( A', \{g_i\}_{i \in I} \bigr)$ making the following diagram commute for each $i$:
+	\begin{center}
+		\begin{tikzcd}
+A \arrow[rr] \arrow[rd, "f_i"'] &     & A' \arrow[ld, "g_i"] \\
+                                & A_i &                     
+\end{tikzcd}
+	\end{center}
+\end{example}
+
+\begin{example}
+	Let $\scrC$ be a category and let $\{B_i\}_{i \in I}$ be a family of objects in $\scrC$. The category \catname{Cocone$(\{B_i\}_{i \in I})$} (or just denoted \catname{Cocone} if the context is clear) has as objects cocones over $\{B_i\}_{i \in I}$ and as morphisms $\bigl( B,\{f_i\}_{i \in I} \bigr) \rightarrow \bigl( B', \{g_i\}_{i \in I} \bigr)$ making the following diagram commute for each $i$:
+	\begin{center}
+		\begin{tikzcd}
+             & B_i \arrow[ld, "f_i"'] \arrow[rd, "g_i"] &    \\
+B \arrow[rr] &                                          & B'
+\end{tikzcd}
+	\end{center}
+\end{example}
+
+\begin{definition}
+	Let $\scrC$ be a category and let $\{A_i\}_{i \in I}$ be a family of objects in $\scrC$. The \emph{product} over $\{A_i\}_{i \in I}$, denoted by $\bigl( \prod_{i \in I}A_i, \{\pi_i\}_{i \in I} \bigr)$, is the terminal object in \catname{Cone$(\{A_i\}_{i \in I})$}. 
+\end{definition}
+
+\begin{proposition}
+	Let $\scrC$ be a category and let $\{A_i\}_{i \in I}$ be a family of objects in $\scrC$. If the product of $\{A_i\}_{i \in I}$ exists, then for any cone $\bigl( A, \{\tau_i\}_{i \in I} \bigr) \in \obj(\catname{Cone})$, there is a unique map $\varphi:A \rightarrow \prod_{i \in I}A_i$ making the following diagram commute for all $i$:
+	\begin{center}
+		\begin{tikzcd}
+                                                              & \prod_{i \in I}A_i \arrow[d, "\pi_i"] \\
+A \arrow[r, "\tau_i"'] \arrow[ru, "\exists! \varphi", dotted] & A_i                                  
+\end{tikzcd}
+	\end{center}
+\end{proposition}
+
+\begin{definition}
+	Let $\scrC$ be a category and let $\{B_i\}_{i \in I}$ be a family of onjects in $\scrC$. The \emph{coproduct} over $\{B_i\}_{i \in I}$, denoted by $\bigl( \coprod_{i \in I}B_i, \{\iota_i\}_{i \in I} \bigr)$, is the initial object in \catname{Cocone$(\{B_i\}_{i \in I})$}.
+\end{definition}
+
+\begin{proposition}
+	Let $\scrC$ be a category and let $\{B_i\}_{i \in I}$ be a family of objets in $\scrC$. If the coproduct of $\{B_i\}_{i \in I}$ exists, then for any cocone $\bigl( B, \{\theta_i\}_{i \in I} \bigr) \in \obj(\catname{Cocone})$, there is a unique map $\varphi:\coprod_{i \in I} B_i \rightarrow B$ making the following diagram commute for all $i$:
+	\begin{center}
+		\begin{tikzcd}
+\coprod_{i \in I}B_i \arrow[rd, "\exists!\varphi", dotted] &   \\
+B_i \arrow[r, "\theta_i"] \arrow[u, "\iota_i"]             & B
+\end{tikzcd}
+	\end{center}
+\end{proposition}
+
+\begin{example}
+	Consider the collection $\{\bfZ_n\}_{n \in \bfN} \subseteq \obj(\catname{Group})$. Let $\pi_n :\bfZ \rightarrow \bfZ_n$ be the natural quotient maps. There does not exist a map of cones $\bigl( \bfZ , \{\pi_n\}_{n \in \bfN}\bigr)\rightarrow 0$. Indeed, the following diagram does not commute:
+
+\end{example}
