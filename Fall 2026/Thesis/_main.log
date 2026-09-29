@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.21.0 (TeX Live 2025)  (format=lualatex 2025.3.8)  28 SEP 2026 18:57
+This is LuaHBTeX, Version 1.21.0 (TeX Live 2025)  (format=lualatex 2025.3.8)  29 SEP 2026 09:53
  restricted system commands enabled.
  file:line:error style messages enabled.
 **_main.tex
@@ -1600,11 +1600,11 @@ Here is how much of LuaTeX's memory you used:
  73609 multiletter control sequences out of 65536+600000
  156 fonts using 38625671 bytes
  110i,14n,109p,1408b,873s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2025/texmf-dist/fonts/opentype/public/concmath-otf/Concrete-Math.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/cm-unicode/cmunorm.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/concmath-otf/Concrete-Math.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/concmath-otf/Concrete-Math.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/concmath-otf/Concrete-Math-Bold.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/cm-unicode/cmunoti.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/cm-unicode/cmunobx.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/cm-unicode/cmunorm.otf></usr/local/texlive/2025/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb>
-Output written on _main.pdf (27 pages, 179500 bytes).
+</usr/local/texlive/2025/texmf-dist/fonts/opentype/public/concmath-otf/Concrete-Math.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/cm-unicode/cmunorm.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/concmath-otf/Concrete-Math.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/concmath-otf/Concrete-Math.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/cm-unicode/cmunoti.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/cm-unicode/cmunobx.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/cm-unicode/cmunorm.otf></usr/local/texlive/2025/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb>
+Output written on _main.pdf (27 pages, 177489 bytes).
 
-PDF statistics: 501 PDF objects out of 1000 (max. 8388607)
- 442 compressed objects within 5 object streams
+PDF statistics: 494 PDF objects out of 1000 (max. 8388607)
+ 438 compressed objects within 5 object streams
  218 named destinations out of 1000 (max. 131072)
  168 words of extra memory for PDF output out of 10000 (max. 100000000)
 

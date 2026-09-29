@@ -4,22 +4,22 @@
 \section{Basic Definitions and Results}
 
 \begin{definition}
-	An \emph{algebra} over $\bfF$ is a vector space $\scrA$ over $\bfF$ that has a multiplication operation making $\scrA$ into a ring such that, for any $\alpha \in \bfF$ and $a,b \in \scrA$, we have $\alpha(ab) = (\alpha a)b = a (\alpha b)$. If $\scrA$ admits an identity element, we say $\scrA$ is \emph{unital}.
+	An \emph{algebra} over $\bbF$ is a vector space $\scrA$ over $\bbF$ that has a multiplication operation making $\scrA$ into a ring such that, for any $\alpha \in \bbF$ and $a,b \in \scrA$, we have $\alpha(ab) = (\alpha a)b = a (\alpha b)$. If $\scrA$ admits an identity element, we say $\scrA$ is \emph{unital}.
 \end{definition}
 
 \begin{definition}
-	A \emph{normed algebra} is an algebra $\scrA$ over $\bfF$ which has a norm $\lnorm \cdot \rnorm$ making $\scrA$ into a normed linear space and also admitting the property that, for any $a,b \in \scrA$, we have $\lnorm ab \rnorm \leq \lnorm a \rnorm \lnorm b \rnorm$. If $\scrA$ is a Banach space, then $\scrA$ is called a \emph{Banach algebra}. If $\scrA$ has an identity $e$, then it is assumed that $\lnorm e \rnorm = 1$.
+	A \emph{normed algebra} is an algebra $\scrA$ over $\bbF$ which has a norm $\lnorm \cdot \rnorm$ making $\scrA$ into a normed linear space and also admitting the property that, for any $a,b \in \scrA$, we have $\lnorm ab \rnorm \leq \lnorm a \rnorm \lnorm b \rnorm$. If $\scrA$ is a Banach space, then $\scrA$ is called a \emph{Banach algebra}. If $\scrA$ has an identity $e$, then it is assumed that $\lnorm e \rnorm = 1$.
 \end{definition}
 
 \begin{proposition}
-If $\scrA$ is an algebra without identity, define algebraic operations on $\scrA \times \bfF$ by:
+If $\scrA$ is an algebra without identity, define algebraic operations on $\scrA \times \bbF$ by:
 	\mbox{}
 	\begin{enumerate}[label = (\roman*),itemsep=1pt,topsep=3pt]
 		\item $(a,\alpha) + (b,\beta) := (a+b,\alpha + \beta)$,
 		\item $\beta(a,\alpha) := (\beta a, \beta \alpha)$,
 		\item $(a,\alpha)(b,\beta) := (ab + \alpha \beta + \beta a, \alpha \beta)$.
 	\end{enumerate}
-	Then $\scrA \times \bfF$ is an algebra with identity $(0,1)$.
+	Then $\scrA \times \bbF$ is an algebra with identity $(0,1)$.
 \end{proposition}
 	{\color{red}
 	\begin{proof}
@@ -28,21 +28,21 @@ If $\scrA$ is an algebra without identity, define algebraic operations on $\scrA
 
 
 \begin{proposition}
-	Let $\scrA$ be an algebra over $\bfF$ in which $(\scrA,\lnorm \cdot \rnorm_A)$ is a Banach space. For every $a \in \scrA$, suppose that the maps $x \mapsto ax$ and $x \mapsto xa$ of $\scrA \rightarrow \scrA$ are continuous. Let $\scrA \times \bfF$ be the algebra with operations given from Proposition~\ref{}. For $a \in \scrA$, define $L_a:A \times \bfF \rightarrow \scrA \times \bfF$ by $L_a(x,\xi) := (ax + \xi a,0)$.
+	Let $\scrA$ be an algebra over $\bbF$ in which $(\scrA,\lnorm \cdot \rnorm_A)$ is a Banach space. For every $a \in \scrA$, suppose that the maps $x \mapsto ax$ and $x \mapsto xa$ of $\scrA \rightarrow \scrA$ are continuous. Let $\scrA \times \bbF$ be the algebra with operations given from Proposition~\ref{}. For $a \in \scrA$, define $L_a:A \times \bbF \rightarrow \scrA \times \bbF$ by $L_a(x,\xi) := (ax + \xi a,0)$.
 \end{proposition}
 	\mbox{}
 	\begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
-		\item Define $\lnorm (a,\alpha) \rnorm_{\scrA \times \bfF}:= \lnorm a \rnorm_A + |\alpha|$. Then $\scrA \times \bfF$ is a Banach space and an algebra with identity $(0,1)$.
+		\item Define $\lnorm (a,\alpha) \rnorm_{\scrA \times \bbF}:= \lnorm a \rnorm_A + |\alpha|$. Then $\scrA \times \bbF$ is a Banach space and an algebra with identity $(0,1)$.
 		\item The map $a \rightarrow (a,0)$ is an isometric isomorphism between $\scrA$ and $\scrA \times \{0\}$.
-		\item For each $a \in \scrA$, we have $L_a \in \cB(\scrA \times \bfF)$.
-		\item Define $\lnorm a \rnorm_{\ast} := \lnorm L_a \rnorm_{\cB(\scrA \times \bfF)}$. Then $\lnorm \cdot \rnorm_{\ast}$ is equivalent to the norm $\lnorm \cdot \rnorm_A$, and in particular $(\scrA,\lnorm \cdot \rnorm_{\ast})$ is a Banach algebra.
+		\item For each $a \in \scrA$, we have $L_a \in \cB(\scrA \times \bbF)$.
+		\item Define $\lnorm a \rnorm_{\ast} := \lnorm L_a \rnorm_{\cB(\scrA \times \bbF)}$. Then $\lnorm \cdot \rnorm_{\ast}$ is equivalent to the norm $\lnorm \cdot \rnorm_A$, and in particular $(\scrA,\lnorm \cdot \rnorm_{\ast})$ is a Banach algebra.
 	\end{enumerate}
 	{\color{red}
 	\begin{proof}
 			
 	\end{proof}}
 
-Parts (1) and (2) show that $\scrA$ may be identified isometrically with the ideal $\scrA \times \{0\}$ of the unital algebra $\scrA \times \bfF$, whose identity is $(0,1)$. Thus, every algebra may be embedded isometrically into a unital algebra. When an algebra is already unital, it makes sense then to denote its identity by $1$. We will use this convention throughout the rest of the paper.
+Parts (1) and (2) show that $\scrA$ may be identified isometrically with the ideal $\scrA \times \{0\}$ of the unital algebra $\scrA \times \bbF$, whose identity is $(0,1)$. Thus, every algebra may be embedded isometrically into a unital algebra. When an algebra is already unital, it makes sense then to denote its identity by $1$. We will use this convention throughout the rest of the paper.
 
 	Parts (3) and (4) show that the usual submultiplicativity condition on the norm need not be assumed. Indeed, if $\scrA$ is complete and multiplication is continuous, then the norm $\lnorm a \rnorm_{\ast}$ is equivalent to the original norm on $\scrA$ satisfying the submultiplicativity condition.
 
@@ -226,17 +226,17 @@ The following fact surfaced in the preceeding proof.
 \begin{definition}
 	If $\scrA$ is a unital Banach algebra and $a \in \scrA$, the \emph{spectrum of $a$} is:
 	\[
-		\sigma(a) := \{a \in \bfF : a - \alpha \text{ is not invertible }\}.
+		\sigma(a) := \{a \in \bbF : a - \alpha \text{ is not invertible }\}.
 	\] 
 	The \emph{left spectrum of $a$} is:
 	\[
-		\sigma_l(a) := \{a \in \bfF : a - \alpha \text{ is not left invertible }\}.
+		\sigma_l(a) := \{a \in \bbF : a - \alpha \text{ is not left invertible }\}.
 	\] 
 	The \emph{right spectrum of $a$}, denoted $\sigma_r(a)$, is defined similarly.
 \end{definition}
 
 \begin{definition}
-	If $\scrA$ is a unital Banach algebra and $a \in \scrA$, the \emph{resolvent set of $a$} is $\rho(a) := \bfF \setminus \sigma(a)$. The \emph{left} and \emph{right resolvents of $a$} are $\rho_l(a) := \bfF \setminus \sigma_l(a)$ and $\rho_r(a) := \bfF \setminus \sigma_r(a)$.
+	If $\scrA$ is a unital Banach algebra and $a \in \scrA$, the \emph{resolvent set of $a$} is $\rho(a) := \bbF \setminus \sigma(a)$. The \emph{left} and \emph{right resolvents of $a$} are $\rho_l(a) := \bbF \setminus \sigma_l(a)$ and $\rho_r(a) := \bbF \setminus \sigma_r(a)$.
 \end{definition}
 
 \begin{example}
@@ -244,17 +244,17 @@ The following fact surfaced in the preceeding proof.
 \end{example}
 
 \begin{example}
-	Let $X$ be a Banach space. If $A \in \scrB(X)$, then $\sigma(A) = \{\alpha \in \bfF : \text{ either }\ker(A-\alpha) \neq 0\text{ or }\Image(A-\alpha) \neq X\}$. Indeed, if $A - \alpha$ is not invertible, then it is either not injective or not surjective. In fact, this means that $\rho(A) = \bfF \setminus \sigma(A) = \{\alpha \in \bfF : A - \alpha \text{ is bijective }\}$. If $\alpha \in \rho(A)$, then $\alpha \not\in \sigma(A)$, hence $\ker(A - \alpha) = 0$ and $\Image(A - \alpha) = X$. Hence $A - \alpha$ is bijective. Conversely, suppose $A - \alpha$ is bijective. By the Open Mapping Theorem, $A-\alpha$ is an open map. For any open subset $U \subseteq X$, the set $((A-\alpha)^{-1})^{-1}(U) = (A-\alpha)(U)$ is open. Thus $(A-\alpha)^{-1} \in \scrB(X)$, hence $\alpha \in \rho(A)$.
+	Let $X$ be a Banach space. If $A \in \scrB(X)$, then $\sigma(A) = \{\alpha \in \bbF : \text{ either }\ker(A-\alpha) \neq 0\text{ or }\Image(A-\alpha) \neq X\}$. Indeed, if $A - \alpha$ is not invertible, then it is either not injective or not surjective. In fact, this means that $\rho(A) = \bbF \setminus \sigma(A) = \{\alpha \in \bbF : A - \alpha \text{ is bijective }\}$. If $\alpha \in \rho(A)$, then $\alpha \not\in \sigma(A)$, hence $\ker(A - \alpha) = 0$ and $\Image(A - \alpha) = X$. Hence $A - \alpha$ is bijective. Conversely, suppose $A - \alpha$ is bijective. By the Open Mapping Theorem, $A-\alpha$ is an open map. For any open subset $U \subseteq X$, the set $((A-\alpha)^{-1})^{-1}(U) = (A-\alpha)(U)$ is open. Thus $(A-\alpha)^{-1} \in \scrB(X)$, hence $\alpha \in \rho(A)$.
 \end{example}
 
 \section{The Riesz Functional Calculus}
 
 \begin{definition}
-	Let $G \subseteq \bfC$ be open. A closed rectifiable curve $\gamma$ is \emph{positively oriented} if for every $a \in G \setminus \{\gamma\}$, $n(\gamma;a)$ is either $0$ or $1$. In this case the \emph{inside} of $\gamma$ is $\ins \gamma := \{a \in \bfC \setminus \{\gamma\} : n(\gamma;a) = 1\}$. The \emph{outside} of $\gamma$ is $\out \gamma := \{a \in \bfC \setminus \{\gamma\}: n(\gamma;a) = 0\}$.
+	Let $G \subseteq \bbC$ be open. A closed rectifiable curve $\gamma$ is \emph{positively oriented} if for every $a \in G \setminus \{\gamma\}$, $n(\gamma;a)$ is either $0$ or $1$. In this case the \emph{inside} of $\gamma$ is $\ins \gamma := \{a \in \bbC \setminus \{\gamma\} : n(\gamma;a) = 1\}$. The \emph{outside} of $\gamma$ is $\out \gamma := \{a \in \bbC \setminus \{\gamma\}: n(\gamma;a) = 0\}$.
 \end{definition}
 
 \begin{definition}
-	A curve $\gamma:[0,1] \rightarrow \bfC$ is \emph{simple} if $\gamma(s) = \gamma(t)$ implies either:
+	A curve $\gamma:[0,1] \rightarrow \bbC$ is \emph{simple} if $\gamma(s) = \gamma(t)$ implies either:
 	\mbox{}
 	\begin{itemize}[itemsep=1pt,topsep=3pt]
 		\item $s = t$,
@@ -268,14 +268,14 @@ The following fact surfaced in the preceeding proof.
 	\mbox{}
 	\begin{itemize}[itemsep=1pt,topsep=3pt]
 		\item $\{\gamma_i\}\cap \{\gamma_j\} = \emptyset$,
-		\item for all $a \in \bfC \setminus  \bigcup_{j=1}^m \{\gamma_j\}$, $n(\Gamma;a) := \sum_{j=1}^{m} n(\gamma_j;a)$ is either $0$ or $1$, and
+		\item for all $a \in \bbC \setminus  \bigcup_{j=1}^m \{\gamma_j\}$, $n(\Gamma;a) := \sum_{j=1}^{m} n(\gamma_j;a)$ is either $0$ or $1$, and
 		\item each $\gamma_j$ is a simple curve.
 	\end{itemize}
-	The \emph{inside} of $\Gamma$ is $\ins \Gamma := \left\{a \in \bfC \setminus \bigcup_{j=1}^m \{\gamma)j\right\}: n(\Gamma;a) = 1\}$. The \emph{outside} of $\Gamma$ is $\out \Gamma := \left\{a \in \bfC \setminus \bigcup_{j = 1}^m \{\gamma_j\} : n(\Gamma;a) = 0\right\}$. 
+	The \emph{inside} of $\Gamma$ is $\ins \Gamma := \left\{a \in \bbC \setminus \bigcup_{j=1}^m \{\gamma)j\right\}: n(\Gamma;a) = 1\}$. The \emph{outside} of $\Gamma$ is $\out \Gamma := \left\{a \in \bbC \setminus \bigcup_{j = 1}^m \{\gamma_j\} : n(\Gamma;a) = 0\right\}$. 
 \end{definition}
 
 \begin{proposition}\label{prop:existence-of-posoc}
-	If $G$ is an open subset of $\bfC$ and $K$ is a compact subset of $G$, then there is a positively oriented system of curves $\Gamma = \{\gamma_1,\ldots ,\gamma_m\}$ in $G \setminus K$ such that $K \subseteq \ins \Gamma$ and $\bfC \setminus G \subseteq \out \Gamma$. The curves $\gamma_1,\ldots ,\gamma_m$ can be found such that they are infinitely differentiable.
+	If $G$ is an open subset of $\bbC$ and $K$ is a compact subset of $G$, then there is a positively oriented system of curves $\Gamma = \{\gamma_1,\ldots ,\gamma_m\}$ in $G \setminus K$ such that $K \subseteq \ins \Gamma$ and $\bbC \setminus G \subseteq \out \Gamma$. The curves $\gamma_1,\ldots ,\gamma_m$ can be found such that they are infinitely differentiable.
 \end{proposition}
 {\color{red}
 \begin{proof}
@@ -297,10 +297,10 @@ The main use of this proposition will be for $K = \sigma(a)$.
 	\[
 		f \mapsto \frac{1}{2 \pi i}\int_{\Gamma}^{} f(z)(z-a)^{-1}\,dz,
 	\] 
-	where, using Proposition~\ref{prop:existence-of-posoc}, $\Gamma$ is a positively oriented collection of curves in an open set $G \subseteq \bfC$ such that $\sigma(a) \subseteq \ins \Gamma \subseteq G$.
+	where, using Proposition~\ref{prop:existence-of-posoc}, $\Gamma$ is a positively oriented collection of curves in an open set $G \subseteq \bbC$ such that $\sigma(a) \subseteq \ins \Gamma \subseteq G$.
 	\mbox{}
 	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
-		\item The map $\rho$ is well-defined; i.e., if $G \subseteq \bfC$ is open such that $\sigma(a) \subseteq G$, $\Gamma = \{\gamma_1,\ldots ,\gamma_m\}$ and $\Lambda = \{\lambda_1,\ldots ,\lambda_k\}$ are two positively oriented collections of curves in $G$ such that $\sigma(a) \subseteq \ins \Gamma \subseteq G$ and $\sigma(a) \subseteq \ins \Lambda \subseteq G$, then:
+		\item The map $\rho$ is well-defined; i.e., if $G \subseteq \bbC$ is open such that $\sigma(a) \subseteq G$, $\Gamma = \{\gamma_1,\ldots ,\gamma_m\}$ and $\Lambda = \{\lambda_1,\ldots ,\lambda_k\}$ are two positively oriented collections of curves in $G$ such that $\sigma(a) \subseteq \ins \Gamma \subseteq G$ and $\sigma(a) \subseteq \ins \Lambda \subseteq G$, then:
 			\[
 				\frac{1}{2 \pi i}\int_{\Gamma}^{} f(z)(z-a)^{-1}\,dz = \frac{1}{2 \pi i} \int_{\Lambda}^{} f(z)(z-a)^{-1}\,dz. 
 			\]
@@ -418,7 +418,7 @@ g(y)
 	If $a,b \in \scrA$ such that $ab=ba$, and $f \in \Hol(a)$, then $f(a)b = bf(a)$.
 \end{proposition}
 	\begin{proof}
-		Let $p$ be a polynomial. Since $ab=ba$, we have $a^nb = ba^n$ for all $n \in \bfN$. By the distributive property, this gives $p(a)b = bp(a)$. Now let $q$ be a polynomial such that its inverse never vanishes on $\sigma(a)$. Then $q(a)b = bq(a)$ as was just shown, but by mulyiplying $\bigl(q(a)\bigr)^{-1}$ on both sides we see that $\bigl( q(a) \bigr)^{-1} b = b \bigl( q(a) \bigr)^{-1}$. By the Riesz Functional Calculus, $\bigl( q(a) \bigr)^{-1} = q^{-1}(a)$ Hence if $r = \frac{p}{q}$ is a rational function which never vanishes on $\sigma(a)$, we have:
+		Let $p$ be a polynomial. Since $ab=ba$, we have $a^nb = ba^n$ for all $n \in \bbN$. By the distributive property, this gives $p(a)b = bp(a)$. Now let $q$ be a polynomial such that its inverse never vanishes on $\sigma(a)$. Then $q(a)b = bq(a)$ as was just shown, but by mulyiplying $\bigl(q(a)\bigr)^{-1}$ on both sides we see that $\bigl( q(a) \bigr)^{-1} b = b \bigl( q(a) \bigr)^{-1}$. By the Riesz Functional Calculus, $\bigl( q(a) \bigr)^{-1} = q^{-1}(a)$ Hence if $r = \frac{p}{q}$ is a rational function which never vanishes on $\sigma(a)$, we have:
 		\begin{align*}
 			r(a)b
 			&= (pq^{-1})(a) b \\
@@ -439,7 +439,7 @@ g(y)
 	If $a \in \scrA$ and $f \in \Hol(a)$, then $\sigma(f(a)) = f(\sigma(a))$.
 \end{theorem}
 	\begin{proof}
-		Let $f(\alpha) \in \sigma(f(a))$. Then $\alpha \in \sigma(a)$. Towards contradiction, suppose $f(\alpha) \not\in \sigma(f(a))$. Then $f(a) - f(\alpha)$ is invertible for some $z \in \bfC$. Consider a function $g$ defined by $f(z) - f(\alpha) = (z-\alpha)g(z)$. Then $g$ is analytic on a neighborhood of $\sigma(a)$; i.e., $g \in \Hol(a)$. The Riesz Functional Calculus of $g$ is $f(a) - f(\alpha) = (a-\alpha)g(a)$. Hence $(a-\alpha)$ is invertible with inverse $g(a) \bigl( f(a) - f(\alpha) \bigr)^{-1}$. This contradicts $\alpha \in \sigma(a)$, concluding that $f(\alpha) \in \sigma(f(a))$. Thus $f(\sigma(a)) \subseteq \sigma(f(a))$. 
+		Let $f(\alpha) \in \sigma(f(a))$. Then $\alpha \in \sigma(a)$. Towards contradiction, suppose $f(\alpha) \not\in \sigma(f(a))$. Then $f(a) - f(\alpha)$ is invertible for some $z \in \bbC$. Consider a function $g$ defined by $f(z) - f(\alpha) = (z-\alpha)g(z)$. Then $g$ is analytic on a neighborhood of $\sigma(a)$; i.e., $g \in \Hol(a)$. The Riesz Functional Calculus of $g$ is $f(a) - f(\alpha) = (a-\alpha)g(a)$. Hence $(a-\alpha)$ is invertible with inverse $g(a) \bigl( f(a) - f(\alpha) \bigr)^{-1}$. This contradicts $\alpha \in \sigma(a)$, concluding that $f(\alpha) \in \sigma(f(a))$. Thus $f(\sigma(a)) \subseteq \sigma(f(a))$. 
 
 		Conversely, suppose $\beta \not\in f(\sigma(a))$. Then $\beta \neq f(z)$ for every $z \in \sigma(a)$. Hence $f(z) - \beta$ is nonzero on $\sigma(a)$. Thus $g(z) := \bigl( f(z) - \beta \bigr)^{-1}$ is in $\Hol(a)$. After applying the Riesz Functional Calculus, we get $g(a)\bigl( f(a) - \beta \bigr)^{-1} = 1$. Hence $\beta \not\in \sigma(f(a))$, establishing $\sigma(f(a)) \subseteq f(\sigma(a))$.
 	\end{proof}
@@ -453,10 +453,10 @@ g(y)
 \noindent Throughout, assume that all Banach algebras contain an identity.
 
 \begin{theorem}[Gelfand-Mazur]\label{thm:gm}
-	If $\scrA$ is a Banach algebra that is also a division ring, then $\scrA$ is isometrically isomorphic to $\bfC$. 
+	If $\scrA$ is a Banach algebra that is also a division ring, then $\scrA$ is isometrically isomorphic to $\bbC$. 
 \end{theorem}
 	\begin{proof}
-		Define $\varphi:\bfC \rightarrow \scrA$ by $z \mapsto z 1_{\scrA}$. This is clearly an algebra homomorphism, and moreover:
+		Define $\varphi:\bbC \rightarrow \scrA$ by $z \mapsto z 1_{\scrA}$. This is clearly an algebra homomorphism, and moreover:
 		\begin{align*}
 			\lnorm \varphi(z) \rnorm
 			&= |z| \lnorm 1_\scrA \rnorm \\
@@ -466,28 +466,28 @@ g(y)
 	\end{proof}
 
 \begin{corollary}\label{cor:max-iff-c}
-	Let $\scrA$ be an abelian Banach algebra and $\scrM$ a proper ideal. Then $\scrM$ is maximal if and only if $\scrA/\scrM$ is isometrically isomorphic to $\bfC$.
+	Let $\scrA$ be an abelian Banach algebra and $\scrM$ a proper ideal. Then $\scrM$ is maximal if and only if $\scrA/\scrM$ is isometrically isomorphic to $\bbC$.
 \end{corollary}
 	\begin{proof}
-		The ideal $\scrM$ is maximal if and only if there are no ideals $I$ with $\scrM \subset I \subset \scrA$. The ideals of $\scrA$ containing $\scrM$ correspond bijectively with the ideals of $\scrA/\scrM$, so $\scrM$ is maximal if and only if the ideals of $\scrA/\scrM$ are $0$ and $\scrA/\scrM$. Equivalently, $\scrM$ is maximal if and only if $\scrA/\scrM$ is a field. By Theorem~\ref{thm:qib} and the \nameref{thm:gm} Theorem, $\scrM$ is maximal if and only if $\scrA/\scrM \cong \bfC$.
+		The ideal $\scrM$ is maximal if and only if there are no ideals $I$ with $\scrM \subset I \subset \scrA$. The ideals of $\scrA$ containing $\scrM$ correspond bijectively with the ideals of $\scrA/\scrM$, so $\scrM$ is maximal if and only if the ideals of $\scrA/\scrM$ are $0$ and $\scrA/\scrM$. Equivalently, $\scrM$ is maximal if and only if $\scrA/\scrM$ is a field. By Theorem~\ref{thm:qib} and the \nameref{thm:gm} Theorem, $\scrM$ is maximal if and only if $\scrA/\scrM \cong \bbC$.
 	\end{proof}
 
 \begin{definition}
-	A \emph{character} of an abelian Banach algebra $\scrA$ is a nonzero homomorphism $\chi:\scrA \rightarrow \bfC$. The set of all characters of $\scrA$ is denoted by $\Sigma_\scrA$.
+	A \emph{character} of an abelian Banach algebra $\scrA$ is a nonzero homomorphism $\chi:\scrA \rightarrow \bbC$. The set of all characters of $\scrA$ is denoted by $\Sigma_\scrA$.
 \end{definition}
 
 \begin{lemma}\label{lem:character-surj}
 	Every $\chi \in \Sigma_\scrA$ is surjective.
 \end{lemma}
 	\begin{proof}
-		Let $z \in \bfC$. For any $a \in A$ we have $\chi \bigl( \frac{z a}{\chi(a)} \bigr) = z \frac{\chi(a)}{\chi(a)} = z$.
+		Let $z \in \bbC$. For any $a \in A$ we have $\chi \bigl( \frac{z a}{\chi(a)} \bigr) = z \frac{\chi(a)}{\chi(a)} = z$.
 	\end{proof}
 
 \begin{proposition}\label{prop:character-maximal}
 	Let $\scrA$ be an abelian Banach algebra and $\scrM$ a maximal ideal of $\scrA$. Then $\scrM = \ker \chi$ for some $\chi \in \Sigma_\scrA$.
 \end{proposition}
 	\begin{proof}
-		Let $\pi:\scrA \rightarrow \scrA/\scrM$ be the natural projection. By Corollary~\ref{cor:max-iff-c} and the \nameref{thm:gm} Theorem, $\varphi:\scrA/\scrM \rightarrow \bfC$ given by $z 1_\scrA + \scrM \mapsto z$ is an isomorphism. Define $\chi:\scrA \rightarrow \bfC$ by $\chi := \varphi \circ \pi$. Then $\chi \in \Sigma_\scrA$ and:
+		Let $\pi:\scrA \rightarrow \scrA/\scrM$ be the natural projection. By Corollary~\ref{cor:max-iff-c} and the \nameref{thm:gm} Theorem, $\varphi:\scrA/\scrM \rightarrow \bbC$ given by $z 1_\scrA + \scrM \mapsto z$ is an isomorphism. Define $\chi:\scrA \rightarrow \bbC$ by $\chi := \varphi \circ \pi$. Then $\chi \in \Sigma_\scrA$ and:
 		\begin{align*}
 			\ker \chi
 			&= \{a \in A : \chi(a) = 0\} \\
@@ -500,7 +500,7 @@ g(y)
 	If $\chi \in \Sigma_\scrA$, then $\ker \chi$ is a maximal ideal.
 \end{proposition}
 	\begin{proof}
-		By the First Isomorphism Theorem, $\scrA/\ker \chi \cong \chi(\scrA)$. Lemma~\ref{lem:character-surj} says that $\chi(\scrA) = \bfC$, hence by Corollary~\ref{cor:max-iff-c} $\ker \chi$ is maximal.
+		By the First Isomorphism Theorem, $\scrA/\ker \chi \cong \chi(\scrA)$. Lemma~\ref{lem:character-surj} says that $\chi(\scrA) = \bbC$, hence by Corollary~\ref{cor:max-iff-c} $\ker \chi$ is maximal.
 	\end{proof}
 
 \begin{theorem}
