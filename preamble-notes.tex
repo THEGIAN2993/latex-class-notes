@@ -12,15 +12,13 @@
 % \renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
 
 % style 2: NewPX text + Euler math
-\usepackage[T1]{fontenc}
-\usepackage{mathtools}
-\usepackage{amsthm}
-\usepackage{newpxtext}
-\usepackage{eulerpx}
-\renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
-\renewcommand*{\mathbf}[1]{\varmathbb{#1}}
-
-
+%\usepackage[T1]{fontenc}
+%\usepackage{mathtools}
+%\usepackage{amsthm}
+%\usepackage{newpxtext}
+%\usepackage{eulerpx}
+%\renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
+%\renewcommand*{\mathbf}[1]{\varmathbb{#1}}
 
 % Style 3: KP Fonts ----------
 % \usepackage[T1]{fontenc}
@@ -29,6 +27,11 @@
 % \usepackage[uprightgreeks,light]{kpfonts}
 % \renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
 
+%Style 4: Concrete
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{concmath-otf}
+\usepackage{mathrsfs}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Page layout and headers
@@ -210,7 +213,7 @@
 \titleformat{\subsection}[block]
     {\normalfont\bfseries\large}
     {}{0pt}
-    {\Roman{subsection}.\ #1}
+	{\uline{\Roman{subsection}.\ #1}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Graphics, symbols, and miscellaneous packages

@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1789748090.52041 "_main.tex" "_main.pdf" "_main" 1789748092.60708 0
-  "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex" 1789408450.85116 21593 cbba3440afa94e65fbae05b20e9b837f ""
-  "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/preamble-notes.tex" 1788927502.18553 6033 2573e9041237e800674c51469b585eba ""
+["pdflatex"] 1790635442.96435 "_main.tex" "_main.pdf" "_main" 1790635444.83651 2
+  "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex" 1790635441.96977 21678 7310ba93e67fd27ffe212d1fb46fc143 ""
+  "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/preamble-notes.tex" 1790452107.98452 6021 be3664f160a31a3d04a063e0f40e0319 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/newpx/px-lms.enc" 1699652218 3877 2ca811886181a05a861d20a35de75e06 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/newpx/zpl_TOsF.enc" 1694207779 2688 c4453cc5ea1d5eadb4ed2ca5fa23d7e7 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf.enc" 1698694482 2914 fdbc4a54b9bc76f4551b5303f2737d33 ""
@@ -325,13 +325,13 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1758769034 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "_main.aux" 1789748092.48142 425 bb3dcbbf84a4823322aed47e1f936dc4 "pdflatex"
-  "_main.out" 1789748092.4855 1046 237d33adc8a620532466d70e52cdf1aa "pdflatex"
-  "_main.tex" 1789664903.96544 867 bc170dc84b2191bfae7cfabd4befecb2 ""
-  "_main.toc" 1789748092.48904 522 baaffba54f597837a3f198d30e9d4128 "pdflatex"
-  "ch1.aux" 1789748092.4371 5799 ec5eee2d0559fefd7b5e3c9b06fba5c1 "pdflatex"
+  "_main.aux" 1790635444.71755 425 4d4d3d01d323d0aa0b19b2c75086c2e3 "pdflatex"
+  "_main.out" 1790635444.72239 1046 237d33adc8a620532466d70e52cdf1aa "pdflatex"
+  "_main.tex" 1790570474.73996 867 bc170dc84b2191bfae7cfabd4befecb2 ""
+  "_main.toc" 1790635444.72281 522 90290087f2069181fd84686d57b492c5 "pdflatex"
+  "ch1.aux" 1790635444.66658 5798 d79895ed2ecdea502c1590b386f9e2d1 "pdflatex"
   "ch1.tex" 1789748088.41812 17049 f6e97bb33ba7f0f571aadd86afcfb459 ""
-  "exercises.aux" 1789748092.48096 2846 ebebd693fd9bec85cb5e81bd46499677 "pdflatex"
+  "exercises.aux" 1790635444.7139 2843 0781ad02318d160056298ca7243338d4 "pdflatex"
   "exercises.tex" 1789685619.53288 10421 0e35445a0f449202662b284546feecb3 ""
   "kbordermatrix.sty" 1784830412 5726 584cfc0835d134b65817a1c97e21100e ""
   (generated)

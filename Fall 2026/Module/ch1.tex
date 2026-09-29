@@ -4,12 +4,14 @@
 
 \section{Categories}
 
+\subsection{Basic Definitions}
+
 \begin{definition}
 	A \emph{category} $\scrC$ is a pair of classes $(\obj(\scrC), \Hom(\scrC))$, where $\obj(\scrC)$ are the \emph{objects} of $\scrC$, and $\Hom(\scrC)$ are the \emph{morphisms} of $\scrC$. Every morphism involes two objects, the \emph{source} (i.e., the domain of the morphism) and the \emph{target} (i.e., the codomain of the morphism). Every object must be identified with a unique \emph{identity morphism} sending the object to iteslf. The morphisms must satisfy composition, and such a composition must be associative. The set of morphisms between two objects $A$ and $B$ is denoted $\Hom_\scrC(A,B)$.
 \end{definition}
 
 \begin{example}
-	The category \catname{Set} has as objects sets and morphisms set maps. The category \catname{Group} and \catname{Ring} are defined similarly. The category \catname{Top} has as objects topological spaces and morphisms continuous maps. The category \catname{$k$-Vec} has as objects $k$-vector spaces and morphisms linear transformations.
+	The category \catname{Set} has as objects sets and morphisms set maps. The category \catname{Grp} and \catname{Ring} are defined similarly. The category \catname{Top} has as objects topological spaces and morphisms continuous maps. The category \catname{$k$-Vec} has as objects $k$-vector spaces and morphisms linear transformations.
 \end{example}
 
 \begin{definition}
@@ -23,8 +25,11 @@
 \end{definition}
 
 \begin{example}
-	In \catname{Set}, the emptyset is an initial object and the singletons are terminal objects. There does not exist a zero object in \catname{Set}. In \catname{Ring}, \catname{Group}, \catname{$k$-Vec}, $\{0\}$ is a zero object.
+	In \catname{Set}, the emptyset is an initial object and the singletons are terminal objects. There does not exist a zero object in \catname{Set}. In \catname{Ring}, \catname{Grp}, \catname{$k$-Vec}, $\{0\}$ is a zero object.
 \end{example}
+
+\subsection{Products and Coproducts}
+
 
 \begin{definition}
 	Let $\scrC$ be a category and $\{A_i\}_{i \in I}$ a family of objects in $\scrC$.
@@ -73,7 +78,7 @@ A \arrow[r, "\tau_i"'] \arrow[ru, "\exists! \varphi", dotted] & A_i
 	Let $\scrC$ be a category and let $\{B_i\}_{i \in I}$ be a family of onjects in $\scrC$. The \emph{coproduct} over $\{B_i\}_{i \in I}$, denoted by $\bigl( \coprod_{i \in I}B_i, \{\iota_i\}_{i \in I} \bigr)$, is the initial object in \catname{Cocone$(\{B_i\}_{i \in I})$}.
 \end{definition}
 
-\begin{proposition}
+\begin{proposition}\label{prop:cocone-up}
 	Let $\scrC$ be a category and let $\{B_i\}_{i \in I}$ be a family of objets in $\scrC$. If the coproduct of $\{B_i\}_{i \in I}$ exists, then for any cocone $\bigl( B, \{\theta_i\}_{i \in I} \bigr) \in \obj(\catname{Cocone})$, there is a unique map $\varphi:\coprod_{i \in I} B_i \rightarrow B$ making the following diagram commute for all $i$:
 	\begin{center}
 		\begin{tikzcd}
@@ -84,6 +89,354 @@ B_i \arrow[r, "\theta_i"] \arrow[u, "\iota_i"]             & B
 \end{proposition}
 
 \begin{example}
-	Consider the collection $\{\bfZ_n\}_{n \in \bfN} \subseteq \obj(\catname{Group})$. Let $\pi_n :\bfZ \rightarrow \bfZ_n$ be the natural quotient maps. There does not exist a map of cones $\bigl( \bfZ , \{\pi_n\}_{n \in \bfN}\bigr)\rightarrow 0$. Indeed, the following diagram does not commute:
+	Consider the collection $\{\bbZ_n\}_{n \in \bbN} \subseteq \obj(\catname{Grp})$. Let $\pi_n :\bbZ \rightarrow \bbZ_n$ be the natural quotient maps. There does not exist a map of cones $\bigl( \bbZ , \{\pi_n\}_{n \in \bbN}\bigr)\rightarrow 0$. Indeed, the following diagram does not commute:
+	\begin{center}
+		\begin{tikzcd}
+\bbZ \arrow[rd, "\pi_n"'] \arrow[rr] &        & 0 \arrow[ld, "0"] \\
+                                     & \bbZ_n &                  
+\end{tikzcd}
+	\end{center}
+	However, there does exist a map of cones $0 \rightarrow \bigl( \bbZ, \{\pi_n\}_{n \in \bbN} \bigr)$. Indeed, the diagram below commutes:
+	\begin{center}
+		\begin{tikzcd}
+0 \arrow[rd, "0"'] \arrow[rr] &        & \bbZ \arrow[ld, "\pi_n"] \\
+                              & \bbZ_n &                         
+\end{tikzcd}
+	\end{center}
+\end{example}
 
+\subsection{Exact Sequences}
+
+\begin{definition}
+	Let $\scrC$ be an abelian category (e.g., \catname{Grp}, \catname{Ring}, etc). A sequence:
+	\begin{center}
+		\begin{tikzcd}
+A_0 \arrow[r, "f_1"] & A_1 \arrow[r, "f_2"] & A_2 \arrow[r, "f_3"] & ... \arrow[r, "f_n"] & A_n
+\end{tikzcd}
+	\end{center}
+	of objects and morphisms in $\scrC$ is \emph{exact at $A_i$} if $\Image(f_i) = \ker(f_{i + 1})$. The sequence is called \emph{exact} if it is exact at each $A_i$. A \emph{short exact sequence} is an exact sequence of the form:
+	\begin{center}
+		\begin{tikzcd}
+0 \arrow[r] & A \arrow[r, "f"] & B \arrow[r, "g"] & C \arrow[r] & 0
+\end{tikzcd}
+	\end{center}
+	for objects $A,B,C$ in $\scrC$ and morphisms $f,g$.
+\end{definition}
+
+\begin{example}
+	Let $G,H \in \obj(\catname{Grp})$ and suppose $H$ is a subgroup of $G$. Let $\iota:H \rightarrow G$ be the inclusion map and $\pi: G \rightarrow G/H$ the quotient projection. Then the following sequence is exact:
+	\begin{center}
+		\begin{tikzcd}
+0 \arrow[r] & H \arrow[r, "\iota"] & G \arrow[r, "\pi"] & G/H \arrow[r] & 0
+\end{tikzcd}
+	\end{center}
+\end{example}
+
+\begin{lemma}\label{lemma:splitting-lemma}
+	Let $\scrC$ be an abelian category and:
+	\begin{center}
+		\begin{tikzcd}
+0 \arrow[r] & A \arrow[r, "f"] & B \arrow[r, "g"] & C \arrow[r] & 0
+\end{tikzcd}
+	\end{center}
+	a short exact sequence of objects in $\scrC$. The following are equivalent:
+	\mbox{}
+	\begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+		\item There exists a morphism $\rho:B \rightarrow A$ such that $\rho \circ f = \id_A$.
+		\item There exists a morphism $\sigma:C \rightarrow B$ such that $g \circ \sigma = \id_C$.
+		\item There is an isomorphism $\varphi:B \rightarrow A \oplus C$ such that $\varphi \circ f = \iota_A$ and $g \circ \varphi^{-1} = \pi_C$, where $\iota_A$ is the natural inclusion of $A$ into $A \oplus C$ and $\pi_C$ is the natural projection of $A \oplus C$ into $C$. In particular, the following diagram commutes:
+			\begin{center}
+\begin{tikzcd}
+            &                                          & B \arrow[dd, "\varphi", dotted] \arrow[rd, "g"] &             &   \\
+0 \arrow[r] & A \arrow[ru, "f"] \arrow[rd, "\iota_A"'] &                                                 & C \arrow[r] & 0 \\
+            &                                          & A \oplus C \arrow[ru, "\pi_C"']                 &             &  
+\end{tikzcd}
+			\end{center}
+	\end{enumerate}
+\end{lemma}
+	\begin{proof}
+		(1)$\Rightarrow$(3) Note that $\ker \rho + \Image f \subseteq B$ automatically. For any $b \in B$, we have:
+		\[
+			b = \bigl( b - f(\rho(b)) \bigr) + f(\rho(b)).
+		\] 
+		Since $b - f(\rho(b)) \in \ker \rho$ and $f(\rho(b)) \in \Image f$, this gives $\ker \rho + \Image f = B$. Now let $x \in \ker \rho \cap \Image f$. Then $\rho(x) = 0$ and $x = f(a)$ for some $a \in A$. But this means $0 = \rho(x) = \rho(f(a)) = a$. So $x = f(0) = 0$. Thus $B = \ker \rho \oplus \Image f$. We will now show that $\restr{g}{\ker \rho}:\ker \rho \rightarrow C$ is an isomorphism. By exactness, note that $g$ is surjective. Hence for any $c \in C$, there exists $b \in B$ with $g(b) = c$. By the above decomposition, we have:
+		\[
+			g(b - f(\rho(b)) = g(b) - g(f(\rho(b))) = c.
+		\] 
+		Thus $\restr{g}{\ker \rho}$ is surjective. Now if $k \in \ker \rho$ and $g(k) = 0$, then again by exactness $k \in \ker g = \Image f$. Thus $k \in \ker \rho \cap \Image f = \{0\}$, giving $\ker \rho \simeq C$. We also have that $f:A \rightarrow \Image f$ is an isomorphism. Indeed, any map always surjects onto its image, and $\rho \circ f = \id_A$ makes it injective. Thus $B \simeq A \oplus C$. The particular isomorphism $\varphi:B \rightarrow A \oplus C$ is given by $\varphi(b) := (\rho(b),g(b))$. We finally have $\varphi(f(a)) = (a,0) = \iota_A(a)$, and $\pi_C(\varphi(b)) = g(b)$, establishing (3).
+	\end{proof}
+
+\begin{definition}
+	A short exact sequence satisfying Lemma~\ref{lemma:splitting-lemma} is called a \emph{split exact sequence}.
+\end{definition}
+
+\section{Modules}
+
+Unless otherwise stated, assume $R$ to be a commutative ring with $1$.
+
+\subsection{Definitions and Examples}
+
+\begin{definition}
+	A \emph{left $R$-module} is an abelian group $(M,+)$ together with an action:
+	\[
+		R \times M \rightarrow M, \hspace{2pt} (r,m) \mapsto rm
+	\] 
+	which satisfies, for all $r,s \in R$ and $m \in M$:
+	\mbox{}
+	\begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+		\item $(r+s)m = rm + sm$;
+		\item $r(sm) = (rs)m$;
+		\item $r(m+n) = rm + rn$.
+	\end{enumerate}
+	A \emph{right $R$-module} is defined similarly. If $M$ is both a left and right $R$-module, then we simply refer to it as an $R$-module. If $M$ is instead a ring $(M,+,\cdot)$ and the action $R \times M \rightarrow M$ also satisfies, for all $r \in R$ and $m,n \in M$:
+	\mbox{}
+	\begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+		\addtocounter{enumi}{3}
+		\item $r(mn) = (rm)n = m(rn)$,
+	\end{enumerate}
+	then we say $M$ is an \emph{$R$-algebra} (resp., \emph{left} or \emph{right}).
+\end{definition}
+
+\begin{example}
+	Every ring is a module over itself. If $I \subseteq R$ is an ideal, then $I$ and $R/I$ are both $R$-modules.
+\end{example}
+
+\begin{definition}
+	Let $M$ and $N$ be $R$-modules. An \emph{$R$-linear homomorphism} is a group homomorphism $f:M \rightarrow N$ which also satisfies $f(rm) = r f(m)$ for all $r \in R$. If an $R$-linear homomorphism $M \rightarrow N$ is bijective, then we call it an \emph{isomorphism} and write $M \simeq N$. The set of all $R$-linear homomorphisms from $M$ to $N$ is denoted $\Hom_R(M,N)$. The set of all $R$-isomorphisms from $M$ to $N$ is denoted $\Aut_R(M,N)$. If $M = N$, we denote $\Hom_R(M,N)$ by $\End_R(M)$ and $\Aut_R(M,N)$ by $\Aut_R(M)$.
+\end{definition}
+
+\begin{example}
+	Let $M$ and $N$ be $R$-modules. Then $\Hom_R(M,N)$ is an $R$-module, $\End_R(M)$ is an $R$-algebra, and $\Aut_R(M)$ is a group.
+\end{example}
+
+\iffalse
+\begin{example}
+	Consider $\bbZ_m$ and $\bbZ_n$ as $\bbZ$-modules. We wish to compute $\Hom_{\bbZ}(\bbZ_m,\bbZ_n)$. Note that each $\varphi \in \Hom_{\bbZ}(\bbZ_m,\bbZ_n)$ is completely determined by $\varphi(1)$ because $\varphi(n) = n \varpi(1)$. {\color{red} DNF}
+\end{example}
+\fi
+
+\begin{definition}
+	$R$-modules and $R$-module homomorphisms form a category, denoted by \emph{\catname{$R$-Mod}}.
+\end{definition}
+
+\begin{example}
+	If $R$ is a field, then $\catname{$R$-Mod} = \catname{$R$-Vec}$.
+\end{example}
+
+\begin{example}
+	Let $A \in \obj(\catname{AbGrp})$. For any $a \in A$, recall that:
+	\[
+		na = \begin{cases} a + \ldots + a \text{ ($n$ times) }, & n > 0 \\ 0, & n =0 \\ -a - \ldots - a \text{ ($-n$ times) }, & n < 0\end{cases}.
+	\]
+	This defines an action of $\bbZ$ on $A$, making $A$ into a $\bbZ$-module. Hence $\catname{AbGrp} \subseteq \catname{$\bbZ$-Mod}$. Conversely, if $M$ is any $\bbZ$-module then $M$ is automatically an abelian group. Hence $\catname{AbGrp} = \catname{$\bbZ$-Mod}$.
+\end{example}
+
+\begin{example}
+	Let $k$ be a field and consider the polynomial ring $k[x]$. Let $V$ be a $k$-vector space {\color{red} DNF}
+\end{example}
+
+\begin{definition}
+	Given an $R$-module $M$, the \emph{annihilator} of $M$ is $\Ann_R(M) := \{a \in R : am= 0 \text{ for all $m \in M$ }\}$.
+\end{definition}
+
+\begin{proposition}
+	$\Ann_R(M) \subset R$ is a two-sided ideal, and we have a commutative diagram:
+	\begin{center}
+		\begin{tikzcd}
+R \times M \arrow[d] \arrow[r] & M \\
+R/\Ann_R(M) \times M \arrow[ru]         &  
+\end{tikzcd}
+	\end{center}
+\end{proposition}
+	\begin{proof}
+	For convenience let $A:= \Ann_R(M)$. Note that $A \neq \emptyset$ since $0 \in A$. Let $x,y \in A$. Then $xm = 0$ and $ym = 0$ for all $m \in M$. Hence $(x-y)m = xm - ym = 0$, so $A$ is a subgroup of $R$. Now if $x \in A$ and $r \in R$, we have $(xr)m = (rx)m = r(xm) = 0$. Similarly, $(rx)m = r(xm) = 0$. Thus $xr,rx \in A$, hence $A$ is a two-sided ideal.
+
+	Let $R \times M \rightarrow M$ be the usual scalar multiplication, and define $R \times M \rightarrow R/A \times M$ by $(r,m) \mapsto (r + A,m)$. Similarly, define $R/A \times M \rightarrow M$ by $(r + A,m) \mapsto rm$. We must show that this map is well-defined. Suppose $(r_1 + a,m_1) = (r_2 + a,m_2)$. Then $m_1 = m_2$ and $r_1 + A = r_2 + A$. Hence $r_1-r_2 \in A$, so $(r_1-r_2)m = 0$ for all $m \in M$. Thus $(r_1-r_2)m_1 = r_1m_1 - r_2m_1 = r_1m_1 - r_2m_2 = 0$. Thus $r_1m_1 = r_2m_2$, so the map is well-defined. With this, it is clear that these maps make the above diagram commute. 
+\end{proof}
+
+\begin{example}
+	Let $V := \bbZ_{24} \times \bbZ_{15} \times \bbZ_{50}$. We will compute $\Ann_{\bbZ}(V) = \{z \in \bbZ : z(a,b,c) = 0 \text{ for all $(a,b,c) \in V$}\}$. Intuitively, if $z \in \bbZ$ is the least common multiple of $24$, $15$, and $50$ then it should kill any coset of $V$. Claim: $\Ann_{\bbZ}(V) = \left<\lcm(24,15,50) \right>$. If $z \in \left<\lcm(24,15,50) \right>$, then as was just explained $z \in \Ann_{\bbZ}(V)$, hence $\left<\lcm(24,15,50) \right> \subseteq \Ann_{\bbZ}(V)$. If $z \in \Ann_{\bbZ}(V)$, then $z(a,b,c) = 0$ for all $(a,b,c) \in V$. But $(a,b,c) = a(1,0,0) + b(0,1,0) + c(0,0,1)$. Hence it is both necessary and sufficient for $z(1,0,0) = 0$, $z(0,1,0) = 0$, and $z(0,0,1)$. Equivalently, $z \equiv 0 \pmod{24}$, $z \equiv 0 \pmod{15}$, and $z \equiv 0 \pmod{50}$. This is equivalent to $z \equiv 0 \pmod{\lcm(24,15,50)}$, thus $\Ann_{\bbZ}(V) = \left<\lcm(24,15,50) \right>$.
+\end{example}
+
+\begin{definition}
+	Let $M$ be an $R$-module.
+	\mbox{}
+	\begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+		\item A \emph{submodule} $N \subseteq M$ is a subgroup that is itself an $R$-module.
+		\item $M$ is \emph{generated} by a subset $X \subset M$ if $M = \{\sum_{i=1}^{n} a_i x_i : a_i \in R, x_i \in X, n \in \bbN\}$. In this case, we write $M = \left<X \right>$.
+		\item $M$ is \emph{finitely generated} if $M = \left<X \right>$ for a finite set $X \subset M$.
+		\item $M$ is \emph{cyclic} if $M = \left<m \right>$ for some $m \in M$.
+		\item $M$ is \emph{irreducible} (or \emph{simple}) if it has no submodules.
+	\end{enumerate}
+\end{definition}
+
+\begin{proposition}
+	If $M$ is an irreducible $R$-module, then $\Ann_R(M)$ is a maximal ideal of $R$.
+\end{proposition}
+	\begin{proof}
+		Suppose $b \not\in \Ann_R(M)$. Then $bx \neq 0$ for some $x \in M$. Hence $\left<bx \right>$ is a submodule of $M$. But since $M$ is irreducible and $bx$ is nonzero, it must be the case that $\left<bx \right> = M$. But since $x \in M$, we can write $x = cbx$ for some $c \in R$. Thus $0 = (cb-1)x$, hence $cb - 1 \in \Ann_R(M)$. Equivalently, $cb + \Ann_R(M) = 1 + \Ann_R(M)$, which means $b$ admits an inverse, namely $c + \Ann_R(M)$. Since every element of $R/\Ann_R(M)$ is invertible, it is a field. Thus $\Ann_R(M)$ is a maximal ideal of $R$. 
+	\end{proof}
+
+\subsection{Isomorphism Theorems}
+
+{\color{red} DNF}
+
+\subsection{Free Modules \& Linear Algebra}
+
+\begin{definition}
+	A \emph{basis} for an $R$-module $M$ is a set $\{x_i\}_{i \in I} \subset M$ such that $\{x_i\})_{i \in I}$ is linearly independent and spans $M$. In this case, we say $M$ is \emph{free}. 
+\end{definition}
+
+\begin{theorem}\label{thm:coprod-exist}
+	Coproducts exist in \catname{$R$-Mod}.
+\end{theorem}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+\begin{definition}
+	Let $I$ be an index set. The \emph{free module} on $I$ is $R^{(I)} := \coprod_{I}R_i$. If $1_i$ denotes the mutliplicative identity of $R_i$, then $R^{(I)}$ has $\{1_i\}_{i \in I}$ as a basis. An $R$-module $M$ is called \emph{free} if there exists an index set $I$ such that $M \simeq R^{(I)}$.
+\end{definition}
+
+\begin{corollary}
+	An $R$-module $M$ is free if and only if there exists an index set $I$ such that $M \simeq R^{(I)}$.
+\end{corollary}
+
+\begin{example}
+	If $k$ is a field, then any $k$-vector space is a free $k$-module. For every $n \in \bbN$, the set $R^n$ is a free $R$-module. The set $R[x]$ is also a free module, since it has $\{x^n\}_{n \in \bbN}$ as a basis.
+\end{example}
+
+\begin{theorem}
+	Let $I$ be an index set, and $M$ and $R$-module. Suppose $f:I \rightarrow M$ is any set map and $\iota : I \rightarrow R^{(I)}$ is the natural inclusion sending $i \mapsto 1_i$. Then there exists a unique $R$-linear homomorphism $g:R^{(I)} \rightarrow M$ making the following diagram commute:
+	\begin{center}
+		\begin{tikzcd}
+I \arrow[rd, "f"'] \arrow[r, "\iota"] & R^{(I)} \arrow[d, "\exists!g", dotted] \\
+                                      & M                                     
+\end{tikzcd}
+	\end{center}
+\end{theorem}
+	\begin{proof}
+		This follows immediately from Theorem~\ref{thm:coprod-exist} Proposition~\ref{prop:cocone-up}.
+	\end{proof}
+
+\begin{proposition}\label{prop:hom-isom-mat}
+	There is an isomorphism $\Hom_R(R^n,R^m) \simeq \Mat_{m \times n}(R)$.
+\end{proposition}
+	\begin{proof}
+		If $\{1_i\}_{i = 1}^n$ is a basis for $R^n$, define $\Hom_R(R^n,R^m) \rightarrow \Mat_{m \times n}(R)$ by: $$\varphi \mapsto \begin{bmatrix} \varphi(1_1) & \varphi(1_2) & \ldots &\varphi(1_n) \end{bmatrix}.$$ Properties of vectors and the linearity of $\varphi$ gives that this mapping is linear. This map is also clearly injective: if two maps $\varphi_1$ and $\varphi_2$ agree on all basis elements, then they must be equal. Now if $A \in \Mat_{m \times n}(R)$, let $\varphi_A:R^n \rightarrow R^m$ be given by $\varphi_A(x) \mapsto Ax$. Then:
+		\[
+			\varphi_A \mapsto \begin{bmatrix} A 1_1 & A 1_2 & \ldots & A 1_n \end{bmatrix} = A.
+		\] 
+		Thus $\Hom_R(R^n,R^m)\simeq \Mat_{m \times n}(R)$.
+	\end{proof}
+
+\begin{definition}
+	\mbox{}
+	\begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+		\item The \emph{determinant} is a map $\det:\Mat_n(R) \rightarrow R$ given by $(a_{i,j}) \mapsto \sum_{\sigma \in S_n}^{}(-1)^\sigma a_{1,\sigma(1)}a_{2,\sigma(2)}\ldots a_{n,\sigma(n)}$.
+		\item The \emph{cofactor} of $(a_{ij})$ is $(-1)^{i + j}\Det (m_{ij})$, where $(m_{ij})$ is the submatrix of $(a_{ij})$ with row $i$ and column $j$ deleted.
+		\item The \emph{adjugate} (or \emph{adjoint}) of $(a_{ij})\in \Mat_n(R)$ is $\adj\bigl( (a_{ij}) \bigr) := (b_{ij})$, where $b_{ij} = a_{ji}$.
+	\end{enumerate}
+\end{definition}
+
+\begin{proposition}
+	Let $A := (a_{ij})$ and $B := (b_{ij})$ be elements of $\Mat_n(R)$.
+	\mbox{}
+	\begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+		\item $\det AB = \det A \det B$.
+		\item $(\det A)I_n = A \adj(A) = \adj(A)A$.
+		\item $\det AB = \det BA$.
+		\item $\det$ is $R$-multilinear on rows and columns.
+		\item $\det$ is alternating on rows and columns.
+		\item $\det I_n = 1$.
+	\end{enumerate}
+\end{proposition}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+\begin{proposition}
+	There is an isomorphism $\Aut_R(R^n) \simeq \GL_n(R) = \{A \in \Mat_n(R) : \det A \in R^\times\}$. Moreover, $\det : GL_n(R) \rightarrow R^\times$ is a group homomorphism.
+\end{proposition}
+	\begin{proof}
+		If $\{1_i\}_{i=1}^n$ is a basis for $R^n$, define $\Phi: \Aut_R(R^n) \rightarrow \Mat_n(R)$ by:
+		\[
+			\varphi \mapsto \begin{bmatrix} \varphi(1_1) & \varphi(1_2) & \ldots & \varphi(1_n) \end{bmatrix}.
+		\]
+		This map is injective by Proposition~\ref{prop:hom-isom-mat}. For any $\Phi(\varphi) \in \Image(\Phi)$, note that:
+		\begin{align*}
+			1
+			&= \det I_n \\
+			&= \det \Phi(\varphi \varphi^{-1}) \\
+			&= \det \bigl(\Phi(\varphi) \Phi(\varphi)^{-1}\bigr) \\
+			&= \det \Phi(\varphi) \det \Phi(\varphi)^{-1} \\
+		\end{align*}
+		Hence $\Image(\Phi) \subseteq \GL_n(R)$. Conversely, if $A \in \GL_n(R)$, then again by Proposition~\ref{prop:hom-isom-mat} we have $A \in \Image(\Phi)$. Hence $\Image(\Phi) = \GL_n(R)$, so by the First Isomorphism Theorem $\Aut_R(R^n) \simeq \GL_n(R)$.
+	\end{proof}
+
+\begin{theorem}[Cayley-Hamilton]
+	Let $M$ be a finitely generated $R$-module. Then each $\varphi \in \End_R(M)$ is a root of a monic in $R[x]$. 
+\end{theorem}
+	\begin{proof}
+		Suppose $M = \left<e_1,\ldots ,e_n \right>$. Since $\varphi(e_i) \in M$, there exists $a_{1i},a_{2i},\ldots ,a_{ni}$ such that $\varphi(e_i) = \sum_{\alpha =1}^{n} a_{\alpha i}e_{\alpha}$. So for each $i = 1,\ldots ,n$ we have:
+		\begin{align*}
+\varphi(e_1) &= \sum a_{\alpha 1}e_\alpha,\\
+\varphi(e_2) &= \sum a_{\alpha 2}e_\alpha,\\
+&\vdots\\
+\varphi(e_n) &= \sum a_{\alpha n}e_\alpha.
+\end{align*}
+
+We can rearrange each equation as follows:
+\begin{align*}
+(\varphi-a_{11})(e_1)-a_{21}e_1-\cdots-a_{n1}e_1 &= 0\\
+a_{12}e_2-(\varphi-a_{22})(e_2)-a_{32}e_2-\cdots-a_{n2}e_2 &= 0\\
+&\vdots\\
+a_{1n}e_n-a_{2n}e_n-\cdots-a_{(n-1)n}e_n-(\varphi-a_{nn})(e_n) &= 0.
+\end{align*}
+
+We can express the above system this using a matrix as follows:
+\begin{align*}
+\begin{bmatrix}
+\varphi-a_{11} & -a_{12} & -a_{13} & \cdots & -a_{1n}\\
+-a_{21} & \varphi-a_{22} & & & \\
+-a_{31} & & \ddots & & \\
+\vdots & & & & \\
+-a_{n1} & & & & \varphi-a_{nn}
+\end{bmatrix}
+\begin{bmatrix}
+	e_1\\\phantom{a} \\
+	\vdots\\\phantom{a}\\
+e_n
+\end{bmatrix}
+&= 0.
+\end{align*}
+Let $A_\varphi:R^n \rightarrow R^n$ denote the above matrix, and formally $A_\varphi \in \Mat_n(R[\varphi])$. By construction, $A_\varphi(1_i e_i) = 0$ for each $i=1,\ldots ,n$. Hence $(\adj A_\varphi)A_\varphi(1_i e_i) = 0$ for each $i=1,\ldots ,n$. Thus $(\adj A_\varphi \cdot A_\varphi)(1_i e_i) = (\det A_\varphi)(1_i e_i) = 0$ for each $i=1,\ldots ,n$. It must be the case that $\det A_\varphi = 0$. Thus $\varphi$ is a solution to the monic polynomial $\det A_x \in R[x]$.
+	\end{proof}
+
+\begin{example}
+	Consider the $\bbZ$-algebra $\bbZ[i]$. This module is finitely generated by $1$ and $i$. For each $a \in \bbZ[i]$, define $L_a :\bbZ[i] \rightarrow \bbZ[i]$ by $z \mapsto az$. By the Cayley-Hamilton Theorem, there exists a monic $f \in \bbZ[x]$ such that $f(L_a) = 0$. As an example, consider $L_{3+2i}$, we have:
+	\begin{align*}
+T_{3+2i}(1) &= 3+2i,\\
+T_{3+2i}(i) &= -2+3i.
+\end{align*}
+
+Hence:
+\begin{align*}
+[T] &= \begin{bmatrix}
+3 & -2\\
+2 & 3
+\end{bmatrix}.
+\end{align*}
+
+Following the construction in the proof of the Cayley--Hamilton Theorem, let:
+\begin{align*}
+A_x &:= \begin{bmatrix}
+3-x & -2\\
+2 & 3-x
+\end{bmatrix}.
+\end{align*}
+
+Then $\det A_x=x^2-6x+13$, and hence $L_{3+2i}^{2}-6L_{3+2i}+13=0$.
 \end{example}

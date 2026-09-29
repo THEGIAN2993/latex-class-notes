@@ -1,0 +1,242 @@
+%%
+%% This is file `concrete-vec.sty'.
+%%
+%% Copyright (C) 2026 Matthew Lorig
+%%
+%% This work may be distributed and/or modified under the conditions of
+%% the LaTeX Project Public License, either version 1.3c of this license
+%% or (at your option) any later version.  The latest version of this
+%% license is in http://www.latex-project.org/lppl.txt and version 1.3c
+%% or later is part of all distributions of LaTeX version 2008 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% The Current Maintainer of this work is Matthew Lorig.
+%%
+%% This work consists of the files concrete-vec.sty and concrete-vec.tex
+%% and the derived file concrete-vec.pdf.
+%%
+\NeedsTeXFormat{LaTeX2e}[2020/10/01]
+\ProvidesPackage{concrete-vec}
+  [2026/07/24 v1.2 Concrete text and maths as outlines, with simulated bold]
+
+\RequirePackage{kvoptions}
+\RequirePackage{etoolbox}
+
+\SetupKeyvalOptions{family=ccv,prefix=ccv@}
+
+% ---------------------------------------------------------------------
+%  Options
+% ---------------------------------------------------------------------
+\DeclareBoolOption[true]{bold}
+\DeclareComplementaryOption{nobold}{bold}
+\DeclareStringOption[0.03em]{boldwidth}
+\DeclareBoolOption[false]{mathbold}
+\DeclareComplementaryOption{nomathbold}{mathbold}
+\DeclareBoolOption[true]{math}
+\DeclareComplementaryOption{nomath}{math}
+\DeclareBoolOption[true]{lmodern}
+\DeclareComplementaryOption{nolmodern}{lmodern}
+\DeclareBoolOption[true]{frenchmath}
+\DeclareComplementaryOption{nofrenchmath}{frenchmath}
+\DeclareStringOption[lgr]{greek}
+% Unrecognised options are handed on to mathastext, so that e.g.
+% [italic] or [subdued] may be given directly to this package.
+\DeclareDefaultOption{\PassOptionsToPackage{\CurrentOption}{mathastext}}
+\ProcessKeyvalOptions*
+
+\newcommand*\ccv@warn{\PackageWarning{concrete-vec}}
+\newcommand*\ccv@err{\PackageError{concrete-vec}}
+\def\ccv@ccr{ccr}
+
+% ---------------------------------------------------------------------
+%  1. Output encoding
+%
+%  Only the T1/TS1-encoded Concrete fonts (bundle `ecc') have freely
+%  available Type 1 outlines, supplied by `cm-super'.  In OT1 the fonts
+%  exist as METAFONT sources only and pdfTeX embeds bitmaps.
+% ---------------------------------------------------------------------
+\PassOptionsToPackage{T1}{fontenc}
+\RequirePackage{fontenc}
+\def\ccv@Tone{T1}
+\AtBeginDocument{%
+  \ifx\encodingdefault\ccv@Tone\else
+    \ccv@warn{Default text encoding is `\encodingdefault', not T1.%
+      \MessageBreak The Concrete fonts have Type 1 outlines only in%
+      \MessageBreak T1/TS1; expect bitmap fonts in the output}%
+  \fi
+}
+
+% ---------------------------------------------------------------------
+%  2. Text families
+%
+%  Concrete has no sans serif or typewriter companion.  Latin Modern is
+%  a safe outline default for those, and supplies outline symbol and
+%  extension fonts for maths, which mathastext does not replace.
+% ---------------------------------------------------------------------
+\ifccv@lmodern
+  \RequirePackage{lmodern}
+\fi
+\renewcommand*\rmdefault{ccr}
+
+% ---------------------------------------------------------------------
+%  3. Bold shapes
+%
+%  t1ccr.fd silently substitutes T1/ccr/bx/* by Computer Modern bold, so
+%  \textbf in an otherwise Concrete document quietly changes typeface,
+%  while T1/ccr/b/* is undefined, so \bfseries yields no weight at all.
+%  Point every bold shape back at the medium Concrete one; the weight is
+%  then supplied by stroking (section 4).  The .fd file must have been
+%  read before these declarations, hence the dummy font selection.
+% ---------------------------------------------------------------------
+\ifccv@bold
+  \begingroup
+    \fontencoding{T1}\fontfamily{ccr}\fontseries{m}\fontshape{n}\selectfont
+  \endgroup
+  \begingroup
+    \let\@font@info\@gobble
+    \DeclareFontShape{T1}{ccr}{b}{n}{<->ssub*ccr/m/n}{}%
+    \DeclareFontShape{T1}{ccr}{b}{it}{<->ssub*ccr/m/it}{}%
+    \DeclareFontShape{T1}{ccr}{b}{sl}{<->ssub*ccr/m/sl}{}%
+    \DeclareFontShape{T1}{ccr}{b}{sc}{<->ssub*ccr/m/sc}{}%
+    \DeclareFontShape{T1}{ccr}{bx}{n}{<->ssub*ccr/m/n}{}%
+    \DeclareFontShape{T1}{ccr}{bx}{it}{<->ssub*ccr/m/it}{}%
+    \DeclareFontShape{T1}{ccr}{bx}{sl}{<->ssub*ccr/m/sl}{}%
+    \DeclareFontShape{T1}{ccr}{bx}{sc}{<->ssub*ccr/m/sc}{}%
+  \endgroup
+\fi
+
+% ---------------------------------------------------------------------
+%  4. Simulated bold
+%
+%  PDF text rendering mode 2 fills *and* strokes each glyph, so a medium
+%  outline font gains weight from a suitable stroke width.  The default,
+%  0.03em, is 0.3pt at 10pt and follows the type size.  The same idea is
+%  packaged independently by Herbert Voss as `xfakebold'.
+% ---------------------------------------------------------------------
+\ifccv@bold
+  \RequirePackage{pdfrender}
+
+  \newcommand*\setconcreteboldwidth[1]{\renewcommand*\ccv@boldwidth{#1}}
+
+  \DeclareRobustCommand*\concretebold{%
+    \pdfrender{TextRenderingMode=FillStroke,LineWidth=\ccv@boldwidth}}
+  \DeclareRobustCommand*\concretenobold{%
+    \pdfrender{TextRenderingMode=Fill}}
+
+  % Stroke only where the current family really is Concrete, so that
+  % \textsf and \texttt keep their genuine bold designs.
+  \newcommand*\ccv@autobold{\ifx\f@family\ccv@ccr\concretebold\fi}
+
+  \apptocmd{\bfseries}{\ccv@autobold}{}{%
+    \ccv@warn{Could not patch \string\bfseries;\MessageBreak
+      simulated bold is available only via \string\concretebold}}
+  \apptocmd{\mdseries}{\concretenobold}{}{%
+    \ccv@warn{Could not patch \string\mdseries}}
+  \apptocmd{\normalfont}{\concretenobold}{}{%
+    \ccv@warn{Could not patch \string\normalfont}}
+\else
+  \newcommand*\setconcreteboldwidth[1]{}
+  \DeclareRobustCommand*\concretebold{}
+  \DeclareRobustCommand*\concretenobold{}
+\fi
+
+% ---------------------------------------------------------------------
+%  5. Maths
+%
+%  mathastext reuses the current text font for the letters, digits and
+%  operators of maths mode; that is what makes Concrete maths available
+%  as outlines at all.  Delimiters, large operators and the symbol fonts
+%  are left to Latin Modern (or Computer Modern) and are outlines too.
+% ---------------------------------------------------------------------
+\newif\ifccv@amsmath@seen
+\@ifpackageloaded{amsmath}{\ccv@amsmath@seentrue}{}%
+\ifccv@math
+  \ifccv@frenchmath
+    \PassOptionsToPackage{frenchmath}{mathastext}%
+  \fi
+  % Keep mathastext's hands off \mathbf when we intend to redefine it,
+  % otherwise it reclaims the control sequence at first math activation.
+  \ifccv@bold\ifccv@mathbold
+    \PassOptionsToPackage{defaultbf}{mathastext}%
+  \fi\fi
+  \def\ccv@tmp{lgr}%
+  \ifx\ccv@greek\ccv@tmp \PassOptionsToPackage{LGRgreek}{mathastext}\else
+  \def\ccv@tmp{euler}%
+  \ifx\ccv@greek\ccv@tmp \PassOptionsToPackage{eulergreek}{mathastext}\else
+  \def\ccv@tmp{symbol}%
+  \ifx\ccv@greek\ccv@tmp \PassOptionsToPackage{symbolgreek}{mathastext}\else
+  \def\ccv@tmp{none}%
+  \ifx\ccv@greek\ccv@tmp \else
+    \ccv@err{Unknown value `\ccv@greek' for option greek}%
+      {Permitted values are lgr, euler, symbol and none.}%
+  \fi\fi\fi\fi
+
+  \RequirePackage{mathastext}
+
+  % There is no LGR-encoded Concrete, so LGRgreek falls back to the CB
+  % Greek fonts.  Declaring that substitution explicitly makes it
+  % silent; the CB fonts do have Type 1 outlines.
+  \def\ccv@tmp{lgr}%
+  \ifx\ccv@greek\ccv@tmp
+    \@ifundefined{T@LGR}{}{\DeclareFontFamilySubstitution{LGR}{ccr}{cmr}}%
+  \fi
+
+  % mathastext expects to be the last maths package loaded.
+  \AtBeginDocument{%
+    \@ifpackageloaded{amsmath}{%
+      \ifccv@amsmath@seen\else
+        \ccv@warn{amsmath was loaded after concrete-vec.\MessageBreak
+          Load concrete-vec last, after amsmath and friends}%
+      \fi
+    }{}%
+  }
+\fi
+
+% ---------------------------------------------------------------------
+%  6. Bold in maths: \bd and \mathbold
+%
+%  \mathbf bolds only the Latin letters a-z, A-Z and forces them upright,
+%  so \mathbf{\pi} fails and \mathbf{x} loses the italic.  \bd instead
+%  strokes its argument *in place*: the glyph keeps whatever shape it
+%  already has (the italic x stays italic, \pi is really \pi), and any
+%  symbol works, not just letters.  This is the recommended way to get a
+%  bold letter -- Latin or Greek -- in mathematics.
+%
+%    \bd{x}       italic x, thickened      \bd{\pi}   pi, thickened
+%    \bd{\Gamma}  upright Gamma, thickened \bd{\mathbf{v}}  upright bold v
+%
+%  \mathbold is a synonym kept for continuity; it also strokes a whole
+%  subformula, e.g. \mathbold{\alpha+\sum_i x_i}.
+%
+%  \mathbf is left untouched by default, so it remains the standard
+%  upright Latin bold alphabet for anyone who wants it.  Passing the
+%  package option [mathbold] additionally reroutes \mathbf through the
+%  stroke, for backward compatibility with earlier versions.
+% ---------------------------------------------------------------------
+\ifccv@bold
+  % \bd bolds in either mode: ordinary bold in text, in-place stroke in
+  % maths (so a symbol keeps its shape and any glyph works, not just
+  % letters).  In text it just calls \textbf, whose Concrete weight the
+  % package already supplies via the \bfseries patch (section 4).
+  \DeclareRobustCommand\bd[1]{\ifmmode{\concretebold #1}\else\textbf{#1}\fi}
+  \newcommand*\mathbold[1]{{\concretebold #1}}
+  \ifccv@mathbold\ifccv@math
+    % Optional: make \mathbf itself stroke, in place, preserving shape.
+    % NFSS rewrites a maths-alphabet control sequence when its version is
+    % first activated, so we finalise every alphabet inside a discarded
+    % box and only then override \mathbf with a plain stroking macro.
+    \AddToHook{begindocument/end}{%
+      \setbox\z@\hbox{$\mathnormal{}\mathrm{}\mathbf{}\mathit{}%
+        \mathsf{}\mathtt{}$}%
+      \protected\def\mathbf#1{{\concretebold #1}}%
+      \providecommand*\boldsymbol[1]{{\concretebold #1}}%
+    }%
+  \fi\fi
+\else
+  \DeclareRobustCommand\bd[1]{#1}%
+  \newcommand*\mathbold[1]{#1}%
+\fi
+
+\endinput
+%%
+%% End of file `concrete-vec.sty'.

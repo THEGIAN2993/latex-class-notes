@@ -1,24 +1,25 @@
+%! TeX program = lualatex
 \documentclass[11pt,oneside,openany]{memoir}
 \input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/preamble-notes.tex}
 \usepackage{kbordermatrix}
 \usepackage{nicematrix}
 \input{/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex}
-\renewcommand*{\mathbf}[1]{\varmathbb{#1}}
 \renewcommand*{\emph}[1]{\textit{#1}}
 
-\renewcommand{\projecttitle}{Module Theory}
+\renewcommand{\projecttitle}{Linear Algebra \& Module Theory}
 
 \begin{document}
+
 \pagenumbering{roman}
 \chapter*{Preface}
 \vspace{-35pt}
-Test
+\noindent After introducing categories, we will study modules, which are vector spaces over commutative rings. These are the basis for a proper treatment of linear algebra, but also for the study of sheaf cohomology in algebraic geometry. We will develop the deep and great idea of universal properties, which changed the way we think about mathematics. The main theorem of the course is the fundamental theorem of finitely generated modules over a PID, which classifies finitely generated abelian groups and provides the correct theoretical framework for computing canonical forms of linear transformations. We will spend the rest of the course on applications of these ideas to bilinear forms and matrix Lie groups. Snarf
 
 \vspace{-35pt}
 \tableofcontents
 \vfill
 \specialdate
-Last update: Test \today
+Last update: \today
 
 \include{ch1.tex}
 
@@ -26,7 +27,6 @@ Last update: Test \today
 \begin{appendices}
 \include{app2.tex}
 \include{app1.tex}
-
 \end{appendices}
 \fi
 
