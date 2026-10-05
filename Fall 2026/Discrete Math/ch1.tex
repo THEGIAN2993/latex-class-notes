@@ -3,12 +3,14 @@
 
 \section{Matrix Representations}
 
+\subsection{Basic Definitions \& Examples}
+
 \begin{definition}
 	Let $G$ be a finite group. Let $\operatorname{GL}_n(\bfC)$ be the set of $n \times n$ invertible matrices over $\bfC$. A \emph{degree $n$ (matrix) representation} of $G$ is a homomorphism $X:G \rightarrow \operatorname{GL}_n(\bfC)$.
 \end{definition}
 
 \begin{example}
-	Let $G$ be any group. Let $X:G \rightarrow \GL_1(\bfC)$ be defined by $X(g) = 1$ for all $g \in G$. This is the \textit{trivial representation}.
+	Let $G$ be any group. Let $\mathbf{1}:G \rightarrow \GL_1(\bfC)$ be defined by $\mathbf{1}(g) = 1$ for all $g \in G$. This is the \textit{trivial representation}.
 \end{example}
 
 \begin{example}
@@ -136,7 +138,7 @@ s_6  & 0 & 0 & 1 & 0 & 0 & 0
 \end{example}
 
 \begin{definition}
-	The \emph{defining representation} of $S_n$ is the representation induced by the action of $S_n$ on $\{1,\ldots ,n\}$.
+	The \emph{defining representation} of $S_n$, denoted by $D$, is the representation induced by the action of $S_n$ on $\{1,\ldots ,n\}$.
 \end{definition}
 
 \begin{example}
@@ -180,7 +182,7 @@ s_6  & 0 & 0 & 1 & 0 & 0 & 0
 		
 \end{proof}}
 
-\section{New Representations from Old}
+\subsection{New Representations from Old}
 
 \begin{proposition}
 	Let $X:G \rightarrow \GL_n(\bfC)$ be a representation. Then $\overline{X}:G \rightarrow \GL_n(\bfC)$ given by $\overline{X}(g) := \overline{X(g)}$ is a representation.
@@ -232,28 +234,23 @@ s_6  & 0 & 0 & 1 & 0 & 0 & 0
 \end{proof}}
 
 \begin{proposition}
-	Let $X:G \rightarrow \GL_n(\bfC)$ and $Y:H \rightarrow \GL_m(\bfC)$. Then $X \otimes Y : G \times H \rightarrow GL_{nm}(\bfC)$ defined by $(X \otimes Y)\bigl( (g,h) \bigr) := X(g) \otimes Y(h)$ is a representation.
+	Let $X:G \rightarrow \GL_m(\bfC)$ and $Y:H \rightarrow \GL_n(\bfC)$ be matrix representations. Then $(X \otimes Y) : G \times H \rightarrow GL_{mn}(\bfC)$ defined by $(X \otimes Y)\bigl( (g,h) \bigr) := X(g) \otimes Y(h)$ is a representation. If $G = H$, then $(X \otimes Y):G \rightarrow \GL_{mn}(\bfC)$ defined by $(X \otimes Y)(g) := X(g) \otimes Y(g)$ is also a representation.
 \end{proposition}
 {\color{red}
 \begin{proof}
 		
 \end{proof}}
 
-
-\begin{remark}
-	If $H = G$, then we let $(X \otimes Y)(g)$ denote $X(g) \otimes Y(g)$.
-\end{remark}
-
 \begin{example}
-	Let $D$ be the defining representation for $S_3$, $X$ the trivial representation of $S_3$, and $Y:S_3 \rightarrow \GL_1(\bfC)$ be given by $Y(\sigma) := \sign(\sigma)$. For $(1\,3\,2) \in S_3$, we have:
+	Let $D$ be the defining representation for $S_3$, $\mathbf{1}$ the trivial representation of $S_3$, and $Y:S_3 \rightarrow \GL_1(\bfC)$ be given by $Y(\sigma) := \sign(\sigma)$. For $(1\,3\,2) \in S_3$, we have:
 	\begin{align*}
 		D \bigl( (1\,3\,2) \bigr) &= \begin{bmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 1 & 0 & 0 \end{bmatrix} \\
-		X \bigl( (1\,3\,2) \bigr) &= \begin{bmatrix} 1 \end{bmatrix} \\
+		\mathbf{1} \bigl( (1\,3\,2) \bigr) &= \begin{bmatrix} 1 \end{bmatrix} \\
 		Y \bigl( (1\,3\,2) \bigr) &= \begin{bmatrix} 1 \end{bmatrix}.
 	\end{align*}
 	Then:
 	\begin{align*}
-		\bigl( D \otimes (X \oplus Y) \bigr) \bigl( (1\,3\,2) \bigr) 
+		\bigl( D \otimes (\mathbf{1} \oplus Y) \bigr) \bigl( (1\,3\,2) \bigr) 
 		&= \begin{bmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 1 & 0 & 0 \end{bmatrix} \otimes \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} \\
 &= \kbordermatrix{
     \\
@@ -350,17 +347,19 @@ s_6  & 0 & 0 & 1 & 0 & 0 & 0
 \end{example}
 
 \begin{example}
-	If $G$ is a group and $X$ is a representaiton of $G$, then $X\uair_G^G = X$. {\color{red} prove later}
+	If $G$ is a group and $X$ is a representation of $G$, then $X\uair_G^G = X$. {\color{red} prove later}
 \end{example}
 
-\section{Irreducible Representations}
+\subsection{Irreducible Representations}
 
 \begin{definition}
-	Let $X:G \rightarrow \GL_n(\bfC)$ be a representation. Then $X$ is \emph{reducible} if it is similar to $(A \oplus B)(g)$ for some representations $A,B$ of $G$.
+	Let $X:G \rightarrow \GL_n(\bfC)$ be a representation. Then $X$ is \emph{reducible} if there exists representations $A$ and $B$ such that $X$ is similar to $A \oplus B$.
 \end{definition}
 
 
 \section{Characters}
+
+\subsection{Basic Definitions \& Examples}
 
 \begin{recall}
 	\mbox{}
@@ -392,4 +391,233 @@ s_6  & 0 & 0 & 1 & 0 & 0 & 0
 			&= \chi^Y(g). \qedhere
 		\end{align*}
 	\end{proof}
+
+\begin{example}
+	Let $G = \bfZ_4$ and $L$ the left regular representation. Note that:
+	\[
+		L(0) = 
+\begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+	\] 
+
+	\[
+		L(1) = 
+		\begin{bmatrix}
+0 & 0 & 0 & 1 \\
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0
+\end{bmatrix}
+	\] 
+	Hence $\chi^{L}(1) = 4$ and $\chi^{L}(1) = 0$. Note that $\chi^{L}(2) = \chi^{L}(3) = 0$, as there does not exists a nonzero element $x \in \bfZ_4$ with $1 + x = x$. In general, $g.g' \neq g'$ unless $g = \epsilon$!
+\end{example}
+
+\begin{proposition}
+	Let $X$, $A$, and $B$ be representations.
+	\mbox{}
+	\begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+		\item $\chi^{T X T^{-1}} = \chi^X$.
+		\item $\chi^{A \oplus B} = \chi^A + \chi^B$.
+		\item $\chi^{A \otimes B} = \chi^A \chi^B$.
+		\item $\chi^{X \hspace{3pt}\uair_H^G}(g_0) = \frac{1}{|H|} \sum_{g \in G}^{} \chi^X(g^{-1}g_0 g)$.
+	\end{enumerate}
+\end{proposition}
+	\begin{proof}
+		(4) Recall that $X \uair_H^G(g_0)$ is a block matrix with entries $X(g_i^{-1} g_0 g_i)$ if $g_i^{-1}g_0g_i \in H$ and $0$ otherwise. Hence:
+		\begin{align*}
+			\chi^{X \hspace{3pt}\uair_H^G}(g_0)
+			&= \Tr(X \uair_H^G(g_0)) \\
+			&= \sum_{i=1}^{k} \Tr(X(g_i^{-1}g_0g_i)).
+		\end{align*}
+		Note that this sum is independent of $h \in H$. Hence:
+		\begin{align*}
+			\chi^{X \hspace{3pt}\uair_H^G}(g_0)
+			&= \sum_{i=1}^{k} \Tr(X(g_i^{-1}g_0g_i))\\
+			&=  \frac{1}{|H|}\sum_{h \in H}^{} \sum_{i=1}^{k} \Tr(X(g_i^{-1}g_0g_i)).
+		\end{align*}
+		Since the trace is independent of matrix similarity, we can write:
+		\begin{align*}
+			\chi^{X \hspace{3pt}\uair_H^G}(g_0)
+			&=  \frac{1}{|H|}\sum_{h \in H}^{} \sum_{i=1}^{k} \Tr(X(g_i^{-1}g_0g_i)) \\
+			&=  \frac{1}{|H|}\sum_{h \in H}^{} \sum_{i=1}^{k} \Tr(X(h^{-1}g_i^{-1}g_0g_ih)).
+		\end{align*}
+		Since $hg_i$ gives every group element in $G$, reindexing yields:
+		\begin{align*}
+			\chi^{X \hspace{3pt}\uair_H^G}(g_0)
+			&=  \frac{1}{|H|}\sum_{h \in H}^{} \sum_{i=1}^{k} \Tr(X(h^{-1}g_i^{-1}g_0g_ih)) \\
+			&= \frac{1}{|H|}\sum_{h' \in G}^{} \Tr(X((h')^{-1}g_0h')). \qedhere
+		\end{align*}	
+	\end{proof}
+
+\begin{example}
+	Consider $A_4 \leq S_4$. Let $D$ be the definining representation of $S_4$ and let $X = D \dair_{A_4}^{S_4}$. Then:
+	\begin{align*}
+		\chi^{X \hspace{3pt}\uair_{A_4}^{S_4}}(1\,2)
+		&= \frac{1}{|A_4|}\sum_{\sigma \in A_4}^{} \chi^X(\sigma^{-1}(1\,2)\sigma) \\
+		&= \frac{1}{|A_4|}\sum_{\sigma \in S_4}^{} \Tr(X(\sigma^{-1}(1\,2)\sigma)).
+	\end{align*}
+	Note that cycle type is preserved via conjugation. Hence for all $\sigma \in S_4$, it must be that $\sigma^{-1}$ is a 2-cycle. A single 2-cycle is an odd permuation, hence $\sigma^{-1}(1\,2)\sigma \not\in A_4$ for any $\sigma \in S_4$. Thus $\chi^{X \hspace{3pt}\uair_{A_4}^{S_4}}(1\,2) = 0$. Now consider:
+	\[
+	\chi^{X \hspace{3pt}\uair_{A_4}^{S_4}}(1\,2\,3) = \frac{1}{|A_4|}\sum_{\sigma \in S_4}^{} \Tr(X(\sigma^{-1}(1\,2\,3)\sigma)).
+	\] 
+	Again, since cycle type is preserved under conjugation, $\sigma^{-1}(1\,2\,3)\sigma$ will be a 3-cycle. Note that the defining representaion of a permutation of $\sigma$ permutes the rows of the identity matric according to $\sigma$. Hence $\sigma^{-1}(1\,2\,3)\sigma$ will leave exactly one row fixed, meaning that $\Tr(X(\sigma^{-1}(1\,2\,3)\sigma)) = 1$ for all $\sigma \in S_4$. Thus $\chi^{X \hspace{3pt}\uair_{A_4}^{S_4}}(1\,2\,3) = \frac{24}{|A_4|} = 2$.
+\end{example}
+
+\subsection{Conjugacy Classes \& Integer Partitions}
+
+\begin{definition}
+	If $G$ is a group, the \emph{conjugacy class} of $g \in G$ is $C_g := \{h^{-1}gh : h \in G\}$.
+\end{definition}
+
+\begin{example}
+	The conjugacy class of $C_{(1\,2\,3)} \subset S_4$ is:
+	\begin{align*}
+		C_{(1\,2\,3)}
+		&= \{\sigma^{-1}(1\,2\,3)\sigma : \sigma \in S_4\} \\
+		&= \{\text{ all 3-cycles in $S_4$ }\}.
+	\end{align*}
+\end{example}
+
+\begin{recall}
+	Conjugacy in $A_4$ is weird. Conjugacy ust swaps the order of the middle term. For example:
+	\[
+		(1\,2)^{-1}(1\,2\,3)(1\,2) = (2\,1\,2).
+	\] 
+\end{recall}
+
+\begin{example}
+	If $G$ is abelian, then $C_g = \{g\}$.
+\end{example}
+
+\begin{theorem}
+	Characters are constant on conjugacy classes.
+\end{theorem}
+	\begin{proof}
+		If $X$ is a representation, then:
+		\begin{align*}
+			\chi^X(h^{-1}gh)
+			&= \Tr(X(h^{-1}gh)) \\
+			&= \Tr(X(h)^{-1}X(g)X(h)) \\
+			&= \Tr(X(g)) \\
+			&= \chi^X(g). \qedhere
+		\end{align*}
+	\end{proof}
+
+\begin{definition}
+	An \emph{integer partition} of $n$, denoted $\sigma \vdash n$, is a weakly decreasing list of non-negative integers that sum to $n$. We define $\max \lambda$ to be the max list element and $\ell(\lambda)$ the number of nonzero list elements.
+\end{definition}
+
+\begin{example}
+	For $\lambda \vdash 5$, we have:
+\[
+\begin{array}{c|c|c|c|c}
+\lambda \vdash 5 & \max \lambda & \ell(\lambda)
+& 1^{m_1}2^{m_2}3^{m_3}\cdots
+& \mathrm{Young\ diagram} \\ \hline
+(5)         & 5 & 1 & 5^1
+& \ydiagram{5} \\[6pt]
+(4,1)       & 4 & 2 & 1^1 4^1
+& \ydiagram{1,4} \\[6pt]
+(3,2)       & 3 & 2 & 2^1 3^1
+& \ydiagram{2,3} \\[6pt]
+(3,1,1)     & 3 & 3 & 1^2 3^1
+& \ydiagram{1,1,3} \\[6pt]
+(2,2,1)     & 2 & 3 & 1^1 2^2
+& \ydiagram{1,2,2} \\[6pt]
+(2,1,1,1)   & 2 & 4 & 1^3 2^1
+& \ydiagram{1,1,1,2} \\[6pt]
+(1,1,1,1,1) & 1 & 5 & 1^5
+& \ydiagram{1,1,1,1,1}
+\end{array}
+\]\end{example}
+
+\begin{example}
+We can use integer partitions to describe the cycle types of elements in $S_n$. For example, the cycle type of $(1\,2)(3\,4\,5)(6)(7\,8) \in S_8$ is $(3,2,2,1)$.
+\end{example}
+
+\begin{example}
+	Recall that $S_3 = \{(1),(1\,2),(1\,3),(2\,3),(1\,2\,3),(1\,3\,2)\}$. The conjugacy classes of $S_3$ are:
+	\begin{align*}
+		C_{(1)} &= \{(1)\}, \\
+		C_{(1\,2)} &= \{(1\,2),(1\,3),(2\,3)\}, \\
+		C_{(1\,2\,3)} &= \{(1\,2\,3),(1\,3\,2)\}.
+	\end{align*}
+\end{example}
+
+
+\begin{definition}
+	Let $\lambda = 1^{m_1}2^{m_2}\ldots \alpha^{m_\alpha} \vdash n$. We define $z_\lambda := 1^{m_1}m_1! \cdot 3^{m_3}m_3! \cdot \ldots \cdot \alpha^{m_\alpha}m_\alpha!$.
+\end{definition}
+
+\begin{theorem}
+	Let $\sigma \in S_n$ have cycle type $\lambda = 1^{m_1}2^{m_2}\ldots \alpha^{m_\alpha} \vdash n$. Then $|C_\sigma| = \frac{n!}{z_\lambda}$.
+\end{theorem}
+	\begin{proof}
+		There are $n!$ choices of permutations in $S_n$ in one line notation. Place parenthesis around the integers to create a permutation of cycle type $\lambda$. By the way $\lambda$ is defined, there are $m_2$ different 2-cycles. Note that each 2-cycle can be rewritten in two different ways. Similarly, each 3-cycle can be rewritten in three different ways. Hence we've overcounted by $1^{m_1}2^{m_2}\ldots \alpha^{m_\alpha}$. But note that there are $m_1$ 1-cycles, and each can be permutated throughout all of their positions. Hence we've overcounted by $m_1!$. Similarly, there are $m_2$ 2-cycles, and each can be permuted throughout all of their positions. Hence we've overcounted by $m_2!$. So in total, we've overcounted by $1^{m_1}2^{m_2}\ldots \alpha^{m_\alpha}m_1!m_2!\ldots m_\alpha! = z_\lambda$. Thus $|C_\sigma| = \frac{n!}{z_\lambda}$.
+	\end{proof}
+
+\subsection{Class Functions \& Inner Products}
+
+\begin{definition}
+	Let $G$ be a group. A \emph{class function} is a function $f:G \rightarrow \bfC$ which is constant on the conjugacy classes of $G$. The set of all class functions is denoted $C(G)$.
+\end{definition}
+
+\begin{example}
+	Class functions can be trivially defined. For instance, define $f:S_3 \rightarrow \bfC$ by:
+	\begin{align*}
+		f((1)) &=1 \\
+		f((1\,2)) &= f((1\,3)) = f((2\,3)) = 2 \\
+		f((1\,2\,3)) &= f((1\,3\,2)) = 3.
+	\end{align*}
+	Then $f \in C(S_3)$.
+\end{example}
+
+\begin{proposition}
+	If $C_{g_1},\ldots C_{g_n}$ are the conjugacy classes of $G$, then $\{\mathbf{1}_{C_{g_1}}, \ldots \mathbf{1}_{c_{g_n}}\}$ is a basis for $C(G)$. In particular, the dimension of $C(G)$ is the number of conjugacy classes of $G$.
+\end{proposition}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+\begin{example}
+	A basis for $C(S_3)$ is $\{\mathbf{1}_\lambda : \lambda \vdash 3\}$, where:
+	\[
+		\mathbf{1}_{\lambda}(\sigma) = \begin{cases} 1, & \text{if $\sigma$ is the same cycle type as $\lambda$} \\ 0, & \text{otherwise}\end{cases}.
+	\] 
+\end{example}
+
+\begin{theorem}
+	$C(G)$ is an inner product space, with inner product defined by:
+	\[
+		\left<f,g \right>_G := \frac{1}{|G|}\sum_{h \in G}^{} f(h)\overline{g(h)}.
+	\] 
+\end{theorem}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+\begin{example}
+	Let $L$ be the left regular representation and $D$ the defining representation of $S_4$. Then:
+	\[
+		\left<\chi^L ,\chi^D\right>_{S_4} = \frac{1}{|S_4|}\sum_{\sigma \in S_4}^{} \chi^L(\sigma)\overline{\chi^D(\sigma)}.
+	\] 
+	Note that $\Image \chi^D \subset \bfR$, hence $\overline{\chi^D(\sigma)} = \chi^D(\sigma)$ for all $\sigma \in S_4$. With this:
+	\begin{align*}
+		\left<\chi^L,\chi^D \right>_{S_4}
+		&= \frac{1}{|S_4|}\sum_{\sigma \in S_4}^{} \chi^L(\sigma)\chi^D(\sigma) \\
+		&= \frac{1}{|S_4|}\sum_{\sigma \in S_4}^{} \Tr(L(\sigma))\Tr(D(\sigma)).
+	\end{align*}
+	Note that $L(\epsilon) = I_{24}$ and $D(\epsilon) = I_4$. Hence $\Tr(L(\epsilon))\Tr(D(\epsilon)) = 96$. Moreover, for any $\sigma \neq \epsilon$, there does not exist an element $\tau$ with $\sigma \tau = \tau$. Hence, for all $\sigma \neq \epsilon$, $\Tr(L(\sigma)) = 0$. Thus:
+	\begin{align*}
+		\left<\chi^L,\chi^D \right>_{S_4}
+		&= \frac{1}{24}\cdot96 \\
+		&= 4.
+	\end{align*}
+\end{example}
 

@@ -1,0 +1,91 @@
+\chapter{$C^\ast$-algebras}
+
+\section{Abelian Banach Algebras}
+
+\noindent Throughout this section, assume that all Banach algebras contain an identity.
+
+\subsection{Representations of Abelian Banach Algebras}
+
+\begin{theorem}[Gelfand-Mazur]\label{thm:gm}
+	If $\scrA$ is a Banach algebra that is also a division ring, then $\scrA$ is isometrically isomorphic to $\bbC$. 
+\end{theorem}
+	\begin{proof}
+		Define $\varphi:\bbC \rightarrow \scrA$ by $z \mapsto z 1_{\scrA}$. This is clearly an algebra homomorphism, and moreover:
+		\begin{align*}
+			\lnorm \varphi(z) \rnorm
+			&= |z| \lnorm 1_\scrA \rnorm \\
+			&= |z|.
+		\end{align*}
+		Hence $\varphi$ is an isometry (and thus an injection). It remains to show surjectivity. If $a \in \scrA$, then $\sigma(a) \neq 0$. If $z \in \sigma(a)$, then $a-z$ is not invertible. But $\scrA$ is a division ring; i.e., $\scrA^\times = \scrA \setminus \{0\}$. Thus $a-z = 0$, hence $a = z = z 1_\scrA = \varphi(z)$.
+	\end{proof}
+
+\begin{corollary}\label{cor:max-iff-c}
+	Let $\scrA$ be an abelian Banach algebra and $\scrM$ a proper ideal. Then $\scrM$ is maximal if and only if $\scrA/\scrM$ is isometrically isomorphic to $\bbC$.
+\end{corollary}
+	\begin{proof}
+		The ideal $\scrM$ is maximal if and only if there are no ideals $I$ with $\scrM \subset I \subset \scrA$. The ideals of $\scrA$ containing $\scrM$ correspond bijectively with the ideals of $\scrA/\scrM$, so $\scrM$ is maximal if and only if the ideals of $\scrA/\scrM$ are $0$ and $\scrA/\scrM$. Equivalently, $\scrM$ is maximal if and only if $\scrA/\scrM$ is a field. By Theorem~\ref{thm:qib} and the \nameref{thm:gm} Theorem, $\scrM$ is maximal if and only if $\scrA/\scrM \cong \bbC$.
+	\end{proof}
+
+\begin{definition}
+	A \emph{character} of an abelian Banach algebra $\scrA$ is a nonzero homomorphism $\chi:\scrA \rightarrow \bbC$. The set of all characters of $\scrA$ is denoted by $\Sigma_\scrA$.
+\end{definition}
+
+\begin{lemma}\label{lem:character-surj}
+	Every $\chi \in \Sigma_\scrA$ is surjective.
+\end{lemma}
+	\begin{proof}
+		Let $z \in \bbC$. For any $a \in A$ we have $\chi \bigl( \frac{z a}{\chi(a)} \bigr) = z \frac{\chi(a)}{\chi(a)} = z$.
+	\end{proof}
+
+\begin{proposition}\label{prop:character-maximal}
+	Let $\scrA$ be an abelian Banach algebra and $\scrM$ a maximal ideal of $\scrA$. Then $\scrM = \ker \chi$ for some $\chi \in \Sigma_\scrA$.
+\end{proposition}
+	\begin{proof}
+		Let $\pi:\scrA \rightarrow \scrA/\scrM$ be the natural projection. By Corollary~\ref{cor:max-iff-c} and the \nameref{thm:gm} Theorem, $\varphi:\scrA/\scrM \rightarrow \bbC$ given by $z 1_\scrA + \scrM \mapsto z$ is an isomorphism. Define $\chi:\scrA \rightarrow \bbC$ by $\chi := \varphi \circ \pi$. Then $\chi \in \Sigma_\scrA$ and:
+		\begin{align*}
+			\ker \chi
+			&= \{a \in A : \chi(a) = 0\} \\
+			&= \{a \in A : \varphi(a + \scrM) = 0\} \\
+			&= \scrM. \qedhere
+		\end{align*}
+	\end{proof}
+
+\begin{proposition}
+	If $\chi \in \Sigma_\scrA$, then $\ker \chi$ is a maximal ideal.
+\end{proposition}
+	\begin{proof}
+		By the First Isomorphism Theorem, $\scrA/\ker \chi \cong \chi(\scrA)$. Lemma~\ref{lem:character-surj} says that $\chi(\scrA) = \bbC$, hence by Corollary~\ref{cor:max-iff-c} $\ker \chi$ is maximal.
+	\end{proof}
+
+\begin{theorem}
+	Let $\scrA$ be an abelian Banach algebra. There is a bijection between $\Sigma_\scrA$ and $\Spec_m(\scrA)$.
+\end{theorem}
+	\begin{proof}
+		Define $f:\Sigma_\scrA \rightarrow \Spec_m(\scrA)$ by $\chi \mapsto \ker \chi$. Suppose $\chi_1,\chi_2 \in \Sigma_A$ with $f(\chi_1) = f (\chi_2)$. Then $\ker \chi_1 = \ker \chi_2$. Note that for any $a \in \scrA$, if $\chi(a) = 0$ then $a \in \ker \chi_1 = \ker \chi_2$, hence $\chi_2(a) = 0$. By Corollary~\ref{cor:lin-funct-rel}, $\chi_1 = \alpha \chi_2$. But notice $\alpha = \alpha \chi_2(1) = \chi_1(1) = 1$, hence $\chi_1 = \chi_2$. Thus $f$ is injective. Proposition~\ref{prop:character-maximal} shows that $f$ is surjective, hence $\Sigma_\scrA$ and $\Spec_m(\scrA)$ have a bijective correspondence.
+	\end{proof}
+
+\begin{corollary}
+	If $\scrA$ is an abelian Banach algebra, then $\Sigma_\scrA \subseteq \scrA^\ast$; i.e., every character of $\scrA$ is continuous.
+\end{corollary}
+	\begin{proof}
+		Let $\chi \in \Sigma_\scrA$. Then $\ker \chi$ is a maximal ideal, hence it is closed. If it were the case that $\chi$ is not continuous, then it is unbounded. Hence there exists a sequence $\{a_n\}_n \subseteq \scrA$ such that $\chi(a_n) \rightarrow \infty$ and $n \rightarrow \infty$. If $a \not\in \ker \chi$, consider the sequence $\{a'_n\}_n$ given by:
+		\[
+			a'_n := a- \frac{\chi(a)}{\chi(a_n)}a_n.
+		\] 
+		Then $\chi(a_n') = 0$ for all $n$, hence $\{a_n'\}_n \subseteq \ker\chi$. But $a'_n \rightarrow a \not\in \ker \chi$, so $\ker \chi$ is not closed. Since we've proven the contrapositive, every $\chi \in \Sigma_\scrA$ is continuous; i.e., $\Sigma_\scrA \subseteq \scrA^\ast$.
+	\end{proof}
+
+\begin{corollary}
+	If $\scrA$ is an abelian Banach algebra and $\chi \in \Sigma_\scrA$, then $\lnorm \chi \rnorm= 1$.
+\end{corollary}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+\begin{definition}
+	Let $\scrA$ be an abelian Banach algebra. When $\Sigma_\scrA$ is paired with the subspace topology from $\bigl( \scrA^\ast, \sigma(\scrA^\ast,\scrA) \bigr)$, we call it the \emph{maximal ideal space} of $\scrA$. Moreover, if $a \in \scrA$, we define $\Sigma_\scrA(a) := \{\chi(a) : \chi \in \Sigma_\scrA\}$.
+\end{definition}
+
+\subsection{An Example: The space $C(X)$}
+

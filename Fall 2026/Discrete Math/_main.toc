@@ -1,7 +1,11 @@
 \contentsline {chapter}{Contents}{i}{section*.2}%
 \contentsline {chapter}{\chapternumberline {1}Representation of Finite Groups}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Matrix Representations}{1}{section.1.1}%
-\contentsline {section}{\numberline {1.2}New Representations from Old}{4}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Irreducible Representations}{7}{section.1.3}%
-\contentsline {section}{\numberline {1.4}Characters}{7}{section.1.4}%
-\contentsline {chapter}{Exercises}{8}{chapter*.4}%
+\contentsline {subsection}{\numberline {1.1.1}Basic Definitions \& Examples}{1}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}New Representations from Old}{4}{subsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.1.3}Irreducible Representations}{7}{subsection.1.1.3}%
+\contentsline {section}{\numberline {1.2}Characters}{7}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Basic Definitions \& Examples}{7}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Conjugacy Classes \& Integer Partitions}{9}{subsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.2.3}Class Functions \& Inner Products}{10}{subsection.1.2.3}%
+\contentsline {chapter}{Exercises}{12}{chapter*.6}%

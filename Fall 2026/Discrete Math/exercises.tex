@@ -83,10 +83,6 @@
 \begin{exercise}
 	
 \end{exercise}
-{\color{red}
-\begin{proof}
-		
-\end{proof}}
 
 \begin{exercise}
 	Let $X:H \rightarrow \GL_n(\bfC)$ be a representation and $H$ a subgroup of $G$. Show that the induced representation $X\uair_H^G$ is indeed a representation. asf
@@ -179,5 +175,17 @@
 		(b) For any $\alpha \in \bfR^+$, we have $X(\alpha)\begin{bmatrix} 0 \\ 1 \end{bmatrix}  = \begin{bmatrix} 0 \\ 1 \end{bmatrix} $. Hence $\Span \left\{ \begin{bmatrix} 0 \\ 1 \end{bmatrix}  \right\} $ is an $X$-invariant subspace whilst $X$ is irreducible. This shows that Theorem~\ref{} does not hold. In the proof, it may not be the case that $M = \sum_{g \in G}^{} X(g)^\ast X(g)$ and $v^\ast M v$ converges, as $G$ is an infinite group.
 	\end{proof}
 
+\begin{exercise}
+	
+\end{exercise}
 
+\begin{exercise}
+	
+\end{exercise}
 
+\begin{exercise}
+	Prove that if $X$ and $Y$ are representations of $G$ such that $X$ is degree 1 and $Y$ is irreducible, then $X \otimes Y$ is also an irreducible representation.
+\end{exercise}
+	\begin{proof}
+		Suppose $Y:G \rightarrow \GL_m(\bfC)$ is an irreducible degree $m$ representation. Note that $(X \otimes Y):G \rightarrow \GL_m(\bfC)$ is given by $(X \otimes Y)(g) = X(g) \otimes Y(g)$. Since $X(g)$ is degree 1, by definition $X(g) \in \bfC$, hence $X(g) \otimes Y(g) = X(g)Y(g)$. Suppose towards contradiction $X \otimes Y$ is reducible. Then there exists a subspace $V \subseteq \bfC^n$ which is $(X \otimes Y)$-invariant. Hence for all $g \in G$ and $v \in V$, we have $(X \otimes Y)(g) v = X(g)Y(g)v \in V$. But since $V$ is a subspace, it is closed under scalar multiplication. Hence $X(g)^{-1} (X(g)Y(g))v = Y(g)v \in V$. But this means $Y$ is $V$-invariant, which is a contradiction. Thus $X \otimes Y$ is irreducible.
+	\end{proof}

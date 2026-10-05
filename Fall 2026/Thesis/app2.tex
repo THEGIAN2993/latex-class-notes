@@ -1,10 +1,12 @@
-\chapter{Topological Vector Spaces and Weak Topologies}
+\chapter{Topological Preliminaries}
 
 \noindent Throughout, unless otherwise stated, assume $\bbF = \bbR$ or $\bbC$.
 
-\section{Preliminaries}
+\section{Topological Vector Spaces}
 
 Throughout, assume $X$ to be a topological space.
+
+\subsection{Topological Bases}
 
 \begin{definition}
 	If $E \subset X$, a \emph{neighborhood} of $E$ is a set $A \subset X$ such that $E \subset \Int A$.
@@ -69,7 +71,7 @@ Throughout, assume $X$ to be a topological space.
 			
 	\end{proof}}
 
-\section{Vector Topologies and Separation Properties}
+\subsection{Vector Topologies and Separation Properties}
 \begin{definition}
 	Suppose $\scrT$ is a topology on an $\bbF$-vector space $X$ such that:
 	\mbox{}
@@ -77,15 +79,15 @@ Throughout, assume $X$ to be a topological space.
 		\item for every $x \in X$, the set $\{x\}$ is closed;
 		\item the vector space operations are continuous with respect to $\scrT$.
 	\end{itemize}
-	Under these conditions, $\scrT$ is called a \textui{vector topology} and $X$ is said to be a \textui{topological vector space} (abbrev. \textui{TVS}).
+	Under these conditions, $\scrT$ is called a \emph{vector topology} and $X$ is said to be a \emph{topological vector space} (abbrev. \emph{TVS}).
 \end{definition}
 
 \begin{definition}
 	Let $X$ be a TVS.
 	\mbox{}
 	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
-		\item A set $C \subset X$ is said to be \textui{convex} if $tC + (1-t)C \subset C$ for every $0 \leq t \leq 1$.
-		\item A set $B \subset X$ is said to be \textui{balanced} if $\alpha B \subset B$ for every $\alpha \in \bbF$ with $|\alpha| \leq 1$
+		\item A set $C \subset X$ is said to be \emph{convex} if $tC + (1-t)C \subset C$ for every $0 \leq t \leq 1$.
+		\item A set $B \subset X$ is said to be \emph{balanced} if $\alpha B \subset B$ for every $\alpha \in \bbF$ with $|\alpha| \leq 1$
 	\end{enumerate}
 \end{definition}
 
@@ -197,19 +199,19 @@ A consequence of Proposition~\ref{prop:translation-invariant-top} is that every 
 	\end{proof}
 
 
-\section{Local Convexity}
+\subsection{Local Convexity}
 
 \begin{definition}
 	Let $X$ be a TVS and $\scrT$ its vector topology.
 	\mbox{}
 	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
-		\item $X$ is \textui{locally convex} if there is a local base $\scrB$ whose members are convex.
-		\item $X$ is a \textui{Fr\'echet space} if $X$ is locally convex and its topology $T$ is induced by a complete invariant metric.
+		\item $X$ is \emph{locally convex} if there is a local base $\scrB$ whose members are convex.
+		\item $X$ is a \emph{Fr\'echet space} if $X$ is locally convex and its topology $T$ is induced by a complete invariant metric.
 	\end{enumerate}
 \end{definition}
 
 \begin{definition}
-	A \textui{seminorm} on an $\bbF$-vector space is a function $p:X \rightarrow \bbR$ such that:
+	A \emph{seminorm} on an $\bbF$-vector space is a function $p:X \rightarrow \bbR$ such that:
 	\mbox{}
 	\begin{itemize}[itemsep=1pt,topsep=3pt]
 		\item $p(x+y) \leq p(x) + p(y)$;
@@ -234,15 +236,15 @@ A consequence of Proposition~\ref{prop:translation-invariant-top} is that every 
 	\end{proof}}
 
 \begin{definition}
-	A family $\scrP$ of seminorms on an $\bbF$-vector space $X$ is called \textui{separating} if each $x\neq 0$ corresponds to at least one $p \in \scrP$ with $p(x)\neq \emptyset $.
+	A family $\scrP$ of seminorms on an $\bbF$-vector space $X$ is called \emph{separating} if each $x\neq 0$ corresponds to at least one $p \in \scrP$ with $p(x)\neq \emptyset $.
 \end{definition}
 
 \begin{definition}
 	Let $X$ be a $\bbF$-vector space.
 	\mbox{}
 	\begin{enumerate}[label = (\alph*),itemsep=1pt,topsep=3pt]
-		\item A convex set $A \subset X$ is \textui{absorbing} if for every $x \in X$, there exists a scalar $t > 0$ (possibly depending on $x$) such that $x \in tA$.
-		\item If $A$ is an absorbing set, the \textui{Minkowski functional} of $A$ is a function $\mu_A:X \rightarrow \bbF$ defined by:			\[
+		\item A convex set $A \subset X$ is \emph{absorbing} if for every $x \in X$, there exists a scalar $t > 0$ (possibly depending on $x$) such that $x \in tA$.
+		\item If $A$ is an absorbing set, the \emph{Minkowski functional} of $A$ is a function $\mu_A:X \rightarrow \bbF$ defined by:			\[
 			\mu_A(x) := \inf \{t : t^{-1}x \in A\}
 		\] 
 	\end{enumerate}
@@ -341,11 +343,20 @@ A consequence of Proposition~\ref{prop:translation-invariant-top} is that every 
 \end{remark}
 \fi
 
+\section{Nets}
 
-\section{Topologies Induced by a Family of Sets}
+
+
+
+
+
+
+\section{Weak Topologies}
+
+\subsection{Topologies Induced by a Family of Sets}
 
 \begin{definition}
-	Let $\scrT_1$ and $\scrT_2$ be two topologies on a set $X$. If $\scrT_1 \subset \scrT_2$ (that is, every set open in $\scrT_1$ is open in $\scrT_2$), then we say $\scrT_1$ is \textui{weaker} than $\scrT_2$, or that $\scrT_2$ is \textui{stronger} than $\scrT_1$.
+	Let $\scrT_1$ and $\scrT_2$ be two topologies on a set $X$. If $\scrT_1 \subset \scrT_2$ (that is, every set open in $\scrT_1$ is open in $\scrT_2$), then we say $\scrT_1$ is \emph{weaker} than $\scrT_2$, or that $\scrT_2$ is \emph{stronger} than $\scrT_1$.
 \end{definition}
 
 \iffalse
@@ -378,7 +389,7 @@ A consequence of Proposition~\ref{prop:translation-invariant-top} is that every 
 \end{definition}
 
 \begin{proposition}
-	If $\{f_\alpha:X \rightarrow Y\}_\alpha$ is a separating family of maps, where $X$ is a set and each $Y_\alpha$ is a Hausdorff space, then the initial topology on $X$ generated by $\{f_\alpha\}_\alpha$ is Hausdorff.
+	If $\{f_\alpha:X \rightarrow Y_\alpha\}_\alpha$ is a separating family of maps, where $X$ is a set and each $Y_\alpha$ is a Hausdorff space, then the initial topology on $X$ generated by $\{f_\alpha\}_\alpha$ is Hausdorff.
 \end{proposition}
 	{\color{red}
 	\begin{proof}
@@ -411,13 +422,13 @@ A consequence of Proposition~\ref{prop:translation-invariant-top} is that every 
 
 
 
-\section{Dual Systems and Weak Topologies}
+\subsection{Dual Systems}
 
 \begin{definition}
-	Let $X$ be a TVS. The \emph{algebraic dual} of $X$, denoted by $X^\sharp$, is the set of all linear functionals on $X$. The \emph{continuous} (or \emph{topological}) \emph{dual} of $X$, denoted by $X^\ast$, is the subspace of $X^\sharp$ consisting of all continuous linear functions on $X$.
+	Let $X$ be a TVS. The \emph{algebraic dual} of $X$, denoted by $X^\vee$, is the set of all linear functionals on $X$ (i.e., $\bfF^X$). The \emph{continuous} (or \emph{topological}) \emph{dual} of $X$, denoted by $X^\ast$, is the subspace of $X^\vee$ consisting of all continuous linear functions on $X$.
 \end{definition}
 
-\begin{definition}
+\begin{definition}\label{def:dual-sys}
 	Let $X$ and $Y$ be $\bbF$-vector spaces and $b:X \times Y \rightarrow \bbF$ a bilinear form satisfying:
 	\mbox{}
 	\begin{itemize}[itemsep=1pt,topsep=3pt]
@@ -427,20 +438,16 @@ A consequence of Proposition~\ref{prop:translation-invariant-top} is that every 
 	The triple $(X,Y,b)$ is called a \emph{dual system}. We say that the function $b$ places $X$ and $Y$ in \emph{duality}. The function $b$ is called the \emph{canonical bilinear form} of duality, and is usually denoted by $ \left<\cdot,\cdot \right>$. The triple $(X,Y, \left<\cdot,\cdot \right>)$ is more conveniently denoted by $\left<X,Y \right>$.
 \end{definition}
 
-\begin{remark}
-	If $\left<X,Y \right>$ is a system, then by the symmetry of the above definition $\left<Y,X \right>$ is also a system. Hence any proposition being made about $\left<X,Y \right>$ also holds for $\left<Y,X \right>$.
-\end{remark}
-
 \begin{example}
-	If $X$ is an $\bbF$-vector space, the map $\left<x,f \right> \mapsto f(x)$ of $X \times X^\sharp \rightarrow \bbF$ is a bilinear form, and hence defines a dual system $\left<X,X^\sharp \right>$. More can be said if $X$ is a LCS: since $X^\ast$ is a subspace of $X^\sharp$ which separates points in $X$, the restriction of $X \times X^\sharp$ onto $X \times X^\ast$ induces a dual system $\left<X,X^\ast \right>$.
+	If $X$ is an $\bbF$-vector space, the map $\left<x,f \right> := \ev_x(f)$ of $X \times X^\vee \rightarrow \bbF$ is a bilinear form, and hence defines a dual system $\left<X,X^\vee \right>$. More can be said if $X$ is a LCS: since $X^\ast$ is a subspace of $X^\vee$ which separates points in $X$, the restriction of $X \times X^\vee$ onto $X \times X^\ast$ induces a dual system $\left<X,X^\ast \right>$.
 \end{example}
 
 
 \begin{proposition}
-	If $\left<X,Y \right>$ is a dual system, then $Y$ is isomorphic to a subspace of $X^\sharp$.
+	If $\left<X,Y \right>$ is a dual system, then $Y$ is isomorphic to a subspace of $X^\vee$.
 \end{proposition}
 	\begin{proof}
-		For every $y \in Y$, note that $\left<\cdot,y \right>:X \rightarrow \bbF$ is a linear functional on $X$. Define $\varphi:Y \rightarrow X^\sharp$ by $\varphi(y):= \left<\cdot,y \right>$. Since $\left<\cdot,\cdot \right>$ is bilinear, $\varphi$ is linear. Moreover, its kernel is clearly trivial, hence by the First Isomorphism Theorem $Y \cong \varphi(Y) \subseteq X^\sharp$.
+		For every $y \in Y$, note that $\left<\cdot,y \right>:X \rightarrow \bbF$ is a linear functional on $X$. Define $\varphi:Y \rightarrow X^\vee$ by $\varphi(y):= \left<\cdot,y \right>$. Since $\left<\cdot,\cdot \right>$ is bilinear, $\varphi$ is linear. Moreover, its kernel is clearly trivial, hence by the First Isomorphism Theorem $Y \cong \varphi(Y) \subseteq X^\vee$.
 	\end{proof}
 
 \begin{proposition}
@@ -460,8 +467,16 @@ A consequence of Proposition~\ref{prop:translation-invariant-top} is that every 
 	\end{proof}}
 
 \begin{definition}
-	Let $\left<X,Y \right>$ be a dual system. The \emph{weak topology} on $X$, denoted $\sigma(X,Y)$, is the initial topology on $X$ generated by $\{\left<\cdot,y \right> : y \in Y\}$.
+	Let $\left<X,Y \right>$ be a dual system. The \emph{weak topology} on $X$, denoted by $\sigma(X,Y)$ (or $\wk$), is the initial topology generated by $\{\left<\cdot,y \right> : y \in Y\}$.
 \end{definition}
+
+\begin{remark}
+	If we define a map $\varphi:X \rightarrow Y^\vee$ by $x \mapsto \left<x,\cdot \right>$, Proposition~\ref{} says that $X$ is isomorphic to a space of linear functionals on $Y$, namely $\varphi(X)$. From Example~\ref{}, we can endow $\varphi(X)$ with the topology of pointwise convergence; i.e, the topology generated by $\{\ev_y : y \in Y\}$. But observe that:
+	\[
+		x \mapsto \left<x,y \right> = \ev_y(\left<x,\cdot \right>) = \ev_y(\varphi(x)).
+	\]
+	Hence the weak topology on $X$ is exactly the topology of pointwise convergence on $\varphi(X)$!
+\end{remark}
 
 \begin{proposition}\label{prop:dual-is-lcs}
 	If $\left<X,Y \right>$ is a dual system, then $\bigl( X,\sigma(X,Y) \bigr)$ is a LCS.
@@ -484,14 +499,14 @@ A consequence of Proposition~\ref{prop:translation-invariant-top} is that every 
 		Thus $\bigl( X,\sigma(X,Y) \bigr)^\ast \cong Y$.
 	\end{proof}
 
-\section{Weak* Topologies and the Banach-Alaoglu Theorem}
+\subsection{Weak* Topologies and The Banach-Alaoglu Theorem}
 
 \begin{remark}
-	If $X$ is a TVS, then $\sigma(X,X^\ast)$ is a second topology on $X$. However, $X^\ast$ has no topology to begin with. One might consider endowing $X^\ast$ with $\sigma(X^\ast,X^{\ast\ast})$, but there is a more natural choice. Recall that a dual system $\left<X,Y \right>$ is symmetric; i.e., any proprty on $\left<X,Y \right>$ also holds for $\left<Y,X \right>$. Hence the dual system $\left<X,X^\ast \right>$ with bilinear form $\left<x,x^\ast \right>:= x^\ast(x)$ is the exact same as the dual system $\left<X^\ast,X \right>$ with bilinear form $\left<x^\ast,x \right> := x^\ast(x)$. This leads to the following definition:
+	By the symmetry of Definition~\ref{def:dual-sys}, note that any proposition being made about $\left<X,Y \right>$ also holds for $\left<Y,X \right>$. Indeed, if $\sigma(X,Y)$ is generated by $\{\left<\cdot,y \right> : y \in Y\}$, then $\sigma(Y,X)$ is a topology on $Y$ generated by $\{\left<\cdot,x \right>: x \in X\}$. Without any extra conditions on $X$, this extra topology on $Y$ is not very interesting. However, it is especially important when $X$ is a TVS. Note that $\sigma(X,X^\ast)$ is a second topology on $X$, whilst $X^\ast$ has no topology to begin with! One might consider endowing $X^\ast$ with $\sigma(X^\ast,X^{\ast\ast})$, but as alluded there is a more natural choice.
 \end{remark}
 
 \begin{definition}
-	If $X$ is a TVS, the \emph{weak* topology} on $X^\ast$ is $\sigma(X^\ast,X)$; i.e., it is the initial topology generated by $\{\left<x^\ast,\cdot \right>: x^\ast \in X^\ast\}$.
+	Let $X$ be a TVS and $\left<X,X^\ast \right>$ a dual system. The \emph{weak*} topology on $X^\ast$, denoted by $\sigma(X^\ast,X)$ (or $wk^\ast$), is the initial topology generated by $\{\left<x,\cdot\right> : x \in X \}$.
 \end{definition}
 
 \begin{theorem}
@@ -545,5 +560,4 @@ A consequence of Proposition~\ref{prop:translation-invariant-top} is that every 
 			
 	\end{proof}}
 
-\section{The Stone-\v{C}ech Compactification}
 
