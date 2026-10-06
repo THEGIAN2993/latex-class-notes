@@ -1,10 +1,8 @@
 \chapter{Topological Preliminaries}
 
-\noindent Throughout, unless otherwise stated, assume $\bbF = \bbR$ or $\bbC$.
-
 \section{Topological Vector Spaces}
 
-Throughout, assume $X$ to be a topological space.
+\noindent Throughout, assume $X$ to be a topological space.
 
 \subsection{Topological Bases}
 
@@ -70,6 +68,7 @@ Throughout, assume $X$ to be a topological space.
 	\begin{proof}
 			
 	\end{proof}}
+
 
 \subsection{Vector Topologies and Separation Properties}
 \begin{definition}
@@ -345,6 +344,108 @@ A consequence of Proposition~\ref{prop:translation-invariant-top} is that every 
 
 \section{Nets}
 
+\subsection{Motivation}
+
+\begin{theorem}
+	Let $X$ be a topological space and $A \subseteq X$. If $\{x_n\}_{n = 1}^\infty$ is a sequence converging to some $x_0 \in X$, then $x_0 \in \overline{A}$. The converse holds if $X$ is metrizable.
+\end{theorem}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+\begin{remark}
+	The previous theorem asserts that:
+	\[
+		\overline{A} = \{x \in X : \text{ some sequence in $A$ converges to $X$ }\}.
+	\] 
+	Thus, knowing all convergent sequences and their limits determines the closures of every subset. This determined all the closed sets, and hets determines the topology on $X$. This is a really nice property, but fails in general if $X$ is not metrizable.
+\end{remark}
+
+\begin{theorem}
+	Let $\Omega$ be an infinite set. The weak topology and norm topology of $\ell^1(\Omega)$ have the same convergent sequences.
+\end{theorem}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+This result is devestating. Luckily, there is a generalization of sequences that will still allow us to characterize topological spaces.
+
+\subsection{Definition \& Examples}
+
+\begin{definition}
+	A \emph{directed set} is a partially ordered set $(I,\leq)$ in which every finite subset has an upperbound; i.e., for any $i,j \in I$ there exists $k \in I$ with $i \leq k$ and $j \leq k$.
+\end{definition}
+
+\begin{example}
+	\mbox{}
+	\begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+		\item The set of natural numbers $\bfN$ is a directed set.
+		\item The set $\scrN$ of all neighborhoods of a point $x \in X$ directed by reverse inclusion is a directed set.
+		\item The cartesian product of two directed sets is also a directed set.
+	\end{enumerate}
+\end{example}
+
+\begin{definition}
+	Let $I$ be a directed set. A \emph{net} in $X$ is a map  $I \rightarrow X$ given by $\alpha \mapsto x_\alpha$. The mapping is typically denoted by $\left<x_\alpha \right>_{\alpha \in I}$ or $\left<x_\alpha \right>$ if the context is clear.
+\end{definition}
+
+\begin{definition}
+	Let $X$ be a topological space, $E$ a subset of $X$, and $\left<x_\alpha \right>_{\alpha \in I}$ a net in $X$.
+	\mbox{}
+	\begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+		\item $\left<x_\alpha \right>$ is \emph{eventually} in $E$ if there exists $A \in I$ such that $x_\alpha \in E$ for every $\alpha \geq A$.
+		\item A point $x \in X$ is a \emph{limit} of $\left<x_\alpha \right>$ if for every neighborhood $U$ of $x$, $\left<x_\alpha \right>$ is eventually in $U$. We say that $\left<x_\alpha \right>$ \emph{converges} to $x$ and write $x_\alpha \rightarrow x$.
+	\end{enumerate}
+\end{definition}
+
+\begin{example}
+	If $I = \bfN$, then $x \in X$ is a limit of $\left<x_n \right>$ if, for every neighborhood $U$ of $x$, $\left<x_n \right>$ is eventually in $U$. Unravelling further, $\left<x_n \right>$ is eventually in $U$ if there exists $N \in \bfN$ such that $x_n \in U$ for all $n \geq N$. This is precisely the definition of sequence convergence.
+\end{example}
+
+\begin{definition}
+	Let $X$ be a topological space, $E$ a subset of $X$, and $\left<x_\alpha \right>_{\alpha \in I}$ a net in $X$.
+	\mbox{}
+	\begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+		\item $\left<x_\alpha \right>$ is \emph{frequently} in $E$ if for every $\alpha \in I$, there exists $\beta \geq \alpha$ such that $x_\beta \in E$.
+		\item A point $x \in X$ is a \emph{cluster point} of $\left<x_\alpha \right>$ if for every neighborhood $U$ of $x$, $\left<x_\alpha \right>$ is frequently in $U$.
+	\end{enumerate}
+\end{definition}
+
+\begin{proposition}
+	Let $X$ be a topological space and $E$ a subset of $X$. If $\left<x_\alpha \right>_{\alpha \in I}$ is eventually in $E$, then $\left<x_\alpha \right>_{\alpha \in I}$ is frequently in $E$.
+\end{proposition}
+	\begin{proof}
+		Let $\alpha_0 \in I$. Since $\left<x_\alpha \right>$ is eventually in $E$, there exists $A \in I$ such that $x_\alpha \in E$ for all $\alpha \geq A$. Since $I$ is a directed set, there exists $k \in I$ such that $\alpha_0 \leq k$ and $\alpha \leq k$. Hence $x_k \in E$, so $\left<x_\alpha \right>$ is frequently in $E$.
+	\end{proof}
+
+\begin{proposition}\label{prop:net-lim-pt}
+	Let $X$ be a topological space, $E$ a subset of $X$, and $x \in X$. Then $x$ is a limit point of $E$ (i.e., $E \cap (U \setminus \{x\}) \neq \emptyset$ for every neighborhood $U$ of $x$) if and only if there is a net in $E \setminus \{x\}$ that converges to $x$.
+\end{proposition}
+	\begin{proof}
+		Let $x$ be a limit point of $E$. Let $\scrN$ be the collection of neighborhoods of $x$ directed by reverse inclusion. Define a net $\left<x_U \right>_{U \in \scrN}$ as follows: for each $U \in \scrN$ pick $x_U \in E \cap (U \setminus \{x\}) \neq \emptyset$. It remains to show that $\left<x_U \right>_{U \in \scrN}$ converges to $x$. Let $V$ be a neighborhood of $x$. If $U \subseteq V$ (i.e., $U \geq V$), then:
+		\[
+			x_U \in E \cap (U \setminus \{x\}) \subseteq E \cap (V \setminus \{x\}) \subseteq V.
+		\]
+		Thus $x_U \rightarrow x$ and $\left<X_U \right>_{U \in \scrN} \subseteq E \setminus \{ x\}$.
+
+		Conversely, if $\left<x_\alpha \right>_{\alpha \in I} \subset E m\setminus \{x\}$ and $x_\alpha \rightarrow x$, then for each neighborhood $U$ of $x$ there exists $A \in I$ with $x_A \in U$. Hence $E \cap (U \setminus \{x\})$ is nonempty for every neighborhood $U$ of $x$, so $x$ is a limit point of $E$.
+	\end{proof}
+
+\begin{proposition}
+	If $X$ is a topological space, $E$ is a subset of $X$, and $x \in X$, then $x \in \overline{E}$ if and only if there is a net in $E$ converging to $x$.
+\end{proposition}
+	\begin{proof}
+		The forward direction follows similarly to the forward direction of Proposition~\ref{prop:net-lim-pt}. Conversely, if $\left<x_\alpha \right> \subset E$ and $x_\alpha \rightarrow x$, then for every neighborhood $U$ of $x$ there exists $A \in I$ such that $x_A \in U$. Hence $E \cap U \neq \emptyset$ for every neighborhood $U$ of $x$, hence $x \in \overline{E}$.
+	\end{proof}
+
+\begin{proposition}
+	If $X$ and $Y$ are topological spaces and $f:X \rightarrow Y$, then $f$ is continuous at $x \in X$ if and only if for every net $\left<x_\alpha \right>$ converging to $x$, $\left<f(x_\alpha) \right>$ converges to $f(x)$. 
+\end{proposition}
+	\begin{proof}
+		Suppose $f$ is continuous at $x$ and $V$ is a neighborhood of $f(x)$. Then $f^{-1}(V)$
+	\end{proof}
 
 
 
@@ -381,11 +482,15 @@ A consequence of Proposition~\ref{prop:translation-invariant-top} is that every 
 	\end{proof}}
 
 \begin{example}
-	If $\{X_\alpha\}_{\alpha \in I}$ is a family of topological spaces, the product topology on $\prod_{\alpha \in I}X_\alpha$ is the initial topology generated by $\{\pi_\alpha\}_{\alpha \in I}$, where each $\pi_j$ is the projection onto $X_j$.
+	Let $X$ be a set and $Y$ a topological space. The \emph{topology of pointwise convergence} on $Y^X$ is the initial topology generated by $\{\ev_x : x \in X\}$, where $ev_x:Y^X \rightarrow Y$ is defined by $\ev_x(f) = f(x)$. 
+\end{example}
+
+\begin{example}
+	If $\{X_\alpha\}_{\alpha \in I}$ is a family of topological spaces, the \emph{product topology} on $\prod_{\alpha \in I}X_\alpha$ is the initial topology generated by $\{\pi_\alpha\}_{\alpha \in I}$, where each $\pi_j$ is the projection onto $X_j$. Note that each tuple $(x_\alpha)_{\alpha \in I}$ can be regarded as a function $f:I \rightarrow \bigcup_{\alpha \in I}X_\alpha$ with $f(\alpha) = x_\alpha$ for each $\alpha \in I$. In particular, $\pi_j((x_\alpha)_{\alpha \in I}) = x_j = f(j) = \ev_j(f)$. Hence the product topology is the topology of pointwise convergnece.
 \end{example}
 
 \begin{definition}
-	A family $\scrF$ of maps on a set $X$ is called \emph{separating} if for any $x,y \in X$ with $x\neq y$, there exists a function $f \in \scrF$ such that $f(x) \neq f(y)$.
+	A family of maps $\scrF$ on a set $X$ is called \emph{separating} if for all $x,y \in X$ with $x \neq y$, there exists a function $f \in \scrF$ such that $f(x) \neq f(y)$.
 \end{definition}
 
 \begin{proposition}

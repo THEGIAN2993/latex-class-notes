@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.21.0 (TeX Live 2025)  (format=lualatex 2025.3.8)  1 OCT 2026 12:16
+This is LuaHBTeX, Version 1.21.0 (TeX Live 2025)  (format=lualatex 2025.3.8)  6 OCT 2026 13:04
  restricted system commands enabled.
  file:line:error style messages enabled.
 **_main.tex
@@ -2041,19 +2041,23 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 [24]
 
-LaTeX Warning: Reference `' on page 25 undefined on input line 474.
-
-
-LaTeX Warning: Reference `' on page 25 undefined on input line 474.
-
-
-LaTeX Warning: Reference `' on page 25 undefined on input line 492.
-
-
-
-[25])
+[25]
 
 [26]
+
+LaTeX Warning: Reference `' on page 27 undefined on input line 579.
+
+
+LaTeX Warning: Reference `' on page 27 undefined on input line 579.
+
+
+LaTeX Warning: Reference `' on page 27 undefined on input line 597.
+
+
+
+[27])
+
+[28]
 \tf@toc=\write6
 
 \openout6 = _main.toc
@@ -2071,23 +2075,23 @@ LaTeX Font Warning: Size substitutions with differences
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `_main.out' has not changed.
-(rerunfilecheck)             Checksum: 706302881A5EF08995CABA74773FC6B3;4802.
+(rerunfilecheck)             Checksum: 30AABAF6B4FC4EA8BD6C93B294379CCC;5090.
 )
 
 Here is how much of LuaTeX's memory you used:
- 51309 strings out of 475506
+ 51337 strings out of 475506
  125061,1977958 words of node,token memory allocated
- 1616 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 3 glue, 4 kern, 1 glyph, 97 attribute, 200 glue_spec, 97 attribute_list, 5 write nodes
-   avail lists: 1:4,2:859,3:489,4:94,5:751,6:131,7:6497,8:71,9:1162,10:9,11:346
- 72238 multiletter control sequences out of 65536+600000
+ 1624 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 3 glue, 4 kern, 1 glyph, 99 attribute, 200 glue_spec, 99 attribute_list, 5 write nodes
+   avail lists: 1:4,2:899,3:519,4:92,5:771,6:139,7:6706,8:71,9:1162,10:9,11:346
+ 72241 multiletter control sequences out of 65536+600000
  668 fonts using 48608703 bytes
  107i,15n,104p,1408b,883s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}</usr/local/texlive/2025/texmf-dist/fonts/opentype/public/newpx/TeXGyrePagellaX-Italic.otf>{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/newpx/px-lms.enc}</usr/local/texlive/2025/texmf-dist/fonts/opentype/public/newpx/TeXGyrePagellaX-Bold.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/newpx/TeXGyrePagellaX-Regular.otf></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/NewPXMI_gnu.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/euex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eurm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eurm5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eurm7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eusm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eusm7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/pxmiaX.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/pxsys.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txsyc.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsym.pfb>
-Output written on _main.pdf (27 pages, 356949 bytes).
+Output written on _main.pdf (29 pages, 371013 bytes).
 
-PDF statistics: 570 PDF objects out of 1000 (max. 8388607)
- 509 compressed objects within 6 object streams
- 225 named destinations out of 1000 (max. 131072)
- 224 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 611 PDF objects out of 1000 (max. 8388607)
+ 548 compressed objects within 6 object streams
+ 250 named destinations out of 1000 (max. 131072)
+ 240 words of extra memory for PDF output out of 10000 (max. 100000000)
 

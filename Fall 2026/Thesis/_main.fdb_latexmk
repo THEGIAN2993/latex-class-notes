@@ -1,5 +1,5 @@
 # Fdb version 4
-["lualatex"] 1790882173.50885 "_main.tex" "_main.pdf" "_main" 1790882175.92663 0
+["lualatex"] 1791317040.92467 "_main.tex" "_main.pdf" "_main" 1791317043.35961 0
   "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex" 1790877134.13909 21709 564fdad756e88333fe59ddb4c740c7df ""
   "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/preamble-notes.tex" 1790825276.23081 6186 e4afcd5c8521ec209f4f9024bdd6d6e0 ""
   "/Users/gcrescenzo/Library/texlive/2025/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-bold.luc" 1775165463.60129 128410 3f752579a721aabb697cb5411c2b5223 ""
@@ -438,15 +438,15 @@
   "/usr/local/texlive/2025/texmf-dist/tex/luatex/luaotfload/luaotfload.lua" 1740687098 13566 16df94dd2de231b2bca0aaa0190941fe ""
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1758769034 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/luahbtex/lualatex.fmt" 1741450571 5582742 9b17e6cd80d72c3778eef49dea7c0883 ""
-  "_main.aux" 1790882175.7597 437 626c040b5191a38a437604c2bd66eddd "lualatex"
-  "_main.out" 1790882175.76495 4802 706302881a5ef08995caba74773fc6b3 "lualatex"
-  "_main.tex" 1790882171.71296 709 33f28226b542e63f01dfc2a337efe982 ""
-  "_main.toc" 1790882175.76885 2366 9cd66168706b35f84e5d72bc7c83bfb5 "lualatex"
-  "app2.aux" 1790882175.75598 9157 a54c806e6a19fb9090459086d8b21a35 "lualatex"
-  "app2.tex" 1790882101.45042 27501 96e09e415c8ae42f8fe104d6e2dec45a ""
-  "ch1.aux" 1790882175.48188 9403 bbe737328599a857af8c5e6ff9c88157 "lualatex"
+  "_main.aux" 1791317043.19018 437 5a6c91a310ac2c6755b43992110fad68 "lualatex"
+  "_main.out" 1791317043.19873 5090 30aabaf6b4fc4ea8bd6c93b294379ccc "lualatex"
+  "_main.tex" 1791234331.5548 709 33f28226b542e63f01dfc2a337efe982 ""
+  "_main.toc" 1791317043.19906 2540 f70701a15a87ee45860e40d7c5128c60 "lualatex"
+  "app2.aux" 1791317043.18625 10715 26752be5bb069e896cd5b80cc21226f7 "lualatex"
+  "app2.tex" 1791317037.18104 34347 fbcdace48ecb420db103cb33e0df6a4f ""
+  "ch1.aux" 1791317042.8808 9403 b8d8fa28db396f312e28017bb42f6f7b "lualatex"
   "ch1.tex" 1790871074.90739 42732 3431cc786013cddf0394126275163400 ""
-  "ch2.aux" 1790882175.58218 3963 c1c55e0000fac1ee34085cb95cf01317 "lualatex"
+  "ch2.aux" 1791317042.97419 3963 dff16be8778008075ef5ab5dad33240d "lualatex"
   "ch2.tex" 1790870704.12661 5456 59a5ee68f82c244b44c98f3f49aa812f ""
   "kbordermatrix.sty" 1784830412 5726 584cfc0835d134b65817a1c97e21100e ""
   (generated)

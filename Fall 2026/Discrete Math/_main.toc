@@ -8,4 +8,5 @@
 \contentsline {subsection}{\numberline {1.2.1}Basic Definitions \& Examples}{7}{subsection.1.2.1}%
 \contentsline {subsection}{\numberline {1.2.2}Conjugacy Classes \& Integer Partitions}{9}{subsection.1.2.2}%
 \contentsline {subsection}{\numberline {1.2.3}Class Functions \& Inner Products}{10}{subsection.1.2.3}%
-\contentsline {chapter}{Exercises}{12}{chapter*.6}%
+\contentsline {subsection}{\numberline {1.2.4}Character Tables}{13}{subsection.1.2.4}%
+\contentsline {chapter}{Exercises}{14}{chapter*.6}%

@@ -493,7 +493,7 @@ s_6  & 0 & 0 & 1 & 0 & 0 & 0
 	If $G$ is abelian, then $C_g = \{g\}$.
 \end{example}
 
-\begin{theorem}
+\begin{theorem}\label{thm:chars-const-conj}
 	Characters are constant on conjugacy classes.
 \end{theorem}
 	\begin{proof}
@@ -539,12 +539,27 @@ s_6  & 0 & 0 & 1 & 0 & 0 & 0
 We can use integer partitions to describe the cycle types of elements in $S_n$. For example, the cycle type of $(1\,2)(3\,4\,5)(6)(7\,8) \in S_8$ is $(3,2,2,1)$.
 \end{example}
 
+\begingroup
+\ytableausetup{boxsize=0.2em}
+\begin{example}
+    Recall that $S_3 = \{(1),(1\,2),(1\,3),(2\,3),(1\,2\,3),(1\,3\,2)\}$.
+    The conjugacy classes of $S_3$ are:
+    \begin{align*}
+        C_{(1)} &= C_{\ydiagram{1,1,1}} = \{(1)\}, \\
+        C_{(1\,2)} &= C_{\ydiagram{1,2}}
+        = \{(1\,2),(1\,3),(2\,3)\}, \\
+        C_{(1\,2\,3)} &= C_{\ydiagram{3}}
+        = \{(1\,2\,3),(1\,3\,2)\}.
+    \end{align*}
+\end{example}
+\endgroup
+
 \begin{example}
 	Recall that $S_3 = \{(1),(1\,2),(1\,3),(2\,3),(1\,2\,3),(1\,3\,2)\}$. The conjugacy classes of $S_3$ are:
 	\begin{align*}
-		C_{(1)} &= \{(1)\}, \\
-		C_{(1\,2)} &= \{(1\,2),(1\,3),(2\,3)\}, \\
-		C_{(1\,2\,3)} &= \{(1\,2\,3),(1\,3\,2)\}.
+		C_{(1)} &= C_{\ydiagram{3}} = \{(1)\}, \\
+		C_{(1\,2)} &= C_{\ydiagram{2,1}}= \{(1\,2),(1\,3),(2\,3)\}, \\
+		C_{(1\,2\,3)} &= C_{\ydiagram{1,1,1}}= \{(1\,2\,3),(1\,3\,2)\}.
 	\end{align*}
 \end{example}
 
@@ -553,7 +568,7 @@ We can use integer partitions to describe the cycle types of elements in $S_n$. 
 	Let $\lambda = 1^{m_1}2^{m_2}\ldots \alpha^{m_\alpha} \vdash n$. We define $z_\lambda := 1^{m_1}m_1! \cdot 3^{m_3}m_3! \cdot \ldots \cdot \alpha^{m_\alpha}m_\alpha!$.
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}\label{thm:size-of-C}
 	Let $\sigma \in S_n$ have cycle type $\lambda = 1^{m_1}2^{m_2}\ldots \alpha^{m_\alpha} \vdash n$. Then $|C_\sigma| = \frac{n!}{z_\lambda}$.
 \end{theorem}
 	\begin{proof}
@@ -620,4 +635,96 @@ We can use integer partitions to describe the cycle types of elements in $S_n$. 
 		&= 4.
 	\end{align*}
 \end{example}
+
+\begin{example}
+	Let $D$ be the defining representation of $S_4$. Then:
+	\begin{align*}
+		\left<\chi^D,\chi^D \right>_{S_4}
+		&= \frac{1}{4!} \sum_{\sigma \in S_4}^{} \chi^D(\sigma)^2
+	\end{align*}
+	Using Theorem~\ref{thm:size-of-C}, we can compute the sizes of each conjugacy class of $S_4$:
+	\begingroup
+	\ytableausetup{boxsize=0.2em}
+	\begin{align*}
+		|C_{\ydiagram{1,1,1,1}}| &= 1 \\
+		|C_{\ydiagram{1,1,2}}| &= 6 \\
+		|C_{\ydiagram{2,2}}| &= 3 \\
+		|C_{\ydiagram{1,3}}| &= 8 \\
+		|C_{\ydiagram{4}}| &= 6.
+	\end{align*}
+	\endgroup
+	Note that $\chi^D$ is constant on conjugacy classes by Theorem~\ref{thm:chars-const-conj}. It only remains to compute $\Tr(D(\sigma))$ on only a single element of each conjugacy class. But since the defining representation permutes the rows of the identity matrix depending on the cycle type, it must be that:
+	\begin{align*}
+		\Tr(D(1)) & = 4 \\
+		\Tr(D(1\,2)) & = 2 \\
+		\Tr(D(1\,2\,3)) & = 1 \\
+		\Tr(D((1\,3)(2\,4))) &= 0 \\
+		\Tr(D(1\,2\,3\,4)) &= 0.
+	\end{align*}
+	Hence $$\left<\chi^D,\chi^D \right>_{S_4} = \frac{1}{4!}(1(4)^2 + 6(2)^2 + 8(1)^2 + 6(0)^2 + 3(0)^2).$$
+
+\end{example}
+
+\begin{theorem}
+	If $X$ and $Y$ are irreducible representations, then:
+	\[
+			\left<\chi^X, \chi^Y \right> = \begin{cases}1, & \text{if $X$ and $Y$ are similar} \\ 0, & \text{otherwise}\end{cases}.
+	\] 
+\end{theorem}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+\begin{theorem}
+	Suppose $X$ is a representation similar to:
+	\[
+		\left(\bigoplus_{i = 1}^{m_1}X^{(1)}\right) \oplus \left( \bigoplus_{j = 1}^{m_2}X^{(2)}\right) \oplus \ldots  \oplus \left(\bigoplus_{k = 1}^{m_\alpha}X^{(\alpha)}\right),
+	\] 
+	where $X^{(1)},\ldots ,X^{(\alpha)}$ are irreducible and each $X^{(i)}$ appears $m_i$ times.
+	\mbox{}
+	\begin{enumerate}[label = (\arabic*),itemsep=1pt,topsep=3pt]
+		\item $\left<\chi^X, \chi^{X^{(i)}} \right> = m_i$.
+		\item $\left<\chi^X,\chi^X \right> = \sum_{i=1}^{k}m_i^2 $.
+		\item $X$ is irreducible if and only if $\left<\chi^X,\chi^X \right> = 1$.
+		\item If $Y$ is another representation, then $X$ and $Y$ are similar if and only if $\chi^X = \chi^Y$.
+	\end{enumerate}
+\end{theorem}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+\begin{example}
+	Let $L$ be the left regular represenation of $G$ and $X$ a degree $d$ irreducible representation of $G$. Then:
+	\[
+		\left<\chi^X,\chi^L \right>_G = \frac{1}{|G|}\sum_{g \in G}^{} \Tr(X(g))\Tr(L(g)).
+	\] 
+	Recall that $\chi^L(g) = |G|$ if $g = \epsilon$ and $0$ otherwise. Hence:
+	\begin{align*}
+		\left<\chi^X,\chi^L \right>_G
+		&= \frac{1}{|G|}\bigl( \Tr(I_d)\Tr(L(\epsilon)) \bigr) \\
+		&= \frac{1}{|G|}(d|G|) \\
+		&= d.
+	\end{align*}
+	Hence $X$ appears $d$ times in $L$. In particular, since $X$ was arbitrary, it must be that $L$ contains every irreducible representation of $G$.
+\end{example}
+
+\begin{remark}
+	Since $L$ is degre $|G|$, this last example shows that, up to similarly, there are at most $|G|$ irreducible representations of $G$. 
+\end{remark}
+
+\subsection{Character Tables}
+
+\begin{theorem}
+	The set $\{\chi^X : X \text{ is an irreducible representation of $G$}\}$ is an orthonormal basis for $C(G)$.
+\end{theorem}
+	{\color{red}
+	\begin{proof}
+			
+	\end{proof}}
+
+\begin{definition}
+	The \emph{character table} for $G$ is a table with rows indexed by the characters of irreducible representations of $G$ and the columns indexed by the conjugacy classes of $G$. Each cell is the entry value of the character on the conjugacy class.
+\end{definition}
 

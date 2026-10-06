@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1791173615.09275 "_main.tex" "_main.pdf" "_main" 1791173617.20512 0
+["pdflatex"] 1791225418.80967 "_main.tex" "_main.pdf" "_main" 1791225420.99007 0
   "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/makros.tex" 1790877134.13909 21709 564fdad756e88333fe59ddb4c740c7df ""
   "/Users/gcrescenzo/Documents/School/LaTeX Documents/latex-class-notes/preamble-notes.tex" 1790825276.23081 6186 e4afcd5c8521ec209f4f9024bdd6d6e0 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/newpx/px-lms.enc" 1699652218 3877 2ca811886181a05a861d20a35de75e06 ""
@@ -335,13 +335,13 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1758769034 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "_main.aux" 1791173617.07502 425 1d3e37cecdf085feb0dc081a1e2a0c46 "pdflatex"
-  "_main.out" 1791173617.08005 1990 c772471e27badcb4a808005da480546c "pdflatex"
-  "_main.tex" 1791168309.25648 1018 655b6b91c611ca9a1c69a1e3a57688b4 ""
-  "_main.toc" 1791173617.08022 954 806ab8585d44f6d325c142147ea8005d "pdflatex"
-  "ch1.aux" 1791173617.025 7996 e6f38ab00de99abc8d3739cf6cf4ddcb "pdflatex"
-  "ch1.tex" 1791173613.71105 26589 dc0fde5a8b6d2cdbb53f97ac46ec8d44 ""
-  "exercises.aux" 1791173617.07206 3086 4bb8da92861cc56da7b2619f9c1dcf7a "pdflatex"
+  "_main.aux" 1791225420.85048 425 59f02e5c215da1b8db90f2af42c1a564 "pdflatex"
+  "_main.out" 1791225420.85549 2135 8940150f8b69b857fc433ee8cc7a22ff "pdflatex"
+  "_main.tex" 1791214515.6254 1018 655b6b91c611ca9a1c69a1e3a57688b4 ""
+  "_main.toc" 1791225420.8593 1041 1e976ff5267a4433c8c8ae77c154acd2 "pdflatex"
+  "ch1.aux" 1791225420.79649 8941 1656d2ec824fc4fad429019f30b52045 "pdflatex"
+  "ch1.tex" 1791225417.98979 30607 8c8f1dde97043ae68e54646015a53ad2 ""
+  "exercises.aux" 1791225420.85003 3087 c37d91acaba6f4a8281b7b0ae49258a4 "pdflatex"
   "exercises.tex" 1790870025.50527 11397 8349a1edf324c20d453b8fac932f2141 ""
   "kbordermatrix.sty" 1784830412 5726 584cfc0835d134b65817a1c97e21100e ""
   (generated)

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  4 OCT 2026 21:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  5 OCT 2026 11:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -2182,35 +2182,39 @@ LaTeX Font Info:    Font shape `T1/zpltlf/m/it' will be
 
 [9]
 
-[10])
+[10]
 
 [11]
+
+[12])
+
+[13]
 \openout2 = `exercises.aux'.
 
  (./exercises.tex
 
-[12
+[14
 
 
 
 
 ]
 
-[13]
+[15]
 
-[14]
+[16]
 
-LaTeX Warning: Reference `' on page 15 undefined on input line 169.
-
-
-LaTeX Warning: Reference `' on page 15 undefined on input line 169.
+LaTeX Warning: Reference `' on page 17 undefined on input line 169.
 
 
-LaTeX Warning: Reference `' on page 15 undefined on input line 175.
+LaTeX Warning: Reference `' on page 17 undefined on input line 169.
+
+
+LaTeX Warning: Reference `' on page 17 undefined on input line 175.
 
 )
 
-[15]
+[17]
 \tf@toc=\write6
 \openout6 = `_main.toc'.
 
@@ -2228,21 +2232,21 @@ LaTeX Font Warning: Size substitutions with differences
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `_main.out' has not changed.
-(rerunfilecheck)             Checksum: C772471E27BADCB4A808005DA480546C;1990.
+(rerunfilecheck)             Checksum: 8940150F8B69B857FC433EE8CC7A22FF;2135.
  ) 
 Here is how much of TeX's memory you used:
- 48187 strings out of 473190
- 1102331 string characters out of 5715801
- 1605152 words of memory out of 5000000
- 70491 multiletter control sequences out of 15000+600000
+ 48212 strings out of 473190
+ 1102824 string characters out of 5715801
+ 1608216 words of memory out of 5000000
+ 70501 multiletter control sequences out of 15000+600000
  662907 words of font info for 180 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  107i,15n,110p,1116b,810s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/NewPXMI_gnu.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/euex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eurm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eurm5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eurm7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/pxmiaX.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/pxsys.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txmiaSTbb.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsym.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/zplb.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/zplr.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newpx/zplri.pfb>
-Output written on _main.pdf (16 pages, 226345 bytes).
+Output written on _main.pdf (18 pages, 235445 bytes).
 PDF statistics:
- 306 PDF objects out of 1000 (max. 8388607)
- 257 compressed objects within 3 object streams
- 102 named destinations out of 1000 (max. 500000)
- 101 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 337 PDF objects out of 1000 (max. 8388607)
+ 286 compressed objects within 3 object streams
+ 117 named destinations out of 1000 (max. 500000)
+ 109 words of extra memory for PDF output out of 10000 (max. 10000000)
 
